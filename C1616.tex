@@ -1,0 +1,836 @@
+\input{courspdf.tex}
+
+\debutcours{TFCA - Primitives et équations différentielles linéaires}{0.3 \tiny{\today}}
+
+\section{Calculs de primitives.}
+Les démonstrations des résultats admis dans cette section sont proposés dans le chapitre \href{\baseurl C2190.pdf}{Intégrales et primitives}.
+
+\subsection{Définition et primitives usuelles.}
+\subsubsection{Résultats admis.}
+\begin{defi}
+Une primitive d'une fonction $f$ définie dans un intervalle $I$ à valeurs complexes est une fonction $F$ dérivable dans $I$ et dont la dérivée est $f$. 
+\end{defi}
+\begin{prop}
+Si une fonction admet une primitive sur un intervalle, la différence entre deux d'entre elles est une fonction constante.
+\end{prop}
+\begin{demo}
+ Ce théorème est admis ici.
+\end{demo}
+\subsubsection{Primitives usuelles.} Dans le tableau suivant, l'intervalle dans lequel chaque fonction est défini n'est pas précisé, il faut en particulier faire attention aux $\ln$. Il est entendu que l'on peut ajouter une constante arbitraire à chaque primitive.
+  \begin{center}
+  \renewcommand{\arraystretch}{2.}
+\begin{tabular}{|l|l||l|l|}
+\hline
+fonction & primitive & fonction & primitive \\ \hline
+$\lambda\in \C^*,\; x\rightarrow e^{\lambda x}$             & $x\rightarrow\frac{1}{\lambda}e^{\lambda x}$ &
+$\lambda \in \C\setminus\{-1\}, x\rightarrow x^{\lambda}$ & $x\rightarrow\frac{1}{\lambda +1}x^{\lambda + 1}$ \\ \hline
+$x\rightarrow \sin x$                                       & $x\rightarrow -\cos x$ &
+$x\rightarrow \cos x$                                       & $x\rightarrow \sin x$ \\ \hline
+$x\rightarrow \ch x$                                        & $x\rightarrow \sh x$ &
+$x\rightarrow \sh x$                                        & $x\rightarrow \ch x$ \\ \hline
+$x\rightarrow \th x$                                        & $x\rightarrow \ln(\ch x)$ &
+$x\rightarrow \tan x$                                       & $x\rightarrow -\ln(|\cos x|)$ \\ \hline
+$x\rightarrow \frac{1}{\sqrt{1-x^2}}$                       & $x\rightarrow \arcsin x$ & 
+$x\rightarrow \frac{1}{1+x^2}$                              & $x\rightarrow \arctan x$  \\ \hline
+$x \rightarrow \ln x$                                       & $x\rightarrow x\ln x -x$ &
+                                                            &                           \\  \hline
+\end{tabular} 
+  \end{center}
+On peut aussi retenir le tableau suivant même s'il ne figure pas dans le programme. 
+\begin{center}
+  \renewcommand{\arraystretch}{2.}
+\begin{tabular}{|l|l|}
+\hline
+fonction & primitive \\ \hline
+$x > 1\rightarrow \frac{1}{\sqrt{x^2 -1}}$                & $x\rightarrow \ln\left(x +\sqrt{x^2 -1} \right) $ \\ \hline
+$x \rightarrow \frac{1}{\sqrt{x^2 +1}}$                     & $x\rightarrow \ln\left(x +\sqrt{x^2 +1} \right) $ \\ \hline
+$z\in \C\setminus \R, x\rightarrow \frac{1}{x + z}$   & $x\rightarrow \ln|x+z| - i\arctan\frac{x + \Re z}{\Im z} $ \\ \hline
+\end{tabular}
+\end{center}
+
+  
+\subsubsection{Dérivée logarithmique.} \index{dérivée logarithmique}
+Soit $f$ une fonction dérivable dans un intervalle $I$ et ne s'annulant pas. La fonction $\ln|f|$ est alors dérivable de dérivée $\frac{f'}{f}$. Autrement dit,
+\begin{displaymath}
+  \text{une primitive de }\frac{f'}{f} \text{ est }\ln|f|
+\end{displaymath}
+La primitive de $\tan$ dans le tableau est de ce type.
+
+\subsubsection{Primitive de l'inverse d'un trinôme de degré 2.}
+Il s'agit d'une fonction de la forme 
+\begin{displaymath}
+ x\rightarrow\frac{1}{ax^2+bx+c} 
+\end{displaymath}
+\`A un coefficient multiplicatif près, seuls deux cas se présentent suivant que le polynôme au dénominateur admet ou non des racines réelles.
+\begin{itemize}
+  \item Cas où le dénominateur admet deux racines réelles distinctes $u$ et $v$.\newline
+  On calcule une primitive de
+  $t \mapsto \frac{1}{(x-u)(x-v)}$ en décomposant
+  \begin{displaymath}
+    \frac{1}{(x-u)(x-v)} = \frac{1}{u-v}\left( \frac{1}{x-u} - \frac{1}{x-v}\right) 
+  \end{displaymath}
+ce qui conduit à une combinaison de logarithmes.
+
+  \item Cas où le dénominateur est sans racine réelle.\newline
+  Je ne conseille pas de mémoriser une formule mais la méthode passant par la factorisation canonique. Elle conduit à une somme de carrés au dénominateur qui admet une primitive en $\arctan$ avec un coefficient multiplicatif à ajuster.\newline
+  Exemple
+\begin{displaymath}
+  \frac{1}{x^2 + x + 1}=\frac{1}{(x+\frac{1}{2})^2+\frac{3}{4}}=\frac{4}{3}\,\frac{1}{(\frac{2}{\sqrt{3}}x+\frac{1}{\sqrt{3}})^2+1}
+\end{displaymath}
+d'où une primitive en $\arctan\frac{2x+1}{\sqrt{3}}$ avec un coefficient multiplicatif à ajuster. Une primitive est finalement
+\begin{displaymath}
+  \frac{2}{\sqrt{3}}\arctan\frac{2x+1}{\sqrt{3}}
+\end{displaymath}
+
+\end{itemize}
+
+\subsubsection{Primitives de pseudo-polynômes.}
+Un pseudo-polynôme (on dit aussi polynôme exponentiel) est une fonction de la forme $x\rightarrow P(x)e^{\lambda x}$ \index{polynôme-exponentiel}\index{pseudo-polynôme}
+\begin{itemize}
+  \item Cas où $\lambda =0$. Il s'agit d'un véritable polynôme.
+  \item Cas où $\lambda \neq 0$. On cherche une primitive de $t\mapsto P(t)e^{\lambda t}$ sous la forme $t\mapsto Q(t)e^{\lambda t}$ avec $Q$ polynôme de même degré. On forme un système d'équations linéaires en posant des coefficients indéterminés dans $Q$ et en identifiant.
+\end{itemize}
+
+\subsubsection{Superposition}
+Soit $\lambda_1, \lambda_2$ des nombres complexes, le tableau suivant donne des primitives de combinaisons linéaires
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|c|c|c|c|} \hline
+fonction  & $f_1$ & $f_2$ & $\lambda_1 f_1 + \lambda_2 f_2$ & $\overline{f \strut}$ & $\Re(f)$ & $\Im(f)$ \\ \hline
+primitive & $F_1$ & $F_2$ & $\lambda_1 F_1 + \lambda_2 F_2$ & $\overline{F\strut}$ & $\Re(F)$ & $\Im(F)$ \\ \hline
+\end{tabular}
+\end{center}
+Pour la partie réelle et la partie imaginaire, on utilise les propriétés précédentes (linéarité) avec
+\[
+ \Re(f) = \frac{1}{2}f +  \frac{1}{2}\overline{f \strut} , \hspace{0.5cm} \Im(f) = \frac{1}{2i}f -  \frac{1}{2i}\overline{f \strut}.
+\]
+
+Exemples
+\begin{enumerate}
+  \item Recherche d'une primitive de $x\mapsto x^2 \cos x$. \newline
+On calcule d'abord une primitive de $x \mapsto x^2 e^{ix}$ dont on prendra la partie réelle.\newline
+On cherche une primitive sous la forme
+\begin{displaymath}
+  f(x) = (ax^2+bx+c)e^{ix}
+\end{displaymath}
+On dérive et on range
+\begin{displaymath}
+  (iax^2 +(2a+ib)x + b +ic)e^{ix}
+\end{displaymath}
+La fonction $f$ est une primitive si $a$, $b$, $c$ vérifient
+\begin{displaymath}
+\left\lbrace  
+\begin{aligned}
+  ia &= 1 \\ 2a+ib &= 0 \\ b + ic &= 0
+\end{aligned}
+\right. 
+\Leftrightarrow
+\left\lbrace 
+\begin{aligned}
+  a &= -i \\ b &=-\frac{2a}{i} = 2 \\ c &= -\frac{b}{i} = 2i
+\end{aligned}
+\right. 
+\Rightarrow x\mapsto \left(-i x^2 +2x +2i\right) e^{ix} 
+\end{displaymath}
+est une primitive de $x \mapsto x^2 e^{ix}$. On obtient une primitive de $x\mapsto x^2 \cos x$ en prenant la partie réelle soit
+\begin{displaymath}
+  (x^2 -2)\sin x + 2x\cos x
+\end{displaymath}
+
+\item Recherche d'une primitive de $x\mapsto (x+1) \ch x$. \newline
+On cherche d'abord une primitive de $x \mapsto (x+1) e^{x}$ 
+\begin{displaymath}
+  x \mapsto (ax+b)e^{x},\hspace{.2cm}\text{ dér. } (ax+a+b)e^{x},\hspace{.2cm}\text{ syst. }
+  \left\lbrace 
+  \begin{aligned}
+    a &= 1 \\ a+b & = 1
+  \end{aligned}
+  \right. \Leftrightarrow
+  \left\lbrace 
+  \begin{aligned}
+    a &= 1 \\ b &= 0
+  \end{aligned}
+   \right. 
+   ,\hspace{.2cm}\text{ prim. } x\mapsto xe^x
+\end{displaymath}
+On cherche ensuite une primitive de $x \mapsto (x+1) e^{-x}$  
+\begin{displaymath}
+  x \mapsto (ax+b)e^{-x},\hspace{.2cm}\text{ dér. } (-ax+a-b)e^{x},\hspace{.2cm}\text{ syst. }
+  \left\lbrace 
+  \begin{aligned}
+    -a &= 1 \\ a - b & = 1
+  \end{aligned}
+  \right. \Leftrightarrow
+  \left\lbrace 
+  \begin{aligned}
+    a &= -1 \\ b &= a-1 = -2
+  \end{aligned}
+   \right. 
+   ,\hspace{.2cm}\text{ prim. } x\mapsto -(x+2)e^{-x}
+\end{displaymath}
+On superpose avec les coefficients $\frac{1}{2}$
+\begin{displaymath}
+  x \mapsto \frac{1}{2}\left( xe^{x} - (x+2)e^{-x}\right) 
+\end{displaymath}
+\end{enumerate}
+
+\subsection{Intégrales et primitives.}
+\begin{thm}
+Soit $f$ une fonction continue sur un intervalle $I$ et $a$ un point de $I$. On note $F_a$ la fonction définie dans $I$ par :
+\begin{displaymath}
+ F_a(x)=\int _a ^x f
+\end{displaymath}
+\begin{itemize}
+ \item la fonction $F_a$ est l'unique primitive de $f$ qui s'annule en $a$.
+\item pour toute primitive $h$ de $f$ :
+\begin{displaymath}
+ \int _a ^x f =h(x)-h(a)
+\end{displaymath}
+\end{itemize}
+\end{thm}
+\begin{demo}
+  Ce théorème est admis ici.
+\end{demo}
+\begin{exple}
+ Calcul de dérivée:
+\[
+ 1<x, \;\varphi(x) = \int_{-\sqrt{\ln x}}^{\sqrt{\ln x}}e^{-t^2}\,dt
+ \Rightarrow \varphi'(x) = \frac{1}{2x}\,\frac{1}{\sqrt{\ln x}} e^{-\ln x} + \frac{1}{2x}\,\frac{1}{\sqrt{\ln x}} e^{-\ln x}
+ = \frac{1}{x^2 \sqrt{\ln x}}.
+\]
+\end{exple}
+
+\begin{rems}
+\begin{itemize}
+ \item On ne sait pas encore comment est définie l'intégrale d'une fonction. Retenir que \emph{ce n'est pas à partir des primitives}.
+ \item La définition de l'intégrale et des fonctions intégrables est \emph{indépendante} de la dérivation et de l'intégration. Vous devez simplement admettre ici que toute fonction continue est intégrable sans savoir exactement ce que cela signifie.\footnote{On verra plus loin dans le cours que, en mpsi, \emph{intégrable} signifie exactement \emph{continue par morceaux}.} 
+ \item Ce théorème \emph{démontre} l'existence de primitives pour une fonction continue sur un intervalle.
+ \item Attention, une fonction dérivée n'est pas forcémént intégrable. Il existe des fonctions non intégrables qui admettent des primitives.
+\end{itemize}
+\end{rems}
+
+\subsection{Intégration par parties}
+\index{intégration par parties}
+\begin{thm}[intégration par parties]
+ Soit $f$ et $g$ deux fonctions $\mathcal{C}^1([a,b])$, alors
+\begin{displaymath}
+ \int_a^bf'g = [fg]_a^b - \int_a^bfg' .
+\end{displaymath}
+\end{thm}
+\begin{demo}
+Ce théorème est admis ici.
+\end{demo}
+La notation crochet désigne la différence entre les valeurs indiquées : $[F]_a^b = F(b) - F(a)$.
+
+\subsection{Changement de variable}
+\subsubsection{Formule}
+\index{changement de variable dans un intégrale}
+\begin{thm}
+ Soient deux réels $\alpha$ et $\beta$ ($\alpha < \beta$) et $I$ un intervalle de $\R$ non réduit à un point. Soit $\varphi\in \mathcal C^1([\alpha,\beta])$ et à valeurs dans $I$. Soit $f$ une fonction continue. Alors :
+\begin{displaymath}
+ \int_\alpha ^{\beta}f\circ \varphi(t) \times \varphi'(t)\,dt = \int_{\varphi(\alpha)}^{\varphi(\beta)}f(u)\,du .
+\end{displaymath}
+\end{thm}
+\begin{demo}
+Ce théorème est admis ici.
+\end{demo}
+
+\subsubsection{Pratique - Rôle de l'élément différentiel.}
+Dans la pratique on souhaite effectuer un changement de variable sur une intégrale donnée. Disons
+\begin{displaymath}
+ I = \int_{a}^{b}g(t)dt
+\end{displaymath}
+Deux cas se présentent : soit l'intervalle d'intégration est l'espace de départ d'une fonction $\varphi$ que l'on considère soit c'est l'espace d'arrivée. Dans le premier cas on veut poser quelque chose comme $u=\varphi(t)$ (on parlera de changement de variable \emph{direct}). Dans le second cas, on veut poser quelque chose comme $t=\varphi(x)$ (on parlera de changement de variable \emph{réciproque}). Un changement de variable direct peut poser davantage de problème qu'un changement réciproque. Lorsqu'un changement de variable direct \og\emph{résiste trop}\fg, il faut l'abandonner; il est presque toujours inexploitable.\\
+Dans les deux cas, les étapes sont : recherche des bornes puis écriture de l'élément différentiel avec la nouvelle variable.\newline
+Exemples
+\begin{itemize}
+\item Changement direct. Effectuons le changement de variable $u=\tan \frac{t}{2}$ dans
+\begin{displaymath}
+I=\int_0^{\frac{\pi}{2}}\frac{dt}{2+\cos t} .
+\end{displaymath}
+\begin{itemize}
+  \item Les bornes.
+\begin{displaymath}
+  t \text{ en } 0\leftrightsquigarrow u=\tan \frac{t}{2} \text{ en } 0,\hspace{1cm}
+  t \text{ en } \frac{\pi}{2}\leftrightsquigarrow u=\tan \frac{t}{2} \text{ en } 1 .
+\end{displaymath}
+  \item L'élément différentiel.
+\begin{displaymath}
+  u = \tan \frac{t}{2} \rightsquigarrow \frac{du}{dt} = \frac{1}{2}(1+\tan^2\frac{t}{2})\rightsquigarrow du =\frac{1+u^2}{2}dt
+\end{displaymath}
+  \item Chasser les $t$.
+\begin{displaymath}
+\left. 
+\begin{aligned}
+  dt     &= \frac{2}{1+u^2}du \\
+  \cos t &= \frac{1-u^2}{1+u^2}
+\end{aligned}
+\right\rbrace 
+\rightsquigarrow
+I = \int_{0}^{1}\frac{2}{2(1+u^2)+(1-u^2)}\,du = \int_{0}^{1}\frac{2}{u^2 + 3}du
+\end{displaymath}
+Sous cette forme, on sait exprimer l'intégrale:
+\begin{displaymath}
+  I = \frac{2}{3}\int_{0}^{1}\frac{du}{(\frac{u}{\sqrt{3}})^2+1} = \frac{2}{\sqrt{3}} \left[\arctan (\frac{u}{\sqrt{3}}) \right]_{0}^{1} 
+  = \frac{2}{\sqrt{3}} \arctan\frac{1}{\sqrt{3}} = \frac{2}{\sqrt{3}}\frac{\pi}{6}=\frac{\pi}{3\sqrt{3}}
+\end{displaymath}
+\end{itemize}
+
+\item Changement réciproque $t=\sin(x)$ dans 
+\begin{displaymath}
+ I = \int_{0}^{1}\sqrt{1-t^2}\,dt
+\end{displaymath}
+\begin{itemize}
+  \item Les bornes.
+\begin{displaymath}
+  t=\sin x \text{ en } 0 \leftrightsquigarrow x \text{ en } 0,\hspace{1cm}
+  t=\sin x \text{ en } 1 \leftrightsquigarrow x \text{ en } \frac{\pi}{2}
+\end{displaymath}
+  \item L'élément différentiel.
+\begin{displaymath}
+  t = \sin x \rightsquigarrow dt = (\cos x )\,dx
+\end{displaymath}
+  \item Chasser les $t$.
+\begin{displaymath}
+  x\in [0,\frac{\pi}{2}]\text{ et } t=\sin x \rightsquigarrow \sqrt{1-t^2} = \cos x,\hspace{0.5cm}
+  I = \int_{0}^{\frac{\pi}{2}}(\cos x)^2\, dx
+\end{displaymath}
+Sous cette forme, on sait exprimer l'intégrale:
+\begin{displaymath}
+  I = \int_0^{\frac{\pi}{2}}\left( \frac{1}{2} + \frac{1}{2}\cos 2x\right) dx = \frac{\pi}{4}
+\end{displaymath}
+La primitive du $\cos$ (en $\sin 2x$) est nulle aux extrémités. On pouvait interpréter l'intégrale de départ comme l'aire d'un quart de disque.
+\end{itemize}
+
+\end{itemize}
+
+\section{\'Equations linéaires du premier ordre}
+Cette partie utilise les paragraphes "Matrices et déterminants $2\times2$" et "Espaces vectoriels" du \href{\baseurl C4199.pdf}{Glossaire de début d'année}. Dans ce document la notation $\K$ désigne un des ensembles $\R$ ou $\C$.
+\subsection{Les résultats}
+\begin{defi}
+ Une équation différentielle linéaire est une équation
+\begin{equation*}
+ y^\prime +  a y = b
+\end{equation*}
+dont l'inconnue $y$ et les paramètres $a$ et $b$ sont des fonctions définies dans un intervalle $I$ de $\R$ et à valeurs réelles ou complexes (c'est à dire dans $\K$). Une fonction $z$ est solution lorsqu'elle est définie et dérivable dans $I$ et qu'elle vérifie la relation. Les fonctions $a$ et $b$ sont supposées continues. Lorsque $b$ est la fonction nulle, on dit que l'équation est sans second membre.\newline
+Suivant que $\K = \R$ ou $\C$, on parle d'équation différentielle réelle ou complexe.
+\end{defi}
+\begin{rem}
+ On notera souvent de manière un peu abusive $0$ la \emph{fonction nulle}.
+\end{rem}
+
+On peut superposer linéairement des solutions d'une même équation différentielle avec des seconds membres différents.
+\index{superposition de solutions}
+\begin{prop}[Superposition]
+ Soit $a$ une fonction définie dans un intervalle $I$. On considère des équations différentielles linéaires du premier ordre $y' + ay = b$ avec plusieurs second membres $b$. Les tableaux qui suivent indiquent comment on peut former des solutions.\newline
+ Soit $a$ et $b$ à valeurs dans $\K$ et $(\lambda_1, \lambda_2)\in \K^2$. 
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|l|l|l|l|}
+\hline
+second membre & $b_1$ & $b_2$ & $\lambda_1 b_1 + \lambda_2 b_2$  \\ \hline
+solution     & $y_1$ & $y_2$ & $\lambda_1 y_1 + \lambda_2 y_2$  \\ \hline
+\end{tabular}
+\end{center}
+Soit $a$ à valeurs dans $\R$ et $b$ à valeurs dans $\C$.
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+second membre & $b$ & $\overline{b\strut}$ & $\Re(b)$ & $\Im(b)$  \\ \hline
+solution      & $f$ & $\overline{f\strut}$ & $\Re(f)$ & $\Im(f)$  \\ \hline
+\end{tabular}
+\end{center}
+\end{prop}
+\begin{demo}
+ Le premier tableau est évident par linéarité. Pour le deuxième tableau, comme $a$ est à valeurs réelles:
+\[
+  f' + af = b \Rightarrow \overline{f' + af} = \overline{b\strut}
+  \Rightarrow \overline{f}' + a \overline{f} = \overline{b\strut}.
+\]
+On obtient les deux dernières colonnes par superposition (tableau 1) en écrivant
+\[
+  \Re(b) = \frac{1}{2} b + \frac{1}{2}\overline{b\strut}, \hspace{0.5cm} \Im(b) = \frac{1}{2i} b - \frac{1}{2i}\overline{b\strut}.
+\]
+\end{demo}
+\begin{rem}
+ Ce second tableau est souvent utile dans la pratique pour des seconds membres trigonométriques linéarisés avec des exponentielles complexes.
+\end{rem}
+
+
+\begin{prop}[Solutions de l'équation sans second membre]
+ Les solutions d'une équation sans second membre
+\begin{equation*}
+ y^\prime +  a y = 0
+\end{equation*}
+sont les fonctions
+\begin{displaymath}
+ \lambda e^{-A}
+\end{displaymath}
+où $A$ est une primitive de la fonction $a$ et $\lambda$ un nombre réel quelconque.
+\end{prop}
+
+\begin{prop}[Solutions de l'équation complète]
+ Toute équation de la forme
+\begin{equation*}
+ y^\prime +  a y = b
+\end{equation*}
+pour laquelle $a$ et $b$ sont des fonctions continues définies dans un intervalle $I$ admet une solution définie dans $I$. Si $z_0$ est une solution, les solutions sont les fonctions de la forme $z_0+\lambda e^{-A}$ où $A$ est une primitive de $a$.
+\end{prop}
+
+\begin{prop}[Problème de Cauchy]
+Soit $I$ un intervalle de $R$, soit $t_0\in I$ et $v_0\in \C$. Toute équation de la forme
+\begin{equation*}
+ y^\prime +  a y = b
+\end{equation*}
+pour laquelle $a$ et $b$ sont des fonctions continues définies dans un intervalle $I$ admet une \emph{unique} solution $z$ définie dans $I$ et vérifiant $z(t_0)=v_0$.
+\end{prop}
+\index{conditions initiales}
+\begin{rem}
+ Il existe une unique solution avec des conditions initiales données.
+\end{rem}
+
+\subsection{Les démonstrations}
+\subsubsection{\'Equation sans second membre}
+\begin{demo}
+ Soit $A$ une primitive de $a$ dans l'intervalle $I$. \`A cause des propriétés de la fonction exponentielle et règles de dérivation, on vérifie facilement que la fonction $e^{-A}$ est solution.\newline
+Le point important est de montrer que si $z$ est une solution quelconque, alors il existe un nombre complexe $\lambda$ tel que $z=\lambda e^{-A}$. On considère la fonction $w = z e^{A}$. En remplaçant dans l'équation, on obtient que $w'$ est identiquement nulle. Comme $I$ est un intervalle, cela entraine que $w$ est constante.
+\end{demo}
+
+\subsubsection{\'Equation avec second membre}
+\begin{demo}
+ Si $z_0$ est une solution de l'équation complète, il est évident que, pour une fonction $z$ quelconque, $z$ est solution si et seulement si $(z-z_0)' + a(z-z_0)=0$. C'est à dire pour $z-z_0$ solution de l'équation homogène. On en déduit que toute solution est de la forme $z_0+\lambda e^{-A}$.\newline
+Le point délicat est de \emph{prouver} l'existence d'une solution dans le cas général. Le procédé proposé ici est constructif mais il ne doit être employé qu'en dernier recours dans la pratique car les calculs de primitives sont ennuyeux.\newline
+Encore une fois, le fait que la solution de base $e^{-A}$ de l'équation homogène ne prenne pas la valeur zéro est capital. On peut donc écrire toute fonction $z$ sous la forme $z=\lambda e^{-A}$ avec $\lambda$ \emph{fonction} définie dans $I$. C'est la justification du terme variation des constantes.\index{variation des constantes}. La fonction $\lambda$ est dérivable car on peut l'exprimer comme un quotient. Notons $y_0=e^{-A}$. Ce qui est important c'est qu'elle soit solution de l'équation homogène plutôt que son expression. L'équation devient
+\begin{displaymath}
+ \lambda ( y_0' + ay_0) + \lambda' y_0=b
+\end{displaymath}
+On en déduit que si $\lambda' = be^{A}$ alors $\lambda e^{A}$ est solution. On peut donc affirmer qu'une fonction
+\begin{displaymath}
+ \lambda e^{-A} \text{ avec } \lambda' = be^{A}
+\end{displaymath}
+est une solution de l'équation complète.
+\end{demo}
+
+\subsubsection{Problème de Cauchy}
+\begin{demo}
+ D'après la proposition précédente toutes les solutions sont de la forme $z_0+\lambda e^{-A}$ avec $\lambda \in \C$. La condition de Cauchy s'écrit $z_0(t_0)+\lambda e^{-A(t_0)}$. Comme une fonction exponentielle ne s'annule pas, elle est réalisée si et seulement si $\lambda = -z_0(t_0)e^{A(t_0)}$. Il existe donc une unique solution vérifiant cette condition initiale.
+\end{demo}
+
+\subsection{Pratique des calculs}
+Dans le cas particulier d'une équation à coefficients constants où le second membre est un polynôme-exponentiel (ou pseudo-polynôme), on peut trouver une solution par une méthode algébrique avec des coefficients indéterminés.
+\index{pseudo-polynômes}\index{polynôme-exponentiel}
+\begin{defi}[pseudo-polynome ou polynôme-exponentiel]
+ Il s'agit de fonctions de $\R$ dans $\C$ de la forme :
+\begin{displaymath}
+ t \rightarrow P(t)e^{\lambda t}
+\end{displaymath}
+où $\lambda\in \C$ et $P$ est un polynôme (ou une fonction polynomiale) à coefficients complexes.
+\end{defi}
+
+Pour une équation $y'+ay = P(t)e^{\lambda t}$ avec $a\in \C$. On cherche une solution sous la forme suivante
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|}
+\hline 
+ Condition            & Forme d'une solution \\ \hline
+ Si $\lambda \neq -a$ & $Q(t)e^{\lambda t}$ \\ \hline
+ Si $\lambda = -a$    & $tQ(t)e^{\lambda t}$ \\ \hline
+\end{tabular}
+\end{center}
+où $Q$ est un polynôme de même degré que $P$ que l'on cherche avec des coefficients indéterminés. Cette méthode est à combiner avec le principe de superposition.\newline 
+Exemple $y'(t) + y(t) =\cos^2 t$.
+\begin{enumerate}
+  \item On commence par linéariser le second membre pour l'exprimer avec des polynomes exponentiels.
+\[
+  \cos^2 t = \frac{1}{2} + \frac{1}{2}\cos 2t = \frac{1}{2} + \frac{1}{2}\Re (e^{2it}).
+\]
+
+  \item On forme le tableau (vide) des solutions de $y' + y = b$ à remplir pour les divers second membres 
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|} \hline
+second membre             & solution & coefficient \\ \hline
+$1$                       &          & $\frac{1}{2}$ \\ \hline
+$e^{2it}$                 &          &  \\ \hline
+$\cos(2t) = \Re(e^{2it}$) &          & $\frac{1}{2}$ \\ \hline
+$\cos^2 t$                &          &  \\ \hline
+\end{tabular}
+\end{center}
+
+  \item On remplit le tableau en trouvant des solutions pour les premières équations puis en les combinant.
+  \begin{enumerate}
+    \item \'Equation $y' + y = 1$. La fonction constante de valeur $1$ est solution.
+    \item \'Equation $y' + y = e^{2i t}$. On cherche une solution de la forme $\lambda e^{2i t}$ car $2i + 1 \neq 0$. En identifiant,
+\[
+  (2i + 1)\lambda = 1 \Rightarrow \lambda = \frac{1}{2i + 1} = \frac{1}{5}(1-2i).
+\]
+    \item On remplit les dernières lignes en combinant les premières    
+  \end{enumerate}
+\end{enumerate}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|c|} \hline
+second membre             & solution                                               & coefficient \\ \hline
+$1$                       &  $1$                                                   & $\frac{1}{2}$ \\ \hline
+$e^{2it}$                 & $\frac{1}{5}(1-2i)e^{2it}$                             &  \\ \hline
+$\cos(2t) = \Re(e^{2it}$) & $\frac{1}{5}\cos(2t)+\frac{2}{5}\sin(2t)$              & $\frac{1}{2}$ \\ \hline
+$\cos^2 t$                & $\frac{1}{2}+\frac{1}{10}\cos(2t)+\frac{1}{5}\sin(2t)$ &  \\ \hline
+\end{tabular}
+\end{center}
+
+Autre exemple $y' + y = \ch t$.\newline
+Procéder comme au dessus pour trouver une solution. Attention à l'équation $y' + y = e^{-t}$ et à la condition sur $\lambda + a$ dans le tableau. On obtient
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l||c|} \hline
+second membre    & solution                                   & coefficient \\ \hline
+$e^t$            &  $\frac{1}{2}e^t$                          & $\frac{1}{2}$ \\ \hline
+$e^{-t}$         & $te^{-t}$                                  & $\frac{1}{2}$  \\ \hline
+$\ch t$          & $\frac{1}{4}e^{t} + \frac{t}{2}e^{-t}$ &  \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{Compléments}
+\subsubsection{Une équation fonctionnelle}
+\begin{prop}
+ Soit $f$ une fonction dérivable dans $\R$ à valeurs complexes non identiquement nulle.\newline
+ Une telle fonction vérifie la relation fonctionnelle
+\begin{displaymath}
+ \forall(t,u)\in \R^2 : f(t+u) = f(t)f(u)
+\end{displaymath}
+si et seulement si il existe $\lambda\in \C$ tel que 
+\begin{displaymath}
+ \forall t\in \R : f(t) = e^{\lambda t}
+\end{displaymath}
+\end{prop}
+\begin{demo}
+Pour $t=u=0$, la relation fonctionnelle donne $f(0)=f(0)^2$ donc $f(0)=0$ ou $f(0)=1$.\newline
+Si $f(0)=0$, la fonction est identiquement nulle car 
+\[
+ \forall t \in \R, \; f(t)=f(t+0)= f(t)f(0) = 0.
+\]
+On en déduit donc que $f(0)=1$.\newline
+Fixons $u$ et dérivons la fonction de $t$. Remarquer que chaque valeur de $u$ définit une fonction spécifique. On considère donc une infinité de fonctions. Si on voulait les nommer il faudrait introduire une référence à $u$ dans le nom. On choisit de ne pas le faire. On obtient:
+\[
+ \forall (t,u) \in \R^2, \; f'(t+u) = f'(t)f(u) \Rightarrow \forall u \in \R ,\; f'(u) = f'(0)f'(u) \Rightarrow f' - \lambda f = 0
+\]
+en prenant $t=0$ et en posant $\lambda = f'(0)$. D'après le cours, il existe $K\in \R$ tel que, pour tout $t$ réel, $f(t) = K e^{\lambda t}$. De plus $K=1$ car $f(0)=0$.
+\end{demo}
+
+\subsubsection{Recollements}
+On considère une équation de la forme
+\begin{displaymath}
+ a y' + b y = c
+\end{displaymath}
+où $a$, $b$, $c$ sont des fonctions continues dans un intervalle $I$. Lorsque la fonction $a$ ne prend pas la valeur $0$ dans l'intervalle, on se ramène au cas habituel en divisant par $a$. En revanche, lorsque $a$ s'annule tout se complique. La notion même de solution n'est plus évidente.
+
+Imaginons par exemple qu'il existe un unique $t_1$ dans $I$ en lequel $a$ prend la valeur $0$. Ce $t_1$ découpe $I$ en deux intervalles (ouverts en $t_1$) $I_1$ et $I_2$. Dans chacun de ces intervalles, on peut considérer des solutions et considérer une fonction dont la restriction à chaque intervalle est une solution. Elle n'est pas définie en $t_1$. Mérite-t-elle d'être appelée solution de l'équation complète?
+\begin{exple}
+ \begin{displaymath}
+  (t^2-4)y'(t) + ty(t)= 2
+ \end{displaymath}
+On peut exprimer les solutions sur chaque intervalle ouvert dans lequel le coefficient de $y'$ ne s'annule pas.\newline
+En particulier sur $]-2,+2[$, les solutions sont de la forme
+\begin{displaymath}
+ z(t) = y_0(t) + \lambda y_1(t) \text{ avec } y_0(t)=\frac{2\arccos(\frac{t}{2})}{\sqrt{4-t^2}} \text{ et } y_1(t)=\frac{1}{\sqrt{4-t^2}}
+\end{displaymath}
+avec $\lambda$ réel quelconque. On admet ici les limites suivantes :
+\begin{align*}
+ \frac{\arccos u}{\sqrt{1-u}}\xrightarrow{1_-} \sqrt{2}
+& & 
+ \frac{\pi - \arccos u}{\sqrt{1+u}}\xrightarrow{-1_+} \sqrt{2}
+\end{align*}
+On en conclut que $y_0$ converge vers une limite finie à gauche de $1$ alors que $y_1$ diverge vers $+\infty$. La seule solution $z$ admettant une limite finie en $1$ est donc obtenue pour $\lambda=0$. Mais alors elle diverge vers $+\infty$ à droite de $-1$.\newline
+Ainsi, il n'existe aucune fonction $z$ continue dans $\R$ dont la restriction à $]-2,+2[$ soit solution de l'équation différentielle dans cet intervalle.\newline
+En revanche, on peut vérifier que $z(t)=\frac{t}{2}$ est une fonction dérivable dans $\R$ qui vérifie
+\begin{displaymath}
+ \forall t \in \R: (4-t^2)y'(t) + ty(t)= 2
+\end{displaymath}
+\end{exple}
+
+\subsubsection{Méthode d'Euler}
+\index{méthode d'Euler}La méthode d'Euler est une méthode d'approximation numérique d'une solution d'une équation différentielle. Le programme de MPSI la place en début d'année. Il me semble indispensable d'accompagner une méthode numérique par une formule de majoration de l'erreur. Une telle formule n'est pas vraiment accessible en première période.\newline
+La méthode d'Euler avec une formule de majoration de l'erreur est traitée dans le problème \href{http://back.maquisdoc.net/data/devoirs_nicolair/Aapprox1.pdf}{Méthode de Picard et d'Euler, lemme de Gronwall}.
+\section{\'Equations linéaires du second ordre à coefficients constants}
+Dans cette section, pour ne pas répéter plusieurs fois les mêmes définitions, on adopte les conventions suivantes:
+\begin{itemize}
+ \item $a$, $b$, $c$ désignent des éléments de $\K$, $a$ est non nul
+ \item $I$ un intervalle de $\R$ et $f$ une fonction continue de $I$ dans $\K$
+ \item L'équation $(1)$ est
+\begin{displaymath}
+ (1)\hspace{1cm} ay'' + by' + c y = 0 \hspace{1cm}\text{ (fonction nulle)}
+\end{displaymath}
+une solution est une fonction deux fois dérivable dans $R$ et vérifiant la relation. On note $\mathcal S_1$ l'ensemble des solutions.
+ \item L'équation $(2)$ est
+\begin{displaymath}
+ (2)\hspace{1cm} ay'' + by' + c y = f 
+\end{displaymath}
+une solution est une fonction deux fois dérivable dans $I$ et vérifiant la relation.  On note $\mathcal S_2$ l'ensemble des solutions.
+\item L'équation d'inconnue $z$ du second degré 
+\begin{displaymath}
+ az^2 + bz + c =0
+\end{displaymath}
+est appelée l'équation caractéristique associée à $(1)$ ou $(2)$. Son discriminant est noté $\Delta$.
+\end{itemize}
+
+\subsection{Les résultats}
+\begin{prop}[principe de superposition]
+Soit $a\neq 0$, $b$, $c$ dans $\K$ et $f_1$, $f_2$ fonctions définies dans $I$ à valeurs dans $K$. Pour tout $(\lambda_1, \lambda_2)\in \K^2$, on peut superposer linéairement les solutions 
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|l|l|l|l|}
+\hline
+second membre & $f_1$ & $f_2$ & $\lambda_1 f_1 + \lambda_2 f_2$  \\ \hline
+solution      & $y_1$ & $y_2$ & $\lambda_1 y_1 + \lambda_2 y_2$  \\ \hline
+\end{tabular}
+\end{center}
+Soit $a\neq 0$, $b$, $c$ dans $\R$ et $f$ à valeurs dans $\C$. On dispose du tableau suivant de solutions
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+second membre & $f$ & $\overline{f\strut}$ & $\Re(f)$ & $\Im(f)$  \\ \hline
+solution      & $z$ & $\overline{z\strut}$ & $\Re(z)$ & $\Im(z)$  \\ \hline
+\end{tabular}
+\end{center}
+
+\end{prop}
+
+\begin{prop}[structure de l'ensemble des solutions de l'équation sans second membre]
+ Il existe des fonctions $y_1$, $y_2$ définies dans $\R$ telles que
+\begin{displaymath}
+ \mathcal S_1 = \left\lbrace \mu_1 y_1 + \mu_2 y_2, (\mu_1,\mu_2)\in \K^2\right\rbrace 
+\end{displaymath}
+Des expressions de ces fonctions sont données pour les différents cas dans le tableau suivant 
+\end{prop}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|l|} \hline
+$\K$ & $\Delta$ & $y_1(t)$         & $y_2(t)$           &  racines de l'équation caractéristique              \\ \hline
+$\C$ & $\neq 0$ & $e^{\lambda_1 t}$& $e^{\lambda_1 t}$  & $\lambda_1 , \lambda_2$ (distinctes)            \\ \hline
+$\C$ & $=0$     & $e^{\lambda_1 t}$& $te^{\lambda_1 t}$ & $\lambda_1$ (double)                            \\ \hline
+$\R$ & $>0$     & $e^{\lambda_1 t}$& $e^{\lambda_1 t}$  & $\lambda_1 , \lambda_2$ (distinctes, réelles)   \\ \hline
+$\R$ & $=0$     & $e^{\lambda_1 t}$& $te^{\lambda_1 t}$ & $\lambda_1$ (double, réelle)                    \\ \hline
+$\R$ & $<0$     & $e^{ut}\sin(vt)$ & $e^{ut}\cos(vt)$   & $u\pm iv$ (distinctes, non réelles, conjuguées) \\ \hline
+\end{tabular}
+\end{center}
+\begin{prop}[structure de l'ensemble des solutions de l'équation complète]
+ L'équation $(2)$ admet des solutions. Soit $y_0$ une solution particulière de $(2)$. Pour toute solution $z$ de $(2)$, il existe un unique couple $(\lambda_1,\lambda_2)\in \K^2$ tel que
+\begin{displaymath}
+ z = y_0 + \lambda_1 y_1 + \lambda_2 y_2
+\end{displaymath}
+\end{prop}
+\index{problème de Cauchy}
+\begin{prop}[problème de Cauchy]
+ Soit $t_0\in I$ et $v_0, w_0\in\K$, il existe une unique solution $z$ de $(2)$ vérifiant $z(t_0)=v_0$ et  $z'(t_0)=w_0$.
+\end{prop}
+
+
+\subsection{Les démonstrations}
+\subsubsection{Principe de superposition}
+La vérification est immédiate par combinaison et conjugaison.
+
+\subsubsection{Wronskien et lemmes associés}
+
+\index{wronskien}
+\begin{defi}[wronskien]
+ Soit $(y_1,y_2)$ un couple de fonctions dérivables dans un intervalle $I$. Le wronkien associé à ce couple est la fonction notée $W$ définie par :
+\begin{displaymath}
+ W = 
+\begin{vmatrix}
+ y_1 & y_2 \\
+y_1' & y_2'
+\end{vmatrix}
+= y_1y_2' - y_1'y_2
+\end{displaymath}
+\end{defi}
+
+\begin{prop}[lemme 1]
+ Soit $(y_1,y_2)$ un couple de solutions de $(1)$ et $W$ le wronskien de ce couple. Alors, ou bien $W$ est la fonction nulle ou bien elle ne s'annule \emph{jamais}.
+\end{prop}
+\begin{demo}
+ On vérifie que $W$ est solution d'une équation différentielle linéaire du premier ordre à coefficients constants. Il s'exprime donc comme une fonction exponentielle multipliée par un élément de $\K$. 
+\end{demo}
+\begin{prop}[lemme 2 bizarre]
+ Soit $(y_1,y_2)$ un couple de fonctions deux fois dérivables dans un intervalle $I$ tel que le wronskien $W$ de ce couple ne s'annule pas dans $I$. Alors, pour toute fonction $z$ deux fois dérivable dans $I$, il existe un unique couple $(\lambda_1,\lambda_2)$ de fonctions dérivables dans $I$ et vérifiant :
+\begin{align*}
+ z  &= \lambda_1 y_1 + \lambda_2 y_2  \\
+ z' &= \lambda_1 y_1' + \lambda_2 y_2'
+\end{align*}
+\end{prop}
+\begin{demo}
+ Pour chaque $t\in I$, on forme le système de deux équations aux inconnues $u$ et $v$
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ y_1(t) u + y_2(t)v &= z(t) \\
+ y_1'(t) u + y_2'(t)v &= z'(t) 
+\end{aligned}
+\right. 
+\end{displaymath}
+Le déterminant de ce système n'est autre que la valeur $W(t)$ du wronskien en $t$. Ce nombre est non nul par hypothèse. Le système admet donc un unique couple solution  qui définit la valeur en $t$ de $\lambda_1$ et $\lambda_2$. Les fonctions $\lambda_1$ et $\lambda_2$ s'expriment alors rationnellement à l'aide des formules de Cramer. Elles sont dérivables par les théorèmes usuels.
+\end{demo}
+
+\subsubsection{Démonstration de la proposition pour l'équation sans second membre}
+\begin{demo}
+ \begin{enumerate}
+  \item On vérifie que les fonctions exponentielles données par le tableau sont solutions dans le cas d'un discriminant non nul. On vérifie dans le cas du discriminant nul. Dans le cas réel avec discriminant strictement négatif, on utilise le principe de superposition.
+  \item Pour chaque cas, on calcule le wronskien en $0$, on en déduit que le wronskien ne s'annule jamais.
+  \item On obtient facilement la première inclusion : les fonctions de la forme $\lambda_1y_1 + \lambda_2y_2$ sont solutions.
+  \item On considère une solution quelconque $z$. D'après le lemme bizarre, il existe des fonctions $\lambda_1$ et $\lambda_2$ telles que
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ z  &= \lambda_1 y_1 + \lambda_2 y_2  &\times c\\
+ z' &= \lambda_1 y_1' + \lambda_2 y_2' &\times b\\
+ z''&= \lambda_1 y_1'' + \lambda_2 y_2'' + \lambda_1' y_1' + \lambda_2' y_2' &\times a
+\end{aligned}
+\right\rbrace 
+\Rightarrow
+(\lambda_1' y_1' + \lambda_2' y_2')a = 0 
+\Rightarrow
+\lambda_1' y_1' + \lambda_2' y_2' = 0
+\end{displaymath}
+ en utilisant que $z$, $y_1$, $y_2$ sont solutions. La formule bizarre de la dérivée se combine avec ce résultat :
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ z' = \lambda_1 y_1' + \lambda_2 y_2'\Leftrightarrow& \lambda_1' y_1 + \lambda_2' y_2 &=0\\
+ & \lambda_1' y_1' + \lambda_2' y_2' &= 0
+\end{aligned}
+\right\rbrace\Rightarrow
+\lambda_1' = \lambda_2'=0 
+\end{displaymath}
+encore une fois à cause de la non nullité du wronskien. On en déduit que les fonctions $\lambda_1$ et $\lambda_2$ sont constantes.
+ \end{enumerate}
+\end{demo}
+
+\subsubsection{Démonstration de la proposition pour l'équation complète}
+\begin{demo}
+ \begin{enumerate}
+  \item Si on connait l'existence d'une solution $y_0$, il est évident que $y$ est solution de l'équation complète si et seulement si $y-y_0$ est solution de l'équation sans second membre.
+  \item \index{variation des constantes} On prouve ici l'existence d'une solution sous une forme particulière. C'est la méthode dite de \emph{variations des constantes}. On va déterminer des fonctions $\lambda_1$ et $\lambda_2$ telles qu'une fonction
+\begin{displaymath}
+ z = \lambda_1y_1 + \lambda_2y_2 
+\end{displaymath}
+soit solution.\newline
+Imposons à ces fonctions de vérifier 
+\begin{displaymath}
+ \lambda_1'y_1 + \lambda_2'y_2 = 0
+\end{displaymath}
+Ceci entraine
+\begin{displaymath}
+ z' = \lambda_1y_1' + \lambda_2y_2' 
+\end{displaymath}
+On peut alors combiner les trois dérivées pour exploiter le fait que $y_1$ et $y_2$ sont solutions de l'équation sans second membre:
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+z =& \lambda_1y_1 + \lambda_2y_2 & &\times c\\
+z' =& \lambda_1y_1' + \lambda_2y_2' & &\times b\\
+z'' =& \lambda_1y_1'' + \lambda_2y_2'' + \lambda_1'y_1' + \lambda_2'y_2' & &\times a\\
+\end{aligned}
+\right\rbrace 
+\Rightarrow
+az''+bz'+cz = \lambda_1'y_1' + \lambda_2'y_2'
+\end{displaymath}
+On en déduit que $z$ est solution si et seulement si :
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ \lambda_1'y_1 + \lambda_2'y_2 &= 0 \\
+ \lambda_1'y_1' + \lambda_2'y_2' &= f
+\end{aligned}
+\right. 
+\end{displaymath}
+Comme le wronskien de $(y_1,y_2)$ ne s'annule pas, pour chaque $t$, le système aux inconnues $u$ $v$ 
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ y_1(t)u +  y_2(t) v &= 0 \\
+ y_1'(t)u + y_2(t)'v &= f(t)
+\end{aligned}
+\right. 
+\end{displaymath}
+admet un unique couple solution. Ceci définit deux fonctions continues qui admettent des primitives. Lorsque $\lambda_1$ et $\lambda_2$ sont de telles primitives, la fonction $z$ est solution.
+ \end{enumerate}
+\end{demo}
+
+\subsubsection{Démonstration de la proposition sur le problème de Cauchy}
+\begin{demo}
+On se donne un $t_0\in I$ et des conditions initiales $v_0$ et $w_0$. Toute solution de l'équation complète est de la forme $y_0 + \mu_1 y_1 +\mu_2 y_2$ où $y_1$ et $y_2$ sont définies dans le tableau. Il s'agit donc de prouver qu'il existe un unique couple $(\mu_1,\mu_2)$ permettant de vérifier les conditions initiales.
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ y_0(t_0) + \mu_1y_1(t_0) + \mu_2y_2(t_0) &= v_0 \\
+ y'_0(t_0) + \mu_1y'_1(t_0) + \mu_2y'_2(t_0) &= v_0 
+\end{aligned}
+\right. 
+\end{displaymath}
+Il s'agit d'un système de deux équations linéaires admettent un unique couple solution car son déterminant (le wronskien en $t_0$) ne s'annule pas.
+ \end{demo}
+
+
+\subsection{Calculs pratiques}
+Le principe de superposition intervient souvent dans les calculs pratiques. Il convient de décomposer le second membre en une combinaison de termes plus simples (par exemple en linéarisant) et de les traiter séparément.
+
+Cas où le second membre est un pseudo-polynôme $t\rightarrow P(t)e^{\lambda t}$.\newline
+On peut alors trouver algébriquement une solution particulière de la forme indiquée par le tableau suivant :
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|} \hline
+\'Equation caractéristique   & Forme d'une solution particulière \\ \hline
+$\lambda$ n'est pas solution & $Q(t)e^{\lambda t}$               \\ \hline
+$\lambda$ solution simple    & $tQ(t)e^{\lambda t}$              \\ \hline
+$\lambda$ solution double    & $t^2Q(t)e^{\lambda t}$            \\ \hline
+\end{tabular}
+\end{center}
+où $Q$ désigne un polynôme \emph{de même degré que } $P$ que l'on écrit avec des coefficients indéterminés.
+
+\subsection{Compléments}
+\subsubsection{Circuit RLC et régime permanent}
+Faire un dessin
+
+Un circuit RLC conduit à une équation différentielle 
+\begin{displaymath}
+ Lq''(t)+Rq'(t)+\frac{1}{C}q(t)= e(t) \text{ avec }
+\left\lbrace  
+\begin{aligned}
+ &R :&\text{résistance}\\ &L :& \text{inductance} \\ &C :&\text{capacité} \\ &e(t) :&\text{tension}
+\end{aligned}
+\right. 
+\end{displaymath}
+On remarque que pour cette équation, \emph{tous les coefficients sont strictement positifs}. On va montrer que si $q_1$ et $q_2$ sont deux solutions alors $q_2 -q_1$ converge vers $0$ très vite. Autrement dit, une telle équation admet numériquement une seule solution \index{régime permanent} (établissement d'un \emph{régime permanent} indépendant des conditions initiales) que l'on peut qualifier de réponse du système à l'excitation $e$.
+\begin{demo}
+Lorsque le discriminant est strictement positif, l'équation caractéristique admet deux racines réelles dont la somme est $-R<0$ et le produit $\frac{1}{C}>0$. Elles sont donc de même signe et forcément strictement négatives.\newline
+Lorsque le discriminant est strictement négatif, les racines sont complexes conjuguées donc leur partie réelle est $-\frac{R}{2}<0$.\newline
+Dans les deux cas, les solutions exponentielles de l'équation homogène convergent très vite vers $0$. De même lorsque le discriminant est nul, la seule racine est négative et l'exponentielle multipliée par $t$ converge toujours vers $0$. Ainsi dans tous les cas les solutions de l'équation homogène convergent vers $0$.  
+\end{demo}
+
+
+\subsubsection{Second membre périodique}
+On considère ici une équation $ay'' + by' + cy = f$ où $a$, $b$, $c$ sont des constantes et $f$ une fonction $T$ périodique. On se place dans le cas générique où l'équation caractéristique admet deux racines distinctes $\lambda_1$ et $\lambda_2$ et on va montrer que, si $\lambda_1$ et $\lambda_2$ ne sont pas dans $\frac{2i\pi}{T}\Z$, il existe une solution $T$ périodique.
+\begin{demo}
+ On cherche une solution périodique sous la forme $t\rightarrow w(t)= y_0(t) + Ae^{\lambda_1 t} + Be^{\lambda_2 t}$. On peut choisir $A$ et $B$ pour imposer $w(0)=w(T)$ et $w'(0)=w'(T)$ car cela revient à un système de Cramer qui admet un unique couple solution car dans
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ w(0)=w(T)\\
+ w'(0)=w'(T)
+\end{aligned}
+\right\rbrace 
+\Leftrightarrow
+\left\lbrace 
+\begin{aligned}
+ (1-e^{\lambda_1 T})A + (1-e^{\lambda_2 T})B &= y_0(T)-y_0(0)\\
+ \lambda_1(1-e^{\lambda_1 T})A + \lambda_2(1-e^{\lambda_2 T})B &= y'_0(T)-y'_0(0)
+\end{aligned}
+\right. 
+\end{displaymath}
+l'hypothèse considérée, le déterminant est non nul.\newline
+Il reste à montrer que la fonction $w$ est effectivement $T$-périodique. On considère pour cela la fonction translatée $w_T$ \index{fonction translatée} définie par : pour tout réel $t$, $w_T(t)=w(t+T)$. D'après les régles de dérivation des fonctions composées, 
+$w_T'(t)=w'(t+T)$ et $w_T''(t)=w''(t+T)$. Le caractère $T$ périodique de $f$ entraine alors que $w_T$ est solution de l'équation différentielle. Les fonctions $w$ et $w_T$ ont les mêmes conditions initiales, elles sont donc égales d'après le résultat sur le problème de Cauchy. Ceci assure que $w$ est $T$-périodique.
+\end{demo}
+Dans le cas du circuit RLC, les deux solutions de l'équation caractéristique ont la même partie réelle qui est strictement négative. Elles ne sont donc pas imaginaires pures et ne peuvent appartenir à $\frac{2i\pi}{T}\Z$. Le résultat s'applique donc et, pour n'importe quel second membre $T$-périodique, il existe une solution $T$-périodique qui est le régime permanent.
+\end{document}

@@ -1,0 +1,704 @@
+\input{algocourspdf.tex} %pour compiler avec algoritm2e
+% attention utilise \usepackage[french,ruled,vlined]{algorithm2e} alors que le package n'est pas présent sur le serveur svn le pdf. Le pdf est ajouté à svn.
+\debutcours{Arithmétique dans l'anneau des entiers relatifs}{0.6 \tiny{ le \today}}
+
+La \emph{division euclidienne} est le concept qui domine cette section. Comme une division analogue est valable pour les \href{\baseurl C1622.pdf}{polynômes}, la plupart des résultats présentés ici seront repris dans ce cadre. Par commodité, on reproduit ici le théorème de la division euclidienne \index{théorème de la division euclidienne} dans $\Z$.
+\begin{thm}[divison euclidienne dans $\Z$]
+  Pour tout $x\in \Z$ et $d\in \N^*$, il existe un unique couple $(m,r)$ avec $m\in \Z$ et $r\in \llbracket 0, d-1 \rrbracket$ tel que $x =md +r$. On dit que $m$ est le quotient de la division de $x$ par $d$ et que $r$ est le reste de cette division.
+\end{thm}
+
+
+\section{Divisibilité}
+\subsection{Définitions}
+\begin{prop}[Inversibles]\index{inversibles de $\Z$}
+ L'ensemble des éléments inversibles de $\Z$ est $\{-1,+1\}$. 
+\end{prop}
+\begin{demo}
+  Soit $a$ et $b$ des éléments de $\Z$ inverses l'un de l'autre:
+\begin{displaymath}
+  ab = 1 \Rightarrow |a||b| = 1 \Rightarrow |a|=|b|=1
+\end{displaymath}
+De plus, l'inverse de $1$ et $1$ et l'inverse de $-1$ est $-1$.
+\end{demo}
+\begin{defi}
+ Soit $a\in \Z$. On dit que $d\in \Z$ est un diviseur de $a$ (ou qu'il divise $a$) si et seulement si il existe $c\in\Z$ tel que $a=dc$. On dit que $m$ est un multiple de $a$ si et seulement si il existe $c\in \Z$ tel que $m=ca$.
+\end{defi}
+ \begin{nota}
+  On désigne par $\mathcal D (a)$ l'ensemble des diviseurs d'un élément $a$ non nul de $\Z$ et par $\mathcal M (a)$ l'ensemble de ses multiples. 
+ \end{nota}
+\begin{rems}
+\begin{itemize}
+  \item Si $x\in \mathcal{D}(a)$ alors $|x|\leq |a|$.
+  \item On peut convenir que $\mathcal{D}(0)=\Z$ car $0 = 0 x$ pour tous $x\in \Z$.
+  \item $\mathcal{D}(-a)=\mathcal{D}(a)$.
+  \item Soit $a$ et $b$ deux éléments non nuls de $\Z$. L'ensemble des multiples communs à $a$ et $b$ est $\mathcal M (a)\cap \mathcal M (b)$, l'ensemble des diviseurs communs à $a$ et $b$ est $\mathcal D (a)\cap \mathcal D (b)$.
+  \item Attention, $0\in \mathcal{M}(a)$.
+  \item $\mathcal{M}(a)$ est un sous-groupe additif de $\Z$. On a démontré dans le cours de présentation des \href{\baseurl C2075.pdf}{groupes} que \emph{tout sous-groupe additif de $\Z$ est de cette forme}.
+\end{itemize}  
+\end{rems}
+\begin{prop}
+ Soit $a$ et $b$ deux éléments non nuls de $\Z$ qui se divisent mutuellement. Ils sont alors égaux à un  facteur inversible près : il existe $c$ inversible tel que $b=ac$. Dans le cas de $\Z$ ils sont égaux ou opposés, il existe un seul élément de cette famille dans $\N$.
+\end{prop}
+\begin{demo}
+Si $a$ et $b$ se divisent mutuellement, il existe des entiers $\lambda$ et $\mu$ tels que 
+\begin{displaymath}
+  a = \lambda b \text{ et } b = \mu a \Rightarrow a= \lambda \mu a \Rightarrow 1 = \lambda \mu
+\end{displaymath}
+ce qui signifie que $\lambda$ et $\mu$ sont inversibles et inverses l'un de l'autre.
+\end{demo}
+\begin{rems}
+\begin{itemize}
+  \item On en déduit que $\mathcal{D}(a)=\mathcal{D}(b)$ si et seulement si $b\in\{-a,a\}$ c'est à dire $a$ et $b$ égaux à la multiplication près par un inversible.
+  \item La relation de divisibilité n'est pas une relation d'ordre. Elle est bien réflexive et transitive mais elle n'est pas antisymétrique. Deux nombres qui se divisent mutuellement sont égaux seulement à la multiplication par un inversible près.
+\end{itemize}
+\end{rems}
+
+\subsection{PGCD. PPCM.}
+\index{pgcd! définition}\index{ppcm! définition}
+\begin{defi}
+ Soit $a$ et $b$ deux éléments non nuls de $\Z$.\newline
+Le \emph{plus grand commun diviseur} (pgcd) de $a$ et $b$ est le plus grand élément (au sens de la relation d'ordre de $\Z$) de $\mathcal D(a)\cap \mathcal D(b)$.\newline
+Le \emph{plus petit commun multiple} (ppcm) de $a$ et $b$ est le plus petit élément de $\mathcal M(a)\cap \mathcal M(b) \cap \N^*$.
+\end{defi}
+\begin{nota}
+ Soit $a$ et $b$ deux éléments non nuls de $\Z$. Le pgcd de $a$ est $b$ est noté $a\wedge b$ ou simplement $\text{pgcd}(a,b)$, le ppcm est noté $a\vee b$ ou simplement $\text{ppcm}(a,b)$. 
+\end{nota}
+Avec ces notations, la définition se traduit par:
+ \begin{displaymath}
+   \text{pgcd}(a,b) = a\wedge b = \max \left( \mathcal{D}(a)\cap \mathcal{D}(b)\right) ,\hspace{0.5cm}
+   \text{ppcm}(a,b) = a\vee b = \min \left( \mathcal{M}(a)\cap \mathcal{M}(b) \cap \N^*\right) 
+ \end{displaymath}
+\begin{rem}
+  Soit $a$ et $b$ naturels non nuls avec $a$ divisant $b$. Alors $\mathcal{D}(a) \subset \mathcal{D}(b)$ donc $a \wedge b = a$.
+\end{rem}
+
+On peut étendre les définitions et les notations de pgcd et ppcm à des familles $(a_1,\cdots,a_p)$ de plus de deux éléments.
+\begin{defi}
+Soit $p$ naturel supérieur ou égal à $2$ et $(a_1,\cdots,a_p)$ une famille de relatifs non nuls. Le pgcd de la famille est le naturel  
+\begin{displaymath}
+  a_1\wedge a_2 \wedge \cdots \wedge a_p = \max\left( \mathcal D(a_1)\cap\cdots \cap\mathcal D(a_p)\right) 
+\end{displaymath}
+Le ppcm de la famille est le naturel
+\begin{displaymath}
+  a_1 \vee a_2 \vee \cdots\vee a_p = \min\left( M(a_1)\cap\cdots \cap\mathcal M(a_p)\cap \N^*\right) 
+\end{displaymath}
+\end{defi}
+\begin{prop}
+Ces opérations sont associatives.
+\end{prop}
+\begin{demo}
+Cela résulte de l'associativité de l'intersection.
+\end{demo}
+
+\begin{propn}[propriété fondamentale du ppcm]\index{ppcm! propriété fondamentale}
+Soit $a$ et $b$ des relatifs non nuls et $m = a \vee b$. Alors
+\begin{displaymath}
+\mathcal M(a)\cap \mathcal M(b)=\mathcal M(m)  
+\end{displaymath}
+\end{propn}
+\begin{demo}
+Comme $m$ est un multiple commun à $a$ et $b$, tous ses multiples sont aussi dans $\mathcal M(a)\cap \mathcal M(b)$ donc $\mathcal{M}(m) \subset \mathcal M(a)\cap \mathcal M(b)$.\newline
+Réciproquement, soit $\mu \in \mathcal M(a)\cap \mathcal M(b)$. Divisons $\mu$ par $m$; il existe $q\in \Z$ et $r\in \llbracket 0 , m\llbracket$ tels que
+\begin{displaymath}
+\mu = qm + r \Rightarrow r = \mu - qm
+\end{displaymath}
+Alors $r$ est un multiple commun à $a$ et $b$ car $\mu$ et $m$ le sont. C'est ici que la minimalité intervient:
+\begin{displaymath}
+\left. 
+\begin{aligned}
+&r \in \mathcal M(a)\cap \mathcal M(b) \cap \N\\
+&0 \leq r < m \\
+&m = \min \left( \mathcal{M}(a)\cap \mathcal{M}(b) \cap \N^*\right)
+\end{aligned}
+\right\rbrace \Rightarrow r = 0 \Rightarrow \mu = qm \in \mathcal{M}(m)
+\end{displaymath}
+Ce qui montre $\mathcal M(a)\cap \mathcal M(b) \subset \mathcal{M}(m)$.
+\end{demo}
+\index{linéarité du ppcm}
+\begin{propn}[linéarité du ppcm]
+  Soient $a_1, \cdots, a_p$ et $\lambda$ des naturels non nuls. 
+\[
+  (\lambda a_1)\vee (\lambda a_2)\vee \cdots \vee(\lambda a_p) = \lambda(a_1 \vee a_2 \vee \cdots \vee a_p). 
+\]
+\end{propn}
+\begin{demo}
+Remarquons que $\mathcal{M}(\lambda a_i) = \left\lbrace\lambda m \text{ avec } m \in \mathcal{M}(a_i)\right\rbrace$ noté $\lambda \mathcal{M}(a_i)$. On en déduit
+\[
+  \mathcal{M}(\lambda a_1)\cap \cdots \cap \mathcal{M}(\lambda a_p) = \lambda \left( \mathcal{M}(a_1) \cap \cdots \cap \mathcal{M}(a_p)\right).
+\]
+Ce qui prouve la proposition en considérant le plus petit élément de cet ensemble.
+
+\end{demo}
+
+\begin{rems}
+\begin{itemize}
+  \item On pouvait aussi utiliser le fait que $\mathcal{M}(a)\cap \mathcal{M}(b)$ est un sous-groupe de $(\Z,+)$ et vérifier que le générateur naturel de ce sous-groupe est le ppcm.
+  \item Des propriétés analogues valables pour le pgcd seront démontrées plus loin à l'aide de l'algorithme d'Euclide et de l'algorithme d'Euclide étendu (propositions \ref{pgcd} et \ref{sommult}) :
+\begin{displaymath}
+d=a\wedge b \Rightarrow \hspace{1cm} \mathcal D(a)\cap \mathcal D(b)=\mathcal D(d),\hspace{0.5cm} \mathcal{M}(a) + \mathcal{M}(b) = \mathcal{M}(d), 
+\end{displaymath}
+  \item Ces propriétés s'étendent aux familles.
+  \item Pour calculer le ppcm de deux nombres naturels $a$ et $b$, on peut utiliser l'algorithme \ref{algppcm} qui se généralise à une famille finie quelconque en ne modifiant à chaque fois que le plus petit terme de la famille.
+\end{itemize}
+\end{rems}
+
+\begin{algorithm}
+ $a\leftarrow$ un entier naturel $a_0$\;
+ $b\leftarrow$ un entier naturel $b_0$\;
+ \Tq{$a \neq b$}{
+    \eSi{ $a < b$}{
+      $a \leftarrow a + a_0$\;
+    }{
+      $b \leftarrow b + b_0$\;
+    }
+  }
+  renvoyer $a$\;
+ \caption{Calcul du ppcm}
+ \label{algppcm}
+\end{algorithm} 
+\begin{demo}
+ Algorithme de calcul du ppcm.\newline
+Notons $m$ le ppcm et $U$, $V$ les entiers naturels tels que $m = Ua_0 = V b_0$. 
+Il existe des entiers naturels $u$ et $v$ initialisés à $1$ et tels que $a = u a_0$, $b = v b_0$ au cours de la boucle.  Montrons que la propriété ($u \leq U$ et $v\leq V$) est un invariant de boucle.\newline
+Lors d'une certaine itération, on a toujours $a\neq b$. Supposons $a < b$ et notons $u' = u + 1$, $v' = v$ les nouvelles valeurs de $u$ et $v$. Comme $a < b \leq m$, on a $u < U$ donc $u' \leq U$ et on a bien montré le caractère invariant.\newline
+On est certain de sortir de la boucle car $U + V -u -v$ est une fonction de terminaison qui décroit strictement à chaque itération. Après la sortie, $a=b\leq m$ et cette valeur commune est $m$ car c'est un multiple commun inférieur ou égal à $m$. 
+\end{demo}
+
+\section{Algorithmes d'Euclide}
+On présente d'abord l'algorithme \ref{C5546_1} \og sec\fg~ qui est une suite de divisions euclidienne des restes successifs . La deuxième version (algorithme \ref{C5546_2}) renvoie le pgcd des deux entrées. La troisième version (algorithme \ref{C5546_3} d'Euclide étendu) conduit aux coefficients du théorème de Bezout. Les quotients des divisions sont utilisés seulement dans la troisième version. Une disposition pratique pour mener les calculs \og à la main\fg~ est aussi présentée.
+\subsection{Algorithme simple}
+Le premier algorithme présenté repose sur le théorème de la division euclidienne dans $\Z$ rappelé en début de texte.\newline
+\index{algorithme d'Euclide}
+\begin{algorithm}
+ $a\leftarrow$ un entier relatif\;
+ $aa\leftarrow$ un entier naturel non nul\;
+ \Tq{$aa \neq 0$}{
+    $r \leftarrow $ reste de la division de $a$ par $aa$\;
+    $a \leftarrow aa$\;
+    $aa \leftarrow r$\;
+ }
+ \caption{Algorithme "sec"}
+ \label{C5546_1}
+\end{algorithm}
+
+Le nom $aa$ désigne un entier naturel qui diminue strictement puisque, à chaque tour de boucle, la valeur qu'il désigne est le reste dans une division par sa valeur précédente. Ceci assure que la boucle se termine. L'ensemble des diviseurs communs $\mathcal{D}(a)\cap \mathcal{D}(aa)$ est un invariant de la boucle.\newline
+Cet algorithme ne renvoie rien, il sert de support pour des variantes qui utilisent la même boucle.
+ 
+\subsection{Calcul du pgcd}
+\index{pgcd! calcul}
+\begin{algorithm}
+ $a\leftarrow$ un entier relatif\;
+ $aa\leftarrow$ un entier naturel non nul\;
+ $i\leftarrow 0$  \# compteur facultatif de boucle sert seulement pour comprendre\;
+ \Tq{$aa \neq 0$}{
+   $a, aa \leftarrow aa$, reste de la division de $a$ par $aa$\;
+   $i\leftarrow i+1$\;
+ }
+ renvoyer $a$\;
+ \caption{Calcul du pgcd}
+ \label{C5546_2}
+\end{algorithm}
+Désignons par $0,1,\cdots, n$ les valeurs désignées par le compteur $i$ après chaque tour de boucle. Il est convenu que $0$ désigne la valeur avant la première exécution du corps de la boucle. Le corps de la boucle s'exécute donc $n$ fois. \'Ecrivons les divisions euclidiennes successives sous la forme
+\begin{align*}
+ a_0 &= q_1\,a_1 + a_2 \\
+a_1 &= q_2\,a_2 + a_3 \\
+   &\vdots \\
+a_{n-2} &= q_{n-1}\,a_{n-1} +a_n\\
+a_{n-1} &= q_n \, a_n
+\end{align*}
+Avec ces notations, $a_i$ est la valeur désignée par $a$ et $a_{i+1}$ celle désignée par $aa$ après le $i$-eme tour de boucle. Les quotients ne sont pas utilisés. Pour $i=n$, on est sorti de la boucle et $a_n$ est donc le dernier reste non nul. \newline
+On montre facilement que 
+\begin{displaymath}
+ \mathcal D (a_0)\cap \mathcal D (a_1) = \mathcal D (a_1)\cap \mathcal D (a_2) = \cdots = \mathcal D (a_{n-1})\cap \mathcal D (a_n) = \mathcal D (a_n) 
+\end{displaymath}
+car $a_n$ divise $a_{n-1}$. Ceci prouve que $a_n$ est le pgcd de $a_0$ et $a_1$ c'est à dire les valeurs initiales de $a$ et $aa$.
+
+On peut reformuler ce raisonnement en des termes plus algorithmiques. La relation $\mathcal{D}(a_0)\cap \mathcal{D}(a_1) = \mathcal{D}(a)\cap \mathcal{D}(aa)$ est un invariant du segment itératif et $aa$ est une fonction de terminaison.
+
+\begin{propn}[propriété fondamentale du pgcd]\label{pgcd}\index{pgcd! propriété fondamentale}
+  Soit $a$ et $b$ deux entiers relatifs non nuls et $d$ le nombre naturel renvoyé par l'algorithme \ref{C5546_2} (le dernier reste non nul calculé). Alors $d = a\wedge b$ avec
+\begin{displaymath}
+  \mathcal{D}(a)\cap \mathcal{D}(b) = \mathcal{D}(d)
+\end{displaymath}
+\end{propn}
+\begin{demo}
+  On sait que $d\in \N$. Alors $\mathcal{D}(a)\cap \mathcal{D}(b) = \mathcal{D}(d)$ entraîne $d = \max\left( \mathcal{D}(a)\cap \mathcal{D}(b)\right)$.
+\end{demo}
+\begin{rems}
+\begin{enumerate}
+  \item Si on veut calculer le pgcd d'une famille de $p\geq2$ relatifs non nuls, on commence par l'ordonner du plus grand au plus petit en valeur absolue. On adapte ensuite l'algorithme en divisant le plus grand par le plus petit. Si le reste est non nul, on décale les $p$ termes de la famille. Si le reste est nul, on l'élimine de la famille que ne contient plus que $p-1$ termes. On retourne ensuite à la division du plus grand terme par le plus petit. Avec cette méthode, le résultat précédent s'étend aux familles.
+  \item Si $m = qn +r$ est l'écriture de la division euclidienne de $m$ par $n$ et si $\lambda$ est un naturel non nul alors 
+  \begin{displaymath}
+    \lambda m = q \lambda n + \lambda r
+  \end{displaymath}
+est l'écriture de la division euclidienne de $\lambda m$ par $\lambda n$. L'algorithme d'Euclide avec les conditions initiales $\lambda a$ et $\lambda b$ sera constitué des divisions de l'algorithme initié par $a$ et $b$ simplement multipliées par $\lambda$. On en déduit la propriété de linéarité du pgcd
+\end{enumerate}
+ \end{rems}
+\begin{propn}[linéarité du pgcd]
+  \begin{displaymath}
+    \forall (a,b)\in (\Z^*)^2,\, \forall \lambda \in \N^*, \; (\lambda a)\wedge (\lambda b) = \lambda (a\wedge b)
+  \end{displaymath}
+\end{prop}
+\begin{demo}
+  Il suffit de remarquer qu'une division euclidienne multipliée par un $\lambda \in \N^*$ reste une division euclidienne. La suite des divisions euclidiennes de l'algorithme d'Euclide pour$\lambda a$ et $\lambda b$ est donc formée par les divisions de l'algorithme pour $a$ et $b$ simplement multipliées par $\lambda$. Les suites s'arrêtent ensemble ce qui prouve le résultat.
+\end{demo}
+
+\subsection{Algorithme d'Euclide étendu}
+\index{algorithme d'Euclide étendu! pseudo-code} On introduit de nouveaux noms $u$, $uu$, $uuu$, $v$, $vv$, $vvv$, $q$ permettant de stocker les valeurs de deux nouvelles suites et du quotient des divisions qui n'avait pas été utilisé jusque là.
+\begin{algorithm}
+  $a\leftarrow$ un entier relatif\;
+  $aa\leftarrow$ un entier naturel non nul\;
+  $u\leftarrow 1$\;
+  $uu\leftarrow 0$\;
+  $v\leftarrow 0$\;
+  $vv\leftarrow 1$\;
+  \Tq{$aa \neq 0$}{
+    
+    $q \leftarrow $ quotient de la division de $a$ par $aa$\;
+    \;
+    $aaa \leftarrow a -q*aa$\;
+    $uuu \leftarrow u -q*uu$\;
+    $vvv \leftarrow v -q*vv$\;
+    \;
+    $u \leftarrow uu$\;
+    $uu \leftarrow uuu$\;
+    \;
+    $v \leftarrow vv$\;
+    $vv \leftarrow vvv$\;
+    \;
+    $a \leftarrow aa$\;
+    $aa \leftarrow aaa$\;
+  }
+  renvoyer $a, u, v$\;
+ \caption{Euclide étendu}
+ \label{C5546_3}
+\end{algorithm}
+
+Cet algorithme sert à calculer les coefficients permettant d'exprimer le dernier reste non nul en fonction des deux premiers termes de la suite.
+\begin{propn}\label{coeff}
+ Soit $a$ et $b$ deux éléments non nuls de $\Z$ et $d, u, v$ les entiers renvoyés par l'algorithme d'Euclide étendu initialisé par $a$ et $b$. Alors $d = au + vb$ et $d$ est le pgcd de $a$ et $b$. 
+\end{propn}
+\begin{demo}
+On conserve les notations à l'aide de suites définies dans la partie sur le calcul du pgcd ainsi que le principe de répétition des lettres dans les noms pour désigner les valeurs successives.\newline
+On introduit une relation de récurrence définie par la suite des quotients $(q_1,q_2,\cdots,q_n)$. On dira qu'une famille $(x_0,x_1,\cdots,x_n)$ vérifie $\mathcal Q$ lorsque :
+\begin{displaymath}
+ (\mathcal Q)\hspace{2cm} \forall k\in\{2,\cdots,n\} : x_k = x_{k-2}-q_{k-1}x_{k-1}
+\end{displaymath}
+On remarque que la famille $(a_0,a_1,\cdots,a_n)$ vérifie $\mathcal Q$ car chaque relation traduit une des divisions euclidiennes. Considérons deux suites $(u_0,u_1,\cdots,u_n)$ et $(v_0,v_1,\cdots,v_n)$ vérifiant $\mathcal Q$ et définies par :
+\begin{align*}
+ u_0=1, u_1=0,  & & v_0=0, v_1=1
+\end{align*}
+Comme les trois familles $(a_0,a_1,\cdots,a_n)$ $(u_0,u_1,\cdots,u_n)$ et $(v_0,v_1,\cdots,v_n)$ vérifient $\mathcal Q$ et que :
+\begin{align*}
+ a_0 &= 1\times a_0 + 0\times a_1 = u_0a_0 + v_0a_1 \\
+ a_1 &= 0\times a_0 + 1\times a_1 = u_1a_0 + v_1a_1
+\end{align*}
+Ces relations se propagent à tous les $k$ entre $2$ et $n$ et en particulier :
+\begin{displaymath}
+ a_n = u_na_0 + v_na_1
+\end{displaymath}
+\end{demo}
+Dispositif pratique.\index{algorithme d'Euclide étendu! disposition pratique} On peut utiliser une disposition en tableau \footnote{communiquée par Haitham Nasri}. Au début
+\begin{displaymath}
+% use packages: array
+\begin{array}{l|l|l|l|l}
+ & 0 & 1 & 2 & 3 \\ \hline
+a & a_0 & a_1 & × & × \\ 
+q & × & × & × & × \\ 
+u & 1 & 0 & × & × \\
+v & 0 & 1 & × & ×
+\end{array}
+\end{displaymath}
+puis on progresse vers la droite avec chaque division euclidienne: d'abord $a_2$ et $q_1$, puis en utilisant la relation $\mathcal Q$,  $u_2$ et $v_2$ à partir des éléments de leur ligne respective et ainsi de suite
+\begin{displaymath}
+% use packages: array
+\begin{array}{l|l|l|l|l}
+ & 0 & 1 & 2 & 3 \\ \hline
+a & a_0 & a_1 & a_2 & × \\ 
+q & ×   & q_1 & ×   & × \\ 
+u & 1   & 0   & 1 & × \\
+v & 0   & 1   & -q_1 & ×
+\end{array}
+\hspace{1cm}\rightarrow\hspace{1cm}
+\begin{array}{l|l|l|l|l}
+ & 0 & 1 & 2 & 3 \\ \hline
+a & a_0 & a_1 & a_2 & a_3 \\ 
+q & ×   & q_1 & q_2   & × \\ 
+u & 1   & 0   & 1 & -q_2 \\
+v & 0   & 1   & -q_1 & 1+q_1q_2
+\end{array}
+\hspace{1cm}\rightarrow \hspace{1cm}\cdots
+\end{displaymath}
+Exemple en commençant par $23$ et $17$.
+\begin{multline*}
+% use packages: array
+\begin{array}{l|l|l|l|l}
+ & 0 & 1 & 2 & 3 \\ \hline
+a & 23 & 17 &  &  \\ 
+q &    &    &  &  \\ 
+u & 1  & 0  &  &  \\
+v & 0  & 1  &  & 
+\end{array}\hspace{0.5cm} \text{ (initialisation)}
+\rightarrow
+\begin{array}{l|l|l|l|l}
+  & 0  & 1        & 2 & 3  \\ \hline
+a & 23 & 17       & \fbox{6} &  \\ 
+q &    & \fbox{1} &   &  \\ 
+u & 1  & 0        &   &  \\
+v & 0  & 1        &   & 
+\end{array}
+\hspace{0.5cm} \text{ (division)}\\
+\rightarrow
+\begin{array}{l|l|l|l|l}
+  & 0  & 1  & 2         & 3  \\ \hline
+a & 23 & 17 & 6         &  \\ 
+q &    & 1  &           &  \\ 
+u & 1  & 0  & \fbox{1}  &  \\
+v & 0  & 1  & \fbox{-1} & 
+\end{array}\hspace{0.5cm} \text{ (relation)}
+\rightarrow
+\begin{array}{l|l|l|l|l}
+  & 0  & 1  & 2         & 3  \\ \hline
+a & 23 & 17 & 6         & \fbox{5} \\ 
+q &    & 1  & \fbox{2}  &  \\ 
+u & 1  & 0  & 1         &  \\
+v & 0  & 1  & -1        & 
+\end{array}\hspace{0.5cm} \text{ (division)}\\
+\rightarrow
+\begin{array}{l|l|l|l|l}
+  & 0  & 1  & 2  & 3  \\ \hline
+a & 23 & 17 & 6  & 5   \\ 
+q &    & 1  & 2  &            \\ 
+u & 1  & 0  & 1  &  \fbox{-2} \\
+v & 0  & 1  & -1 &  \fbox{3}
+\end{array}\hspace{0.5cm} \text{ (relation)}
+\rightarrow
+\begin{array}{l|l|l|l|l|l}
+  & 0  & 1  & 2  & 3       &          \\ \hline
+a & 23 & 17 & 6  & 5       & \fbox{1} \\ 
+q &    & 1  & 2  & \fbox{1}&          \\ 
+u & 1  & 0  & 1  & -2      &          \\
+v & 0  & 1  & -1 & 3       &
+\end{array}\hspace{0.5cm} \text{ (division)} \\
+\rightarrow
+\begin{array}{l|l|l|l|l|l}
+  & 0  & 1  & 2  & 3  &          \\ \hline
+a & 23 & 17 & 6  & 5  & 1        \\ 
+q &    & 1  & 2  & 1  &          \\ 
+u & 1  & 0  & 1  & -2 & \fbox{3} \\
+v & 0  & 1  & -1 & 3  & \fbox{-4}
+\end{array}\hspace{0.5cm} \text{ (relation)}
+\end{multline*}
+On a bien $3\times 23 -4\times 17 = 1$.
+\begin{propn}\label{sommult}
+ Soit $a$ et $b$ deux éléments non nuls de $\Z$ et $d=a\wedge b$ alors
+\begin{displaymath}
+  \mathcal{M}(a) + \mathcal{M}(b) = \left\lbrace x+y,\; (x,y)\in \mathcal{M}(a)\times \mathcal{M}(b)\right\rbrace = \mathcal{M}(d)
+\end{displaymath}
+\end{propn}
+\begin{demo}
+L'inclusion $\mathcal{M}(a) + \mathcal{M}(b) \subset \mathcal{M}(d)$ est évidente car tout multiple de $a$ ou $b$ est multiple de $d$, donc une somme de multiples aussi. Réciproquement, si $u$ et $v$ sont les entiers renvoyés par l'algorithme d'Euclide étendu, alors 
+\begin{displaymath}
+d = au + vb \in \mathcal{M}(a) + \mathcal{M}(b) \Rightarrow \mathcal{M}(d) \subset \mathcal{M}(a) + \mathcal{M}(b)  
+\end{displaymath}
+\end{demo}
+\begin{rem}
+  L'algorithme d'Euclide étendu est constructif. On peut aussi démontrer cette proposition en utilisant le fait que $\mathcal{M}(a) + \mathcal{M}(b)$ est un sous groupe additif de $\Z$. Il existe donc un entier $\delta$ tel que $\mathcal{M}(a) + \mathcal{M}(b)=\mathcal{\delta}$. On prouve facilement que $\delta$ est le pgcd mais cela ne permet pas de le calculer ni de l'exprimer en fonction de $a$ et $b$.
+\end{rem}
+
+
+\section{Entiers premiers entre eux.}
+\subsection{Définitions.}
+\index{nombres premiers entre eux}
+\begin{defi}
+ Deux entiers relatifs non nuls sont dits premiers entre eux lorsque leur pgcd est 1. De même, les éléments d'un famille de relatifs non nuls sont dits \emph{ premiers entre eux dans leur ensemble} \index{nombres premiers entre eux! dans leur ensemble} lorsque $1$ et $-1$ sont leurs seuls diviseurs communs.
+\end{defi}
+\begin{rems}
+\begin{enumerate}
+ \item On peut aussi considérer des familles de relatifs \emph{deux à deux premiers entre eux}\index{nombres premiers entre eux! deux à deux}.
+ \item Si les entiers d'une famille sont deux à deux premiers entre eux ils sont aussi premiers entre eux dans leur ensemble mais la réciproque n'est pas vraie.
+\end{enumerate}
+ \end{rems}
+
+\subsection{Théorèmes : Bezout et Gauss.}
+\index{théorème de Bezout}
+\begin{thm}[de Bezout]
+ Soit $a$ et $b$ deux éléments non nuls de $\Z$.\newline
+Il existe des éléments $u$ et $v$ dans $\Z$ tels que $au+bv$ soit un pgcd de $a$ et $b$. S'il existe des éléments $u$ et $v$ dans $\Z$ tels que $au+bv=1$ alors $a$ et $b$ sont premiers entre eux.
+\end{thm}
+\begin{demo}
+ L'algorithme d'Euclide étendu montre (proposition \ref{coeff}) la première implication. Cette méthode donne un moyen pratique de déterminer $u$ et $v$.\newline
+ S'il existe des éléments $u$ et $v$ dans $\Z$ tels que $au+bv=1$, il est immédiat que tout diviseur commun $d$ à $a$ et $b$ divise aussi $1$, il doit donc être $1$ ou $-1$.
+\end{demo}
+
+\index{théorème de Gauss}
+\begin{thm}[de Gauss]
+ Soit $a$, $b$, $c$ non nuls dans $\Z$ tels que $a$ divise $bc$ avec $a$ premier avec $b$, alors $a$ divise $c$.
+\end{thm}
+\begin{demo}
+ Comme $a$ est premier avec $b$, il existe $\lambda$ et $\mu$ dans $\Z$ tels que $\lambda a + \mu b=1$. Comme $a$ divise $bc$, il existe $u$ dans $\Z$ tel que $bc=ua$. On combine alors les deux relations :
+\begin{displaymath}
+ c=(\lambda a +\mu b)c - \mu(bc-ua)=(\lambda c +\mu u)a
+\end{displaymath}
+ce qui montre que $a$ divise $c$.
+\end{demo}
+\begin{rem}
+ Attention à ne pas remplacer l'hypothèse \og$a$ est premier avec $b$\fg par \og$a$ ne divise pas $b$\fg.
+\end{rem}
+
+\subsection{Compléments}
+\subsubsection{Relations entre pgcd et ppcm}
+Soit $I$ et $J$ deux parties de $\Z$ et $\lambda$ un élément non nul de $\Z$. On définit les ensembles $\lambda I$ et $I+J$:
+\begin{displaymath}
+  \lambda I = \{\lambda a , a\in I\} ,\hspace{0.5cm} I+J = \left\lbrace i+j, (i,j)\in I\times J\right\rbrace 
+\end{displaymath}
+On montre alors que 
+\begin{align*}
+\mathcal{M}(a) + \mathcal{M}(b) &= \mathcal{M}(a\wedge b) \\
+ \mathcal M (\lambda a) &= \lambda \mathcal M ( a) \\
+\mathcal M (\lambda a)\cap  \mathcal M (\lambda b) &= \lambda \left( \mathcal M ( a) \cap  \mathcal M (b)\right) \\
+\mathcal M (\lambda a) + \mathcal M (\lambda b) &= \lambda \left( \mathcal M ( a) +  \mathcal M (b)\right)
+\end{align*}
+Si $a$, $b$ et $\lambda$ sont des éléments non nuls de $\Z$ on déduit la propriété suivante (dite de linéarité du pgcd et du ppcm):\index{linéarité du pgcd et du ppcm}
+\begin{align*}
+ \text{pgcd}(\lambda a, \lambda b)=\lambda\, \text{pgcd}(a, b) &,& \text{ppcm}(\lambda a, \lambda b)=\lambda\, \text{ppcm}(a, b)
+\end{align*}
+Dans la suite on note $d=\text{pgcd}(a,b)$ et $m=\text{ppcm}(a, b)$. Il existe alors des entiers $a^\prime$ et $b^\prime$ tels que $a=da^\prime$ et $b=db^\prime$. On se propose de montrer que \index{relation entre pgcd et ppcm}
+\begin{itemize}
+ \item $a^\prime$ et $b^\prime$ sont premiers entre eux.
+ \item $md=ab$
+\end{itemize}
+Le premier point s'obtient par linéarité du pgcd.
+\begin{displaymath}
+ d=\text{pgcd}(a,b)=\text{pgcd}(da^\prime,db^\prime)=d\,\text{pgcd}(a^\prime,b^\prime)
+\end{displaymath}
+d'où $\text{pgcd}(a^\prime,b^\prime)=1$.\newline
+Deux démonstrations sont proposées pour le second point 
+\begin{displaymath}
+ \text{pgcd}(a,b)\text{ppcm}(a,b)=ab
+\end{displaymath}
+\begin{demo}
+ \begin{itemize}
+ \item Remarquons que $ab$ est un multiple commun à $a$ et $b$ donc divisible par le ppcm. Introduisons $u$ par $ab=mu$ et montrons que $u$ est le pgcd de $a$ et $b$.\newline
+Comme $a$ et $b$ divisent $m$, il existe $\alpha$ et $\beta$ tels que $m=\alpha b = \beta a$. On en déduit $a=u \alpha$ et $b=u \beta$ ce qui prouve que $u$ est un diviseur commun de $a$ et $b$.\newline
+Utilisons maintenant la linéarité du ppcm :
+\begin{displaymath}
+ d^2 a^\prime b^\prime = ab=mu=\text{ppcm}(da^\prime,db^\prime)u=d\,\text{ppcm}(a^\prime,b^\prime)u
+\end{displaymath}
+On peut alors simplifier d'abord par $d$ puis par $\text{ppcm}(a^\prime,b^\prime)$ qui divise $a^\prime b^\prime$ ce qui entraîne que $d$ divise $u$.
+\item Une autre manière de procéder est de montrer directement que $da'b'=\text{ppcm}(a,b)$.\newline
+Remarquons d'abord que $da'b'=ab'=a'b$ est un multiple commun à $a$ et $b$. On sait donc que $m=\text{ppcm}(a,b)$ divise $da'b'$.\newline
+D'autre part, $m$ est un multiple commun, il existe donc $\lambda$ et $\mu$ dans $\Z$ tels que 
+\begin{displaymath}
+m=\lambda a = \mu b \Rightarrow \lambda a' = \mu b' 
+\end{displaymath}
+après simplification par $d$. Donc $a'$ divise $\mu b'$ en étant premier avec $b'$ ce qui entraine que $a'$ divise $\mu$ (Thèorème de Gauss). Il existe donc $k\in A$ tel que
+\begin{displaymath}
+ \mu = k a' \Rightarrow  \lambda a' =  k a'b' \Rightarrow \lambda = kb' 
+\Rightarrow m = k b' a = k da' b'
+\end{displaymath}
+Ce qui prouve que $da'b'$ divise $m$ et achève la démonstration.
+\end{itemize}
+\end{demo}
+Une conséquence de ce que l'on vient de montrer est que deux éléments sont premiers entre eux si et seulement si leur ppcm est égal à leur produit.
+
+\subsubsection{\'Etude de l'équation de Bézout.}
+\index{équation de Bezout}
+Il s'agit de l'équation
+\begin{displaymath}
+ au+bv=c
+\end{displaymath}
+où $a$, $b$, $c$ sont des paramètres dans $\Z$ et les inconnues sont $u$ et $v$. On supposera que $a$ et $b$ sont non nuls et non inversibles. Les points à retenir sont :
+\begin{itemize}
+ \item L'équation admet des solutions si et seulement si $c$ est un multiple du pgcd de $a$ et de $b$.
+\item Lorsque $c$ est un multiple de du pgcd de $a$ et $b$, on peut tout simplifier par ce pgcd et se ramener ainsi au cas où $a$ et $b$ sont premiers entre eux.
+\item Lorsque $a$ et $b$ sont premiers entre eux on peut préciser l'ensemble des couples solutions en fonction d'un couple solution particulier. Si $(u_0,v_0)$ est une solution particulière, l'ensemble des solutions est:
+\begin{displaymath}
+ \left\lbrace (u_0-\lambda b, v_0+\lambda a),\lambda \in A\right\rbrace 
+\end{displaymath}
+Une inclusion est évidente, l'autre se démontre à l'aide du théorème de Gauss.
+\item  On peut trouver un couple solution en utilisant l'algorithme d'Euclide étendu.
+\begin{displaymath}
+ xa_0 + ya_1 =1
+\end{displaymath}
+ d'inconnue $(x,y)$ dans le cas particulier où $a_0$ et $a_1$ sont premiers entre eux.
+
+\item Lorsque $a$ et $b$ sont premiers entre eux et que $c=1$, il existe un couple particulier de "petites" solutions. Le mot est à préciser suivant que $A=\Z$ ou $\K[X]$. Ce couple est unique dans le cas où $a$ et $b$ sont premiers entre eux.\begin{itemize}
+ \item Dans le cas de $\Z$, on suppose $a$ et $b$ supérieur ou égal à $2$. Il existe un unique couple solution $(u_1,v_1)$ tel que $0<u_1<b$ et $0<-v_1<a$
+\item Dans le cas de $\K[X]$, il existe un unique couple solution $(u_1,v_1)$ tel que $\deg u_1 < \deg b$ et $\deg v_1<\deg a$.
+\end{itemize}
+L'existence se prouve par une division euclidienne de $u_0$ par $b$ lorsque $(u_0,v_0)$ est une solution particulière. On note $u_1$ le reste, il existe alors une solution $(u_1,v_1)$. La condition sur $v_1$ se verifie en considérant $bv_1 = 1- au_1$ et en formant des inégalités (pour le degré dans le cas de $\K[X]$).
+\end{itemize}
+
+
+\section{Nombres premiers.}
+\begin{defi}[nombre premier]
+ Un entier naturel $a$ est dit \emph{premier} si et seulement si il est supérieur ou égal à $2$ et ses seuls diviseurs sont $1$, $-1$, $a$, $-a$.
+\end{defi}
+\begin{prop}
+ Tout élément non nul $a$ de $\Z$ admet un diviseur premier.
+\end{prop}
+\begin{demo}
+ On considère l'ensemble formé par les valeurs absolues ou les degrés des diviseurs de $a$. C'est une partie non vide de $\N$, elle admet donc un plus petit élémént. Soit $p$ un élément de $\Z$ dont la valeur absolue est égale à ce plus petit élément, on vérifie facilement que $p$ est premier ou irréductible. 
+\end{demo}
+\begin{prop}
+ Soit $a$ un entier relatif non  nul et non inversible, soit $p_1, p_2, \cdots, p_n$ des diviseurs de $a$ deux à deux premiers entre eux. Le produit $p_1p_2\cdots p_n$ divise alors $a$.
+\end{prop}
+\begin{demo}
+On va démontrer la proposition par récurrence. Notons $\mathcal{P}_n$ l'implication à démontrer pour un entier $n$ fixé et un $a$ quelconque.\newline
+Pour $n=1$, il n'y a rien à démontrer. Montrons maintenant que $\mathcal{P}_{n-1}$ entraîne $\mathcal{P}_n$.\newline
+Soit $p_1, p_2, \cdots, p_n$ des diviseurs de $a$ deux à deux premiers entre eux. Comme $p_n$ divise $a$, il existe un entier $a'$ tel que $a=p_na'$. On peut appliquer $n-1$ fois le théorème de Gauss, pour $i$ entre $1$ et $n-1$:
+\begin{displaymath}
+\left. 
+\begin{aligned}
+&p_i \text{ divise } p_na'\\ &p_i \wedge p_n = 1  
+\end{aligned}
+\right\rbrace \Rightarrow p_i \text{ divise } a'
+\end{displaymath}
+On peut appliquer l'hypothèse de récurrence avec $a'$ et $p_1,\cdots, p_{n-1}$ et en déduire que $p_1p_2\cdots p_{n-1}$ divise $a'$.
+\begin{displaymath}
+  \exists \lambda \in \Z \text{ tq } a' = \lambda p_1p_2\cdots p_{n-1}
+\Rightarrow a = p_n a' = \lambda p_1p_2\cdots p_{n-1} p_n
+\end{displaymath}
+C'est à dire que $p_1p_2\cdots p_{n-1} p_n$ divise $a$.
+\end{demo}
+\begin{nota}
+L'ensemble des diviseurs (premiers ou irréductibles) d'un élément $a$ non inversible est non vide et fini. Il est noté $\mathcal D_p(a)$. 
+\end{nota}
+\begin{prop}
+L'ensemble des nombres premiers n'est pas fini. 
+\end{prop}
+\begin{demo}
+ Supposons que $p_1<p_2<\cdots<p_n$ soient $n$ nombres premiers  et considérons $a=p_1p_2\cdots p_n+1$. D'après le théorème de Bezout cet élément est premier avec les $p_i$. Il admet donc un diviseur premier autre que les $p_i$ qui ne peuvent donc constituer à eux seuls l'ensemble de tous les nombres premiers. 
+\end{demo}
+\index{décomposition en facteurs premiers}
+\begin{prop}[décomposition en facteurs premiers]
+Tout relatif $a$ non nul et non inversible est le produit d'un inversible et d'une famille de nombres premiers.\newline 
+ Il existe  $u$ inversible, $p_1,\cdots p_k$ premiers deux à deux distincts et $\alpha_1,\cdots,\alpha_k$ entiers $\geq 1$ tels que
+\begin{displaymath}
+ a = u \, p_1^{\alpha_1} \cdots p_k^{\alpha_k} 
+\end{displaymath}
+Une telle écriture est unique à permutation près sur les indices $i$ entre $1$ et $k$.
+\end{prop}
+\begin{demo}
+ L'existence de la décomposition découle de la première proposition en rassemblant les facteurs premiers égaux. Elle se démontre par récurrence.\newline
+Considérons la proposition $\mathcal{P}(n)$.
+\begin{quote}
+  Tout entier relatif ni nul ni inversible et de valeur absolue inférieure ou égal à $n$ est le produit d'un inversible et d'une famille de nombres premiers.
+\end{quote}
+Elle est vérifiée pour $2$. Pour un naturel $n>2$, il existe un diviseur premier $p$ et $n'<n$ tel que $n=pn'$. on peut appliquer à $n'$ l'hypothèse de récurrence.\newline 
+La démonstration de l'unicité n'est pas détaillée. Elle repose sur le fait que $\{p_1,\cdots,p_k\}$ est l'ensemble des diviseurs premiers de $a$ et sur la notion de valuation $p$-adique.
+\end{demo}
+\begin{defi}[valuation $p$-adique]\index{valuation $p$-adique}
+Pour tout $a$ entier relatif non nul et non inversible et tout nombre premier $p$, on appelle \emph{valuation $p$-adique} de $a$ l'entier naturel
+\begin{displaymath}
+  v_p(a) = \max\left\lbrace k\in \N \text{ tq } p^k \text{divise } a\right\rbrace 
+\end{displaymath}
+\end{defi}
+\begin{rems}
+\begin{itemize}
+  \item La définition est correcte, car pour $k$ assez grand, $p^k >|a|$ donc l'ensemble des $k$ tels que $p^k$ divise $a$ est fini.
+  \item Par convention $p^0=1$ donc $v_p(a)=0$ si et seulement si $p$ ne divise pas $a$ ou encore si et seulement si n'est pas un des diviseurs premiers de $a$.
+  \item Pour tous $p$ et $a$:
+\begin{displaymath}
+  p^{v_p(a)}\text{ divise } a,\hspace{1cm} p^{v_p(a)+1}\text{ ne divise pas } a
+\end{displaymath}
+\end{itemize}
+\end{rems}
+\begin{prop}[Expressions avec les valuations $p$-adiques]
+\begin{align*}
+  &\text{décomposition en facteurs premiers:}& a= u\,\prod_{p\in \mathcal P}p^{v_p(a)}\\
+  &\text{pgcd}&\forall p\in \mathcal P :\; v_p(a\wedge b) = \min(v_p(a),v_p(b))\\
+  &\text{ppcm}&\forall p\in \mathcal P :\; v_p(a\vee b)=\max(v_p(a),v_p(b))
+\end{align*}
+\end{prop}
+\begin{rem}
+Pour la décomposition en facteurs premiers, le produit est en fait fini car les $v_p(a)$ sont nuls sauf pour un nombre finis de $p$.\newline
+En combinant les deux dernières relations avec 
+\begin{displaymath}
+m_p(a\wedge b)=m_p(a)+m_p(b)= \min(m_p(a),m_p(b))+ \max(m_p(a),m_p(b))
+\end{displaymath}
+on retrouve $(a\wedge b)(a\vee b)=ab$.
+\end{rem}
+
+\section{Congruences}
+\index{relation de congruence modulo un entier sur $\Z$}
+\begin{defi}
+  Soit $n$ entier non nul et $a$, $b$ entier. On dit que $a$ et $b$ sont congrus modulo $n$ si et seulement si
+\begin{displaymath}
+  b-a \in \mathcal{M}(n) \Leftrightarrow \exists k\in\Z \text{ tq } b - a = kn \hspace{0.5cm} \text{ notation : } a \equiv b \mod n
+\end{displaymath}
+\end{defi}
+\begin{rem}
+  Soit $a$ et $n$ des entiers non nuls. Le théorème de Bezout peut s'écrire
+\begin{displaymath}
+  a \wedge n = 1 \Leftrightarrow \exists b \in \Z \text{ tq } ab \equiv 1 \mod n
+\end{displaymath}
+\end{rem}
+
+\index{opérations sur les congruences} 
+\begin{prop}[opérations sur les congruences]
+  Soit $n$ entier non nul et $a$, $b$, $a'$, $b'$ entiers:
+\begin{displaymath}
+  \left. 
+  \begin{aligned}
+    a &\equiv b \mod n \\ a' &\equiv b' \mod n
+  \end{aligned}
+\right\rbrace \Rightarrow
+\left\lbrace 
+  \begin{aligned}
+    a + a' &\equiv b + b' \mod n \\ a  a' &\equiv b b' \mod n
+  \end{aligned}
+\right. 
+\end{displaymath}
+\end{prop}
+\index{petit théorème de Fermat}
+\begin{prop}[Petit théorème de Fermat]
+  Si $p$ est un nombre premier et $n$ un entier qui n'est pas un multiple de $p$ alors $n^{p-1} \equiv 1 \mod p$.
+\end{prop}
+\begin{demo}
+  Pour tout $k\in \llbracket 1, p-1 \rrbracket$. On utilise une propriété des coefficients du binôme
+\begin{displaymath}
+  \forall k\in \llbracket 1, p-1 \rrbracket,\;
+\binom{p}{k} = \frac{p}{k} \binom{p-1}{k-1} \Rightarrow k\binom{p}{k} = p \binom{p-1}{k-1} \Rightarrow p \text{ divise } k \binom{p-1}{k-1}
+\end{displaymath}
+Or $p$ premier et $k\in \llbracket 1, p-1 \rrbracket$ entraine $p$ premier avec $k$. On en déduit que $p$ divise $\binom{k}{p}$  théorème de Gauss.\newline
+D'après la formule du binôme:
+\begin{displaymath}
+  \forall n \in\Z, \; (n+1)^p \equiv n^p + 1 \mod p
+\end{displaymath}
+Comme $1^p \equiv 1 \mod p$, on en déduit par récurrence que $n^p \equiv n \mod p$ pour tous les entiers $n$. Si $n$ n'est pas un multiple de $p$ alors il est premier avec $p$ car $p$ est premier. Il existe $b$ tel que $ab \equiv 1 \mod n$. En multipliant par $b$, on obtient
+\begin{displaymath}
+  n^{p-1} \equiv 1 \mod p
+\end{displaymath}
+\end{demo}
+
+\index{indicatrice d'Euler}
+\begin{defi}[indicatrice d'Euler]
+ Pour tout entier $m\geq 2$, on définit $\varphi(m)$ comme le nombre de $k\in \llbracket 0, m-1\rrbracket$ premiers avec $m$.
+\end{defi}
+Par exemple, si $p$ est premier $\varphi(p) = p-1$. La proposition suivante généralise le petit théorème de Fermat.
+\begin{prop}
+ Soit $n\in \Z$ et $m\geq 2$ dans $\N$. Alors $ n\wedge m = 1 \Rightarrow n^{\varphi(m)} \equiv 1 \mod m$.
+\end{prop}
+\begin{demo}
+ On considère le groupe $(U_m,.)$ des racines $m$-ièmes de l'unité et son groupe d'automorphismes $(A,\circ)$.\newline
+ Une application $p$ de $U_n$ dans $U_n$ est un automorphisme si et seulement si $p$ et bijective et
+ \[
+  \forall(u,u') \in \U_n^n,\; p(uu') = p(u)p(u').
+ \]
+On montre que pour chaque $p$ vérifiant cette propriété, il existe un unique $r\in \llbracket 0, n-1\rrbracket$ tel que $p(u) = u^r$ pour tous les $u$ de $U_n$. On note $p_r$ cette application. On vérifie (Bezout) que 
+\[
+ p_r \text{ bijective} \Leftrightarrow r \wedge m = 1.
+\]
+Le fait que $(A,\circ)$ forme un groupe (commutatif) ne pose pas de problème. Son cardinal est $\varphi(m)$, on termine alors avec le théorème de Lagrange dans le cas commutatif.
+\[
+ p_r^{\sharp A} = \Id_{\U_n} \Rightarrow \forall u \in \U_n u^{r^{\varphi(m)}} = u
+ \Rightarrow r^{\varphi(m)} \equiv 0 \mod m.
+\]
+
+\end{demo}
+
+
+
+\end{document}

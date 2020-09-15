@@ -1,0 +1,16 @@
+\begin{picture}(0,0)%
+\includegraphics{C6308_3.pdf}%
+\end{picture}%
+\setlength{\unitlength}{1948sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(7649,6929)(384,-7643)
+\put(721,-3661){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}$\Omega$}}}}
+\put(4276,-1816){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}$m$}}}}
+\put(3781,-3841){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}$O$}}}}
+\end{picture}%

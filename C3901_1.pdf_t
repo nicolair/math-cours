@@ -1,0 +1,21 @@
+\begin{picture}(0,0)%
+\includegraphics{C3901_1.pdf}%
+\end{picture}%
+\setlength{\unitlength}{1657sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(3450,5916)(3316,-6394)
+\put(6706,-1456){\makebox(0,0)[lb]{\smash{{\SetFigFont{8}{9.6}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\max(f(t),g(t))$}%
+}}}}
+\put(6751,-5056){\makebox(0,0)[lb]{\smash{{\SetFigFont{8}{9.6}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\min(f(t),g(t))$}%
+}}}}
+\put(6751,-3256){\makebox(0,0)[lb]{\smash{{\SetFigFont{8}{9.6}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\frac{1}{2}(f(t)+g(t))$}%
+}}}}
+\put(3331,-2356){\makebox(0,0)[lb]{\smash{{\SetFigFont{8}{9.6}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\frac{|f(t)-g(t)|}{2}$}%
+}}}}
+\end{picture}%

@@ -1,0 +1,922 @@
+\input{courspdf.tex}
+\debutcours{Suites de réels}{0.9 \tiny{\today}}
+
+Remarque générale.\newline Quand on débute en analyse, il est conseillé de rédiger sans utiliser la notation $\lim _n x_n$. En effet, l'erreur la plus fréquente est de croire que toutes les suites convergent (ou tendent vers $+$ ou $-$ l'infini) et que le problème est de calculer une limite. Ce n'est pas du tout le cas ; le premier problème est de prouver la convergence. On peut parler de la limite seulement après cette convergence assurée. Utiliser trop tôt $\lim _n x_n$ revient le plus souvent à supposer la convergence. Pour éviter cette erreur, le plus simple est de ne \emph{pas utiliser} la notation $\lim _n x_n$.
+
+\section{Vocabulaire relatif aux suites}
+Une suite est une fonction définie sur une partie infinie de $\N$ notée d'une manière particulière. Dans tout ce chapitre, on désignera par $\mathcal{I}$ une partie infinie de $\N$.\newline
+Présentons dans un tableau les correspondances
+\begin{center}
+\begin{tabular}{l|l|l}
+Notation fonctionnelle & $f$ & $t \in I,\;f(t)$ : image\\ \hline
+Notation séquentielle & $(x_n)_{n \in \mathcal{I}}$ & $k\in \mathcal{I},\; x_k$ : terme
+\end{tabular}
+\end{center}
+
+
+\subsection{Opérations}
+Par analogie avec les ensembles $\R^n$ de $n$-uplets de nombres réels, on note $\R^{\mathcal{I}}$ l'ensemble des suites de nombres réels définies sur une partie infinie $\mathcal{I}$ de $\N$. On définit plusieurs opérations sur $\R^{\mathcal{I}}$ qui en font un $\R$-espace vectoriel\footnote{La définition précise de cette structure sera étudiée plus tard \href{\baseurl C2076.pdf}{\baseurl C2076.pdf}.}.\newline
+Soit $u=(u_n)_{n \in \mathcal{I}}$ et $v=(v_n)_{n \in \mathcal{I}}$ dans $\R^{\mathcal{I}}$ et $\lambda \in \R$, les suites $u+v$, $uv$ et $\lambda u$ sont définies par:
+\begin{displaymath}
+  u+v = (u_n + v_n)_{n \in \mathcal{I}}, \hspace{0.5cm} uv = (u_n  v_n)_{n \in \mathcal{I}}, \hspace{0.5cm} \lambda u = (\lambda u_n)_{n \in \mathcal{I}}
+\end{displaymath}
+On définit aussi $\sup(u,v)$ et $\inf(u,v)$ par 
+\begin{displaymath}
+  \sup(u,v) = (\max(u_n , v_n))_{n \in \mathcal{I}}, \hspace{0.5cm} \inf(u,v) = (\min(u_n , v_n))_{n \in \mathcal{I}}
+\end{displaymath}
+\begin{rem}
+  On ne peut pas noter $\max(u,v)$ car il ne s'agit pas de la plus grande des deux suites mais d'une suite plus grande que les deux. Suivant les valeurs de l'indice $n$, la plus grande valeur est soit $u_n$ soit $v_n$ mais pas toujours la même en général.
+\end{rem}
+On peut aussi introduire la suite $|u| =(\max(|u_n|))_{n \in \mathcal{I}}$ et vérifier les relations
+\begin{displaymath}
+\left\lbrace  
+\begin{aligned}
+  |u-v| &= \sup(u,v) - \inf(u,v) \\
+  u + v &= \sup(u,v) + \inf(u,v)
+\end{aligned}
+\right. \hspace{1cm}
+\left\lbrace 
+\begin{aligned}
+  \sup(u,v) &= \frac{1}{2}\left( (u+v) + |u-v|\right) \\ \inf(u,v) &= \frac{1}{2}\left( (u+v) - |u-v|\right) 
+\end{aligned}
+\right. 
+\end{displaymath}
+Attention ! la suite
+\begin{displaymath}
+ \left( 1+ \dfrac{1}{2}+\dfrac{1}{3}+\cdots+\dfrac{1}{n} \right)_{n\in\N^*}
+\end{displaymath}
+\emph{n'est pas une somme de suites}.
+
+Une suite est dite constante lorsqu'elle ne prend qu'une seule valeur.
+
+\subsection{Inégalités entre suites}
+Relation d'ordre. Pour deux suites $u$ et $v$ définies sur $\mathcal{I}$, on peut convenir que 
+\begin{displaymath}
+  u \leq v \Leftrightarrow \forall k \in \mathcal{I},\; u_k \leq v_k
+\end{displaymath}
+\index{majorant d'une suite} \index{minorant d'une suite} \index{suite majorée} \index{suite minorée}
+\begin{defi}
+  Soit $u=(u_n)_{n \in \mathcal{I}}$ et $x\in \R$.
+\begin{itemize}
+  \item $x$ est un majorant de $u$ si et seulement si $\forall n \in \mathcal{I},\; u_n \leq x$.
+  \item $x$ est un minorant de $u$ si et seulement si $\forall n \in \mathcal{I},\; x \leq u_n$.
+\end{itemize}
+Une suite est majorée si et seulement si elle admet des majorants. Une suite est minorée si et seulement si elle admet des minorants. Une suite est bornée si et seulement si elle est majorée et minorée. 
+\end{defi}
+La propriété suivante est immédiate
+\begin{prop}
+  Soit $u=(u_n)_{n \in \mathcal{I}}$
+\begin{itemize}
+  \item $u$ est majorée si et seulement si $\exists M\in \R \text{ tq } \forall n\in \mathcal{I},\; u_n \leq M$.
+  \item $u$ est minorée si et seulement si $\exists m\in \R \text{ tq } \forall n\in \mathcal{I},\; m \leq u_n$.
+  \item $u$ est bornée si et seulement si $|u|$ est majorée.
+\end{itemize}
+\end{prop}
+
+La propriété suivante traduit la stabilité pour les opérations de l'ensemble des suites bornées.
+\begin{prop}\label{opbornes}
+  Soit $\lambda\in \R$ et $u$, $v$ des suites bornées définies dans $\mathcal{I}$, alors $u+v$, $\lambda u$, $uv$, $\sup(u,v)$, $\inf(u,v)$ sont des suites bornées. 
+\end{prop}
+\begin{demo}
+  Comme $u$ et $v$ sont des suites bornées, il existe des réels $U$ et $V$ tels que $|u_n|\leq U$ et $|v_n|\leq V$ pour tous les $n\in \mathcal{I}$. Le caractère borné des diverses suites considérées vient des inégalités
+\begin{align*}
+  |u_n + v_n|&\leq |u_n| + |v_n| &\leq U + V \\
+  |\lambda u_n|&\leq |\leq |\lambda| |u_n| &\leq \lambda U \\
+  |u_n v_n|&\leq |u_n| |v_n| &\leq UV \\
+  |\max(u_n, v_n)|&\leq \max(|u_n| |v_n|) &\leq \max(U,V) \\
+  |\min(u_n, v_n)|&\leq \max(|u_n| |v_n|) &\leq \max(U,V)
+\end{align*}
+\end{demo}
+
+
+\subsection{Suites monotones}
+\begin{defi}
+Soit $u=(u_n)_{n \in \mathcal{I}}$.
+\begin{align*}
+  u \text{ croissante} &\Leftrightarrow \forall (p,q)\in \mathcal{I}^2, \; p\leq q \Rightarrow u_p \leq u_q \\
+  u \text{ strictement croissante} &\Leftrightarrow \forall (p,q)\in \mathcal{I}^2, \; p < q \Rightarrow u_p v u_q \\
+  u \text{ décroissante} &\Leftrightarrow \forall (p,q)\in \mathcal{I}^2, \; p\leq q \Rightarrow u_q \leq u_p \\
+  u \text{ croissante} &\Leftrightarrow \forall (p,q)\in \mathcal{I}^2, \; p < q \Rightarrow u_q < u_p \\
+\end{align*}
+\end{defi}
+On peut aussi exprimer ces définitions en ne considérant pour $q$ que le \og suivant\fg~ de $p$ c'est à dire le plus petit élément de $\mathcal{I}$ strictement plus grand que $p$. Dans le cas où $\mathcal{I}=\N$, ce suivant est $p+1$. Une suite $u$ définie dans $\N$ est croissante si et seulement si
+\begin{displaymath}
+  \forall k\in \N, \; u_k \leq u_{k+1}
+\end{displaymath}
+
+\subsection{Suites extraites}
+\index{suite extraite} La notion de suite extraite est l'analogue pour les suite de la notion de restriction d'une fonction. 
+\begin{defi}
+Soit $\mathcal{I}$ une partie infinie de $\N$ et $u=(u_n)_{n \in \mathcal{I}}$ une suite définie dans $\mathcal{I}$. Une suite extraite de $u$ est une suite $(u_n)_{n \in \mathcal{J}}$ où $\mathcal{J}$ est une partie infinie de $\mathcal{I}$.   
+\end{defi}
+Toute partie infinie $\mathcal{I}$ de $\N$ est \og bien ordonnée\fg~\footnote{La construction de $\N$ n'étant pas au programme, cette notion ne sera pas précisée. Elle permet de numéroter de manière unique tous les éléments d'une partie de $\N$ en affectant le numéro $0$ au plus petit puis $1$ au suivant et ainsi de suite. On construit ainsi une bijection.}. Cela entraîne qu'il existe une unique bijection strictement croissante de $\N$ dans $\mathcal{I}$, on la note ici $\varphi$. On peut donc toujours supposer que les indices décrivent $\N$.
+\begin{displaymath}
+  u = (u_n)_{n \in \mathcal{J}} = (u_{\varphi(k)})_{k \in \N}
+\end{displaymath}
+Certains cours sont présentés de cette manière, mais je trouve plus commode d'utiliser les parties infinies de $\N$. Les deux présentations sont totalement équivalentes. Dans ce formalisme, une suite extraite de $u$ s'écrit
+\begin{displaymath}
+  (u_{\psi\circ\varphi(k)})_{k \in \N}
+\end{displaymath}
+où $\psi$ est l'unique bijection strictement croissante de $\mathcal{I}$ dans $\mathcal{J}$.\newline
+On dira qu'une propriété des termes d'une suite $u$ est vérifiée \ogà partir d'un certain rang\fg~ si et seulement si il existe un rang $n_0\in \N$ tel que la propriété soit verifiée pour tous les $u_k$ avec $k\geq n_0$. Cela revient à considérer la suite extraite associée à la partie infinie $\llbracket n_0, +\infty\llbracket = \left\lbrace n\in \N \text{ tq } n_0 \leq n\right\rbrace$.
+
+\section{Convergence-Divergences}
+\subsection{Convergence vers 0}
+\begin{defi}\index{convergence d'une suite}
+ On dira qu'une suite de nombres réels $(x_n)_{n\in \mathcal I}$ converge vers $0$ lorsque :
+\begin{displaymath}
+ \forall \varepsilon >0 , \exists N_\varepsilon\in \N \text{ tel que : } \forall n\in \mathcal I,  n \geq N \Rightarrow |x_n| \leq \varepsilon
+\end{displaymath}
+On notera
+\begin{displaymath}
+ (x_n)_{n\in \mathcal I} \rightarrow 0.
+\end{displaymath}
+\end{defi}
+
+\begin{rems}
+\begin{itemize}
+  \item On peut remplacer les inégalités larges (sauf $\varepsilon>0$) par des inégalités strictes.
+  \item Noter l'indice $\varepsilon$ dans la notation du $N_\varepsilon$ pour bien marquer sa dépendance vis à vis du $\varepsilon$ car le \og$\exists$\fg~ vient après le \og$\forall \varepsilon >0$\fg.
+  \item L'existence de ce $N_{\varepsilon}$ caractérise la convergence de la suite vers $0$. Si le contexte contient plusieurs suites, il peut être utile de faire figurer la suite dans le nom choisi pour cet entier. Par exemple pour une suite $x=(x_n)_{n\in \mathcal I}$, on le notera avec un double indice $N_{x, \varepsilon}$. 
+\end{itemize}
+\end{rems}
+
+\begin{exples}
+ \begin{itemize}
+   \item La suite constante de valeur nulle converge vers $0$, une suite stationnaire nulle à partir d'un certain rang converge vers $0$, une suite constante de valeur non nulle ne converge pas vers 0.
+   \item La suite $\left(\frac{1}{n}\right)_{n\in\N^*}$ converge vers $0$. Voir la propriété $\R$ est archimédien \index{archimédien} de \href{\baseurl C2192.pdf}{Axiomatique du corps des réels}.
+\end{itemize}
+\end{exples}
+
+\begin{propn}
+Soit $(x_n)_{n\in \mathcal I}$ une suite de nombres réels :
+\begin{displaymath}
+ (x_n)_{n\in \mathcal I} \rightarrow 0 \Leftrightarrow (|x_n|)_{n\in \mathcal I} \rightarrow 0 .
+\end{displaymath} 
+\end{propn}
+\begin{demo}
+  Immédiat car la condition de convergence porte sur la valeur absolue des termes de la suite.
+\end{demo}
+
+\begin{propn}
+ Soit $x = (x_n)_{n\in \mathcal I}$ et $y = (y_n)_{n\in \mathcal I}$ deux suites de nombres réels égales à partir d'un certain rang. La convergence vers $0$ de l'une est équivalente à la convergence vers $0$ de l'autre.
+\end{propn}
+\begin{demo}
+  Comme les deux suites jouent des rôles symétriques, il suffit de montrer que la convergence de l'une entraîne la convergence de l'autre.\newline
+  Supposons que $(x_n)_{n\in \mathcal I}$ converge vers $0$ et montrons que $(y_n)_{n\in \mathcal I}$ converge vers $0$.\newline
+  Il s'agit de montrer que, pour tout $\varepsilon >0$, il existe un entier $N_{y, \varepsilon}$ caractéristique de la convergence de $y$.\newline
+  D'après les hypothèses, il existe un indice entier $n_0$ à partir duquel les suites $x$ et $y$ ont les mêmes valeurs et il existe un entier $N_{x,\varepsilon}$ caractéristique de la convergence de $x$ vers $0$. Il est alors immédiat que 
+\begin{displaymath}
+\forall k\in \mathcal{I}, \; k\geq \max(n_0, N_{x,\varepsilon}) \Rightarrow |y_k| \leq \varepsilon . 
+\end{displaymath}
+L'existence de cet entier $\max(n_0, N_{x,\varepsilon})$ prouve la convergence.  
+\end{demo}
+
+\begin{propn}\label{convborn0}
+Toute suite de nombres réels qui converge vers 0 est bornée.
+\end{propn}
+\begin{demo}
+  Soit $x = (x_n)_{n\in \mathcal I}$ une suite qui converge vers $0$. Il existe $N_1$ (entier caractéristique de la convergence avec $\varepsilon = 1$) tel que,
+\begin{displaymath}
+  \forall k\in \mathcal{I},\; k\geq N_1 \Rightarrow |x_k| \leq 1 .
+\end{displaymath}
+L'ensemble de nombres réels $\left\lbrace x_k \text{ tq } k\in \mathcal{I} \text{ et } k < N_1 \right\rbrace$ est fini (il contient au plus $N_1$ éléments). Il admet donc un plus grand élément $M$.\newline
+Montrons que $\max(M,1)$ est un majorant de la suite $|x|$. Pour tous les $k\in \mathcal{I}$,
+\begin{displaymath}
+  |x_k|\leq
+\left\lbrace  
+\begin{aligned}
+  &M &\text{ si } k < N_1 \hspace{0.5cm} \text{(définition de $M$)} \\
+  &1 &\text{ si } k \geq N_1 \hspace{0.5cm} \text{(définition de $N_1$)}
+\end{aligned}
+\right. \leq \max(M,1) .
+\end{displaymath}
+\end{demo}
+
+\begin{propn} \label{convextr}
+Toute suite extraite d'une suite de nombres réels qui converge vers $0$ converge vers $0$.
+\end{propn}
+\begin{demo}
+  Soit $x = (x_n)_{n\in \mathcal I}$ une suite qui converge vers $0$ et $(x_n)_{n\in \mathcal J}$ avec $\mathcal{J}$ partie infinie de $\mathcal{I}$ une suite extraite. Pour tout $\varepsilon>0$, soit $N_{\varepsilon}$ l'entier caractéristique de la convergence de $x$. D'après la définition de la convergence, $N_{\varepsilon}$ caractérise aussi la convergence de la suite extraite.
+\begin{displaymath}
+ \forall \varepsilon >0 , \exists N_\varepsilon\in \N \text{ tel que : } \forall n\in \mathcal J,  n \geq N \Rightarrow |x_n| \leq \varepsilon 
+ \hspace{1cm} \text{(car $n\in \mathcal{I}$)}.
+\end{displaymath}
+\end{demo}
+
+\begin{propn}
+Soit $k$ entier fixé  $\left(x_n \right)_{n\in\N}$ une suite définie dans $\N$.  La suite $\left(x_n \right)_{n\in\N}$ converge vers $0$ si et seulement si $\left(x_{n+k} \right)_{n\in\N}$ converge vers $0$.
+\end{propn}
+\begin{demo}
+  La suite $\left(x_{n+k} \right)_{n\in\N} = \left(x_{n} \right)_{n\in\llbracket k, +\infty \llbracket}$ est extraite de $\left(x_{n} \right)_{n\in\N}$. Donc d'après la proposition \ref{convextr}, $\left(x_{n} \right)_{n\in\N}$ converge vers $0$ entraîne $\left(x_{n+k} \right)_{n\in\N}$ converge vers $0$.\newline
+Réciproquement, pour tout $\varepsilon>0$, si $N_\varepsilon$ est un entier caractéristique de la convergence de $\left(x_{n+k} \right)_{n\in\N}$ vers $0$. On peut vérifier que $N_\varepsilon + k$ caractérise la convergence de $\left(x_{n+k} \right)_{n\in\N}$ vers $0$. 
+\end{demo}
+
+\begin{propn} \label{convcompl}
+ Soit $\mathcal I$, $\mathcal J$, $\mathcal J^\prime$ trois parties infinies de $\N$ telles que $\mathcal I = \mathcal J \cup \mathcal J^\prime$ et $(x_n)_{n\in \mathcal I}$ une suite de nombres réels alors :
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ (x_n)_{n\in \mathcal J} &\rightarrow 0 \\
+ (x_n)_{n\in \mathcal J^\prime} &\rightarrow 0
+\end{aligned}
+\right\rbrace 
+\Rightarrow (x_n)_{n\in \mathcal I} \rightarrow 0 .
+\end{displaymath}
+\end{propn}
+\begin{demo}
+  Pour tout $\varepsilon >0$, notons $N_{\mathcal{J}}$ l'entier caractéristique de la convergence de $\left(x_{n} \right)_{n\in\mathcal{J}}$ et $N_{\mathcal{J}'}$ celui caractérisant la convergence de $\left(x_{n} \right)_{n\in\mathcal{J}}$. Considérons
+  \begin{displaymath}
+    N_\varepsilon = \max(N_{\mathcal{J}},N_{\mathcal{J}'}).
+  \end{displaymath}
+On vérifie facilement qu'il caractérise la convergence de $\left(x_{n} \right)_{n\in\mathcal{I}}$.
+\end{demo}
+
+\begin{propn} \label{convfini}
+ Soit $(x_n)_{n\in \mathcal I}$ une suite de nombres réels et $\mathcal J$ une partie de $\mathcal I$ dont le complémentaire dans $\mathcal{I}$ est fini :
+\begin{displaymath}
+ (x_n)_{n\in \mathcal J} \rightarrow 0 \Rightarrow (x_n)_{n\in \mathcal I} \rightarrow 0.
+\end{displaymath}
+\end{propn}
+\begin{demo}
+Soit $n_0$ un majorant du complémentaire (fini) de $\mathcal{J}$ dans $\mathcal{I}$. Pour tout $n\in \mathcal{I}$, si $n > n_0$ alors $n$ n'est pas dans ce complémentaire donc $n\in \mathcal{J}$. Pour tout $\varepsilon >0$. Soit $N_\varepsilon$ l'entier caractéristique de la convergence de $(x_n)_{n\in \mathcal J}$, montrons que $\max(N_\varepsilon , n_0)$ caractérise la convergence vers $0$ de $(x_n)_{n\in \mathcal I}$. En effet, pour tout $n\in \mathcal{I}$, si $n\geq \max(N_\varepsilon , n_0)$ alors
+\begin{align*}
+  n\geq n_0 &\Rightarrow n \in \mathcal{J} \\
+  \left( n\geq N_\varepsilon \text{ et } n \in \mathcal{J}\right)  &\Rightarrow |x_n| \leq \varepsilon.
+\end{align*}
+\end{demo}
+
+\index{question de cours!opérations sur les suites convergentes}
+\begin{propn} \label{convsomm}
+ La somme de deux suites qui convergent vers $0$ est une suite qui converge vers $0$.
+\end{propn}
+\begin{demo}
+  On considère deux suites convergentes $u$ et $v$. Pour tout $\varepsilon>0$, il existe des entiers $N_{u,\frac{\varepsilon}{2}}$ et $N_{v,\frac{\varepsilon}{2}}$ caractérisant respectivement la convergence de $u$ et de $v$.
+  Soit $m_{\varepsilon} = \max(N_{u,\frac{\varepsilon}{2}}, N_{v,\frac{\varepsilon}{2}})$  et vérifions qu'il caractérise la convergence de la suite $u+v$.\newline
+En effet, pour tout $n\geq m_\varepsilon$ dans $\mathcal{I}$,
+\begin{displaymath}
+|u_n + v_n| \leq  
+  \underset{\leq \frac{\varepsilon}{2} \text{ car } n\geq N_{u,\frac{\varepsilon}{2}}}{\underbrace{|u_n|}}
++ \underset{\leq \frac{\varepsilon}{2} \text{ car } n\geq N_{v,\frac{\varepsilon}{2}}}{\underbrace{|v_n|}}  
+\leq \varepsilon .
+\end{displaymath}
+\end{demo}
+
+\begin{propn} \label{convprodborn}
+ Le produit d'une suite bornée et d'une suite qui converge vers $0$ converge vers $0$.
+\end{propn}
+\begin{demo}
+  On considère une suite $u$ qui converge vers $0$ et une suite $v$ bornée. Il existe alors $V>0$ majorant en valeur absolue de $|v|$. . Pour tout $\varepsilon >0$, notons $m_\varepsilon = N_{u,\frac{\varepsilon}{V}}$ avec les notations habituelles des entiers caractérisant la convergence de la suite $|u|$ et vérifions qu'il caractérise la convergence de la suite $uv$.\newline
+En effet, pour tout $n\geq m_\varepsilon$ dans $\mathcal{I}$,
+\begin{displaymath}
+|u_n v_n| \leq |u_n|\,|v_n| \leq \frac{\varepsilon}{v}\, V \leq \varepsilon . 
+\end{displaymath}
+\end{demo}
+
+\begin{rem}
+ On déduit des propositions précédentes que le produit de deux suites qui convergent vers 0 est une suite qui converge vers $0$.
+\end{rem}
+
+\subsection{Convergence}
+\begin{defi}[Convergence vers un réel $l$]
+ Une suite $(x_n)_{n\in \mathcal I}$ converge vers un réel $l$ si et seulement si la suite $(x_n -l )_{n\in \mathcal I}$ converge vers 0. On note 
+\begin{displaymath}
+ (x_n)_{n\in \mathcal I} \rightarrow l .
+\end{displaymath}
+\end{defi}
+
+\begin{rems}
+On peut formuler cette définition de diverses manières équivalentes.
+ \begin{itemize}
+ \item la différence avec la suite constante de valeur $l$ converge vers 0.
+ \item (avec des $\varepsilon$)
+\begin{align*}
+(x_n)_{n\in \mathcal I} \rightarrow l
+&\Leftrightarrow \forall \varepsilon >0, \; \exists N_\varepsilon \in \N \text{ tel que : } \forall n\in \mathcal I, n\geq N_\varepsilon  \Rightarrow |x_n -l| \leq \varepsilon \\
+&\Leftrightarrow \forall \varepsilon >0, \; \exists N_\varepsilon \in \N \text{ tel que : } \forall n\in \mathcal I, n\geq N_\varepsilon  \Rightarrow l-\varepsilon \leq x_n \leq l+\varepsilon \\
+&\Leftrightarrow \forall u < l , \forall v > l, \; \exists N_{u,v}\in \N \text{ tel que : } \forall n\in \mathcal I, n\geq N_{u,v} \Rightarrow u \leq x_n \leq v
+\end{align*}
+\end{itemize}
+\end{rems}
+\begin{exple}
+ La suite $\left(\frac{n+1}{n}\right)_{n\in\N}$ converge vers $1$. En effet elle est égale à 
+\begin{displaymath}
+ \left(1\right)_{n\in\N} + \left(\frac{1}{n}\right)_{n\in\N}
+\end{displaymath}
+\end{exple}
+
+\begin{defi}\index{suite convergente} \index{suite divergente}
+ On dira qu'une suite est convergente lorsqu'il existe un réel vers lequel elle converge. On dira qu'une suite est divergente lorsqu'elle n'est pas convergente.
+\end{defi}
+\index{question de cours!passage à la limite dans une inégalité}\index{passage à la limite dans une inégalité (PLI)}
+\begin{thmn}[Théorème de passage à la limite dans une inégalité]
+ Soit $\left(x_n \right)_{n\in\mathcal I}$ et $\left(y_n \right)_{n\in\mathcal I}$ deux suites de nombres réels qui convergent respectivement vers $x$ et $y$ et telles que :
+\begin{displaymath}
+ \forall n \in \mathcal I : x_n \leq y_n
+\end{displaymath}
+alors $x \leq y$.
+\end{thmn}
+\begin{demo}
+En fait on va montrer que :
+\begin{displaymath}
+\forall \varepsilon > 0 : x-\frac{\varepsilon}{2} \leq y + \frac{\varepsilon}{2}. 
+\end{displaymath}
+ou encore $\forall \varepsilon >0, x - y \leq \varepsilon$. Ceci entraine $x\leq y$ (voir \og raisonnement à la Cauchy\fg \index{raisonnement à la Cauchy} dans \href{\baseurl C2192.pdf}{Axiomatique du corps des réels})\index{raisonnement à la Cauchy} .\newline
+En effet, pour tout $\varepsilon >0$, d'après les convergences respectives, il existe des entiers $N_{x,\frac{\varepsilon}{2}}$ et $N_{y,\frac{\varepsilon}{2}}$ tels que, pour tous les $n\in \mathcal I$:
+\begin{align*}
+ n \geq N_{x,\frac{\varepsilon}{2}} &\Rightarrow x-\frac{\varepsilon}{2} \leq x_n \; \left( \leq x + \frac{\varepsilon}{2}\right) \\
+ n \geq N_{y,\frac{\varepsilon}{2}} &\Rightarrow \left( x- \frac{\varepsilon}{2} \leq \right)\; y_n  \leq y + \frac{\varepsilon}{2}
+\end{align*}
+Comme $\mathcal I$ est infinie, il existe des entiers $n$ dans $\mathcal I$ et tels que $ n \geq \max(N_{x,\frac{\varepsilon}{2}},N_{y,\frac{\varepsilon}{2}})$.\newline
+Pour de tels $n$, on a (en utilisant l'hypothèse d'inégalité entre les valeurs des suites):
+\begin{displaymath}
+ x - \frac{\varepsilon}{2} \leq x_n \leq y_n \leq y + \frac{\varepsilon}{2}.
+\end{displaymath}
+Ce qui démontre la propriété annoncée.
+\end{demo}
+\begin{rem}[unicité de la limite]\index{unicité de la limite}
+ Si $\left(x_n \right)_{n\in\mathcal I}$ est une suite de nombres réels qui converge vers des réels $l$ et $l^\prime$ alors $l=l^\prime$. En effet, il suffit d'utiliser deux fois le théorème de passage à la limite dans une inégalité.
+\end{rem}
+\begin{rem}
+Le théorème de passage à la limite n'assure que des inégalités larges. Exple avec $0 < \frac{1}{n}$.  
+\end{rem}
+
+En analyse, le théorème suivant (avec ses variantes pour les fonctions) est certainement le plus utilisé de tous.
+\index{question de cours!théorème d'encadrement}\index{théorème d'encadrement}
+\begin{thmn}[Théorème d'encadrement]
+Soit $\left(x_n \right)_{n\in\mathcal I}$, $\left(y_n \right)_{n\in\mathcal I}$, $\left(z_n \right)_{n\in\mathcal I}$ trois suites de nombres réels tels que :
+\begin{displaymath}
+ \forall n\in \mathcal I : x_n\leq y_n \leq z_n
+\end{displaymath}
+Alors, la convergence des deux suites $\left(x_n \right)_{n\in\mathcal I}$ et $\left(z_n \right)_{n\in\mathcal I}$ vers le même nombre réel $l$ entraîne la convergence de $\left(y_n \right)_{n\in\mathcal I}$ vers $l$.
+\end{thmn}
+\begin{demo}
+ Le point important est que, avec les notations habituelles, le 
+\begin{displaymath}
+ N = \max(N_{x,\varepsilon },N_{z, \varepsilon})
+\end{displaymath}
+convient (caractérise la convergence) et qu'il faut \og oublier\fg~ des moitiés d'encadrement.\\
+En effet, pour tout $n\in \mathcal I$, si $n\geq N$, on a aussi
+\begin{displaymath}
+\left. 
+\begin{aligned}
+&\begin{aligned}
+ n\geq N_{\varepsilon , x} &\Rightarrow|x_n-l|\geq \varepsilon &\Rightarrow l-\varepsilon \leq x_n \\
+ n\geq N_{\varepsilon , z} &\Rightarrow|z_n-l|\geq \varepsilon &\Rightarrow  z_n \leq l+\varepsilon
+ \end{aligned}\\
+&x_n \leq y_n \leq z_n
+\end{aligned}
+\right\rbrace 
+\Rightarrow
+l-\varepsilon \leq y_n \leq  l+\varepsilon
+\Rightarrow |y-n -l|\leq\varepsilon
+\end{displaymath}
+\end{demo}
+\begin{propn}\label{convabs}
+ Si une suite de nombres réels converge vers $x$, la suite de ses valeurs absolues converge vers $|x|$.
+\end{propn}
+\begin{demo}
+ Soit $\left( x_n\right) _{n\in \N}$ la suite considérée. On peut écrire : $||x_n|-|x||\leq |x_n-x|$ ce qui entraine le résultat avec le théorème d'encadrement.
+\end{demo}
+
+\begin{propn}
+ Soit $(x_n)_{n\in \mathcal I}$ et $(y_n)_{n\in \mathcal I}$ deux suites de nombres réels égales à partir d'un certain rang. La convergence vers un réel $l$ de l'une est équivalente à la convergence vers $l$ de l'autre.
+\end{propn}
+\begin{demo}
+Notons $x$ et $y$ les deux suites, elles jouent des rôles symétriques. Supposons que $(x_n)_{n\in \mathcal I}$ converge vers $l$. On peut alors écrire $y-l$ comme une somme
+\begin{displaymath}
+  y -l = (y-x) + (x-l)
+\end{displaymath}
+La suite $y-x$ est stationnaire nulle donc elle converge vers $0$ et la suite $x-l$ converge vers $0$ par hypothèse. La somme converge donc vers $0$ d'après la proposition \ref{convsomm} ce qui traduit la convergence de $y$ vers $l$.
+\end{demo}
+
+\begin{propn}
+ Toute suite convergente est bornée.
+\end{propn}
+\begin{demo}
+ Car toute suite convergente est la somme d'une suite constante (évidemment bornée) et d'une suite qui converge vers $0$ (donc bornée proposition \ref{convborn0}). Elle est donc bornée d'après la proposition \ref{opbornes}.
+\end{demo}
+
+\begin{propn} \label{minstrictpos}
+ Toute suite qui converge vers un nombre réel strictement positif est, à partir d'un certain rang, minorée par un nombre strictement positif. Toute suite qui converge vers un nombre réel non nul est, à partir d'un certain rang, minorée en valeur absolue par un nombre strictement positif.
+\end{propn}
+\begin{demo}
+Soit $(x_n)_{n\in \mathcal I}$ une suite qui converge vers $x>0$. Pour tout $\varepsilon >0$, il existe $n_{\varepsilon}$ tel que 
+\begin{displaymath}
+  \forall k\in \N, \; k\geq n_{\varepsilon} \Rightarrow x-\varepsilon < x_k < x + \varepsilon
+\end{displaymath}
+Comme $x>0$, on peut considérer $\varepsilon = \frac{x}{2}$. Alors $x-\varepsilon = \frac{x}{2}$ et $k \geq n_{\frac{x}{2}}$ entraine $k_k>\frac{x}{2}$.\newline
+Si la suite converge vers un $x$ non nul, on se ramène au cas précédent en considérant la suite des valeurs absolues qui converge vers $|x|>0$ (prop \ref{convabs}).
+\end{demo}
+
+\begin{propn}
+Toute suite extraite d'une suite de nombres réels qui converge vers un réel $l$ converge vers $l$.
+\end{propn}
+\begin{demo}
+C'est une conséquence de la définition et de la propriété (proposition \ref{convextr}) analogue pour les suites qui convergent vers $0$.  
+\end{demo}
+
+\begin{propn}
+ Soit $\mathcal I$, $\mathcal J$, $\mathcal J^\prime$ trois parties infinies de $\N$ telles que $\mathcal I = \mathcal J \cup \mathcal J^\prime$ et $(x_n)_{n\in \mathcal I}$ une suite de nombres réels et $l$ un nombre réel alors :
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ (x_n)_{n\in \mathcal J} &\rightarrow l \\
+ (x_n)_{n\in \mathcal J^\prime} &\rightarrow l
+\end{aligned}
+\right\rbrace 
+\Rightarrow (x_n)_{n\in \mathcal I} \rightarrow l
+\end{displaymath}
+\end{propn}
+\begin{demo}
+C'est une conséquence de la définition et de la propriété (proposition \ref{convcompl}) analogue pour les suites qui convergent vers $0$.  
+\end{demo}
+
+\begin{exple}
+ La suite définie par :
+\begin{displaymath}
+ \forall n \in \N : u_n =
+\left\lbrace
+\begin{aligned}
+ \dfrac{n+1}{n+3} &\text{ si $n$ est pair}\\
+\dfrac{n+5}{n+1} &\text{ si $n$ est impair}
+\end{aligned}
+\right.  
+\end{displaymath}
+converge vers $1$.
+\end{exple}
+
+\begin{propn}
+ Soit $(x_n)_{n\in \mathcal I}$ une suite de nombres réels, $\mathcal J$ une partie de $\mathcal I$ dont le complémentaire est fini et $l$ un nombre réel :
+\begin{displaymath}
+ (x_n)_{n\in \mathcal J} \rightarrow l \Rightarrow (x_n)_{n\in \mathcal J} \rightarrow l
+\end{displaymath}
+\end{propn}
+\begin{demo}
+C'est une conséquence de la définition et de la propriété (proposition \ref{convfini}) analogue pour les suites qui convergent vers $0$.  
+\end{demo}
+
+\subsection{Opérations sur les suites convergentes}
+Les théorèmes sont formulés avec des suites définies dans $\N$ mais ils pourraient l'être avec des suites définies dans une partie infinie de $\N$ seulement.
+\index{question de cours!opérations sur les suites convergentes}\index{opérations sur les suites convergentes}
+\begin{propn}
+Soit $\left( a_n\right) _{n\in \N}$ et $\left( b_n\right) _{n\in \N}$ deux suites de nombres réels qui convergent respectivement  vers $a$ et $b$. Soit $\lambda\in \R$, alors:
+\begin{align*}
+ &\lambda\left( a_n\right) _{n\in \N}\rightarrow \lambda a, \hspace{0.5cm}\left( a_n +b_n\right) _{n\in \N}\rightarrow a+b
+ , \hspace{0.5cm}\left( a_n b_n\right) _{n\in \N}\rightarrow ab \\
+ & \hspace{0.5cm}\left( \max(a_n,b_n)\right) _{n\in \N}\rightarrow \max(a,b)
+ , \hspace{0.5cm}\left( \min(a_n,b_n)\right) _{n\in \N}\rightarrow \min(a,b)
+\end{align*} 
+\end{propn}
+\begin{demo}
+La propriété relative à la somme est une conséquence de la propriété sur la somme de deux suites qui convergent vers 0 (proposition \ref{convsomm}) .\newline
+La propriété relative au produit vient d'une majoration obtenue en \emph{introduisant un terme croisé}.\index{terme croisé}
+\begin{displaymath}
+ \vert a_nb_n - ab\vert \leq \vert a_n b_n -a_n b + a_n b - ab\vert \leq
+|a_n||b_n - b| + |a_n - a||b|
+\end{displaymath}
+On conclut en utilisant deux fois le résultat sur le produit d'une suite bornée par une suite qui converge vers $0$ (proposition \ref{convprodborn}) puis celui sur la somme (proposition \ref{convsomm}).\newline
+Pour les deux dernières opérations, on se ramène aux opérations précédentes et à la suite des valeurs absolues à l'aide de :
+\begin{align*}
+ \max(a_n,b_n) = \frac{1}{2}(a_n+b_n)+\frac{1}{2}|a_n-b_n|& &
+ \min(a_n,b_n) = \frac{1}{2}(a_n+b_n)-\frac{1}{2}|a_n-b_n|
+\end{align*}
+\end{demo}
+\begin{propn}\index{suite inverse d'une suite convergente}
+Soit $\left( a_n\right) _{n\in \N}$ une suite qui converge vers $l\neq 0$. Il existe alors un entier $N$ tel que $\left( a_n\right) _{n\geq N}$ soit à valeurs non nulles. La suite $\left( \frac{1}{a_n}\right) _{n\geq N}$ converge vers $\frac{1}{l}$.  
+\end{propn}
+\begin{demo}
+  On montre d'abord qu'il existe $N_0$ tel que $\left( a_n\right) _{n\geq N_0}$ soit minorée par $\frac{|l|}{2}$. Il suffit d'utiliser le $N$ fourni par la définition de la convergence avec $\varepsilon = \frac{|l|}{2}$. En effet:
+\begin{displaymath}
+  \left|a_n -l\right| \leq \varepsilon \Rightarrow \left||a_n|-|l|\right| \leq \varepsilon
+  \Rightarrow \underset{=\frac{|l|}{2}}{\underbrace{|l|-\varepsilon}} \leq |a_n| \Rightarrow \frac{1}{|a_n|}\leq \frac{2}{|l|}
+\end{displaymath}
+La preuve repose sur l'inégalité suivante:
+\begin{displaymath}
+  \forall n \geq N_0,\hspace{0.5cm} \left| \frac{1}{a_n} - \frac{1}{l}\right| = \frac{|a_n -l|}{|a_n||l|} \leq \frac{2}{|l|^2}|a_n -l|
+\end{displaymath}
+Pour tout $\varepsilon >0$, la convergence vers $l$ fournit un $N_1$ tel que $|a_n - l|\leq \frac{|l|^2}{2}\varepsilon$ dès que $n\geq N_1$. L'inégalité du dessus justifie que:
+\begin{displaymath}
+\forall n\in \N,\; n \geq \max(N_0, N_1)  
+\Rightarrow 
+\left| \frac{1}{a_n} - \frac{1}{l}\right| = \frac{|a_n -l|}{|a_n||l|} \leq \frac{2}{|l|^2}|a_n -l| \leq \varepsilon
+\end{displaymath}
+\end{demo}
+La proposition précédente est un cas particulier d'un théorème que nous citons ici sans le démontrer car il repose sur la notion de \emph{fonction continue} que nous n'avons pas encore précisée.
+\begin{thm}
+  Soit $I$ un intervalle de $\R$ et $l\in I$. Soit $f$ une fonction définie dans $I$ et continue en $l$. Soit $\left( x_n\right)_{n\in \N}$ une suite à valeurs dans $I$ qui converge vers $l$. Alors la suite $\left( f(x_n)\right)_{n\in \N}$ converge vers $f(x)$.
+\end{thm}
+Pour la proposition précédente, on considère la fonction inverse $t\mapsto \frac{1}{t}$ dans $]0,+\infty[$ ou $]-\infty , 0[$ suivant que $l$ est strictement positif ou négatif. Cette fonction est continue dans tout l'intervalle c'est à dire en tous les points donc en particulier en $l$. 
+
+\subsection{Divergences}
+Rappelons qu'une suite $\left(x_n \right)_{n\in\mathcal I}$ diverge si et seulement si elle ne converge pas vers un nombre réel c'est à dire :
+\[
+ \forall l\in \R, \left( \left(x_n \right)_{n\in\mathcal I} \rightarrow l\right) \text{ faux} 
+\]
+On définit deux modes particuliers de divergence pour des suites qui ne sont pas bornées: la divergence vers $+\infty$ et celle vers $-\infty$. On dit aussi qu'une suite qui diverge vers $+\infty$ admet $+\infty$ comme limite. Idem avec $-\infty$. Attention, il s'agit de modes de divergence très particuliers. Une suite divergente en général n'admet aucine limite (ni finie ni infinie).
+\begin{defi}
+ On dira qu'une suite $\left(x_n \right)_{n\in\mathcal I}$ diverge vers $+\infty$ lorsque:
+\begin{displaymath}
+ \forall E\in \R, \exists N_E \text{ tel que } \forall n \in \mathcal I : n\geq N_E \Rightarrow E < x_n
+\end{displaymath}
+On dira qu'une suite $\left(x_n \right)_{n\in\mathcal I}$ diverge vers $-\infty$ lorsque:
+\begin{displaymath}
+ \forall E\in \R, \exists N_E \text{ tel que } \forall n \in \mathcal I : n\geq N_E \Rightarrow x_n <E
+\end{displaymath}
+\end{defi}
+
+On regroupe la convergence et les divergences vers $+\infty$ ou $-\infty$ sous le vocabulaire \emph{admet une limite} (finie ou infinie). Il s'agit de modes très particuliers de divergence. Si vous considérez une suite quelquonque, elle n'admet pas de limite.\\ 
+Dans les tableaux suivant sont rassemblées de \og bonnes\fg~ hypothèses relativement à des opérations comprenant des suites avec des limites infinies.
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+% use packages: array
+\begin{tabular}{l|l|l}
+Prop de $\left(x_n \right)_{n\in\mathcal I}$ & Prop de $\left(y_n \right)_{n\in\mathcal I}$ & Prop de $\left(x_n+y_n \right)_{n\in\mathcal I}$\\ \hline
+minorée & $\rightarrow+\infty$ & $\rightarrow+\infty$ \\ \hline
+majorée & $\rightarrow-\infty$ & $\rightarrow-\infty$
+\end{tabular}
+\end{center}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+% use packages: array
+\begin{tabular}{l|l|l}
+Prop de $\left(x_n \right)_{n\in\mathcal I}$ & Prop de $\left(y_n \right)_{n\in\mathcal I}$ & Prop de $\left(x_ny_n \right)_{n\in\mathcal I}$\\ \hline
+minorée à partir d'un certain rang par un nombre $>0$. & $\rightarrow+\infty$ & $\rightarrow+\infty$ \\ \hline
+majorée à partir d'un certain rang par un nombre $<0$ & $\rightarrow-\infty$ & $\rightarrow +\infty$\\ \hline
+majorée à partir d'un certain rang par un nombre $<0$ & $\rightarrow+\infty$ & $\rightarrow -\infty$\\ \hline
+minorée à partir d'un certain rang par un nombre $>0$ & $\rightarrow-\infty$ & $\rightarrow -\infty$\\ \hline
+\end{tabular}
+\end{center}
+\begin{demo}
+  Montrons seulement les premières lignes de chaque tableau.\newline
+Supposons $\left(x_n \right)_{n\in\mathcal I}$ minorée, $\left(y_n \right)_{n\in\mathcal I} \rightarrow +\infty$ et montrons que $\left(x_n + y_n \right)_{n\in\mathcal I} \rightarrow +\infty$. Traduisons les hypothèses
+\[
+  \begin{aligned}
+    &\left(\exists X \in \R \text{ tq } \forall n \in \mathcal{I},\, X \leq x_n\right) 
+    & &
+    &\left(\forall E \in \R, \exists N_E \text{ tq } \forall n \in \mathcal{I},\, n \geq N_E \Rightarrow E \leq y_n \right).
+  \end{aligned}
+\]
+Le $N_{X + E}$ permet de démontrer que $\left(y_n \right)_{n\in\mathcal I} \rightarrow +\infty$.
+\[
+  \forall n \in \mathcal{I},\, n \geq N_{E -X} \Rightarrow E \leq x_n + y_n \text{ car } X \leq x_n \text{ et }  E - X \leq y_n .
+\]
+Supposons $\left(x_n \right)_{n\in\mathcal I}$ minorée à partir d'un certain rang $R$ par $X>0$ et traduisons comme au dessus $\left(y_n \right)_{n\in\mathcal I} \rightarrow +\infty$.\newline
+Le $\max(R, N_{\frac{E}{X}})$ permet de montrer que $\left(x_n  y_n \right)_{n\in\mathcal I} \rightarrow +\infty$.\newline
+La démonstration des autres cas constitue un bon exercice d'imitation.
+\end{demo}
+
+\begin{thm}[Variante du théorème d'encadrement]
+  Soit $\left( x_n\right)_{n\in \N}$ et $\left( y_n\right)_{n\in \N}$ deux suites réelles telles que:
+\begin{displaymath}
+\forall n\in \N,\; x_n \leq y_n\text{ alors }:
+\left\lbrace 
+\begin{aligned}
+  \left( x_n\right)_{n\in \N}&\rightarrow + \infty \Rightarrow \left( y_n\right)_{n\in \N}&\rightarrow + \infty \\
+  \left( y_n\right)_{n\in \N}&\rightarrow - \infty \Rightarrow \left( x_n\right)_{n\in \N}&\rightarrow - \infty 
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{thm}
+\begin{demo}
+  Une conséquence immédiate des définitions.
+\end{demo}
+
+\subsection{Méthodes}
+\subsubsection{Pour démontrer qu'une suite converge}
+\begin{itemize}
+ \item Elle est le résultat d'opérations exécutées sur des suites convergentes (éventuellement à partir d'un certain rang).
+ \item Elle coïncide à partir d'un certain rang avec une suite convergente.
+ \item Elle est encadrée par deux suites convergentes de même limite (théorème d'encadrement).
+ \item On peut extraire deux suites (dont les domaines recouvrent celui de la suite donnée) et convergent vers la même limite.
+ \item Elle vérifie la définition de la convergence avec $\forall \varepsilon > 0,\; \exists n_\varepsilon \cdots$. (il est assez rare d'avoir à le faire)
+\end{itemize}
+Si la valeur de la limite n'est pas un objectif, onutilise souvent aussi le caractère croissant majoré ou décroissant minioré qui est l'objet du paragraphe suivant.
+\subsubsection{Pour démontrer qu'une suite diverge}
+\begin{itemize}
+  \item Pour démontrer une divergence vers $+\infty$ ou $-\infty$, majorer ou minorer par une suite dont on connait le comportement (variante du théorème d'encadrement).
+  \item Pour les autres divergences: trouver une conséquence de la convergence qui n'est pas réalisée.
+\end{itemize}
+\begin{exples}
+ La suite $\left((-1)^n \right)_{n\in\N}$ est divergente.\newline
+ En effet, on peut extraire deux suites $\left((-1)^n \right)_{n\in 2\N}$ et $\left((-1)^n \right)_{n\in 2\N+1}$ qui sont constantes de valeurs différentes (respectivement $1$ et $-1$). Elles convergent vers des réels distincts en contradiction avec la conséquence de la proposition précédente.\newline 
+ La suite $((-1)^n n)_{n\in\N}$ est divergente car elle n'est pas bornée.
+\end{exples}
+
+
+\section{Théorèmes d'existence de limites}
+\subsection{Suites monotones} \index{théorème de convergence des suites monotones}
+\begin{thmn}[Théorème de convergence des suites monotones]
+Soit $\mathcal I$ une partie infinie de $\N$ et $\left(x_n \right)_{n\in\mathcal I}$ une suite monotone. Alors :
+\begin{itemize}
+ \item si $\left(x_n \right)_{n\in\mathcal I}$ est croissante et majorée, elle converge vers $\sup \left\lbrace x_n , n\in \mathcal I  \right\rbrace$.
+ \item si $\left(x_n \right)_{n\in\mathcal I}$ est croissante et non majorée, elle diverge vers $+\infty$. 
+ \item si $\left(x_n \right)_{n\in\mathcal I}$ est décroissante et minorée, elle converge vers $\inf \left\lbrace x_n , n\in \mathcal I  \right\rbrace$.
+ \item si $\left(x_n \right)_{n\in\mathcal I}$ est décroissante et non minorée, elle diverge vers $-\infty$. 
+\end{itemize}
+\end{thmn}
+\begin{demo}
+  Ce théorème a été démontré dans la présentation axiomatique de $\R$.
+\end{demo}
+
+\begin{exples}
+ \begin{enumerate}
+ \item Série harmonique : minorée par regroupements de somme de $2^k$ termes. Elle diverge vers $+\infty$.\index{série harmonique}
+ \item Convergence de l'hésitant fatigué (Borel)\index{convergence de l'hésitant fatigué}. On considère une suite $\left( x_n\right)_{n\in \N}$ telle que $x_n = \sum_{k=0}^{n}(-1)^k u_k$ avec $\left( u_n\right)_{n\in \N}$ suite à valeurs positives décroissante vers $0$. La suite $\left( x_n\right)_{n\in \N}$ converge. En effet, on montre que $\left( x_n\right)_{n\in 2\N}$ est décroissante et $\left( x_n\right)_{n\in 2\N+1}$ croissante. de plus,
+ \[
+  \forall (p,q)\in \N^2, \; x_{2p + 1} \leq x_{2q}
+ \]
+Les deux suites extraites convergent et vers la même limite car $x_{2n+1} - x_n = - u_n$ qui converge vers $0$. 
+ \item Majoration par $\frac{1}{k(k-1)}$. La suite croissante 
+ \begin{displaymath}
+   \left( \sum_{k=1}^n\frac{1}{k^2}\right)_{n\in \N}
+ \end{displaymath}
+converge. On démontrera (dans divers problèmes) que sa limite est $\frac{\pi^2}{6}$. 
+ \item Limite supérieure et limite inférieure d'une suite bornée.\index{limite supérieure et inférieure d'une suite bornée}\newline
+ Soit $\left( x_n\right)_{n\in \N}$ une suite bornée de nombres réels. Pour chaque naturel $n$, l'ensemble $\left\lbrace x_k , k\geq n\right\rbrace$ est borné. On note $a_n$ sa borne inférieure et $b_n$ sa borne supérieure. On définit ainsi deux suites $\left( a_n\right)_{n\in \N}$ et $\left( b_n\right)_{n\in \N}$ respectivement croissante et décroissante et vérifiant $a_n \leq b_n$. Ces suites sont convergentes. Si on note $a$ et $b$ les limites, on a $a\leq b$. On dit que $a$ est la limite inférieure et que $b$ est la limite supérieure de la suite $\left( x_n\right)_{n\in \N}$.
+\end{enumerate}
+\end{exples}
+
+\index{théorème des segments emboités}
+\begin{thmn}[Théorème des segments emboités]
+ Soit $(I_n)_{n\in \N}$ une suite de segments emboités. C'est à dire que :
+\[
+ \forall n \in \N : 
+\left. 
+\begin{aligned}
+  \exists(a_n,b_n)\in \R^2 \text{ tels que } I_n& = [a_n,b_n] \\
+  I_{n+1} &\subset I_n
+\end{aligned}
+\right\rbrace \Rightarrow 
+\exists (a,b)\in \R \text{ tq } \bigcap_{n\in \N}I_n = [a,b].
+\]
+\end{thmn}
+\begin{demo}
+ La condition $I_{n+1}\subset I_n$ se traduit par :
+\begin{displaymath}
+ a_{n} \leq a_{n+1} \leq b_{n+1} \leq b_n
+\end{displaymath}
+On en déduit que, pour tous les entiers $n$ et $p$ (en considérant $\max(n,p)$ : $a_n \leq b_q$.\newline
+La suite $(a_n)_{n\in\N}$ est donc croissante et majorée par n'importe quel $b_q$. Elle converge vers la borne supérieure de ses valeurs (notée $a$) avec $a\leq b_q$ pour tous les entiers $q$.\newline
+De même la suite $(b_n)_{n\in\N}$ est décroissante et minorée par n'importe quel $a_q$. Elle converge vers la borne inférieure de ses valeurs (notée $b$) avec $a_q\leq b$ pour tous les entiers $q$.\newline
+Comme $b$ est un majorant de l'ensemble des valeurs de $ (a_n)_{n\in\N}$, on obtient $a\leq b$. Cela conduit à une premiere inclusion :
+\begin{align*}
+ \forall n\in \N &: a_n \leq a \leq b \leq b_n \\
+ [a,b]  &\subset \bigcap_{n\in \N}I_n 
+\end{align*}
+Réciproquement, considérons un $x$ dans l'intersection de tous les $I_n$. Alors, pour tous les entiers $n$ : $a_n\leq x \leq b-n$ donc $x$ est un majorant de l'ensemble des valeurs de $(a_n)_{n\in\N}$ et un minorant de l'ensemble des valeurs de $(b_n)_{n\in\N}$. On en déduit $a\leq x \leq b$ ce qui prouve bien l'inclusion réciproque
+\begin{displaymath}
+ \bigcap_{n\in \N}I_n  \subset [a,b]
+\end{displaymath}
+\end{demo}
+
+\index{suites adjacentes} 
+\begin{defi}[suites adjacentes]
+  On dit que deux suites $(a_n)_{n\in\N}$ et $(b_n)_{n\in\N}$ sont \emph{adjacentes} si et seulement si
+\begin{itemize}
+  \item $(a_n)_{n\in\N}$ croissante et $(b_n)_{n\in\N}$ décroissante.
+  \item pour tout $n\in \N:\; a_n \leq b_n$.
+  \item $(b_n - a_n)_{n\in\N}$ converge vers $0$.
+\end{itemize}
+\end{defi}
+\begin{prop}
+  Soit $(a_n)_{n\in\N}$ et $(b_n)_{n\in\N}$ deux suites de nombres réels. Si $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ décroissante et si $(a_n -b_n)_{n\in\N}$ converge vers $0$ alors les suites sont adjacentes. 
+\end{prop}
+\begin{demo}
+  Il suffit de vérifier que $a_n \leq b_n$. C'est immédiat car $(a_n)_{n\in\N}$ croissante et $(b_n)_{n\in\N}$ décroissante entraine $(b_n - a_n)_{n\in\N}$ décroissante. Or elle converge vers $0$ donc $b_n - a_n \geq 0$.
+\end{demo}
+
+
+\subsection{Suites bornées}
+\index{théorème de Bolzano-Weirstrass}
+\begin{thmn}[Théorème de Bolzano-Weirstrass]
+ De toute suite bornée, on peut extraire une suite convergente.
+\end{thmn}
+On peut formuler ce résultat autrement. Soit $\mathcal I$ une partie infinie de $\N$ et $(x_n)_{n\in\mathcal I}$ une suite \emph{bornée} de réels. Il existe alors une partie infinie $\mathcal J$ de $\mathcal I$ telle que $(x_n)_{n\in\mathcal J}$ converge. Il n'y a aucune sorte d'unicité. Il existe en général plusieurs suites extraites qui convergent et elles convergent en général vers des réels différents.
+\begin{demo}
+  Principe de démonstration par dichotomie. Le détail est explicitement hors du programme de mpsi.\newline
+On construit par récurrence une suite $\left( \mathcal{I}_k\right)_{k\in \N}$ de parties infinies de $\mathcal{I}$ emboîtées les unes dans les autres et des suites adjacentes $\left( a_k \right)_{k \in \N}$ et $\left( a_k \right)_{k \in \N}$ de nombres réels. Pour tous les $k\in \N$ la propriété suivante doit être vraie:
+\[
+ \forall n \in \mathcal{I}_k, \; x_n \in \left[ a_k, b_k\right]. 
+\]
+Pour $k=0$, on prend $\mathcal{I}_0 = \mathcal{I}$. Comme la suite est bornée, il existe $a_0$ et $b_0$ tels que $a_0 \leq x_n \leq b_0$ pour tous les $n\in \mathcal{I}_0$.\newline
+Expliquons le passage de $k$ à $k+1$.\newline
+Soit $c_k$ le milieu de $\left[ a_k , b_k\right]$. Décomposons l'ensemble $\mathcal{I}_k$ des indices en deux sous-ensembles. D'un côté, les indices $n$ pour lesquels $a_k\leq x_n \leq c_k$, de l'autre, ceux pour lesquels $c_k \leq x_n \leq b_k$. Il est possible que certains $n$ soient dans les deux sous ensembles mais ce n'est pas génant. Ce qui est important c'est que \emph{tous} les $n$ sont dans au moins un des deux sous-ensembles. Cela entraine que au moins un des deux sous-ensembles d'indices est infini. On définit $\mathcal{I}_{k+1}$ comme l'un de ces sous-ensembles infinis d'indices. Si c'est le premier, on pose $a_{k+1}=a_k, b_{k+1}=c_k$, si c'est le second, on pose $a_{k+1}=c_k, b_{k+1}=b_k$.\newline
+Avec cette construction, la propriété requise est bien vérifiée et les suites sont adjacentes par construction. La suite extraite s'obtient en considérant les indices 
+\[
+ i_0 = \min \mathcal{I}_0, \; i_1 = \min \mathcal{I}_1 \setminus \left\lbrace i_0\right\rbrace  
+ , \; i_2 = \min \mathcal{I}_2 \setminus \left\lbrace i_0, i_1\right\rbrace ,\; \cdots 
+\]
+\end{demo}
+
+
+\section{Compléments}
+\subsection{Traduction séquentielle de certaines propriétés}
+La proposition suivante est admise et citée ici pour mémoire car elle est souvent utilisée avec des fonctions simples. Elle sera démontrée dans la partie sur les fonctions continues.
+\begin{prop}
+ Soit $f$ une fonction à valeurs réelles définie dans un intervalle $I$ et $a\in I$. La fonction $f$ est continue en $a$ si et seulement si : pour toute suite $\left( a_n \right)_{n \in \N}$ d'éléments de $I$ qui converge vers $a$ la suite $\left( f(a_n) \right)_{n \in \N}$ converge vers $f(a)$.
+\end{prop}
+La proposition suivante est une conséquence de la précédente.
+\begin{prop}
+ Soit $f$ une fonction continue dans un intervalle $I$ et $\left( u_n \right)_{n \in \N}$ une suite d'éléments de $I$ qui converge vers $a\in I$ en vérifiant 
+\[
+ \forall n \in \N, \; u_{n+1} = f(u_n).
+\]
+Alors $a$ est un \emph{point fixe} de $f$ c'est à dire $f(a) = a$. 
+\end{prop}
+\begin{demo}
+ D'après la proposition précédente, la suite $\left( u_n \right)_{n \in \N}$ converge vers $f(a)$. Or comme $u_{n+1} = f(u_n)$, c'est aussi la suite extraite $\left( a_n \right)_{n \in \N^*}$. Elle converge donc aussi vers $a$. Par unicité de la limite : $f(a)=a$.
+\end{demo}
+On rappelle qu'une partie $A$ de $\R$ est dite \emph{dense} dans $\R$ si et seulement si, pour tout intervalle $I$, l'intersection $A\cap I$ est non vide. 
+\index{caractérisation séquentielle de la densité}\index{partie dense}
+\begin{propn}
+  Une partie $A$ de $\R$ est dense dans $\R$ si et seulement si tout réel est la limite d'une suite convergente d'éléments de $A$. 
+\end{propn}
+\begin{demo}
+Supposons que $A$ est dense. Pour tout $x\in \R$ et $n\in \N^*$,
+\[
+ \left[ x-\frac{1}{n} , x + \frac{1}{n}\right] \cap A \neq \emptyset \Rightarrow \exists a_n \in A \text{ tq } x-\frac{1}{n} \leq a_n \leq x + \frac{1}{n}.
+\]
+D'après le théorème d'encadrement, la suite $\left( a_n \right)_{n \in \N}$ converge vers $x$.\newline
+Réciproquement, supposons que tout réel est la limite d'une suite d'éléments de $A$. Considérons un intervalle ouvert $I$ non réduit à un point mais quelconque. Soit $x \in I$. Il existe alors un $\alpha >0$ tel que $\left] x - \alpha , x + \alpha \right[ \subset I$. Par hypothèse, il existe une suite $\left( a_n \right)_{n \in \N}$ d'éléments de $A$ qui converge vers $x$. Par définition de la convergence, il existe un $N$ à partir duquel les $a_n$ sont $\alpha$-proches de $x$ donc dans $I$ ce qui prouve $A\cap I \neq \emptyset$.  
+\end{demo}
+Exemple avec les nombres décimaux et les approximations par excès ou par défaut d'un réel.
+\begin{propn}
+  Soit $X$ une partie non vide de $\R$. Si $X$ est majorée, il existe une suite $\left( x_n\right)_{n\in \N}$ d'éléments de $X$ qui converge vers $\sup X$.\newline Si $X$ n'est pas majorée, il existe une suite $\left( x_n\right)_{n\in \N}$ d'éléments de $X$ qui diverge vers $+\infty$.
+\end{propn}
+\begin{demo}
+Supposons $X$ majorée et notons $s = \sup X$.\newline
+Pour tout $n\in \N^*$, le réel $s-\frac{1}{n}$ \emph{n'est pas un majorant} de $X$. En effet $s$ est le plus petit des majorants de $X$ et $s$ n'est pas inférieur ou égal à $s-\frac{1}{n}$. On en déduit 
+\[
+ \exists a_n \in A \text{ tq } s - \frac{1}{n} < a_n \leq s. 
+\]
+On en déduit que $\left( a_n \right)_{n \in \N^*}$ converge vers $s$ par le théorème d'encadrement.
+\end{demo}
+
+\subsection{Suites complexes}
+Dans toute cette section, le symbole $\mathcal I$ désigne une partie infinie de $\N$.
+\begin{defi}
+ On dira qu'une partie $\Omega$ de $\C$ est bornée si et seulement si il existe un réel $R>0$ tel que 
+\begin{displaymath}
+ \forall z\in \Omega : |z|\leq R
+\end{displaymath}
+Une suite à valeurs complexes est dite bornée lorsque l'ensemble de ses valeurs est une partie bornée de $\C$.
+\end{defi}
+\begin{rems}
+\begin{enumerate}
+ \item Une partie de $\C$ est bornée lorsqu'elle est contenue dans un certain disque centré à l'origine.
+\item Une suite à valeurs complexes $(z_n)_{n\in \mathcal I}$ est bornée si et seulement si il existe un réel $R$ tel que :
+\begin{displaymath}
+ \forall n\in \mathcal I : |z_n|\leq R
+\end{displaymath}
+\end{enumerate}
+\end{rems}
+
+\begin{defi}
+ Une suite à valeurs complexes $(z_n)_{n\in \mathcal I}$ converge vers un nombre complexe $z$ si et seulement si la suite réelle $(|z_n-z|)_{n\in \mathcal I}$ converge vers $0$. On notera 
+\begin{displaymath}
+ (z_n)_{n\in \mathcal I} \rightarrow z 
+\end{displaymath}
+\end{defi}
+
+\begin{prop}
+\begin{displaymath}
+ (z_n)_{n\in \mathcal I} \rightarrow z \Rightarrow (|z_n|)_{n\in \mathcal I} \rightarrow |z|
+\end{displaymath}
+Toute suite convergente à valeurs complexes est bornée.
+\end{prop}
+
+\begin{prop}
+ Soit $(z_n)_{n\in \mathcal I}$ et $(z'_n)_{n\in \mathcal I}$ deux suites à valeurs complexes qui convergent respectivement vers $z$ et $z'$. Soit $\lambda\in \C$  Alors :
+\begin{align*}
+ (\overline{z_n})_{n\in \mathcal I}\rightarrow \overline{z} & &
+(z_n+z'_n)_{n\in \mathcal I} \rightarrow z+z'  & &
+\lambda(z_n)_{n\in \mathcal I} \rightarrow \lambda z & &
+(z_nz'_n)_{n\in \mathcal I} \rightarrow zz'
+\end{align*}
+\end{prop}
+\begin{demo}
+ Les résultats se déduisent des propriétés des suites réelles et des relations :
+\begin{align*}
+ |\overline{z_n} - \overline{z}| &= |z_n -z | \\
+|\lambda z_n -\lambda z | &=|z||z_n -z |\\
+|(z_n+z'_n)-(z+z')| &\leq |z_n -z | + |z'_n -z '|\\
+|(z_nz'_n)-(zz')| &\leq |z'_n||z_n -z | + |z||z'_n -z '|
+\end{align*}
+\end{demo}
+\begin{prop}
+Soit $(z_n)_{n\in \N}$ une suite de nombres complexes qui converge vers $z\neq 0$. Il existe alors un entier $N_0$ tel que $z_n \neq 0$ pour $n\geq N_0$ et $(\frac{1}{z_n})_{n\geq N_0}$ converge vers $\frac{1}{z}$.
+\end{prop}
+
+\begin{prop}
+ La suite à valeurs complexes $(z_n)_{n\in \mathcal I}$ converge vers $z$ si et seulement si :
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ (\Re(z_n))_{n\in \mathcal I} &\rightarrow \Re z \\
+(\Im(z_n))_{n\in \mathcal I} &\rightarrow \Im z
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Si on suppose la convergence de la suite complexe, on utilise la convergence de la suite conjuguée puis les opérations pour obtenir les convergence des suites de parties réelles et imaginaires. 
+\begin{align*}
+ (\Re(z_n))_{n\in \mathcal I} &= \dfrac{1}{2}(z_n)_{n\in \mathcal I} + \dfrac{1}{2}(\overline{z_n})_{n\in \mathcal I}\\
+(\Im(z_n))_{n\in \mathcal I} &= \dfrac{1}{2i}(z_n)_{n\in \mathcal I} - \dfrac{1}{2i}(\overline{z_n})_{n\in \mathcal I}
+\end{align*}
+Dans l'autre sens, si on suppose les convergences des suites de parties réelles et imaginaires, on obtient la suite complexe par combinaison :
+\begin{displaymath}
+ (z_n)_{n\in \mathcal I} = (\Re(z_n))_{n\in \mathcal I} + i(\Im z_n)_{n\in \mathcal I}
+\end{displaymath}
+\end{demo}
+\index{théorème de Bolzano Weirstrass pour les suites complexes}
+\begin{thm}[Théorème de Bolzano-Weirstass pour les suites complexes]
+ De toute suite bornée à valeur complexe, on peut extraire une suite convergente.
+\end{thm}
+\begin{demo}
+ Soit $(z_n)_{n\in \mathcal I}$ une suite bornée à valeurs complexes. Comme, pour tous les $n$, $|\Re z_n |\leq |z_n|$ et $|\Re z_n |\leq |z_n|$, les suites de parties réelles et imaginaires sont des suites \emph{bornées de nombres réels}.\newline
+Appliquons le théorème de Bolzano-Weirstrass à la suite des parties réelles. Il existe donc une partie infinie $\mathcal J_1$ de $\mathcal I$ telle que  $(\Re(z_n))_{n\in \mathcal J_1}$ converge.\newline
+La suite $(\Im(z_n))_{n\in \mathcal J_1}$ est encore une suite bornée de nombre réel. On peut appliquer une deuxième fois le théorème de Bolzano-Weirstrass. Il existe une partie infinie $\mathcal J_2$ de $\mathcal J_1$ telle que  $(\Im(z_n))_{n\in \mathcal J_2}$ converge.\newline
+La suite $(\Re(z_n))_{n\in \mathcal J_2}$ est convergente car elle est extraite de $(\Re(z_n))_{n\in \mathcal J_1}$. Ainsi les deux suites $(\Re(z_n))_{n\in \mathcal J_2}$ et $(\Im(z_n))_{n\in \mathcal J_2}$ convergent ce qui assure la convergence de $(z_n)_{n\in \mathcal J_2}$.
+\end{demo}
+Le théorème de Bolzano-Weirstrass pour les suites complexes joue un rôle capital dans la \href{\baseurl C5213.pdf}{démonstration du théorème de d'Alembert}. 
+
+\subsection{Suites particulières}
+Pour certaines suites définies par récurrence, on sait exprimer un terme d'indice $n$ arbitraire.
+\subsubsection{Suites arithmétiques}
+$\left( u_n\right)_{n\in \N}$ arithmétique de raison $a$ si et seulement si $u_{n+1} = u_n +a$ pour tous les $n$. 
+\begin{displaymath}
+  p \leq n \Rightarrow u_n = (n-p)a + u_p
+\end{displaymath}
+\subsubsection{Suites géométriques}
+$\left( u_n\right)_{n\in \N}$ géométrique de raison $a$ si et seulement si $u_{n+1} = au_n$ pour tous les $n$. 
+\begin{displaymath}
+  p \leq n \Rightarrow u_n = a^{n-p}u_p
+\end{displaymath}
+
+\subsubsection{Suites arithmético-géométriques}
+Une suite $\left( u_n\right)_{n\in \N}$ est dite \emph{arithmético-géométrique} si et seulement si il existe $a$ et $b$ tels que $u_{n+1} = au_n +b$ pour tous les $n$.\newline
+Pour trouver une expression du terme général d'une telle suite, on se ramène une suite géométrique en soustrayant la relation caractérisant le point fixe $c$
+\begin{displaymath}
+\left. 
+\begin{aligned}
+u_{n+1} &=& au_n + b\\ c &=& ac +b  
+\end{aligned}
+\right\rbrace 
+\Rightarrow u_{n+1}-c = u_n -c \Rightarrow u_n = a^{n}(u_0-c) +c
+\end{displaymath}
+
+\subsubsection{Suites vérifiant une relation de récurrence linéaire homogène d'ordre 2}
+Il s'agit des suites $\left( x_n\right)_{n\in \N}$ pour lesquelles il existe $a$, $b$, $c$ dans $\K$ (égal à $\R$ ou $\C$) tels que, pour tous les $n$,
+\begin{displaymath}
+  x_{n+2} = ax_{n+1} + bx_n
+\end{displaymath}
+Il existe alors deux suites particulières $\left( u_n\right)_{n\in \N}$ et $\left( v_n\right)_{n\in \N}$ telles que, si $\left( x_n\right)_{n\in \N}$ vérifie la relation de récurrence, il existe $\lambda$ et $\mu$ tels que
+\begin{displaymath}
+  \left( x_n\right)_{n\in \N} = \lambda \left( u_n\right)_{n\in \N} + \mu \left( v_n\right)_{n\in \N}
+\end{displaymath}
+Cette base de suites est donnée par le tableau suivant
+\begin{center}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|l|l|l|}
+\hline
+Racines éq. carac.            & $\left( u_n\right)_{n\in \N}$ & $\left( v_n\right)_{n\in \N}$\\ \hline
+$u \neq v$                    & $\left( u^n\right)_{n\in \N}$ & $\left( v^n\right)_{n\in \N}$\\ \hline
+$u$ racine double             & $\left( u^n\right)_{n\in \N}$ & $\left( nu^n\right)_{n\in \N}$\\ \hline
+cas réel et rac. conj. non réelles $\rho e^{\pm i\theta}$ & $\left( \rho^n\cos n\theta\right)_{n\in \N}$ & $\left( \rho^n\sin n\theta\right)_{n\in \N}$ \\ \hline
+\end{tabular}
+\end{center}
+\begin{rem}
+  Ce qui prouve que toute solution est une telle combinaison linéaire c'est qu'il est possible (sytème de Cramer) de résoudre le système assurant l'égalité pour les deux valeurs initiales. Comme les deux suites vérifient la \emph{même} relation de récurrence, l'égalité se propage et les deux suites sont égales.
+\end{rem}
+
+Bien que le programme ne le demande pas, on peut traiter aussi des relations de récurrence \emph{avec un second membre} (non homogène) par une méthode analogue à celle des équations différentielles.\newline
+Soir $a$, $b\neq 0$ des nombres réels ou complexes et $\left( h_n\right)_{n\in \N}$ une suite donnée. On considère les suites $\left( x_n\right)_{n\in \N}$ vérifiant:
+\begin{displaymath}
+  \forall n \in \N,\hspace{1cm} x_{n+2} + ax_{n+1} + bx_n = h_n \hspace{2cm} (\mathcal{R})
+\end{displaymath}
+Lorsque $\left( h_n\right)_{n\in \N}$ est l'analogue du polynôme-exponentiel des équations différentielles c'est à dire qu'il existe un polynôme $P$ et un nombre $\lambda$ tels que
+\begin{displaymath}
+  \forall n\in \N,\hspace{1cm} h_n = P(n) \lambda^n
+\end{displaymath}
+On peut trouver une solution particulière $\left( u_n\right)_{n\in \N}$ de $\mathcal{R}$ sous la forme
+\begin{displaymath}
+  \forall n\in \N,\hspace{1cm} u_n = Q(n) \lambda^n
+\end{displaymath}
+avec $Q$ de même degré que $P$ si $\lambda$ n'est pas racine de l'équation caractéristique $z^2+az+b=0$. Si $\lambda$ est racine simple il faut $nQ(n)$ et $n^2Q(n)$ si $\lambda$ est racine double. On trouve cette solution particulière en formant un système d'équations linéaires. L'ensemble des solutions de $(\mathcal{R})$ est obtenu en ajoutant l'ensemble des solutions de l'équation homogène à cette solution particulière.
+
+\subsubsection{Exemples de suites vérifiant une relation de récurrence non linéaire}
+Il s'agit de suites vérifiant une relation $u_{n+1} = f(u_n)$. Des exemples seront donnés plus tard \href{\baseurl C4792.pdf}{Suites définies par récurrence} après les résultats sur les fonctions dérivables. Le seul point à retenir ici est
+\begin{displaymath}
+\left. 
+\begin{aligned}
+  f \text{ continue en }x\\
+  \left( x_n\right)_{n\in \N}\rightarrow x \\
+  x_{n+1} = f(x_n)
+\end{aligned}
+\right\rbrace 
+\Rightarrow f(x) = x
+\end{displaymath}
+
+\end{document}

@@ -1,0 +1,89 @@
+\subsection{Analyse asymptotique}
+\begin{itshape}
+ L’objectif de ce chapitre est de familiariser les étudiants avec les techniques asymptotiques de base, dans les cadres discret
+et continu. Les suites et les fonctions y sont à valeurs réelles ou complexes, le cas réel jouant un rôle prépondérant.\newline
+On donne la priorité à la pratique d’exercices plutôt qu’à la vérification de propriétés élémentaires relatives aux relations
+de comparaison.\newline
+Les étudiants doivent connaître les développements limités usuels et savoir rapidement mener à bien des calculs asymptotiques simples. En revanche, les situations dont la gestion manuelle ne relèverait que de la technicité seront traitées à
+l’aide d’outils logiciels.
+\end{itshape}
+
+\subsubsubsection{a) Relations de comparaison: cas des suites}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Relations de domination, de négligeabilité, d'équivalence.}
+  \colchunk{Notations $u_n=O(v_n)$, $u_n=o(v_n)$, $u_n\sim v_n$.\newline
+  On définit ces relations à partir du quotient $\frac{u_n}{v_n}$ sous l'hypothèse que la suite $(v_n)_{n\in\N}$ ne s'annule pas à partir d'un certain rang.\newline
+  Traduction à l'aide du symbole $o$ des croissances comparées des suites de termes généraux $\ln^\beta(n)$, $n^\alpha$, $e^{\gamma n}$.}
+  \colplacechunks
+  
+  \colchunk{Liens entre les relations de comparaison.}
+  \colchunk{\'Equivalence des relations $u_n\sim v_n$ et $u_n-v_n = o(v_n)$.}
+  \colplacechunks
+
+  \colchunk{Opérations sur les équivalents: produit, quotient, puissances.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Propriétés conservées par équivalence: signe, limite.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+
+\subsubsubsection{b) Relations de comparaison: cas des fonctions}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Adaptation aux fonctions des définitions et résultats précédents.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+
+\subsubsubsection{c) Développements limités}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Développement limité, unicité des coefficients, troncature.}
+  \colchunk{Développement limité en $0$ d'une fonction paire, impaire.}
+  \colplacechunks
+  
+  \colchunk{Forme normalisée d'un développement limité:
+  \begin{displaymath}
+   f(a+h) \underset{h \rightarrow a}{=} h^p\left(a_0+a_1h+\cdots+a_nh^n+o(h^n) \right)
+  \end{displaymath}
+  avec $a_0\neq 0$.}
+  \colchunk{\'Equivalence $f(a+h)\underset{h\rightarrow 0}{\sim} a_0h^p$; signe de $f$ au voisinage de $a$.}
+  \colplacechunks
+
+  \colchunk{Opérations sur les développements limités: combinaison linéaire, produit, quotient.}
+  \colchunk{Utilisation de la forme normalisée pour prévoir l'ordre d'un développement.\newline
+  Les étudiants doivent savoir déterminer sur des exemples simples le développement limité d'une composée, mais aucun résultat général n'est exigible.\newline
+  La division suivant les puissances croissantes est hors programme.}
+  \colplacechunks
+
+  \colchunk{Primitivation d'un développement limité.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Formule de Taylor-Young: développement limité à l'ordre $n$ en un point d'une fonction de classe $\mathcal{C}^n$.}
+  \colchunk{La formule de Taylor-Young peut être admise à ce stade et justifiée dans le chapitre \og Intégration\fg.}
+  \colplacechunks
+
+  \colchunk{Développement limité à tout ordre en $0$ de $\exp$, $\sin$, $\cos$, $\sh$, $\ch$, $x\mapsto \ln(1+x)$, $x\mapsto (1+x)^\alpha$, $\arctan$ et de $\tan$ à l'ordre $3$.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Utilisation des développements limités pour préciser l'allure d'une courbe au voisinage d'un point.}
+  \colchunk{Condition nécessaire, condition suffisante à l'ordre $2$ pour un extrémum local.}
+  \colplacechunks
+\end{parcolumns}
+
+
+\subsubsubsection{d) Exemples de développements asymptotiques}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{}
+  \colchunk{La notion de développement asymptotique est présentée sur des exemples simples. \newline
+  La notion d'échelle de comparaison est hors programme.}
+  \colplacechunks
+  
+  \colchunk{Formule de Stirling.}
+  \colchunk{La démonstration n'est pas exigible.}
+  \colplacechunks
+\end{parcolumns}

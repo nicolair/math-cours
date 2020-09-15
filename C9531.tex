@@ -1,0 +1,197 @@
+\input{courspdf.tex}
+\debutcours{Inégalité de Chebychev}{alpha}
+\section{Présentation - linéarité}
+La forme discrète de l'inégalité de Chebychev porte sur des suites croissantes de nombres réels et fournit un encadrement du produit des valeurs moyennes.
+\begin{displaymath}
+\left.
+\begin{aligned}
+  &a_1\leq a_2\leq \cdots \leq a_p\\ &b_1\leq b_2\leq \cdots \leq b_p 
+\end{aligned}
+\right\rbrace 
+\Rightarrow
+\frac{1}{p}\sum_{k=1}^p a_kb_{n-k+1}
+\leq \left(\frac{1}{p}\sum_{k=1}^p a_k \right) \left(\frac{1}{p}\sum_{k=1}^p b_k \right)
+\leq \frac{1}{p}\sum_{k=1}^p a_kb_k 
+\end{displaymath}
+La forme continue porte sur des fonctions $f$ et $g$ continues et croissantes sur un segment $[a,b]$:
+\begin{displaymath}
+\frac{1}{b-a}\int_{a}^b f(t)g(b-t)\, dt
+\leq \left(\frac{1}{b-a}\int_{a}^b f(t)\, dt \right) \left(\frac{1}{b-a}\int_{a}^b g(t)\, dt \right)
+\leq \frac{1}{b-a}\int_{a}^b f(t)g(t)\, dt 
+\end{displaymath}
+Ces formules seront démontrées en deux temps. On prouve d'abord dans cette section que l'inégalité à droite dans un cas particulier entraîne l'encadrement dans le cas général.\newline
+Admettons ici que
+\begin{equation}
+\left.
+\begin{aligned}
+  &a_1\leq a_2\leq \cdots \leq a_p\\ &b_1\leq b_2\leq \cdots \leq b_p \\ &\sum_{k=1}^p a_k = 0
+\end{aligned}
+\right\rbrace 
+\Rightarrow
+0 \leq \frac{1}{p}\sum_{k=1}^p a_kb_k
+\label{cheb1}
+\end{equation}
+Dans le cas où la somme des $a_k$ n'est pas nulle, on peut noter $\overline{a}$ la valeur moyenne, définir $a'_k$ par $a'_k = a_k -\overline{a}$ et appliquer la proposition \ref{cheb1} aux familles (toujours croissantes) des $a'_k$ et $b_k$. On en déduit par linéarité 
+\begin{equation}
+\left.
+\begin{aligned}
+  &a_1\leq a_2\leq \cdots \leq a_p\\ &b_1\leq b_2\leq \cdots \leq b_p
+\end{aligned}
+\right\rbrace 
+\Rightarrow
+\left(\frac{1}{p}\sum_{k=1}^p a_k \right) \left(\frac{1}{p}\sum_{k=1}^p b_k \right)
+\leq \frac{1}{p}\sum_{k=1}^p a_kb_k
+\label{cheb2}
+\end{equation}
+Pour obtenir la partie gauche de l'inégalité, considérons les familles $(a_1,\cdots,a_p)$ et $(-b_p, -b_{p-1}, \cdots, -b_1)$. Elles sont croissantes. On peut leur appliquer la proposition \ref{cheb2}. On en tire l'inégalité cherchée par linéarité.\newline
+Les raisonnements sont identiques dans le cas continu.\newline
+La preuve de l'inégalité de droite repose sur des identités remarquables. On peut aussi la montrer par récurrence dans le cas discret.
+\begin{prop}
+Soit $(a_1,\cdots,a_p)\in \R^p$ et $(b_1,\cdots,b_p)\in \R^p$:
+\begin{displaymath}
+\frac{1}{p}\sum_{k=1}^p a_kb_k = \left(\frac{1}{p}\sum_{k=1}^p a_k \right) \left(\frac{1}{p}\sum_{k=1}^p b_k \right)
++ \frac{1}{2p^2}\sum_{(i,j)\in \{1,\cdots,p^2\}}^p (a_i-a_j)(b_i-b_j)
+\end{displaymath}
+Soit $f$ et $g$ dans $\mathcal{C}[a,b]$:
+\begin{multline*}
+  \frac{1}{b-a}\int_a^bf(t)g(t)\,dt =
+\left(\frac{1}{b-a}\int_a^bf(t)\,dt \right) \left(\frac{1}{b-a}\int_a^bg(t)\,dt \right)\\
++ \frac{1}{2(b-a)^2}\int_a^b \int_a^b(f(x)-f(y))(g(x)-g(y))\,dx\,dy
+\end{multline*}
+\end{prop}
+\begin{demo}
+  Ne pas se laisser impressionner et développer la somme ou l'intégrale double par linéarité. On aboutit à la relation facilement.
+\end{demo}
+On obtient l'inégalité dans le cas croissant en découpant en deux morceaux. Par exemple, pour le cas continu avec des fonctions $f$ et $g$ croissantes:
+\begin{multline*}
+\int_a^b \int_a^b(f(x)-f(y))(g(x)-g(y))\,dx\,dy
+= \int_a^b \left( \int_a^b(f(x)-f(y))(g(x)-g(y))\,dx\right) \,dy \\
+= \int_a^b \left( 
+\int_a^y\underset{\leq 0}{(f(x)-f(y))}\underset{\leq 0}{(g(x)-g(y))}\,dx 
++ \int_y^b\underset{\geq 0}{(f(x)-f(y))}\underset{\geq 0}{(g(x)-g(y))}\,dx
+\right) \,dy \geq 0
+\end{multline*}
+Le raisonnement est analogue dans le cas discret. On peut remarquer que, dans les cas considérés, l'inégalité est stricte sauf si une des deux familles/ fonctions est constante.
+
+\section{Applications}
+\subsection{Inégalité de Nesbitt}
+Soit $a$, $b$, $c$ des réels tels que $a+b$, $b+c$, $c+a$ strictement positifs. Alors
+\begin{displaymath}
+  \frac{a}{b+c} + \frac{b}{c+a} + \frac{c}{a+b} \geq \frac{3}{2}
+\end{displaymath}
+Comme la relation est inchangée par permutation des lettres, on peut supposer $a\leq b \leq c$ ce qui entraîne $a+b\leq a+c \leq b+c$ et appliquer l'inégalité de Chebychev à
+\begin{displaymath}
+ \frac{a}{b+c} + \frac{b}{c+a} + \frac{c}{a+b} + 3 = (a+b+c)(\frac{1}{b+c} + \frac{1}{c+a} + \frac{1}{a+b})  
+ \leq 3\left(\frac{a}{b+c} + \frac{b}{c+a} + \frac{c}{a+b} \right) 
+\end{displaymath}
+\subsection{Avec des dominos}
+Soit $a_1\geq a_2 \geq \cdots \geq a_p >0$, alors
+\begin{displaymath}
+  \sum_{k=1}^p\frac{a_k}{(2k-1)(2k+1)}\geq \frac{1}{2p}\sum_{k=1}^p a_k
+\end{displaymath}
+\subsection{Une inégalité trigonométrique}
+Soit $a$, $b$, $c$ tels que $0< a < b < c <\frac{\pi}{2}$. Alors
+\begin{displaymath}
+  \frac{\sin a + \sin b + \sin c}{(\tan b + \tan c)\cos a + (\tan c + \tan a)\cos b + (\tan a + \tan b)\cos c} \leq \frac{1}{2}
+\end{displaymath}
+
+\section{Autres inégalités}
+Pour terminer citons deux autres inégalités classiques qui se placent dans le même contexte.
+\subsection{Inégalité de Cauchy-Scharz}
+Cette fois c'est la somme des produits qui est encadrée.
+Soit $a_1, a_2, \cdots , a_p$ et $b_1, b_2, \cdots , b_p$ deux familles quelconques de nombres réels. 
+\begin{displaymath}
+\left|\sum_{k=1}^p a_k b_k\right| \leq \sqrt{\sum_{k=1}^p a_k^2}\sqrt{\sum_{k=1}^p b_k^2}  
+\end{displaymath}
+La démonstration repose sur la fonction du second degré
+\begin{displaymath}
+  t \mapsto \left(\sum_{k=1}^p(a_k + tb_k)^2 \right) 
+\end{displaymath}
+qui ne prend que des valeurs positives. L'inégalité revient à la négativité du discriminant.
+
+\subsection{Inégalité de réordonnement}
+Soit $a_1\leq a_2\leq \cdots \leq a_p$ et $b_1\leq b_2\leq \cdots \leq b_p$ deux familles croissantes de nombres réels. Soit $\sigma$ une permutation des entiers de $1$ à $p$:
+\begin{displaymath}
+\sum_{k=1}^p a_k b_{p-k+1} \leq \sum_{k=1}^p a_k b_{\sigma(k)} \leq \sum_{k=1}^p a_k b_k  
+\end{displaymath}
+L'inégalité de droite se prouve par récurrence sur $p$. L'inégalité de gauche se déduit de la première par linéarité.\newline
+On peut déduire l'inégalité de Chebychev de celle du réordonnement.\newline
+Dans les conditions indiquées, on peut écrire $p$ inégalités en permutant circulairement les $b_i$ de gauche
+\begin{align*}
+  a_1 b_1 + a_2b_2 + \cdots + a_nb_n &\leq a_1 b_1 + a_2b_2 + \cdots + a_nb_n \\
+  a_1 b_2 + a_2b_3 + \cdots + a_nb_1 &\leq a_1 b_1 + a_2b_2 + \cdots + a_nb_n \\
+  a_1 b_3 + a_2b_4 + \cdots + a_nb_2 &\leq a_1 b_1 + a_2b_2 + \cdots + a_nb_n \\
+  \vdots & \\
+  a_1 b_n + a_2b_1 + \cdots + a_nb_n &\leq a_1 b_1 + a_2b_2 + \cdots + a_nb_n \\
+\end{align*}
+En sommant, on obtient
+\begin{displaymath}
+  (a_1+\cdots + a_n)(b_1+b_2+\cdots b_n) \leq n(a_1 b_1 + a_2b_2 + \cdots + a_nb_n) 
+\end{displaymath}
+qui permet de conclure.\newline
+Exemple. Soit $a_1, \cdots, a_p$ des nombres naturels non nuls deux à deux distincts. Alors
+\begin{displaymath}
+  \frac{a_1}{1^2} +  \frac{a_2}{2^2} + \cdots +  \frac{a_p}{p^2} > \frac{1}{1} + \frac{1}{2} + \cdots +\frac{1}{p}
+\end{displaymath}
+Notons $b_1, \cdots, b_p$ les valeurs des $a_k$ dans l'ordre croissant. Comme les $a_k$ sont deux à deux distincts, on a de plus $b_k\geq k$. Par réordonnement:
+\begin{displaymath}
+  \left. 
+\begin{aligned}
+b_1 < b_2 < \cdots <b_p \\ \frac{1}{1^2}< \frac{1}{2^2}< \cdots <\frac{1}{p^2}  
+\end{aligned}
+\right\rbrace \Rightarrow
+\frac{b_1}{1^2}+ \frac{b_2}{2^2}+ \cdots +\frac{b_p}{p^2} < \frac{a_1}{1^2}+ \frac{a_2}{2^2}+ \cdots +\frac{a_p}{p^2}
+\end{displaymath}
+et
+\begin{displaymath}
+\frac{b_1}{1^2}+ \frac{b_2}{2^2}+ \cdots +\frac{b_p}{p^2} \geq  \frac{1}{1^2}+ \frac{2}{2^2}+ \cdots +\frac{p}{p^2}
+=\frac{1}{1} + \frac{1}{2} + \cdots + \frac{1}{p} 
+\end{displaymath}
+
+\section{Un exercice résolu}
+Soit $a, b, c$ réels strictement positifs. Montrer que 
+\begin{displaymath}
+  \frac{ab}{a+b} + \frac{ac}{a+c}+\frac{bc}{b+c} < \frac{3}{2}\frac{ab+bc+ac}{a+b+c}
+\end{displaymath}
+On s'inspire de la démonstration de l'inégalité de Nesbitt. Notons $S$ la somme à majorer:
+\begin{displaymath}
+\left. 
+\begin{aligned}
+  \frac{ab}{a+b} +c = \frac{ab + ac + bc}{a+b}\\
+  \frac{bc}{b+c} +a = \frac{bc + ba + ca}{b+c}\\
+  \frac{ca}{c+a} +b = \frac{ca + bc + ba}{c+a}  
+\end{aligned}
+\right\rbrace \Rightarrow
+S + (a+b+c) = \left(ab+bc+ca \right) \left(\frac{1}{a+b}+\frac{1}{b+c}+\frac{1}{c+a} \right) 
+\end{displaymath}
+Comme l'inégalité à démontrer est invariante par permutation des lettres, on peut supposer $a<b<c$ ce qui entraîne $ab < ac < bc$ et $a+b < a+c < b+c$ d'où, par l'inégalité de Chebychev,
+\begin{displaymath}
+\left. 
+\begin{aligned}
+  ab < ac < bc\\
+  \frac{1}{b+c} < \frac{1}{a+c} < \frac{1}{a+b}  
+\end{aligned}
+\right\rbrace \Rightarrow
+\left(ab+bc+ca \right) \left(\frac{1}{a+b}+\frac{1}{b+c}+\frac{1}{c+a} \right) > 3S 
+\end{displaymath}
+On en tire $S < \frac{1}{2}(a+b+c)$. Malheureusement cette inégalité est plus faible que celle qui est demandée car
+\begin{multline*}
+  \frac{3}{2}\frac{ab+bc+ac}{a+b+c} - \frac{1}{2}(a+b+c)
+  =\frac{1}{2(a+b+c)}\left( 3(ab+bc+ac)-(a+b+c)^2\right)\\
+  =\frac{1}{2(a+b+c)}\left( ab+bc+ac-a^2 - b^2 -c^2\right) < 0
+\end{multline*}
+Par l'inégalité de réordonnement lorsque $a<b<c$.\newline
+Curieusement, on peut améliorer l'inégalité en appliquant
+\begin{displaymath}
+\left(ab+bc+ca \right) \left(\frac{1}{a+b}+\frac{1}{b+c}+\frac{1}{c+a} \right) = S +(a+b+c) <\frac{3}{2}(a+b+c)  
+\end{displaymath}
+aux inverses c'est à dire avec $\frac{1}{a}$, $\frac{1}{b}$, $\frac{1}{c}$. Il vient:
+\begin{displaymath}
+\left(\frac{1}{ab}+\frac{1}{bc}+\frac{1}{ca} \right)S< \frac{3}{2}\left(  \frac{1}{a}+\frac{1}{b}+\frac{1}{c} \right) 
+\Leftrightarrow
+\frac{a+b+c}{abc} S < \frac{3}{2}\frac{ab+bc+ac}{abc}
+\Leftrightarrow
+S < \frac{3}{2}\frac{ab+bc+ac}{a+b+c}
+\end{displaymath}
+
+\end{document}

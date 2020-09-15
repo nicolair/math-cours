@@ -1,0 +1,532 @@
+\input{courspdf.tex}
+\debutcours{Glossaire de début d'année}{1.1 \tiny{\today}}
+
+Le cours de début d'année utilise des termes et des résultats qui ne seront définis ou démontrés précisément que plus tard. Ce glossaire présente ces termes et ces résultats. Ils sont regroupés par thèmes et non suivant l'ordre sous lequel ils apparaissent dans le cours.
+\section{Logique - Ensemble}
+\begin{description}
+ \item[langage mathématique]\index{langage mathématique} Le point de vue adopté est \og naïf\fg~ c'est à dire que le langage mathématique est une partie du langage usuel (le sens de certains mots étant différent de leur sens habituel). En réalité, le véritable langage mathématique est complètement formalisé à partir d'un petit nombre de signes et de règles relatives aux combinaisons possibles de ces signes. Il est important de faire la différence entre une phrase incorrecte (syntaxiquement) et une phrase fausse (logiquement)\index{phrase incorrecte, phrase fausse}. On ne peut pas attribuer une valeur logique à une phrase syntaxiquement incorrecte. Les termes \og phrase mathématique\fg~  (syntaxiquement correcte) et proposition logique sont synonymes.
+\begin{itemize}
+ \item \og\emph{Certaines araignées ont six pattes}\fg~ est syntaxiquement correcte mais logiquement fausse.
+ \item \og\emph{ont araignées Certaines six  pattes}\fg~ est syntaxiquement incorrecte, la question de sa valeur logique ne se pose pas.
+\end{itemize}
+Les principaux constituants du langage mathématique sont :
+\begin{itemize}
+ \item les ensembles, les quantificateurs, le verbe \og appartient à\fg~ qui permettent de former des phrases élémentaires
+ \item les opérateurs logiques (\og et\fg~ , \og ou\fg~, \og implique\fg~, \og équivaut à\fg~, \og non\fg~) qui permettent de combiner des phrases correctes. Ces opérateurs ne seront pas formalisés davantage ici (pas de \og table de vérité\fg~). On s'attachera plutôt à \og faire sens\fg~ à l'aide du langage usuel.
+\end{itemize}
+
+\item[ensemble]\index{ensemble} Un ensemble est considéré de manière \og naïve\fg~ c'est à dire comme une collection. Les objets d'une telle collection sont appelé \emph{éléments}. Attention, \emph{seules certaines collections sont des ensembles}. Par exemple la collection de tous les ensembles ne constitue pas un ensemble car un tel ensemble permet de former une phrase correcte et contradictoire (logiquement). On ne cherchera pas davantage à préciser des conditions assurant qu'une collection est un ensemble.\newline
+Une présentation plus précise de la théorie des ensembles est indissociable d'un exposé de \emph{logique} et de formalisation du langage mathématique. Ces questions constituent les fondements des mathématiques et ne seront pas développées. \newline
+On admet certaines propriétés et constructions. La liste suivante ne prétend pas être complète.
+\begin{itemize}
+ \item Il existe un ensemble particulier dit \emph{vide} noté $\emptyset$ et qui ne contient aucun élément. La phrase \og$a\in \emptyset$\fg~ est correcte et toujours fausse.
+\item  Si $A$ et $B$ sont deux ensembles, il existe un ensemble noté $A\times B$ dit \emph{produit cartésien} des deux ensembles\index{produit cartésien de deux ensembles} dont les éléments sont des \emph{couples}. Ils sont notés $(a,b)$ avec $a$ élément de $A$ et $b$ élément de $B$. Par définition, si $(a,b)$ et $(a^\prime,b^\prime )$ sont deux éléments des $A\times B$ :
+\begin{displaymath}
+ (a,b) = (a^\prime,b^\prime ) \Leftrightarrow a=a^\prime \text{ et } b=b^\prime
+\end{displaymath}
+\item Si $A$ est un ensemble, toute collection d'éléments de $A$ forme un ensemble. Un tel ensemble est appelé une \emph{partie} de $A$ \index{partie d'un ensemble}. Un ensemble $B$ est une partie de $A$ lorsque tout élément de $B$ est un élément de $A$. On note alors $B \subset A$, on dit aussi que $B$ \emph{est une partie} de $A$. Par convention $\emptyset$ est une partie de n'importe quel ensemble.\newline
+La collection des parties de $A$ forme \emph{l'ensemble des parties} de $A$. Cet ensemble est noté $\mathcal P (A)$.
+\end{itemize}
+
+\item[appartient à]\index{appartient à} Ce verbe est synonyme de \og est élément de\fg~ et joue un rôle fondamental en langage mathématique. Il s'écrit $\in$ en langage formalisé. La phrase \og $a \in A $\fg~ est la formalisation de $a$ est un élément de l'ensemble $A$. Lorsqu'une telle phrase est vraie, la lettre $A$ désigne obligatoirement un ensemble.
+\begin{itemize}
+ \item \og$1 \in \N$\fg~ est correcte et vraie
+ \item \og$\N \in \Z$\fg~ est correcte et fausse
+ \item \og$ 1\in 2 $\fg~ est correcte et fausse (car $2$ n'est pas un ensemble)
+\end{itemize}
+
+\item[quantificateurs]\index{quantificateurs} Des éléments de syntaxe indispensables à la constitution d'une phrase correcte.
+\begin{itemize}
+ \item[quel que soit .. : ]\index{pour tout} formalisé par le signe $\forall$. La phrase formalisée \og$\forall a \in A$\fg~ se traduit en langage usuel par \og Pour tout élément $a$ de l'ensemble $A$\fg~ ou par \og Soit $a$ un élément quelconque de l'ensemble $A$\fg~. Elle se poursuit après le \og :\fg~ par une phrase traduisant une propriété. Plusieurs $\forall$ peuvent se suivre, l'ordre dans lequel ils s'écrivent est sans importance.
+\item [il existe ... tel que ] \index{il existe}formalisé par le signe $\exists$. La phrase formalisée \og $\exists a \in A$\fg~ se traduit en langage usuel par \og Il existe un élément $a$ de $A$\fg~. Une phrase de ce genre se poursuit par \og tel que\fg~ qui peut être sous-entendu en langage formel ce \og tel que\fg~ s'écrit \og :\fg~.
+\end{itemize}
+\begin{exples}
+ \item Soit $A$ et $B$ deux ensembles : $A\subset B$ si et seulement si :
+\begin{displaymath}
+ \forall a \in A : a\in B
+\end{displaymath}
+On peut formaliser davantage :
+\begin{displaymath}
+ A\in \mathcal P(B) \Leftrightarrow A\subset B \Leftrightarrow\left( \forall a \in A : a\in B \right) 
+\end{displaymath}
+ \item Les quantificateurs s'échangent lors d'une négation.\newline
+La négation d'une phrase \og Tous les éléments $a$ de $A$ vérifient une propriété $P(a)$\fg~ (traduction formelle \og $\forall a \in A : P(a)$\fg~ est \og Il existe un élément $a$ de $A$ qui ne vérifie pas $P(a)$\fg~  (traduction formelle \og $\exists a \in A : \mathrm{non}P(a)$\fg~).\newline
+La négation d'une phrase \og Il existe un élément de $A$ qui vérifie $P(a)$\fg~ (traduction formelle \og $\exists a \in A : P(a)$\fg~) est \og Aucun élément de $A$ ne vérifie $P(a)$\fg~ ou encore \og $\forall a \in A : \mathrm{non} P(a)$\fg~.\newline
+Ainsi la négation de \og Certaines araignées ont six pattes\fg~ est \og Aucune araignée n'a six pattes\fg~ (ce qui est vrai car les araignées ont toujours huit pattes).
+\end{exples}
+\emph{IMPORTANT} Dans une phrase mathématique correcte, il ne doit figurer qu'une lettre (c'est à dire un \emph{nom} ) après un quantificateur. \'Evitez en particulier de placer une expression après un quantificateur. Par exemple
+\begin{displaymath}
+ \forall (x+iy) \in \C
+\end{displaymath}
+est à incorrecte car une expression ne peut pas être quelconque. Préférer
+\begin{displaymath}
+ \forall z \in \C,\text{ nommons } x=\Re(z)\text{ et } y=\Im(z)
+\end{displaymath}
+
+\item[langage usuel dans un contexte mathématique] \index{langage usuel dans un contexte mathématique} Les traductions en langage usuel des éléments fondamentaux du langage mathématique présentés au dessus ne sont pas les seuls éléments du langage usuel qui reviennent souvent dans un contexte mathématique. Attention leur sens peut être un peu différent du sens habituel. Par exemple \og Poser\fg signifie \og Nommer\fg. Comme dans 
+\begin{displaymath}
+\forall z \in \C,\text{ posons } x=\Re(z)\text{ et } y=\Im(z)  
+\end{displaymath}
+Les expressions auxquelles on donne un nom doivent être parfaitement définies \emph{avant} d'être nommées. Je vous conseille d'éviter d'utiliser \og poser\fg~ et de lui préférer \og nommer\fg.
+
+
+\item[fonction]\index{fonction - application} Une fonction définie dans un ensemble $A$ et à valeurs dans un ensemble $B$ associe à chaque élément de $A$ un unique élément de $B$. Les fonctions définies dans un ensemble $A$ et à valeurs dans un ensemble $B$ forment un ensemble noté
+\begin{displaymath}
+ \mathcal F (A,B)
+\end{displaymath}
+Lorsque $f$ est une fonction définie dans $A$ et à valeurs dans $B$ (on dit aussi simplement de $A$ vers $B$), et $a$ un élément quelconque de $A$. L'unique élément de $B$ associé à $a$ par $f$ est appelé \emph{image} de $a$ par $f$ et noté $f(a)$.\newline
+Dans ce cours, les termes \og fonction \fg~ et \og application\fg~ sont équivalents.
+
+\item[opération]\index{opération}Une opération interne (on dit aussi une loi interne) sur un ensemble $A$ est une fonction définie dans $A\times A$ et à valeurs dans $A$.\newline
+En général une image par une opération n'est pas notée comme une image de fonction. Par exemple l'addition de $\N$ est une opération interne. C'est bien une fonction de $\N \times \N$ dans  $\N$ notée \og $+$\fg~ mais on utilisera $1+1$ au lieu de $+((1,1))$.\newline
+Une opération interne peut avoir diverses propriétés : associativité, commutativité, existence d'un élément neutre.\newline
+On peut aussi considérer des opérations externes c'est à dire des fonctions d'un ensemble $K\times A$ à valeurs dans $A$. Dans ce cas aussi, l'image (le résultat d'une opération) est notée avec un signe \emph{entre} les lettres désignant les deux éléments.
+
+\item[bijection]\index{bijection} Une application telle que pour tout élément $x$ de l'espace d'arrivée, il existe un unique élément de l'espace de départ dont l'image soit $x$.
+
+\item[analyse-synthèse]\index{analyse-synthèse} Un mode de démonstration (en deux temps) d'une proposition du genre
+\begin{quote}
+ Il existe un unique élément $x$ vérifiant une propriété $\mathcal P (x)$
+\end{quote}
+Premier temps : analyse. On considère un élément $x$ vérifiant $\mathcal P (x)$ et on forme des conséquences pour obtenir des propriétés de $x$. Dans certains cas on peut arriver à prouver que $x$ ne peut être qu'un certain $x_0$. \newline
+Ceci prouve la partie \emph{unicité} de la proposition à démontrer.
+
+Deuxième temps : synthèse. On considère l'élément particulier $x_0$ et on montre (en général par un calcul) qu'il vérifie la propriété $\mathcal P (x_0)$. Ce raisonnement ne peut \emph{jamais} s'appuyer sur l'analyse. 
+
+La synthèse prouve l'existence d'une solution explicite au problème (à savoir $x_0$). L'analyse montre que c'est la seule possible.
+
+L'analyse synthèse comme une enquête.\newline
+Monsieur X a été retrouvé mort chez lui.
+\begin{itemize}
+ \item Analyse. Parmi tous les êtres humains, seul Monsieur Y a eu la possibilité matérielle de le tuer.
+ \item Synthèse. Prouver que Monsieur Y a réellement assassiné Monsieur X.
+\end{itemize}
+Remarque : l'analyse ne prouve PAS que Monsieur Y est l'assassin. Il peut finalement s'agir d'un accident.\newline
+Un raisonnement qui suppose que quelque chose (satisfaisant à des conditions) existe sert de deux manières seulement.
+\begin{itemize}
+ \item Pour montrer que cette chose \emph{n'existe pas} en formant une conséquence impossible.  (raisonnement par l'absurde)
+ \item Pour montrer que ces contraintes conduisent à un seul objet. (partie analyse d'une analyse-synthèse)  
+\end{itemize}
+Evidemment, on ne peut jamais prouver ainsi l'existence d'un objet vérifiant les contraintes imposées.
+
+
+\item[injection, surjection, bijection]\index{injection}\index{surjection}\index{bijection} Une fonction $f$ définie dans un ensemble $A$ et à valeurs dans un ensemble $B$  est dite
+\begin{itemize}
+ \item bijective : lorsque pour tout élément $b\in B$, il existe exactement un $a\in A$ tel que $f(a)=b$.
+\item injective : lorsque deux éléments \emph{distincts} $a$ et $a^\prime$ de $A$ ont des images distinctes. C'est équivalent à dire que pour tout élément $b\in B$, il existe \emph{au plus} un élément $a\in A$ tel que $f(a)=b$.
+\item surjective : lorsque pour tout élément $b\in B$, il existe un élément $a\in A$ tel que $f(a)=b$. Si il existe plusieurs éléments $a$ vérifiant cette propriété, la fonction n'est pas injective.
+\end{itemize}
+Une application est bijective si et seulement si elle est injective et surjective.
+
+\end{description}
+
+
+\section{Algèbre générale}
+\begin{description}
+
+\item[décomposition idiote] \index{décomposition idiote}
+Il s'agit de décomposer arbitrairement un objet en une expression d'une forme particulière qui nous intéresse et un reste égal à ce qu'il faut pour que l'égalité soit vraie. Souvent le reste a une propriété utile.\newline
+Exemple. Tout $z$ complexe non nul s'écrit comme $z=|z|u$ où $u$ est un nombre complexe de module $1$. On décompose arbitrairement $z$ en introduisant le réel strictement positif $|z|$ c'est à dire $z = |z| u$ avec $u\in \C$ où $u$ (un reste, un correctif) est le complexe égal à ce qu'il faut que pour que ce soit correct à savoir $u = \frac{z}{|z|}$. Ici la propriété intéressante du reste est que son module est égal à $1$.\newline
+Autre exemple. Transformation d'une expression \emph{homographique}. Soit
+\begin{displaymath}
+ h(x) = \frac{2x+1}{3x+1}
+\end{displaymath}
+La décomposition idiote consiste ici à faire apparaitre \og de force\fg~ le dénominateur dans le numérateur (en ajoutant le reste qui va bien) et d'en déduire une nouvelle expression de $h$.
+\begin{displaymath}
+ 2x+1 = \frac{2}{3}(3x+1) +1-\frac{2}{3}
+\Rightarrow
+h(x) = \frac{2}{3}+\frac{1}{3(3x+1)}
+\end{displaymath}
+On retrouve cette idée dans la \emph{décomposition canonique} d'une expression du second degré. Contrairement aux apparences, les \emph{décompositions idiotes sont souvent utiles}.
+
+
+ \item[groupe]\index{groupe} Un ensemble muni d'une seule opération interne vérifiant certaines propriétés. Par exemple $(\Z, +)$, $(\Q,\times)$ sont des groupes mais $(\N,+)$ n'est pas un groupe.
+ 
+ \item[anneau - corps]\index{corps}\index{anneau}Un anneau est un ensemble muni de deux opérations internes (une addition et une multiplication) qui vérifient un certain nombres de propriétés (à peu près les règles de calculs usuelles). Par exemple $(\Q,+,\times)$, $(\R,+,\times)$, $(\C,+,\times)$, $(\Z,+,\times)$ sont des anneaux. Un corps est un anneau avec une propriété supplémentaire: tout élément non nul admet un inverse. Par exemple $(\Q,+,\times)$, $(\R,+,\times)$, $(\C,+,\times)$ sont des corps mais $(\Z,+,\times)$ n'est pas un corps. (voir \href{\baseurl C2075.pdf}{Groupes-Anneaux-Corps}).
+
+\item[morphisme] \index{morphisme - isomorphisme} Très généralement, un morphisme est une application entre deux espaces munis d'opérations et qui transporte l'opération de l'espace de départ vers l'opération de l'espace d'arrivée. Si $T$ est l'opération dans l'espace de départ et $*$ celle de l'espace d'arrivée :
+\begin{displaymath}
+ f(a T b) = f(a) * f(b)
+\end{displaymath}
+Par exemple la fonction $\ln$ est un morphisme de $(]0,\infty[,\times)$ vers $(\R,+)$. \newline
+Un isomorphisme est un morphisme bijectif.
+
+\item[division euclidienne]
+\index{division euclidienne}
+La division euclidienne des entiers naturels est la division enseignée depuis l'école primaire.\newline
+Si $a\neq 0$ et $n$ sont deux entiers naturels, il existe un unique couple $(q,r)$ d'entiers naturels tels que $n=qa+r$ evec $r$ entre $0$ et $a-1$. On dit que $q$ est le \emph{quotient} et $r$ le \emph{reste} de la division euclidienne de $n$ par $a$.\newline
+La division euclidienne se rattache à la partie entière introduite dans l'\href{\baseurl C2192.pdf}{axiomatique du corps des réels} et s'étend aux \href{\baseurl C1622.pdf}{polynômes}. 
+ 
+\end{description}
+
+
+\section{Algèbre linéaire}
+\begin{description}
+ \item[fonctions paires et impaires]\index{fonctions paires et impaires}
+\begin{prop}
+ Toute fonction définie dans $\R$ et à valeurs réelles se décompose de manière unique comme la somme d'une fonction paire et d'une fonction impaire.
+\end{prop}
+\begin{demo}
+ La démonstration se fait par analyse-synthèse\index{analyse-synthèse}. Notons $f$ la fonction à décomposer.\newline
+Analyse. Si $f=g+h$ avec $h$ paire et $f$ impaire alors, en écrivant cette somme pour $x$ et $-x$ et en combinant, il vient :
+\begin{align*}
+ g(x)=\dfrac{1}{2}(f(x)+f(-x)) &,& g(x)=\dfrac{1}{2}(f(x)-f(-x))
+\end{align*}
+Ceci assure l'unicité de la décomposition.\newline
+Synthèse. \emph{Définissons} des fonctions $g$ et $h$ par les formules :
+\begin{align*}
+ g(x)=\dfrac{1}{2}(f(x)+f(-x)) &,& g(x)=\dfrac{1}{2}(f(x)-f(-x))
+\end{align*}
+On vérifie alors facilement que $g$ est paire, $h$ impaire et $f=g+h$. Ce qui assure l'existence d'une décomposition. 
+\end{demo}
+\begin{rem}
+ C'est ainsi que sont définies les fonctions de la trigonométrie hyperbolique\footnote{\href{\baseurl C2004.pdf}{voir Fonctions usuelles, trigonométrie}}. \index{trigonométrie hyperbolique}
+\end{rem}
+
+\item[matrices et déterminants $2\times2$]\index{matrices et déterminants!dimension 2} Applications aux systèmes.\newline
+Une matrice $2\times2$ à coefficients réels est un tableau de quatre nombres
+\begin{displaymath}
+A=
+ \begin{pmatrix}
+  a & b \\
+  c & d
+ \end{pmatrix}
+\end{displaymath}
+L'ensemble des matrices $2\times2$ à coefficients réels est noté $\mathcal M_2(\R)$. On utilisera des parenthèses $( )$ ou des crochets $[ ]$ pour délimiter une matrice. La barre verticale est réservée au déterminant qui est un nombre attaché à une matrice.
+\begin{displaymath}
+ \det A =  \begin{vmatrix}
+  a & b \\
+  c & d
+ \end{vmatrix}
+= ad -bc
+\end{displaymath}
+Pour un traitement complet voir le chapitre \href{\baseurl C2261.pdf}{Déterminants}.
+Les matrices et déterminants jouent un rôle capital dans l'étude des systèmes d'équations linéaires \index{système d'équations linéaires}. Ici on considère un système de deux équations à deux inconnues.
+\begin{prop}Soit $a$, $b$, $c$, $d$, $u$, $v$ des nombres réels, le système linéaire de deux équations aux deux inconnues $x$ et $y$ 
+\begin{equation*}
+ \left\lbrace 
+\begin{aligned}
+ a x + by &= u \\
+ cx + dy &= v
+\end{aligned}\right.  \qquad (\mathcal S)
+\end{equation*}
+admet un unique couple solution si et seulement le déterminant de la matrice associé est non nul. Lorsque ceci est réalisé, cet unique couple est :
+\begin{displaymath}
+ (\dfrac
+{
+\begin{vmatrix}
+  u & b \\
+  v & d
+\end{vmatrix}
+}
+{
+\begin{vmatrix}
+  a & b \\
+  c & d
+\end{vmatrix}
+} , 
+\dfrac
+{
+\begin{vmatrix}
+  a & u \\
+  c & v
+\end{vmatrix}
+}
+{
+\begin{vmatrix}
+  a & b \\
+  c & d
+\end{vmatrix}
+}) \qquad \text{formules de Cramer}
+\end{displaymath}
+\index{formules de Cramer}
+\end{prop}
+\begin{rem}
+ Le couple solution est obtenu en remplaçant successivement chaque colonne de la matrice par la colonne du second membre.
+\end{rem}
+\begin{demo}
+ \begin{itemize}
+  \item Introduisons d'abord quelques notations 
+\begin{align*}
+ D_1 &=\begin{vmatrix}
+  u & b \\
+  v & d
+\end{vmatrix}
+ &
+ D_2 &=\begin{vmatrix}
+  a & u \\
+  c & v
+\end{vmatrix}
+ &
+ D &=\begin{vmatrix}
+  a & b \\
+  c & d
+\end{vmatrix}
+\end{align*}
+
+\item (analyse) Montrons d'abord que si $D\neq 0$ alors la \emph{seule solution possible} est donnée par les formules de Cramer. Supposons que $(x_0,y_0)$ soit un couple solution et remplaçons dans l'expression de $D_1)$.
+\begin{displaymath}
+ D_1 = ud-vb = (ax_0 + by_0)d-(cx_0+dy_0)b = D x_0 \Rightarrow x_0 = \dfrac{D_1}{D}
+\end{displaymath}
+Le calcul conduit à un résultat analogue pour $D_2$.
+
+\item (synthèse) En remplaçant dans les équations, on obtient facilement que
+\begin{displaymath}
+ (\dfrac{D_1}{D}=\dfrac{1}{D}(ud-vb), \dfrac{D_2}{D}=\dfrac{1}{D}(av-cu))
+\end{displaymath}
+ est un couple solution.
+
+\item Les deux derniers points montrent (analyse-synthèse) que lorsque $D\neq0$ le système admet une unique solution.
+
+\item Montrons maintenant que si le système admet une unique solution alors $D\neq 0$. En fait on va plutôt montrer que si $D=0$ alors le système admet plusieurs solutions ou n'en admet aucune.\newline
+Supposons que $D=0$ et que $(x_0,y_0)$ soit une solution. Considérons pour tout réel $\lambda$ :
+\begin{align*}
+ x_\lambda &= x_0 -\lambda b & y_\lambda &= y_0 +\lambda a
+\end{align*}
+il est alors évident par définition que $ax_\lambda + by_\lambda =u$. De plus :
+\begin{displaymath}
+ cx_\lambda + dy_\lambda = v +\lambda(-cb+ad)=v
+\end{displaymath}
+On a donc obtenu une infinité de solutions.
+\end{itemize}
+\end{demo}
+
+Ces résultats sont utilisés dans l'étude des \href{\baseurl C1616.pdf}{équations différentielles linéaires} ainsi que dans la \href{\baseurl C2005.pdf}{géométrie élémentaire du plan}. Leur signification en termes d'intersections de droites est si claire qu'elle rend presque inutile une démonstration. Celle proposée ici permet de mettre en pratique un peu de logique.
+
+\item[espaces vectoriels] \index{espace vectoriel}\index{combinaison linéaire}\index{vecteur}
+Un \href{\baseurl C2076.pdf}{espace vectoriel} est un ensemble muni de deux opérations : une addition interne et une multiplication par un élément d'un corps fixé. En général $\R$ ou $\C$. L'addition définit une structure de groupe et la multiplication externe doit vérifier certaines propriétés. En particulier si $u$ est un élément de l'espace vectoriel et $1_\K$ le neutre multiplicatif du corps la multiplication externe de $1_\K$ par $u$ est égale à $u$.\newline
+Un vecteur est un élément d'un espace vectoriel.\newline
+Une combinaison linéaire est un vecteur qui s'écrit comme une somme de multiplications (externes)
+\begin{displaymath}
+ \lambda_1 u_1 + \lambda_2 u_ + \cdots + \lambda_p u_p   
+\end{displaymath}
+où les $\lambda_i$ sont dans le corps et les $u_i$ sont dans l'espace vectoriel. 
+Sous-espace vectoriel engendré $\Vect(u)$, $\Vect(u,v)$.
+
+
+\index{matrices et déterminants!dimension 3}
+\item[matrices et déterminants $3\times3$] Applications aux systèmes.\newline
+Une matrice $3\times3$ à coefficients réels est un tableau de neuf nombres
+\begin{displaymath}
+A=
+ \begin{pmatrix}
+  a & b & c\\
+  a' & b'& c' \\
+ a'' & b'' & c''
+ \end{pmatrix}
+\end{displaymath}
+L'ensemble des matrices $3\times3$ à coefficients réels est noté $\mathcal M_3(\R)$. On utilisera des parenthèses $(\phantom{aa} )$ ou des crochets $[ \phantom{aa}]$ pour délimiter une matrice. La barre verticale est réservée au déterminant qui est un nombre attaché à une matrice.
+\begin{displaymath}
+ \det A =  \begin{vmatrix}
+  a & b & c\\
+  a' & b'& c' \\
+ a'' & b'' & c''
+ \end{vmatrix}
+\end{displaymath}
+Pour un traitement complet voir le chapitre \href{\baseurl C2261.pdf}{Déterminants}.\newline
+Les propriétés permettant la manipulation et le calcul des déterminants sont multilinéarité, antisymétrie, développement suivant une ligne ou une colonne (à rédiger)
+
+Les matrices et déterminants jouent un rôle capital dans l'étude des systèmes d'équations linéaires \index{système d'équations linéaires}. Ici on considère un systèmes de trois équations à trois inconnues.
+\begin{prop}Soit $a$, $b$, $c$, $a'$, $b'$, $c'$, $a''$, $b''$, $c''$, $u$, $v$ $w$ des nombres réels, le système linéaire de trois équations aux trois inconnues $x$, $y$, $z$ 
+\begin{equation*}
+ \left\lbrace 
+\begin{aligned}
+ a x + by +cz =& u \\
+ a' x + b'y +c'z =& v \\
+a'' x + b''y +c''z =& w
+\end{aligned}\right.  \qquad (\mathcal S)
+\end{equation*}
+admet un unique triplet solution si et seulement le déterminant de la matrice associé est non nul. Lorsque ceci est réalisé, cet unique triplet est :
+\begin{displaymath}
+ (\dfrac
+{
+\begin{vmatrix}
+  u & b & c\\
+  v & b' & c'\\
+ w & b'' & c''
+\end{vmatrix}
+}
+{
+\begin{vmatrix}
+  a & b & c\\
+  a' & b'& c' \\
+ a'' & b'' & c''
+ \end{vmatrix}} , 
+\dfrac
+{
+\begin{vmatrix}
+  a & u & c\\
+  a' & v & c'\\
+a'' & w & c''
+\end{vmatrix}
+}
+{
+\begin{vmatrix}
+  a & b & c\\
+  a' & b'& c' \\
+ a'' & b'' & c''
+ \end{vmatrix}},
+\dfrac
+{
+\begin{vmatrix}
+  a & b & u\\
+  a' & b' & v\\
+a'' & b'' & cw
+\end{vmatrix}
+}
+{
+\begin{vmatrix}
+  a & b & c\\
+  a' & b'& c' \\
+ a'' & b'' & c''
+ \end{vmatrix}}
+) \qquad \text{formules de Cramer}
+\end{displaymath}
+\index{formules de Cramer}
+\end{prop}
+\begin{rems}
+ \begin{itemize}
+  \item Le couple solution est obtenu en remplaçant successivement chaque colonne de la matrice par la colonne du second membre.
+  \item Lorsque le second membre est nul, la nullité du déterminant est équivalente à l'existence d'un triplet solution autre que $(0,0,0)$ au système.
+ \end{itemize}
+\end{rems}
+
+\end{description}
+
+
+\section{Analyse}
+\begin{description}
+ \item[limites usuelles] \index{limites usuelles}
+En particulier $\frac{1}{x}e^x\rightarrow +\infty$ en $+\infty$. On en déduit $\frac{\ln x}{x}\rightarrow 0$ en $+\infty$. 
+
+\item[théorème des valeurs intermédiaires] \index{théorème des valeurs intermédiaires}
+\begin{thm}[Théorème de la valeur intermédiaire]
+ \begin{description}
+  \item[formulation 1]Soit $I$ un intervalle et $f$ une fonction continue sur $I$, $a$ et $b$ deux éléments de $I$ tels que $f(a)f(c)<0$. Il existe alors $c$ tel que $f(c)=0$.
+  \item[formulation 2]Soit $I$ un intervalle, $a\in I$, $b\in I$, $f$ continue sur $I$ et $\lambda \in ]\min(f(a),f(b)),\max(f(a),f(b))[$. Il existe alors $c\in[\min(a,b),\max(a,b)]$ tel que $f(c)=\lambda$.
+  \item[formulation 3]Soit $I$ un intervalle et $f$ une fonction continue sur $I$. Alors $f(I)$ est un intervalle.
+ \end{description}
+\end{thm}
+voir \href{\baseurl C2072.pdf}{Propriétés globales des fonctions continues.}\newline
+On peut combiner avec le théorème du tableau des variations pour obtenir une condition suffisante de bijectivité. Il vaut mieux les appliquer séparément et comprendre que le théorème des valeurs intermédiaires est lié à la \emph{surjectivité}. 
+
+\item[théorème du tableau de variations] \index{théorème du tableau de variations}
+\begin{prop}
+ Soit $f$ une fonction continue dans $[a,b]$, dérivable dans $]a,b[$ telle que $f'(x)>0$ pour tout $x\in]a,b[$. Alors $f$ est strictement croissante dans $[a,b]$.
+\end{prop}
+voir \href{\baseurl C2070.pdf}{Propriétés des fonctions dérivables.}
+On peut combiner avec le théorème des valeurs intermédiaires pour obtenir une condition suffisante de bijectivité. Il vaut mieux les appliquer séparément et comprendre que le théorème du tableau des variations est lié à l'\emph{injectivité}. 
+
+\item[dérivabilité d'une bijection réciproque] \index{dérivabilité d'une bijection réciproque}
+\begin{thm}
+ Soit $f$ une fonction continue dans $[a,b]$, dérivable dans $]a,b[$ telle que $f'(x)>0$ pour tout $x\in]a,b[$, alors $f$ est bijective de $[a,b]$ dans $[f(a),f(b)]$, sa bijection réciproque est continue dans $[f(a),f(b)]$, dérivable dans $]f(a),f(b)[$ avec :
+\begin{displaymath}
+ \forall y \in ]f(a),f(b)[ : {f^{-1}}^\prime(y) = \dfrac{1}{f'(g(y))}
+\end{displaymath}
+\end{thm}
+voir \href{\baseurl C2070.pdf}{Propriétés des fonctions dérivables.}
+ 
+
+\item[fonctions à valeurs vectorielles d'une variable réelle]\index{fonctions d'une variable réelle et à valeurs vectorielles}
+\`A rédiger\newline
+Ces résultats sont utilisés dans l'étude des \href{\baseurl C1618.pdf}{Courbes planes paramétrées}.\newline
+Les fonctions considérées ici sont définies dans un intervalle $I$ de $\R$ et à valeurs dans un plan affine $\mathcal E$ de direction $E$. Cet espace affine peut être $E$ ou $\C$.
+\begin{defi}
+ Soit $f$ une fonction de $I$ dans $\mathcal E$, $t_0$ un élément de $I$ et $A$ un point de $\mathcal E$. On dit que $f$ converge en $t_0$ vers $A$ lorsque la fonction de $I$ dans $\R$  $\Vert \overrightarrow{Af(t)}\Vert$ converge vers $0$ en $t_0$. On note
+\begin{align*}
+ f \xrightarrow[t_0]{} A \text{ ou } \underset{t_0}{\lim} f = A 
+\end{align*}
+\end{defi}
+\begin{prop}
+Soit $x$ et $y$ les fonctions coordonnées dans un repère, $f$ une fonction de $I$ dans $\mathcal E$, $t_0$ un élément de $I$ et $A$ un point de $\mathcal E$. Alors
+\begin{displaymath}
+ f \xrightarrow[t_0]{} A \Leftrightarrow
+\left\lbrace
+\begin{aligned}
+ x(f(t)) &\xrightarrow[t_0]{} x(A) \\
+ y(f(t)) &\xrightarrow[t_0]{} y(A)
+\end{aligned}
+\right.  
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ \begin{itemize}
+ \item Supposons la convergence de la fonction affine, d'après les propriétés de la norme, on peut écrire les inégalités :
+\begin{displaymath}
+ |x(f(t))-x(A)| \leq  \Vert \overrightarrow{Af(t)}\Vert \text{ et }
+ |y(f(t))-y(A)| \leq  \Vert \overrightarrow{Af(t)}\Vert
+\end{displaymath}
+On en déduit la convergence des fonctins numériques $x\circ f$ et $y\circ g$ en utilisant le théorème d'encadrement\index{théorème d'encadrement}.
+\item Dans l'autre sens, supposons la convergence en $t_0$ des fonctions numériques $x\circ f$ et $y\circ f$. Alors, comme
+\begin{displaymath}
+ \Vert \overrightarrow{Af(t)}\Vert = \sqrt{(x(f(t))-x(A))^2 + (y(f(t))-y(A))^2}
+\end{displaymath}
+on obtient la convergence de $f$ en utilisant les résultats relatifs aux opérations et à la composition des fonctions réelles d'une variable réelle.
+\end{itemize}
+\end{demo}
+\begin{defi}[Continuité]
+ Une fonction $f$ définie dans un intervalle $I$ et à valeurs dans un espace affine est continue en $t_0\in I$ si et seulement si elle converge en $t_0$ vers $f(t_0)$.\\
+Une fonction $\overrightarrow f$ définie dans un intervalle $I$ et à valeurs dans un espace vectoriel est continue en $t_0\in I$ si et seulement si elle converge en $t_0$ vers $\overrightarrow f(t_0)$.
+\end{defi}
+\begin{defi}[Dérivabilité]
+ Une fonction $f$ définie dans un intervalle $I$ et à valeurs dans un espace affine est dérivable en $t_0\in I$ si et seulement si la fonction
+\begin{displaymath}
+ \dfrac{1}{t-t_0}\overrightarrow{f(t_0) f(t)}
+\end{displaymath}
+converge en $t_0$. Dans ce cas, le vecteur limite est noté
+\begin{displaymath}
+ \overrightarrow{f'}(t_0)
+\end{displaymath}
+ Une fonction $\overrightarrow f$ définie dans un intervalle $I$ et à valeurs dans un espace vectoriel est dérivable en $t_0\in I$ si et seulement si la fonction
+\begin{displaymath}
+ \dfrac{1}{t-t_0}\left(\overrightarrow{f(t)}-\overrightarrow{f(t_0)} \right) 
+\end{displaymath}
+converge en $t_0$. Dans ce cas, le vecteur limite est noté
+\begin{displaymath}
+ \overrightarrow{f'}(t_0)
+\end{displaymath}
+\end{defi}
+
+\begin{prop}
+ Toute fonction dérivable en $t_0$ est continue en $t_0$ .
+\end{prop}
+
+On dira qu'une fonction est continue ou dérivable dans un intervalle $I$ si et seulement si elle est continue ou dérivable en tous les $t$ de $I$.
+
+\begin{prop}
+ Un repère $\mathcal R=(O,\overrightarrow i , \overrightarrow j)$ étant fixé, les fonctions coordonnées sont notées $x$ et $y$. Une fonction $f$ définie dans un intervalle $I$ et à valeurs dans un espace affine est dérivable en $t_0\in I$ si et seulement si les fonctions (de $I$ dans $\R$) $x\circ f$ et $y\circ f$ sont dérivables. On a alors :
+\begin{displaymath}
+ \overrightarrow{f'}(t_0) = (x\circ f)'(t_0)\overrightarrow i + (y\circ f)'(t_0)\overrightarrow j
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ \`A rédiger.
+\end{demo}
+
+On peut reformuler la proposition précédente. Si $f$ est de la forme
+\begin{displaymath}
+ f(t) = 0 +u(t)\overrightarrow i + v(t) \overrightarrow j
+\end{displaymath}
+alors la fonction à valeurs géométriques $f$ est dérivable si et seulement si les fonction à valeurs numériques $u$ et $v$ le sont et :
+\begin{displaymath}
+ \overrightarrow{f'}(t_0) = u'(t_0)\overrightarrow i + v'(t_0)\overrightarrow j
+\end{displaymath}
+Les formules sont analogues pour une fonction $\overrightarrow f$ à valeurs vectorielles
+\begin{align*}
+ \overrightarrow{f}(t) =& u(t)\overrightarrow i + v(t) \overrightarrow j \\
+ \overrightarrow{f'}(t) =& u'(t)\overrightarrow i + v'(t) \overrightarrow j 
+\end{align*}
+Dérivations de $(\overrightarrow f / \overrightarrow g )$, $\Vert \overrightarrow f \Vert$, $\det(\overrightarrow f, \overrightarrow g)$.
+\begin{prop}[Formule de Taylor-Young]\index{formule de Taylor-Young}
+Soit $f$ une fonction définie dans un intervalle $I$ et à valeurs affines. On suppose qu'elle est dérivable dans $I$, que sa dérivée est continue dans $I$ et que cette dérivée est dérivable en un $t_0$ de $I$. Alors :
+ \begin{displaymath}
+ \overrightarrow{f(t_0)f(t)}
+= (t-t_0)\overrightarrow{f'}(t_0) + \dfrac{(t-t_0)^2}{2}\overrightarrow{f'}(t_0)
++ (t-t_0)^2 \overrightarrow{\varepsilon}(t)
+\end{displaymath}
+où $\overrightarrow{\varepsilon}$ est une fonction à valeurs vectorielles qui converge vers $\overrightarrow 0$ en $t_0$. 
+\end{prop}
+
+\end{description}
+
+\end{document}

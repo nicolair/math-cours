@@ -1,0 +1,151 @@
+\input{courspdf.tex}
+\debutcours{Propriétés globales des fonctions continues}{0.1 \tiny{ du \today} }
+
+
+Ce document traite des fonctions continues sur un intervalle. L'étude des \href{\baseurl C2063.pdf}{fonctions d'une variable réelle} est réparti entre divers documents.
+\section{Opérations. Espace des fonctions continues}
+Rappelons qu'une fonction définie sur un intervalle $I$ est dite continue sur $I$ lorsque, pour tout $a\in I$, $f$ est continue en $a$.
+\begin{nota}
+ L'ensemble des fonctions continues sur un intervalle est noté $\mathcal C (I,\R)$ ou $\mathcal C^0 (I,\R)$ ou plus simplement $\mathcal C (I)$ ou $\mathcal C^0 (I)$. 
+\end{nota}
+\begin{prop}
+ Soit $f$ et $g$ deux fonctions continues sur $I$ et $\lambda$ un nombre réel. Les fonctions $|f|$, $f+g$, $\lambda f$, $fg$, $\sup(f,g)$, $\inf(f,g)$ sont continues sur $I$.
+\end{prop}
+\begin{rem}
+ Cela prouve en particulier que $\mathcal C (I)$ est un sous-espace vectoriel de $\mathcal F(I,\R)$. 
+\end{rem}
+\begin{demo}
+ Un théorème analogue relatif aux fonctions convergentes en un point a été vu dans la partie étude locale. Il suffit de l'applique en chaque point de l'intervalle.
+\end{demo}
+\begin{prop}
+ Soit $f$ une fonction continue dans un intervalle $I$ et  à valeurs dans un intervalle $J$. Soit $g$ une fonction continue dans $J$. La fonction $g\circ f$ est alors continue dans $I$.
+\end{prop}
+\begin{prop}
+ Soit $f$ une fonction continue dans un intervalle $I$ et $J$ un intervalle inclus dans $I$. La restriction $f_{|J}$ est alors continue dans $J$.
+\end{prop}
+\index{prolongement par continuité}
+\begin{prop}[prolongement par continuité]
+ Soit $I$ un intervalle ouvert en une de ses extrémités $a$ et $f$ une fonction continue dans $I$. Soit $J = I\cup\{a\}$. Il existe une fonction $g$ continue dans $J$ dont la restriction à $I$ est égale à $f$ si et seulement si $f$ admet une limite finie en $a$ (notée $l$).\newline
+Lorsqu'une telle fonction $g$ existe, elle est unique et appelée le prolongement par continuité de $f$. Elle est définie par :
+\begin{displaymath}
+ \forall x\in J : g(x)=\left\lbrace 
+\begin{aligned}
+ f(x) &\text{ si } x\in I \\
+ l &\text{ si } x=a
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ à compléter
+\end{demo}
+
+
+\section{Image d'un intervalle}
+\begin{propn} \label{proptvi}
+Soit $\varphi$ une fonction continue sur un intervalle $I$ et $a<b$ deux éléments de $I$ tels que $\varphi(a)<\varphi(b)$. Soit $\lambda \in [\varphi(a),\varphi(b)]$. Il existe alors $c\in]a,b[$ tel que $\varphi(c)=\lambda$.
+\end{propn}
+\begin{demo}
+\index{question de cours!théorème de la valeur intermédiaire (avec démonstration)} \index{théorème de la valeur intermédiaire}
+ Notons $A=\left\lbrace x\in[a,b] \text{ tels que } \varphi(x)\leq \lambda \right\rbrace$.\newline
+Comme $A$ est une partie de $[a,b]$, elle est évidemment bornée. Elle est non vide car l'hypothèse $\varphi(a)<\lambda$ entraine $a\in A$. Cette partie admet donc une borne supérieure\index{borne supérieure} notée $c$.
+\begin{displaymath}
+ c = \sup\left\lbrace x\in[a,b] \text{ tels que } \varphi(x)\leq \lambda \right\rbrace
+\end{displaymath}
+Comme la fonction $\varphi$ est continue en $a$ avec $\varphi(a)<\lambda$, il existe un $\alpha >0$ tel que $\varphi(x)<\lambda$ pour tout $x$ dans $[a,a+\alpha[$. On en déduit que $a<c$.\newline
+Considérons ce qui se passe à gauche de $c$. Pour tout $n\in\N^*$, $c-\frac{1}{n}$ n'est pas un majorant de $A$ (car la borne supérieure est le plus petit des majorants). Il existe donc un élément $a_n\in A$ tel que
+\begin{displaymath}
+ c-\frac{1}{n} < a_n \leq c
+\end{displaymath}
+On en déduit d'après le théorème d'encadrement\index{théorème d'encadrement} que $(a_n)_{n\in \N*}$ converge vers $c$.\newline
+Comme $\varphi$ est continue en $c$, $(\varphi(a_n))_{n\in \N*}$ converge vers $\varphi(c)$. D'autre part, par définition de $A$, 
+\begin{displaymath}
+ \forall n\in \N^* : \varphi(a_n) \leq \lambda
+\end{displaymath}
+Le théorème de passage à la limite dans une inégalité entraine alors $\varphi(c)\leq \lambda$.\newline
+Examinons maintenant ce qui se passe à droite de $c$.\newline
+Remarquons d'abord que l'inégalité $\varphi(c)\leq \lambda$ que l'on vient de montrer implique $c<b$ car, par hypothèse, $\lambda < \varphi(b)$. L'intervalle $]c,b]$ est donc non vide. Pour tout $x$ dans cet intervalle, comme $x\leq c$ est faux et que $c$ est un majorant de $A$, on est certain que $x\not \in A$ c'est à dire $\varphi(x)>\lambda$. Autrement dit
+\begin{displaymath}
+ \forall x \in ]c,b] : \varphi_{|]c,b]}>\lambda
+\end{displaymath}
+Par le théorème de passage à la limite dans une inégalité, ceci entraine que \emph{la limite à droite stricte} de $\varphi$ en $c$ est supérieure ou égale à $\lambda$. Or cette limite est $\varphi(c)$ car $\varphi$ est continue en $c$. On obtient donc bien la deuxième inégalité
+\begin{displaymath}
+ \lambda \leq \varphi(c)
+\end{displaymath}
+\end{demo}
+
+\begin{thm}[Théorème de la valeur intermédiaire]
+Les trois formulations suivantes sont équivalentes.
+ \begin{description}
+  \item[formulation 1] Soit $I$ un intervalle, $f$ une fonction continue sur $I$, $a$ et $b$ deux éléments de $I$ tels que $f(a)f(b)<0$. Il existe $c\in \left] \min(a,b), \max(a,b)\right[$ tel que $f(c)=0$.
+  \item[formulation 2] Soit $I$ un intervalle, $a$ et $b$ deux éléments de $I$, $f$ continue sur $I$ et $\lambda \in \left[ m, M\right] $ avec $m = \min(f(a),f(b))$ et $M = \max(f(a),f(b))$. Il existe $c\in \left[ \min(a,b),\max(a,b)\right] $ tel que $f(c)=\lambda$.
+  \item[formulation 3] Soit $I$ un intervalle et $f$ une fonction continue sur $I$. Alors $f(I)$ est un intervalle.
+ \end{description}
+\end{thm}
+\begin{demo}
+ \begin{itemize}
+  \item La propriété \ref{proptvi} entraine les formulations 1 et 2. Il suffit de considérer une fonction auxiliaire adéquate.
+  \item La formulation 2 entraine que $f(I)$ convexe donc c'est un intervalle. (voir \href{\baseurl C2192.pdf}{Axiomatique du corps des réels})
+ \end{itemize}
+\end{demo}
+\begin{rem}
+ Parmi les conséquences classiques, pour les fonctions continues sur un intervalle on peut citer : si la fonction ne s'annule pas elle garde un signe constant ou encore si elle est à valeurs entières elle est constante.
+\end{rem}
+
+\begin{thm}
+  Toute fonction continue et injective sur un intervalle est strictement monotone.
+\end{thm}
+\begin{demo}
+La démonstration n'est pas exigible, elle est traitée sous forme d'\href{http://back.maquisdoc.net/v-1/index.php?act=chelt&id_elt=5207}{exercice}.  
+\end{demo}
+
+\section{Image d'un segment}
+\index{question de cours!image d'un segment (avec démonstration)}
+\begin{thm}
+ Une fonction continue sur un segment est bornée et elle atteint ses bornes (autrement dit elle admet un maximum et un minimum global).
+\end{thm}
+\begin{demo}
+ Considérons une fonction $f$ continue sur un intervalle $[a,b]$ avec $a<b$.
+\begin{enumerate}
+ \item On va montrer par l'absurde que $f$ est majorée. \newline
+Si $f$ est non majorée, alors, aucun entier naturel $n$ n'est un majorant de $f$. Donc pour tout $n\in \N$, il existe un $x_n\in[a,b]$ tel que $n<f(x_n)$. On a formé ainsi une suite $\left( x_n\right) _{n\in \N}$ d'éléments de $[a,b]$ telle que $f(x_n)>n$ pour tous les $n$.\newline
+Cette suite est bornée car elle est à valeurs dans $[a,b]$. D'après le théorème de Bolzano Weirstrass\index{théorème de Bolzano Weirstrass}, on peut en extraire une suite convergente. Il existe donc une partie infinie $\mathcal I$ de $\N$ et un réel $x$ tels que la suite extraite $\left( x_n\right) _{n\in \mathcal I}$ converge vers $x$.\newline
+De $a\leq x_n \leq b$ pour tout $n$ de $\mathcal{I}$, on tire $x\in[a,b]$ par le théorème de passage à la limite dans une inégalité\index{le théorème de passage à la limite dans une inégalité}.\newline
+Comme $f$ est continue en $x$, on peut déduire que $\left( f(x_n)\right) _{n\in \mathcal I}$ converge vers $f(x)$.\newline
+Ceci est en contradiction avec le fait que $n\leq f(x_n)$ pour tous les $n$ de $\mathcal I$ ce qui entraine la divergence vers $+\infty$. 
+
+\item On peut montrer de la même manière que la fonction est minorée. Elle est donc bornée.
+
+\item Comme la fonction est bornée, elle admet une borne inférieure $m$. Montrons qu'il existe un $x\in[a,b]$ tel que $f(x)=m$.\newline
+Pour tout $n$ non nul, $m+\frac{1}{n}$ n'est pas un minorant de $f$. Il existe donc une suite $\left( x_n\right) _{n\in \N^*}$ d'éléments de $[a,b]$ tels que $m \leq f(x_n)\leq m+\frac{1}{n}$.\newline
+Comme cette suite est à valeurs dans $[a,b]$, elle est bornée. D'après le théorème de Bozano Weirstrass, on peut en extraire une suite $\left( x_n\right) _{n\in \mathcal I}$ qui converge vers un réel $x$.\newline
+Comme plus haut, d'après le théorème de passage à la limite dans une inégalité, $x$ est dans $[a,b]$. La fonction $f$ étant continue en $a$, la suite $\left( f(x_n)\right) _{n\in \mathcal I}$ converge vers $f(x)$.\newline
+D'autre part, encore une fois par passage à la limite dans une inégaité, de $m \leq f(x_n)\leq m+\frac{1}{n}$, on tire $f(x)=m$ ce qu'on voulait démontrer.
+
+\item On démontre de manière analogue que la fonction atteint sa borne supérieure. 
+\end{enumerate}
+\end{demo}
+\begin{rem}
+ Comme on sait déjà que l'image continue d'un intervalle est un intervalle, on peut en déduire que si $f$ est continue sur un segment $[a,b]$, il existe des réels $m$ et $M$, des éléments $x_{min}$ et $x_{max}$ de $[a,b]$ tels que $f([a,b])=[m,M]$ avec $m=f(x_{min})$, $M=f(x_{max})$.
+\end{rem}
+
+\section{Continuité d'une bijection réciproque}
+L'étude locale des fonction strictement monotones montre le théorème suivant:
+\begin{thm}[continuité d'une application monotone sur un intervalle]
+ Soit $f$ une fonction monotone définie dans un intervalle $I$. Si $f(I)$ est un intervalle, la fonction $f$ est continue dans $I$.
+\end{thm}
+\begin{demo}
+  à rédiger à partir de l'étude locale des fonctions croissantes. Si une fonction strictement monotone est discontinue en un point alors l'image de l'intervalle \emph{n'est pas un intervalle}.
+\end{demo}
+
+\begin{thm}
+ Soit $I$ un intervalle et $f$ une fonction continue et strictement monotone sur $I$. Alors $f(I)=J$ est un intervalle et la corestriction de $f$ à $J$ est une bijection de $I$ vers $J$. Sa bijection réciproque est strictement monotone de même sens que $f$ et elle est continue.
+\end{thm}
+\begin{demo}
+ Toute application strictement monotone est injective. La corestriction de $f$ à l'image de $f$ est évidemment surjective, elle est donc bijective. Il est clair que sa bijection réciproque est strictement monotone de même sens. Notons la $g$. La fonction $g$ est strictement monotone et définie dans $I$. Rappelons le résultat sur la \href{\baseurl C2064.pdf}{continuité d'une application monotone définie dans un intervalle} $J$. Une telle application est continue lorsque $g(J)$ est un intervalle. C'est évidemment le cas ici puisque $g(J)$ est l'intervalle $I$ de départ.
+\end{demo}
+
+D'après l'étude locale des fonctions monotones, une fonction monotone sur un intervalle est continue si et seulement si l'image de l'intervalle est un intervalle.
+
+\end{document}
+

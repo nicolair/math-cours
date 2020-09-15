@@ -1,0 +1,115 @@
+\input{courspdf.tex}
+\debutcours{Suites et fonctions à valeurs complexes}{alpha}
+
+Dans cet exposé, on cherche autant que possible à utiliser les propositions et théorèmes usuels relatifs aux suites et fonctions à valeurs réelles. L'utilisation des $\varepsilon$, $\alpha$ est la plupart du temps inutile.
+
+\section{Suites à valeurs complexes}
+Dans toute cette section, le symbole $\mathcal I$ désigne une partie infinie de $\N$.
+\begin{defi}
+ On dira qu'une partie $\Omega$ de $\C$ est bornée si et seulement si il existe un réel $R>0$ tel que 
+\begin{displaymath}
+ \forall z\in \Omega : |z|\leq R
+\end{displaymath}
+Une suite à valeurs complexes est dite bornée lorsque l'ensemble de ses valeurs est une partie bornée de $\C$.
+\end{defi}
+\begin{rems}
+\begin{enumerate}
+ \item Une partie de $\C$ est bornée lorsqu'elle est contenue dans un certain disque centré à l'origine.
+\item Une suite à valeurs complexes $(z_n)_{n\in \mathcal I}$ est bornée si et seulement si il existe un réel $R$ tel que :
+\begin{displaymath}
+ \forall n\in \mathcal I : |z_n|\leq R
+\end{displaymath}
+\end{enumerate}
+\end{rems}
+
+\begin{defi}
+ Une suite à valeurs complexes $(z_n)_{n\in \mathcal I}$ converge vers un nombre complexe $z$ si et seulement si la suite réelle $(|z_n-z|)_{n\in \mathcal I}$ converge vers $0$. On notera 
+\begin{displaymath}
+ (z_n)_{n\in \mathcal I} \rightarrow z 
+\end{displaymath}
+\end{defi}
+
+\begin{prop}
+\begin{displaymath}
+ (z_n)_{n\in \mathcal I} \rightarrow z \Rightarrow (|z_n|)_{n\in \mathcal I} \rightarrow |z|
+\end{displaymath}
+Toute suite convergente à valeurs complexes est bornée.
+\end{prop}
+
+\begin{prop}
+ Soit $(z_n)_{n\in \mathcal I}$ et $(z'_n)_{n\in \mathcal I}$ deux suites à valeurs complexes qui convergent respectivement vers $z$ et $z'$. Soit $\lambda\in \C$  Alors :
+\begin{align*}
+ (\overline{z_n})_{n\in \mathcal I}\rightarrow \overline{z} & &
+(z_n+z'_n)_{n\in \mathcal I} \rightarrow z+z'  & &
+\lambda(z_n)_{n\in \mathcal I} \rightarrow \lambda z & &
+(z_nz'_n)_{n\in \mathcal I} \rightarrow zz'
+\end{align*}
+\end{prop}
+\begin{demo}
+ Les résultats se déduisent des propriétés des suites réelles et des relations :
+\begin{align*}
+ |\overline{z_n} - \overline{z}| &= |z_n -z | \\
+|\lambda z_n -\lambda z | &=|z||z_n -z |\\
+|(z_n+z'_n)-(z+z')| &\leq |z_n -z | + |z'_n -z '|\\
+|(z_nz'_n)-(zz')| &\leq |z'_n||z_n -z | + |z||z'_n -z '|
+\end{align*}
+\end{demo}
+\begin{prop}
+ La suite à valeurs complexes $(z_n)_{n\in \mathcal I}$ converge vers $z$ si et seulement si :
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ (\Re(z_n))_{n\in \mathcal I} &\rightarrow \Re z \\
+(\Im(z_n))_{n\in \mathcal I} &\rightarrow \Im z
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Si on suppose la convergence de la suite complexe, on utilise la convergence de la suite conjuguée puis les opérations pour obtenir les convergence des suites de parties réelles et imaginaires. 
+\begin{align*}
+ (\Re(z_n))_{n\in \mathcal I} &= \dfrac{1}{2}(z_n)_{n\in \mathcal I} + \dfrac{1}{2}(\overline{z_n})_{n\in \mathcal I}\\
+(\Im(z_n))_{n\in \mathcal I} &= \dfrac{1}{2i}(z_n)_{n\in \mathcal I} - \dfrac{1}{2i}(\overline{z_n})_{n\in \mathcal I}
+\end{align*}
+Dans l'autre sens, si on suppose les convergences des suites de parties réelles et imaginaires, on obtient la suite complexe par combinaison :
+\begin{displaymath}
+ (z_n)_{n\in \mathcal I} = (\Re(z_n))_{n\in \mathcal I} + i(\Im z_n)_{n\in \mathcal I}
+\end{displaymath}
+\end{demo}
+\index{théorème de Bolzano Weirstrass pour les suites complexes}
+\begin{thm}[Théorème de Bolzano-Weirstass pour les suites complexes]
+ De toute suite bornée à valeur complexe, on peut extraire une suite convergente.
+\end{thm}
+\begin{demo}
+ Soit $(z_n)_{n\in \mathcal I}$ une suite bornée à valeurs complexes. Comme, pour tous les $n$, $|\Re z_n |\leq |z_n|$ et $|\Re z_n |\leq |z_n|$, les suites de parties réelles et imaginaires sont des suites \emph{bornées de nombres réels}.\newline
+Appliquons le théorème de Bolzano-Weirstrass à la suite des parties réelles. Il existe donc une partie infinie $\mathcal J_1$ de $\mathcal I$ telle que  $(\Re(z_n))_{n\in \mathcal J_1}$ converge.\newline
+La suite $(\Im(z_n))_{n\in \mathcal J_1}$ est encore une suite bornée de nombre réel. On peut appliquer une deuxième fois le théorème de Bolzano-Weirstrass. Il existe une partie infinie $\mathcal J_2$ de $\mathcal J_1$ telle que  $(\Im(z_n))_{n\in \mathcal J_2}$ converge.\newline
+La suite $(\Re(z_n))_{n\in \mathcal J_2}$ est convergente car elle est extraite de $(\Re(z_n))_{n\in \mathcal J_1}$. Ainsi les deux suites 
+\begin{align*}
+ (\Re(z_n))_{n\in \mathcal J_2} & & (\Im(z_n))_{n\in \mathcal J_2}
+\end{align*}
+convergent ce qui assure la convergence de
+\begin{displaymath}
+ (z_n)_{n\in \mathcal J_2}
+\end{displaymath}
+\end{demo}
+Pour le théorème de Bolzano-Weirstrass, voir la section sur les \href{\baseurl C2069.pdf}{suites de réels}.\newline
+Le théorème de Bolzano-Weirstrass pour les suites à valeurs complexes joue un rôle capital dans la \href{\baseurl C5213.pdf}{démonstration du théorème de d'Alembert}. 
+
+\section{Fonctions à valeurs complexes.}
+Les fonctions d'une variable réelle et à valeurs complexes sont des cas particuliers de \href{\baseurl C1618.pdf}{courbes paramétrées}. Voir aussi l'entrée \emph{fonctions d'une variable réelle à valeurs vectorielles} du \href{\baseurl C4199.pdf}{Glossaire de début d'année}
+\subsection{Fonctions continues}
+\subsection{Fonctions dérivables}
+Attention, le théorème des accroissements finis n'est pas valable pour une fonction à valeurs complexes. Il est très facile d'imaginer le mouvement qui revient à son point de départ sans jamais s'arrêter. En revanche, l'inégalité des accroissements finis reste valable sous la forme suivante.\index{inégalité des accroissements finis pour une fonction à valeurs complexes}
+\begin{prop}[Inégalité des accroissements finis pour une fonction à valeurs complexes]
+ Soit $f$ une fonction à valeurs complexes de classe $\mathcal C^1$ sur un segment $[a,b]$, soit $M$ un réel tel que $|f(t)\leq M$ pour tous les $t\in[a,b]$. Alors:
+\begin{displaymath}
+ |f(b)-f(a)|\leq M(b-a)
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On ne donne pas ici de démonstration de ce résultat. Une démonstration très simple sera obtenue en utilisant l'\href{\baseurl C2189.pdf}{intégration des fonctions à valeurs complexes} et la relation fondamentale liant \href{\baseurl C2190.pdf}{intégration et dérivation}.
+\end{demo}
+
+
+\end{document}

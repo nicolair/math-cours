@@ -1,0 +1,612 @@
+\input{courspdf.tex}
+\debutcours{Fonctions d'une variable géométrique :  calcul différentiel}{alpha}
+
+\section{Présentation des personnages}
+\begin{itemize}
+ \item Des parties, notées $\Omega$, (désignées par "domaine") d'un espace affine dont l'espace vectoriel sous-jacent est noté $E$.
+ \item Des fonctions définies dans $\Omega$ et à valeurs réelles. Des \emph{espaces fonctionnels} constitués de fonction de ce type et vérifiant des conditions particulières.
+\item Des fonctions définies dans un intervalle de $\R$ et à valeurs dans $\Omega$ (courbes paramétrées).
+\item Des \emph{champs de vecteurs}. \index{champ de vecteurs}C'est à dire des fonctions définies dans $\Omega$ et à valeurs dans $E$.
+\item Des \emph{formes différentielles}. \index{forme différentielle}C'est à dire de fonctions définies dans $\Omega$ et à valeurs dans $E^*$.
+\item Des \emph{opérateurs de dérivation}. \index{opérateur de dérivation}C'est à dire des applications linéaires définies dans un espace fonctionnel et à valeurs fonctionnelles. Elles doivent de plus vérifier certaines propriétés.
+\end{itemize}
+\begin{rem}
+ Fixons un repère $(O,(\overrightarrow i , \overrightarrow j))$, notons $x$ et $y$ les \textbf{\emph{fonctions coordonnées}} affines dans le repère et $(\alpha , \beta)$ les fonctions coordonnées vectorielles pour la base.\newline
+On peut considérer un champ de vecteurs "constant" qui à tout point $m$ d'un domaine $\Omega$ associe le même vecteur $\overrightarrow i$ (idem avec $\overrightarrow j$).\newline
+On peut considérer de même une forme différentielle "constante" qui à tout point $m$ d'un domaine $\Omega$ associe la même forme linéaire $\alpha$ (idem avec $\beta$). On verra plus loin comment se notent ces formes différentielles particulières.
+\end{rem}
+
+\section{Ordre 1}
+\subsection{Opérateurs de dérivation}
+\subsubsection{Présentation}
+Considérons un espace fonctionnel, noté $\mathcal F$ stable pour les opérations usuelles : addition fonctionnelle, multiplication fonctionnelle, multiplication externe par un réel, composition à gauche par une fonction réelle d'une variable réelle. Cette dernière propriété signifie que si $f$ est un élément de $\mathcal F$ à valeurs dans un intervalle $I$ et si $\varphi$ est une fonction à valeurs réelles définie et dérivable dans $I$, alors
+\begin{displaymath}
+ \varphi \circ f \in \mathcal F
+\end{displaymath}
+Fixons nous un répère et notons $x$ et $y$ les \textbf{\emph{fonctions coordonnées}} attachées à ce repère. Dans ce qui suit , les lettres $x$ et $y$ ne désignent pas des nombres mais des fonctions. Si on considère un point $m\in \Omega$, les coordonnées de $m$  sont $x(m)$ et $y(m)$. On imposera évidemment à notre espace fonctionnel de contenir ces fonctions coordonnées.
+\begin{align*}
+ x\in \mathcal F & & y\in \mathcal F
+\end{align*}
+L'espace fonctionnel contiendra alors beaucoup d'autres fonctions comme
+\begin{align*}
+ xy ,& & x^2+y^2, & & \dfrac{x}{y} \text{ si $\Omega$ ne contient pas $Ox$} , & &
+\dfrac{x}{\sqrt{x^2+y^2}} \text{ si $\Omega$ ne contient pas $O$} , & &
+, \cdots
+\end{align*}
+Un \emph{opérateur de dérivation} \index{opérateur de dérivation}est une application définie  dans un espace fonctionnel $\mathcal F$ et à valeurs dans un autre espace fonctionnel (disons $\mathcal G$) et vérifiant certaines proprietés.
+\begin{defi}
+Une application $\delta$ est un opérateur de dérivation si et seulement si :
+\begin{align*}
+ &\delta(1)=0 \text{ où $0$ et $1$ désignent la fonction nulle et la fonction constante de valeur $1$} \\
+&\forall(f,g)\in \mathcal F^2 , \forall \lambda \in \R :
+\left\lbrace 
+\begin{aligned}
+ \delta (f+g) &= \delta(f) + \delta(g) \\
+\delta(\lambda f) &= \lambda \delta (f)
+\end{aligned}
+\right. 
+ \\
+&\forall(f,g)\in \mathcal F^2 : \delta (fg) = \delta(f) g +f\delta(g) \\
+&\forall f \in \mathcal F \text{ à valeurs dans $I$}, \forall \varphi \in \mathcal D (I,\R) :
+\delta(\varphi \circ f) = \varphi' \circ f \delta(f)
+\end{align*} 
+\end{defi}
+\`A partir d'un \emph{système de coordonnées}, on peut facilement définir des opérateurs de dérivation définis sur les espaces fonctionnels engendrés par les fonctions coordonnées choisies. C'est l'objet du paragraphue suivant.
+\subsubsection{Dérivées partielles}
+Admettons que, parmi les espaces fonctionnels, il en existe un ne contenant que les fonctions obtenues à partir des fonctions coordonnées $x$ et $y$ par les opérations usuelles. Sur un tel espace, on peut \emph{définir} deux opérateurs de dérivation, notés
+\begin{align*}
+ \dfrac{\partial}{\partial x} \text{ et } \dfrac{\partial}{\partial y}
+\end{align*}
+par les propriétés :
+\index{opérateurs $\frac{\partial}{\partial x}$ et  $\frac{\partial}{\partial y}$}
+\begin{itemize}
+ \item $\frac{\partial}{\partial x}$ et  $\frac{\partial}{\partial y}$ sont des opérateurs de dérivation
+\item et les relations
+\begin{align*}
+ \frac{\partial}{\partial x}(x) &= 1 & & \frac{\partial}{\partial x}(y)=0 \\
+ \frac{\partial}{\partial y}(x) &= 0 & & \frac{\partial}{\partial y}(y)=1 
+\end{align*}
+\end{itemize}
+Pour une fonction $f$, on notera en fait
+\begin{displaymath}
+ \frac{\partial}{\partial x}(f) = \dfrac{\partial f}{\partial x}
+\end{displaymath}
+
+Les règles vérifiées par un opérateur de dérivation permettent de calculer l'effet sur des fonctions. Par exemple 
+\begin{align*}
+ &f= x^2+y^2 :& \dfrac{\partial f}{\partial x} =& 2x \\
+ &f= \sqrt{x^2+y^2} :& \dfrac{\partial f}{\partial y} =& \dfrac{y}{\sqrt{x^2+y^2}} \\
+ &f=\arctan\dfrac{y}{x} :& \dfrac{\partial f}{\partial x} =& -\dfrac{y}{x^2}\dfrac{1}{1+\left(\dfrac{y}{x} \right)^2 }
+=-\dfrac{y}{x^2+y^2}
+\end{align*}
+\begin{rems}
+ Les physiciens utilisent les notations
+\begin{displaymath}
+\frac{\partial}{\partial x}_{\vert y} \text{ et } \frac{\partial}{\partial y}_{\vert x} 
+\end{displaymath}
+qui sont moins ambigües (pour une fois) que celles des mathématiciens. \newline
+Pour calculer des dérivées partielles, il est inutile de "geler des machins" et de "faire varier des trucs". On peut se contenter d'appliquer les règles de dérivation (ce que nous adorons tous faire !).
+\end{rems}
+
+\subsection{Dérivée dans une direction}
+\begin{figure}[ht]
+ \centering
+ \input{C2268_1.pdf_t}
+ \caption{Dérivée en un point dans une direction.}
+ \label{fig:C2268_1}
+\end{figure}
+\subsubsection{Définition}
+\begin{defi}[Dérivation en un point dans une direction]\index{dérivée dans une direction}
+ Une fonction $f$ définie dans une partie ouverte $\Omega$ et à valeurs réelles est dérivable en un point $a$ de $\Omega$ si et seulement si la fonction définie dans un intervalle ouvert $I$ contenant $0$ par 
+\begin{displaymath}
+ t \rightarrow f(a + t \overrightarrow u)
+\end{displaymath}
+est dérivable en $0$. Cette dérivée en $0$ est appelée la dérivée de $f$ en $a$ dans la direction $\overrightarrow u$ et notée 
+\begin{displaymath}
+ D_{\overrightarrow u}f(a)
+\end{displaymath}
+\end{defi}
+\begin{rem}
+ La fonction constante de valeur $1$ est évidemment dérivable dans toutes les directions en n'importe quel point de $\Omega$.
+\end{rem}
+
+\begin{prop}
+ Soient $f$ et $g$ deux fonctions dérivables en $a$ dans la direction $\overrightarrow u$ et à valeurs dans un intervalle $J$ de $\R$. Soit $\lambda$ un nombre réel et $\varphi$ une fonctions dérivable dans $J$ et  à valeurs réelles. Les fonctions $f+g$, $\lambda f$, $fg$, $\varphi \circ f$ sont alors dérivables en $a$ dans la direction $\overrightarrow u$ avec :
+\begin{align*}
+ D_{\overrightarrow u}(f+g)(a) &= D_{\overrightarrow u}f(a) + D_{\overrightarrow u}g(a) \\
+ D_{\overrightarrow u}(\lambda f)(a) &= \lambda D_{\overrightarrow u}f(a) \\
+ D_{\overrightarrow u}(fg)(a) &= D_{\overrightarrow u}f(a) g(a)+ f(a)D_{\overrightarrow u}g(a) \\
+ D_{\overrightarrow u}(\varphi \circ f)(a) &= \varphi'(f(a)) D_{\overrightarrow u}f(a)
+\end{align*}
+\end{prop}
+\subsubsection{Opérateur de dérivation attaché à un champ}
+\begin{prop}[Opérateur de dérivation attaché à un champ]\index{opérateur de dérivation attaché à un champ}
+ Soit $\mathcal F$ l'ensemble des fonctions dérivables dans toutes les directions en tous les points de $\Omega$, soit $X$ un champ défini dans $\Omega$. On définit alors dans $\Omega$ la fonction
+\begin{displaymath}
+ D_{\overrightarrow X}
+\end{displaymath}
+par :
+\begin{displaymath}
+\forall a\in \Omega : D_{\overrightarrow X}f\,(a) = D_{\overrightarrow X(a)}f\,(a) 
+\end{displaymath}
+L'application $D_{\overrightarrow X}$ :
+\begin{displaymath}
+ f\in \mathcal F \rightarrow D_{\overrightarrow X}f
+\end{displaymath}
+est un opérateur de dérivation.
+\end{prop}
+
+\begin{prop}
+ Notons  $(\overrightarrow i , \overrightarrow j )$ les vecteurs de base du repère pour lequel les fonctions coordonnées sont notées $x$ et $y$. On note encore $\overrightarrow i$ et $\overrightarrow j$ les champs \emph{constants} prenant , pour tout point $a$ de $\Omega$, les valeurs $\overrightarrow i$ et $\overrightarrow j$. On dispose alors des égalités suivantes entre opérateurs de dérivation :
+\begin{align*}
+ \dfrac{\partial}{\partial x} = D_{\overrightarrow i} & & \dfrac{\partial}{\partial y} = D_{\overrightarrow j} 
+\end{align*}
+\end{prop}
+\begin{demo}
+ Il s'agit de vérifier les formules que doivent vérifier les opérateurs de dérivées partielles.\newline
+Soit $m\in \Omega$ et $\overrightarrow u \in E$, notons $\varphi$ l'application
+\begin{displaymath}
+ t \rightarrow x(m+t\overrightarrow i)
+\end{displaymath}
+Par définition $D_{\overrightarrow i}x(m) = \varphi '(0)$. Or $\varphi(t)=x(m) + t$ donc la dérivée en $0$ vaut $1$ et
+\begin{displaymath}
+ D_{\overrightarrow i}x(m) = 1
+\end{displaymath}
+De même $y(m+t\overrightarrow i)=y(m)$ donc est de dérivée nulle ce qui entraine
+\begin{displaymath}
+ D_{\overrightarrow i}x(m) = 1
+\end{displaymath}
+Le raisonnement est analogue pour les dérivées dans la direction $\overrightarrow j$.
+\end{demo}
+On va s'intéresser à la fonction, pour $f$ et $a$ fixés, qui à $\overrightarrow u$ associe $D_{\overrightarrow u}f(a)$. On peut vérifier à partir de la définition que :
+\begin{displaymath}
+ D_{\lambda \overrightarrow u}f(a) = \lambda D_{\overrightarrow u}f(a)
+\end{displaymath}
+ 
+\subsection{Théorème fondamental d'approximation - Différentielle}
+\subsubsection{Théorème d'approximation au premier ordre}
+\begin{defi}[Fonctions de classe $\mathcal{C}^1$]
+ Une fonction $f$ défine dans un domaine $\Omega$ est dite de classe $\mathcal C^1$ si et seulement si elle est dérivable en tous les points dans les directions $\overrightarrow i$ et $\overrightarrow j$ et si de plus les fonctions $\frac{\partial f}{\partial x}$ et $\frac{\partial f}{\partial y}$ sont continues dans $\Omega$. L'ensemble de ces fonctions est noté 
+\begin{displaymath}
+ \mathcal C^1 (\Omega)
+\end{displaymath}
+\end{defi}
+ \begin{rem}
+  Bien noter que l'on n'impose la dérivabilité que dans deux directions. En fait le théorème fondamental va montrer que lorsque les dérivées dans ces directions sont continues, le fonction est dérivable dans toutes les directions.
+ \end{rem}
+\index{théorème d'approximation différentielle}
+\begin{thm}[Théorème fondamental d'approximation]
+ Soit $f\in \mathcal C^1(\Omega)$ et $a\in \Omega$, soit $r$ la fonction définie dans $\Omega$ par :
+\begin{displaymath}
+ \forall m \in \Omega :
+f(m) = f(a) +\dfrac{\partial f}{\partial x}(a)(x(m)-x(a))
++\dfrac{\partial f}{\partial y}(a)(y(m)-y(a)) +r(m)
+\end{displaymath}
+alors, pour toute norme $N$ :
+\begin{displaymath}
+ \dfrac{r(m)}{N(m-a)} \xrightarrow{a} 0
+\end{displaymath}
+\end{thm}
+\begin{demo}
+ L'étude de cette démonstration n'est pas conseillée en première lecture. Elle est présentée dans le document \href{\baseurl C6308.pdf}{Fonctions d'une variable géométrique : démonstrations} 
+\end{demo}
+\subsubsection{Différentielle.}
+La proposition suivante est une conséquence du théorème fondamental d'approximation.
+\begin{prop}
+ Soit $f\in \mathcal C^1(\Omega)$ et $a\in \Omega$, alors $f$ est dérivable en $a$ dans toutes les directions et
+\begin{displaymath}
+ D_{\overrightarrow u}f(a) = 
+\dfrac{\partial f}{\partial x}(a)\alpha(\overrightarrow u)
++\dfrac{\partial f}{\partial y}(a)\beta(\overrightarrow u)
+\end{displaymath}
+\end{prop}
+On en déduit que la fonction
+\begin{displaymath}
+ \overrightarrow u \rightarrow D_{\overrightarrow u}f(a)
+\end{displaymath}
+est linéaire de $E$ dans $\R$ (forme linéaire).\index{différentielle d'une fonction}
+\begin{defi}
+ Soit $f\in \mathcal C^1(\Omega)$, l'application 
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ \Omega &\rightarrow E^* \\
+ a &\rightarrow \left( \overrightarrow u \rightarrow D_{\overrightarrow u}f(a)  \right) 
+\end{aligned}
+\right. 
+\end{displaymath}
+est une forme linéaire notée $df$ et appelée \emph{différentielle} de $f$.
+\end{defi}
+\begin{prop}
+ La forme différentielle $dx$ est la forme différentielle "constante" de valeur $\alpha$. De même 
+$dy$ est la forme différentielle "constante" de valeur $\beta$
+\end{prop}
+On sait que $(\alpha, \beta)$ est une base de $E^*$, pour toute forme linéaire $\omega$, il existe donc des \emph{fonctions} $A$ et $B$ telles que 
+\begin{displaymath}
+ \omega = Adx + Bdy
+\end{displaymath}
+En particulier pour une fonction $\mathcal C^1$ :
+\begin{displaymath}
+ df = \dfrac{\partial f}{\partial x}dx ++\dfrac{\partial f}{\partial y}dy
+\end{displaymath}
+\begin{rem}
+ Avec la notation différentielle, le théorème d'approximation se reformule en :
+\begin{displaymath}
+ f(m) = f(a) + df(m)(\overrightarrow{am})+r(m) \text{ avec } \frac{r(m)}{N(\overrightarrow{am})} \xrightarrow{a} 0
+\end{displaymath}
+
+\end{rem}
+\index{gradient}
+\begin{defi}[gradient]
+ Soit $f\in \mathcal C^1(\Omega)$. Le gradient de $f$ est le champ de vecteur noté $\overrightarrow{\mathrm{grad}}f$ tel que :
+\begin{displaymath}
+ \forall m\in \Omega , \forall \overrightarrow u \in E :
+df(m)(\overrightarrow u) = (\overrightarrow{\mathrm{grad}}f / \overrightarrow u)
+\end{displaymath}
+\end{defi}
+\begin{rem}
+ Lorsque le repère est orthonormé, on a :
+\begin{displaymath}
+ \overrightarrow{\mathrm{grad}}f = \dfrac{\partial f}{\partial x}\overrightarrow i +
+\dfrac{\partial f}{\partial y}\overrightarrow j
+\end{displaymath}
+\end{rem}
+\index{point critique}
+\begin{defi}[Point critique]
+ Soit $f\in \mathcal C^1(\Omega)$, un point $m$ de $\Omega$ est dit critique si et seulement si :
+\begin{displaymath}
+ df(m)=0_{E^*}\Leftrightarrow \dfrac{\partial f}{\partial x}(m)=\dfrac{\partial f}{\partial y}(m)=0
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ Soit $f\in \mathcal C^1(\Omega)$ avec $\Omega$ ouvert et $m\in \Omega$ un extrémum local de $f$, alors $m$ est un point critique.
+\end{prop}
+\begin{demo}
+ Si $m$ n'est pas un point critique, il existe un vecteur $\overrightarrow u$ tel que $df(m)(\overrightarrow u)\neq 0$. On forme alors une paramétrisation $\gamma(t)=m+t\overrightarrow u$ dont le support est un segment passant par $m$ et de direction $\overrightarrow u$. Le théorème d'approximation conduit à un développement limité à l'ordre $1$
+\begin{displaymath}
+ f(\gamma(t)) = f(m) +\underset{\neq 0}{\underbrace{df(m)(\overrightarrow u)}} t +o(t)
+\end{displaymath}
+qui prouve que $f\gamma(t)$ prend (pour des $t$ proches de $0$) des valeurs strictement plus grandes et plus petites que $f(m)$.
+\end{demo}
+Application aux coniques.
+
+\subsubsection{Courbes tracées dans le domaine}
+La dérivabilité en un point $a$ dans la direction $\overrightarrow u$ revient à la dérivabilité de la fonction
+\begin{displaymath}
+ t \rightarrow f(a+t\overrightarrow u)
+\end{displaymath}
+La fonction $t\rightarrow a+t \overrightarrow u $ est une courbe paramétrée dont le support est une portion de droite dans le domaine $\Omega$. Le théorème d'approximation permet de généraliser.
+\begin{prop}
+ Soit $f\in \mathcal C^1(\Omega,\R)$ et $\gamma$ une courbe paramétrée définie dans un intervalle $I$, à valeurs dans $\Omega$ et de classe $\mathcal C^1(I,\Omega)$. La fonction $f\circ \gamma$ est alors de classe  $\mathcal C^1(I,\R)$ de plus :
+\begin{displaymath}
+ \left(f\circ \gamma \right)'(t)
+= df(\gamma(t))\left( \overrightarrow{\gamma '}(t)\right)
+= \dfrac{\partial f}{\partial x}(\gamma(t))u'(t) + \dfrac{\partial f}{\partial y}(\gamma(t))v'(t) 
+\end{displaymath}
+avec $u(t)=x(\gamma(t))$,  $v(t)=y(\gamma(t))$ et
+\begin{displaymath}
+ \overrightarrow{\gamma '}(t) = u'(t)\overrightarrow i + v'(t)\overrightarrow j
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On forme un développement limité à l'ordre $1$ en utilisant le théorème d'approximation.
+\end{demo}
+Cette proposition a deux conséquences importantes. La première est que la différentielle fournit une équation de la tangente à une ligne de niveau. La deuxième est une expression intégrale de l'accroissement d'une fonction entre deux points à l'aide d'un chemin reliant ces deux points.
+\begin{figure}[ht]
+ \centering
+\input{C2268_2.pdf_t}
+\caption{Lignes de niveau, tangente, gradient}
+\label{fig:C2268_2}
+\end{figure}
+
+\begin{prop}
+ Soit $f\in \mathcal C^1(\Omega)$, soit $A$ un point de $\Omega$ qui n'est pas un point critique, soit $k=f(A)$ et $\Gamma_k$ la ligne de niveau $k$ de $f$ (voir figure \ref{fig:C2268_2}). Si $\overrightarrow u$ est un vecteur directeur de la tangente $\mathcal T$ en $A$ à $\Gamma_k$ alors :
+\begin{displaymath}
+ df(A)(\overrightarrow u) = 0
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On considère une paramétrisation $\gamma$ de $\Gamma_k$ pour laquelle $A=\gamma(t_0)$. Alors $\overrightarrow{\gamma'}(t_0)$ est un vecteur directeur de $\mathcal T$. Comme de plus $\Gamma_k$ est une ligne de niveau de $f$, la fonction 
+\begin{displaymath}
+ t \rightarrow f(\gamma(t))
+\end{displaymath}
+est constante de valeur $k$. Sa dérivée est nulle d'où
+\begin{displaymath}
+ df(\gamma(t))(\overrightarrow{\gamma'}(t)) = 0
+\end{displaymath}
+en particulier en $t_0$. Ce qui conduit au résultat annoncé.
+\end{demo}
+
+\begin{figure}[ht]
+ \centering
+\input{C2268_3.pdf_t}
+\caption{Accroissement de $f$ entre $A$ et $B$ le long de $\gamma$}
+\label{fig:C2268_3}
+\end{figure}
+\begin{prop}
+ Soit $f\in \mathcal C^1(\Omega)$, soit $A$ et $B$ deux points de $\Omega$ et $\gamma\in\mathcal C^1([0,1],\Omega)$ une courbe paramétrée dont le support est dans $\Omega$ et telle que $\gamma(0)=A$, $\gamma(1)=B$ (voir figure \ref{fig:C2268_3}). Alors :
+\begin{displaymath}
+ f(B)-f(A) =
+\int_{0}^{1} df(\gamma(t))(\overrightarrow{\gamma'}(t))dt
+= \int_{0}^{1}
+\left(
+\dfrac{\partial f}{\partial x}u'(t) +
+\dfrac{\partial f}{\partial y}v'(t)
+\right) dt
+\end{displaymath}
+avec $u(t)=x(\gamma(t))$ et $v(t)=y(\gamma(t))$.
+\end{prop}
+\begin{rem}
+ L'intégrale écrite au dessus est indépendante du chemin $\gamma$ choisi puisqu'il s'agit de l'accroissement de la fonction.
+\end{rem}
+
+\begin{demo}
+ On considère la fonction $\varphi=f\circ \gamma$ qui est $\mathcal C^1$ de $[0,1]$ dans $\R$. Alors
+\begin{displaymath}
+ f(B)-f(A)=\int_{0}^{1}\varphi'(t)dt = \int_{0}^{1} df(\gamma(t))(\overrightarrow{\gamma'}(t))dt
+\end{displaymath}
+\end{demo}
+
+
+\subsection{Champs - Formes - Opérateurs - Systèmes de coordonnées}
+\index{système de coordonnées}
+Il est préférable d'utiliser le vocabulaire \emph{changement de système de coordonnées} plutot que \emph{changement de variables} surtout en vue des applications en physique (thermodynamique).
+\subsubsection{Expressions dans un système de coordonnées}
+\begin{prop}
+Tout champ $\overrightarrow X$ s'écrit comme
+\begin{displaymath}
+ \overrightarrow X = A \overrightarrow i + B \overrightarrow j \text{ avec }
+A=D_{\overrightarrow X}(x) \text{ et } B=D_{\overrightarrow X}(y)
+\end{displaymath}
+où $A$ et $B$ sont des fonctions et $\overrightarrow i$ et $\overrightarrow j$ les champs constants de base. On peut dire aussi que $(A(m),B(m))$ sont les coordonnées du vecteur $\overrightarrow X(m)$ dans la base.\newline
+Toute forme différentielle $\omega$ s'écrit comme
+\begin{displaymath}
+ \omega = Adx + Bdy \text{ avec } A(m)=\omega(m)(\overrightarrow i) \text{ et } B(m)=\omega(m)(\overrightarrow j)
+\end{displaymath}
+où $A$ et $B$ sont des fonctions et $dx$ et $dy$ sont les formes différentielles constantes de valeur $\alpha$ et $\beta$ (formes coordoonées relatives à la base).\newline
+Tout opérateur de dérivation $\delta$ s'écrit comme
+\begin{displaymath}
+ \delta = A\dfrac{\partial}{\partial x} + B\dfrac{\partial}{\partial y}
+= D_{A\overrightarrow i + B\overrightarrow j} \text{ avec } 
+A=\delta(x) \text{ et } B=\delta(y)
+\end{displaymath}
+où $A$ et $B$ sont des fonctions. 
+\end{prop}
+\begin{demo}
+ Pour démontrer le dernier point, on peut considérer 
+\begin{displaymath}
+ \delta_0 = \delta  - \delta(x)\dfrac{\partial}{\partial x} - \delta(y)\dfrac{\partial}{\partial y}
+\end{displaymath}
+C'est un opérateur de dérivation pour lequel $\delta_0(x)=\delta_0(y)=0$. On aura donc aussi $\delta_0(f)=0$ pour toutes les fonctions obtenues à partir de $x$ et $y$ par des opérations usuelles. On admettra que cela s'étend à toutes les fonctions de l'espace fonctionnel dans lequel on travaille.
+\end{demo}
+
+\subsubsection{Changement de système de coordonnées}
+\begin{figure}[ht]
+ \centering
+\input{C2268_4.pdf_t}
+\caption{Système de coordonnées}
+\label{fig:C2268_4}
+\end{figure}
+
+Un système de coordonnées est un couple de fonctions $(u,v)$ tel que le couple de réels $(u(m),v(m))$ caractérise le point $m$. Cela se traduit géométriquement par le fait que, par un point $m$, passent exactement une ligne de niveau de $u$ et une ligne de niveau de $v$ (figure \ref{fig:C2268_4}). Ces lignes de niveau de $u$ et $v$ se coupent "proprement" ce qui implique que les vecteurs directeurs des tangentes forment une base de $E$ ou (dualement) les formes linéaires forment une base de $E^*$. On aura donc :
+\begin{displaymath}
+ \forall m\in \Omega :
+(du(m),dv(m)) \text{ base de $E^*$}
+\end{displaymath}
+\begin{rem}
+ Comme on connait des expressions de $du$ et de $dv$ :
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ du(m) =& \frac{\partial u}{\partial x}(m) dx + \frac{\partial u}{\partial y}(m) dy \\
+ dv(m) =& \frac{\partial v}{\partial x}(m) dx + \frac{\partial v}{\partial y}(m) dy 
+\end{aligned}
+\right. 
+\end{displaymath}
+On peut caractériser la condition :
+\begin{displaymath}
+ (du(m),dv(m)) \text{ base de $E^*$} 
+\Leftrightarrow
+\renewcommand{\arraystretch}{1.8}
+\begin{vmatrix}
+\frac{\partial u}{\partial x}(m) & \frac{\partial u}{\partial y}(m) \\
+\frac{\partial v}{\partial x}(m) & \frac{\partial v}{\partial y}(m)
+\end{vmatrix}
+\neq 0
+\end{displaymath}
+\index{jacobien}
+Ce dernier déterminant est appelé le \emph{jacobien} du couple de fonctions $(u,v)$.
+\end{rem}
+
+On peut alors utiliser des $u$ et $v$ au lieu des $x$ et $y$ pour exprimer tous les objets (champs, formes différentielles, opérateurs de dérivation).\newline
+Dans ces conditions, on peut \emph{définir un couple d'opérateurs} notés $\frac{\partial}{\partial u}$ et $\frac{\partial}{\partial v}$ à l'aide des coordonnées de $df(m)$ dans $du(m)$, $dv(m)$. On écrit donc :
+\begin{displaymath}
+ \forall f \in \mathcal F, \forall m\in \Omega :
+df(m) = \frac{\partial f}{\partial u}(m)du(m) + \frac{\partial f}{\partial v}(m)dv(m)
+\end{displaymath}
+et cette formule est la \emph{définition} de $\frac{\partial f}{\partial u}(m)$ et de $\frac{\partial f}{\partial v}(m)$.\newline
+Avec cette définition, on a immédiatement
+\begin{align*}
+ \begin{gathered}
+  \frac{\partial}{\partial u}u=1 , \frac{\partial}{\partial u}v = 0
+ \end{gathered}
+& &
+ \begin{gathered}
+  \frac{\partial}{\partial v}u=0 , \frac{\partial}{\partial v}v = 1
+ \end{gathered}
+\end{align*}
+On dispose ainsi de deux manières de calculer $\frac{\partial f}{\partial u}(m)$ et $\frac{\partial f}{\partial v}(m)$. 
+\begin{itemize}
+ \item Si $f$ s'exprime explicitement avec des opérations usuelles à partir de $u$ et $v$, on peut utiliser directement les régles que vérifie un opérateur de dérivation.
+\item Si $f$ ne s'exprime pas à l'aide de $u$ et $v$. On peut exprimer $df$ avec $dx$ et $dy$ puis changer de base dans $E^*$ c'est à dire exprimer $dx$ et $dy$ en fonction de $du$ et $dv$. Il existe des formules générales faisant intervenir le jacobien mais il vaut mieux les retrouver dans chaque cas particulier. On peut aussi exprimer un jeu d'opérateurs avec l'autre et inverser le sytème.
+\end{itemize}
+\index{opérateurs de dérivation en coordonnées polaires}
+\begin{exple}[Opérateurs de dérivation en polaire]
+ On veut exprimer les opérateurs $\frac{\partial }{\partial x}$ et $\frac{\partial }{\partial y}$ en fonction de $\frac{\partial }{\partial \rho}$ et $\frac{\partial }{\partial \theta}$ et réciproquement.\newline
+On connait $x$ et $y$ en fonction de $\rho$ et $\theta$, on en déduit des relations entre opérateurs que l'on peut inverser :
+\begin{multline*}
+ \left\lbrace
+\begin{aligned}
+ x =& \rho \cos \theta \\
+ y =& \rho \sin \theta 
+\end{aligned}
+ \right. 
+\Rightarrow
+ \left\lbrace
+\begin{aligned}
+ dx =& \cos \theta \,d\rho  -\rho\sin \theta \,d\theta & &\times &\frac{\partial f}{\partial x}\\
+ dy =& \sin \theta \,d\rho  +\rho\cos \theta \,d\theta & &\times &\frac{\partial f}{\partial y}
+\end{aligned}
+ \right. \\
+\Rightarrow
+df  = 
+\left(\cos\theta\frac{\partial f}{\partial x}+ \sin\theta\frac{\partial f}{\partial y}\right) \,d\rho
+ +
+\left(-\sin\theta\frac{\partial f}{\partial x}+ \cos\theta\frac{\partial f}{\partial y} \right)\rho \,d\theta
+\\ \Rightarrow
+\left\lbrace 
+\begin{aligned}
+\frac{\partial }{\partial \rho} &= 
+\cos\theta\frac{\partial }{\partial x}+ \sin\theta\frac{\partial }{\partial y} \\
+\frac{\partial }{\partial \theta} &= 
+-\rho \sin\theta\frac{\partial }{\partial x}+ \rho\cos\theta\frac{\partial }{\partial y} \\
+\end{aligned}
+\right. 
+\Rightarrow
+\left\lbrace 
+\begin{aligned}
+\frac{\partial }{\partial x} &= 
+\cos\theta\frac{\partial }{\partial \rho} - \frac{\sin\theta}{\rho}\frac{\partial }{\partial \theta} \\
+\frac{\partial }{\partial y} &= 
+\sin\theta\frac{\partial }{\partial \rho} + \frac{\cos\theta}{\rho}\frac{\partial }{\partial \theta}
+\end{aligned}
+\right.
+\end{multline*}
+\end{exple}
+\begin{exple}[d'équation aux dérivées partielles]
+ Soit $(u,v)$ un système de coordonnées. Les fonctions $f$ vérifiant
+\begin{displaymath}
+ \frac{\partial f}{\partial u}= 0
+\end{displaymath}
+sont les fonctions de la forme
+\begin{displaymath}
+ \varphi \circ v
+\end{displaymath}
+où $\varphi$ est une fonction quelconque définie dans l'image de $v$.
+\end{exple}
+
+\section{Ordre 2}
+\subsection{Théorème de Schwarz}
+\index{théorème de Schwarz}
+\begin{defi}
+ On dira qu'une fonction $f$ définie dans $\Omega$ est de classe $\mathcal C^2$ si et seulement si elle est de classe $\mathcal C^1$ et si $\frac{\partial f}{\partial x}$ et $\frac{\partial f}{\partial y}$ sont aussi de classe $\mathcal C^1$.
+\end{defi}
+\begin{thm}[Théorème de Schwarz]
+ Soit $f\in \mathcal C^2(\Omega)$, alors :
+\begin{displaymath}
+ \dfrac{\partial}{\partial x}\left( \dfrac{\partial f}{\partial y}\right)
+=
+ \dfrac{\partial}{\partial y}\left( \dfrac{\partial f}{\partial x}\right)
+\end{displaymath}
+On notera 
+\begin{align*}
+ \dfrac{\partial^2 f}{\partial x\partial y}
+=
+ \dfrac{\partial^2 f}{\partial y\partial x} 
+\end{align*}
+\end{thm}
+\begin{rem}
+ Une autre formulation du thèorème précédent est de dire que dans l'espace fonctionnel $\mathcal C^2(\Omega)$, les opérateurs $\frac{\partial }{\partial x}$ et $\frac{\partial }{\partial y}$ commutent
+\begin{displaymath}
+ \frac{\partial }{\partial x} \circ \frac{\partial }{\partial x}=
+ \frac{\partial }{\partial y} \circ \frac{\partial }{\partial x}
+\end{displaymath}
+\end{rem}
+Si $(u,v)$ est un système de coordonnées, vérifier que les opérateurs de dérivation attachés à se système commutent.
+\subsection{Approximation à l'ordre 2}
+\index{théorème d'approximation différentielle à l'ordre 2}
+\begin{thm}[Théorème d'approximation à l'ordre $2$]
+ Soit $f\in \mathcal C^2(\Omega)$ et $a\in \Omega$, soit $r$ la fonction définie dans $\Omega$ par :
+\begin{multline*}
+f(m) = f(a) +\dfrac{\partial f}{\partial x}(a)(x(m)-x(a))
++\dfrac{\partial f}{\partial y}(a)(y(m)-y(a)) \\
++\frac{1}{2}\left( \dfrac{\partial^2 f}{\partial x^2}(a)(x(m)-x(a))^2
++2\dfrac{\partial^2 f}{\partial x\partial y}(a)(x(m)-x(a))(y(m)-y(a))
++\dfrac{\partial^2 f}{\partial y^2}(a)(y(m)-y(a))^2\right)  \\
++r(m)
+\end{multline*}
+alors, pour toute norme $N$ :
+\begin{displaymath}
+ \dfrac{r(m)}{N^2(m-a)} \xrightarrow{a} 0
+\end{displaymath}
+\end{thm}
+\begin{demo}
+ admis
+\end{demo}
+
+\begin{prop}
+ Soit $f\in \mathcal C^2(\Omega)$ (avec $\Omega$ ouvert) et $m\in \Omega$ un point critique de $f$ pour lequel 
+\begin{displaymath}
+ \left( \dfrac{\partial^2 f}{\partial x \partial y}(m)\right)^2 - 
+\dfrac{\partial^2 f}{\partial x^2}(m)
+\dfrac{\partial^2 f}{\partial y^2}(m)<0
+\end{displaymath}
+alors $m$ est un extrémum local.
+\end{prop}
+\begin{demo}
+ Admis
+\end{demo}
+
+
+\subsection{\'Equation des cordes vibrantes}
+\index{équation des cordes vibrantes}
+ Ici $\Omega=\R^2$, la fonction première place dans le couple est notée $x$, la fonction deuxième place est notée $t$. On considère l'équation aux dérivées partielles
+\begin{displaymath}
+ \dfrac{\partial ^2 f}{\partial x^2} -\dfrac{1}{c^2}\dfrac{\partial^2 f}{\partial t^2}=0
+\end{displaymath}
+Les solutions de cette équation constituent le noyau de l'opérateur d'ordre $2$ :
+\begin{displaymath}
+ \dfrac{\partial ^2 }{\partial x^2} -\dfrac{1}{v^2}\dfrac{\partial^2 }{\partial t^2} =
+\left( \dfrac{\partial }{\partial x} -\dfrac{1}{v}\dfrac{\partial }{\partial t}\right) \circ 
+\left( \dfrac{\partial }{\partial x} +\dfrac{1}{v}\dfrac{\partial }{\partial t}\right)
+\end{displaymath}
+d'après le lemme de Schwarz. On définit alors un couple de fonctions 
+\begin{align*}
+ u= x+ ct & & v=x-ct
+\end{align*}
+qui forment un nouveau système de coordonnées. Avec lequel on peut exprimer les opérateurs :
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ \dfrac{\partial }{\partial x} &= \dfrac{\partial u}{\partial x}\dfrac{\partial }{\partial u}+\dfrac{\partial v}{\partial x}\dfrac{\partial }{\partial v} 
+= \dfrac{\partial }{\partial u}+\dfrac{\partial }{\partial v}\\
+\dfrac{\partial }{\partial t} &= \dfrac{\partial u}{\partial t}\dfrac{\partial }{\partial u}+\dfrac{\partial v}{\partial t}\dfrac{\partial }{\partial v} 
+= c\dfrac{\partial }{\partial u}+c\dfrac{\partial }{\partial v}\\
+\end{aligned}
+\right. 
+\Rightarrow
+\left\lbrace 
+\begin{aligned}
+ \dfrac{\partial }{\partial u} &=\dfrac{1}{2}\left( \dfrac{\partial }{\partial x} +\dfrac{1}{c}\dfrac{\partial }{\partial t}\right) \\ 
+\dfrac{\partial }{\partial v} &=\dfrac{1}{2}\left( \dfrac{\partial }{\partial x} -\dfrac{1}{c}\dfrac{\partial }{\partial t}\right) 
+\end{aligned}
+\right. 
+\end{displaymath}
+L'équation de départ s'écrit donc (après simplification par $4$)
+\begin{displaymath}
+ \dfrac{\partial^2 f}{\partial u \partial v} = 0
+\end{displaymath}
+Comme $\dfrac{\partial}{\partial u}\left(\dfrac{\partial f}{\partial v} \right)=0$, il existe une fonction $\varphi$ (de $\R$ dans $\R$) telle que 
+\begin{displaymath}
+ \dfrac{\partial f}{\partial v} = \varphi(v)
+\end{displaymath}
+puis il existe une fonction $\psi$ telle que 
+\begin{displaymath}
+ f = \Phi(v) + \psi(u)
+\end{displaymath}
+où $\Phi$ est une primitive de $\varphi$.
+\subsection{Laplacien en coordonnées polaires}
+\index{Laplacien en coordonnées polaires}
+\section{Théorème des fonctions implicites}
+\index{théorème des fonctions implicites}
+\end{document}

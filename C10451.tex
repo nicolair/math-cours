@@ -1,0 +1,482 @@
+\input{courspdf.tex}
+\debutcours{Entiers naturels, ensembles finis}{1.0}
+En ce qui concerne la présentation de $\N$ et des ensembles finis, l'objectif du programme est de dégager les propriétés utiles dans d'autres contextes où on les considérera comme \og évidentes\fg. Ces propriétés sont présentées sans démonstration dans les sections \og\`A retenir\fg.\newline
+Sans expérience, l'utilisation de ces propriétés est loin d'être évidente car elle nécessite des raisonnements rigoureux. L'intuition nous trompe souvent et l'on formule facilement des propositions ineptes flottant sur des raisonnements inconsistants.\\
+L'étude des sections \og Détails et démonstrations\fg \ est l'occasion de se familiariser avec des modes de raisonnements rigoureux et utiles. Considérer les propriétés à retenir comme des énoncés d'exercices à traiter \emph{rigoureusement avec les seuls axiomes} est le premier des moyens pour acquérir l'expérience nécessaire.
+\section{Présentation axiomatique}
+\subsection{\`A retenir}
+Axiomes
+\begin{enumerate}
+ \item $\N$ n'est pas majoré.
+ \item Toute partie non vide de $\N$ admet un plus petit élémént.
+\end{enumerate}
+ Définitions: $0=\min \N$, $\llbracket 0, n\rrbracket$ est l'ensemble des entiers $k$ tels que $k\leq n$.
+
+\begin{propn}\label{pN: TotOrd}
+ $\N$ est totalement ordonné.
+\end{propn}
+
+\begin{propn}\label{pN: cnsa<b}
+ Pour tous $a$ et $b$ entiers naturels, $a\leq b$ est faux si et seulement si $b<a$.
+\end{propn}
+
+\begin{propn}\label{pN: Enc}
+  Pour tous $x$ et $n$ de $\N$:
+\begin{align*}
+ n \leq x < n+1 \Rightarrow x=n & & n < x \leq n+1 \Rightarrow x = n+1
+\end{align*}
+\end{propn}
+
+\begin{propn}[principe de récurrence]\label{pN: Recu}
+ Soit $A$ une partie de $\N$ telle que
+\begin{displaymath}
+ \exists a \in A \text{ et } \forall n \in \N :\; n\in A \Rightarrow S(n) \in A
+\end{displaymath}
+alors $\llbracket a , +\infty\llbracket =\left\lbrace k\in \N \text{ tq } a\leq k\right\rbrace \subset A$ .
+\end{propn}
+
+\begin{propn}[récurrence descendante]\label{pN: RecD}
+ Soit $n\in \N$ et $A\subset \llbracket 0,n \rrbracket$ vérifiant $n\in A$ et, pour $x\in \llbracket 0,n-1 \rrbracket$, 
+\begin{displaymath}
+ S(x) \in A \Rightarrow x \in A
+\end{displaymath}
+alors $A=\llbracket 0,n \rrbracket$.
+\end{propn}
+
+\begin{propn}\label{pN: Max}
+ Toute partie de $\N$ non vide et majorée admet un plus grand élément.
+\end{propn}
+
+\begin{propn}\label{pN: PasMaj}
+Si $A$ est une partie de $\N$ non vide et non majorée, il existe une bijection strictement croissante de $\N$ dans $A$.  
+\end{propn}
+
+
+\subsection{Détails et démonstrations}
+La \href{http://back.maquisdoc.net/v-1/index.php?&act=chvueelt&vue=vue_rech1&id_elt=6528}{présentation axiomatique} de l'ensemble des entiers naturels proposée ici sur le mode habituel (\og c'est plus gros que\fg, \og c'est bien\fg, \og c'est pas trop gros\fg) ne prétend pas satisfaire aux exigences de rigueur d'un texte de logique ou de fondements des mathématiques. Elle vise à introduire \emph{raisonnablement} les notions du programme de MPSI.\\ 
+Nous admettons qu'il existe un ensemble noté $\N$ vérifiant les propriétés suivantes. La construction d'un tel ensemble peut se faire de plusieurs manières (Zermelo, Von Neumann), elle n'est pas abordée ici.
+\index{présentation axiomatique!entiers naturels}
+
+\begin{pa}
+\item[$\N$ c'est pas rien.]  $\N$ est un ensemble non vide, muni d'une relation d'ordre (notée $\leq$) et non majoré.
+ \item[$\N$ c'est bien.] $\N$ est \emph{bien ordonné}. Cela permet en particulier de définir $0=\min \N$ et une application $S$ de $\N$ dans $\N^*=\N \setminus\{0\}$.
+\item[$\N$ c'est pas trop gros.] L'application $S$ définie au point précédent est surjective.
+\end{pa}
+
+Formons un certains nombre de remarques qui précisent les axiomes et permettent de déduire les premières propriétés de $\N$.
+
+Un ensemble muni d'une relation d'ordre est dit \emph{bien ordonné}\index{ensemble bien ordonné} si et seulement si toute partie non vide admet un plus petit élément. Le deuxième axiome se traduit donc par : toute partie non vide de $\N$ admet un plus petit élément.\\
+En particulier le plus petit élément de $\N$ est noté $0$. On introduit la notation $\llbracket 0, n\rrbracket$ pour désigner l'ensemble des entiers plus petits que $n$.
+
+Remarquons que si $m\in \N$, $m\leq 0$ entraine $m=0$. En effet, par transitivité, $m$ est un minorant de $\N$ donc c'est le plus petit élément de $\N$.
+
+Définition du successeur d'un entier. Comme $\N$ est (axiomatiquement) supposé non majoré, aucun naturel $n$ \emph{n'est un majorant} de $\N$. Il existe donc un naturel qui n'est pas dans $\llbracket 0, n\rrbracket$. Le complémentaire $\N\setminus \llbracket 0, n\rrbracket$ est donc non vide pour tout $n\in \N$. On note
+\begin{displaymath}
+ S(n) = \min (\N\setminus \llbracket 0, n\rrbracket)
+\end{displaymath}
+ et on dit que $S(n)$ est \emph{le successeur} de $n$. 
+On convient de noter $1=s(0)$ et on pose :
+\begin{displaymath}
+ \forall n\in \N : n+1 =S(n)
+\end{displaymath}
+On doit ensuite étendre cette addition aux autres éléments de $\N$ et vérifier les propriétés usuelles. On ne le fera pas ici. On continuera d'utliser la notation $S(n)$ pour désigner le successeur dans ce cours mais cette notation est locale et, dans tout autre contexte, il convient de noter $n+1$.
+\begin{rem}
+Par définition, il est clair que $S(n)\neq n$ car $S(n)\in \N-\llbracket 0, n \rrbracket$ ce qui signifie aussi (par définition de $\llbracket 0, n \rrbracket $) que $S(n)\leq n$ est faux . Attention! L'implication
+\begin{displaymath}
+ \forall (a,b)\in\N^2 : \left( a\leq b \text{ faux } \right) \Rightarrow b < a
+\end{displaymath}
+est vraie dans la cadre d'un espace totalement ordonné mais pas dans le cadre général. En revanche la réciproque est toujours vraie (à cause de l'antisymétrie) et sera utilisée plusieurs fois. 
+La propriété $n < S(n)$ n'est donc pas évidente. Elle fera l'objet d'une proposition démontrée un peu plus loin comme première application du principe de récurrence.
+\end{rem}
+
+On peut reformuler le troisième axiome en disant que tout naturel non nul $n$ admet un \emph{prédécesseur}, c'est à dire un $m$ tel que $S(m)=m+1=n$.
+
+\begin{thmn}["unicité" de $\N$]\label{pN: UniN}
+ Si $(A,\prec_A)$ et $(B,\prec_B)$ sont deux ensembles ordonnés vérifiant les mêmes axiomes que $\N$,  il existe une unique bijection strictement croissante de $A$ dans $B$.
+\end{thmn}
+\begin{demo}
+ Ce théorème est admis.
+\end{demo}
+
+La notation usuelle $a<b$ signifie $a\leq b$ et $a\neq b$. 
+
+\begin{prop}[\ref{pN: TotOrd}]
+ $\N$ est totalement ordonné.
+\end{prop}
+\begin{demo}
+ Considérons deux naturels quelconques $a$ et $b$. La partie $\{a,b\}$ de $\N$ est non vide, elle admet donc un plus petit élément. Si c'est $a$ alors $a\leq b$ sinon $b\leq a$.
+\end{demo}
+
+
+\begin{prop}[\ref{pN: cnsa<b}]
+ Pour tous $a$ et $b$ entiers naturels, $a\leq b$ est faux si et seulement si $b<a$.
+\end{prop}
+\begin{demo}
+ Si $a\leq b$ est faux alors $b\leq a$ car $\N$ est totalement ordonné. De plus $a\neq b$ sinon on aurait $a\leq b$.\newline
+Réciproquement, si $a<b$ alors $a\leq b$. On ne peut alors avoir $b\leq a$ sinon par transitivité $a=b$ en contradiction avec $a<b$.
+\end{demo}
+
+\begin{prop}[\ref{pN: Enc}]
+  Pour tous $x$ et $n$ de $\N$:
+\begin{align*}
+ n \leq x < n+1 \Rightarrow x=n & & n < x \leq n+1 \Rightarrow x = n+1
+\end{align*}
+\end{prop}
+\begin{demo}
+ Supposons $n\leq x < S(n)$. La propriété $x<S(n)$ entraine que $S(n)\leq x$ est fausse (si c'était vrai on aurait égalité par antisymétrie). Comme $S(n)$ est un minorant de $\N\setminus \llbracket 0, n\rrbracket$, on en déduit que $x\not \in \N\setminus \llbracket 0, n\rrbracket$. C'est à dire $x\in \llbracket 0, n\rrbracket$. On a alors à la fois $n\leq x$ et $x\leq n$ donc $x=n$.\newline
+Supposons $n< x \leq S(n)$. De $n<x$, on tire que $x\leq n$ est faux (comme plus haut) donc $x\in \N \setminus \llbracket 0, n\rrbracket$ d'où $S(n) \leq x$ car $S(n)$ est un minorant de $\N \setminus \llbracket 0, n\rrbracket$. Par antisymétrie, on obtient alors $x=S(n)$. 
+\end{demo}
+
+\begin{lemn}\label{lN: 0S(n)}
+ Pour tout $n\in \N$, $n<S(n)$ et $\llbracket 0 , S(n) \rrbracket = \llbracket 0 , n \rrbracket \cup \{S(n)\}$.  
+\end{lemn}
+\begin{demo}
+Par définition $S(n)\notin \llbracket 0,n \rrbracket$ donc $S(n)\leq n$ est faux donc $n <S(n)$ car $\N$ est totalement ordonné.\newline
+ L'inclusion $\llbracket 0 , n \rrbracket \cup \{S(n)\} \subset \llbracket 0 , S(n) \rrbracket$ en découle. L'autre inclusion vient des implications suivantes. Si $k\notin \llbracket 0 , n \rrbracket$ alors $S(n)\leq k$. Si de plus $k\leq S(n)$, alors $k=S(n)$ par transitivité.
+\end{demo}
+
+\begin{lemn}\label{lN: SCr}
+ $S$ est croissante.
+\end{lemn}
+\begin{demo}
+ Soit $a$ et $b$ naturels avec $a\leq b$ alors, par transitivité, $\llbracket 0, a\rrbracket\subset \llbracket 0, b\rrbracket$ donc $\N \setminus \llbracket 0, b\rrbracket \subset \N \setminus \llbracket 0, a\rrbracket$. On en déduit que $S(b)\in \N \setminus \llbracket 0, a\rrbracket$ donc que $S(a)\leq S(b)$ car $S(a)$ est un minorant de $\llbracket 0, a\rrbracket$.
+\end{demo}
+
+\index{question de cours!principe de récurrence} 
+\begin{prop}[\ref{pN: Recu} principe de récurrence]
+ Soit $A$ une partie de $\N$ telle que
+\begin{displaymath}
+ \exists a \in A \text{ et } \forall n \in \N :\; n\in A \Rightarrow S(n) \in A
+\end{displaymath}
+alors $\llbracket a , +\infty\llbracket =\left\lbrace k\in \N \text{ tq } a\leq k\right\rbrace \subset A$ .
+\end{prop}
+\begin{demo}
+ On démontre seulement dans le cas $a=0$ c'est pareil pour le cas général. On note $B$ le complémentaire de $A$ dans $\N$ et on montre par l'absurde que $B$ est vide.\newline
+Si $B$ est non vide, il admet un plus petit élément $b$. Cet élément $b$ est non nul car il est dans $B$ alors que $0$ est supposé dans $A$. On peut donc considérer le prédécesseur $a$ de $b$. Il vérifie $S(a) = b$. Comme $b\leq a$ est faux et comme $b$ est le plus petit élément de $B$, on déduit que $a\not\in B$ c'est à dire que $a\in A$. La deuxième hypothèse sur la partie $A$ entraine alors que $S(a)=b\in A$ ce qui est contradictoire.
+\end{demo}
+Formulation avec des propositions. Récurrence forte. à rédiger
+
+\begin{lemn}\label{lN: SSc}
+ L'application $S$ est strictement croissante. Elle est donc injective.
+\end{lemn}
+\begin{demo}
+ Soient $a$ et $b$ naturels vérifiant $a<b$. Alors $b\in \N \setminus \llbracket 0, a \rrbracket$ donc $S(a)\leq b <S(b)$ ce qui entraine $S(a) < S(b)$. 
+\end{demo}
+
+\begin{prop}[\ref{pN: RecD} récurrence descendante]
+ Soit $n\in \N$ et $A\subset \llbracket 0,n \rrbracket$ vérifiant $n\in A$ et, pour $x\in \llbracket 0,n-1 \rrbracket$, 
+\begin{displaymath}
+ S(x) \in A \Rightarrow x \in A
+\end{displaymath}
+alors $A=\llbracket 0,n \rrbracket$.
+\end{prop}
+\begin{demo}
+Si le complémentaire de $A$ est non vide, on peut lui appliquer le principe de récurrence et aboutir à une contradiction.
+\end{demo}
+
+\begin{prop}[\ref{pN: Max}]
+ Toute partie de $\N$ non vide et majorée admet un plus grand élément.
+\end{prop}
+\begin{demo}
+ Soit $A$ une partie de $\N$ non vide et majorée et $M$ l'ensemble (non vide) de ses majorants. Notons $m$ le plus petit élément de $M$.\newline
+Si $m=0$ alors $0$ est un majorant de $A$ donc $A$ se reduit au singleton $\{0\}$ qui admet $0$ comme plus grand élément.\newline
+Si $m\neq 0$, on peut considérer le prédécesseur $n$ de $m$. Comme $m\leq n$ est faux et $m$ est un minorant de $M$, on déduit que $n\not\in M$, ce n'est pas un majorant de $A$. Il existe donc $a\in A$ tel que $a\leq n$ soit faux d'où $n < a$. On a donc :
+\begin{displaymath}
+ n < a \leq  m = S(n) \text{ ( car $m\in M$ )} \Rightarrow m=a\in A \Rightarrow m = \max A 
+\end{displaymath}
+\end{demo}
+
+Un autre type d'application de ces propriétés fondamentales de $\N$ est la \href{http://fr.wikipedia.org/wiki/M\%C3\%A9thode_de_descente_infinie}{descente infinie de Fermat}.\index{descente infinie de Fermat} Dans l'exemple suivant, on utilise librement le théorème de Gauss du cours d'arithmétique. Cet exemple sera utilisé dans la section \href{\baseurl C2192.pdf}{Axiomatique de $\R$} pour montrer que $\Q$ ne vérifie pas la propriété de la borne supérieure.
+\begin{exple}
+ Pour tous entiers naturels $p$ et $q$ : $p^2 \neq 2q^2$.\\
+En effet, supposons que l'ensemble $\mathcal P$ des entiers $p$ pour lesquels il existe un entier $q$ vérifiant  $p^2=2q^2$ soit non vide. Lorsque cette relation est vérifiée, $p$ est pair donc il existe un entier $p_1$ tel que
+$p=2p_1$. On en déduit $2p_1^2=q^2$. Donc $q$ est pair, il existe un entier $q_1$ tel que $q=2q_1$. On obtient alors $p_1^2=2q_1^2$ avec $p_1<p$. Ceci est évidemment en contradiction avec le fait que $\mathcal P$ admette un plus petit élément. L'ensemble $\mathcal P$ est donc vide.
+\end{exple}
+
+\begin{prop}[\ref{pN: PasMaj}]
+Si $A$ est une partie de $\N$ non vide et non majorée, il existe une bijection strictement croissante de $\N$ dans $A$.  
+\end{prop}
+\begin{demo}
+C'est une conséquence du théorème \ref{pN: UniN} d'unicité de $\N$.
+\end{demo}
+
+
+\section{Ensembles finis}
+\subsection{\`A retenir}
+\begin{propn}\label{pN: Nnfini}
+ $\N$ n'est pas fini. 
+\end{propn}
+
+\begin{propn}\label{pN: CarFiBij}
+ S'il existe une bijection entre deux ensembles $A$ et $B$, alors $A$ est fini si et seulement si $B$ est fini.
+\end{propn}
+
+\begin{propn}\label{pN: ScMin}
+ Soit $n\in \N$ et $\varphi$ une application strictement croissante de $\llbracket 0, n\rrbracket$ dans $\N$. Alors $x\leq \varphi(x)$ pour tous les $x\in \llbracket 0, n\rrbracket$.
+\end{propn}
+
+\begin{propn}\label{pN: 0nFini}
+ Soit $n\in N$, la partie $\llbracket 0, n\rrbracket$ de $\N$ est finie.
+\end{propn}
+
+\begin{propn}\label{pN: ConPasFin}
+ Soit $A$ un ensemble. S'il existe une application injective de $\N$ dans $A$, alors $A$ n'est pas fini. On peut reformuler. S'il $A$ est un ensemble fini et $f$ une application de $\N$ dans $A$, alors $f$ n'est pas injective.
+\end{propn}
+
+\begin{propn}\label{pN: DefCard}
+ Soit $A$ un ensemble fini non vide. Il existe un unique entier naturel $n$ pour lequel il existe une bijection entre $\llbracket 0, n\rrbracket$ et $A$.
+\end{propn}
+
+\begin{defi}
+ Soit $A$ un ensemble fini non vide et $n\in \N$ comme dans la proposition précédente. Par définition $n+1$ est le \emph{nombre d'éléments} de $A$. On dit aussi le $\emph{cardinal}$ de $A$. Il est noté $\card A$ ou $\sharp A$. Par convention $\sharp \emptyset = 0$. Pour $n\neq 0$, le prédécesseur de $n$ est noté $n-1$.
+\end{defi}
+
+\begin{propn}\label{pN: FiniMax}
+Toute partie finie non vide de $\N$ admet un plus grand élément. 
+\end{propn}
+
+\begin{propn}\label{pN: InCard}
+Toute partie d'un ensemble fini est finie et son cardinal est inférieur ou égal au cardinal de l'ensemble qui le contient. 
+\end{propn}
+
+\begin{propn}\label{pN: PropParFin}
+Soit $A$ et $B$ deux ensembles finis, alors :
+\begin{align*}
+A\cup B \text{ fini} & & A\subset B \Rightarrow  \sharp\, A \leq \sharp B  & & 
+\left. 
+\begin{aligned}
+ A\subset B \\
+ \sharp\, A = \sharp B
+\end{aligned}
+\right\rbrace \Rightarrow A = B
+& &
+A\cap B = \emptyset \Rightarrow
+\sharp (A\cup B ) = \sharp\,A + \sharp B
+\end{align*}
+\end{propn}
+
+\begin{propn}\label{pN: PropAppFin}
+ Soit $A$ et $B$ deux ensembles et $f$ une application de $A$ dans $B$ :
+\begin{align*}
+ f \text{ bijective et } A \text{ fini }   &\Rightarrow B \text{ fini et } \sharp\, A = \sharp\, B \\
+ f \text{ injective et } B \text{ fini }  &\Rightarrow A \text{ fini et } \sharp\, A \leq \sharp\, B \\
+ f \text{ surjective et } A \text{ fini } &\Rightarrow B \text{ fini et } \sharp\, B \leq \sharp\, A 
+\end{align*}
+\end{propn}
+
+\begin{propn}\label{pN: CarBij}
+Soient $A$ et $B$ deux ensembles finis avec le même cardinal. Soit $f$ une application de $A$ dans $B$. Alors $f$ est injective si et seulement si $f$ est surjective si et seulement si $f$ est bijective.
+\end{propn}
+
+\begin{propn}\label{pN: SomCard}
+ Soient $A_1,\cdots,A_p$ des parties finies et disjointes deux à deux d'un ensemble $A$. Leur union est finie avec :
+\begin{displaymath}
+ \sharp\left(A_1 \cup \cdots A_p \right) = \sharp\, A_1 + \cdots + \sharp\, A_1 
+\end{displaymath}
+\end{propn}
+
+\subsection{Détails et démonstrations}
+\index{ensemble fini}
+\begin{defi}[ensemble fini]
+ Un ensemble $\Omega$ est \emph{fini} si et seulement si toute application injective de $\Omega$ dans lui même est surjective.
+\end{defi}
+
+\index{ensemble infini}
+\begin{defi}[ensemble infini]
+Un ensemble est \emph{infini} si et seulement si il n'est pas fini.
+\end{defi}
+
+\begin{defi}\index{ensemble infini-dénombrable}
+Un ensemble est \emph{infini dénombrable} si et seulement si il est en bijection avec $\N$.
+\end{defi}
+
+\begin{prop}[\ref{pN: Nnfini}]
+ $\N$ n'est pas fini.
+\end{prop}
+\begin{demo}
+ Il suffit de trouver une application injective mais non surjective de $\N$ dans $\N$. Par exemple $S$ convient car $0$ n'a pas de prédécesseur.
+\end{demo}
+
+\begin{prop}[\ref{pN: CarFiBij}]
+ S'il existe une bijection entre deux ensembles $A$ et $B$, alors $A$ est fini si et seulement si $B$ est fini.
+\end{prop}
+\begin{demo}
+Supposons $B$ fini et soit $f$ une bijection de $A$ vers $B$. Pour toute injection $\varphi$ de $A$ dans $A$, l'application $\psi = f\circ \varphi \circ f^{-1}$ est injective de $B$ dans $B$. Elle est donc surjective. Comme $\varphi = f^{-1}\circ \psi \circ f$ avec $f$, $\psi$ $f^{-1}$ bijectives, elle l'estaussi. Les ensembles jouent le même rôle, le raisonnement est le même pour l'implication réciproque. 
+\end{demo}
+
+\begin{lemn}\label{lN: IncFin}
+ Toute partie d'un ensemble fini est finie.
+\end{lemn}
+\begin{demo}
+ Soit $A$ un ensemble fini et $B$ une partie de $A$. Considérons une injection quelconque $\varphi$ de $B$ dans lui même. On peut la prolonger à une application $\psi$ de $A$ dans $A$ en posant
+\begin{displaymath}
+ \forall x \in A,\; \psi(x) = 
+\left\lbrace 
+\begin{aligned}
+ \varphi(x) &\text{ si } x\in B \\ x &\text{ si } x\in A
+\end{aligned}
+\right. 
+\end{displaymath}
+On vérifie alors que $\psi$ est injective. Comme $B$ est fini, elle est aussi surjective ce qui entraine que $\varphi$ est surjective.
+\end{demo}
+
+
+\begin{prop}[\ref{pN: ScMin}]
+ Soit $n\in \N$ et $\varphi$ une application strictement croissante de $\llbracket 0, n\rrbracket$ dans $\N$. Alors $x\leq \varphi(x)$ pour tous les $x\in \llbracket 0, n\rrbracket$.
+\end{prop}
+\begin{demo}
+ Introduisons une partie $\mathcal{E} = \left\lbrace x\in \llbracket 0, n \rrbracket \text{ tq } \varphi(x)<x\right\rbrace$. Remarquons que $0\notin \mathcal{E}$ car $0\leq \varphi(0)$.\newline
+On va montrer par l'absurde que $\mathcal{E}$ est vide.\newline
+Si $\mathcal{E}$ n'est pas vide, il admet un plus petit élément $a$ qui est $\neq 0$ car $0\notin \mathcal{E}$. Il existe donc un $b\in\llbracket 0, a \llbracket$ tel que $S(b)=a$. Comme $a=\min \mathcal{E}$ et $a\leq b$ faux, on a $b\notin \mathcal{E}$ donc $b\leq \varphi(b)$. La stricte croissance de $\varphi$ entraine
+\begin{displaymath}
+ \varphi(b) < \varphi(S(b)) = \varphi(a)
+\end{displaymath}
+Or $b\leq \varphi(b)$ donc $b < \varphi(a)$. On en déduit $\varphi(a) \in \N \setminus \llbracket 0, b\rrbracket$ donc $a=S(b)\leq \varphi(a)$ ce qui signifie $a\notin \mathcal{E}$ et marque une contradiction car $a$, plus petit élément de $\mathcal{E}$, doit appartenir à $\mathcal{E}$.
+\end{demo}
+
+\begin{lemn}\label{lN: ScId}
+ Soit $n\in\N$ et $\varphi$ strictement croissante de $\llbracket 0,n \rrbracket$ dans $\llbracket 0,n \rrbracket$, alors $\varphi$ est l'identité de $\llbracket 0,n \rrbracket$.
+\end{lemn}
+\begin{demo}
+ On considère l'ensemble $E$ des $x$ entre $0$ et $n$ pour lesquels $\varphi(x)=x$.\newline
+L'ensemble $E$ n'est pas vide car il contient $n$. En effet $n\leq \varphi(n)$ d'après la proposition précédente et $\varphi(n)\leq n$ car $\varphi$ prend ses valeurs entre $0$ et $n$.\newline
+Montrons ensuite que $S(x)\in E \Rightarrow x\in E$. En effet, par stricte croissance,
+\begin{displaymath}
+ x\leq \varphi(x) < \varphi(S(x))= S(x)\Rightarrow x=\varphi(x)
+\end{displaymath}
+d'après la proposition (3) de la section précédente. On peut donc terminer par une récurrence descendante (proposition \ref{pN: RecD}).
+\end{demo}
+
+\begin{lemn}\label{lN: Fo0nMaj}
+ Soit $n\in\N$ et $\varphi$ une application de $\llbracket 0,n \rrbracket$ dans $\N$, alors $\varphi(\llbracket 0,n \rrbracket)$ est une partie majorée de $\N$.
+\end{lemn}
+\begin{demo}
+Soit $A$ l'ensemble des $k\in \llbracket 0,n \rrbracket$ tels que  $\varphi(\llbracket 0,k \rrbracket)$ soit majorée.\newline
+Evidemment, $0\in A$ car $\lbrace \varphi(0) \rbrace$ est majoré par $\varphi(0)$.\newline
+Soit $a\in A$ et $M$ un majorant de $\varphi(\llbracket 0,a \rrbracket)$. Comme $\N$ est totalement ordonné l'un des deux nombres $M$ et $\varphi(S(a))$ est inférieur ou égal à l'autre, notons l'autre $M'$. On vérifie facilement (en utilisant le lemme \ref{lN: 0S(n)}) que $M'$ est un majorant de $\varphi(\llbracket 0,S(n) \rrbracket)$. On conclut alors par le principe de récurrence.
+\end{demo}
+
+\begin{rem}
+ Il apparait clairement que pour un ensemble ordonné, la propriété \og l'ordre est total\fg \ est équivalent à la propriété \fg toute partie à deux éléments\fg \ admet un plus grand et un plus petit élément. Toutefois, on ne peut pas vraiment formuler ceci avant d'avoir clairement fondé la notion de nombre d'éléments d'une partie.
+\end{rem}
+
+\begin{prop}[\ref{pN: 0nFini}]
+ La partie $\llbracket 0, n\rrbracket$ de $\N$ est finie pour tout entier naturel $n$.
+\end{prop}
+\begin{demo}
+ Soit $\varphi$ une application injective de $\llbracket 0,n \rrbracket$ dans lui même. Le lemme \ref{lN: Fo0nMaj} et la proposition \ref{pN: Max} permettent de définir une fonction $\bar{\varphi}$:
+\begin{displaymath}
+ \forall x\in \llbracket 0,n \rrbracket,\; \bar{\varphi}(x) = \max \varphi(\llbracket 0,x \rrbracket) = \left\lbrace \varphi(0), \varphi(1), \cdots ,\varphi(x)\right\rbrace 
+\end{displaymath}
+Cette fonction est strictement croissante et à valeurs dans $\llbracket 0,n \rrbracket$. D'après le lemme \ref{lN: ScId}, c'est l'identité de $\llbracket 0,n \rrbracket$. On en déduit la surjectivité de $\varphi$.
+\end{demo}
+
+\begin{lemn}\label{lN: Injpq}
+ Soit $p$ et $q$ deux entiers naturels tels qu'il existe une application injective de $\llbracket 0,p \rrbracket$ dans $\llbracket 0,q \rrbracket$, alors $p\leq q$.
+\end{lemn}
+\begin{demo}
+ On utilise la même construction que dans la démonstration du lemme \ref{pN: 0nFini} en définissant une fonction $\bar{\varphi}$:
+\begin{displaymath}
+ \forall x\in \llbracket 0,n \rrbracket,\; \bar{\varphi}(x) = \max \varphi(\llbracket 0,x \rrbracket) = \left\lbrace \varphi(0), \varphi(1), \cdots ,\varphi(x)\right\rbrace 
+\end{displaymath}
+Cette application est alors strictement croissante de $\llbracket 0,p \rrbracket$ dans $\llbracket 0,q \rrbracket$. La proposition \ref{lN: ScId} montre alors que $p \leq \bar \varphi(p)$ d'où $p\leq q$. 
+\end{demo}
+
+\begin{lemn}\label{lN: CondPasFin}
+ Soit $A$ une partie de $\N$ pour laquelle, pour tout $n\in \N$, il existe une application injective de $\llbracket 0,n \rrbracket$ dans $A$, alors $A$ est infinie.
+\end{lemn}
+\begin{demo}
+ En utilisant la même construction que dans la démonstration du lemme \ref{pN: 0nFini}, on peut supposer que les applications injectives sont strictement croissantes.\newline
+D'après la proposition \ref{pN: 0nFini} et le lemme \ref{lN: IncFin} toute partie majorée de $\N$ est finie, on va donc montrer qu'une partie vérifiant l'hypothése n'est pas majorée.\newline
+En effet, pour tout entier $n$, il existe une application strictement croissante $\varphi$ de $\llbracket 0,S(n) \rrbracket$ dans $A$. On en tire $n < S(n) \leq \varphi(S(n))$ d'après la proposition \ref{pN: ScMin}. Il existe donc un élément $a$ de $A$ (à savoir $\varphi(S(n))$ tel que $a\leq n$ est faux. Ceci étant valable pour tous les entiers $n$, cela signifie que $A$ n'est pas majorée.
+\end{demo}
+
+\begin{prop}[\ref{pN: ConPasFin}]
+ Soit $A$ un ensemble. S'il existe une application injective de $\N$ dans $A$, alors $A$ n'est pas fini.
+\end{prop}
+\begin{demo}
+ En considérant les restrictions aux parties $\llbracket 0,n \rrbracket$, on se ramène au lemme \ref{lN: CondPasFin}.
+\end{demo}
+
+\begin{prop}[\ref{pN: DefCard}]
+ Soit $A$ un ensemble fini non vide. Il existe un unique entier naturel $n$ pour lequel il existe une bijection entre $\llbracket 0, n\rrbracket$ et $A$.
+\end{prop}
+\begin{demo}
+ D'après le lemme \ref{lN: CondPasFin}, il existe des entiers $k$ pour lesquels il n'existe pas d'application injective de $\llbracket 0,k \rrbracket$ dans $A$. On note $\mathcal N$ l'ensemble de ces éléments et $m$ le plus petit d'entre eux.\newline
+Comme il existe une application injective de $\{0\}$ dans $A$, on sait que $m\neq 0$. Il existe donc $n\in\N$ tel que $S(n)=m$.\newline
+De $n<m$, on déduit que $n\notin \mathcal{N}$ et qu'il existe donc une application injective $\varphi$ de $\llbracket 0,n \rrbracket$ dans $A$. Si $\varphi$ n'était pas surjective, on pourrait la prolonger en une application injective de $\llbracket 0,S(n)=m \rrbracket$ dans $A$ en contradiction avec la définition de $m$.\newline
+Ainsi, il existe bien un $n$ pour lequel il existe une bijection de $\llbracket 0,n \rrbracket$ vers $A$.\newline
+Montrons maintenant qu'il n'en existe qu'un.\newline 
+Si $n$ et $n'$ vérifient cette propriété, il existe alors des bijections entre $\llbracket 0,n \rrbracket$ et $\llbracket 0,n' \rrbracket$. ceci entraine que $n=n'$ en utilisant le lemme \ref{lN: Injpq}. 
+\end{demo}
+
+\begin{prop}[\ref{pN: FiniMax}]
+Toute partie finie non vide de $\N$ admet un plus grand élément. 
+\end{prop}
+\begin{demo}
+ Soit $A$ une partie finie non vide de $\N$, il existe alors une bijection entre $\llbracket 0,n \rrbracket$ et $A$. Le lemme \ref{lN: Fo0nMaj} montre alors que $A$ est majorée donc il admet un plus grand élément d'après la proposition \ref{pN: Max}.
+\end{demo}
+
+\begin{prop}[\ref{pN: InCard}]
+Toute partie d'un ensemble fini est finie et son cardinal est inférieur ou égal au cardinal de l'ensemble qui le contient. 
+\end{prop}
+\begin{demo}
+ La première partie de cette proposition est le lemme \ref{lN: IncFin}. Soit $A$ et $B$ finis avec $\sharp A =p$, $\sharp B =q$ et $A\subset B$. Il existe des bijections $\alpha$ de $\llbracket 0,p\rrbracket$ dans $A$ et $\beta$ de $\llbracket 0,q\rrbracket$ dans $B$. Comme $A\subset B$, on peut définir une application
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ \llbracket 0,p\rrbracket &\rightarrow \llbracket 0,q\rrbracket \\
+ k &\rightarrow \beta^{-1}(\alpha(k))
+\end{aligned}
+\right. 
+\end{displaymath}
+ Comme $\alpha$ et $\beta$ sont bijectives, cette application est injective donc $p\leq q$ d'après le lemme \ref{lN: Injpq}.
+\end{demo}
+
+
+\begin{prop}[\ref{pN: PropParFin}]
+Soit $A$ et $B$ deux ensembles finis, alors :
+\begin{align*}
+A\cup B \text{ fini} & & A\subset B \Rightarrow  \sharp\, A \leq \sharp B  & & 
+\left. 
+\begin{aligned}
+ A\subset B \\
+ \sharp\, A = \sharp B
+\end{aligned}
+\right\rbrace \Rightarrow A = B
+& &
+A\cap B = \emptyset \Rightarrow
+\sharp (A\cup B ) = \sharp\,A + \sharp B
+\end{align*}
+\end{prop}
+\begin{demo}
+ à rédiger ou à admettre ?
+\end{demo}
+
+\begin{prop}[\ref{pN: PropAppFin}]
+ Soit $A$ et $B$ deux ensembles et $f$ une application de $A$ dans $B$ :
+\begin{align*}
+ f \text{ bijective et } A \text{ fini }   &\Rightarrow B \text{ fini et } \sharp\, A = \sharp\, B \\
+ f \text{ injective et } B \text{ fini }  &\Rightarrow A \text{ fini et } \sharp\, A \leq \sharp\, B \\
+ f \text{ surjective et } A \text{ fini } &\Rightarrow B \text{ fini et } \sharp\, B \leq \sharp\, A 
+\end{align*}
+\end{prop}
+\begin{demo}
+ à rédiger  ou à admettre ?
+\end{demo}
+
+\begin{prop}[\ref{pN: CarBij}]
+Soient $A$ et $B$ deux ensembles finis avec le même cardinal. Soit $f$ une application de $A$ dans $B$. Alors $f$ est injective si et seulement si $f$ est surjective si et seulement si $f$ est bijective.
+\end{prop}
+
+\begin{prop}[\ref{pN: SomCard}]
+ Soient $A_1,\cdots,A_p$ des parties finies et disjointes deux à deux d'un ensemble $A$. Leur union est finie avec :
+\begin{displaymath}
+ \sharp\left(A_1 \cup \cdots A_p \right) = \sharp\, A_1 + \cdots + \sharp\, A_1 
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ à rédiger ou à admettre ?
+\end{demo}
+
+\end{document}

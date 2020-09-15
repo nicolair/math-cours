@@ -1,0 +1,52 @@
+\input{courspdf.tex}
+\debutcours{\'Ecriture dans une base}{alpha}
+
+En particulier on s'attache à expliquer pourquoi l'écriture décimale d'un rationnel est périodique à partir d'un certain rang ?
+Nouvelle démonstration. \`A vérifier.
+On considère un nombre rationnel $x=\frac{p}{q}$ avec $q>1$. D'après un \href{http://localhost/v-1/index.php?act=chelt&id_elt=5639}{exercice}, la suite des restes modulo $q$ de $p10^n$ est périodique à partir d'un certain rang. Il existe donc des suites $\left(a_n \right)_{n\in\N}$ et $\left(r_n\right)_{n\in\N}$ périodiques à partir d'un certain rang et vérifiant
+\begin{displaymath}
+ p10^n = a_nq + r_n \text{ avec } r_n\in\{0,\cdots,q-1\}
+\end{displaymath}
+car la périodicité des restes entraîne celle des quotients. On en déduit :
+\begin{displaymath}
+ \dfrac{p}{q} = a_n10^{-n} + \dfrac{r_n}{q}10^{-n} \text{ avec } 0\leq \dfrac{r_n}{q}<1
+\end{displaymath}
+Ceci signifie que $a_n10^{-n}=m_n(x)$ est l'approximation à l'ordre $n$ par défaut de $x$. Or la décimale d'ordre $n$ de $x$ est le reste de la division euclidienne par $10$ de $10^nm-n(x)$ qui est égal à $a_n$. La périodicité de la suite des $a_n$ entraine celle de ce reste donc celle de la suite des décimales.
+
+
+Ancienne démonstration.
+Ce résultat est valable pour n'importe quelle base $d$ de numération. On pose 
+\begin{displaymath}
+ d =10
+\end{displaymath}
+pour des raisons psychologiques mais on peut le remplacer par n'inporte quel entier supérieur ou égal à 2. On considère la suite des
+\begin{displaymath}
+ x_n = d^n -1
+\end{displaymath}
+L'écriture décimale de $x_n$ ne contient que des $9$ (en fait $n$ exactement). Cette suite peut aussi se définir par récurrence par $x_0=0$ et $x_{n+1}=d x_n + d-1$. C'est à dire $x_{n+1}=10 x_n + 9$ dans le cas de la base $10$.\newline
+Considérons maintenant un rationnel $\frac{p}{q}$ quelconque. \newline
+Le point important est que la suite des $d^n$ ne prend q'un nombre fini de valeurs  modulo $q$.\newline
+Il existe donc des entiers $n<m$ tels que
+\begin{align*}
+ d^n -1 &\equiv  d^m -1 &(q) \\
+ d^{n}(d^{m-n} -1) &\equiv 0 &(q) 
+\end{align*}
+Autrement dit $q$ divise un nombre $d^{n}(d^{m-n} -1)$. Dans le cas de la base $10$ le développement décimal d'un tel nombre est de la forme
+\begin{displaymath}
+ \underbrace{99\cdots 9}_{m-n}\underbrace{00\cdots0}_n
+\end{displaymath}
+En multipliant en haut et en bas par ce qu'il faut, on obtient
+\begin{displaymath}
+ \dfrac{p}{q} = \dfrac{x}{d^{n}(d^{m-n} -1)}
+\end{displaymath}
+On peut écrire explicitement le développement de ce nombre. En effet :
+\begin{displaymath}
+ \dfrac{1}{d^\alpha -1}= \dfrac{1}{d^\alpha} + \dfrac{1}{d^{2\alpha}} + \cdots
+\end{displaymath}
+donc 
+\begin{displaymath}
+ \dfrac{1}{d^{n}(d^{m-n} -1)}= \dfrac{1}{d^m} + \dfrac{1}{d^{m+(m-n)}} + \dfrac{1}{d^{m+2(m-n)}}+ \cdots
+\end{displaymath}
+En écrivant le développement en base $d$ du numérateur on obtient un développement qui est périodique de période $m-n$ à partir d'un certain rang.
+
+\end{document}

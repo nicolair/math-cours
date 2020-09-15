@@ -1,0 +1,101 @@
+\input{pgmlatex.tex}
+
+%En tete et pied de page
+\lhead{Programme colle math}
+\chead{Semaine 15 du 20/01/20 au 25/01/20}
+\rhead{MPSI B Hoche}
+
+\lfoot{\tiny{Cette création est mise à disposition selon le Contrat\\ Paternité-Partage des Conditions Initiales à l'Identique 2.0 France\\ disponible en ligne http://creativecommons.org/licenses/by-sa/2.0/fr/
+} }
+\rfoot{\tiny{Rémy Nicolai \jobname}}
+
+
+\begin{document}
+
+\subsection{Polynômes et fractions rationnelles (milieu)}
+\begin{itshape}L'objectif de ce chapitre est d'étudier les propriétés de base de ces objets formels et de les exploiter pour la résolution de problèmes portant sur les équations algébriques et les fonctions numériques.
+
+L'arithmétique de $\K[X]$ est développée selon le plan déjà utilisé pour l'arithmétique de
+$\Z$, ce qui autorise un exposé allégé. D'autre part, le programme se limite au cas où le corps de base $\K$
+est $\R$ ou $\C$.
+\end{itshape}
+
+\subsubsubsection{e) Arithmétique dans $\K[X]$}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+
+  \colchunk{PGCD de deux polynômes dont l'un au moins est non nul.}
+  \colchunk{Tout diviseur commun à $A$ et $B$ de degré maximal est appelé un PGCD de $A$  et $B$.}
+  \colplacechunks
+
+  \colchunk{Algorithme d'Euclide.}
+  \colchunk{L'ensemble des diviseurs communs à $A$ et $B$ est égal à l'ensemble des diviseurs d'un de leurs PGCD. Tous les PGCD de $A$ et $B$
+sont associés ; un seul est unitaire. On le note  $A\wedge B$.}
+  \colplacechunks
+
+  \colchunk{Relation de Bézout.}
+  \colchunk{L'algorithme d'Euclide fournit une relation de Bézout.
+
+$\dbf$ I : algorithme d'Euclide étendu.
+
+L'étude des idéaux de $\K [X]$ est hors programme.}
+  \colplacechunks
+
+  \colchunk{PPCM.}
+  \colchunk{Notation $A \vee B$.
+
+  Lien avec le PGCD.}
+  \colplacechunks
+
+  \colchunk{Couple de polynômes premiers entre eux. Théorème de Bézout. Lemme de Gauss.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{PGCD d'un nombre fini de polynômes, relation de Bézout. Polynômes premiers entre eux dans leur ensemble, premiers entre eux deux à deux.}
+  \colchunk{}
+  \colplacechunks
+
+\end{parcolumns}
+
+\subsubsubsection{f) Polynômes irréductibles de $\C[X]$ et $\R[X]$}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Théorème de d'Alembert-Gauss.}
+  \colchunk{La démonstration est hors programme.}
+  \colplacechunks
+
+  \colchunk{Polynômes irréductibles de $\C [X]$. Théorème de décomposition en facteurs irréductibles dans $\C [X]$.}
+  \colchunk{Caractérisation de la divisibilité dans $\C [X]$ à l'aide des racines et des multiplicités.
+
+  Factorisation de $X^n-1$ dans $\C [X]$.}
+  \colplacechunks
+
+  \colchunk{Polynômes irréductibles de $\R [X]$. Théorème de décomposition en facteurs irréductibles dans $\R [X]$.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{g) Formule d'interpolation de Lagrange}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Si $x_1, \ldots, x_n$ sont des éléments distincts de $\K$ et $y_1, \ldots, y_n$ des éléments de $\K$, il existe un et un seul $P \in \K_{n-1} [X]$ tel que pour tout $i$ : $\quad P (x_i) = y_i$.}
+  \colchunk{Expression de $P$.
+
+Description des polynômes $Q$ tels que pour tout $i$ : $\quad Q (x_i) = y_i$.}
+  \colplacechunks
+\end{parcolumns}
+
+\bigskip
+\begin{center}
+ \textbf{Questions de cours}
+\end{center}
+ Algorithme d'Euclide.\newline
+ Algorithme d'Euclide étendu et coefficients de Bezout.\newline
+ Solutions des équations de Bezout.\newline
+ Polynômes irréductibles de $\C[X]$ et de $\R[X]$.\newline
+ Interpolation de Lagrange pour $n$ valeurs distinctes. Existence et unicité d'un polynôme interpolateur de degré $< n$. Description de l'ensemble de tous les polynômes interpolateurs. 
+
+
+\begin{center}
+ \textbf{Prochain programme}
+\end{center}
+Fractions rationnelles, décomposition en éléments simples.
+Espaces vectoriels (définitions).
+\end{document}

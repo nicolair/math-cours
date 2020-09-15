@@ -1,0 +1,166 @@
+\subsubsection{B - Variables aléatoires sur un espace probabilisé fini}
+\begin{itshape}
+L'utilisation de variables aléatoires pour modéliser des situations aléatoires simples fait partie des capacités attendues des étudiants. La reconnaissance de situations modélisées par les lois usuelles est une capacité attendue des étudiants.
+\end{itshape}
+
+\subsubsubsection{a) Variables aléatoires}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Une variable aléatoire est une application définie sur l'univers $\Omega$ à valeurs dans un ensemble $E$. Lorsque $E\subset\R$, la variable aléatoire est dite réelle.}
+  \colchunk{Si $X$ est une variable aléatoire et si $A$
+est une partie de $E$, notation $\{X\in A\}$ ou $(X \in A)$ pour l'événement $X^{-1}(A)$.
+
+Notations $P(X\in A)$, $P(X=x)$, $P(X\leqslant x)$.}
+  \colplacechunks
+
+  \colchunk{Loi $P_X$ de la variable aléatoire $X$.}
+  \colchunk{L'application $P_X$ est définie par la donnée des $P(X=x)$ pour $x$ dans $X(\Omega)$.}
+  \colplacechunks
+
+  \colchunk{Image d'une variable aléatoire par une fonction, loi associée.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{b) Lois usuelles}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+
+  \colchunk{Loi uniforme.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Loi de Bernoulli de paramètre $p \in [ 0 , 1 ]$.}
+  \colchunk{Notation $\mathcal{B} (p)$.
+
+Interprétation : succès d'une expérience.
+
+Lien entre variable aléatoire de Bernoulli et indicatrice d'un événement.}
+  \colplacechunks
+
+  \colchunk{Loi binomiale de paramètres $n \in \N^*$ et $p \in [ 0 , 1]$.}
+  \colchunk{Notation $\mathcal{B} (n , p)$.
+
+Interprétation : nombre de succès lors de la répétition de $n$ expériences de Bernoulli indépendantes, ou tirages avec remise dans un modèle d'urnes.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{c) Couples de variables aléatoires}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Couple de variables aléatoires.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Loi conjointe, lois marginales d'un couple de variables aléatoires.}
+  \colchunk{La loi conjointe de $X$ et $Y$ est la loi de $(X , Y)$, les lois marginales de $(X , Y)$ sont les lois de $X$ et de $Y$.
+
+Les lois marginales ne déterminent pas la loi conjointe.}
+  \colplacechunks
+
+  \colchunk{Loi conditionnelle de $Y$ sachant $(X=x)$.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Extension aux $n$-uplets de variables aléatoires.}
+  \colchunk{}
+  \colplacechunks  
+\end{parcolumns}
+
+\subsubsubsection{d) Variables aléatoires indépendantes}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Couple de variables aléatoires indépendantes.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Si $X$ et $Y$ sont indépendantes : $$P \big( (X , Y) \in A \times B \big) = P (X \in A) \ P (Y \in B).$$}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Variables aléatoires mutuellement indépendantes.}
+  \colchunk{Modélisation de $n$ expériences aléatoires indépendantes par une suite finie $(X_i)_{1\leqslant i\leqslant n}$ de variables aléatoires indépendantes.}
+  \colplacechunks
+
+  \colchunk{Si $X_1,\ldots,X_n$ sont des variables aléatoires mutuellement indépendantes, alors quel que soit $\displaystyle (A_1,\ldots,A_n) \in \prod_{i=1}^n \mathcal{P}(X_i(\Omega))$, les événements $(X_i\in A_i)$ sont mutuellement indépendants.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Si $X_1, \ldots, X_n$ sont mutuellement indépendantes de loi $\mathcal{B} (p)$, alors $X_1 + \cdots + X_n$ suit la loi $\mathcal{B} (n , p)$.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Si $X$ et $Y$ sont indépendantes, les variables aléatoires $f (X)$ et $g (Y)$ le sont aussi.}
+  \colchunk{}
+  \colplacechunks  
+\end{parcolumns}
+
+\subsubsubsection{e) Espérance}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Espérance d'une variable aléatoire réelle.\newline
+  Relation : $\displaystyle \quad \textrm{E} (X) = \sum_{\omega \in \Omega} P \big( \{ \omega \} \big) X (\omega)$.}
+  \colchunk{Interprétation en terme de moyenne pondérée.
+  
+  Une variable aléatoire centrée est une variable aléatoire d'espérance nulle.}
+  \colplacechunks
+
+  \colchunk{Propriétés de l'espérance : linéarité, positivité, croissance.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Espérance d'une variable aléatoire constante, de Bernoulli, binomiale.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Formule de transfert : Si $X$ est une variable aléatoire définie sur $\Omega$ à valeurs dans $E$ et f une fonction définie sur $X(\Omega)$ à valeurs dans $\R$, alors 
+  \begin{displaymath}
+   \textrm{E} \big( f (X) \big) = \sum_{x \in X (\Omega)} P (X = x) f (x)
+  \end{displaymath}
+  }
+  \colchunk{L'espérance de $f (X)$ est déterminée par la loi de $X$.}
+  \colplacechunks  
+
+  \colchunk{Inégalité de Markov.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Si $X$ et $Y$ sont indépendantes : $\quad \textrm{E} (XY) = \textrm{E} (X) \textrm{E} (Y)$.}
+  \colchunk{La réciproque est fausse en général.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{f) Variance, écart type et covariance}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Moments.}
+  \colchunk{Le moment d'ordre $k$ de $X$ est $\textrm{E} (X^k)$.}
+  \colplacechunks
+
+  \colchunk{Variance, écart type.}
+  \colchunk{La variance et l'écart type sont des indicateurs de dispersion. Une variable aléatoire réduite est une variable aléatoire de variance 1.}
+  \colplacechunks
+
+  \colchunk{Relation $\textrm{V}(X)=\textrm{E} (X^2) - \textrm{E} (X)^2$.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Relation $\quad \textrm{V} (aX+b) = a^2 \textrm{V} (X)$.}
+  \colchunk{Si $\sigma (X) > 0$, la variable aléatoire $\dfrac{X - \textrm{E} (X)}{\sigma (X)}$ est centrée réduite.}
+  \colplacechunks  
+
+  \colchunk{Variance d'une variable aléatoire de Bernoulli, d'une variable aléatoire binomiale.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Inégalité de Bienaymé-Tchebychev.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Covariance de deux variables aléatoires.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Relation $\mbox{Cov}(X,Y)= \textrm{E} (XY) - \textrm{E} (X) \textrm{E} (Y)$.  Cas de variables indépendantes.}
+  \colchunk{}
+  \colplacechunks  
+
+  \colchunk{Variance d'une somme, cas de variables deux à deux indépendantes.}
+  \colchunk{Application à la  variance d'une variable aléatoire binomiale.}
+  \colplacechunks  
+
+\end{parcolumns}

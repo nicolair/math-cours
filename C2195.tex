@@ -1,0 +1,121 @@
+\input{courspdf.tex}
+\debutcours{Approximations des zéros d'une fonction}{alpha}
+
+L'approximation des zéros (ou racines) d'une fonction comporte deux temps : la séparation des racines et l'approximation proprement dite.\newline
+La séparation des racines consiste à former des intervalles sur lesquels la restriction de la fonction a de bonnes propriétés et admet une seule racine. Les méthodes proposées ici ne portent que sur les manières de former des valeurs approchées de l'unique zéro dans l'intervalle considéré.\newline
+Dans les trois cas, on supposera que la fonction est strictement croissante sur un intervalle $[a,b]$ avec $f(a)<0$ et $f(b)>0$.
+
+\section{Dichotomie}
+La méthode de dichotomie repose sur le diagramme suivant et se met en oeuvre très facilement informatiquement. Il est à noter que l'on dispose automatiquement d'une majorations de l'erreur car après $n$ itérations, la racine est entre $a$ et $b$ avec 
+\begin{displaymath}
+ 0<b-a=\frac{b-a}{2^n}
+\end{displaymath}
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=12cm]{C2195_1.pdf}
+ \caption{Dichotomie}
+\label{C2195_1}
+\end{figure}
+
+\section{Méthode de la sécante}
+\begin{figure}[ht]
+ \centering
+\input{C2195_3.pdf_t}
+\caption{Méthode de la sécante}
+\label{fig:C2195_3}
+\end{figure} 
+\index{méthode de la sécante}
+\index{Interpolation linéaire}
+
+\section{Méthode de Newton}
+\begin{figure}[ht]
+ \centering
+\input{C2195_2.pdf_t}
+\caption{Méthode de Newton}
+\label{fig:C2195_2}
+\end{figure} 
+\index{méthode de Newton}
+La séparation des racines a conduit à une fonction $f$ de classe $\mathcal C^2([a,b])$ telle que $f(a)<0$, $f(b)>0$, strictement croissante et convexe. L'unique zéro de $f$ est notée $\xi$.\newline
+Le principe de la méthode de Newton est de considérer le point d'intersection de la tangente en $M_b$ (de coordonnées $(b,f(b))$ avec l'axe des abscisses. Son abscisse est notée $c$. On démontre alors les résultats suivants :
+\begin{displaymath}
+ c = b - \frac{f(b)}{f'(b)} \hspace{1cm} \xi < c < b
+\end{displaymath}
+En effet, un point de coordonnées $(x,y)$ est sur la tangente en $M_b$ si et seulement si
+\begin{displaymath}
+ y = f(b) +(x-b)f'(b)
+\end{displaymath}
+On en tire
+\begin{displaymath}
+ 0 = b+ (c-b)f'(b) \Rightarrow c = b - \frac{f(b)}{f'(b)}
+\end{displaymath}
+Comme $f(b)$ et $f'(b)$ sont strictement positifs, cela prouve aussi $c<b$. Pour l'autre inégalité, on considère l'accroissement entre $\xi$ et $b$, on utilise ensuite le théorème des accroisements finis puis la  croissance de la dérivée:
+\begin{displaymath}
+ \exists d\in ]\xi,b[ \text{ tel que }
+\frac{f(b)}{b-\xi}=\frac{f(b)-f(\xi)}{b-\xi}=f'(d)< f'(b)
+\Rightarrow \frac{f(b)}{f'(b)}<b-\xi \Rightarrow \xi < c
+\end{displaymath}
+On peut donc définir par récurrence une suite $\left(x_n \right)_{n\in\N}$ par :
+\begin{displaymath}
+ x_0=b\hspace{1cm} x_{n+1} = x_n-\frac{f(x_n)}{f'(x_n)}
+\end{displaymath}
+D'après les résultats précédents appliqués à un intervalle $[a,x_n]$, cette suite est décroissante et minorée par $\xi$ :
+\begin{displaymath}
+ \forall n\in \N : \xi < x_{n+1} < x_n
+\end{displaymath}
+Considérons la fonction $\varphi$ définie par 
+\begin{displaymath}
+\forall x\in [a,b] : \varphi(x) = -\frac{f(x)}{f'(x)} 
+\end{displaymath}
+Elle est évidemment continue et vérifie 
+\begin{displaymath}
+ \varphi(x)=x \Leftrightarrow f(x)=0
+\end{displaymath}
+On en déduit que la limite de la suite convergente $\left(x_n \right)_{n\in\N}$ est l'unique zéro $\xi$.\newline
+En fait cette convergence est très rapide. Cela tient au fait que $\xi$ est un point \og super-attractif \fg de $\varphi$. En effet :
+\begin{displaymath}
+ \varphi'(x) = \frac{f(x)f''(x)}{f'(x)^2} \Rightarrow \varphi'(\xi)=0
+\end{displaymath}
+Cela permet d'obtenir des \hyperdef{prop}{major}{formules de majoration d'erreur} très intéressantes et commodes:
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ 0< x_n -\xi \leq&\frac{M_2}{2m_1}(x_{n-1}-x_n)^2\\
+ 0< x_{n+1}-\xi \leq&\frac{M_2}{2m_1}(\xi-x_n)^2
+\end{aligned}
+\right. 
+\text{ avec } m_1 = \min_{[a,b]}|f'| \text{ et } M_2 = \max_{[a,b]}f'' 
+\end{displaymath}
+\begin{demo}
+ On utilise la formule de Taylor avec reste de Lagrange à l'ordre 2 entre $x_{n-1}$ et $x_{n}$. Il existe $c\in]x_n,x_{n-1}[$ tel que 
+\begin{displaymath}
+  f(x_{n})=f(x_{n-1})+(x_{n} -x_{n-1})f'(x_{n-1})+\frac{(x_{n}-x_{n-1})^2}{2}f''(c)
+\end{displaymath}
+Par construction :
+\begin{displaymath}
+ x_{n}=x_{n-1}-\frac{f(x_{n-1})}{f'(x_{n-1})}\Rightarrow f(x_{n-1)}+ (x_{n} -x_{n-1})f'(x_{n-1})=0
+\Rightarrow f(x_{n+1})=\frac{(x_{n+1}-x_{n})^2}{2}f''(c)
+\end{displaymath}
+D'autre part, en utilisant le théorème des accroissements finis appliqué à $f$ entre $x_{n}$ et $\xi$, il existe $d\in ]\xi,x_{n}[$ tel que 
+\begin{displaymath}
+ 0=f(\xi)=f(x_{n}) + (\xi-x_n)f'(d)
+\end{displaymath}
+On en déduit
+\begin{displaymath}
+ x_n -\xi = -\frac{f(x_n)}{f'(d)}= - \frac{(x_{n}-x_{n-1})^2f''(c)}{2f'(d)}\leq \frac{M_2}{2m_1}(x_{n}-x_{n-1})^2
+\end{displaymath}
+Utilisons maintenant la formule de Taylor avec reste de Lagrange à l'ordre $2$ entre $x_n$ et $\xi$. Il existe $u\in ]\xi,x_n[$ tel que 
+\begin{displaymath}
+  0=f(\xi)=f(x_{n})+(\xi -x_{n})f'(x_{n})+\frac{(\xi-x_{n})^2}{2}f''(u)
+\end{displaymath}
+Or
+\begin{displaymath}
+ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\Rightarrow f(x_n)-x_nf'(x_n)=-x_{n+1}f'(x_n)
+\Rightarrow 0= (\xi -x_{n+1})f'(x_{n})+\frac{(\xi-x_{n})^2}{2}f''(u)
+\end{displaymath}
+On obtient donc :
+\begin{displaymath}
+ x_{n+1}-\xi = \frac{(\xi-x_{n})^2f''(u)}{2f'(x_n}\leq \frac{M_2}{2m_1}(\xi-x_{n})^2
+\end{displaymath}
+
+\end{demo}
+\end{document}

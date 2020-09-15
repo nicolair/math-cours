@@ -1,0 +1,639 @@
+\input{courspdf.tex}
+\debutcours{Espaces préhilbertiens réels}{1.2 \tiny{le \today}}
+
+Cette section est complétée par \href{\baseurl C6172.pdf}{Espace euclidien en dimension 2 ou 3} qui introduit en particulier les notions de produits vectoriels et de produit mixte.\footnote{Merci à Yann Duplouy (MPSI B 2009-2010) pour les premiers éléments de la saisie \LaTeX de cette partie.}
+
+\section{Produits scalaires}
+\subsection{Définition}
+\begin{defi}
+Une \emph{forme bilinéaire} d'un $\K$-espace vectoriel $E$ est une application de $E\times E$ dans $\K$ qui est linéaire par rapport à chacune de ses variables. C'est à dire que pour tout $x\in E$, les applications
+\begin{displaymath}
+ y\rightarrow B(x,y) \text{ et } y\rightarrow B(y,x)
+\end{displaymath}
+sont des formes linéaires.
+\end{defi}
+\index{forme bilinéaire symétrique}
+\begin{defi}
+On dira que la forme bilinéaire est \emph{symétrique} lorsque 
+\begin{displaymath}
+  \forall (x,y)\in E^2,\; B(x,y) = B(y,x)
+\end{displaymath}
+\end{defi}
+\index{produit scalaire}
+\begin{defi}[Produit scalaire]
+Un produit scalaire sur un espace vectoriel \emph{réel} $E$ est une forme bilinéaire symétrique vérifiant
+\begin{displaymath}
+\forall x \in E, \; B(x,x) \geq 0 \text{ et } B(x,x) = 0 \Rightarrow x = 0_E .
+\end{displaymath}
+\end{defi}
+\begin{exples}
+\begin{itemize}
+\item Produit scalaire canonique sur $\R^n$ ou sur les matrices colonnes.
+\begin{itemize}
+  \item[Sur $\R^n$].
+\[
+  \forall x = (x_1, \cdots, x_n) \in \R^n,\;  \forall y = (y_1, \cdots, y_n) \in \R^n, \hspace{0.5cm}
+  B(x,y) = \sum_{i=1}^{n}x_iy_i.
+\]
+  \item[Sur $\mathcal{M}_{n,1}(\R)$].
+\[
+  \forall X = 
+  \begin{pmatrix}
+    x_1\\ \vdots \\ x_n
+  \end{pmatrix}
+ \in \mathcal{M}_{n,1}(\R),\;
+   \forall Y = 
+  \begin{pmatrix}
+    y_1\\ \vdots \\ y_n
+  \end{pmatrix}
+ \in \mathcal{M}_{n,1}(\R),\hspace{0.5cm}
+ B(X,Y) = \sum_{i=1}^{n}x_iy_i.
+\]
+\end{itemize}
+
+\item $E = \mathcal{C}^{0}( [a,b] )$ avec $a < b$. Pour $(f,g) \in E^2$,
+\begin{displaymath}
+ B(f,g) = \int_{a}^{b} f(x) g(x) \,dx
+\end{displaymath}
+\item $E = \mathcal{M}_{p}(\K)$, $M$ et $N \in E$:
+\begin{center}
+$B(M,N) = \mathrm{tr}( \trans M N )$
+\end{center}
+\end{itemize}
+\end{exples}
+
+Dans la suite, on va considérer des $\R$-espaces vectoriels munis de produits scalaires. On désigne de telles structures par des noms particuliers.
+\index{espace euclidien}\index{espace pré-hilbertien réel}
+\begin{itemize}
+\item \og Espace euclidien \fg~ si le $\R$-espace vectoriel $E$ est de dimension \emph{finie}.
+\item \og Espace pré-hilbertien réel\fg~  si le $\R$-espace vectoriel $E$ est de dimension \emph{quelconque}.
+\end{itemize}
+\begin{nota}
+Dans la suite de ce texte, tous les produits scalaires seront notés $(~/~)$, de manière infixe.
+\end{nota}
+
+\subsection{Formules}
+Dans la suite du cours, $E$ est un $\R$-espace vectoriel (pré-hilbertien réel), muni d'un produit scalaire $(~/~)$.
+\begin{nota}
+Pour tout vecteur $x$ de $E$, $ \Vert x \Vert  = \sqrt{ (x/x) }$ est la \emph{norme} (associée au produit scalaire) de $x$.\index{norme d'un vecteur}
+\end{nota}
+\begin{prop}
+\begin{align*}
+\forall (x,y) \in E^2,\hspace{0.5cm}     &\Vert x+y \Vert ^2 =  \Vert x \Vert ^2 +  \Vert y \Vert ^2 + 2(x/y). \\
+\forall (x_1,\cdots,x_n)\in E^n,\hspace{0.5cm} &\Vert \sum_{i=1}^n x_i \Vert^2 = \sum_{i=1}^n \Vert x_i \Vert^2 + 2 \sum_{\stackrel{(i,j)\in\llbracket 1,n \rrbracket^2}{i < j}}(x_i / x_j).
+\end{align*}
+\end{prop}
+\begin{proof}
+Il suffit de développer $(x+y/x+y)$ ou $(\sum_{i=1}^n x_i/ \sum_{j=1}^n x_j)$ par bilinéarité en utilisant le caractère symétrique.
+\end{proof}
+\index{identités de polarisation}
+\begin{prop}[Identité de \og polarisation\fg]
+On peut exprimer le produit scalaire à partir de la norme. Pour tous vecteurs $x$ et $y$ de $E^2$:
+\begin{align*}
+ \Vert x+ y\Vert^2 = \Vert x \Vert ^2 + \Vert y \Vert^2 + 2 (x/y) \Rightarrow& 
+ (x/y) = \frac{1}{2} \left(  \Vert x+y \Vert ^2 -  \Vert x \Vert ^2 -  \Vert y \Vert ^2 \right).\\
+ (x+y/x-y) = \Vert x \Vert^2 - \Vert y \Vert^2 \Rightarrow& (x/y)= \frac{1}{4} \left(  \Vert x+y \Vert ^2 -  \Vert x-y \Vert ^2 \right). 
+\end{align*}
+\end{prop}
+\index{inégalité de Cauchy-Schwarz}
+\begin{prop}[Inégalité de Cauchy-Schwarz]
+Soit $(~/~)$ un produit scalaire sur $E$.
+\begin{displaymath}
+\forall(x,y) \in E^2,\;| (x/y) | \leq  \Vert  x  \Vert   \Vert  y  \Vert .
+\end{displaymath}
+Il y a égalité si et seulement si $(x,y)$ est liée.
+\end{prop}
+\begin{proof}
+Considérons l'application  $\varphi$ :
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ \R & \rightarrow  \R \\
+ t & \mapsto   \Vert x + ty \Vert ^2 =  \Vert y^2 \Vert  t^2 + 2 (x/y) t +  \Vert  x  \Vert ^2
+\end{aligned}
+\right. .
+\end{displaymath}
+Cette expression ne peut prendre que des valeurs positives. Le discriminant $4(  \Vert (x/y) \Vert ^2 -  \Vert y \Vert ^2 \Vert x \Vert ^2 )$ de ce polynôme en $t$ du second degré est alors inférieur ou égal à 0.\newline
+Si le discriminant est nul, il existe un $t$ tel que $x+ty = 0_E$, ce qui signifie que $(x,y)$ est liée.
+\end{proof}
+Cette inégalité a deux conséquences:
+\begin{itemize} \index{inégalité triangulaire}
+\item \emph{l'inégalité triangulaire}:
+\begin{center}
+$ \Vert  x + y \Vert ^2 =  \Vert x \Vert ^2 + 2(x/y) +  \Vert y \Vert ^2 \leq  \Vert x \Vert ^2 + 2  \Vert x \Vert   \Vert y \Vert  +  \Vert y \Vert ^2$ \\
+$ \Vert x+y \Vert ^2 \leq ( \Vert x \Vert  +  \Vert y \Vert )^2$
+\end{center}
+\item et la définition de \emph{l'écart angulaire} :\index{écart angulaire}
+\end{itemize}
+\begin{defi}
+L'écart angulaire entre deux vecteurs $x$ et $y$ est défini par:
+\begin{center}
+$\arccos \displaystyle \frac{ (x/y) }{  \Vert x \Vert   \Vert y \Vert  } \in [0, \pi]$.
+\end{center}
+\end{defi}
+\begin{proof}[Existence]
+L'écart angulaire est bien défini car, d'après l'inégalité de Cauchy-Schwarz, on a $\frac{ (x/y) }{  \Vert x \Vert   \Vert y \Vert  } \in [0,1]$.
+\end{proof}
+\begin{exples}
+\begin{itemize}
+\item Quel est l'écart angulaire entre la fonction exponentielle et la fonction $x \mapsto 1$?
+\begin{itemize}
+\item \emph{Dans quel espace ?} L'espace des fonctions continues sur $[0,1]$.
+\item \emph{Pour quel produit scalaire ?} On choisit
+\begin{displaymath}
+(f/g) = \int_{0}^{1} f(t) g(t) \,dt.
+\end{displaymath}
+\end{itemize}
+Notons $1$ la fonction constante égale à $1$ sur $[0,1]$ et $e$ la restriction à $[0,1]$ de la fonction exponentielle. On peut alors calculer:
+\begin{multline*}
+ \Vert 1 \Vert  = \sqrt{ \int_{0}^{1} 1 \,dt } = 1, \hspace{1cm}
+ \Vert e \Vert  = \sqrt{ \int_{0}^{1} (e^{t})^2 \,dt } = \sqrt{ \int_{0}^{1} e^{2t} \,dt } = \sqrt{ \left[ \frac{e^{2t}}{2} \right]_{0}^{1} } = \sqrt{ \frac{e^2 - 1}{2} }\\
+ (1 / e) = \int_{0}^{1} e^{t} \, dt = e - 1
+\end{multline*}
+L'écart angulaire est alors égal à :
+\begin{displaymath}
+\displaystyle \arccos \frac{ (e - 1) \sqrt{2} }{ \sqrt{ e^2 - 1 } } = \arccos \sqrt{2 \, \frac{e - 1}{e + 1}}.
+\end{displaymath}
+On remarque que si on introduit une fonction continue positive et fixée dans l'intégrale, entre $g(t)$ et $\, dt$, on change le produit scalaire donc aussi l'écart angulaire.
+\end{itemize}
+\end{exples}
+
+\subsection{Aspect matriciel}
+La possibilité d'une représentation matricielle d'un produit scalaire vient de la bilinéarité.
+\begin{defi}\index{matrice d'un produit scalaire}
+La matrice dans une base $\mathcal{B} = (b_1, ..., b_p)$ d'un produit scalaire $(~/~)$ de $E$ est la matrice de $\mathcal{M}_{p}(\K)$ dont le terme $i,j$ est $(b_i/b_j)$ pour tout $(i,j)$ de $\llbracket 1,p \rrbracket^2$.  On peut la noter $\Mat_\mathcal{B} (~/~)$.
+\end{defi}
+\begin{prop}
+La matrice d'un produit scalaire dans une base est symétrique.
+\end{prop}
+\begin{exple}
+$E = \R_{3}[X]$, $\mathcal{C} = (1, X, X^2, X^3)$:
+\begin{center}
+$(P/Q) = \displaystyle \int_{0}^{1} P(t)Q(t) \, dt$.
+\end{center}
+La matrice dans $\mathcal{C}$ de ce produit scalaire est:
+\begin{displaymath}
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+1 & \frac{1}{2} & \frac{1}{3} & \frac{1}{4} \\
+\frac{1}{2} & \frac{1}{3} & \frac{1}{4} & \frac{1}{5} \\
+\frac{1}{3} & \frac{1}{4} & \frac{1}{5} & \frac{1}{6} \\
+\frac{1}{4} & \frac{1}{5} & \frac{1}{6} & \frac{1}{7}
+\end{pmatrix}.
+\end{displaymath}
+\end{exple}
+
+\begin{prop}[Expression matricielle du produit scalaire]
+Soit $E$ un $\R$ espace vectoriel muni d'une base $\mathcal{B}$ et d'un produit scalaire  $(~/~)$. Soit $S$ la matrice de $(~/~)$ dans $\mathcal{B}$. Alors, pour tout $x$ et tout $y$ de $E$,
+\begin{displaymath}
+(x/y) = \trans X S\,Y \text{ avec } X = \Mat_\mathcal{B} x \text{ et } Y = \Mat_\mathcal{B} y .
+\end{displaymath}
+\end{prop}
+\begin{proof}
+Notons $X = \begin{pmatrix} x_1 \\ \vdots \\ x_p \end{pmatrix}$ et $Y = \begin{pmatrix} y_1 \\ \vdots \\ y_p \end{pmatrix}$. Alors :
+\begin{multline*}
+(x/y) = \left( \sum_{i} x_i b_i \left/ \right. \sum_{i} y_i b_i \right)
+ = \sum_{i=1}^{p} \left( \sum_{j=1}^{p} x_i y_i (b_i/b_j) \right)
+ = \sum_{i} x_i \left( \sum_{j=1}^{p} b_{i,j} y_j \right)\\
+ = \sum_{i} x_i (\text{ terme $i$ de la matrice }S\,Y) = \trans X\,S\,Y .
+\end{multline*}
+\end{proof}
+\begin{prop}[Effet d'un changement de base]
+Soit $E$ un $\R$ espace vectoriel muni d'une base $\mathcal{B}$ et d'un produit scalaire  $(~/~)$. Soit $S$ la matrice de $(~/~)$ dans $\mathcal{B}$. Soit $\mathcal{C}$ une autre base de $E$. On note $P = P_{\mathcal{BC}}$ la matrice de passage de $\mathcal{B}$ dans $\mathcal{C}$.\newline
+La matrice de $(~/~)$ dans $\mathcal{C}$ est alors égale à $\trans P SP$.
+\end{prop}
+\begin{proof}
+On cherche le terme $i,j$ de la matrice de $(~/~)$ dans $\mathcal{C}$.
+\begin{displaymath}
+(c_i/c_j) = \underset{\trans{c_i(P)}}{\underbrace{\trans {\Mat_{\mathcal{B}} c_i}}}~S~\underset{c_j(P)}{\underbrace{\Mat_{\mathcal{B}} c_j}} 
+= \trans{ c_i(P) }~S~c_j(P)  = L_i( \trans P )\, S\, C_j(P) = \text{terme }i,j\text{ de }\trans P S P .
+\end{displaymath}
+\end{proof}
+\begin{rem}
+$\trans{(\trans PSP)} = \trans P\,\trans{S}\,\trans{\trans P} = \trans P\,S\,P$ car $S$ est symétrique.
+\end{rem}
+
+\section{Orthogonalité}
+\subsection{Introduction}
+Un produit scalaire sur $E$ induit une application linéaire de $E$ dans le dual $E^*$. Soit $E$ un espace euclidien avec un produit scalaire $(/)$. Pour tout $a\in E$, notons $(a/.)$ l'application 
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ E &\rightarrow K \\ x &\mapsto (a/x)
+\end{aligned}
+\right. .
+\end{displaymath}
+Elle est clairement linéaire, c'est donc une forme linéaire élément de $E^*$ dual de $E$. Ceci définit une application de $E$ dans le dual $E^*$.
+Cette application est un isomorphisme. 
+\begin{prop}
+ Soit $E$ un espace euclidien avec un produit scalaire $(/)$. L'application
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+  E &\rightarrow E^* \\ a &\mapsto (a/.)
+\end{aligned}
+\right. .
+\end{displaymath}
+est un isomorphisme. Pour toute forme linéaire $\alpha\in E^*$, il existe un unique vecteur $u\in E$ tel que
+\begin{displaymath}
+ \alpha = (u/ .)\Leftrightarrow
+\forall x\in E : \alpha(x) = (u/x) .
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ La linéarité de la fonction $(a/.)$ de $E$ dans $\R$ est facile à vérifier de même que celle de la fonction $a \mapsto (a/.)$ de $E$ dans $E^*$ (on la note $\varphi$). On sait d'autre part que $E$ et $E^*$ sont de même dimension. Il suffit donc de vérifier que $\ker \varphi$ se réduit au vecteur nul. Or $a\in\ker \varphi$ si et seulement si $(a/.)$ est la forme linéaire nulle c'est à dire que, pour tout $x\in E$, on doit avoir $(a/x)=0$. En particulier, ceci doit être vrai pour $x=a$ ce qui entraîne $\Vert a\Vert^2=0$ d'où $x=0_E$.
+\end{demo}
+
+\subsection{Vecteurs orthogonaux. Orthogonal d'une partie}
+\begin{defi} \index{orthogonal d'une partie}
+ Soit $E$ un espace euclidien avec un produit scalaire $(/)$. Deux vecteurs $x$ et $y$ de $E$ sont dits \emph{orthogonaux} si et seulement si $(x/y)=0$.
+\end{defi}
+\begin{defi}
+ Soit $E$ un espace euclidien avec un produit scalaire $(/)$ et $A$ une partie de $E$. L'orthogonal de $A$ (noté $A^\bot$) est formé par les éléments de $E$ orthogonaux à tous les éléments de $A$.
+\begin{displaymath}
+ \forall x\in E : \left( x\in A^\bot \Leftrightarrow
+\forall a\in A : (a/x)=0 \right) .
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ Soit $E$ un espace euclidien avec un produit scalaire $(/)$ et $A$, $B$ deux parties de $E$ alors 
+\begin{displaymath}
+ A \subset B \Rightarrow B^\bot \subset A^\bot .
+\end{displaymath}
+\end{prop}
+\begin{demo}
+On suppose $A \subset B$, soit $x\in B^\bot$. Pour tout $a\in A$, $a\in B$ donc $(x/a)=0$. On en déduit $x \in A^\bot$.
+\end{demo}
+\begin{rem}
+ Attention à la proposition suivante qui caractérise seulement une inclusion et non une égalité.
+\[
+ \left(  \forall (a,b) \in A\times B,\; (a/b) = 0\right) \Leftrightarrow A \subset B^\bot \Leftrightarrow B \subset A^\bot. 
+\]
+\end{rem}
+
+\index{hyperplan orthogonal}
+\begin{defi}
+Hyperplan orthogonal à un vecteur non nul. Pour un vecteur $a$ fixé, $\{a\}^{\bot}=\Vect(a)^\bot$ est le noyau de la forme linéaire $x\rightarrow (a/x)$. C'est donc un hyperplan. Lorsque la dimension est finie (espace euclidien), sa dimension est $\dim E -1$.  
+\end{defi}
+
+\begin{prop}
+ Soit $E$ un espace euclidien avec un produit scalaire $(/)$ et $A$ une partie de $E$ alors $A^\bot$ est un sous espace vectoriel. De plus, $(\Vect(A))^\bot = A^\bot$.
+\end{prop}
+\begin{demo}
+Pour tout $a\in A$, l'ensemble des $x$ de $E$ orthogonaux à $a$ est un hyperplan, $A^\bot$ est l'intersection de tous ces hyperplans donc encore un sous-espace.
+\end{demo}
+
+
+\subsection{Familles orthogonales}
+ \begin{defi}
+  Une famille est \emph{orthogonale} lorsque ses vecteurs sont deux à deux orthogonaux. Une famille est dite \emph{orthonormale} ou \emph{orthonormée} lorsqu'elle orthogonale et que ses vecteurs sont de norme 1 (unitaires).
+ \end{defi}
+\begin{rem}
+  Si $(a_1,\cdots a_p)$ est une famille orthogonale de vecteurs non nuls alors 
+\begin{displaymath}
+ (\frac{1}{\Vert a_1\Vert}a_1,\cdots, \frac{1}{\Vert a_p\Vert}a_p)
+\end{displaymath}
+est une famille orthonormée.
+\end{rem}
+
+\begin{prop}
+ Une famille orthogonale de vecteurs non nuls est libre. C'est en particulier vérifié pour une famille orthonormée.
+\end{prop}
+\begin{demo}
+ En effet soit $(a_1,\cdots a_p)$ une famille orthogonale de vecteurs non nuls et $\lambda_1, \cdots, \lambda_p$  des scalaires vérifiant:
+\begin{displaymath}
+ \lambda_1 a_1 +\cdots +\lambda_p a_p = 0_E .
+\end{displaymath}
+Alors, pour tout $i$ entre $1$ et $p$ :
+\begin{displaymath}
+ \left( \bigl(\lambda_1 a_1 +\cdots +\lambda_p a_p\bigr)/a_i\right)  = 0_K\Rightarrow
+\lambda_i \Vert a_i\Vert^2=0_K\Rightarrow\lambda_i=0 .
+\end{displaymath}
+\end{demo}
+\begin{prop}[Expression des coordonnées d'un vecteur dans une base orthogonale, orthonormale]
+ Soit $(a_1,\cdots a_p)$ une famille orthogonale de vecteurs non nuls et $x\in \Vect(a_1,\cdots,a_p)$. Alors
+\begin{displaymath}
+ x = \sum_{i=1}^p\frac{(x/a_i)}{\Vert a_i\Vert^2}a_i.
+\end{displaymath}
+ Soit $(a_1,\cdots a_p)$ est une famille orthonormée de vecteurs et $x\in \Vect(a_1,\cdots,a_p)$. Alors
+\begin{displaymath}
+ x = \sum_{i=1}^p (x/a_i) a_i .
+\end{displaymath}
+Lorsque la famille est une base, ces formules expriment les coordonnées de $x$.
+\end{prop}
+
+\begin{prop}
+ La restriction d'un produit scalaire à un sous-espace est encore une produit scalaire.
+\end{prop}
+\begin{demo}
+ Toutes les propriétés bilinéarité, symétrie et positivité découlent des propriétés du produit scalaire dans l'espace de départ.
+\end{demo}
+
+\index{existence d'une base orthogonale}
+\begin{thm}[Existence d'une base orthogonale]
+Dans tout espace euclidien, il existe des bases orthogonales.
+\end{thm}
+\begin{demo}
+ On démontre ce théorème par récurrence sur la dimension de l'espace. Introduisons la propriété
+\begin{quote}
+ $\mathcal{P}_n$ : Tout espace euclidien de dimension $n$ admet des bases orthogonales.
+\end{quote}
+Il est évident que cette proposition est vraie pour la dimension $1$ car toute base (formée d'un seul vecteur) est orthogonale.\newline
+Montrons maintenant que $\mathcal{P}_{n-1}$ entraîne $\mathcal{P}_{n}$.\newline
+On considère un espace euclidien de dimension $n$ dans lequel on fixe un vecteur non nul $u_1$. On note $H$ l'hyperplan orthogonal à $u_1$. Il est de dimension $n-1$ et il est euclidien pour la restriction du produit scalaire. La proposition $\mathcal{P}_{n-1}$ entraîne alors l'existence d'une base orthogonale $(u_2,\cdots,u_n)$ de $H$. Il est immédiat que $(u_1,u_2,\cdots,u_n)$ est encore orthogonale et forme une base de $E$.
+\end{demo}
+
+\subsection{Aspect matriciel}
+\begin{prop}
+ Soit $E$ un espace euclidien avec un produit scalaire $(/ )$. Une base $\mathcal B$ de $E$ est orthogonale si et seulement si la matrice du produit scalaire dans $\mathcal B$ est diagonale. La base $\mathcal B$ est orthonormée si et seulement si la matrice du produit scalaire dans $\mathcal B$ est la matrice identité.
+\end{prop}
+\begin{demo}
+  C'est une simple traduction des définitions.
+\end{demo}
+
+\begin{prop}
+ Soit $p$ entier naturel non nul et $S\in \mathcal M_p(\R)$. La matrice $S$ est la matrice d'un produit scalaire dans une base si et seulement si il existe $P\in GL_p(\R)$ telle que $S = \trans P\, P$.
+\end{prop}
+\begin{demo}
+ Si $S = \trans P\, P$ alors $S$ est symétrique. Considérons un espace $E$ avec une base $\mathcal B$. Définissons une forme bilinéaire symétrique dans $E$ par sa matrice dans $\mathcal{B}$ que l'on impose égale à $S$. Soit $x$ un vecteur quelconque dans $E$ et $X$ la matrice colonne de ses coordonnées dans $\mathcal B$. Alors
+\begin{displaymath}
+ (x/x) = \trans X S X = \left( \trans X \trans P\right) \left(  P X\right) = \trans \left(  P X\right)\left(  P X\right)
+= y_1^2+\cdots+y_p^2 \text{ avec }
+\left(  P X\right)=
+\begin{pmatrix}
+ y_1\\ \vdots \\ y_p
+\end{pmatrix} .
+\end{displaymath}
+On en déduit la positivité nécessaire à un produit scalaire.\newline
+Réciproquement, si $S$ est la matrice d'un produit scalaire d'un espace $E$, dans une base $\mathcal{B}$, il existe une base $\mathcal{A}$ de $E$ orthonormée pour ce produit scalaire. La matrice du produit scalaire dans $\mathcal{A}$ est $I_p$ et la formule de changement de base s'écrit
+\begin{displaymath}
+ I_p = \trans P_{\mathcal{B}\mathcal{A}} S P_{\mathcal{B}\mathcal{A}} \Rightarrow
+S = \trans P_{\mathcal{A}\mathcal{B}} P_{\mathcal{A}\mathcal{B}}.
+\end{displaymath}
+\end{demo}
+\begin{rem}
+ On en déduit que le déterminant de la matrice d'un produit scalaire est strictement positif.
+\end{rem}
+
+\section{Supplémentaire orthogonal - Projections orthogonales.}
+\index{supplémentaire orthogonal}
+\subsection{Supplémentaire orthogonal}
+\begin{thm} Soit $A$ un sous-espace vectoriel d'un espace euclidien $E$ : 
+ \begin{displaymath}
+ \dim A^{\perp} = \dim E - \dim A .
+\end{displaymath}
+De plus $A$ et $A^\perp$ sont supplémentaires. On dira que $A^\bot$ est \emph{le} supplémentaire \emph{orthogonal} de $A$.
+\end{thm}
+\begin{demo}
+On note $n$ la dimension de $E$ et $p$ celle de $A$. On considère une base orthonormée $(a_1,\cdots,a_p)$ de $A$ et l'application
+\begin{displaymath}
+\varphi : \left\lbrace 
+ \begin{aligned}
+  E &\rightarrow \R^p \\
+  x &\rightarrow \left( (x/a_1),(x/a_2),\cdots,(x/a_p)\right) 
+ \end{aligned}
+\right. .
+\end{displaymath}
+Cette application est clairement linéaire de noyau $\Vect(a_1,\cdots,a_p)^\bot= A^\bot$. Le théorème du rang conduit à :
+\begin{displaymath}
+ \dim E = \dim A^\bot +\rg \varphi .
+\end{displaymath}
+Or $\varphi$ est surjective car les vecteurs de la base canonique de $\R^p$ sont les images des $a_i$. On en tire $\dim A^\bot = \dim E - \dim A$.\newline
+L'intersection de $A\cap A^\bot$ est réduite au vecteur nul car tout vecteur dans cette intersection est orthogonal à lui même. Avec les dimensions, cela entraîne que $A$ et $A^\bot$ sont supplémentaires.
+\end{demo}
+\begin{rem}
+ On déduit du théorème précédent que $\dim A^{\perp\perp} = \dim A$ dans un espace euclidien.
+\end{rem}
+
+\index{base orthogonale incomplète}
+\begin{prop}[Base orthogonale incomplète]
+ Soit $(a_1,\cdots,a_p)$ une famille orthogonale dans un espace euclidien $E$ de dimension $n$. Il existe $b_{p+1},\cdots,b_n$ tels que $(a_1,\cdots,a_p,b_{p+1},\cdots,b_n)$ soit une base orthogonae de $E$. (idem en remplaçant orthogonale par orthonormée)
+\end{prop}
+\begin{demo}
+ Soit $A=\Vect(a_1,\cdots,a_p)$, on peut considérer une base orthogonale $(b_{p+1},\cdots,b_n)$ du supplémentaire orthogonal.
+\end{demo}
+\begin{prop}
+ Soit $A$, $B$ des sous-espaces vectoriels d'un espace vectoriel $E$. Alors :
+\begin{displaymath}
+ A^{\bot \bot}=A ,\hspace{1cm} (A+B)^\bot = A^\bot \cap B^\bot, \hspace{1cm} (A\cap B)^\bot = A^\bot + B^\bot .
+\end{displaymath}
+\end{prop}
+\begin{proof}
+\begin{itemize}
+\item Pour tout $a \in A$, on veut montrer que $a \in A^{\perp\perp}$. On va donc le tester face aux éléments de $A^{\perp}$. Pour tout $x \in A^{\perp}$, 
+\begin{displaymath}
+ (\underset{\in A}{a} / \underset{\in A^{\perp}}{x}) = 0
+\end{displaymath}
+donc $a \in A^{\perp\perp}$, ce qui signifie que $A \subset A^{\perp\perp}$.\newline
+On obtient l'égalité des sous-espaces en adjoignant l'égalité des dimensions à cette inclusion. En effet, d'après le théorème, $\dim A^{\perp\perp} = \dim A$.
+\begin{displaymath}
+ \left.
+\begin{aligned}
+&A \subset A^{\perp\perp} \\
+&\dim A = \dim A^{\perp \perp}
+\end{aligned}
+ \right\rbrace \Rightarrow A = A^{\perp \perp} .
+\end{displaymath}
+\item Pour l'orthogonal de la somme:
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+&A \subset A + B & (A+B)^{\perp} \subset A^{\perp} \\
+&B \subset A + B & (A+B)^{\perp} \subset B^{\perp}
+\end{aligned}
+\right\rbrace 
+\Rightarrow (A+B)^{\perp} \subset A^{\perp} \cap B^{\perp} .
+\end{displaymath}
+Montrons maintenant que $( A^{\perp} \cap B^{\perp} ) \subset (A+B)^{\perp}$. On doit vérifier:
+\[
+\forall x \in A^{\perp} \cap B^{\perp}, \forall y \in A+B : (x/y) = 0 .
+\]
+Or, pour tout $y$ de $A+B$ il existe $a \in A$ et $b \in B$ tels que: $y = a + b$ et on peut conclure avec
+\[
+(x/y) = (\underset{A^{\perp}}{x}/\underset{\in A}{a}) + (\underset{\in B^{\perp}}{x} / \underset{\in B}{b}) = 0 .
+\]
+\item On obtient la troisième égalité à partir de la deuxième. Appliquons la deuxième propriété à $A^{\perp}$ et $B^{\perp}$ :
+\[
+(A^{\perp} + B^{\perp})^{\perp} = (A^{\perp})^{\perp} \cap (B^{\perp})^{\perp} = A \cap B
+\]
+puis la première:
+\begin{displaymath}
+(A^{\perp} + B^{\perp})^{\perp} = A \cap B 
+ \Rightarrow A^{\perp} + B^{\perp} = (A \cap B)^{\perp} .
+\end{displaymath}
+\end{itemize}
+\end{proof}
+\subsection{Projections orthogonales}
+\index{projection orthogonale}
+\begin{prop}
+ Soit $A$ un sous-espace de $E$ et $p_A$ la projection orthogonale sur $A$ (c'est à dire la projection sur $A$ parallèlement à $A^\bot$) alors pour toute base orthonormée $(a_1,\cdots,a_p)$ de $A$, on a :
+\begin{displaymath}
+ \forall x\in E : p_A(x)=\sum_{i=1}^p(x/a_i)a_i .
+\end{displaymath}
+\end{prop}
+\begin{prop}
+ Soit $A$ un sous-espace de $E$ et $p_A$ la projection orthogonale sur $A$ alors :
+\begin{displaymath}
+ \begin{aligned}
+  &\forall x \in E :& \Vert p_A(x) \Vert \leq \Vert x \Vert, \\
+  &\forall (x,y) \in E^2 :& (p_A(x)/y) = (x/p_A(y)).
+ \end{aligned}
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ L'orthogonalité se traduit par le théorème de Pythagore
+ \begin{displaymath}
+\left\|x \right\|^2 = \left\| p_A(x) + p_{A^\perp}(x) \right\|^2 =
+\left\| p_A(x) \right\|^2 + \left\| p_{A^\perp}(x) \right\|^2
+\geq \left\| p_A(x) \right\|^2 .
+ \end{displaymath}
+D'autre part,
+\begin{displaymath}
+(p_A(x)/y) = (p_A(x)/p_A(y) + p_{A^\perp}(y)) = (p_A(x)/p_A(y))
+= (p_A(x)+p_{A^\perp}(x)/p_A(y)) = (x/p_A(y)) .
+\end{displaymath}
+\end{demo}
+
+\index{distance à un sous-espace}
+\begin{prop}[Distance à un sous-espace]
+ Soit $A$ un sous-espace de $E$ et $x\in E$. alors :
+\begin{displaymath}
+ \Vert x - p_A(x)\Vert = \Vert p_{A^\bot}(x)\Vert
+=\min\left\lbrace \Vert x-a\Vert, a\in A\right\rbrace .
+\end{displaymath}
+Ce nombre est appelé distance de $x$ à $A$ et noté $d(x,A)$.
+\end{prop}
+\begin{demo}
+Pour tout $a\in A$, décomposons $x-a$.
+\begin{displaymath}
+\Vert x - a\Vert^2=\Vert p_{A\perp}(x) + \underset{\in A}{\underbrace{p_A(x) -a}}\Vert^2  
+= \Vert p_{A\perp}(x) \Vert^2 + \Vert p_A(x) -a\Vert^2 \geq \Vert p_{A\perp}(x) \Vert^2 .
+\end{displaymath}
+Donc $\Vert p_{A\perp}(x) \Vert$ est un minorant de $\left\lbrace \Vert x-a\Vert, a\in A\right\rbrace$ qui est atteint pour $a=p_A(x)$ c'est donc le plus petit élément de cet ensemble.
+\end{demo}
+Rappelons qu'un endomophisme $s$ est une symétrie si et seulement si $s\circ s = \Id_E$. Les sous espaces $A = \ker(s-\Id_E)$ et $B = \ker(s + \Id_E)$ sont alors supplémentaires et 
+\[
+ s = P_{A,B} - P_{B,A}.
+\]
+\index{symétrie orthogonale}\index{affinité orthogonale}\index{réflexion}
+On dit que $s$ est la symétrie par  rapport à $A$ dans la direction $B$. La symétrie $s$ est dite \emph{orthogonale} si et seulement si $A = \ker(s-\Id_E)$ et $B = \ker(s + \Id_E)$ sont orthogonaux. Une symétrie orthogonale par rapport à un sous-espace $A$ s'écrit donc
+\[
+ s_A = P_{A} - P_{A^\bot}.
+\]
+Une réflexion est une symétrie orthogonale par rapport à un hyperplan.\newline
+La reflexion par rapport à l'hyperplan orthogonal à un vecteur non nul $a$ est la fonction
+\begin{displaymath}
+ x\rightarrow x - 2\frac{(a/x)}{\Vert a\Vert^2}a.
+\end{displaymath}
+Une affinité orthogonale par rapport à un sous-espace $A$ est un endomorphisme de la forme $p_A - \lambda p_{A^\bot}$ avec $\lambda$ réel. Pour $\lambda = -1$, on retrouve une symétrie orthogonale. 
+
+\section{Orthogonalisation de Gram-Schmidt}
+\index{orthogonalisation de Gram-Schmidt}
+\subsection{Aspect vectoriel}
+Dans $E$ préhilbertien avec un produit scalaire $(/)$, on considère une famille libre quelconque $(e_1,\cdots,e_n)$. La famille $(a_1,\cdots,a_n)$ (dite orthogonalisée par la méthode de Schmidt) est définie par :
+\begin{displaymath}
+ a_1 = e_1 \text{ et }
+\forall i \in\{1,\cdots, n-1\} : a_{i+1} = e_{i+1}-\sum_{k=1}^i\frac{(e_{i+1}/a_k)}{\Vert a_k\Vert^2}a_k.
+\end{displaymath}
+Cette famille vérifie les propriétés suivantes
+\begin{displaymath}
+ (\mathcal {GS})\hspace{1cm}
+\left\lbrace
+\begin{aligned}
+ &- (a_1,\cdots,a_n) \text{ est orthogonale} \\
+ &- \forall i\in\{1,\cdots,n\} : \Vect(a_1,\cdots,a_i)=\Vect(e_1,\cdots,e_i)
+\end{aligned}
+ \right. .
+\end{displaymath}
+De plus, si $(c_1,\cdots,c_n)$ est une autre suite vérifiant les propriétés $(\mathcal{GS})$, il existe un unique $n$-uplet $(\lambda_1,\cdots,\lambda_n)$ de scalaires non nuls tels que $b_i=\lambda_i a_i$ pour tous les $i$ entre $1$ et $n$.
+
+\begin{rem}
+Cette définition de la famille orthogonalisée est récursive puisque le calcul de $a_{k+1}$ nécessite d'avoir préalablement calculé tous les termes $a_1$ à $a_k$.
+\end{rem}
+\begin{proof}
+Montrons que $(a_1, ..., a_n)$ vérifie $(\mathcal{GS})$. Considérons la propriété $\mathcal{P}_{k}$ : $(a_1, ..., a_k)$ est une base orthogonale de $\Vect(e_1, ..., e_k)$.\newline
+La propriété $\mathcal{P}_{1}$ est clairement vérifiée. Montrons maintenant que: $\mathcal{P}_{k} \Rightarrow \mathcal{P}_{k+1}$ :\\
+D'après $\mathcal{P}_{k} : (a_1, ..., a_k)$ est une base orthonormée de $\Vect(e_1, ..., e_k) = V_k$ donc:
+\begin{displaymath}
+ \sum_{i=1}^{k} \frac{ (e_{k+1}/a_i) }{ ||a_i||^2 } = P_{V_k} (e_{k+1})  \Rightarrow 
+a_{k+1} = e_{k+1} - p_{V_{k}}(e_{k+1}) = p_{V_{k}^{\perp}}( e_{k+1} ) \in V_{k}^{\perp} \Rightarrow
+a_{k+1} \in V_{k}^{\perp} .
+\end{displaymath}
+Le vecteur $a_{k+1}$ est donc orthogonal à tous les vecteurs $a_i$ pour $i$ de $1$ à $k$. La famille $(a_1, ..., a_{k+1})$ est orthogonale.\\
+D'autre part, 
+\begin{displaymath}
+a_{k+1} = e_{k+1} - \underset{\in V_k = \Vect(e_1, ..., e_k)}{\underbrace{p_{V_{k}}(e_{k+1})}} \in V_{k+1} .
+\end{displaymath}
+La famille $(a_1, ..., a_{k+1})$ est donc une famille orthogonale de $\Vect(e_1, ..., e_{k+1})$. De plus $a_{k+1} \neq 0$, sinon $e_{k+1} \in V_{k}$, ce qui est en contradiction avec le fait que $(e_1, ..., e_n)$ est libre. On en déduit que $\mathcal{P}_{k+1}$ est vraie.
+
+Montrons que $(b_1, ..., b_n)$ vérifie $(\mathcal{GS})$ implique qu'il existe $\lambda_1,\cdots, \lambda_n$ tels que $b_i = \lambda_i a_i$. $V_i = \Vect(e_1, ..., e_i) = \Vect(a_1, ..., a_i)$.\\
+Le point important est que
+\begin{displaymath}
+\dim \left( V_{i+1} \cap V_{i}^{\perp}\right) = 1 .
+\end{displaymath}
+En effet, comme $V_i \subset V_{i+1}$, on en déduit que $V_{i}$ est un hyperplan de $V_{i+1}$. On restreint alors le produit scalaire à $V_{i+1}$. L'orthogonal de $V_i$ comme partie de $V_{i+1}$ est de dimension 1. Cet orthogonal est constitué des $x \in V_{i+1}$ tels que: $x \perp V_i$, c'est-à-dire $V_{i+1} \cap V_{i}^{\perp}$.
+On a donc montré que: $(b_1, ..., b_n)$ vérifie $(\mathcal{GS})$ est équivalent à:
+\begin{displaymath}
+\forall i \in \rrbracket 2, n \rrbracket, b_i \in V_{i} \cap V_{i-1}^{\perp} \text{ et } b_1 \in V_1.
+\end{displaymath}
+\end{proof}
+\begin{rem}
+ La formule $a_{k+1} = e_{k+1} - p_{V_{k}}(e_{k+1})$ s'écrit encore $a_{k+1} = p_{V_{k}\perp}(e_{k+1})$. Le fait que les vecteurs de la famille orthogonalisée soient chacun des projections orthogonales des vecteurs de la famille initiale entraîne que $\Vert a_k\Vert \leq \Vert e_k\Vert$.
+\end{rem}
+
+
+\begin{exple}\index{polynômes orthogonaux}
+\textbf{Polynômes orthogonaux}
+On se place dans $\mathbb{R}[X]$ et on considère le produit scalaire:
+
+\begin{center}
+$(P/Q) = \displaystyle \int_{0}^{1} P(t)Q(t) \, dt$.
+\end{center}
+
+On veut orthogonaliser $(1, X, ..., X^{n})$ pour former les polynômes de Legendre $(L_0, L_1, ..., L_n)$.
+
+On va ici se limiter à $(1, X, X^2, X^3)$ (les $e_i$) donc à $(L_0, L_1, ... L_n)$ (les $a_i$).
+\begin{itemize}
+\item $L_0 = 1$.\medskip
+\item $L_1 = \displaystyle X - \frac{ (X/1) }{ ||1||^2 } 1 = X - \frac{1}{2}$
+\item $L_2 = \displaystyle X^2 - \frac{ (X^2/1) }{ ||1||^2 } 1 - \frac{ (X^2/L_1) }{ ||L_1||^2 } L_1 = X^2 - \frac{1}{3} - \frac{\frac{1}{12}}{\frac{1}{12}} \left( X - \frac{1}{2} \right) = X^2 - X + \frac{1}{6}$.\medskip
+\item $L_3 = \displaystyle X^3 - \frac{(X^3/L_0)}{||L_0||^2} L_0 - \frac{ (X^3/L_1) }{ ||L_1||^2 } L_1 - \frac{ (X^3/L_2) }{ ||L_2||^2 } L_2 = X^3 - \frac{1}{4} - \frac{\frac{3}{40}}{\frac{1}{12}} \left( X - \frac{1}{2} \right) - \frac{\frac{1}{120}}{\frac{1}{180}} \left( X^2 - X + \frac{1}{6} \right)$ \\
+$L_3 = X^3 - \frac{1}{4} - \frac{9}{10} \left( X - \frac{1}{2} \right) - \frac{3}{2} \left( X^2 - X + \frac{1}{6} \right)$ \medskip\\
+$L_3 = X^3 - \frac{3}{2} X^2 + \frac{3}{5} X - \frac{1}{20}$.\medskip
+\end{itemize}
+\begin{rem}
+ Une propriété des polynômes orthogonaux. 
+Soit $L_n$ de degré $n$. 
+\[
+\left(  \forall k \in \{0, ..., n-1\} : \displaystyle \int_{0}^{1} L_{n}(t) t^{k} \, dt = 0 \right) \Rightarrow
+L_n \text{ admet $n$ racines dans $]0,1[$.}
+\]
+En effet, $a_1, ..., a_s$ sont les racines de multiplicité impaire de $L_n$, alors $s < r$ d'où 
+\[
+\left( (x-a_1) ... (x-a_n) / L_n \right) = \displaystyle \underset{\textrm{ne change pas de signe}}{\underbrace{\int_{0}^{1} L_n(t-a_1)...(t-a_s) \, dt}} \neq 0.
+\]
+\end{rem}
+
+\end{exple}
+
+
+\subsection{Aspect matriciel}
+Dans un espace euclidien $E$ avec un produit scalaire $(/)$, on considère une base quelconque $\mathcal E = (e_1,\cdots,e_n)$ et une famille orthogonalisée $\mathcal A =(a_1,\cdots,a_n)$. Les matrices de passage sont triangulaires supérieures avec des $1$ sur la diagonale.\newline
+En particulier, $S$ est la matrice d'un produit scalaire si et seulement si il existe une matrice triangulaire supérieure $T$ avec des $1$ sur la diagonale telle que  $\trans T\,S\, T$ soit diagonale.
+
+\section{Hyperplans affines}
+Vecteur normal à un hyperplan affine.
+
+Ligne de niveau de $M\mapsto (\overrightarrow{AM}/\overrightarrow{n})$.
+
+Si l'espace est orienté, orientation d'un hyperplan autour d'un vecteur normal.
+
+\'Equations d'un hyperplan affine. Cas particulier de $\R^2$ et $\R^3$.
+
+Distance à un hyperplan affine défini par un point $A$ et un vecteur normal unitaire $\overrightarrow{n}$:
+\begin{displaymath}
+  \left| (\overrightarrow{AM}/\overrightarrow{n})\right|
+\end{displaymath}
+
+
+\end{document}

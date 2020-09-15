@@ -1,0 +1,121 @@
+\subsection{Intégration}
+\begin{itshape}
+L'objectif majeur de ce chapitre est de définir l'intégrale d'une fonction continue par morceaux sur un segment à valeurs réelles ou complexes et d'en établir les propriétés élémentaires, notamment le lien entre intégration et primitivation. On achève ainsi la justification des propriétés présentées dans le chapitre \og Techniques fondamentales de calcul en analyse\fg.
+
+Ce chapitre permet de consolider la pratique des techniques usuelles de calcul intégral. Il peut également offrir l'occasion de revenir sur l'étude des équations différentielles rencontrées au premier semestre.
+
+
+La notion de continuité uniforme est introduite uniquement en vue de la construction de l'intégrale. L'étude systématique des fonctions uniformément continues est exclue.
+
+Dans tout le chapitre, \,$\K$ désigne \, $\R$ ou \,$\C$.
+\end{itshape}
+
+\subsubsubsection{a) Continuité uniforme}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Continuité uniforme.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Théorème de Heine.}
+  \colchunk{La démonstration n'est pas exigible.}
+  \colplacechunks
+\end{parcolumns}
+
+
+\subsubsubsection{b) Fonctions continues par morceaux}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Subdivision d'un segment, pas d'une subdivision.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Fonction en escalier.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Fonction continue par morceaux sur un segment, sur un intervalle.}
+  \colchunk{Une fonction est continue par morceaux sur un intervalle $I$ si sa restriction à tout segment inclus dans $I$ est continue par morceaux.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{c) Intégrale d'une fonction continue par morceaux sur un segment}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Intégrale d'une fonction continue par morceaux sur un segment.}
+  \colchunk{Le programme n'impose pas de construction particulière.
+
+Interprétation géométrique.
+
+$\dbf$ PC et SI : valeur moyenne.
+
+Aucune difficulté théorique relative à la notion d'aire ne doit être soulevée.
+
+Notations $\displaystyle \int_{[a,b]}f$, $\displaystyle \int_{a}^bf$, $\displaystyle\int_a^bf(t)\,dt$.}
+  \colplacechunks
+
+  \colchunk{Linéarité, positivité et croissance de l'intégrale.}
+  \colchunk{Les étudiants doivent savoir majorer et minorer des intégrales.}
+  \colplacechunks
+
+  \colchunk{Inégalité: $\displaystyle \left\lvert \int_{[a,b]}f \right\rvert \leqslant \int_{[a,b]} \lvert f \rvert$.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Relation de Chasles.}
+  \colchunk{Extension de la notation $\displaystyle\int_a^bf(t)\,dt$ au cas où $b\leqslant a$. Propriétés correspondantes.}
+  \colplacechunks
+
+  \colchunk{L'intégrale sur un segment d'une fonction continue de signe constant est nulle si et seulement si la fonction est nulle.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{d) Sommes de Riemann}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Si $f$ est une fonction continue par morceaux sur le segment $[a,b]$ à valeurs dans $\R$, alors
+\[
+\frac{b-a}{n}\sum_{k=0}^{n-1}f\left(a+k\frac{b-a}{n}\right) \xrightarrow[n \to +\infty]{} \int_a^bf(t)\,dt.
+\]
+}
+  \colchunk{Interprétation géométrique.
+
+Démonstration dans le cas où $f$ est de classe $\mathcal{C}^1$.
+
+$\dbf$ I : méthodes des rectangles, des trapèzes.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{e) Intégrale fonction de sa borne supérieure}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Dérivation de $\displaystyle x \mapsto \int_a^x f(t)\, dt$ pour $f$ continue. Calcul d'une intégrale au moyen d'une primitive. Toute fonction continue sur un intervalle possède des primitives.}
+  \colchunk{Intégration par parties, changement de variable.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{f) Calcul de primitives}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Primitives usuelles.}
+  \colchunk{Sont exigibles les seules primitives mentionnées dans le chapitre \og Techniques fondamentales de calcul en analyse\fg.}
+  \colplacechunks
+
+  \colchunk{Calcul de primitives par intégration par parties, par changement de variable.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Utilisation de la décomposition en éléments simples pour calculer les primitives d'une fraction rationnelle.}
+  \colchunk{On évitera tout excès de technicité.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{g) Formules de Taylor}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Pour une fonction $f$ de classe $\mathcal{C}^{n+1}$, formule de Taylor avec reste intégral au point $a$ à l'ordre $n$.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Inégalité de Taylor-Lagrange pour une fonction de classe $\mathcal{C}^{n+1}$.}
+  \colchunk{L'égalité de Taylor-Lagrange est hors programme.}
+  \colplacechunks
+
+  \colchunk{}
+  \colchunk{On soulignera la différence de nature entre la formule de Taylor-Young (locale) et les formules de Taylor globales (reste intégral et inégalité de Taylor-Lagrange).}
+  \colplacechunks
+\end{parcolumns}

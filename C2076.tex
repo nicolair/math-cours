@@ -1,0 +1,410 @@
+\input{courspdf.tex}
+\debutcours{Espaces vectoriels (sans dimension)}{0.2 \tiny{le \today}}
+Le cours d'algèbre linéaire (hors calcul matriciel) est réparti sur trois documents:  \href{\baseurl C2076.pdf}{Espaces vectoriels (sans dimension)} (ce texte),  \href{\baseurl C2112.pdf}{Dimensions des espaces vectoriels} et \href{\baseurl C9587.pdf}{Applications linéaires}.
+\section{Définitions}
+\subsection{Espace vectoriel}
+\index{espace vectoriel}
+\begin{defi}[espace vectoriel]
+ Soit $\K$ un corps et $E$ un ensemble muni d'une opération interne notée $+$ et d'une multiplication externe
+\begin{displaymath}
+ \begin{aligned}
+  &\K\times E &\rightarrow E\\
+ &(\lambda,x) &\rightarrow \lambda x
+ \end{aligned}
+\end{displaymath}
+  On dira que $E$ est un $\K$-espace vectoriel lorsque les opérations vérifient les propriétés suivantes
+\begin{itemize}
+ \item $(E,+)$ est un groupe commutatif.
+ \item Pour tout $x\in E$, $1_\K\,x = x$.
+ \item Pour tous $\lambda$ et $\mu$ dans $\K$ et tout $x$ dans $E$, $(\lambda\,\mu)x = \lambda (\mu x)$ et $(\lambda + \mu)x = \lambda x + \mu x$.
+ \item (distributivité) Pour tous $\lambda$ dans $\K$ et $x$, $y$ dans $E$, $\lambda(x+y)=\lambda x + \lambda y$.
+\end{itemize}
+\end{defi}
+\begin{rem} Il faut bien noter que pour $\lambda \in \K$ (on dit $\lambda$ \emph{scalaire}) et tout vecteur $x\in E$, la notation $x\lambda$ avec $\lambda$ à gauche n'a aucun sens. Vous ne devriez jamais avoir à écrire une telle expression. Elle provient toujours d'une erreur. 
+\end{rem}
+
+\begin{prop}[règles de calcul]
+Soit $\K$ un corps et $E$ un $\K$-espace vectoriel. 
+\begin{align*}
+  &\forall \lambda \in \K :  \lambda 0_E = 0_E\\
+  &\forall x \in E : 0_\K x = 0_E\\
+  &\forall \lambda\in \K, \forall x\in E : -(\lambda x) = (-\lambda)x = \lambda (-x).
+\end{align*}
+\end{prop}
+\begin{demo}
+ \begin{displaymath}
+\lambda 0_E + \lambda 0_E =\lambda(0_E+0_E)=\lambda 0_E \Rightarrow \lambda 0_E = 0_E  
+ \end{displaymath}
+en ajoutant $-(\lambda 0_E)$. De même :
+\begin{displaymath}
+ 0_\K x + 0_\K x = (0_\K + 0_\K)x = 0_\K x \Rightarrow  0_\K x = 0_E
+\end{displaymath}
+ en ajoutant $-( 0_\K x) $. La troisième relation se déduit facilement des précédentes.
+\end{demo}
+
+\begin{rem}
+ En particulier : $0_\K 0_E =0_E\text{ et } -x=(-1_\K)x$ .
+\end{rem}
+
+\subsection{Exemples - Constructions}
+\subsubsection{Sous-corps}
+En considérant la multiplication interne sur un corps $\K$ comme une multiplication externe (!!), on remarque que tout corps $\K$ est naturellement un $\K$-espace vectoriel. Plus généralement, on peut considérer les sous-corps.
+\begin{prop}
+ Soit $\K$ un corps et $k$ un sous-corps de $\K$. L'addition et la multiplication de $\K$ définissent sur $\K$ une structure de $k$-espace vectoriel.
+\end{prop}
+\begin{exple}
+ Ainsi, $\C$ est un $\R$-espace vectoriel, $\R$ est un $\Q$-espace vectoriel.
+\end{exple}
+
+\subsubsection{Espaces produits}
+\begin{prop}
+ Soit $E_1, E_2, \cdots, E_p$ des espaces vectoriels sur un même corps $\K$. Les opérations obtenues par produit sur $E_1\times E_2 \times \cdots \times E_p$ des additions et multiplications externes définissent une structure de $\K$-espace vectoriel.
+\end{prop}
+\begin{exple}
+ On définit ainsi une structure de $\K$-espace vectoriel sur $\K^n$ pour tout entier naturel non nul $n$.\newline
+En particulier, notons \index{base canonique de $\K^n$}
+\begin{align*}
+ \varepsilon_1 &= (1_\K,0_\K,\cdots,0_\K)\\
+ \varepsilon_2 &= (0_\K,1_\K,\cdots,0_\K)\\
+\vdots& \\
+\varepsilon_i &= (0_\K,\cdots,0_\K,1_\K,0_\K,\cdots,0_\K)\hspace{1cm}\text{ (le $1$ en position $i$)}\\
+\vdots& \\
+\varepsilon_n &= (0_\K,\cdots,0_\K,1_\K)\\
+\end{align*}
+\label{base_canonique}
+Alors:
+\begin{displaymath}
+ \forall (x_1,x_2,\cdots,x_n)\in \K^n,\hspace{0.5cm}
+(x_1,x_2,\cdots,x_n) = x_1\varepsilon_1 + x_2\varepsilon_2 + \cdots + x_n\varepsilon_n
+\end{displaymath}
+Ainsi, tout vecteur de $\K^n$ est une combinaison linéaire des vecteurs de la famille $(\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n)$. Cette famille est appelée la \emph{base canonique} de $\K^n$. Le terme de base sera justifié plus loin.
+\end{exple}
+
+\subsubsection{Espaces fonctionnels}
+\begin{prop}
+  Soit $\Omega$ un ensemble quelconque et $E$ un $\K$-espace vectoriel. Sur l'ensemble $\mathcal{F}(\Omega,E)$ des fonctions de $\Omega$ dans $E$, sont définies une addition fonctionnelle et une multiplication externe fonctionnelle:
+\begin{displaymath}
+  \forall(f,g)\in \mathcal{F}(\Omega,E)^2, \forall \lambda \in \K,\\
+\left\lbrace \begin{aligned}
+&f+g \text{ est défini par : }\forall \omega \in \Omega:\: (f+g)(\omega) = f(\omega) + g(\omega)\\
+&\lambda f \text{ est défini par : }\forall \omega \in \Omega:\: (\lambda f)(\omega) = \lambda f(\omega)  
+\end{aligned} \right. 
+\end{displaymath}
+Ces opérations définissent une structure de $\K$-espace vectoriel sur $\mathcal{F}(\Omega,E)$.
+\end{prop}
+Les suites et les fonctions à valeurs réelles héritent ainsi de structures de $\R$-espace vectoriel.
+
+\subsubsection{Espaces de polynômes}
+Pour tout corps $\K$, l'ensemble $\K[X]$ est un $\K$-espace vectoriel. Pour un entier $n$ fixé, l'ensemble $\K_n[X]$ des polynômes de degré inférieur ou égal à $n$ est un $\K$-espace vectoriel.
+
+\subsection{Familles de vecteurs}
+La proposition suivante joue un rôle très important dans la théorie de la dimension.
+\begin{prop}
+ Soit $\K$ un corps et $E$ un $\K$-espace vectoriel. Pour tout $\lambda \in \K$ et $x\in E$ :
+\begin{displaymath}
+  \lambda x = 0_E \Rightarrow \lambda = 0_\K \text{ ou } x=0_E 
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Si $\lambda\neq 0_K$ alors il est inversible car $\K$ est un corps. Il existe donc $\mu \in \K$ tel que $\mu \lambda =1$. En multipliant scalairement par $\mu$, on obtient
+\begin{displaymath}
+ \lambda x = 0_E \Rightarrow \mu(\lambda x )= \mu 0_E \Rightarrow (\mu \lambda)x = 0_E
+\Rightarrow 1_\K x =0_E \Rightarrow x= 0_E.
+\end{displaymath}
+\end{demo}
+\index{combinaison linéaire}
+\begin{defi}[Combinaison linéaire]
+ Une \emph{combinaison linéaire} d'une famille finie de vecteurs $(x_1,x_2,\cdots,x_p)$ est un vecteur de la forme
+\begin{displaymath}
+ \lambda_1x_1 + \lambda_2x_2 + \cdots + \lambda_p x_p 
+\end{displaymath}
+avec $\lambda_1,\cdots,\lambda_p$ dans $\K$. On dit que les $\lambda_i$ sont les coefficients de la combinaison linéaire.
+\end{defi}
+
+\index{relation linéaire}
+\begin{defi}[Relation linéaire]
+ Une \emph{relation linéaire} entre les vecteurs d'une famille finie $(x_1,x_2,\cdots,x_p)$ est une combinaison linéaire nulle dont un au moins des coefficients est non nul.
+\end{defi}
+
+\begin{exple} Dans le $\R$-espace vectoriel $\C$, il existe une relation linéaire entre les vecteurs de la famille $(1,j,j^2)$. (la somme est nulle, les trois coefficients étant égaux à $1$)
+\end{exple}
+
+\index{famille liée}
+\begin{defi}[Famille liée]
+  Une famille est \emph{liée} si et seulement si il existe une relation linéaire entre ses vecteurs. 
+\end{defi}
+
+\index{famille libre}
+\begin{defi}[Famille libre]
+  Une famille est \emph{libre} si et seulement si il n'existe pas de relation linéaire entre ses vecteurs. 
+\end{defi}
+
+\begin{prop}[caractérisations du caractère libre ou lié]
+Soit $E$ un $\K$-espace vectoriel et $(a_1, \cdots,a_p)\in E^p$.
+\[
+  (a_1, \cdots,a_p) \text{ liée } \Leftrightarrow \exists (\lambda_1, \cdots, \lambda_p)\in \K^p \text{ tq }
+\left\lbrace
+\begin{aligned}
+  &(\lambda_1, \cdots, \lambda_p) \neq (0_K, \cdots, 0_k)\\
+  &\lambda_1 a_1 + \cdots + \lambda_p a_p = 0_E
+\end{aligned}
+\right.
+\]
+\[
+  (a_1, \cdots,a_p) \text{ libre } \Leftrightarrow \forall (\lambda_1, \cdots, \lambda_p)\in \K^p, \;
+\left( \lambda_1 a_1 + \cdots + \lambda_p a_p = 0_E \Rightarrow (\lambda_1, \cdots, \lambda_p) = (0_K, \cdots, 0_k)\right).
+\]
+\end{prop}
+\begin{demo}
+  Il s'agit d'une simple reformulation des définitions.
+\end{demo}
+
+\begin{rems}
+\begin{enumerate}
+  \item Une famille est liée si et seulement si elle n'est pas libre.
+  \item Une famille $(x)$ formée d'un seul vecteur est libre si et seulement si $x\neq 0_E$.
+  \item Pour une famille de scalaires ou de vecteurs, bien faire la différence entre les expression \og non tous nuls\fg~ et \og tous non nuls\fg.
+\end{enumerate}
+\end{rems}
+\index{famille génératrice}
+\begin{defi}[Famille génératrice]
+  Une famille d'un $\K$-espace vectoriel $E$ est \emph{génératrice} si et seulement si tout vecteur de $E$ est une combinaison linéaire de la famille.
+\end{defi}
+\index{base}
+\begin{defi}[Base]
+Une \emph{base} est une famille libre et génératrice.  
+\end{defi}
+\begin{prop}[Coordonnées dans une base]
+  Si $(a_1,\cdots,a_p)$ est une base de $E$, pour tout vecteur $x$, il existe un unique $p$-uplet $(\lambda_1,\cdots,\lambda_p)\in \K^p$ tel que
+\begin{displaymath}
+  x = \lambda_1 a_1 + \cdots + \lambda_p a_p
+\end{displaymath}
+Ces $\lambda_i$ sont appelés les \emph{coordonnées} de $x$ dans la base.
+\end{prop}
+\begin{demo}
+L'existence vient du caractère générateur de la base. L'unicité vient du caractère libre. S'il existait deux $p$-uplets distincts, en soustrayant on obtiendrait une relation entre les vecteurs de la base.  
+\end{demo}
+Exemples de bases: base canonique  de la partie \ref{base_canonique} Espaces produits, polynômes de degrés échelonnés.
+
+Les questions liées à l'existence de bases, aux coordonnées et aux propriétés des espaces vectoriels qui admettent des bases seront traitées dans la section \href{\baseurl C2112.pdf}{Dimension des espaces vectoriels}.
+
+
+\section{Sous espaces vectoriels}
+\subsection{Définition}
+\begin{defi}
+  Une partie $A$ d'un $\K$-espace vectoriel $E$ est un sous-espace vectoriel si et seulement si elle est non vide et stable pour la multiplication externe et l'addition.
+\begin{displaymath}
+  \forall (a,a')\in A^2,\; \forall \lambda \in \K,\; a+a'\in A\text{ et } \lambda a \in A
+\end{displaymath}
+\end{defi}
+\begin{rems}
+\begin{itemize}
+  \item Un sous-espace vectoriel contient toujours le vecteur nul.
+  \item La restriction des opérations à un sous-espace définit une structure d'espace vectoriel sur celui ci.
+  \item On trouve parfois des caractérisations mélant les deux opérations ( par exemple $a+\lambda a' \in A$) mais cela ne sert pas à grand-chose.
+\end{itemize}
+\end{rems}
+
+\begin{prop}
+  Une partie non vide $A$ d'un $\K$-espace vectoriel $E$ est un sous-espace vectoriel si et seulement si $A$ est stable pour les combinaisons linéaires des familles de vecteurs de $A$.
+\end{prop}
+\begin{demo}
+  Immédiat à partir de la définition.
+\end{demo}
+
+
+\subsection{Intersection}
+\begin{prop}
+  L'intersection d'une famille de sous-espaces vectoriels est encore un sous-espace vectoriel.
+\end{prop}
+\begin{demo}
+  On vérifie les stabilités par le jeu du quantificateur $\forall$.
+\end{demo}
+\begin{rem}
+  En revanche, si $A$ et $B$ sont eux sous-espaces, $A\cup B$ n'est un sous-espace que dans le cas trivial où l'un est inclus dans l'autre. Par exemple, si $A\not \subset B$, il existe $a\in A$ tel que $a\notin B$. Alors, pour tout $b\in B$, notons 
+\begin{displaymath}
+  s = \underset{\in A\cup B}{\underbrace{a}} + \underset{\in A\cup B}{\underbrace{b}} \in A\cup B \text{ stabilité du sev}
+\end{displaymath}
+Si $s$ appartenait à $B$, on aurait $a =s - b\in B$ en contradiction avec la définition de $a$. Donc 
+\begin{displaymath}
+  s\in A \Rightarrow b = s - a \in A
+\end{displaymath}
+\end{rem}
+
+
+\subsection{Sous espace engendré par une partie}
+\begin{defi}
+ Soit $E$ un $\K$-espace vectoriel et $A$ une partie de $E$. L'intersection de tous les sous-espaces vectoriels contenant $A$ est appelé le sous-espace vectoriel \emph{engendré} par $A$. Il est noté $\Vect(A)$.
+\end{defi}
+\index{sous-espace engendré}
+\begin{rem}
+  Si $V$ est un sous-espace vectoriel contenant $A$ alors $\Vect(A)\subset V$.
+\end{rem}
+
+\begin{prop}
+ Si $A=\left\lbrace a_1,\cdots,a_p\right\rbrace$, le sous-espace engendré par $A$ est l'ensemble des combinaisons linéaires.
+\begin{displaymath}
+ \Vect(a_1,\cdots,a_p)=
+\left\lbrace
+\lambda_1 a_1 + \cdots + \lambda_p a_p
+ \right\rbrace 
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On a vu qu'une combinaison linéaire de vecteurs qui sont des combinaisons linéaires de $a_1,\cdots,a_p$ est encore une combinaison linéaire de $a_1,\cdots,a_p$. On en déduit que l'ensemble des combinaisons linéaires est un sous-espace. Il est contenu dans n'importe quel sous-espace $U$ contenant les $a_i$ par stabilité de $U$.
+\end{demo}
+
+\begin{rem}
+ En particulier dans le cas d'un singleton, $\Vect(a)=\{\lambda a, \lambda\in \K\}$ est aussi noté $\K a$. Une \emph{droite vectorielle} est un sous-espace de la forme $\K a$ pour un vecteur $a$ non nul\index{droite vectorielle}. \index{plan vectoriel}Un \emph{plan vectoriel} est un espace engendré par une famille \emph{libre} de deux vecteurs.
+\end{rem}
+Exercice traité en classe\newline
+Dans $E=\R^3$, on note $x=(2,3,-1)$, $y=(1,-1,-2)$  et $u=(3,7,0)$, $v=(5,0,-7)$.\newline Montrer que $\Vect(x,y)=\Vect(u,v)$.\newline
+Si on exprime $x$ et $y$ comme des combinaisons linéaires de $u$ et $v$, on prouve que toute combinaison linéaire de $x$ et $y$ est une combinaison linéaire de $u$ et $v$ d'où $\Vect(x,y)\subset \Vect(u,v)$. On obtient l'autre inclusion en exprimant $u$ et $v$ en fonction de $x$ et $y$.\newline
+On cherche à prouver l'existence de $\lambda$ et $\mu$ tels que $x=\lambda u + \mu v$. Cela se traduit par le système suivant aux inconnues $\lambda$ et $\mu$:
+\[
+  \begin{aligned}
+    u &= (3,7,0)  &\times \lambda \\
+    v &= (5,0,-7) &\times \mu\\ \hline
+    x &= (2,3,-1)&
+  \end{aligned}
+\hspace{0.5cm}
+\left\lbrace
+\begin{aligned}
+  3\lambda + 5 \mu &= 2\\
+  7\lambda &= 3\\
+  -7\mu &= -1
+\end{aligned}
+\right. \Rightarrow x = \frac{3}{7}u + \frac{1}{7}v.
+\]
+De même pour $y = \lambda u + \mu v$.
+\[
+  \begin{aligned}
+    u &= (3,7,0)  &\times \lambda \\
+    v &= (5,0,-7) &\times \mu\\ \hline
+    y &= (1,-1,-2)&
+  \end{aligned}
+\hspace{0.5cm}
+\left\lbrace
+\begin{aligned}
+  3\lambda + 5 \mu &= -1\\
+  7\lambda &= -1\\
+  -7\mu &= -2
+\end{aligned}
+\right. \Rightarrow y = -\frac{1}{7}u + \frac{2}{7}v.
+\]
+Les relations obtenues montrent que $\Vect(x,y) \subset \Vect(u,v)$. Toujours avec des techniques de systèmes linéaires, onn peut inverser les relations:
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ x&= \frac{3}{7}u + \frac{1}{7}v \\ y &= -\frac{1}{7}u + \frac{2}{7}v
+\end{aligned}
+\right. 
+\Rightarrow
+ \left\lbrace 
+\begin{aligned}
+ u&= 2x -y \\ v &= x+3y
+\end{aligned}
+\right. 
+\Rightarrow \Vect(u,v) \subset \Vect(x,y).
+\end{displaymath}
+
+\subsection{Somme de sous-espaces}
+\index{somme de deux sous-espaces}
+\begin{defi}
+ Soit $E$ un $\K$-espace vectoriel et $A$, $B$ deux sous-espaces de $E$. La somme de $A$ et $B$ est l'ensemble noté $A+B$ des sommes d'un vecteur quelconque de $A$ et d'un vecteur quelconque de $B$.
+\begin{displaymath}
+ A+B = \left\lbrace a+b, (a+b\in A\times B\right\rbrace 
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ La somme de deux sous-espaces vectoriels est un sous-espace vectoriel.
+\end{prop}
+\begin{demo}
+ On vérifie immédiatement les stabilités requises.
+\end{demo}
+\index{espaces supplémentaires}
+\begin{defi}[sous-espaces supplémentaires]
+ Soit $E$ un $\K$-espace vectoriel. Deux sous-espaces $A$, $B$ de $E$ sont dits \emph{supplémentaires} si et seulement si tout vecteur de $E$ se décompose de manière unique en la somme d'un vecteur de $A$ et d'un vecteur de $B$.
+\end{defi}
+\begin{prop}
+ Soit $E$ un $\K$-espace vectoriel et $A$, $B$ deux sous-espaces de $E$. Ils sont supplémentaires si et seulement si $A\cap B=\{0_E\}$ et $A+B=E$.
+\end{prop}
+\begin{demo}
+Supposons $A$ et $B$ supplémentaires. Alors $A+B=E$ car tout vecteur se décompose en la somme d'un vecteur de $A$ et d'un vecteur de $B$. Montrons que $A\cap B = \left\lbrace 0_E \right\rbrace$.\newline
+Soit $x\in A\cap B$:
+\begin{displaymath}
+  0_E = \underset{\in A}{\underbrace{0_E}} + \underset{\in B}{\underbrace{0_E}} =
+  \underset{\in A\cap B \subset A}{\underbrace{x}} + \underset{\in A\cap B \subset B}{\underbrace{(-x)}}
+\Rightarrow x = 0_E\hspace{1cm} \text{(unicité de la décomposition de $0_E$)} 
+\end{displaymath}
+
+Supposons que $A\cap B=\{0_E\}$ et $A+B=E$. Il s'agit seulement de prouver l'unicité de la décomposition d'un vecteur quelconque de $E$. Si un $x\in E$ se décompose de deux manières
+\begin{multline*}
+\exists (a,b)\in A\times B \text{ et } (a',b')\in A\times B \text{ tq }
+\left\lbrace 
+\begin{aligned}
+  x &= a+ b \\ x &= a' + b'
+\end{aligned}
+\right. \Rightarrow 0_E = (a-a') + (b-b') \\
+\Rightarrow \underset{\in A}{\underbrace{a-a'}} = \underset{\in B}{\underbrace{b'-b}} \in A\cap B = \left\lbrace 0_E\right\rbrace 
+\Rightarrow
+\left\lbrace 
+\begin{aligned}
+  a &=a' \\ b &= b'
+\end{aligned}
+\right. 
+\end{multline*}
+\end{demo}
+\begin{exples}
+Pour les exemples listés au dessous $A$ et $B$ sont des sous-espaces supplémentaires de $E$.
+  \begin{enumerate}
+    \item Soit $E$ le $\R$-espace vectoriel des fonctions de $\R$ dans $\R$, $A$ est l'ensemble des fonctions paires de $\R$ dans $\R$ et $B$ l'ensemble des fonctions impaires. 
+    \item Soit $E$ le $\R$-espace vectoriel des suites convergentes de réels, $A$ l'ensemble des suites constantes et $B$ l'ensemble des suites qui convergent vers $0$.
+  \end{enumerate}
+\end{exples}
+\begin{rems}
+  Soit $A, B, C$ des sous-espaces d'un $\K$-espace vectoriel $E$.
+\[
+  A+B = \Vect(A\cup B), \hspace{0.5cm} \left(A\subset C \text{ et } B \subset C\right) \Rightarrow A+B \subset C.
+\]
+\end{rems}
+
+
+On peut étendre la notion de somme à plus de deux sous-espaces.
+\index{somme de sous-espaces}
+\begin{defi}[Somme de sous-espaces]
+Soit $A_1,\cdots,A_p$ des sous-espaces d'un $\K$-espace vectoriel $E$. On appelle \emph{somme} des $A_i$ la partie de $E$
+\begin{displaymath}
+  A_1 + \cdots + A_p = \left\lbrace a_1+\cdots+a_p,\; (a_1,\cdots,a_p)\in A_1\times\cdots\times A_p \right\rbrace 
+\end{displaymath}
+\end{defi}
+\begin{rem}
+  Soit $x\in E$,
+\begin{displaymath}
+  x\in A_1+\cdots +A_p \Leftrightarrow \exists (a_1,\cdots,a_p)\in A_1\times\cdots\times A_p \text{ tq } x = a_1+\cdots + a_p
+\end{displaymath}
+Autrement dit un vecteur est dans la somme si et seulement il se décompose en une somme de vecteurs de chacun des sous-espaces.
+\end{rem}
+
+\begin{prop}
+  Une somme de sous-espaces est un sous-espace.
+\end{prop}
+\begin{demo}
+  Vérification immédiate
+\end{demo}
+On vérifie facilement que l'opération \og somme de sous-espaces\fg~ est associative.
+\index{somme directe}
+\begin{defi}
+  Soit $A_1,\cdots,A_p$ des sous-espaces d'un $\K$-espace vectoriel $E$. On dira que la somme $A_1+\cdots + A_p$ est \emph{directe} si et seulement si
+les vecteurs de la somme se décomposent \emph{de manière unique} en une somme de vecteurs des sous-espaces. 
+\end{defi}
+\begin{nota}
+ Lorsque les sous-espaces $A_1,\cdots,A_p$ sont en somme directe, on note
+\[
+ A_1 \oplus \cdots \oplus A_p = A_1 + \cdots + A_p.
+\]
+En particulier, $E = A \oplus B$ si $A$ et $B$ sont supplémentaires dans $E$.
+\end{nota}
+
+
+\end{document}

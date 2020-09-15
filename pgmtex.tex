@@ -1,0 +1,223 @@
+%! original siTeXMac(project): pdftex
+
+%\input fr
+
+\def\date{}
+
+%\input macros
+
+
+\catcode`\@=11
+
+\font\goth=eufm10
+\font\ineg=msam8
+\font\star=msam10
+\font\vid=msbm10
+\font\bsl=cmbxsl10 at 10pt % gras-pench{\'e}
+\font\large=cmr10 at 12pt
+\font\Large=cmr10 at 14pt
+\font\largeb=cmbx10 at 12pt
+\font\Largeb=cmbx10 at 14pt
+\font\pcar=cmr8 at 8pt % pour {\'e}crire les si\`ecles
+\font\tenbb=cmssbx10 at 10pt % police provisoire pour R,N,Q,Z
+\font\sevenbb=cmbx10 at 7pt
+\font\fivebb=cmbx10 at 5pt
+
+\everymath{\displaystyle}
+\newfam\bbfam
+\textfont\bbfam=\tenbb
+\scriptfont\bbfam=\sevenbb
+\scriptscriptfont\bbfam=\fivebb
+\def\bb{\fam\bbfam\tenbb}
+
+\catcode`\;=\active
+\def;{\relax\ifhmode\ifdim\lastskip>\z@
+\unskip\fi\kern.2em\fi\string;}
+
+\catcode`\:=\active
+\def:{\relax\ifhmode\ifdim\lastskip>\z@\unskip\fi
+\penalty\@M\ \fi\string:}
+
+\catcode`\!=\active
+\def!{\relax\ifhmode\ifdim\lastskip>\z@
+\unskip\fi\kern.2em\fi\string!}
+
+\catcode`\?=\active
+\def?{\relax\ifhmode\ifdim\lastskip>\z@
+\unskip\fi\kern.2em\fi\string?}
+
+%\def\^#1{\if#1i{\accent"5E\i}\else{\accent"5E #1}\fi}
+%\def\"#1{\if#1i{\accent"7F\i}\else{\accent"7F #1}\fi}
+
+\newif\ifpagetitre \pagetitretrue
+\newtoks\hautpagetitre
+\hautpagetitre={\tenrm\hfil\the\premiertitre\hfil}
+\newtoks\baspagetitre \baspagetitre={\hfil}
+
+\newtoks\partiecourante \partiecourante={\hfil}
+\newtoks\titrecourant \titrecourant={\hfil}
+\newtoks\premiertitre \premiertitre={\hfil}
+
+\newtoks\hautpagegauche \newtoks\hautpagedroite
+\hautpagegauche={\tenrm\folio\hfill{\the\partiecourante}}
+\hautpagedroite={\tenrm{\the\titrecourant}\hfill\folio}
+
+\newtoks\baspagegauche \baspagegauche={\hfil}
+\newtoks\baspagedroite \baspagedroite={\hfil}
+
+\headline={\ifnum\pageno=1\the\hautpagetitre\else\the\hautpagedroite
+\fi}
+
+\footline={\hfil}
+
+\def\nopagenumbers{\def\folio{\hfil}}
+
+\catcode`\@=12
+
+\let\optionkeymacros\null
+\let\dis=\displaystyle
+\let\scr=\scriptstyle
+\let\so=\medskip
+\let\eps=\varepsilon % Le "bon" epsilon
+\let\vphi=\varphi % Le phi usuel
+\let\tend=\rightarrow
+\let\Tend=\longrightarrow
+\let\ssi=\Longleftrightarrow
+
+\def\op{{\star F}}
+\def\frac#1#2{{#1\over#2}}
+\def\text#1{\hbox{\rm #1}}
+\def\d{\,\hbox{\rm d}\,}
+\def\trait{\par\centerline{\hbox{\vrule height .4pt depth 0pt width 12cm}}}
+\def\ie{\mathrel{\hbox{\ineg 6}}} % <= fran{\c c}ais
+\def\le{\mathrel{\hbox{\ineg 6}}} % <= fran{\c c}ais
+\def\leq{\mathrel{\hbox{\ineg 6}}} % <= fran{\c c}ais
+\def\se{\mathrel{\hbox{\ineg >}}} % >= fran{\c c}ais
+\def\ge{\mathrel{\hbox{\ineg >}}} % >= fran{\c c}ais
+\def\geq{\mathrel{\hbox{\ineg >}}} % >= fran{\c c}ais
+\def\vide{\hbox{\vid~?}}
+\def\Z{{\bb Z}}
+\def\R{{\bb R}}
+\def\C{{\bb C}}
+\def\N{{\bb N}}
+\def\Q{{\bb Q}}
+\def\K{{\bb K}}
+\def\U{{\bb U}}
+\def\dim{{\rm dim}\,}
+\def\sev{{\rm sous-espace vectoriel}}
+\def\ker{{\rm Ker}\,}
+\def\Ker{{\rm Ker}\,}
+\def\re{{\rm Re}\,}
+\def\im{{\rm Im}\,}
+\def\gav{{\rm GA}(E)}
+\def\gle{{\rm GL}(E)}
+\def\mnpk{{\cal M}_{n,p}(\K)}
+\def\mnk{{\cal M}_n(\K)}
+\def\glnk{{\rm GL}_n(\K)}
+\def\det{{\rm Det}\,}
+\def\card{{\rm Card}}
+\def\tr{{\rm Tr}\,}
+\def\e{{\rm e}}
+\def\ch{\mathop{\rm ch}\nolimits}
+\def\sh{\mathop{\rm sh}\nolimits}
+\def\th{\mathop{\rm th}\nolimits}
+\def\argch{\mathop{\rm Arg\,ch}\nolimits}
+\def\argsh{\mathop{\rm Arg\,sh}\nolimits}
+\def\argth{\mathop{\rm Arg\,th}\nolimits}
+\def\arccos{\mathop{\rm Arc\,cos}\nolimits}
+\def\arcsin{\mathop{\rm Arc\,sin}\nolimits}
+\def\arctan{\mathop{\rm Arc\,tan}\nolimits}
+\def\adh#1{\overline{\!#1}}
+\def\rond#1{\buildrel\;\circ\over #1}
+\def\cnp#1#2{{\displaystyle\Big({{\textstyle #1}\atop%
+{\textstyle #2}}\Big)}}
+\def\hfl#1#2{\smash{\mathop{\hbox to 4mm{\rightarrowfill}}
+\limits^{#1}_{#2}}}
+\def\vect#1{\overrightarrow{#1}} % vecteur
+\def\Frac#1#2{{\displaystyle#1\over\displaystyle#2}}
+\def\frac#1#2{{\scriptstyle#1\over\scriptstyle#2}}
+\def\Der#1#2{\Frac{\hbox{d}#1}{\hbox{d}#2}} % Ex:\Der{y}{x}
+\def\Derr#1#2{\Frac{\hbox{d}^2#1}{\hbox{d}#2^2}}
+\def\Dron#1#2{\Frac{\partial#1}{\partial#2}}
+\def\dron#1#2{\frac{\partial#1}{\partial#2}}
+\def\<<{\leavevmode\raise.3ex\hbox{$\scriptscriptstyle\langle\!\langle$}}
+\def\>>{\leavevmode\raise.3ex\hbox{$\scriptscriptstyle\rangle\!\rangle$}}
+\def\implique{\ \Longrightarrow\ }
+\def\vabs#1{\vert#1\vert}
+\def\norme#1{\Vert#1\Vert}
+\def\Norme#1{\vert\vert\vert#1\vert\vert\vert}
+\def\[{[\![}
+\def\]{]\!]}
+
+% SUPERPOSITION
+\def\up#1{\raise 1ex\hbox{\septtm#1}}
+% op{\'e}rateur avec dessous: build {op{\'e}rateur} {dessous}
+\def\build#1#2{\mathrel{\mathop{\kern 0pt#1}\limits_{#2}}}
+% op{\'e}rateur avec deux dessous: Build {op{\'e}rateur} {dessous1}{dessous2}
+\def\Build#1#2#3{\build{{#1}}{\scriptstyle{#2}\atop\scriptstyle{#3}}}
+% fl\`eche double : fleche {variable} {valeur}
+\def\fleche#1#2{\build{\hbox to 9mm{\rightarrowfill}}{{#1}\rightarrow{#2}}}
+% fl\`eche triple : Fleche {variable} {valeur} {3i\`eme ligne}
+\def\Fleche#1#2#3{\build{\hbox to 9mm{\rightarrowfill}}
+{\scriptstyle{#1}\rightarrow{#2}\atop\scriptstyle{#3}}}
+% encadrement d'une bo{\^i}te: cadre {largeur blanc} {bo{\^i}te}
+\long\def\cadre#1#2{\vbox{\hrule\hbox{\vrule%
+\vbox spread#1{\vfil\hbox spread#1{\hfil#2\hfil}\vfil}\vrule}\hrule}\par}
+
+\def\tp{\centerline{\bsl Travaux pratiques}\so}
+\def\tit#1{{\parindent=-2mm{\bf#1}\smallskip}}
+\long\def\TITRE#1{\bigskip\bigskip
+
+\centerline{\Large#1}
+
+\bigskip}
+\long\def\TIT#1{\bigskip\centerline{\largeb#1}\bigskip}
+\long\def\Titre#1{\bigskip{\large#1}\bigskip}
+\long\def\titre#1{\bigskip\centerline{\hfill{\bf #1}\hfill}
+\medskip}
+\long\def\tx#1#2{\hbox{\hbox to 94mm{\vtop{\hsize=90mm#1\vfill}\hfill}
+\hfill\hbox to 74mm{\vtop{\hsize=70mm#2\vfill}\hfill}}}%\filbreak}
+
+
+\hsize=170mm \vsize=250mm
+\hoffset=-4mm \voffset=-1mm
+\pretolerance=500 \tolerance=1000 \brokenpenalty=5000
+
+%\fhyph
+\frenchspacing
+\overfullrule=0cm %\emergencystretch=10pt
+
+\null
+\vskip 0.5cm
+
+\parindent=0mm
+\abovedisplayskip=6pt plus 2pt minus 4pt
+\abovedisplayshortskip=0pt plus 2pt
+\belowdisplayskip=6pt plus 2pt minus 4pt
+\belowdisplayshortskip=0pt plus 2pt
+
+\def\bg{\bigskip}
+\def\md{\medskip}
+\def\cl{\centerline}
+\def\info{informatique}
+
+\long\def\tx#1#2{\hbox{\hbox to 94mm{\vtop{\hsize=90mm#1\vfill}\hfill}
+\hfill\hbox to 74mm{\vtop{\hsize=70mm#2\vfill}\hfill}}\filbreak}
+
+\long\def\txv#1#2{\hbox{\vrule\hskip2mm\hbox to
+94mm{\vtop{\hsize=90mm#1\vfill}\hfill} \hfill\hbox to
+74mm{\vtop{\hsize=70mm#2\vfill}\hfill}}\filbreak}
+
+\long\def\txz#1#2{\hbox{\hbox to
+94mm{\vtop{\hsize=90mm#1\vfill}\hfill} \hfill\hbox to
+74mm{\vtop{\hsize=70mm#2\vfill}\hfill}\hskip2mm\vrule width 1mm}\filbreak}
+
+\def\vrg{\raise.3mm\hbox{$\hskip.2mm,\ $}}
+
+
+
+
+
+\titrecourant={\bf MPSI B\ }
+\partiecourante={\bf MPSI B\ }
+\premiertitre={\bf CLASSE DE PREMI\`ERE ANN\'EE MPSI}

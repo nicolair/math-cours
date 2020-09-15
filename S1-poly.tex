@@ -1,0 +1,180 @@
+\subsection{Polynômes et fractions rationnelles}
+\begin{itshape}L'objectif de ce chapitre est d'étudier les propriétés de base de ces objets formels et de les exploiter pour la résolution de problèmes portant sur les équations algébriques et les fonctions numériques.
+
+L'arithmétique de $\K[X]$ est développée selon le plan déjà utilisé pour l'arithmétique de
+$\Z$, ce qui autorise un exposé allégé. D'autre part, le programme se limite au cas où le corps de base $\K$
+est $\R$ ou $\C$.
+\end{itshape}
+
+\subsubsubsection{a) Anneau des polynômes à une indéterminée}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Anneau $\K [X]$.}
+  \colchunk{La contruction de $\K [X]$ n'est pas exigible.
+
+  Notations $\displaystyle \sum_{i=0}^d a_i X^i, \sum_{i=0}^{+ \infty} a_i X^i$.}
+  \colplacechunks
+
+  \colchunk{Degré, coefficient dominant, polynôme unitaire.}
+  \colchunk{Le degré du polynôme nul est $- \infty$.
+
+  Ensemble $\K_n [X]$ des polynômes de degré au plus $n$.}
+  \colplacechunks
+
+  \colchunk{Degré d'une somme, d'un produit.}
+  \colchunk{Le produit de deux polynômes non nuls est non nul.}
+  \colplacechunks
+
+  \colchunk{Composition.}
+  \colchunk{$\dbf$ I : représentation informatique d'un polynôme ; somme, produit.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{b) Divisibilité et division euclidienne}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Divisibilité dans $\K [X]$, diviseurs, multiples.}
+  \colchunk{Caractérisation des couples de polynômes associés.}
+  \colplacechunks
+
+  \colchunk{Théorème de la division euclidienne.}
+  \colchunk{$\dbf$ I : algorithme de la division euclidienne.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{c) Fonctions polynomiales et racines}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Fonction polynomiale associée à un polynôme.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Racine (ou zéro) d'un polynôme, caractérisation en termes de divisibilité.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Le nombre de racines d'un polynôme non nul est majoré par son degré.}
+  \colchunk{Détermination d'un polynôme par la fonction polynomiale associée.}
+  \colplacechunks
+
+  \colchunk{Multiplicité d'une racine.}
+  \colchunk{Si $P (\lambda) \ne 0$, $\lambda$ est racine de $P$ de multiplicité $0$.}
+  \colplacechunks
+
+  \colchunk{Polynôme scindé. Relations entre coefficients et racines.}
+  \colchunk{Aucune connaissance spécifique sur le calcul des fonctions symétriques des racines n'est exigible.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{d) Dérivation}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+
+  \colchunk{Dérivée formelle d'un polynôme.}
+  \colchunk{Pour $\K = \R$, lien avec la dérivée de la fonction polynomiale associée.}
+  \colplacechunks
+
+  \colchunk{Opérations sur les polynômes dérivés : combinaison linéaire, produit. Formule de Leibniz.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Formule de Taylor polynomiale.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Caractérisation de la multiplicité d'une racine par les polynômes dérivés successifs.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{e) Arithmétique dans $\K[X]$}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+
+  \colchunk{PGCD de deux polynômes dont l'un au moins est non nul.}
+  \colchunk{Tout diviseur commun à $A$ et $B$ de degré maximal est appelé un PGCD de $A$  et $B$.}
+  \colplacechunks
+
+  \colchunk{Algorithme d'Euclide.}
+  \colchunk{L'ensemble des diviseurs communs à $A$ et $B$ est égal à l'ensemble des diviseurs d'un de leurs PGCD. Tous les PGCD de $A$ et $B$
+sont associés ; un seul est unitaire. On le note  $A\wedge B$.}
+  \colplacechunks
+
+  \colchunk{Relation de Bézout.}
+  \colchunk{L'algorithme d'Euclide fournit une relation de Bézout.
+
+$\dbf$ I : algorithme d'Euclide étendu.
+
+L'étude des idéaux de $\K [X]$ est hors programme.}
+  \colplacechunks
+
+  \colchunk{PPCM.}
+  \colchunk{Notation $A \vee B$.
+
+  Lien avec le PGCD.}
+  \colplacechunks
+
+  \colchunk{Couple de polynômes premiers entre eux. Théorème de Bézout. Lemme de Gauss.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{PGCD d'un nombre fini de polynômes, relation de Bézout. Polynômes premiers entre eux dans leur ensemble, premiers entre eux deux à deux.}
+  \colchunk{}
+  \colplacechunks
+
+\end{parcolumns}
+
+\subsubsubsection{f) Polynômes irréductibles de $\C[X]$ et $\R[X]$}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Théorème de d'Alembert-Gauss.}
+  \colchunk{La démonstration est hors programme.}
+  \colplacechunks
+
+  \colchunk{Polynômes irréductibles de $\C [X]$. Théorème de décomposition en facteurs irréductibles dans $\C [X]$.}
+  \colchunk{Caractérisation de la divisibilité dans $\C [X]$ à l'aide des racines et des multiplicités.
+
+  Factorisation de $X^n-1$ dans $\C [X]$.}
+  \colplacechunks
+
+  \colchunk{Polynômes irréductibles de $\R [X]$. Théorème de décomposition en facteurs irréductibles dans $\R [X]$.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{g) Formule d'interpolation de Lagrange}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Si $x_1, \ldots, x_n$ sont des éléments distincts de $\K$ et $y_1, \ldots, y_n$ des éléments de $\K$, il existe un et un seul $P \in \K_{n-1} [X]$ tel que pour tout $i$ : $\quad P (x_i) = y_i$.}
+  \colchunk{Expression de $P$.
+
+Description des polynômes $Q$ tels que pour tout $i$ : $\quad Q (x_i) = y_i$.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{h) Fractions rationnelles}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Corps $\K (X)$.}
+  \colchunk{La construction de $\K (X)$ n'est pas exigible.}
+  \colplacechunks
+
+  \colchunk{Forme irréductible d'une fraction rationnelle. Fonction rationnelle.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Degré, partie entière, zéros et pôles, multiplicités.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{i) Décomposition en éléments simples sur $\C$ et sur $\R$}
+\begin{parcolumns}[rulebetween,distance=\parcoldist]{2}
+  \colchunk{Existence et unicité de la décomposition en éléments simples sur $\C$ et sur $\R$.}
+  \colchunk{La démonstration est hors programme.
+
+\noindent On évitera toute technicité excessive.
+
+\noindent La division selon les puissances croissantes est hors programme.}
+  \colplacechunks
+
+  \colchunk{Si $\lambda$ est un pôle simple, coefficient de $\dfrac{1}{X - \lambda}$.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Décomposition en éléments simples de $\dfrac{P'}{P}$.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}

@@ -1,0 +1,227 @@
+\input{courspdf.tex}
+\debutcours{Groupe symétrique}{1.1 \tiny{le \today}}
+
+\section{Définitions}
+\index{groupe symétrique}\index{permutation}
+\begin{defi}
+ Le groupe des bijections de $\llbracket 1,n \rrbracket$ dans $\llbracket 1,n \rrbracket$ muni de l'opération de composition est appelé groupe symétrique. Il est noté $\mathfrak S_n$. Un élément de ce groupe est appelé une \emph{permutation}.
+\end{defi}
+On appelera aussi permutation toute bijection d'un ensemble fini dans lui même. Si $\Omega$ est un ensemble fini de cardinal $n$, il existe une bijection $N$ (numérotation) de $\llbracket 1,n \rrbracket$ dans $\Omega$. L'application de $(\mathfrak S_n,\circ)$ dans le groupe des bijections de $\Omega$ muni de $\circ$ qui à $\sigma\in \mathfrak{S}_n$ associe $N\circ \sigma \circ N^{-1}$ est un isomorphisme de groupe.\newline
+On considèrera donc toujours des permutations dans des ensembles de nombres entre $1$ et $n$.
+
+Plusieurs notations sont possibles pour les permutations. On peut par exemple utiliser une notation matricielle à deux lignes. La première ligne contient les entiers de $1$ à $n$ et la deuxième contient les images de ces entiers. Par exemple, avec $n=7$,
+\begin{displaymath}
+ \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  3 & 7 & 1 & 2 & 6 & 4 & 5
+ \end{pmatrix}
+\circ
+ \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  6 & 4 & 1 & 3 & 2 & 7 & 5
+ \end{pmatrix}
+=
+ \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  4 & 2 & 3 & 1 & 7 & 5 & 6
+ \end{pmatrix}
+\end{displaymath}
+\begin{propn}
+ Le groupe symétrique $\mathfrak{S}_n$ est de cardinal $n!$. Pour $n\geq3$, $\mathfrak{S}_n$ n'est pas commutatif.
+\end{propn}
+\begin{demo}
+ Le cardinal de l'ensemble des bijections a été calculé dans la section sur les dénombrements. Le groupe n'est pas commutatif car 
+\begin{displaymath}
+ \begin{pmatrix}
+  1 & 2 & 3 \\
+  1 & 3 & 2
+ \end{pmatrix}
+\circ
+ \begin{pmatrix}
+  1 & 2 & 3 \\
+  2 & 1 & 3
+ \end{pmatrix}
+ =
+ \begin{pmatrix}
+  1 & 2 & 3 \\
+  3 & 1 & 2
+ \end{pmatrix}
+\neq
+ \begin{pmatrix}
+  1 & 2 & 3 \\
+  2 & 1 & 3
+ \end{pmatrix}
+\circ
+ \begin{pmatrix}
+  1 & 2 & 3 \\
+  1 & 3 & 2
+ \end{pmatrix}
+=
+ \begin{pmatrix}
+  1 & 2 & 3 \\
+  2 & 3 & 1
+ \end{pmatrix}
+\end{displaymath}
+\end{demo}
+\index{cycle} \index{cycle: longeur} \index{cycle: support} \index{permutation circulaire}
+\begin{defi}
+ Soit $k$ entier entre $1$ et $n$ et $a_1,\cdots,a_k$ des entiers deux à deux distincts entre $1$ et $n$. On note
+\[
+ \begin{pmatrix}
+  a_1 & a_2 & \cdots & a_k
+ \end{pmatrix}: \hspace{0.5cm}
+ \left\lbrace
+ \begin{aligned}
+   \llbracket 1,n \rrbracket &\rightarrow \llbracket 1,n \rrbracket \\
+   x &\mapsto 
+    \left\lbrace 
+       \begin{aligned}
+           x&\text{ si }x\not\in\left\lbrace a_1,\cdots,a_n\right\rbrace\\
+           a_{i+1} &\text{ si }x=a_i \text{ avec } i\in\left\lbrace,\cdots,k-1\right\rbrace \\
+           a_1 &\text{ si }x=a_k
+       \end{aligned}
+    \right. 
+ \end{aligned}
+\right.
+\]
+Cette application est une permutation appelée \emph{cycle} (ou permutation circulaire) de longueur $k$ et de support $\left\lbrace a_1,\cdots,a_k \right\rbrace$.
+\end{defi}
+\begin{rems}
+  \begin{enumerate}
+    \item Malgré sa notation matricielle 
+     $\begin{pmatrix}
+        a_1 & a_2 & \cdots & a_k
+     \end{pmatrix}$ désigne une permutation de $\llbracket 1,n \rrbracket$.
+     \item Un même cycle se note de plusieurs manières:
+\[
+  \begin{pmatrix}a_1 & a_2 & a_3 & a_4 \end{pmatrix} = \begin{pmatrix}a_2 & a_3 & a_4 & a_1 \end{pmatrix} = \cdots 
+\]
+
+  \end{enumerate}
+
+\end{rems}
+
+ \index{cycles disjoints}
+\begin{defi}
+ On dira que deux cycles sont \emph{disjoints} si et seulement si leurs supports sont disjoints.
+\end{defi}
+\begin{propn}
+ Deux cycles disjoints commutent. C'est à dire que $\sigma_1 \circ \sigma_2 = \sigma_2 \circ \sigma_1 $ lorsque $\sigma_1$ et $\sigma_2$ sont des cycles disjoints.
+\end{propn}
+\begin{demo}
+ \'Evident avec la définition.
+\end{demo}
+\index{transposition}
+\begin{defi}
+Une \emph{transposition} est un cycle de longueur $2$. 
+\end{defi}
+\index{orbites d'une permutation}
+\begin{defi}[orbites d'une permutation]
+Soit $\sigma \in \mathfrak{S}_n$ et $a\in \llbracket 1,n \rrbracket$. L'orbite de $a$ pour $\sigma$ est l'ensemble des $\sigma^k(a)$ pour $k\in \Z$.  
+\end{defi}
+\begin{propn}
+  Les différentes orbites d'une même permutation $\sigma$ constituent une partition de $\llbracket 1,n \rrbracket$.
+\end{propn}
+
+
+\section{Décompositions}
+\begin{propn}[décomposition en cycles disjoints] \label{prop:decompcycl}
+ Toute permutation est la composition de cycles disjoints qui commutent.
+\end{propn}
+\begin{propn}[décomposition en transpositions]\label{prop:decomptranspo}
+ Toute permutation est la composition d'un certain nombre de transpositions.
+\end{propn}
+\begin{demo}
+ Comme toute permutation est une composée de cycles, il suffit de démontrer que tout cycle est la composée de transpositions. Cela peut se faire de plusieurs manières.\newline
+Soit $p$ éléments distincts $a_1,\cdots,a_p$ de $\llbracket 1, n\rrbracket$.
+\[
+ \begin{pmatrix}
+  a_1 & a_2 & \cdots & a_p
+ \end{pmatrix}
+ = (a_1\; a_2)\circ (a_2\; a_3)\circ \cdots \circ (a_{p-1}\; a_p) \\
+ = (a_1\;a_p)\circ(a_1\;a_{p-1})\circ\cdots\circ (a_1\;a_2).
+\]
+On vérifie ces formules en examinant l'image d'un élément quelconque.
+\end{demo}
+
+\begin{rems}
+ \begin{itemize}
+\item On peut convenir que l'identité est la composée de $0$ transposition (ou de deux identiques).
+\item Toute permutation $\sigma$ admet \emph{plusieurs} décomposition en transpositions. Le point important est que les nombres de transpositions intervenant dans chaque décomposition d'une permutation ont \emph{tous la même parité}. C'est l'objet de la section suivante relative à la signature d'une transposition.
+\item On peut donner une deuxième démonstration par récurrence sur le nombre de points fixes d'une permutation.
+ \end{itemize}
+\end{rems}
+
+\section{Signature}
+\begin{defi}
+ Soit $\sigma\in \mathfrak S_n$, la signature de $\sigma$ (notée $\varepsilon(\sigma)$) est définie par :
+\begin{displaymath}
+ \varepsilon(\sigma) = \prod_{i<j}\dfrac{\sigma(i)-\sigma(j)}{i-j}
+\end{displaymath}
+la somme étant étendue à tous les couples $(i,j)$ d'entiers entre $1$ et $n$ tels que $i<j$.
+\end{defi}
+En fait $\varepsilon$ est un morphisme dans $(\Q^*, .)$
+\begin{propn}
+ \begin{displaymath}
+  \forall (\sigma_1,\sigma_2)\in \mathfrak S_n ^2 : \varepsilon(\sigma_1 \circ \sigma_2)
+= \varepsilon(\sigma_1) \varepsilon(\sigma_2)
+ \end{displaymath}
+\end{propn}
+\begin{demo}
+ \begin{multline*}
+  \varepsilon(\sigma_1 \circ \sigma_2)
+= \prod_{i<j}\dfrac{\sigma_1(\sigma_2(i))-\sigma_1(\sigma_2(j))}{i-j}
+= \prod_{i<j}\dfrac{\sigma_1(\sigma_2(i))-\sigma_1(\sigma_2(j))}{\sigma_2(i)-\sigma_2(j)}
+  \prod_{i<j}\dfrac{\sigma_2(i)-\sigma_2(j)}{i-j}\\
+=  \prod_{i_2<j_2}\dfrac{\sigma_1(i_2)-\sigma_1(j_2)}{i_2-j_2}
+  \prod_{i<j}\dfrac{\sigma_2(i)-\sigma_2(j)}{i-j} 
+= \varepsilon(\sigma_1)\varepsilon(\sigma_2)
+ \end{multline*}
+\end{demo}
+En notant $\mathcal P_2$ l'ensemble des paires d'éléments de $\llbracket 1,n \rrbracket$, on a utilisé le fait que l'application
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ \mathcal P_2 &\rightarrow \mathcal P_2 \\
+ \{i,j\} &\rightarrow \{\sigma(i),\sigma(j)\}
+\end{aligned}
+\right. 
+\end{displaymath}
+est une bijection pour toute permutation $\sigma$.
+\begin{propn}
+ Pour toute transposition $\tau = (i_0\;i_1)$, $\varepsilon(\tau)=-1$.
+\end{propn}
+\begin{demo}
+ On suppose que $i_0<j_0$. On classe les éléments  $\mathcal P_2$ en trois catégories
+\begin{description}
+ \item [type 1] : ceux dont l'intersection avec $\{i_0,j_0\}$ est vide.
+\item [type 2] : ceux dont l'intersection avec $\{i_0,j_0\}$ est de cardinal 1.
+\item [type 3] : ceux dont l'intersection avec $\{i_0,j_0\}$ est de cardinal 2.
+\end{description}
+et on évalue la contribution de chaque type au produit.\newline
+Les paires de type 1 ont évidemment une contribution égale à $1$.\newline
+Les paires de type 2 (il y en a $2(n-2)$) sont les $\{k,i_0\}$ et les $\{k,j_0\}$ avec $k\not\in\{i_0,j_0\}$. Leur contribution est
+\begin{displaymath}
+ \prod_{k\not\in\{i_0,j_0\}}\dfrac{(\tau(k)-\tau(i_0))(\tau(k)-\tau(j_0)}{(k-i_0)(k-j_0)}
+=
+ \prod_{k\not\in\{i_0,j_0\}}\dfrac{(k-j_0)(k-i_0}{(k-i_0)(k-j_0)} =1
+\end{displaymath}
+Il existe une seule paire de type 2. c'est $\{i_0,j_0\}$ elle même, sa contribution est évidemment égale à $-1$.
+\end{demo}
+Conclusion $\varepsilon$ est un morphisme entre les groupes $(\mathfrak S_n,\circ)$ et $(\{-1,+1\},.)$.
+\index{groupe alterné}
+\begin{defi}
+ Une permutation est dite paire lorsque sa signature est $+1$. L'ensemble des permutations paires forme le groupe alterné (noté $\mathcal A_n$). C'est un sous-groupe de $\mathfrak S_n$ (le noyau de la signature).
+\end{defi}
+\begin{rem}
+ Soit $\tau$ une transposition et $\sigma$ une permutation. Alors $\sigma$ est paire si et seulement si $\tau \circ \sigma$ est impaire. On en déduit qu'il y a autant de permutations paires que d'impaires donc le groupe alterné $\mathcal A_n$ contient $\frac{n!}{2}$ éléments.
+\end{rem}
+
+\begin{propn}
+ La signature d'un cycle de longueur $p$ est $(-1)^{p-1}$. En particulier les cycles de longueur $3$ sont des permutations paires.
+\end{propn}
+\begin{demo}
+ Cela résulte des décompositions d'un cycle en transpositions (prop \ref{prop:decomptranspo})
+\end{demo}
+
+\end{document}

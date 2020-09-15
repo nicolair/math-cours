@@ -1,0 +1,280 @@
+\input{courspdf.tex}
+\debutcours{Développements limités}{0.1 du 1/12/14}
+
+\subsection{Introduction}
+\subsubsection{Vocabulaire}
+Cette section traite des développements limités\index{développement limité} qui sont un cas particulier des \href{\baseurl C2064.pdf}{développements (locaux)} introduits lors de la définition des relations de comparaison des fonctions.\newline
+Un développement limité est un concept \emph{local} autour d'un réel $a$. On rappelle que l'on note $\overline{I}$ l'intervalle obtenu à partir d'un intervalle $I$ en le complétant par ses extrémités. Dans tout ce chapitre $I$ désigne un intervalle non vide de $\R$ et $a$ est un réel dans $\overline{I}$.\newline
+Un \emph{développement limité} est une somme de fonctions, chacune étant négligeable devant celle à sa gauche. Elles sont toutes de la forme
+\begin{displaymath}
+ \lambda_k (x-a)^k \text{ avec } \lambda_k\in\R
+\end{displaymath}
+\index{reste d'un développement limité}\index{partie principale d'un développement limité}
+sauf la dernière appelée \emph{reste} dont on ne sait rien sinon une propriété de négligeabilité. La somme des premières fonctions (à part le reste) est appelée la \emph{partie principale} de développement limité.\newline
+Pour travailler avec des développements limités, on dispose des \href{\baseurl C5904.pdf}{développements usuels} qui sont sont placés dans un formulaire à part et d'opérations.\newline
+On dispose aussi d'un outil théorique : \emph{la formule de Taylor-Young}. Dans la pratique, il ne faut pas en général utiliser cette formule mais former les développements usuels des fonctions intervenant (à un ordre très petit) et les combiner en utilisant les opérations. C'est pourquoi le théorème de Taylor avec reste de Young est délibérément placé à la fin.\newline
+Bien retenir que \emph{faire un développement à un ordre trop petit} n'est ni une erreur ni une perte de temps. Les coefficients calculés n'auront pas à être recalculés. Ce qui est une perte de temps et une source d'erreur c'est de faire un développement trop long.
+\index{ordre d'un développement limité}\newline
+L'ordre d'un développement limité est l'exposant qui figure dans le reste. Ainsi
+\begin{displaymath}
+ \cos x = 1- \frac{x^2}{2}+o(x^3)
+\end{displaymath}
+est un développement (en $0$) à l'ordre $3$ de $\cos$.
+\subsubsection{Unicité}
+Si une fonction admet un développement limité, celui ci est unique au sens suivant.
+\begin{prop}
+ Soit $f$ une fonction définie dans un intervalle $I$, soit $a\in\overline{I}$. On suppose que $f$ admet deux développements limités
+\begin{align*}
+ &f(x)=\lambda_0 + \lambda_1(x-a)+\lambda_2(x-a)^2+\cdots +\lambda_p(x-a)^p +o((x-a)^p)\\
+ &f(x)=\mu_0 + \mu_1(x-a)+\mu_2(x-a)^2+\cdots +\mu_q(x-a)^q +o((x-a)^q)
+\end{align*}
+Alors, $\lambda_k=\mu_k$ pour tous les $k$ entre $0$ et $\min(p,q)$.
+\end{prop}
+\begin{demo}
+Le raisonnement est algorithmique (ou par récurrence forte). On exprime chaque coefficient comme la limite en $a$ d'une certaine fonction fabriquée avec les coefficients d'indices plus petits et dont l'unicité a déjà été prouvée.
+\begin{multline*}
+  \lambda_0 = \mu_0 = \lim_{a}f,\hspace{0.5cm} \lambda_1 = \mu_1 = \lim_{a}x\mapsto \frac{f(x) - \lambda_0}{x-a},\hspace{0.5cm}
+\lambda_2 = \mu_2 = \lim_{a}x\mapsto \frac{f(x) - \lambda_0-\lambda_1(x-a)}{(x-a)^2},\\
+\lambda_3 = \mu_3 = \lim_{a}x\mapsto \frac{f(x) - \lambda_0-\lambda_1(x-a) - \lambda_2(x-a)^2}{(x-a)^3}, \cdots
+\end{multline*}
+\end{demo}
+
+\subsubsection{Exemples fondamendaux}
+Il y a deux exemples fondamentaux de développement limité. Le premier exemple est théorique: une fonction est dérivable en $a$ si et seulement si elle admet un développement limité à l'ordre $1$ en $a$.
+\begin{displaymath}
+  f(x) = f(a) + f'(a)(x-a) + o(x-a)
+\end{displaymath}
+Le deuxième est pratique. En $0$, une somme de termes en progression géométrique
+\begin{displaymath}
+ \frac{1}{1-x}=1+x+x^2+\cdots+x^n+\frac{x^{n+1}}{1-x}
+\end{displaymath}
+est un développement limité à l'ordre $n$ de $x\mapsto \frac{1}{1-x}$ car $\frac{x^{n+1}}{1-x}\in o\left(x^n\right)$. 
+\subsection{Opérations}
+Pour toute opération, le point le plus important est de bien évaluer l'ordre du développement que cette opération donnera et \emph{supprimer} tous les termes avec un exposant supérieur à cet ordre. Les \emph{précisions illusoires} constituent la principale source d'erreurs dans les manipulations de développements limités.
+\subsubsection{Troncature}
+On peut toujours diminuer l'ordre d'un développement limité. Pour $m<n$ :
+\begin{multline*}
+ f(x)= \lambda_0 + \lambda_1(x-a)+ \lambda_2(x-a)^2+\cdots+ \lambda_n(x-a)^n+o((x-a)^n)\\
+\Rightarrow f(x)= \lambda_0 + \lambda_1(x-a)+ \lambda_2(x-a)^2+\cdots+ \lambda_m(x-a)^n+o((x-a)^m)
+\end{multline*}
+Cette opération est certainement la plus usuelle. Quand plusieurs développements se combinent il faut très souvent (pour une addition par exemple) tronquer les développements \emph{au plus petit} des ordres intervenant. Ne pas faire ces troncatures est l'erreur la plus fréquente. Il faut sans hésitation abandonner les précisions illusoires.
+
+\subsubsection{Forme normalisée}
+\begin{defi}\index{forme normalisée d'un développement limité}
+Soit $f$ une fonction admettant en $a$ un développement limité à l'ordre $n$. La \emph{forme normalisée} de ce développement est:
+\begin{displaymath}
+f(x) = (x-a)^p\left(a_p + a_{p+1}(x-a)+\cdots + a_{n}(x-a)^{n-p} +o((x-a)^{n-p} \right)   
+\end{displaymath}
+avec $a_p\neq 0$.
+\end{defi}
+L'évaluation de ce premier indice pour lequel le coefficient est non nul est utile dans les compositions. Il donne aussi un équivalent pour la fonction
+\begin{displaymath}
+  f(x) \sim a_p(x-a)^p
+\end{displaymath}
+
+
+\subsubsection{Addition}
+Pour additionner deux développements limités, on tronque le plus précis à l'ordre du moins précis et on ajoute les coefficients terme à terme. Donnons un exemple avec un développement limité en $1$:
+\begin{align*}
+ d1 &= (x-1) + 2(x-1)^2 -\frac{1}{2}(x-1)^4+o((x-1)^6)\\
+ d2 &= 1+2(x-1) - 2(x-1)^2 +o((x-1)^3)\\
+d1+d2 &= 1 +3(x-1) +(x-1)^2+o((x-1)^3)
+\end{align*}
+
+\subsubsection{Multiplication}
+Pour multiplier deux développements limités, on commence par évaluer l'ordre du développement obtenu en considérant les deux produits extrèmes puis on effectue la multiplication \emph{en regroupant directement} les termes de même degré.\newline
+Par exemple pour deux développements abstraits en $a$:
+\begin{align*}
+ &d1 = c_p(x-a)^p+c_{p+1}(x-a)^{p+1}+\cdots +c_q(x-a)^q+o\left((x-a)^q\right)\\
+ &d2 = d_r(x-a)^r+d_{r+1}(x-a)^{r+1}+\cdots +d_s(x-a)^s+o\left((x-a)^s\right)
+\end{align*}
+Les produits extrèmes sont $(x-a)^po\left((x-a)^s\right)$ et $(x-a)^ro\left((x-a)^q\right)$. L'ordre du développement limité produit sera donc $\min(p+s,r+q)$ (notons le $m$) et le produit de la forme
+\begin{displaymath}
+ d1d2 = c_pd_r(x-a)^{p+r} + \cdots +o\left((x-a)^m \right) 
+\end{displaymath}
+
+\subsubsection{Intégration}
+\index{intégration d'un développement limité}
+On devrait plutôt dire primitivation.
+\begin{prop}
+ Si $f$ est une fonction continue qui admet en $a$ un développement à l'ordre $n$, alors ses primitives admettent en $a$ un développement à l'ordre $n+1$. En particulier pour sa primitive $F$ nulle en $a$:
+\begin{multline*}
+ f(x)= \lambda_0 + \lambda_1(x-a)+ \lambda_2(x-a)^2+\cdots+ \lambda_n(x-a)^n+o((x-a)^n)\\
+\Rightarrow F(x)=\int_0^xf(t)dt = \lambda_0(x-a) + \frac{\lambda_1}{2}(x-a)^2+\cdots+ \frac{\lambda_n}{n+1}(x-a)^{n+1}+o((x-a)^{n+1})
+\end{multline*}
+\end{prop}
+\begin{demo}
+ C'est une conséquence immédiate du \href{\baseurl C2190.pdf}{lemme d'intégration de négligeabilité} appliqué au reste.
+\end{demo}
+\begin{exple}[développement limité de $\tan$ en $0$]
+ On utilise $\tan'=1+\tan^2$. En élevant au carré, on obtient un développement au même ordre que l'on intègre ce qui augmente l'ordre et ainsi de suite.
+\begin{multline*}
+ \tan x = x+o(x)\rightsquigarrow \tan'x = 1+\tan^2 x = 1+x^2 +o(x^2)\rightsquigarrow
+ \tan x = x+\frac{1}{3}x^3 +o(x^3)\rightsquigarrow \\
+\tan'x = 1+\tan^2 x = 1+x^2 +\frac{2}{3}x^4+o(x^4)\rightsquigarrow
+\tan x = x+\frac{1}{3}x^3 +\frac{2}{15}x^5 +o(x^5)\rightsquigarrow \cdots
+\end{multline*}
+\end{exple}
+
+
+\subsubsection{Composition}
+Un point technique important est que si deux fonctions $f$ et $g$ se dominent mutuellement alors elles ont le même ensemble de fonctions négligeables : $o(f)=o(g)$. En particulier:
+\begin{displaymath}
+ f(x) \sim \lambda (x-a)^p \text{ avec } \lambda\neq 0 \Rightarrow o(f)=o((x - a)^p) 
+\end{displaymath}
+C'est cette remarque qui permet de préciser l'ordre d'un développement composé.
+\begin{exple}[développement limité de $\ln(\cos)$ en $0$]
+ Cet exemple est traité en grand détail pour faire comprendre. Il est conseiller de moins écrire dans la pratique.\\
+ On part des développements usuels en $0$.
+\begin{displaymath}
+ \ln(1+x)=x-\frac{1}{2}x^2+\frac{1}{2}x^3+o(x^3)\hspace{1cm} \cos x=1 -\frac{1}{2}x^2+\frac{1}{24}x^4+o(x^5)
+\end{displaymath}
+Notons
+\begin{displaymath}
+ f(x)=x-\frac{1}{2}x^2+\frac{1}{2}x^3+o(x^3)\hspace{1cm} g(x)= -\frac{1}{2}x^2+\frac{1}{24}x^4+o(x^5)
+\end{displaymath}
+Alors
+\begin{displaymath}
+ \ln(\cos x) = f(g(x))
+= g(x)-\frac{1}{2}g^2(x)+\frac{1}{3}g^3(x)+o(g^3(x))
+\end{displaymath}
+Le point important est de remarquer que $o(g^3(x))=o(x^6)$ à cause du point technique important signalé au début. Mais $g$ et ses puissances ne sont que des développents à l'ordre $5$.  Par conséquent, le terme $\frac{1}{3}g^3(x)$ (qui est d'ordre $6$) est une \emph{précision illusoire}. Il faut absolument le faire disparaître, absorbé par $o(x^5)$. De même, il faut conduire tous les développements en rassemblant immédiatement les termes de même degré sans \emph{jamais} écrire les \emph{précisions illusoires} (ici les termes d'ordre $6$ ou plus). Il est commode d'exécuter ses calculs en colonne.
+\begin{align*}
+ g(x)       =& &-\frac{1}{2}x^2 &+& &\frac{1}{24}x^4 &+& &o(x^5) \\
+ g^2(x)     =&           &x^2 &+&   &\frac{1}{4}x^4 &+& &o(x^5) \\
+\ln(\cos x) =& &-\frac{1}{2}x^2 &+& &\left(\frac{1}{24}-\frac{1}{5}\right)x^4 &+& &o(x^5) 
+\end{align*}
+\end{exple}
+ 
+
+\subsection{Autour de Taylor-Young}
+\subsubsection{Théorème de Taylor avec reste de Young}
+Voir la section \href{\baseurl C2190.pdf}{Intégrales et primitives}
+\index{formule de Taylor avec reste de Young}
+\begin{prop}
+Soit $f$ une fonction de classe $\mathcal{C}^n$ dans un voisinage de $a$. Elle admet le développement limité à l'ordre $n$:
+\begin{displaymath}
+f(x) = f(a) + f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + o((x-a)^n)
+\end{displaymath}
+\end{prop}
+
+Application au développement en $0$ de $(1+x)^\alpha$.
+\begin{displaymath}
+(1+x)^{\alpha} = 1 + \alpha x + \frac{\alpha(\alpha -1)}{2!} + \cdots + 
+\frac{\alpha(\alpha -1)\cdots(\alpha -n +1)}{n!} x^n + o(x^n)
+\end{displaymath}
+
+
+\subsubsection{Quelles sont les fonctions admettant un développement limité ?}
+L'existence d'un développement limité à l'ordre 1 en $a$ est équivalente à la dérivabilité en $a$. Cette équivalence ne subsiste plus pour des ordres plus grands. Par exemple, considérons
+\begin{displaymath}
+ f(x) = 1+x+x^2 + x^3\sin(\frac{1}{x^2})
+\end{displaymath}
+Cette fonction admet en $0$ le développement limité à l'ordre 2 $f(x)=1+x+x^2+o(x)$. En effet, la fonction $\sin$ étant bornée par $1$, le reste $x^3\sin(\frac{1}{x^2})$ est négligeable devant $x^2$. Ceci entraine en particulier que la fonction $f$ est dérivable en $0$. Pourtant cette fonction n'est pas de classe $\mathcal C^1$ car sa dérivée
+\begin{displaymath}
+ f'(x)= 1+2x+3x^2\sin(\frac{1}{x^2}) - \cos(\frac{1}{x^2})
+\end{displaymath}
+n'a pas de limite finie en $0$.
+
+\subsubsection{Glaner}
+Le calcul d'un coefficient d'un développement limité peut être cher en temps de calcul. \index{glaner}\emph{Glaner} c'est ramasser des précisions supplémentaires \og gratuites\fg. Il faut pour cela utiliser des résultats théoriques et non calculatoires.
+\paragraph{Passer d'un $o$ au $O$ suivant}
+Lorsque $f$ est $\mathcal C^\infty$, elle admet, d'après Taylor-Young, des développements limités à tous les ordres. Par exemple, aux ordres $p$ et $p+1$ en $a$:
+\begin{align*}
+ f(x) &= \lambda_0 + \lambda_1(x-a)+\cdots+\lambda_p(x-a)^p+ \underset{= r(x)}{\underbrace{o(x^p)}}\\
+ f(x) &= \lambda_0 + \lambda_1(x-a)+\cdots+\lambda_p(x-a)^p+ \lambda_{p+1}(x-a)^{p+1}+o((x-a)^{p+1})
+\end{align*}
+On en déduit en soustrayant une expression du premier reste
+\begin{displaymath}
+ r(x)= \lambda_{p+1}(x-a)^{p+1}+o((x-a)^{p+1})=\left(\lambda_{p+1}+o(x-a) \right)(x-a)^p \in O((x-a)^p) 
+\end{displaymath}
+On peut donc écrire \emph{sans calcul suppléméntaire} $O((x-a)^{p+1})$ au lieu de $o((x-a)^p)$ dans la première formule.
+\paragraph{Exploiter parité et imparité}
+On considère une fonction paire ou impaire $f$ qui admet en $0$ des développements limités à tous les ordres. Par exemple
+\begin{displaymath}
+ f(x) = \lambda_0+\lambda_1x+\cdots+\lambda_p x^p + o(x^p)
+\end{displaymath}
+On peut imaginer que le calcul des coefficients a été le fruit d'un dur labeur. On sait alors que, si $p$ est impair et $f$ impaire ou si $p$ est pair et $f$ est impaire, le reste est négligeable devant $x^{p+1}$. En effet, on peut pousser à un ordre de plus le développement et le coefficient suivant est nul dans les cads cités à cause de l'unicité d'un développement limité à un ordre donné.
+
+\subsubsection{Développement limité et dérivation}
+\subsubsection{Extrémum local}
+\begin{prop}\index{extrémum local et développement limité}
+Soit $f$ une fonction de classe $\mathcal{C}^2$ dans un intervalle ouvert contenant $a$ et admettant le développement limité
+\begin{displaymath}
+  f(x) = u + v(x-a) + w(x-a)^2 + o((x-a)^2) 
+\end{displaymath}
+\begin{itemize}
+  \item Si $a$ est un extrémum local alors $v = 0$.
+  \item Si $v=0$ et $w\neq 0$ alors $a$ est un extrémum local.
+\end{itemize}
+\end{prop}
+
+
+\subsubsection{Calcul de la valeur en un point d'une dérivée d'ordre assez grand}
+Utiliser un développement limité et Taylor-Young pour calculer la valeur en $a$ d'une dérivée d'ordre $p$ et pas dans l'autre sens.
+
+\subsubsection{Développement limité d'une dérivée}
+ Il n'existe pas vraiment de théorème permettant de dériver un développement limité. Il semble souhaitable de retenir \emph{qu'on ne peut pas dériver un développement}. Par exemple
+\begin{displaymath}
+ f(x) = 1+x+x^2 + x^3\sin(\frac{1}{x^2})
+\end{displaymath}
+déjà rencontré plus haut admet un développement limité à l'ordre $2$. Sa dérivée
+\begin{displaymath}
+ f'(x)= 1+2x+3x^2\sin(\frac{1}{x^2}) - \cos(\frac{1}{x^2})
+\end{displaymath}
+n'a pas de limite finie en $0$. Elle n'admet donc pas de développement limité même à l'ordre $0$.\\
+On peut en revanche utiliser \emph{l'intégration d'un développement} pour calculer les coefficients du développement d'une dérivée lorsqu'on sait qu'il existe.\newline
+Soit $f$ est une fonction $\mathcal C^p$ alors $f'$ est $\mathcal C^{p-1}$. Les deux fonctions admettent des développements limités respectivement à l'ordre $p$ et $p-1$ (d'après Taylor-Young).\newline
+On peut \emph{intégrer} le développement de $f'$. On obtiendra (avec la bonne constante) le développement de $f$. \`A cause de \emph{l'unicité} du développement limité, on peut identifier les deux développements. Ceci permet de déduire une expression des coefficients du développement de $f'$ en fonction de ceux de $f$.
+
+\subsection{Exemples de développements asymptotiques}
+\subsubsection{Droites asymptotes à un graphe}
+\subsubsection{Formule de Stirling}
+\index{formule de Stirling}
+\begin{displaymath}
+  n! = \sqrt{2\pi} n^n e-n \sqrt{n}
+\end{displaymath}
+
+\clearpage
+\subsection{Formulaire de développements limités usuels}
+Les développements sont tous en $0$. Remarquer que le reste est donné comme "dominé par" et non "négligeable devant".
+\begin{eqnarray*}
+\frac 1{1-x} &=&1+x+x^2+x^3+\cdots +x^n+O\left( x^{n+1}\right) \\
+\frac 1{1+x} &=&1-x+x^2-x^3+\cdots +(-1)^nx^n+O\left( x^{n+1}\right) \\
+\ln (1+x) &=&x-\frac 12x^2+\frac 13x^3+\cdots +\frac{(-1)^{n+1}}nx^n+O\left(
+x^{n+1}\right) \\
+\ln (1-x) &=&-x-\frac 12x^2-\frac 13x^3-\cdots -\frac 1nx^n+O\left(
+x^{n+1}\right) \\
+e^x &=&1+x+\frac 12x^2+\frac 16x^3+\cdots +\frac 1{n!}x^n+O\left(
+x^{n+1}\right)
+\end{eqnarray*}
+
+\[
+(1+x)^\alpha =1+\alpha x+\frac 12\alpha \left( \alpha -1\right) x^2+\cdots +%
+\frac{\alpha (\alpha -1)\cdots (\alpha -n+1)}{n!}x^n+O\left( x^{n+1}\right) 
+\]
+
+\begin{eqnarray*}
+\ch x &=&1+\frac{1}{2}x^{2}+\cdots +\frac{1}{(2n)!}x^{2n}+O\left(
+x^{2n+2}\right)  \\
+\sh x &=&x+\frac{1}{6}x^{3}+\cdots +\frac{1}{(2n-1)!}x^{2n-1}+O\left(
+x^{2n+1}\right)  \\
+\cos x &=&1-\frac{1}{2}x^{2}+\cdots +\frac{(-1)^{n}}{(2n)!}x^{2n}+O\left(
+x^{2n+2}\right)  \\
+\sin x &=&x-\frac{1}{6}x^{3}+\cdots +\frac{(-1)^{n+1}}{(2n-1)!}%
+x^{2n-1}+O\left( x^{2n+1}\right) 
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\sqrt{1+x} &=&1+\frac{1}{2}x-\frac{1}{8}x^{2}+\frac{1}{16}x^{3}+O\left(
+x^{4}\right)  \\
+\frac{1}{\sqrt{1+x}} &=&1-\frac{1}{2}x+\frac{3}{8}x^{2}-\frac{5}{16}%
+x^{3}+O\left( x^{4}\right)  \\
+\tan x &=&x+\frac{1}{3}x^{3}+\frac{2}{15}x^{5}+O\left( x^{6}\right)  \\
+\arctan x &=&x-\frac{1}{3}x^{3}+O\left( x^{5}\right)  \\
+\arcsin x &=&x+\frac{1}{6}x^{3}+O\left( x^{5}\right)  \\
+\arccos x &=&\frac{\pi }{2}-\arcsin x
+\end{eqnarray*}
+
+
+\end{document}

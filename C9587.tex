@@ -1,0 +1,677 @@
+\input{courspdf.tex}
+\debutcours{Applications linéaires}{0.9 \tiny{le \today}}
+
+Le cours d'algèbre linéaire (hors calcul matriciel) est réparti sur trois documents:  \href{\baseurl C2076.pdf}{Espaces vectoriels (sans dimension)},  \href{\baseurl C2112.pdf}{Dimensions des espaces vectoriels} et \href{\baseurl C9587.pdf}{Applications linéaires}  (ce texte).
+La partie \href{\baseurl C9895.pdf}{Sous-espaces affines d'un espace vectoriel} permet d'interpréter géométriquement l'algèbre linéaire.
+
+\section{Applications linéaires}
+\subsection{Définitions}
+\index{application linéaire}
+\begin{defi}[application linéaire]
+Une application linéaire est une application entre deux espaces vectoriels sur le même corps et qui transporte les opérations.\newline
+Soit $E$ et $F$ deux $\K$-espaces vectoriels. Une application linéaire de $E$ dans $F$ est une application $f$ vérifiant:
+\begin{displaymath}
+\forall(x,y)\in E^2, \forall \lambda \in \K:\;f(x+y) = f(x)+f(y),\; f(\lambda x) = \lambda f(x).
+\end{displaymath}
+\end{defi}
+\index{homomorphisme} \index{endomorphisme} \index{isomorphisme} \index{automorphisme}
+\begin{rem}
+  Si $f$ est une application linéaire de $E$ dans $F$ alors $f(0_E) = 0_F$. Le raisonnement est le même que pour les morphismes de groupe.
+\end{rem}
+
+\begin{defi}[vocabulaire et notations]
+\begin{itemize}
+  \item On utilise aussi le terme homomorphisme à la place d'\og application linéaire\fg. L'ensemble des applications linéaires de $E$ dans $F$ est noté $\mathcal{L}(E,F)$.
+\item Un \emph{endomorphisme} \index{endomorphisme} est une application linéaire d'un espace vectoriel dans lui même. On note $\mathcal{L}(E)$ au lieu de $\mathcal{L}(E,E)$.
+\item Un \emph{isomorphisme} \index{isomorphisme} est une application linéaire bijective.
+\item Un \emph{automorphisme} \index{automorphisme} est un endomorphisme bijectif. L'ensemble des automorphismes de $E$ est noté $GL(E)$.
+\item Une \emph{forme linéaire} \index{forme linéaire} sur le $\K$-espace vectoriel $E$ est une application linéaire de $E$ dans $\K$. L'ensemble des formes linéaires sur $E$ est noté $E^*$.
+\end{itemize}
+\end{defi}
+\begin{exples}
+\begin{enumerate}
+ \item La fonction $\lim$ est une forme linéaire du $\R$-espace vectoriel des suites convergentes à valeurs réelles.
+ \item Soit $F = \K[X]$ et $a\in \K$, l'application de $\Phi$ de $F$ dans $K$ qui à un polynôme $P$ associe $\widetilde{P}(a)$ est une forme linéaire.
+ \item L'application
+\begin{displaymath}
+\left\lbrace \begin{aligned}
+  \mathcal{C}^0([a,b]) &\rightarrow \R \\ f &\mapsto \int_a^bf(t)\,dt
+\end{aligned}
+\right. 
+\end{displaymath}
+est une forme linéaire.
+ \item Soit $E$ un $\K$-espace vectoriel et $\mathcal{A} = (a_1,\cdots,a_p)$ une famille de vecteurs de $E$. L'application
+\begin{displaymath}
+\Phi_{\mathcal{A}}:\;
+\left\lbrace 
+\begin{aligned}
+  \K^p &\rightarrow E \\ (\lambda_1,\cdots,\lambda_p) &\mapsto \lambda_1 x_1 + \cdots  + \lambda_p x_p
+\end{aligned}
+\right. 
+\end{displaymath}
+est linéaire.
+ \item Soit $E$ un $\K$-espace vectoriel et $(A_1,\cdots,A_p)$ une famille de sous-espaces de $E$. L'application
+\begin{displaymath}
+\left\lbrace 
+\begin{aligned}
+  A_1\times \cdots \times A_p &\rightarrow E \\ (a_1,\cdots,a_p) &\mapsto a_1 + \cdots  + a_p
+\end{aligned}
+\right. 
+\end{displaymath}
+est linéaire.
+ \item Les applications coordonnées dans une base sont des formes linéaires.
+\end{enumerate}
+\end{exples}
+
+
+\subsection{Opérations}
+\begin{prop}
+Soit $E$ et $F$ deux $\K$-espaces vectoriels, $\mathcal{L}(E,F)$ est stable pour l'addition fonctionnelle et la multiplication externe fonctionnelle.\newline
+L'ensemble des applications linéaires $\mathcal{L}(E,F)$ est un sous-espace vectoriel de $\mathcal{F}(E,F)$.
+\end{prop}
+\begin{demo}
+  Il faut vérifier la stabilité de $\mathcal{L}(E,F)$ pour les deux opérations. Soit $f$ et $g$ dans $\mathcal{L}(E,F)$ et $\lambda \in K$. On doit montrer que $f+g$ et $\lambda f$ sont linéaires. Cela résulte immédiatement de la définition de l'addition fonctionnelle et de la multiplication fonctionnelle par un scalaire.
+\end{demo}
+
+\begin{rems}
+\begin{itemize}
+  \item On en déduit que $\mathcal{L}(E,F)$ est un $\K$-espace vectoriel.
+  \item L'ensemble $E^* = \mathcal{L}(E,\K)$ des formes linéaires est un $\K$-espace vectoriel appelé espace \emph{dual} \index{espace dual} de $E$.
+\end{itemize}
+\end{rems}
+
+\begin{prop}
+  Soit $E$, $F$, $G$ trois $\K$-espaces vectoriels, soit $f$ linéaire de $E$ dans $F$ et $g$ linéaire de $F$ dans $G$. Alors $g\circ f$ est linéaire de $E$ dans $G$.\newline
+  Soit $f$ un isomorphisme de $E$ dans $F$. Alors la bijection réciproque $f^{-1}$ est linéaire de $F$ dans $E$.
+\end{prop}
+\begin{demo}
+Montrons que $g \circ f$ est linéaire.
+\begin{multline*}
+ \forall (a,b) \in E^2: \; g\circ f(a+b) = g\left( f(a) + f(b)\right) \text{ linéarité de } f \\
+  = g\circ f(a) + g\circ f(b) \text{ linéarité de } g. 
+\end{multline*}
+De même pour $g\circ f(\lambda a) = \lambda g\circ f (a)$.\newline 
+  Montrons que la bijection réciproque $f^{-1}$ est linéaire. 
+\begin{multline*}
+ \forall(x,y)\in F^2, \; x + y = f(f^{-1}(x)) + f(f^{-1}(y)) = f\left( f^{-1}(x) + f^{-1}(y)\right)\hspace{0.5cm}(\text{linéarité de } f) \\
+ \Rightarrow f^{-1}(x+y) = f^{-1}(x) + f^{-1}(y).
+\end{multline*}
+Le raisonnement est analogue pour $f^{-1}(\lambda x)$.
+\end{demo}
+\begin{rem}
+ Dans l'ensemble $\mathcal{L}(E)$ des endomorphismes trois opérations sont définies: l'addition fonctionnelle ($+$), la composition ($\circ$) et une multiplication externe ($.$) par un élément du corps $\K$. Les règles de calculs usuelles sont valides mais la composition $\circ$ n'est pas commutative : $(\mathcal{L}(E),+,\circ)$ est un anneau, $(\mathcal{L}(E),+,.)$ est un $\K$-espace vectoriel. On définit une structure \emph{de $\K$-algèbre} \index{algèbre} en imposant certaines propriétés entre la composition et la multiplication externe. Elles sont vérifiées pour $(\mathcal{L}(E),+,\circ, .)$ qui est une $\K$-algèbre.
+\end{rem}
+ \begin{rem}
+   Rappelons les propriétés purement ensemblistes: la composée de deux applications injectives est injective, la composée de deux applications surjectives est surjectives, la composée de deux applications bijectives est bijective. Ceci reste valable lorsque les applications sont linéaires.
+ \end{rem}
+
+\subsection{Noyau et image}
+\index{noyau d'une application linéaire} \index{image d'une application linéaire}
+\begin{defi}[Noyau et image d'une application linéaire]
+  Soit $E$ et $F$ deux $\K$-espaces vectoriels et $f$ linéaire de $E$ dans $F$. L'\emph{image} de $f$ est l'image directe de $E$ par $f$. Le \emph{noyau} de $f$ est l'image réciproque (ensembliste) du singleton réduit au vecteur nul.
+\begin{displaymath}
+  \Im(f) = f(E) = \left\lbrace f(x), x\in E\right\rbrace,\hspace{0.5cm}
+  \ker(f) = \left\lbrace x \in E\text{ tq } f(x) = 0_F\right\rbrace  .
+\end{displaymath}
+\end{defi}
+\begin{prop}
+$\Im(f)$ est un sous-espace vectoriel de $F$ et $f$ est surjectif si et seulement si $\Im(f)=F$.\newline
+$\ker(f)$ est un sous-espace vectoriel de $E$ et $f$ est injectif si et seulement si $\ker(f)=\left\lbrace 0_E\right\rbrace$.
+\end{prop}
+\begin{demo}
+La propriété $\Im f = F$ traduit exactement que $f$ est surjective.\newline
+Supposons $f$ injective. L'élément $0_F$ admet alors un unique antécédent qui est $0_E$. Cela signifie $\ker f = \left\lbrace 0_E \right\rbrace$. \newline
+Réciproquement, supposons $\ker f = \left\lbrace 0_E \right\rbrace$. Soit $x$ et $y$ dans $E$ avec la même image. Alors
+\[
+ f(x) = f(y) \Rightarrow f(x) - f(y) = 0_F
+ \Rightarrow f(x-y) = 0_F
+ \Rightarrow x-y \in \ker f = \left\lbrace 0_E \right\rbrace
+ \Rightarrow x - y = 0_E \Rightarrow x = y.
+\]
+\end{demo}
+
+Exemples $A\times B \rightarrow E$ tq $(a,b)\rightarrow a+b$. Pour $a_1,\cdots,a_p$ fixés, $\K^p$ dans $E$ $(\lambda_1,\cdots,\lambda_p)$ associe $\lambda_1a_1+\cdots + \lambda_p a_p$.
+
+\index{hyperplan}
+\begin{defi}[hyperplan]
+ Un hyperplan est le noyau d'une forme linéaire non nulle.
+\end{defi}
+
+\section{Applications linéaires en dimension finie} \label{sec:AppLinDimFin}
+\subsection{Prolongement linéaire} \label{subsec:ProlLin}
+\index{théorème du prolongement linéaire}
+\begin{propn}[Théorème du prolongement linéaire]\label{prop:ProlLin}
+Soit $(e_1,\ldots,e_p)$ une base d'un $\K$-espace vectoriel $E$, soit $(y_1,\ldots,y_p)$ une famille quelconque de $p$ vecteurs d'un espace vectoriel $F$. Il existe une unique application linéaire $f$ de $E$ dans $F$ telle que
+\begin{displaymath}
+ \forall i\in \llbracket 1, p\rrbracket, \forall j\in \llbracket 1, p\rrbracket : f(e_i) = y_i .
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ La démonstration de ce résultat n'est pas proposée. Elle ne présente pas de difficultés mais il est plus efficace d'utiliser d'abord ce théorème dans divers exercices (par exemple compléter les rédactions ébauchées au dessous). En deuxième lecture, en revenant sur cette démonstration, elle apparaîtra comme évidente.
+\end{demo}
+\begin{propn}[Complément au prolongement linéaire]\label{prop:CompProlLin}
+ Avec les notations du théorème de prolongement linéaire,
+\begin{displaymath}
+ f \text{ surjective } \Leftrightarrow (y_1,\cdots,y_p) \text{ génératrice }, \hspace{1cm}
+ f \text{ injective } \Leftrightarrow (y_1,\cdots,y_p) \text{ libre }. 
+\end{displaymath} 
+\end{propn}
+\begin{demo}
+\begin{itemize}
+  \item Supposons $f$ surjective et montrons que $(y_1,\cdots,y_p)$ est génératrice.\newline 
+  Pour tout $y\in F$, il existe $x\in E$ tel que $y=f(x)$ (surjectivité). Ce vecteur $x$ se décompose dans la base $(e_1,\cdots,e_p)$ de $E$. Il existe $\lambda_1, \cdots, \lambda_p$ dans $\K$ tels que 
+\[
+  x = \lambda_1 e_1 + \cdots + \lambda_pe_p \Rightarrow y = f(x) = \lambda_1 f(e_1) + \cdots + \lambda_p f(e_p) = \lambda_1 y_1 + \cdots + \lambda_p y_p.
+\]
+
+  \item Supposons $(y_1,\cdots,y_p)$ est génératrice et montrons que $f$ est surjective.\newline 
+  Pour tout $y\in F$, comme  $(y_1,\cdots,y_p)$ est génératrice, il existe $\lambda_1, \cdots, \lambda_p$ dans $\K$ tels que
+\[
+  y = \lambda_1 y_1 + \cdots + \lambda_p y_p = \lambda_1 f(e_1) + \cdots + \lambda_p f(e_p) = f(\lambda_1 e_1 + \cdots + \lambda_p e_p) \in \Im (f).
+\]
+
+  \item Supposons $f$ injective et montrons que $(y_1,\cdots,y_p)$ est libre.\newline
+  Pour tout $(\lambda_1, \cdots, \lambda_p)\in \K^p$. Si $\lambda_1 y_1 + \cdots \lambda_p y_p = 0_F$ alors 
+\[
+\lambda_1 e_1 + \cdots \lambda_p e_p \in \ker f = \left\lbrace 0_E\right\rbrace \Rightarrow \lambda_1 e_1 + \cdots \lambda_p e_p = 0_E 
+\Rightarrow \lambda_1 = \cdots = \lambda_p = 0_K
+\]
+car $(e_1, \cdots, e_p)$ est libre.
+
+  \item Supposons $(y_1,\cdots,y_p)$ est libre et montrons que $f$ est injective.\newline 
+  Pour tout $x\in \ker E$, comme $(e_1,\cdots, e_p)$ est génératrice, il existe  $\lambda_1, \cdots, \lambda_p$ dans $\K$ tels que
+\begin{multline*}
+  x = \lambda_1 e_1 + \cdots + \lambda_pe_p \Rightarrow \Rightarrow 0_F = f(x) = \lambda_1 f(e_1) + \cdots + \lambda_p f(e_p) = \lambda_1 y_1 + \cdots + \lambda_p y_p \\
+  \Rightarrow \lambda_1 = \cdots = \lambda_p = 0_K \text{ (car $(y_1, \cdots , y_p)$ est libre)}
+  \Rightarrow x = 0_E .
+\end{multline*}
+
+\end{itemize}
+\end{demo}
+
+\begin{rem}
+  Si on se donne une famille de $p$ vecteurs $(x_1,x_2,\ldots,x_p)$ d'un $\K$-espace vectoriel $E$, la proposition précédente définit (avec la base canonique de $\K^p$ comme base de l'espace de départ) une application lin\'eaire $\Phi$ de $\K^p$ dans $E$.
+  \begin{displaymath}
+    \Phi((\lambda_1,\cdots,\lambda_p)) = \sum_{i=1}^p \lambda_i a_i
+  \end{displaymath}
+L'image de cette application est $\Vect(a_1,\cdots,a_p)$, elle est injective si et seulement si la famille est libre.
+\end{rem}
+
+\begin{propn}[Variante du théorème de prolongement linéaire]
+  Soit $A_1, A_2, \cdots, A_p$ des sous-espaces vectoriels d'un $\K$-espace vectoriel $E$ tels que $E = A_1 \oplus \cdots \oplus A_p$.
+Soit $F$ un $\K$-espace vectoriel et, pour $i \in \llbracket 1, p \rrbracket$,  $f_i \in \mathcal{L}(A_i,F)$. \newline
+Il existe alors une unique application linéaire $f \in \mathcal{L}(E,F)$ telle que 
+\begin{displaymath}
+  \forall i \in \llbracket 1, p \rrbracket, \; f|_{A_i} = f_i.
+\end{displaymath}
+\end{propn}
+\begin{demo}
+  Ce résultat se démontre par analyse-synthèse. Il est facile à prouver à condition de maitriser les projections attachés à une décomposition en somme directe (partie \ref{sec:proj}).
+\end{demo}
+
+\subsection{Bases et dimensions usuelles}
+\label{BasesUsu}
+\begin{propn}[base duale]\index{base duale} \label{basedual}
+ Soit $(a_1,\cdots,a_p)$ une base d'un $\K$-espace vectoriel $E$. La famille $(\alpha_1,\cdots,\alpha_p)$ des fonctions coordonnées attachées à cette base est une base de l'espace vectoriel $E^*$.
+\end{propn}
+\begin{demo}
+Il s'agit de montrer que toute $\varphi\in E^*$ se décompose de manière unique comme combinaison linéaire des $\alpha_i$. Raisonnons par analyse-synthèse.\newline
+Analyse. Supposons que $\varphi$ se décompose. Soit $\lambda_1, \cdots, \lambda_p\in K$ tels que
+\begin{displaymath}
+ \varphi = \lambda_1\alpha_1+\cdots+\lambda_p\alpha_p
+\end{displaymath}
+Il s'agit d'une égalité entre deux fonctions linéaires de $E$ dans $K$. Prenons la valeur en $a_i$ avec $i\in\{1,\cdots,p\}$. On obtient $\varphi(a_i)=\lambda_i$ car $\alpha_j(a_i)=\delta_{i,j}$. On en déduit l'unicité de la décomposition éventuelle. La seule possible est
+\begin{displaymath}
+ \varphi = \varphi(a_1)\alpha_1+\cdots+\varphi(a_p)\alpha_p
+\end{displaymath}
+Synthèse. Considérons l'application $\psi = \varphi - \varphi(a_1)\alpha_1+\cdots+\varphi(a_p)\alpha_p$. La propriété $\alpha_j(a_i)=\delta_{i,j}$ entraine alors que $\psi(a_i)=0_E$ pour tous les $i$. Or les $a_i$ forment une base et $\psi$ est linéaire donc $\psi =0$.
+\end{demo}
+
+\index{base de $\mathcal L(E,F)$}
+\begin{propn}[base de $\mathcal L(E,F)$] \label{baseL}
+Soit $\mathcal{A}=(a_1,\cdots,a_p)$ une base d'un $\K$-espace vectoriel $E$, soit $\mathcal{B}=(b_1,\cdots,b_q)$ une base d'un $\K$-espace vectoriel $F$. Pour tout couple $(i,j)\in\{1,2,\cdots,p\}\times\{1,2,\cdots,q\}$, on définit une fonction $f_{i,j}$ de $E$ dans $F$ à l'aide du théorème de prolongement linéaire par les relations
+\begin{displaymath}
+ \forall k \in\{1,\cdots,p\} :  f_{i,j}(a_k) =
+\left\lbrace 
+\begin{aligned}
+ 0_F &\text{ si } k\neq i \\
+ b_j &\text{ si } k=i
+\end{aligned}
+\right. 
+\end{displaymath}
+La famille $(f_{i,j})_{(i,j)\in\{1,2,\cdots,p\}\times\{1,2,\cdots,q\}}$ est une base de $\mathcal L(E,F)$.
+\end{propn}
+\begin{demo}
+ Cette démonstration n'est pas conseillée en première lecture. \newline
+ Montrons par analyse-synthèse que toute $f\in \mathcal L(E,F)$ se décompose de manière unique.\newline
+Analyse. Supposons
+\begin{displaymath}
+  f= \sum_{i,j}\lambda_{i,j}f_{i_j}
+\end{displaymath}
+Pour tout $i_0\in \llbracket 1,p \rrbracket$
+\begin{displaymath}
+  f(a_{i_0}) = \sum_{i,j}\lambda_{i,j}f_{i_j}(a_{i_0})
+  = \sum_{j}\lambda_{i_0,j}b_j \hspace{1cm} \text{ car seul les $i=i_0$ contribuent vraiment}
+\end{displaymath}
+Cette relation entraine que les $\lambda_{i_0,j}$ sont les coordonnées dans $\mathcal{B}$ de $f(a_{i_0})$. Comme $i_0$ est quelconque, ceci assure l'unicité de tous les coefficients.\newline
+Synthèse. Les coefficients étant choisis comme dans la question précédente, soit $g\sum_{i,j}\lambda_{i,j}f_{i_j}$. Par définition $f$ et $g$ coïncident sur les vecteurs de $\mathcal{A}$, ils sont donc égaux par prolongement linéaire.
+\end{demo}
+
+\begin{propn}
+  Soit $E$ et $F$ des $\K$-espaces vectoriels de dimension finie. Les espaces $E^*$ et $\mathcal{L}(E,F)$ sont de dimensions finies avec
+\begin{displaymath}
+  \dim(E^*) = \dim(E),\hspace{0.5cm} \dim(\mathcal{L}(E,F)) = \dim(E) \, \dim(F)
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ Il suffit de compter les nombres de vecteurs des bases données par les propositions \ref{basedual} et \ref{baseL}. 
+\end{demo}
+
+\subsection{Isomorphismes}
+\begin{propn}
+ Soit $(a_1,a_2,\cdots,a_n)$ une base d'un $\K$-espace vectoriel $E$, soit $f$ une application linéaire de $E$ dans un $\K$-espace vectoriel $F$. L'application $f$ est un isomorphisme si et seulement si la famille $(f(a_1),\cdots,f(a_n))$ est une base de $F$.
+\end{propn}
+\begin{demo}
+  C'est une conséquence immédiate du complément du prolongement linéaire (prop \ref{prop:CompProlLin} ).
+\end{demo}
+
+\begin{propn} \label{prop:isoRn}
+ Soit $(x_1,x_2,\cdots,x_n)$ une famille de vecteurs d'un $\K$-espace vectoriel $F$. Soit $\varphi$ l'application
+\begin{displaymath}
+ \varphi : \left\lbrace 
+\begin{aligned}
+ \K^n &\rightarrow F \\
+(\lambda_1,\cdots,\lambda_n) &\rightarrow \lambda_1 x_1 + \cdots + \lambda_n x_n
+\end{aligned}
+\right. 
+\end{displaymath}
+Alors $(x_1, x_2, \cdots, x_n)$ est une base si et seulement si $\varphi$ est un isomorphisme.
+\end{propn}
+\begin{demo}
+On peut voir cette proposition comme un cas particulier de la précédente avec $\K^n$ comme espace de départ et la base canonique comme famille $(a_1, \cdots, a_n)$.\newline
+On peut aussi la voir comme une reformulation de la caractérisation d'une base. Une famille est une base si et seulement si un vecteur quelconque se décompose de manière unique comme une combinaison linéaire de vecteurs de la famille.
+\end{demo}
+
+\begin{propn}
+ Soit $E$ et $F$ deux $\K$-espaces vectoriels de même dimension (finie) et $f\in \mathcal{L}(E,F)$. Alors
+\[
+ f \text{ injective } \Leftrightarrow  f \text{ surjective } \Leftrightarrow  f \text{ bijective }.
+\]
+\end{propn}
+\begin{demo}
+ Soit $\mathcal{A} = (a_1,\cdots,a_p)$ une base de $E$. D'après le complément au théorème de prolongement linéaire (\ref{sec:AppLinDimFin} \ref{subsec:ProlLin} prop. \ref{prop:ProlLin}), 
+\[
+f \text{ injective }\Leftrightarrow \left( f(a_1), \cdots, f(a_p)\right) \text{ libre}, \hspace{0.5cm}
+f \text{ surjective }\Leftrightarrow \left( f(a_1), \cdots, f(a_p)\right) \text{ génératrice}.
+\]
+Comme $\dim F = \dim E = p$, une seule de ces deux propriétés assure que $\left( f(a_1), \cdots, f(a_p)\right)$ est une base donc que $f$ est un isomorphisme. 
+\end{demo}
+
+\begin{rem}
+ L'hypothèse est vérifiée en particulier pour un endomorphisme d'un espace de dimension finie ($F = E$). On peut reformuler alors la proposition avec le vocabulaire de l'\emph{anneau} $\mathcal{L}(E)$ \footnote{ou de l'algèbre $\mathcal{L}(E)$. Une $\K$-algèbre est à la fois un anneau et un $\K$-espace vectoriel. Les exemples d'algèbre à connaître sont $\mathcal{L}(E)$ et $\K[X]$.}. 
+\end{rem}
+\begin{propn}
+  Soit $E$ de dimension finie et $f\in \mathcal{L}(E)$, alors:
+\begin{displaymath}
+  f \text{ inversible } \Leftrightarrow f \text{ inversible à gauche } \Leftrightarrow f \text{ inversible à droite}
+\end{displaymath}
+\end{propn}
+\begin{demo}
+S'il existe $g\in \mathcal{L}(E)$ tel que $f\circ g = \Id_E$ alors $f$ est surjective donc bijective et en composant par la bijection réciproque $f^{-1}$ on obtient $g=f^{-1}$.\newline
+S'il existe $h\in \mathcal{L}(E)$ tel que $h\circ f = \Id_E$ alors $f$ est injective donc bijective et en composant par la bijection réciproque $f^{-1}$ on obtient $h=f^{-1}$.
+\end{demo}
+
+Comme la composée de deux isomorphismes est un isomorphisme et que la bijection réciproque d'un isomorphisme est un isomorphisme, on obtient la proposition suivante
+\begin{propn}
+ Tout $\K$-espace vectoriel de dimension $n$ est isomorphe à $\K^n$.\newline
+ Deux $\K$-espaces vectoriels de dimension finie sont isomorphes si et seulement si ils sont de même dimension.\newline
+ Si un $\K$-espace vectoriel $E$ est isomorphe à un $\K$-espace vectoriel $F$ de dimension finie, alors $E$ est de dimension finie et $\dim E = \dim F$.
+\end{propn}
+\begin{demo}
+  Tout $\K$-espace vectoriel de dimension $n$ est isomorphe à $\K^n$ d'après la proposition \ref{prop:isoRn}.\newline
+  Si deux $\K$-espaces sont de dimension $n$, ils sont tous les deux isomorphes à $\R^n$ donc isomorphes entre eux.\newline
+  Si $E$ et $F$ sont isomorphes avec $E$ de dimension $n$ donc isomorphe à $\R^n$ alors $F$ est aussi isomorphe à $\R^n$ donc de dimension $n$.\newline
+  Deux espaces de dimensions différentes ne peuvent pas être isomorphe à cause de la condition suffisante de dépendance.
+\end{demo}
+
+\index{théorème noyau-image}
+\begin{thmn}[Théorème noyau-image]
+ Soit $E$ et $F$ deux $K$-espaces vectoriels. Soit $f$ une application linéaire de $E$ dans $F$. Soit $A$ un sous-espace vectoriel supplémentaire de $\ker f$ dans $E$. Alors, l'application $\varphi$ définie par :
+\begin{displaymath}
+ \varphi : \left\lbrace 
+\begin{aligned}
+ A &\rightarrow \Im f \\
+ a &\rightarrow f(a)
+\end{aligned}
+\right. 
+\end{displaymath}
+est un isomorphisme.
+\end{thmn}
+\begin{demo}
+ Montrons d'abord que la fonction est injective. Pour tout $a\in \ker \varphi$: $0_E=\varphi(a)=f(a)$. Donc 
+\begin{displaymath}
+a\in \ker f\cap A =\{0_E\}.
+\end{displaymath}
+Montrons ensuite qu'elle est surjective. Pour tout $y\in\Im f$, il existe un $x\in E$ (pas forcément dans $A$ à priori) tel que $f(x)=y$. Comme $A$ et $\ker f$ sont supplémentaires, $x$ se décompose. Il existe $a\in A$ et $u\in \ker f$ tels que $x=a+u$. alors :
+\begin{displaymath}
+ y=f(x)=f(a)+f(u)=f(a)=\varphi(a)
+\end{displaymath}
+ce qui prouve que $\varphi$ est surjective.
+\end{demo}
+\begin{rem}
+ Dans le théorème noyau-image, on ne suppose pas les espaces de dimension finie. 
+\end{rem}
+
+\subsection{Théorème du rang}
+\index{théorème du rang}
+\begin{thmn}[Théorème du rang]
+ Soit $E$ un $\K$-espace vectoriel de dimension finie. Soit $F$ un $K$-espace vectoriel quelconque et $f$ une application linéaire de $E$ dans $F$.  Alors $\Im(f)$ est de dimension finie. De plus :
+\begin{displaymath}
+ \dim E = \dim (\Im f) + \dim (\ker f).
+\end{displaymath}
+\end{thmn}
+\begin{defi}
+ Soit $E$ un $\K$-espace vectoriel de dimension finie, $F$ un $K$-espace vectoriel quelconque et $f$ une application linéaire de $E$ dans $F$. Le rang de $f$ (noté $\rg (f)$) est la dimension de $\Im(f)$.
+\end{defi}
+Le théorème du rang se reformule donc en
+\begin{displaymath}
+ \dim E = \rg f + \dim (\ker f).
+\end{displaymath}
+\begin{demo}
+ Considérons un supplémentaire $A$ du noyau de $\ker f$ dans $E$. On sait que dans un espace de dimension finie, de tels supplémentaires existent et que :
+\begin{displaymath}
+ \dim E = \dim (\ker f) + \dim A.
+\end{displaymath}
+D'après le théorème noyau-image, ce supplémentaire $A$ est isomorphe à $\Im f$ qui est donc de dimension finie et égale à $\dim A$. On obtient le théorème du rang en remplaçant $\dim A$ par $\rg f$ dans la relation entre les dimensions.
+\end{demo}
+
+\section{Projecteurs - Symétries - Affinités} \label{sec:proj}
+\index{projecteur}\index{projection}\index{symétrie}
+\begin{defi}[projecteur, symétrie]
+ Un \emph{projecteur} est un endomorphisme $p$ tel que $p\circ p = p$. Une \emph{symétrie} est un endomorphisme $s$ tel que $s\circ s = \Id$.
+\end{defi}
+Les projections sont attachées à une décomposition de l'espace en sous-espaces supplémentaires.
+\begin{defi}
+ Soit $A$ et $B$ supplémentaires dans un $\K$-espace vectoriel $E$. Chaque vecteur se décompose de manière unique. 
+ Cela permet de définir des fonctions $p_{A,B}$, $p_{B,A}$ $s_{A,B}$ par:
+ \[
+  \forall x \in E, \; x = \underset{\in A}{\underbrace{p_{A,B}(x)}} + \underset{\in B}{\underbrace{p_{B,A}(x)}}, \hspace{0.5cm} s_{A,B} = p_{A,B} - p_{B,A}.
+ \]
+ On dit que $p_{A,B}$ est la projection sur $A$ parallèlement à $B$, que $p_{B,A}$ est la projection sur $B$ parallèlement à $A$ et que $s_{A,B}$ est la symétrie par rapport à $A$ dans la direction $B$. 
+\end{defi}
+On vérifie facilement les propriétés suivantes à partir de la définition:\newline 
+Les projections $p_{A,B}$ et $p_{B,A}$ sont des endomorphismes de $E$.\newline
+Pour tout $a\in A$, $p_{A,B}(a) = a$, $p_{B,A}(a) = 0_E$, $s_{A,B}(a) = a$.\newline
+Pour tout $b\in B$, $p_{A,B}(b) = 0_E$, $p_{B,A}(b) = b$, $s_{A,B}(b) = -b$. 
+\begin{multline*}
+ p_{A,B} + p_{B,A} = \Id_E,\hspace{0.2cm} p_{B,A} \circ p_{B,A} = p_{A,B} \circ p_{B,A} = 0_{\mathcal{L}(E)},\\
+  \ker p_{A,B} = B,\hspace{0.2cm} \Im p_{A,B} = A,\hspace{0.2cm} 
+ \ker p_{B,A} = A,\hspace{0.2cm} \Im p_{B,A} = B,\hspace{0.2cm} p_{A,B} \circ  p_{A,B} = p_{A,B},\hspace{0.2cm}  p_{B,A}\circ  p_{B,A} = p_{B,A},\\
+ s_{A,B}\circ  s_{A,B} = \Id_E,\hspace{0.2cm} A = \left\lbrace x \in E \text{ tq } s_{A,B}(x) = x\right\rbrace =\ker\left( s_{A,B}-\Id_E\right), \\
+ B = \left\lbrace x \in E \text{ tq } s_{A,B}(x) = -x\right\rbrace =\ker\left( s_{A,B}+\Id_E\right).
+\end{multline*}
+On en déduit en particulier que les projections sont des projecteurs et que $s_{A,B}$ est bien une symétrie.\newline
+On peut généraliser la définition des projections à une somme directe de plus de deux sous-espaces.
+\begin{defi}
+ Soit $A_1, \cdots, A_p$ des sous-espace de $E$ en somme directe. Chaque vecteur de $E$ se décompose de manière unique dans la somme. Cela permet de définir des \emph{projections} $p_1, \cdots, p_p$ par:
+ \[
+  \forall x \in E, \; x = p_1(x) + \cdots + p_p(x).
+ \]
+\end{defi}
+Ici encore, on vérifie facilement que les $p_i$ sont linéaires et que ce sont des projecteurs. En fait $A_i$ et $\oplus_{j\neq i}A_j$ sont supplémentaires et $p_i$ est la projection sur $A_i$ parallèlement à $\oplus_{j\neq i}A_j$.\newline
+Montrons maintenant que les relations $p\circ p = p$ et $s\circ s = \Id_E$ induisent toujours une somme directe.
+\begin{prop}
+ Soit $p\in \mathcal L(E)$ tel que $p\circ p = p$. Les sous-espaces $\Im p$ et $\ker p$ sont supplémentaires et $p$ est la projection sur $\Im p$ parallèlement à $\ker p$.
+\end{prop}
+\begin{demo}
+ Montrons par analyse-synthèse que les sous-espaces sont supplémentaires.\newline
+ Analyse. Pour tout $x\in E$. Si $x = u +v$ avec $u\in \Im p$ et $v \in \ker p$. Comme $u \in \Im p$, il existe $u_1\in E$ tel que $u = p(u_1)$. Composons par $p$:
+\[
+  x = u + v \Rightarrow p(x) = p(u) + p(v) = p\circ p (u_1) + 0_E = p(u_1) = u
+  \Rightarrow 
+  \left\lbrace
+  \begin{aligned}
+    u &= p(x) \\ v &= x - p(x)
+  \end{aligned}
+  \right. .
+\]
+Ceci prouve l'unicité d'une éventuelle décomposition de $x$.\newline
+Synthèse. Tout $x\in E$ se décompose en $x = p(x) + (x - p(x))$. Il est évident que $p(x)\in \Im p$. Montrons que $x - p(x) \in \ker p$. Cela résulte de 
+\[
+  p(x-p(x)) = p(x) - p\circ p(x) = p(x) -p(x) = 0_E.
+\]
+Ceci achève de montrer que $\Im p$ et $\ker p$ sont supplémentaires. De plus la projection de $x$ sur $\Im p$ parallélement à $\ker p$ est la composante dans $\Im p$ de la décomposition c'est à dire $p(x)$.
+\end{demo}
+
+\begin{prop}
+ Soit $s\in \mathcal L(E)$ tel que $s\circ s = \Id_E$. Les sous-espaces $\ker(s-\Id_E)$ et $\ker(s+\Id_E)$ sont supplémentaires et $s$ est la symétrie par rapport à $\ker(s-\Id_E)$ dans la direction $\ker(s+\Id_E)$.
+\end{prop}
+\begin{demo}
+ Montrons par analyse-synthèse que les sous-espaces sont supplémentaires.\newline
+ Analyse. Pour tout $x\in E$. Si $x = u +v$ avec $u\in \ker(s-\Id_E)$ et $v \in \ker(s+\Id_E)$. Composons par $s$:
+\[
+  x = u + v \Rightarrow s(x) = s(u) + s(v) = u  - v
+  \Rightarrow 
+  \left\lbrace
+  \begin{aligned}
+    u &= \frac{1}{2}(x + s(x)) \\ v &= \frac{1}{2}(x - s(x))
+  \end{aligned}
+  \right. .
+\]
+Ceci prouve l'unicité d'une éventuelle décomposition de $x$.\newline
+Synthèse. Tout $x\in E$ se décompose en $x = \frac{1}{2}(x + s(x)) + \frac{1}{2}(x - s(x))$. Notons $ u = \frac{1}{2}(x + s(x))$ et $v = \frac{1}{2}(x - s(x))$. Alors:
+\[
+  \begin{aligned}
+    s(u) &= \frac{1}{2}(s(x) + s\circ s(x)) = \frac{1}{2}(s(x) + x) = u \Rightarrow u \in \ker(s - \Id_E).\\
+    s(v) &= \frac{1}{2}(s(x) - s\circ s(x)) = \frac{1}{2}(s(x) - x) = -v \Rightarrow v \in \ker(s + \Id_E).
+  \end{aligned}
+\]
+Ceci achève de montrer que $\ker(s - \Id_E)$ et $\ker(s + \Id_E)$ sont supplémentaires. Notons les respectivement $A$ et $B$. On a déjà exprimé les projections:
+\[
+  \left. 
+  \begin{aligned}
+    p_{A,B} &= \frac{1}{2}(\Id_E + s)\\ p_{B,A} &= \frac{1}{2}(\Id_E - s)
+  \end{aligned}
+  \right\rbrace \Rightarrow
+  s_{A,B} = p_{A,B} - p_{B,A} = s.
+\]
+Donc $s$ est bien la symétrie par rapport à $A$ dans la direction $B$.
+\end{demo}
+
+\index{affinité}
+\begin{defi}[affinité]
+ Soit $A$ et $B$ des sous-espaces supplémentaires. Les applications de la forme $p_{A,B} + \lambda p_{B,A}$ avec $\lambda\in \K$ sont appelés des \emph{affinités} de base $A$, de direction $B$ et de rapport $k$.
+\end{defi}
+Les affinités englobent les projections et les symétries. Dans le plan, étant donné une ellipse, il existe une affinité qui transforme l'ellipse en cercle. Son rapport est le quotient du grand-axe sur le petit-axe.
+
+\section{Formes et hyperplans}
+\subsection{En dimension quelconque}
+Soit $E$ un $\K$-espace vectoriel. On rappelle qu'une forme linéaire\index{forme linéaire} sur $E$ est une application linéaire de $E$ dans $\K$. L'ensemble des formes linéaires sur $E$ est noté $E^*$ (dual de $E$) au lieu de $\mathcal{L}(E,\K)$.\index{dual}  
+\index{hyperplan}
+\begin{defi}[hyperplan]
+Un hyperplan est le noyau d'une forme linéaire non nulle.  
+\end{defi}
+\begin{rems}
+\begin{itemize}
+  \item Le noyau de la forme linéaire nulle sur $E$ est $E$ tout entier.
+  \item Une forme linéaire $\alpha$ non nulle est surjective. En effet, il existe alors un vecteur $u\in E$ tel que $\alpha(u)\neq 0$. On vérifie immédiatement que, pour tout $\lambda \in \K$, le vecteur $\frac{\lambda}{\alpha(u)}u$ est un antécédent de $\lambda$ pour $\alpha$.
+\end{itemize}
+\end{rems}
+
+\begin{propn}
+ Soit $H$ un hyperplan et $D$ une droite vectorielle qui n'est pas incluse dans $H$. Les sous-espaces $H$ et $D$ sont alors supplémentaires.\newline
+ En particulier, si $u$ est un vecteur qui n'est pas dans $H = \ker \alpha$, la droite $\Vect(u)$ est un supplémentaire de $H$. L'unique décomposition d'un vecteur $x$ de $E$ est
+\begin{displaymath}
+  x = \underset{\in \ker \alpha}{\underbrace{x-\frac{\alpha(x)}{\alpha(u)}u}}
+  + \underset{\in \Vect(u)}{\underbrace{\frac{\alpha(x)}{\alpha(u)}u}}
+\end{displaymath}
+\end{propn}
+\begin{demo}
+Par définition d'un hyperplan, il existe une forme linéaire non nulle $\alpha$ et un vecteur non nul $u$ tels que $H=\ker \alpha$ et $D=\Vect(u)$. Le fait que $D\not\subset H$ se traduit par $\alpha(u)\neq 0$. On raisonne par analyse-synthèse.\newline
+Analyse. Soit $x$ un vecteur de $E$. S'il se décompose dans $H + D$, il existe $h\in H =\ker \alpha$ et $\lambda \in K$ tels que 
+\[
+  x = h + \lambda u \Leftrightarrow \alpha(x) = \alpha(x) + \lambda\alpha(u) \Rightarrow \lambda = \frac{\alpha(x)}{\alpha(u)} \text{ et } h = x - \lambda u.
+\]
+Ce qui assure l'unicité de la décomposition.\newline
+Synhèse. \'Ecrivons une décomposition idiote:
+\begin{displaymath}
+  x = \underset{\in D}{\underbrace{\frac{\alpha(x)}{\alpha(u)}u}} + \underset{= h}{\underbrace{\left(-\frac{\alpha(x)}{\alpha(u)}u + x \right)}}
+\;\text{ avec }\;
+\alpha(h) = -\frac{\alpha(x)}{\alpha(u)}\alpha(u) + \alpha(x) = 0_K
+\end{displaymath}
+donc $h\in \ker \alpha = H$. Ce qui assure l'existence de la décomposition.
+\end{demo}
+
+\begin{propn}
+  Soit $D$ une droite vectorielle. Tout sous-espace vectoriel supplémentaire de $D$ est un hyperplan.
+\end{propn}
+\begin{demo}
+Soit $H$ un supplémentaire de $D$ et $u$ un vecteur non nul de $D$. On doit trouver ou fabriquer une forme linéaire $\alpha$ telle que $H=\ker \alpha$.\newline
+Tout vecteur de $E$ se décompose de manière unique dans $D + H$; cela permet de définir une application $\alpha$ de $E$ dans $K$ par:
+\begin{displaymath}
+\forall x\in E, \; x = \alpha(x)u + \text{ un vecteur de }H  
+\end{displaymath}
+On vérifie par unicité de la décomposition que $\alpha$ est linéaire. Elle est à valeurs dans $\K$ c'est donc une forme linéaire. De plus, par sa définition même, 
+\[
+  x\in \ker \alpha \Leftrightarrow x\in H \text{ donc } H=\ker \alpha.
+\]
+\end{demo}
+\begin{rem}
+Si $u$ et $v$ sont deux vecteurs non nuls, la famille $(u,v)$ est liée si et seulement si il existe $\lambda\neq 0$ tel que $v=\lambda u$. En particulier, pour des formes linéaires dans $E^*$, cela permet de démontrer le résultat suivant. 
+\end{rem}
+
+\begin{propn}
+ Soit $\alpha$ et $\beta$ deux formes linéaires non nulles. La famille $(\alpha, \beta)$ est liée si et seulement si $\ker \alpha=\ker \beta$.
+\end{propn}
+\begin{demo}
+Si $(\alpha,\beta)$ est liée, comme aucune des deux n'est nulle, il existe $\lambda\neq 0_\K$ tel que $\beta = \lambda \alpha$. On en déduit $\ker \alpha = \ker \beta$.\newline
+Réciproquement, si $\ker \alpha = \ker \beta = H$, il existe $u\in E$ tel que $\alpha(u)\neq 0_\K$. Montrons que 
+\begin{displaymath}
+  \beta(u)\alpha - \alpha(u)\beta = 0_{\mathcal{L}(E,\K)}
+\end{displaymath}
+ce qui assure (car $\alpha(u)\neq 0_K$) que la famille $(\alpha,\beta)$ est liée. Pour montrer cette relation, considérons des éléments de $E$:
+\begin{displaymath}
+\forall x\in E,\; x = \frac{\alpha(x)}{\alpha(u)}u + \underset{\in H = \ker \beta}{\underbrace{h}}
+\Rightarrow
+\beta(x) = \frac{\alpha(x)}{\alpha(u)}\beta(u) 
+\Rightarrow
+\beta(u)\alpha(x) - \alpha(u)\beta(x) = 0.
+\end{displaymath}
+\end{demo}
+Toutes les équations d'un même hyperplan sont proportionnelles.
+
+\subsection{En dimension finie}
+On rappelle que si $(a_1,\cdots,a_n)$ est une base d'un espace vectoriel $E$, la famille des formes coordonnées $(\alpha_1,\cdots,\alpha_n)$ est une base de $E^*$ appelée base \emph{duale} de $(a_1,\cdots,a_n)$.
+\begin{propn}
+  Soit $E$ un $\K$-espace vectoriel de dimension $n$ et $A$ un sous-espace vectoriel de $E$. Alors $A$ est un hyperplan si et seulement si $\dim(A)=n-1$.
+\end{propn}
+\begin{demo}
+Si $A$ est un hyperplan, c'est le noyau d'une forme linéaire non nulle. Une forme linéaire non nulle de $E$ est de rang $1$ donc son noyau est de dimension $\dim E -1$.\newline
+Réciproquement, si $A$ est un sous-espace de dimension $n-1$ dans un espace $E$ de dimension $n$. Considérons une base $(a_1,\cdots, a_{n-1})$ de $A$ et complétons la en une base $\mathcal{A}=(a_1,\cdots, a_{n-1},a_n)$ de $E$. Notons $\alpha_1, \cdots, \alpha_n$ les formes coordonnées dans la base $\mathcal{A}$. Alors
+\[
+  A = \Vect(a_1, \cdots, a_{n-1}) = \ker \alpha_n .
+\]
+
+\end{demo}
+
+\begin{propn}\label{interhypsup}
+ L'intersection de $m$ hyperplans dans un espace de dimension $n$ est un sous-espace dont la dimension est supérieure ou égale à $n-m$.
+\end{propn}
+\begin{demo}
+Les hyperplans sont les noyaux de formes linéaires $\alpha_1,\cdots \alpha_m$. On considère l'application 
+\begin{displaymath}
+  \Phi:
+\left\lbrace 
+\begin{aligned}
+  E &\rightarrow \K^m \\ x&\mapsto (\alpha_1(x),\cdots,\alpha_m(x))
+\end{aligned}
+\right. .
+\end{displaymath}
+Cette application est linéaire, son noyau est l'intersection des hyperplans, son image est un sous-espace vectoriel de $\K^n$. Le théorème du rang fournit l'inégalité demandée.
+\begin{displaymath}
+\dim E = \dim\left( \ker \alpha_1 \cap \cdots \cap \ker \alpha_m\right) + \underset{\leq m}{\underbrace{\rg \Phi}}
+\Rightarrow
+\dim\left( \ker \alpha_1 \cap \cdots \cap \ker \alpha_m\right) \geq \dim E -m .
+\end{displaymath}
+\end{demo}
+
+\begin{propn} \label{interhyp}
+ Pour tout $m\in \llbracket 1 ,n\rrbracket$, dans un espace de dimension $n$, tout sous-espace de dimension $n-m$ est l'intersection de $m$ hyperplans.
+\end{propn}
+\begin{demo}
+Soit $E$ un espace de dimension $n$ et $A$ un sous-espace de dimension $n-m$. On peut compléter une base $(a_1,\cdots,a_{n-m})$ de $A$ en une base 
+\begin{displaymath}
+\mathcal{B} = (a_1,\cdots,a_{n-m},b_1,\cdots,b_m)  
+\end{displaymath}
+de $E$. Considérons sa base duale (formes coordonnées) que l'on note de la manière suivante:
+\begin{displaymath}
+\mathcal{B}^* =   (\alpha_1,\cdots,\alpha_{n-m},\beta_1,\cdots,\beta_m)
+\end{displaymath}
+Un vecteur $x$ est dans $\ker(\beta_1)\cap \cdots \ker(\beta_m)$ si et seulement si ses coordonnées (dans la base $\mathcal{B}$) selon $b_1,\cdots, b_m$ sont nulles. Cela traduit qu'il appartient à $A$. On en tire
+\begin{displaymath}
+  A = \ker(\beta_1)\cap \cdots \ker(\beta_m)
+\end{displaymath}
+\end{demo}
+\begin{rem}
+  On peut remarquer dans la démonstration de la proposition précédente que le sous-espace $A$ de dimension $n-m$ est l'intersection d'une famille \emph{libre} de $m$ hyperplans.
+\end{rem}
+
+\index{résoudre}\index{éliminer}
+Passer de la définition d'un sous-espace comme intersection d'hyperplans à une définition par des vecteurs revient à trouver une base de ce sous-espace. Pour faire cela, on doit \emph{résoudre} un certain système.\newline
+Exemple (à compléter).
+
+Pour passer de la définition d'un sous-espace comme engendré par une famille de vecteurs à une définition comme intersection d'hyperplans, on doit trouver les équations dont le sous-espace est l'ensemble des solutions. Pour faire cela, on doit \emph{éliminer} les inconnues d'un certain système.\newline
+Exemple (à compléter).
+
+La proposition suivante est hors programme. Elle est proposée comme un exercice traité en classe autour des démonstrations des propositions \ref{interhypsup} et \ref{interhyp}.
+\begin{propn}
+Soit $\varphi_1,\cdots, \varphi_m$ une famille de formes linéaires dans un espace $E$ de dimension finie $n$.
+\begin{displaymath}
+  \dim \left( \ker(\varphi_1)\cap \cdots \cap \ker(\varphi_m)\right) = n - m
+\Leftrightarrow (\varphi_1,\cdots,\varphi_m)\text{ libre }.
+\end{displaymath} 
+\end{propn}
+\begin{demo}
+Notons $A=\ker(\varphi_1)\cap \cdots \cap \ker(\varphi_m)$.\newline
+Supposons $\dim A = n-m$ et considérons 
+\[
+  \Phi:
+\left\lbrace 
+\begin{aligned}
+  E &\rightarrow \K^m \\ x&\mapsto (\varphi_1(x),\cdots,\varphi_m(x))
+\end{aligned}
+\right. .  
+\]
+Comme son noyau est $A$, elle est surjective d'après le théorème du rang. Notons $b_1, \cdots, b_m$ les images réciproques par $\Phi$ des vecteurs de la base canonique de $\K^m$ de sorte que
+\[
+  \forall (i,j) \in \llbracket 1,m \rrbracket^2,\; \alpha_i(b_j) = \delta_{i,j}.
+\]
+Ces vecteurs permettent de montrer que $(\alpha_1, \cdots, \alpha_m)$ est libre. En effet, pour tous $(\lambda_1, \cdots, \lambda_m)\in \K^m$,
+\[
+  \lambda_1 \alpha_1 + \cdots + \lambda_m \alpha_m = 0_{E^*}
+  \Rightarrow \left( \forall j \in \llbracket 1, m \rrbracket, \; 
+  \underset{= \lambda_j}{\underbrace{(\lambda_1 \alpha_1 + \cdots + \lambda_m \alpha_m)(b_j)}} = 0_\K\right).
+\]
+
+Réciproquement, supposons $(\varphi_1, \cdots, \varphi_m)$ libre dans $E^*$ et complétons cette famille en une base $(\varphi_1,\cdots,\varphi_n)$ de l'espace $E^*$ des formes linéaires. Considérons
+\[
+  \Psi:
+\left\lbrace 
+\begin{aligned}
+  E &\rightarrow \K^n \\ x&\mapsto (\varphi_1(x),\cdots,\varphi_n(x))
+\end{aligned}
+\right. .
+\]
+Le noyau de $\Psi$ est l'intersection des noyaux des $\varphi_i$. Les $\varphi_i$ engendrent $E^*$ donc en particulier toutes les formes coordonnées dans une base de $E$. Si un vecteur $x$ est dans l'intersection des $\ker \varphi_i$, toutes ses coordonnées dans une base de $E$ sont nulles donc il est nul. La fonction $\Psi$ est donc injective. Elle est surjective à cause de $\dim E = n = \dim K^n$. La surjectivité de $\Psi$ entraine celle de 
+\[
+  \Phi:
+\left\lbrace 
+\begin{aligned}
+  E &\rightarrow \K^m \\ x&\mapsto (\varphi_1(x),\cdots,\varphi_m(x))
+\end{aligned}
+\right. 
+\]
+ce qui permet de conclure par le théorème du rang.
+\end{demo}
+
+\end{document}

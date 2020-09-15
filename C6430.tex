@@ -1,0 +1,171 @@
+\input{courspdf.tex}
+\debutcours{Courbes planes paramétrées}{alpha}
+
+L'étude des courbes sera reprise en fin d'année en particulier pour l'introduction des propriétés métriques et la classification locale.\newline
+Cette section utilise les définitions et résultats relatifs aux \href{\baseurl C4199.pdf}{Fonctions d'une variable réelle et à valeurs vectorielles} du Glossaire de début d'année.
+\section{Vocabulaire}
+courbe paramétrée, fonction, mouvement, vitesse, accélération.
+
+courbe plane (ensemble de points), trajectoire ou support d'une courbe paramétrée. Des courbes plus générales que les graphes.\newline
+changements de paramètres, paramétrages admissibles\newline
+exemples de types de paramétrisation : $(x(t),y(t)$, $(x,y(x))$, $(x(y),y)$, $\rho(\theta)\overrightarrow{e}_\theta$, $\rho(t)\overrightarrow{e}_\theta(t)$, mouvement à accélération centrale\index{courbe paramétrée à accélération centrale}, mouvement uniforme (= paramétrisation normale), ....
+
+\section{\'Etude locale}
+\subsection{Tangente, normale}
+Point régulier\index{point régulier}: vitesse, tangente, normale. Point stationnaire. Point birégulier\index{point birégulier}.
+\begin{figure}[!ht]
+ \centering
+ \input{C6430_1.pdf_t}
+ \caption{Définition de la tangente}
+\end{figure}
+\begin{defi}[Essai de définition d'une tangente]\index{tangente}
+ La courbe paramétrée $f$ admet un tangente au point $f(t_0)$ lorsque 
+\begin{displaymath}
+ t \rightarrow \dfrac{\overrightarrow{f(t_0)f(t)}}{\Vert \overrightarrow{f(t_0)f(t)}\Vert}
+\end{displaymath}
+converge à droite et à gauche (strictement) de $t_0$ vers des vecteurs colinéaires. La tangente en $t_0$ est alors la droite qui passe par $f(t_0)$ et de direction la droite vectorielle engendrée par ces vecteurs. Lorsque il y a convergence mais vers des vecteurs différents, on dira que la courbe admet des demi-tangentes. 
+\end{defi}
+
+\begin{prop}
+ Une courbe paramétrée $f$ admet en un point régulier $f(t_0)$ une tangente dirigée par $\overrightarrow{f}^\prime(t_0)$.
+\end{prop}
+
+La normale\index{normale} est la droite perpendiculaire à la tangente en $f(t_0)$.
+\'Equations de la tangente et de la normale en un point régulier.
+
+\subsection{Position par rapport à la tangente et à la normale}
+Demi-plans définis par les équations de la tangente et de la normale.
+\index{qc: forme locale de la courbe (cas birégulier)}
+Point birégulier : accélération, position locale de la courbe par rapport à la tangente et à la normale.
+\begin{figure}[!ht]
+ \centering
+ \input{C6430_2.pdf_t}
+ \caption{Point birégulier. Position par rapport à la normale et à la tangente}
+\end{figure}
+
+
+La classification en  point normal, d'inflexion, de rebroussement (de première ou de deuxième espèce) ne sera exposée qu'en fin d'année.
+\index{qc: vitesse et accélération dans le repère polaire}
+Calculs de vitesse pour $\rho(\theta)\overrightarrow{e}_\theta$ ou  $\rho(t)\overrightarrow{e}_\theta(t)$
+
+\subsection{\'Etude locale : branches infinies}
+\index{qc: direction asymptotique et asymptote}
+Remarques sur les définitions possibles de la notion de branches infinie\index{branche infinie}. On se limite à un cas particulier
+\begin{displaymath}
+ \Vert \overrightarrow{Af(t)}\Vert \xrightarrow[t_0]{} +\infty
+\end{displaymath}
+Cette propriété est indépendante du point $A$.
+\begin{figure}[!ht]
+ \centering
+ \input{C6430_3.pdf_t}
+ \caption{Direction asymptotique}
+\end{figure}
+
+\begin{defi}[branche infinie avec direction asymptotique]\index{direction asymptotique}
+ On dira que $f$ admet en $t_0$ une branche infinie avec une direction asymptotique $\overrightarrow{u}$ lorsqu'il existe un point $A$ tel que :
+\begin{displaymath}
+ \Vert \overrightarrow{Af(t)}\Vert \xrightarrow[t_0]{} +\infty 
+\text{ et }
+ \dfrac{\overrightarrow{Af(t)}}{\Vert \overrightarrow{Af(t)}\Vert} \xrightarrow[t_0]{} \overrightarrow{u}
+\end{displaymath}
+\end{defi}
+Vérifions que la convergence et la valeur de la limite sont indépendantes du point $A$.
+\begin{figure}
+ \begin{center}
+  \includegraphics[width=6cm]{C6430_4.pdf}
+ % C6430_3.pdf: 556x556 pixel, 72dpi, 19.61x19.61 cm, bb=0 0 556 556
+\end{center}
+\caption{branche infinie sans direction asymptotique}
+\end{figure}
+
+\begin{defi}[Asymptote]\index{asymptote}
+ On dira que $f$ admet une branche infinie avec une droite asymptote $\mathcal D$ lorsque 
+\begin{displaymath}
+ \Vert \overrightarrow{Af(t)}\Vert \xrightarrow[t_0]{} +\infty 
+\text{ et }
+d(f(t),\mathcal D) \xrightarrow[t_0]{} 0
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ Une courbe paramétrée $f$ admet une branche infinie avec une droite asymptote si et seulement si elle admet une directions asymptotique $\overrightarrow u$ et qu'il existe un point $A$ et un réel $l_A$ tel que
+\begin{displaymath}
+ \det(\overrightarrow{Af(t)},\overrightarrow u)\xrightarrow[t_0]{} l_A
+\end{displaymath}
+Dans ce cas, la droite asymptote est formée par les points $M$ tels que
+\begin{displaymath}
+ \det(\overrightarrow{Af(t)},\overrightarrow u)= l_A
+\end{displaymath}
+\end{prop}
+\begin{demo}
+  Vérifions que si on change de point, on change de limite $l_A$ mais pas de droite.
+  Montrons que la distance de $f(t)$ à cette droite tends vers $0$.
+\end{demo}
+La proposition précédente conduit à une équation de l'asymptote et constitue une méthode pratique.\index{sf branches infinies}
+\begin{exples}
+\begin{enumerate}
+ \item Courbes paramétrées $f(t)=O+u(t)\overrightarrow i +v(t)\overrightarrow j$ avec $u$ ou $v$ qui tend vers l'infini.à rédiger
+ \item Cas d'une courbe en polaire : 
+\begin{displaymath}
+\left. 
+\begin{aligned}
+ f(\theta)=O+\rho(\theta)\overrightarrow{e}_{\theta}\\
+\rho \xrightarrow[\theta_0]{} +\infty
+\end{aligned}
+\right\rbrace 
+\Rightarrow \frac{1}{\Vert\overrightarrow{Of(\theta)} \Vert}\overrightarrow{Of(\theta)} = \overrightarrow{e}_{\theta} 
+\xrightarrow[\theta_0]{} \overrightarrow{e}_{\theta_O}
+\end{displaymath}
+Il y a donc toujours une direction asymptotique. Il y a une asymptote si et seulement si le déterminant converge or
+\begin{displaymath}
+ \det(\overrightarrow{Of(\theta)},\overrightarrow{e}_{\theta_O}) = \rho(\theta)\sin(\theta - \theta_0)
+\end{displaymath}
+On obtient donc une forme indéterminée que l'on traite avec les outils de l'analyse. Lorsqu'il existe une limite finie $l$, on obtient une équation polaire de la droite asymptote qu'il est facile d'exprimer en coordonnées cartésiennes en développant simplement le $\sin$.
+\begin{displaymath}
+ \rho \sin(\theta -\theta_0) = l
+\Leftrightarrow
+-x\sin\theta_0 + y\cos\theta_0 = l
+\end{displaymath}
+\end{enumerate}
+\end{exples}
+
+\subsection{Calculs de vitesse}
+\section{Exemples}
+\begin{enumerate}
+\item cardioïde\index{cardioïde}. Recherche des symétries, calcul vitesse, équation d'une tangente, tracé.
+\begin{displaymath}
+ f(\theta)= O +(1+\cos(\theta))\overrightarrow{e}_\theta
+\end{displaymath}
+
+ \item Recherche des symétries, tracé, équation cartésienne de la trajectoire
+\begin{displaymath}
+ f(t)= O+(t+\frac{1}{t})\overrightarrow{i} + (t^2+\frac{1}{t^2})\overrightarrow{j} 
+\end{displaymath}
+
+\item Recherche des points multiples, branches infinies
+\begin{displaymath}
+ f(t)= O+(t+\frac{2t}{t^2-1})\overrightarrow{i} + (\frac{(t+1)^2}{t^2})\overrightarrow{j} 
+\end{displaymath}
+
+\item Recherche des symétries, régionnement, branches infinies.
+\begin{displaymath}
+ f(\theta)= O +\dfrac{1}{2\cos\theta\cos(2\theta)}\overrightarrow{e}_\theta
+\end{displaymath}
+\end{enumerate}
+
+\section{Savoir-faire}
+\begin{enumerate}
+ \item Tracé à la machine, syntaxe Maple de \verb|plot|. Sans machine, s'aider des autres points et former éventuellement des tableaux de variation.
+\item Symétries. Trouver $S$ tel que $f(t')=S(f(t))$ où $S$ est une transformation du plan.
+\item Régionnement attaché au signe de $\rho(\theta)$ pour une courbe polaire.
+\item Calculs de vitesse comme pour la cardioïde.
+\item \'Equations de tangentes et de normale.
+\item Branches infinies.
+\item \'Equations cartésiennnes point multiples. Ne pas manquer les équations des courbes polaires usuelles :
+\begin{align*}
+ \rho(\theta) =& a\cos\theta + b\sin \theta & & x^2+y^2 = ax +by \\
+\rho(\theta) =& \dfrac{1}{a\cos\theta + b\sin \theta} & & 1=& ax +by
+\end{align*}
+en multipliant la premiere équation par $\rho$ et la deuxième par $a\cos \theta +b\sin\theta$.
+\end{enumerate}
+
+\end{document}

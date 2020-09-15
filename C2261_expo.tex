@@ -1,0 +1,576 @@
+\input{courspdf_expo.tex}
+\debutcours{Déterminants}{0.2 \tiny{ le \today}}
+
+\section{Formes multilinéaires}
+\subsection{Définitions}
+\begin{nota}
+    Soit $E$, $F$ deux $\K$-espaces vectoriels, $p\in \N^*$ et $\omega$ une fonction de $E^p$ dans $F$.\newline
+    Pour tout $i \in \llbracket 1,n \rrbracket$ et tout $(x_1, \cdots,x_p) \in E^p$; on définit les fonctions \og de la $i$-ème place\fg 
+\[
+  \omega(x_1, \cdots, x_{i-1}, \bullet , x_{i+1}, \cdots,x_p):\hspace{0.5cm}
+\left\lbrace
+\begin{aligned}
+  E &\rightarrow F \\
+  x &\mapsto \omega(x_1, \cdots, x_{i-1}, x , x_{i+1}, \cdots,x_p)
+\end{aligned}
+\right. .
+\]
+\end{nota}
+
+\index{forme multilinéaire} 
+\begin{defi}[Application $p$-linéaire]
+  Soit $E$, $F$ deux $\K$-espaces vectoriels et $p\in \N^*$. Une application $\omega$ de $E^p$ dans $F$ est dite \emph{$p$-linéaire}  si et seulement si
+\[
+  \forall i \in \llbracket 1,p \rrbracket, \; \forall (x_1, \cdots, x_p) \in E^p, \hspace{0.5cm}
+  \omega(x_1, \cdots, x_{i-1}, \bullet , x_{i+1}, \cdots,x_p) \in \mathcal{L}(E,F).
+\]
+Lorsque $F=\K$, une application $p$-linéaire est appelée \emph{forme $p$-linéaire}.
+\end{defi}
+\begin{propn}
+L'ensemble des formes $p$-linéaires est un sous-espace vectoriel de l'espace fonctionnel $\mathcal F(E^p,\K)$.  
+\end{propn}
+\begin{demo}
+  On vérifie avec la définition des opérations fonctionnelles que toute combinaison de deux formes $p$-linéaires et encore $p$-linéaire. 
+\end{demo}
+\begin{defi}
+Soit $\sigma\in \mathfrak S_p$ et $\omega$ une application $p$-linéaire sur un espace $E$. L'application $\sigma^*\omega$ est définie par :
+\begin{displaymath}
+ \forall (x_1,\cdots,x_p) \in E^p : (\sigma^*\omega)(x_1,\cdots,x_p)=\omega(x_\sigma(1),\cdots,x_\sigma(p)).
+\end{displaymath}
+\end{defi}
+
+\begin{propn} \label{sigma*}
+Soit $\sigma$ et $\sigma'$ dans $\mathfrak S_p$ et $\omega$, $\omega'$ des applications $p$-linéaires sur un espace $E$. Alors:
+\begin{displaymath}
+\forall \lambda \in \K, \;  \sigma^*(\omega + \omega') = \sigma^*\omega + \sigma^* \omega' \text{ et }\sigma^*(\lambda \omega) = \lambda \sigma^* \omega .
+\end{displaymath}
+De plus, la forme $\sigma^*\omega$ est $p$-linéaire et 
+\begin{displaymath}
+ \sigma'^*(\sigma^* \omega) = (\sigma' \circ \sigma)^*\omega .
+\end{displaymath}
+\end{propn}
+\begin{demo}
+Notons $\omega_1=\sigma^* \omega$. La $i$-ème place de $\sigma_1$ est la $\sigma(i)$-ème de $\sigma$. Comme $\omega$ est linéaire par rapport à chacune de ses places, il en est de même de $\omega_1$.\newline
+Soit $x = (x_1,\cdots,x_p)\in E^p$, notons $y_1=x_{\sigma'(1)}, \cdots ,y_i=x_{\sigma'(i)},\cdots y_p = x_{\sigma'(p)}$.
+\begin{multline*}
+\sigma'^* \omega_1(x_1,\cdots,x_p) = \omega_1(x_{\sigma'(1)}, \cdots, x_{\sigma'(p)})
+= \omega(y_{\sigma(1)},\cdots,y_{\sigma(p)})
+= \omega(x_{\sigma'(\sigma(1))}, \cdots, x_{\sigma'(\sigma(p))})\\
+= \left( (\sigma'\circ \sigma)^* \omega\right)(x_1,\cdots,x_p) \hspace{0.5cm}
+\text{ car } y_i=x_{\sigma'(i)} \Rightarrow y_{\sigma(i)}=x_{\sigma'(\sigma(i))}.
+\end{multline*}
+\end{demo}
+\index{forme multilinéaire alternée} \index{forme multilinéaire antisymétrique}
+\begin{defi}
+ Une forme $p$-linéaire $\omega$ est dite \emph{alternée} (ou antisymétrique) si et seulement si $\sigma^*\omega=\varepsilon(\sigma)\omega$ pour toute permutation $\sigma\in \mathfrak S_p$.\newline
+Une forme $p$-linéaire $\omega$  est dite \emph{symétrique} si et seulement si $\sigma^*\omega=\omega$ pour toute permutation $\sigma\in \mathfrak S_p$.
+\end{defi}
+\begin{propn}
+  L'ensemble des formes $p$-linéaires alternées sur $E$ est un sous-espace vectoriel de l'espace des formes $p$-linéaires. Il est noté $\Lambda_p(E)$.
+\end{propn}
+\begin{demo}
+  Pas de difficulté pour vérifier la stabilité.
+\end{demo}
+
+\subsection{Formes alternées}
+\begin{propn}
+ Soit $\omega$ une forme $p$-linéaire alternée sur $E$, soit $(x_1, \cdots, x_p) \in E^p$.
+ \[
+  \left. 
+  \begin{aligned}
+   \exists i &\text{ tq } x_i = 0\\
+             &\text{ ou }\\
+   \exists (i,j) \in \llbracket 1,p \rrbracket^2 &\text{ tq } i\neq j \text{ et } x_i = x_j \\
+  \end{aligned}
+\right\rbrace \Rightarrow \omega(x_1, \cdots, x_p) = 0.
+ \]
+\end{propn}
+\begin{demo}
+ L'application $\omega$ est linéaire par rapport à la $i$-ème place. Donc $x_i=0_E \Rightarrow \omega(x_1,\cdots,x_p)=0_\R$.\newline
+ Supposons $i < j$ avec $x_i = x_j = x$. Alors
+\[
+\underset{= \omega(x_1,\cdots,x, \cdots ,x, \cdots,x_p)}{\underbrace{\omega(x_1,\cdots,x_i, \cdots ,x_j, \cdots,x_p)}}
+=
+- \underset{= \omega(x_1,\cdots,x, \cdots ,x, \cdots,x_p)}{\underbrace{\omega(x_1,\cdots,x_j, \cdots ,x_i, \cdots,x_p)}}  
+\Rightarrow \omega(x_1,\cdots,x_i, \cdots ,x_j, \cdots,x_p) = 0.
+\]
+\end{demo}
+\begin{propn}
+ Soit $\omega$ une forme $p$-linéaire alternée et $\mathcal F$ une famille liée de vecteurs de $E$ alors $\omega(\mathcal F)=0$.
+\end{propn}
+\begin{demo}
+  Supposons $\mathcal{F} = (x_1, \cdots,x_p)$ liée. Un de ses vecteurs est combinaison linéaire des autres:
+\[
+  x_i = \sum_{j\neq i} \lambda_j x_j.
+\]
+Par linéarité par rapport à la $i$-ème place,
+\[
+  \omega(x_1, \cdots, x_p) = \sum_{j\neq i} \lambda_j \omega(x_1,\cdots,x_{i-1},x_j,x_{i+1},\cdots x_p) = 0
+\]
+car chaque terme de la somme est nul d'après la proposition précédente. En effet $x_j$ figure toujours à deux places distinctes parmi les arguments de $\omega$.
+\end{demo}
+L'application nulle est la seule forme $p$-linéaire alternée de $E$ lorsque $p>\dim E$. On peut démontrer (on ne le fera pas ici) que l'espace des formes $p$-inéaires alternées dans $E$ est de dimension
+\begin{displaymath}
+ \binom{\dim E}{p}.
+\end{displaymath}
+ Ceci est compatible avec les dimensions déjà connues : $\dim \Lambda_1(E) = \dim E$ car $\Lambda_p(E)= E^*$, $\dim \Lambda_1(E) =0$ si $p>\dim E$. C'est compatible aussi avec  le théorème suivant pour $p=\dim E$.
+\begin{propn}
+ L'espace des formes $p$-linéaires alternées dans un espace de dimension $p$ est de dimension $1$.
+\end{propn}
+\begin{demo}
+ La démonstration se fait en deux parties. Une analyse qui consiste à considérer une forme $p$ linéaire alternée et à montrer qu'elle doit s'écrire d'une manière très particulière. Une synthèse qui consiste à vérifier que l'expression qui se dégage du développement précédent définit bien une forme $p$ linéaire alternée.
+ 
+Analyse.\newline
+Soit $\delta$ une forme $p$-linéaire aternée sur un espace $E$ de dimension $p$. Soit $\mathcal A=(a_1,\cdots,a_p)$ une base de $E$. On considère une famille quelconque $(x_1,\cdots,x_p)$ de vecteurs de $E$. Notons $\Lambda$ la matrice de ces vecteurs dans la base de sorte qu'ils se décomposent en
+\begin{displaymath}
+ \forall j\in \llbracket 1, p \rrbracket,\hspace{0,5cm}x_j =\sum_{i=1}^{p}\lambda_{i,j}a_i
+\end{displaymath}
+Pour exploiter la multilinéarité de $\delta$, on va développer ainsi \emph{tous} les $x_i$. Un problème de notation se pose alors. Il faut trouver une notation différente pour le $i$ de chaque somme qui marque sa dépendance vis à vis de $j$. Le plus naturel est d'utiliser un indice. On notera donc
+\begin{displaymath}
+ \forall j\in \llbracket 1, p \rrbracket,\hspace{0,5cm}x_j =\sum_{i_j=1}^{p}\lambda_{i_j,j}a_{i_j}
+\end{displaymath}
+d'où
+\begin{displaymath}
+\delta(x_1,\cdots,x_p)=
+\delta\left( 
+\sum_{i_1=1}^{p}\lambda_{i_1,1}a_{i_1}, \sum_{i_2=1}^{p}\lambda_{i_2,2}a_{i_2},
+\cdots,
+\sum_{i_p=1}^{p}\lambda_{i_p,p}a_{i_p}
+\right) .
+\end{displaymath}
+Quand on développe par mutilinéarité, on obtient une somme qui porte sur les $p$-uplets d'indices
+\begin{displaymath}
+\delta(x_1,\cdots,x_p)=
+\sum_{(i_1,\cdots,i_p)\in \llbracket 1,p \rrbracket^p}\lambda_{i_1,1}\lambda_{i_2,2}\cdots \lambda_{i_p,p} 
+\,\delta\left(a_{i_1},a_{i_2},\cdots,a_{i_p} \right) .
+\end{displaymath}
+Chaque $p$-uplet définit une unique fonction $f$ de $\llbracket 1,p \rrbracket$ dans lui même $f(1)=i_1,f(2)=i_2,\cdots f(p)=i_p$. En notant $\mathcal{F}$ l'ensemble des fonctions de $\llbracket 1,p \rrbracket$ dans lui même, le développement s'écrit
+\begin{displaymath}
+\delta(x_1,\cdots,x_p)=
+\sum_{f\in \mathcal{F}}\lambda_{f(1),1}\lambda_{f(2),2}\cdots \lambda_{f(p),p} 
+\,\delta\left(a_{f(1)},a_{f(2)},\cdots,a_{f(p)} \right)  
+\end{displaymath}
+Quelles fonctions contribuent rééllement à la somme ?\newline
+Comme $\delta$ est alternée, seules les $f$ \emph{injectives} ont une contribution non nulle. Chaque fois que $f$ n'est pas injective, un vecteur $a$ se retrouve deux fois dans le $\delta$. Or ici, injective est équivalent à surjective. On est donc amené à sommer uniquement sur les permutations
+\begin{displaymath}
+\delta(x_1,\cdots,x_p)=
+\sum_{\sigma\in \mathfrak{S}_p}\lambda_{\sigma(1),1}\lambda_{\sigma(2),2}\cdots \lambda_{\sigma(p),p} 
+\,
+\underset{(\sigma^* \delta)(a_1,\cdots,a_p)}{
+  \underbrace{
+    \delta\left(a_{\sigma(1)},a_{\sigma(2)},\cdots,a_{\sigma(p)} \right).
+  }
+}  
+\end{displaymath}
+Comme $\delta$ est alternée, $\sigma^* \delta=\varepsilon(\sigma)\delta$. On peut donc mettre en facteur le scalaire $\delta(a_1,\cdots,a_p)$ et obtenir
+\begin{displaymath}
+\delta(x_1,\cdots,x_p)= \left( 
+\sum_{\sigma\in \mathfrak{S}_p}\varepsilon(\sigma)\lambda_{\sigma(1),1}\lambda_{\sigma(2),2}\cdots \lambda_{\sigma(p),p}
+\right) \delta(a_1,\cdots,a_p).
+\end{displaymath}
+Introduisons la base duale $\mathcal{A}^*=(\alpha_1,\cdots,\alpha_p)$ des formes coordonnées dans la base $\mathcal{A}$ et réécrivons les coordonnées: $\lambda_{i,j}=\alpha_i(x_j)$. On en déduit
+\begin{displaymath}
+\delta(x_1,\cdots,x_p)= \left( 
+\sum_{\sigma\in \mathfrak{S}_p}\varepsilon(\sigma)\alpha_{\sigma(1)}(x_1)\alpha_{\sigma(2)}(x_2)\cdots \alpha_{\sigma(p)}(x_p)
+\right) \delta(a_1,\cdots,a_p).
+\end{displaymath}
+Ceci achève l'analyse.
+
+Synthèse.
+Considérons l'application $\delta_0$ de $E^p$ dans $\K$ définie par:
+\begin{displaymath}
+\delta_0(x_1,\cdots,x_p)=  
+\sum_{\sigma\in \mathfrak{S}_p}\varepsilon(\sigma)\alpha_{\sigma(1)}(x_1)\alpha_{\sigma(2)}(x_2)\cdots \alpha_{\sigma(p)}(x_p)
+= \sum_{\sigma\in \mathfrak{S}_p}\varepsilon(\sigma) \prod_{j=1}^p\alpha_{\sigma(j)}(x_j).
+\end{displaymath}
+L'analyse montre la relation fonctionnelle $\delta = \delta(a_1,\cdots,a_p)\delta_0$. L'espace des formes $p$-linéaires alternées est de dimension au plus $1$. Pour montrer qu'il est exactement de dimension $1$, il reste à montrer que $\delta_0$ est effectivement $p$-linéaire et alternée.\newline
+La fonction $\delta_0$ est une somme de $p!$ fonctions. Dans chacune, un vecteur particulier $x_j$ ne figure qu'une fois et comme image par une forme linéaire $\alpha_{\sigma(j)}$. Ceci montre que la forme est multilinéaire.\newline
+Pour le caractère alterné, considérons une permutation quelconque $\sigma_0$.
+\begin{displaymath}
+ (\sigma_0^*\delta_0)(x_1,\cdots,x_p)=\delta_0(x_{\sigma_0(1)},\cdots,x_{\sigma_0(p)})
+= \sum_{\sigma\in \mathfrak{S}_p}\varepsilon(\sigma) \prod_{j=1}^p\alpha_{\sigma(j)}(x_{\sigma_0(j)}).
+\end{displaymath}
+Lorsque $j$ décrit $\llbracket 1,p\rrbracket$, il en est de même pour $\sigma_0(j)$. On peut donc poser $j'=\sigma_0(j)$ dans le produit d'où $j=\sigma_0^{-1}(j')$ puis revenir à la notation $j$
+\begin{displaymath}
+\prod_{j=1}^p\alpha_{\sigma(j)}(x_{\sigma_0(j)})
+= \prod_{j'=1}^p\alpha_{\sigma\circ \sigma_0^{-1}(j'))}(x_{j'}) 
+= \prod_{j'=1}^p\alpha_{\sigma\circ \sigma_0^{-1}(j))}(x_{j}) .
+\end{displaymath}
+De même, $\sigma' = \sigma \circ \sigma_0^{-1}$ décrit $\mathfrak{S}_p $ et
+\begin{displaymath}
+ (\sigma_0^*\delta_0)(x_1,\cdots,x_p)
+= \sum_{\sigma'\in \mathfrak{S}_p}\varepsilon(\sigma'\circ \sigma_0) \prod_{j=1}^p\alpha_{\sigma'(j)}(x_{j}) 
+= \sum_{\sigma\in \mathfrak{S}_p}\varepsilon(\sigma\circ \sigma_0) \prod_{j=1}^p\alpha_{\sigma(j)}(x_{j}) .
+\end{displaymath}
+On termine en utilisant la propriété de la signature:  $\varepsilon(\sigma\circ \sigma_0)=\varepsilon(\sigma)\varepsilon(\sigma_0)$.
+\end{demo}
+La définition du déterminant est un cas particulier d'un procédé plus général que l'on pourrait appeler \emph{antisymétrisation d'une forme}.\newline
+Soit $\omega$ une forme $p$-linéaire sur un espace vectoriel $E$. La forme $\omega$ n'est pas alternée. Définissons une forme notée $\omega^a$ par :
+\[
+ \omega^a = \sum_{\sigma \in \mathfrak{S}} \varepsilon(\sigma) \sigma^* \omega.
+\]
+On vérifie avec la proposition \ref{sigma*} que $\omega^a$ est alternée.
+Pour la définition du déterminant, considérons une base $(a_1, \cdots, a_p)$ de $E$ et $(\alpha_1, \cdots, \alpha_p)$ la base duale des formes coordonnées. Définissons une $p$-forme par:
+\[
+ \forall (x_1, \cdots, x_p) \in E^n, \; \omega(x_1,\cdots,x_p) = \alpha_1(x_1) \cdots \alpha_p(x_p).
+\]
+Cette forme n'est pas alternée, son antisymétrisée est la forme linéaire alternée précédente qui est appelée déterminant dans la base $(a_1, \cdots, a_p)$.
+
+
+\section{Déterminants de famille de vecteurs}
+\subsection{Déterminant d'une famille de vecteurs dans une base}
+\index{déterminant d'une famille dans une base}
+\begin{propn}[déterminant d'une famille dans une base]\index{déterminant d'une famille dans une base}
+ Soit $\mathcal{A}$ une base d'un $\K$-espace vectoriel $E$ de dimension $p$. Il existe une unique forme $p$-linéaire alternée qui prend en $\mathcal{A}$ la valeur $1$. Cette forme est notée $\det_{\mathcal{A}}$ et appelée \emph{déterminant dans la base} $\mathcal{A}$.
+\end{propn}
+\begin{demo}
+ C'est une conséquence des calculs de la section précédente. Ils montrent en particulier que 
+\begin{displaymath}
+ \det_{\mathcal{B}}\left( (x_1,\cdots,x_p)\right) 
+= \sum_{\sigma\in \mathfrak{S}_p}\varepsilon(\sigma) \prod_{j=1}^p\alpha_{\sigma(j)}(x_j)
+\end{displaymath}
+où les $\alpha_i$ sont les fonctions coordonnées dans la base $\mathcal{A}$.
+\end{demo}
+\begin{propn}
+ Soit $\mathcal{A}$ et $\mathcal{B}$ deux bases de $E$, alors:
+\begin{displaymath}
+ \det_{\mathcal{B}} = \det_{\mathcal{B}}(\mathcal{A})\det_{\mathcal{A}}\text{ (égalité entre $p$-formes)},\hspace{1cm}
+1= \det_{\mathcal{B}}(\mathcal{A})\det_{\mathcal{A}}(\mathcal{B})\text{ (égalité entre scalaires)}
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ Bien noter qu'il s'agit d'une égalité entre formes $p$-linéaires altenées. Comme $\det_{\mathcal{A}}$ n'est pas la $p$-forme alternée identiquement nulle car elle prend la valeur $1$ en $\mathcal{A}$, c'est une base de $\Lambda^p(E)$. Il existe donc un scalaire $\lambda\in \K$ tel que $\det_{\mathcal{B}} = \lambda\det_{\mathcal{A}}$ (égalité entre $p$-formes). Si on prend la valeur en $\mathcal{A}$ pour cette égalité fonctionnelle, on obtient
+\begin{displaymath}
+ \det_{\mathcal{B}}(\mathcal{A}) = \lambda \, \underset{=1}{\underbrace{\det_{\mathcal{A}}(\mathcal{A})}} = \lambda
+\end{displaymath}
+Pour obtenir la deuxième égalité, il suffit de prendre la valeur en $\mathcal{B}$ dans l'égalité fonctionnelle.
+\end{demo}
+\begin{thm}
+ Soit $\mathcal{A}$ une base d'un $\K$-espace vectoriel $E$ de dimension $p$ et $\mathcal{F}$ une famille de $p$ vecteurs de $E$. Cette famille est une base si et seulement si $\det_{\mathcal{A}}(\mathcal{F})\neq 0$.
+\end{thm}
+\begin{demo}
+ Comme $\det_{\mathcal{B}}$ est une forme $p$-linéaire alternée, on sait déjà que si $\mathcal{F}$ est liée, son déterminant est nul. Donc $\det_{\mathcal{B}}(\mathcal{F})\neq 0$ entraine $\mathcal{F}$ non liée c'est à dire libre donc une base car c'est une famille avec $p=\dim E$ vecteurs.\newline
+Réciproquement, si $\mathcal{F}$ est une base, on peut considérer la forme déterminant qu'elle définit. Elle vérifie l'identité fonctionnelle $ \det_{\mathcal{F}} = \det_{\mathcal{F}}(\mathcal{A})\det_{\mathcal{A}}$.\newline
+Si on prend la valeur en $\mathcal{F}$, on obtient $1=\det_{\mathcal{F}}(\mathcal{A})\det_{\mathcal{A}}(\mathcal{F})$ qui prouve bien que $\det_{\mathcal{A}}(\mathcal{F})\neq 0$.
+\end{demo}
+\index{formules de Cramer}
+\begin{propn}[formules de Cramer pour les coordonnées dans une base]
+ Soit $\mathcal{A} = (a_1,\cdots, a_p)$ une base d'un $\K$-espace vectoriel $E$ et $b\in E$. La $i$-ème coordonnée de $b$ dans $\mathcal{A}$ est 
+ \[
+  \det_{\mathcal{A}}(a_1, \cdots a_{i-1},b,a_{i+1}, \cdots, a_{p})
+ \]
+c'est à dire le déterminant  de la famille obtenue à partir de $\mathcal{A}$ en remplaçant $a_i$ par $b$.
+\end{propn}
+\begin{demo}
+Notons $(\lambda_1, \cdots, \lambda_p)$ les coordonnées de $b$ et remplaçons $b$ par son expression dans la base:
+\begin{multline*}
+\det_{\mathcal{A}}(a_1, \cdots a_{i-1},b,a_{i+1}, \cdots, a_{p})
+=
+\det_{\mathcal{A}}(a_1, \cdots a_{i-1},\sum_{j=1}^{p}\lambda_j a_j,a_{i+1}, \cdots, a_{p})\\
+=
+\sum_{j=1}^{p}\lambda_j \det_{\mathcal{A}}(a_1, \cdots a_{i-1}, a_j,a_{i+1}, \cdots, a_{p})
+=
+\lambda_i \underset{=\, \det_{\mathcal{A}}(\mathcal{A})  = 1}{\underbrace{\det_{\mathcal{A}}(a_1, \cdots a_{i-1}, a_i,a_{i+1}, \cdots, a_{p})}}
+\end{multline*}
+car seul $j=i$ contribue vraiment à la somme. Pour toute autre valeur de $j$, le vecteur $x_j$ figure à deux places différentes dans le déterminant.
+\end{demo}
+\begin{rem}
+  Pour les formules de Cramer, on peut utiliser une base $\mathcal{U}$ quelconque au lieu de $\mathcal{A}$. En reprenant le même raisonnement, on obtient
+\[
+  \forall j \in \llbracket 1,p \rrbracket,\; \lambda_i = \frac{\det_{\mathcal{U}}(a_1,\cdots,a_{i-1},b,a_{i+1},\cdots,a_p)}{\det_{\mathcal{U}}(a_1,\cdots,a_{i-1},a_i,a_{i+1},\cdots,a_p)}.
+\]
+
+\end{rem}
+
+\begin{exple}[Déterminant d'une famille \og échelonnée\fg dans une base.]
+Soit $\mathcal{A} = (a_1, \cdots, a_p)$ une base et $\mathcal{B}=(b_1,\cdots,b_p)$. On note $M$ la matrice de $\mathcal{B}$ dans $\mathcal{A}$ et on suppose que $\mathcal{B}$ est \emph{triangulaire supérieure}. Alors
+\[
+  \det_\mathcal{A}(b_1, \cdots, b_p) = m_{11} \cdots m_{pp}.
+\]
+Quand on développe le déterminant, toutes les composantes en $a_1$ dans $a_2, a_p$ disparaissent car $m_{11}a_1$ est seul à la première place. De même, touts les composantes en $a_2$ dans $a_3, \cdots,a_p$ disparaissent car $m_{22}a_2$ est seul à la deuxième place et ainsi de suite. 
+\end{exple}
+
+
+\subsection{Orientation d'un espace vectoriel réel}\index{orientation d'un espace vectoriel réel}
+Le déterminant dans une base donnée d'une autre base est un élément non nul du corps. Lorsque le corps est $\R$,  ce nombre est strictement positif ou strictement négatif.
+\begin{defi}
+Deux bases $\mathcal{A}_1$ et $\mathcal{A}_2$ ont \emph{la même orientation} si et seulement le déterminant d'une base dans l'autre est strictement positif c'est à dire
+\[
+ \det_{\mathcal{A}_1}(\mathcal{A}_2) >0.
+\] 
+\end{defi}
+
+\begin{propn}
+ La relation \og avoir la même orientation\fg~ dans l'ensemble des bases d'un $\R$-espace vectoriel de dimension finie est une relation d'équivalence. Pour cette relation, il existe deux classes d'équivalence.
+\end{propn}
+\begin{demo}
+ La relation est réflexive car $\det_{\mathcal{A}}(\mathcal{A}) = 1$. Elle est symétrique car $\det_{\mathcal{A}}(\mathcal{B}) \det_{\mathcal{B}}(\mathcal{A}) = 1$.\newline
+ Supposons que $\mathcal{A}$ ait la même orientation que $\mathcal{B}$ et que $\mathcal{B}$ ait la même orientation que $\mathcal{C}$. Alors:
+ \[
+  \det_{\mathcal{A}}(\mathcal{C}) = \underset{ > 0}{\underbrace{\det_{\mathcal{A}}(\mathcal{B})}}\:
+                                   \underset{ > 0}{\underbrace{\det_{\mathcal{B}}(\mathcal{C})}} > 0
+ \]
+donc $\mathcal{A}$ a la même orientation que $\mathcal{C}$. La relation est transitive.
+\end{demo}
+\begin{defi}
+\emph{Orienter un $\R$-espace vectoriel} c'est choisir une des deux classes et décréter que les bases de cette classe seront appelées \emph{directes} et les autres \emph{indirectes}.\index{base directe} \index{base indirecte} 
+\end{defi}
+\begin{exple}
+ L'orientation usuelle de $\R^n$ est celle pour laquelle la base canonique est directe.
+\end{exple}
+Les propriétés du déterminant permettent de formuler quelques propriétés.
+\begin{propn}
+ Soit $E$ un $\R$-espace orienté et $\mathcal{A}$ une base de $E$.
+\begin{itemize}
+ \item Si $\mathcal{A}'$ est obtenue à partir de $\mathcal{A}$ en permutant deux vecteurs, $\mathcal{A}$ et $\mathcal{A}'$ ont des orientations différentes.
+\item Si $\mathcal{A}'$ est obtenue à partir de $\mathcal{A}$ en multipliant un vecteur par un réel strictement positif, $\mathcal{A}$ et $\mathcal{A}'$ ont la même orientation.
+\item Si $\mathcal{A}'$ est obtenue à partir de $\mathcal{A}$ en multipliant un vecteur par un réel strictement négtif, $\mathcal{A}$ et $\mathcal{A}'$ ont des orientations différentes.
+\item Si $\mathcal{A}'$ est obtenue à partir de $\mathcal{A}$ en ajoutant à un vecteur une combinaison linéaire des autres, $\mathcal{A}$ et $\mathcal{A}'$ ont la même orientation.
+\end{itemize}
+
+\end{propn}
+
+ Une des difficultés de cette notion d'orientation est que lorsque un espace orienté, ses sous-espaces n'héritent pas naturellement d'une orientation.\newline
+\index{orientation d'un plan autour d'un vecteur} Par exemple, soit $E$ un $\R$-espace vectoriel de dimension $3$ orienté et $P$ un sous-espace de dimension $2$ c'est à dire un plan. Pour orienter $P$, on doit utiliser un vecteur $w\notin P$.\newline
+On dira que $P$ est orienté autour de $w$ en décrétant que les bases \emph{directes} de $P$ sont les bases $(u,v)$ de $P$ telles que $(u,v,w)$ soit une base \emph{directe} de $E$. Plus généralement, dans un espace orienté, on peut orienter ainsi un hyperplan $H$ autour d'un vecteur $w\notin H$.
+\clearpage
+
+\section{Déterminant d'un endomorphisme}
+\index{déterminant d'un endomorphisme}
+\begin{propdef}
+ Soit $E$ un $\K$-espace vectoriel de dimension finie $p$ et $f$ un endomorphisme de $E$. Il existe un unique nombre noté $\det(f)$ tel que, pour toute forme $p$-linéaire alternée non nulle $\delta$, on ait $f^*\delta = \det(f) \delta$.
+\end{propdef}
+\begin{demo}
+Soit $\delta_0$ une forme $p$-linéaire alternée (par exemple $\det_\mathcal{A}$ où $\mathcal{A}$ est une base de $E$). Définissons $f^*\delta_0$ dans $E^p$ par:
+ \[
+   \forall (x_1, \cdots, x_p)\in E^p, \; (f^*\delta_0)(x_1, \cdots, x_p) = \delta_0(f(x_1), \cdots, f(x_p)).
+ \]
+On peut vérifier que $f^*\delta_0$ est encore une forme $p$-linéaire alternée. Comme l'espace des formes $p$-linéaires alternées est de dimension $1$, il existe $\lambda_f \in \R$ tel que $f^*\delta_0 = \lambda_f \delta_0$. Ce réel $\lambda_f$ ne dépend que de $f$ et pas de $\delta_0$. En effet, si $\delta_1$ est une autre forme $p$-linéaire alternée non nulle, il existe $\mu_1 \in \R$ non nul tel que $\delta_1 = \mu_1 \delta_0$. Par linéarité,
+\[
+  f^*\delta_1 = f^*(\mu_1\delta_0) = \mu_1\, f^* \delta_0 = \mu_1 \lambda_f \delta_0 = \lambda_f \mu_1 \delta_0 = \lambda_f \delta_1. 
+\]
+\end{demo}
+\begin{rems}
+\begin{itemize}
+  \item Bien noter que cette définition est indépendante de toute base. C'est bien le déterminant de l'endomorphisme pour lui même seulement.
+  \item Par application directe de la définition:
+\[
+  \det(\Id_E) = 1,\hspace{0.5cm} \det(\lambda f) = \lambda^{\dim(E)}\, \det(f).
+\]
+\end{itemize}
+\end{rems}
+\newpage
+\begin{propn}
+ Soit $E$ un $\K$-espace vectoriel de dimension finie $p$ et $f \in \mathcal{L}(E)$. Pour toute base $\mathcal{A}=(a_1,\cdots,a_p)$,
+\begin{displaymath}
+ \det(f) = \det_{\mathcal{A}}(f(a_1),\cdots,f(a_p)).
+\end{displaymath}
+\end{propn}
+\begin{demo}
+On utilise la définition du déterminant de $f$ avec la forme $p$-linéaire $\det_\mathcal{A}$ puis on spécialise en $\mathcal{A}=(a_1,\cdots,a_p)\in E^p$:
+\[
+  f^*\det_\mathcal{A} = \det(f) \det_\mathcal{A} \Rightarrow 
+  \underset{= \det_\mathcal{A}(f(a_1), \cdots, f(a_p))}{\underbrace{(f^*\det_\mathcal{A})(\mathcal{A})}} 
+  = \det(f) \underset{ = 1}{\underbrace{\det_\mathcal{A}(\mathcal{A})}}.
+\]
+\end{demo}
+\newpage
+\index{déterminant de la composée de deux endomorphismes}
+\begin{propn}
+ Soit $E$ de dimension finie et $f$, $g$ deux endomorphismes de $E$. Alors: 
+\begin{displaymath}
+ \det(f\circ g) = \det(f)\, \det(g).
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ Soit $\delta$ une forme $p$-linéaire alternée non nulle. Montrons que $(f\circ g)^*\delta = g^*(f^*\delta)$. Par définition
+\begin{multline*}
+  \forall (x_1, \cdots, x_p) \in E^p, \hspace{0.5cm}
+  \left((f\circ g)^*\delta\right)(x_1, \cdots, x_p)=\delta(f(g(x_1)), \cdots, f(g(x_p)))\\
+  = (f^*\delta)(g(x_1), \cdots, g(x_p))
+  = (g^*(f^*\delta))(x_1, \cdots ,x_p).
+\end{multline*}
+Ensuite, par linéarité et définition du déterminant d'un endomorphisme
+\[
+  (f\circ g)^*\delta = g^*(f^*\delta)
+  \Rightarrow
+  \det(f \circ g) \delta = \det(g) (f^*\delta) = \det(g) \det(f) \, \delta .
+\]
+De cette égalité entre formes $p$-linéaires alternées, on déduit l'égalité $\det(f\circ g) = \det(f) \det(g)$ dans $\K$.
+\end{demo}
+\clearpage
+\section{Déterminant d'une matrice carrée}
+
+\subsection{Les matrices pour elles mêmes}
+\begin{defi}
+ Soit $A\in\mathcal M_p(\K)$, le déterminant de la matrice $A$ est :
+\begin{displaymath}
+ \det A =
+\sum_{\sigma\in \mathfrak s_p}\varepsilon(\sigma)\prod_{j=1}^{p}a_{\sigma(j)j}
+\end{displaymath}
+\end{defi}
+\begin{rem}
+  On peut exprimer $det A$ avec le déterminant dans une base:
+\[
+  \det A= \det_\mathcal{X}(C_1(A), \cdots, C_p(A)).
+\]
+On en déduit le caractère multilinéaire et antisymétrique (alterné) par rapport aux colonnes.
+\end{rem}
+\newpage
+\index{formules de Cramer}
+\begin{propn}[Formules de Cramer]
+ Soit $A\in \mathcal{M}_n(\K)$ inversible et $Y\in \mathcal{M}_{n,1}(\K)$. L'équation $AX = Y$ d'inconnue $X= \begin{pmatrix}x_1 \\ \vdots \\x_n\end{pmatrix}$ admet une unique solution avec $\forall i \in \llbracket 1,n \rrbracket$, $x_i = \frac{\det M_i}{\det M}$ où $M_i$ est obtenue à partir de $M$ en remplaçant la colonne $i$ par $Y$.
+\end{propn}
+\begin{demo}
+  On se contente de vérifier. Si $X$ est solution alors $Y$ est combinaison des colonnes de $A$
+\[
+  Y = x_1C_1(A) + \cdots + x_p C_p(A).
+\]
+Quand on remplace $Y$ dans $M_i$ par cette combinaison et que l'on développe par rapport à la place $i$, les termes avec la même colonne $j$ (pour $j \neq i$) en deux places différentes sont nuls et il reste seulement
+\begin{multline*}
+  \det(M_i) = \det(C_1(A),\cdots,Y,\cdots,C_p(A)) \\= x_i \det(C_1(A),\cdots,C_i(A),\cdots,C_p(A)) = x_i \det(M).
+\end{multline*}
+\end{demo}
+\newpage
+\begin{propn}
+Le déterminant d'une matrice triangulaire (supérieure ou inférieure) est égal au produit de ses termes diagonaux.
+\end{propn}
+\begin{rem}
+En particulier $\det I_p=1$.  
+\end{rem}
+\begin{demo}
+  On examine les contraintes que doit vérifier une permutation $\sigma$ pour que le produit $\prod_{j=1}^{p}a_{\sigma(j)j}$ soit non nul. Le caractère triangulaire supérieur de la matrice impose
+\[
+  \forall j \in \llbracket 1, p \rrbracket, \: \sigma(j) \leq j
+\]
+ce qui entraine que seule l'identité contribue réellement à la somme.
+\end{demo}
+
+\newpage
+\begin{propn}
+ Le déterminant d'une matrice est égal à celui de sa transposée.
+\end{propn}
+\begin{demo}
+  Dans la somme étendue aux permutations $\sigma$ qui définit le déterminant, on pose $\sigma' = \sigma^{-1}$ et on exprime le produit avec $\sigma'$. On tombe naturellement sur le déterminant de la transposée.
+\end{demo}
+
+Déterminant d'une matrice de permutation.
+
+admettre la formule pour les matrices triangulaires par blocs.
+\newpage
+
+\subsection{Matrices de familles de vecteurs}
+Par définition même des deux déterminants, pour toute base $\mathcal A$ de $E$ et toute famille $\mathcal F$ de vecteurs de $E$ :
+\begin{displaymath}
+ \det_{\mathcal A}(\mathcal F) = \det \left( \Mat_{\mathcal A}\mathcal F\right) 
+\end{displaymath}
+on en déduit
+\begin{propn}
+Le déterminant matriciel est une forme $p$-linéaire alternée de ses colonnes.
+\end{propn}
+et en utilisant la transposition :
+\begin{propn}
+Le déterminant matriciel est une forme $p$-linéaire alternée de ses lignes. 
+\end{propn}
+Attention, le déterminant n'est \emph{pas} linéaire. En particulier :
+\begin{displaymath}
+ \det \left( \lambda A\right)  = \lambda^p \det A.
+\end{displaymath}
+
+\subsection{Matrices d'endomorphismes}
+Par définition même des deux déterminants, pour toute base $\mathcal A$ de $E$ et tout endomorphisme $f \in \mathcal L(E)$ :
+\begin{displaymath}
+ \det(f) = \det \left( \Mat_{\mathcal A}f\right). 
+\end{displaymath}
+On en déduit
+\begin{propn}
+ Le déterminant du produit de deux matrices est égal au produit des déterminants des matrices. 
+\end{propn}
+\begin{defi}
+ On note $SL_p(\K)$ le sous-groupe de $GL_p(\K)$ formé par les matrices de déterminant $1$.
+\end{defi}
+Remarque sur le déterminant et la formule de changement de base pour la matrice d'un endomorphisme.
+\clearpage
+\subsection{Développements suivant une ligne ou une colonne}
+\begin{defi}
+ \begin{description}
+ \item 
+\end{description}
+\item \index{mineurs} Le \emph{mineur} d'indice $i,j$ est le déterminant de la matrice obtenue en supprimant la $i$-ème ligne et la $j$-ème colonne.
+\item \index{cofacteurs} Le \emph{cofacteur} d'indice $i,j$ est le mineur multiplié par $(-1)^{i+j}$
+\end{defi}
+Retenir l'aspect \emph{en damier} du signe affecté aux cofacteurs avec des $+1$ sur la diagonale et changement de signe à chaque changement de case.
+\begin{propn}
+Soit $A\in \mathcal M_p(\K)$ une matrice carrée dont le mineur d'indice $(i,j)$ est noté $A_{i,j}$.\newline
+Formule du développement suivant la ligne $i$
+ \begin{displaymath}
+ \det A = \sum_{j=1}^p (-1)^{i+j}A_{i,j}a_{ij}
+\end{displaymath}
+Formule du développement suivant la colonne $j$
+ \begin{displaymath}
+ \det A = \sum_{i=1}^p (-1)^{i+j}A_{i,j}a_{ij}
+\end{displaymath}
+\end{propn}
+\clearpage
+\begin{demo}
+On se propose de donner une ébauche de démonstration de la formule de développement suivant la colonne $j_0$.\newline
+Le déterminant est une fonction linéaire de la colonne $j_0$. De la définition même, on peut tirer les coefficients devant les éléments de cette colonne en rassemblant les permutations $\sigma$ qui ont le même $\sigma(j_0)$.
+ \begin{displaymath}
+ \det A =
+\sum_{i=1}^p
+\left( \sum_{
+ \sigma \in \mathfrak s_p \text{ tq } \sigma(j_0)=i
+}\varepsilon(\sigma)\prod_{j\in \llbracket 1, p \rrbracket-\{j_0\}}a_{\sigma(j)j}\right) a_{ij_0}
+\end{displaymath}
+Notons $\alpha_{ij_0}$ le coefficient devant $a_{ij_0}$ dans l'expression précédente (la grande parenthèse). Il est assez facile de se convaincre que 
+\begin{displaymath}
+\alpha_{nn} = A_{n,n} 
+\end{displaymath}
+Quant au reste, on se contentera de dire que l'on peut amener le terme $i,j_0$ en $n,n$ en utilisant des permutations circulaires
+\begin{itemize}
+ \item entre les colonnes $j_0,j_0+1,\cdots,n$
+\item entre les lignes $i,i+1,\cdots,n$
+\end{itemize}
+ce qui introduit des changements de signe dans les mineurs en multipliant par :
+\begin{displaymath}
+ (-1)^{n-j_0}(-1)^{n-i}=(-1)^{i+j}
+\end{displaymath}
+
+Une autre preuve possible serait de noter $\delta$ la fonction définie par la formule du développement suivant la colonne $j$.
+\end{demo}
+\clearpage
+\index{matrice des cofacteurs}
+\begin{defi}
+On désigne par $Com(A)$ la matrice des cofacteurs de $A$ c'est à dire que son terme d'indice $(i,j)$ est $(-1)^{i+j}A_{i,j}$ où $A_{i,j}$ est le mineur d'indice $i,j)$. 
+\end{defi}
+\begin{propn}
+ \begin{displaymath}
+  \trans Com(A)\,A = A\, \trans Com(A) = \det(A)\,I
+ \end{displaymath}
+Si $A$ est inversible,
+\[
+  A^{-1} = \frac{1}{\det A}\, \trans Com(A). 
+\]
+\end{propn}
+\begin{demo}
+  à compléter
+\end{demo}
+\clearpage
+\subsection{Calculs pratiques}
+Signalons 3 méthodes pour calculer pratiquement le déterminant d'une matrice.
+\begin{enumerate}
+  \item Utiliser des opérations élémentaires pour se ramener au déterminant d'une matrice triangulaire qui est le produit des termes de la diagonale. L'effet des opérations élémentaires est le suivant
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|l|} \hline 
+permuter 2 lignes (colonnes)                       & mult par $-1$ \\ \hline
+multiplier une ligne (colonne) par $\lambda$       & mult par $\lambda$ \\ \hline
+ajouter à une ligne (colonne) une combi des autres & conservation \\ \hline
+\end{tabular}
+\end{center}
+  \item Développer suivant une ligne ou une colonne: en dimension 3 seulement ou alors en liaison avec une relation de récurrence et la conservation d'une certaine structure.
+  \item Lorsqu'une colonne particulière figure dans l'expression de toutes les colonnes. Il peut être intéressant de tout développer car chaque fois que la colonne particulière apparait deux fois, le déterminant associé est nul.
+\end{enumerate}
+
+\index{déterminant de VanderMonde} matrice de VanderMonde à compléter
+\end{document}

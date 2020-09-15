@@ -1,0 +1,130 @@
+\input pgmlatex.tex
+
+%En tete et pied de page
+\lhead{Programme 2013 maths MPSI}
+\rhead{}
+
+\lfoot{\tiny{Cette création est mise à disposition selon le Contrat\\ Paternité-Partage des Conditions Initiales à l'Identique 2.0 France\\ disponible en ligne http://creativecommons.org/licenses/by-sa/2.0/fr/
+} }
+\rfoot{\tiny{Rémy Nicolai \jobname}}
+
+
+\begin{document}
+\tableofcontents
+\section{Premier semestre}
+\input{S1-rve.tex}
+\input{S1-calg.tex}
+\input{S1-nctrig.tex}
+
+\subsection{Techniques fondamentales de calcul en analyse}
+\begin{itshape}Le point de vue adopté dans ce chapitre est principalement pratique : il s’agit, en prenant appui sur les acquis du lycée, de mettre en œuvre des techniques de l’analyse, en particulier celles de majoration. Les définitions précises et les constructions rigoureuses des notions de calcul différentiel ou intégral utilisées sont différées à un chapitre ultérieur. Cette appropriation en deux temps est destinée à faciliter les apprentissages.
+Les objectifs de formation sont les suivants :
+\begin{itemize}
+ \item  une bonne maîtrise des automatismes et du vocabulaire de base relatifs aux inégalités ;
+ \item l’introduction de fonctions pour établir des inégalités ;
+ \item la manipulation des fonctions classiques dont le corpus est étendu ;
+ \item le calcul de dérivées et de primitives ;
+ \item la mise en pratique, sur des exemples simples, de l’intégration par parties et du changement de variable ;
+ \item l’application des deux points précédents aux équations différentielles.
+\end{itemize}
+ Les étudiants doivent connaître les principales techniques de calcul et savoir les mettre en pratique sur des cas simples. Le cours sur les équations différentielles est illustré par des exemples issus des autres disciplines scientifiques.
+\end{itshape}
+
+\setcounter{subsubsection}{0}
+\input{S1-TFCA-ineg.tex}
+\input{S1-TFCA-foncr.tex}
+\input{S1-TFCA-ped.tex}
+% fin de TFCA
+
+\input{S1-rsn.tex}
+
+\subsection{Limites, continuité, dérivabilité}
+\begin{itshape}
+Ce chapitre est divisé en deux parties, consacrées aux limites et à la continuité pour la première, au calcul différentiel
+pour la seconde.\newline
+Dans de nombreuses questions de nature qualitative, on visualise une fonction par son graphe. Il convient de souligner
+cet aspect géométrique en ayant recours à de nombreuses figures.\newline
+Les fonctions sont définies sur un intervalle $I$ de $\R$ non vide et non réduit à un point et, sauf dans les paragraphes A-e) et B-f ), sont à valeurs réelles.\newline
+Dans un souci d’unification, on dit qu’une propriété portant sur une fonction $f$ définie sur $I$ est vraie au voisinage de $a$ si elle est vraie sur l’intersection de $I$ avec un intervalle ouvert centré sur $a$ si $a$ est réel, avec un intervalle $[A, +\infty[$ si $a=+\infty$, avec un intervalle $]-\infty, A]$ si $a =-\infty$.
+\end{itshape}
+\input{S1-LCD-limcon}
+\input{S1-LCD-deriv}
+
+\input{S1-asymp}
+\input{S1-arith}
+\input{S1-struc}
+\input{S1-poly}
+
+\section{Deuxième semestre}
+Le programme du deuxième semestre est organisé autour de trois objectifs :
+\begin{itemize}
+ \item  introduire les notions fondamentales relatives à l’algèbre linéaire et aux espaces préhilbertiens ;
+ \item  prolonger les chapitres d’analyse du premier semestre par l’étude de l’intégration sur un segment et des séries
+   numériques, et achever ainsi la justification des résultats admis dans le chapitre \og Techniques fondamentales de
+   calcul en analyse \fg ;
+ \item consolider les notions relatives aux probabilités sur un univers fini introduites au lycée et enrichir le corpus des
+   connaissances sur les variables aléatoires définies sur un tel univers.
+\end{itemize}
+Le professeur a la liberté d’organiser l’enseignement du semestre de la manière qui lui semble la mieux adaptée.
+
+\subsection{Espaces vectoriels et applications linéaires}
+\begin{itshape}Dans tout le cours d'algèbre linéaire, le coprs $\K$ est égal à $\R$ ou $\C$. 
+Le programme d'algèbre linéaire est divisé en deux chapitre d'importance comparable, intitulés \og Algèbre linéaire I\fg et \og Algèbre linéaire II\fg. Le premier privilégie les objets géométriques~: espaces, sous-espaces, applications linéaires. Le second est consacré aux matrices. Cette séparation est une commodité de rédaction. Le professeur a la liberté d'organiser l'enseignement de l'algèbre linéaire de la manière qu'il estime la mieux adaptée.
+
+Les objectifs du chapitre \og Espaces vectoriels et applications linéaires\fg sont les suivants~:
+\begin{itemize}
+\item acquérir les notions de base relatives aux espaces vectoiels et à l'indépendance linéaire~;
+\item reconnaître les problèmes linéaires et les modéliser à l'aide des notions d'espace vectoriel et d'application linéaire~;
+\item définir la notion de dimension, qui interprête le nombre de degrés de liberté d'un problème linéaire~; il convient d'insister sur les méthodes de calcul de dimension, de faire apparaître que ces méthodes reposent sur deux types de représentations~: paramétrisation linéaire d'un sous-espace, description d'un sous-espace par équations linéaires~;
+\item présenter un certain nombre de notions de géométrie affine, de manière à consolider et enrichir les acquis relatifs à la partie affine de la géométrie classique du plan et de l'espace.
+\end{itemize}
+Il convient de souligner, à l'aide de nombreuses figures, comment l'intuition géométrique permet d'interpréter en petite dimension les notions de l'algèbre linéaire, ce qui facilite leur extension à la dimension quelconque.\end{itshape}
+
+\setcounter{subsubsection}{0}
+\input{S2-EVAL-ev}
+\input{S2-EVAL-dimf}
+\input{S2-EVAL-al}
+\input{S2-EVAL-sea}
+
+\subsection{Matrices}
+\begin{itshape}
+Les objectifs de ce chapitre sont les suivants~:
+\begin{itemize}
+\item introduire les matrices et le calcul matriciel~;
+\item présenter les liens entre applications linéaires et matrices, de manière à exploiter les changements de registres (géométrique, numérique, formel)~;
+\item étudier l'effet d'un changement de bases sur la représentation matricielle d'une application linéaire et la relation d'équivalence qui s'en déduit sur $\mat np\K$~;
+\item introduire brièvement la relation de similitude sur $\matc n\K$~;
+\item étudier les opérations élémentaires et les systèmes linéaires.
+\end{itemize}
+\end{itshape}
+
+
+\setcounter{subsubsection}{0}
+\input{S2-MAT-calcm}
+\input{S2-MAT-mal}
+\input{S2-MAT-chb}
+\input{S2-MAT-opelem}
+% fin de MAT
+
+\subsection{Groupe symétrique et déterminants}
+\setcounter{subsubsection}{0}
+\input{S2-GSD-gsym}
+\input{S2-GSD-det}
+% fin de GSD
+
+\input{S2-ephr}
+\input{S2-integ}
+\input{S2-snum}
+\input{S2-denomb}
+
+\subsection{Probabilités}
+\begin{itshape}
+Ce chapitre  a pour objectif de consolider les connaissances  relatives aux probabilités sur un univers fini et aux variables aléatoires définies sur un tel univers présentées dans les classes antérieures. Il s'appuie sur le chapitre consacré au dénombrement.
+
+Ce chapitre  a vocation à interagir avec l'ensemble du programme. Il se prête également à des activités de modélisation de situations issues de la vie courante ou d'autres disciplines.
+\end{itshape}
+\setcounter{subsubsection}{0}
+\input{S2-PROB-puf}
+\input{S2-PROB-vara}
+
+\end{document}

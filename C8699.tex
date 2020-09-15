@@ -1,0 +1,160 @@
+\input{courspdf.tex}
+\debutcours{Autour du formulaire de trigonométrie}{alpha}
+
+\section{Formulaire}
+\index{formulaire de trigonométrie circulaire}\index{formulaire de trigonométrie hyperbolique}
+Dans le formulaire présenté sur la page suivante, $a, b, x$ sont réels et $n$ entier relatif.
+\twocolumn
+\begin{center}
+ Trigonométrie circulaire
+\end{center}
+Définitions
+\begin{displaymath}
+  \cos a  = \frac{1}{2}(e^{ia}+e^{-ia}) \hspace{0.5cm} \sin a  = \frac{1}{2i}(e^{ia}-e^{-ia})
+\end{displaymath}
+\begin{displaymath}
+  \cos a + i \sin a  = e^{ia} \hspace{0.5cm}\text{(Euler)}
+\end{displaymath}
+Module
+\begin{displaymath}
+ (\cos a)^2 + (\sin a)^2 = 1 \hspace{0.5cm} 1+\tan^2a = \frac{1}{\cos^2 a}
+\end{displaymath}
+Autour de $e^{z+z'}=e^{z}e^{z'}$
+\begin{align*}
+ (\cos a + i \sin a)^n &= \cos(na) + i \sin(na)\;\text{ (Moivre)}\\
+ \cos(a+b) &= \cos a \cos b  - \sin a \sin b\\
+ \sin(a+b) &= \sin a \cos b + \cos a \sin b \\
+ \tan(a+b) &= \frac{\tan a + \tan b}{1-\tan a \tan b}\\
+ \cos(2a) &= \cos^2 a -\sin^2 a \\
+          &=2\cos^2 a -1 = 1-2\sin^2a\\
+ \sin(2a) &= 2\sin a \cos a \\
+ \tan(2a) &= \frac{2\tan a }{1-\tan^2 a}
+\end{align*}
+Symétries
+
+$\sin$ et $\cos$ sont $2\pi$ périodiques.
+
+$\sin$ impaire, $\cos$ paire.
+\begin{align*}
+  &\cos(a+\pi) = -\cos a & & \cos (\pi-a) = -\cos a \\
+  &\sin(a+\pi) = -\sin a & & \sin (\pi-a) = \sin a \\
+  &\tan(a+\pi) = \tan a & & \tan (\pi-a) = -\tan a \\
+  &\cos(\frac{\pi}{2}-a) = \sin a & & \cos(\frac{\pi}{2}+a) = -\sin a\\ 
+  &\sin(\frac{\pi}{2}-a) = \cos a & & \sin(\frac{\pi}{2}+a) = \cos a\\ 
+  &\tan(\frac{\pi}{2}-a) = \frac{1}{\tan a } & & \tan(\frac{\pi}{2}+a) = -\frac{1}{\tan a}\\ 
+\end{align*}
+Expression avec la tangente de l'arc moitié.\newline
+Pour $a\not \equiv \pi \mod (2\pi)$ et $t = \tan \frac{a}{2}$
+\begin{align*}
+ \cos a  = \frac{1-t^2}{1+t^2} & &
+  \sin a = \frac{2t}{1+t^2} & &
+  \tan a = \frac{2t}{1-t^2} 
+\end{align*}
+Produit $\rightarrow$ Somme (linéarisation)
+\begin{align*}
+ &\cos a \cos b = \frac{1}{2}\left(\cos(a-b) +\cos(a+b)\right)\\
+ &\sin a \sin b = \frac{1}{2}\left(\cos(a-b)-\cos(a+b) \right)\\
+ &\sin a \cos b = \frac{1}{2}\left(\sin(a-b)+\sin(a+b) \right) \\
+ &\cos^2 a = \frac{1}{2}+\frac{1}{2}\cos(2a)\\
+ &\sin^2 a = \frac{1}{2}-\frac{1}{2}\cos(2a)
+\end{align*}
+Somme $\rightarrow$ Produit (factorisation)
+\begin{align*}
+ &\cos a + \cos b = 2\cos \frac{a+b}{2} \cos \frac{a-b}{2} \\  
+ &\cos a - \cos b = -2\sin \frac{a+b}{2} \sin \frac{a-b}{2} \\
+ &\sin a + \sin b = 2\sin \frac{a+b}{2} \cos \frac{a-b}{2}
+\end{align*}
+\'Equations
+\begin{align*}
+ &\sin x = 0 &\Leftrightarrow x \equiv 0 \mod(\pi) \\
+ &\cos x = 0 &\Leftrightarrow x \equiv \frac{\pi}{2} \mod(\pi) \\
+ &\sin x = \sin a &\Leftrightarrow
+\left\lbrace 
+\begin{aligned}
+ &x \equiv a \mod(2\pi)\\
+&\text{ ou }\\
+ &x \equiv \pi - a \mod(2\pi)
+\end{aligned}
+\right. \\
+ &\cos x = \cos a &\Leftrightarrow
+\left\lbrace 
+\begin{aligned}
+ &x \equiv a \mod(2\pi)\\
+&\text{ ou }\\
+ &x \equiv  - a \mod(2\pi)
+\end{aligned}
+\right. 
+\end{align*}
+
+\begin{center}
+\hrulefill \\ 
+ Trigonométrie hyperbolique
+\end{center}
+
+$\ch$ est la partie \emph{paire} de l'exponentielle réelle.
+
+$\sh$ est la partie \emph{impaire} de l'exponentielle réelle.
+
+\begin{align*}
+ &\ch a = \frac{1}{2}\left( e^a + e^{-a}\right)  & & \sh a = \frac{1}{2}\left( e^a - e^{-a}\right) \\
+ &e^{a} = \ch a + \sh a &  &e^{-a} = \ch a - \sh a
+\end{align*}
+
+\begin{displaymath}
+ (\ch a)^2 - (\sh a)^2 = 1
+\end{displaymath}
+
+\begin{align*}
+ &\ch(a+b) = \ch a \ch b  + \sh a \sh b\\
+ &\sh(a+b) = \sh a \ch b + \ch a \sh b \\
+ &\th(a+b) = \frac{\th a + \th b}{1+\th a \th b}\\
+ &\ch(2a) = (\ch a)^2 + (\sh a)^2 \\
+ &\sh(2a) = 2\sh a \ch a \\
+ &\th(2a) = \frac{2\th a }{1+\th^2 a}
+\end{align*}
+\onecolumn
+%\clearpage
+
+\section{Commentaires}
+\subsection{Trigonométrie circulaire}
+\subsubsection{Tangente}
+\begin{defi} \index{Fonction tangente: définition}
+  La fonction tangente est définie dans $\R \setminus (\frac{\pi}{2} +\pi\Z)$ par :
+  \begin{displaymath}
+    \forall x \in \R, x \not\equiv \frac{\pi}{2} \mod(\pi): \; \tan x = \frac{\sin x}{\cos x} 
+  \end{displaymath}
+\end{defi}
+\begin{displaymath}
+  \cos^2 x + \sin^2 x = 1 \Rightarrow \cos^2 x\left( 1+ \tan^2\right) = 1 
+\end{displaymath}
+
+\subsubsection{Formule fondamentale}
+Pour des réels $a$ et $b$, on peut exprimer $a\cos t + b\sin t$ comme une fonction trigonométrique avec une amplitude.
+\begin{displaymath}
+ a\cos t + b\sin t = A \cos(t-\varphi)
+ \end{displaymath}
+avec $\varphi$ défini modulo $2\pi$ par 
+\begin{displaymath}
+ \cos \varphi = \frac{a}{\sqrt{a^2 + b^2}}, \hspace{1cm} \sin \varphi = \frac{b}{\sqrt{a^2 + b^2}}
+\end{displaymath}
+
+
+\subsubsection{Valeurs particulières et symétries}
+Utiliser la formule fondamentale $e^{z+z'} = e^{z}\, e^{z'}$ et les valeurs particulières
+\begin{displaymath}
+  e^{2i\pi} = 1, \; e^{i\pi} = -1, \; e^{i\frac{\pi}{2}} = i
+\end{displaymath}
+
+\subsubsection{Tangente de l'arc moitié}
+\subsubsection{Produit en somme}
+\subsubsection{Somme en produit - Linéarisation}
+\index{Linéarisation}
+\subsubsection{Somme en produit}
+\subsubsection{\'Equations}
+\subsubsection{Expressions polynomiales}
+Expressions polynomiales de $\cos(nt)$ et $\sin(nt)$ en fonction de $\cos(t)$ et $\sin(t)$. Soit directement par la formule du binôme soit par  récurrence avec les formules de transfo de somme en produit.
+
+\subsection{Trigonométrie hyperbolique}
+\subsubsection{Définitions}
+\subsubsection{Formules}
+\end{document}

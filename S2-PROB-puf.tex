@@ -1,0 +1,78 @@
+\subsubsection{A - Probabilités sur un univers fini}
+\begin{itshape}
+ Les définitions sont motivées par la notion d'expérience aléatoire.
+La modélisation de situations aléatoires simples fait partie des capacités attendues des étudiants.
+\end{itshape}
+
+\subsubsubsection{a) Expérience aléatoire et univers}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{L'ensemble des issues (ou résultats possibles ou réalisations) d'une expérience aléatoire est
+appelé univers.}
+  \colchunk{On se limite au cas où cet univers est fini.}
+  \colplacechunks
+
+  \colchunk{\'Evénement, événement élémentaire (singleton), événement contraire, événements \og $A$ et $B$ \fg, évènement \og$A$ ou $B$ \fg, événement impossible, événements incompatibles, système complet d'événements.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{b) Espaces probabilisés finis}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+
+  \colchunk{Une probabilité sur un univers fini $\Omega$ est une application $P$ de $\mathcal{P} (\Omega)$ dans $[ 0 , 1 ]$ telle que $P (\Omega) = 1$ et, pour toutes parties disjointes $A$ et $B$, $P (A \cup B) = P (A) + P (B).$}
+  \colchunk{Un espace probabilisé fini est un couple $(\Omega , P)$ où $\Omega$ est un univers fini et $P$ une probabilité sur $\Omega$.}
+  \colplacechunks
+
+  \colchunk{Détermination d'une probabilité par les images des singletons.}
+  \colchunk{}
+  \colplacechunks
+  
+  \colchunk{Probabilité uniforme.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Propriétés : probabilité de la réunion de deux événements, de l'événement contraire, croissance.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{c) Probabilités conditionnelles}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Si $P (B) > 0$, la probabilité conditionnelle de $A$ sachant $B$ est définie par : $P (A|B) = P_B (A) = \dfrac{P (A \cap B)}{P (B)}$.}
+  \colchunk{On justifiera cette définition par une approche heuristique fréquentiste.
+
+L'application $P_B$ est une probabilité.}
+  \colplacechunks
+
+  \colchunk{Formule des probabilités composées.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Formule des probabilités totales.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Formules de Bayes :
+\begin{enumerate}
+\item
+si $A$ et $B$ sont deux événements tels que $P(A)>0$ et $P(B)>0$, alors
+$$P(A\,|\,B)=\frac{P(B\,|\,A)\,P(A)}{P(B)}$$
+\item
+si $(A_i)_{1\leqslant i\leqslant n}$ est un système complet d'événements de probabilités
+non nulles et si $B$ est un événement de probabilité non nulle, alors
+$$P(A_j\,|\,B)= \frac{P(B\,|\,A_j)\;P(A_j)}{\displaystyle{\sum_{i=1}^n P(B\,|\,A_i)\;P(A_i)}}$$
+\end{enumerate}}
+  \colchunk{On donnera plusieurs applications issues de la vie courante.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{d) \'Evénements indépendants}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Couple d'événements indépendants.}
+  \colchunk{Si $P (B) > 0$, l'indépendance de $A$ et $B$ s'écrit $P (A|B) = P (A)$.}
+  \colplacechunks
+
+  \colchunk{Famille finie d'événements mutuellement indépendants.}
+  \colchunk{L'indépendance deux à deux des événements d'une famille $(A_1,\dots,A_n)$ n'implique pas l'indépendance mutuelle si $n \geq 3$.}
+  \colplacechunks
+\end{parcolumns}

@@ -1,0 +1,363 @@
+\input{courspdf.tex}
+\debutcours{Intégrales et primitives}{1.3 \tiny{du \today}}
+
+La notation habituelle avec un nom de variable et un élément différentiel n'est introduite que là où elle apporte véritablement quelque chose dans cette présentation c'est à dire pour la formule de changement de variable.
+\section{Le théorème fondamental}
+\begin{defi}
+Une primitive d'une fonction $f$ définie dans un intervalle $I$ est une fonction $F$ dérivable dans $I$ et dont la dérivée est $f$. 
+\end{defi}
+\begin{rems}
+ \begin{itemize}
+  \item Le théorème des accroissements finis permet de montrer facilement que la différence entre deux primitives d'une même fonction sur un intervalle est une fonction constante.
+  \item On a montré en exercice \index{théorème de Darboux}(\href{\baseurl C2070.pdf}{théorème de Darboux}) lors du cours sur les fonctions dérivables que l'image d'un intervalle par une fonction dérivée est un intervalle. Par conséquent, une fonction continue par morceaux qui n'est pas continue n'admet pas de primitive.
+ \end{itemize}
+\end{rems}
+
+\begin{thm}
+Soit $f$ une fonction continue sur un intervalle $I$ et $a$ un point de $I$. On note $F_a$ la fonction définie dans $I$ par :
+\begin{displaymath}
+ F_a(x)=\int _a ^x f
+\end{displaymath}
+\begin{itemize}
+ \item la fonction $F_a$ est l'unique primitive de $f$ qui s'annule en $a$.
+\item pour toute primitive $h$ de $f$ :
+\begin{displaymath}
+ \int _a ^x f =h(x)-h(a)
+\end{displaymath}
+\end{itemize}
+\end{thm}
+\begin{demo}
+ Montrons d'abord que $F_a$ est dérivable de dérivée $f(b)$ en un point $b$ quelconque de l'intervalle. Pour cela, on doit montrer que la fonction $\varphi$ définie par $\varphi(x)= F_a(x)-F_b(x)-(x-b)f(b)$ est négligeable devant la fonction $x\rightarrow(x-b)$. Exprimons $\varphi(x)$ comme une intégrale:
+\begin{align*}
+ \varphi(x) = \left( \int_{b}^{x}f \right)  -(x-b)f(b) \hspace{1cm}\text{ par relation de Chasles (additivité)}\\
+= \int_{b}^{x}(f-f(b)) \hspace{0.5cm}\text{intégrale d'une fonction constante de valeur $f(b)$ puis linéarité}
+\end{align*}
+On en déduit alors, par la propriété de positivité de l'intégrale,
+\begin{displaymath}
+ |\varphi(x)|\leq |x-b|\max_{\overleftrightarrow{[b,x]}}|f-f(b)| 
+ \;\text{ avec }\; \overleftrightarrow{[b,x]} = [\min(b,x),\max(b,x)].
+\end{displaymath}
+Comme $f$ est continue en $b$, la fonction $x\rightarrow \max_{\overleftrightarrow{[b,x]}}\left| f-f(b) \right|$ converge vers $0$ en $b$ ce qui traduit exactement la négligeabilité de $\varphi$ devant $x\rightarrow x-b$ en $b$.
+\end{demo}
+
+\begin{rems}
+\begin{itemize}
+ \item Ce théorème \emph{démontre} l'existence de primitives pour une fonction continue sur un intervalle.
+\item Attention, une fonction dérivée n'est pas forcémént intégrable (c'est à dire continue par morceaux). Il existe des fonctions non intégrables qui admettent des primitives.\newline
+Par exemple, définissons $f$ dans $\R$ par:
+\begin{displaymath}
+ f(x) = \left\lbrace
+\begin{aligned}
+ &0 &\text{ si }& x=0 \\
+&2x\sin\frac{1}{x} - \cos\frac{1}{x}&\text{ si }& x\neq 0 
+\end{aligned}
+ \right. 
+\end{displaymath}
+La restriction de cette fonction à un segment contenant $0$ n'est pas continue par morceaux car elle n'admet pas de limite strictement à gauche ou à droite de $0$. Par conséquent cette fonction \emph{n'est pas intégrable} pour la définition de l'intégrabilité à notre programme. Pourtant cette fonction est la dérivée de la fonction $g$ définie dans $\R$ par :
+\begin{displaymath}
+ g(x) = \left\lbrace
+\begin{aligned}
+ &0 &\text{ si }& x=0 \\
+&x^2\sin\frac{1}{x} &\text{ si }& x\neq 0 
+\end{aligned}
+ \right. 
+\end{displaymath}
+\end{itemize}
+\end{rems}
+ Dans le cas où la fonction est $\mathcal C^1$, la dérivée est intégrable et on obtient le résultat suivant.
+\begin{prop}
+ Si $f\in \mathcal C^1(\overleftrightarrow{[b,x]})$ alors :
+\begin{displaymath}
+ f(b) - f(a) = \int _a ^b f^\prime
+\end{displaymath}
+\end{prop}
+\begin{nota}
+ On note $[\varphi]_a^b$ la différence $\varphi(b)-\varphi(a)$ pour une fonction $\varphi$ définie dans $[a,b]$.
+\end{nota}
+
+\`A titre d'application, on prouve la convergence des sommes de Riemann dans le cas $\mathcal{C}^1$.
+\paragraph{Convergence des sommes de Riemann }
+On suppose ici que $f \in \mathcal{C}^1$ \index{sommes de Riemann dans le cas $\mathcal{C}^1$}. On considère seulement le cas usuel des sommes
+\begin{displaymath}
+  R_n = \frac{b-a}{n}\sum_{k = 0}^{n}f(x_k) \text{ avec } x_k  = a + k\frac{b-a}{n}
+\end{displaymath}
+La fonction $f'$ étant continue sur un segment, elle est majorée. On note $M_1$ un majorant de $|f'|$. On peut alors écrire
+\begin{displaymath}
+  \left|R_n - \int_{a}^{b}f(t)\,dt\right| 
+= \left|\sum_{k=0}^{n-1}\int_{x_k}^{x_{k+1}}\left( f(x_k) - f(t)\right) dt\right| 
+\leq \sum_{k=0}^{n-1}\int_{x_k}^{x_{k+1}}\left|f(x_k) - f(t)\right|dt
+\end{displaymath}
+Puis $\left|f(x_k) - f(t)\right|\leq (t-x_k)M_1$ à cause de l'inégalité des accroissements finis. On continue en intégrant:
+\begin{displaymath}
+  \left|R_n - \int_{a}^{b}f(t)\,dt\right| 
+\leq \sum_{k=0}^{n-1}\frac{M_1}{2}\left[ (t-x_k)^2\right]_{x_k}^{x_{k+1}}
+=\sum_{k=0}^{n-1}\frac{M_1}{2}\left(\frac{b-a}{n} \right)^2
+=\frac{M_1(b-a)^2}{2n}
+\end{displaymath}
+Cette inégalité assure la convergence par le théorème d'encadrement.
+
+\section{Changements de variable}
+\subsection{Théorème}
+\index{changement de variable dans un intégrale}
+\begin{thm}
+ Soient deux réels $\alpha$ et $\beta$ ($\alpha < \beta$) et $I$ un intervalle de $\R$ non réduit à un point. Soit $\varphi\in \mathcal C^1([\alpha,\beta])$ à valeurs dans $I$, soit $f \in \mathcal{C}(I)$. Alors :
+\begin{displaymath}
+ \int_\alpha ^{\beta}f\circ \varphi \times \varphi' = \int_{\varphi(\alpha)}^{\varphi(\beta)}f
+\end{displaymath}
+\end{thm}
+\begin{demo}
+ Notons $F$ une primitive de $f$ dans $I$ et considérons $G=F\circ \varphi$. La dérivée de $G$ se calcule avec la formule de dérivation d'une fonction composée. Les fonctions $F$ et $G$ sont de classe $\mathcal C^1$, on peut donc leur appliquer le théorème fondamental et ses conséquences:
+\begin{displaymath}
+ \int_{\alpha} ^{\beta} f \circ\varphi \times \varphi' =\int_{\alpha} ^{\beta}G'=G(\beta)-G(\alpha)
+=F(\varphi(\beta))-F(\varphi(\alpha))=\int_{\alpha}^{\beta}f
+\end{displaymath}
+\end{demo}
+\begin{rem}
+ Dans ce théorème, la dérivée  $\varphi'(x)$ peut prendre la valeur $0$. La démonstration montre bien qu'interdire à $\varphi'$ de s'annuler serait une hypothèse inutile. Cela tient au fait que la fonction que l'on intègre entre $\alpha$ et $\beta$ a une forme très particulière. Si l'on veut pouvoir mettre n'importe quelle fonction continue $g$ sous cette forme, alors il est commode de supposer que $\varphi'$ ne s'annule pas. En effet $\varphi$ constitue alors une application bijective de $[\alpha,\beta]$ sur $\overleftrightarrow{[\varphi(\alpha),\varphi(\beta)]}$. On peut \emph{définir} $f$ par :
+\begin{displaymath}
+ \frac{g}{\varphi'}\circ \varphi
+\end{displaymath}
+En fait dans la pratique, ce genre d'expression est inutilisable. Si le changement de variable ne se passe pas bien. C'est à dire si la fonction n'est pas naturellement de la forme voulue, il faut tout simplement \emph{renoncer} au changement de variable envisagé.
+\end{rem}
+\index{élément différentiel}
+Dans toute la suite, on adopte une notation différentielle en introduisant un nom de variable et un élément différentiel
+\begin{displaymath}
+ \int_{a}^{b}f = \int_{a}^{b}f(t)dt
+\end{displaymath}
+Cette notation est particulèrement utile pour la pratique des changements de variables. Pour un cours d'\href{\baseurl C2269.pdf}{intégration dans un cadre plus géométrique}, l'élément différentiel \og $dt$\fg~(ou ce qui le remplace) joue un rôle essentiel.
+
+\subsection{Pratique - Rôle de l'élément différentiel.}
+Dans la pratique on souhaite effectuer un changement de variable sur une intégrale donnée. Disons
+\begin{displaymath}
+ I = \int_{a}^{b}g(t)\,dt
+\end{displaymath}
+Deux cas se présentent : soit l'intervalle d'intégration est l'espace de départ de la fonction que l'on considère soit c'est l'espace d'arrivée. Dans le premier cas on veut poser quelque chose comme $u=\varphi(t)$ (on parlera de changement de variable \emph{direct}) dans le second cas, on veut poser quelque chose comme $t=\varphi(x)$ (on parlera de changement de variable \emph{réciproque}). Un changement de variable direct peut poser davantage de problème qu'un changement réciproque. Lorsqu'un changement de variable direct \og\emph{résiste trop}\fg, il faut l'abandonner il est presque toujours inexploitable.\\
+Dans les deux cas, les étapes sont  : recherche des bornes, écriture de l'élément différentiel avec la nouvelle variable, chasser l'ancienne variable.
+
+\begin{exple}[Changement direct]
+ $I=\int_0^{\frac{\pi}{2}}\frac{1}{2+\cos t}\,dt$.
+ 
+Effectuons le changement de variable  $u=\cos t$.\newline
+Les bornes: $t = 0 \rightsquigarrow u = 1$, $t = \frac{\pi}{2} \rightsquigarrow u = 0$.\newline
+\'Elément différentiel $du = - \sin t\, dt$. Comme aucun $\sin t$ ne figure dans la fonction, il faudrait envisager des $\sqrt{} $ pour achever le changement de variable. On abondonne.
+
+Effectuons le changement de variable $u=\tan \frac{t}{2}$.\newline
+Les bornes: $t = 0 \rightsquigarrow u = 0$, $t = \frac{\pi}{2} \rightsquigarrow u = 1$.\newline
+\'Elément différentiel $du = \frac{1}{2}\left( 1+\tan^2\frac{t}{2}\right) \, dt = \frac{1+u^2}{2}\, dt$.\newline
+Chasser les $t$.
+\[
+ \cos t = \frac{1-\tan^2\frac{t}{2}}{1+\tan^2\frac{t}{2}} = \frac{1-u^2}{1+u^2}
+ \Rightarrow I = \int_{0}^{1}\frac{1+u^2}{2(1+u^2)+1-u^2}\,\frac{2\,du}{1+u^2}
+ = \int_{0}^{1}\frac{2}{3+u^2}\, du
+\]
+Cette intégrale se calcule avec un $\arctan$.
+\[
+ I = \frac{2}{3}\int_{0}^{1} \frac{du}{1+(\frac{u}{\sqrt{3}})^2}
+ = \frac{2}{3}\left[ \sqrt{3} \arctan\frac{u}{\sqrt{3}} \right]_{0}^{1} 
+ = \frac{2}{\sqrt{3}}\,\frac{\pi}{6}.
+\]
+
+\end{exple}
+
+\begin{exple}[Changement réciproque]
+ $J = \int_{0}^{1}\sqrt{1-t^2}\,dt$. On remarque que cette intégrale est l'aire d'un demi-disque.
+ 
+Effectuons le changement de variable $t=\sin(x)$.\newline
+Les bornes: $t = 0\rightsquigarrow u = 0$, $t = 1\rightsquigarrow u = \frac{\pi}{2}$.\newline
+\'Elément différentiel $dt = \cos x\,dx$.\newline
+Chasser les $t$.
+\[
+ J = \int^{\frac{\pi}{2}}_{0}\sqrt{1-\sin^2x}\cos x\,dx
+ = \int^{\frac{\pi}{2}}_{0}\cos^2 x\,dx \text{ car } \sqrt{1-\sin^2x}= \cos x \text{ pour } 0\leq x \leq \frac{\pi}{2}.
+\]
+L'intégrale se calcule en linéarisant : $\cos^2 x = \frac{1}{2} + \frac{1}{2}\cos(2x)$. On en déduit $J = \frac{\pi}{2}$.
+\end{exple}
+
+\section{Intégration par parties}
+\subsection{Théorème}
+\index{intégration par parties}
+\begin{thm}[intégration par parties]
+ Soit $f$ et $g$ deux fonctions $\mathcal{C}^1([a,b])$, alors
+\begin{displaymath}
+ \int_a^bf'g = [fg]_a^b - \int_a^bfg'
+\end{displaymath}
+\end{thm}
+\begin{demo}
+ Comme les fonctions sont $\mathcal{C}^1([a,b])$, les fonctions $f'g$ et $fg'$ sont intégrables. Par linéarité :
+\begin{displaymath}
+ \int_a^bf'g +\int_a^bfg' = \int_a^b(f'g+fg')=\int_a^b(fg)'=[fg]_a^b  
+\end{displaymath}
+d'après le théorème fondamental.
+\end{demo}
+Exemple $\int_{1}^{x}\ln$.
+\[
+ \int_{1}^{x}\ln = \int_{1}^{x}(t)'\ln t = \left[ t \ln t\right]_{1}^{x} - \int_{1}^{x}t\,\frac{1}{t} = x\ln x -(x-1). 
+\]
+\index{formule de Taylor avec reste intégral}
+\subsection{Formule de Taylor avec reste intégral}
+\begin{prop}
+ Soit $f\in \mathcal C^{n}(I)$ où $I$ est un segment d'extrémités $a$ et $b$. Alors :
+\begin{displaymath}
+ f(b)= f(a)+\frac{b-a}{1!}f'(a)+\frac{(b-a)^2}{2!}f^{(2)}(a) + \cdots +
+\frac{(b-a)^{n-1}}{(n-1)!}f^{(n-1)}(a) +
+\int_{a}^{b}\frac{(b-t)^{n-1}}{(n-1)!}f^{(n)}(t)dt
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Pour $k$ entier entre $1$ et $n$, posons
+\begin{displaymath}
+ R_k = \int_a^b\frac{(b-t)^{k-1}}{(k-1)!}f^{(k)}(t)dt
+\end{displaymath}
+avec les conventions usuelles pour les exposants et factorielles nulles. Alors
+\begin{displaymath}
+ R_1 = \int_a^bf'(t)dt = f(b)-f(a)
+\end{displaymath}
+Pour $k\geq 2$, on obtient une relation en intégrant par parties :
+\begin{displaymath}
+ R_k = \left[ \frac{(b-t)^{k-1}}{(k-1)!}f^{(k-1)}(t)\right]_a^b - 
+\int_a^b-\frac{(b-t)^{k-2}}{(k-2)!}f^{(k)}(t)dt 
+= -(b-a)f^{(k-1)}(a) + R_{k-1}
+\end{displaymath}
+On en déduit la formule en sommant ces relations qui se simplifient en domino.
+\end{demo}
+
+\subsection{Conséquences de la formule de Taylor avec reste intégral}
+On peut déduire de cette formule l'inégalité de Taylor-Lagrange \index{inégalité de Taylor-Lagrange}.
+\begin{prop}
+ Soit $f\in \mathcal C^{n+1}(I)$ où $I$ est un segment d'extrémités $a$ et $b$. Alors :
+\begin{displaymath}
+ f(b)= f(a)+\frac{b-a}{1!}f'(a)+\frac{(b-a)^2}{2!}f^{(2)}(a) + \cdots +
+\frac{(b-a)^{n}}{(n)!}f^{(n)}(a) + R_n
+\end{displaymath}
+avec 
+\begin{displaymath}
+ |R_n|\leq \frac{|b-a|^{n+1}}{(n+1)!}M_{n+1} \hspace{0.5cm}\text{ où } \hspace{0.5cm} M_{n+1} = \max_I |f^{(n+1)}|
+\end{displaymath}
+\end{prop}
+Avec le théorème des valeurs intermédiaires, on met le reste sous la forme de Lagrange. \index{formule de Taylor avec reste de Lagrange}Il existe $c$ entre $a$ et $b$ tel que 
+\begin{displaymath}
+  R_n = \frac{(b-a)^{n+1}}{(n+1)!}f^{n+1}(c)
+\end{displaymath}
+
+\subsection{Exemple d'utilisation de la formule de Taylor avec reste intégral}
+\'Etude, pour $b>0$, de la suite $\left( s_n\right)_{n\in \N^*}$ avec
+\begin{displaymath}
+  s_n = b - \frac{b^2}{2} + \frac{b^3}{3}- \cdots + \frac{(-1)^n}{n}b^n
+\end{displaymath}
+On va montrer
+\begin{itemize}
+  \item Si $b\in ]-1,1]$, la suite converge vers $\ln(1+b)$.
+  \item Si $|b|>1$, la suite diverge.
+\end{itemize}
+Le cas $b=0$ est évident car la suite est alors constante.
+Le cas $b=1$ a déjà été traité ailleurs (série harmonique alternée) en liaison avec le développement asymptotique de la série harmonique (équivalent logarithmique et nombre $\gamma$ d'Euler).\newline
+Le cas $|b|>1$ est évident car la suite $\frac{|b|^n}{n}$ diverge alors vers $+\infty$.\newline
+Si $b<0$, les puissances impaires sont négatives donc la suite est décroissante. De plus, si $b=-1$, on retrouve l'opposé de la série harmonique qui est divergente.\newline
+\'Ecrivons la formule de Taylor avec reste intégral pour la fonction $f : x\mapsto \ln(1+x)$ (définie dans $]-1,+\infty[$) entre $0$ et $b$.\newline
+Les dérivées sont de la forme
+\begin{displaymath}
+f'(x) = \frac{1}{1+x}, f''(x) = -\frac{1}{(1+x)^2}, f^{(3)}(x) = \frac{(-1)(-2)}{(1+x)^3},\cdots,
+f^{(k)}(x) = \frac{(-1)(-2)\cdots(-k+1)}{(1+x)^k}=\frac{(-1)^{k-1}(k-1)!}{(1+x)^k}
+\end{displaymath}
+d'où 
+\begin{displaymath}
+  \frac{b^k}{k!}f^{(k)}(0) = \frac{(-1)^{k-1}}{k} \;\text{ et }\;
+  f^{n+1}(x) = \frac{(-1)^{n}(n)!}{(1+x)^{n+1}}
+\end{displaymath}
+et
+\begin{displaymath}
+\ln(1+b) = b - \frac{b^2}{2} + \frac{b^3}{3}- \cdots + \frac{(-1)^n}{n}b^n + R_n
+\text{ avec }
+R_n = \int_0^b\frac{(b-t)^n}{n!} \frac{(-1)^{n}(n)!}{(1+x)^{n+1}}\,dt
+\end{displaymath}
+Finalement :
+\begin{displaymath}
+  \ln(1+b) - s_n = R_n = (-1)^nI_n \text{ avec } I_n =\int_0^b\frac{(b-t)^n}{(1+t)^{n+1}}\, dt
+\end{displaymath}
+Dans le cas $b>0$ les valeurs de $s_n$ sont (suivant la parité de $n$) de part et d'autre de $\ln(1+b)$ car $I_n >0$.\newline
+En revanche, si $b<0$:
+\begin{displaymath}
+  I_n =\int_0^b\frac{(b-t)^n}{(1+t)^{n+1}}\, dt
+  = (-1)^{n+1}\int_b^0\frac{(t-b)^n}{(1+t)^{n+1}}\, dt
+\Rightarrow
+\ln(1+b) - s_n = - \underset{>0}{\underbrace{\int_b^0\frac{(t-b)^n}{(1+t)^{n+1}}\, dt}}
+\end{displaymath}
+Si $b\in \left]0,1 \right]$  et $t\in \left[0,b \right]$ alors $b-t\leq b \leq 1$ donc
+\begin{displaymath}
+  0\leq I_n \leq \int_0^b \frac{dt}{(1+t)^{n+1}} = -\frac{1}{n}\left[ \frac{1}{(1+t)^n}\right]_0^b = \frac{1}{n}\left(1-\frac{1}{(1+b)^n} \right)
+  \leq \frac{1}{n}
+\Rightarrow |\ln(1+b) - s_n| \leq \frac{1}{n}  
+\end{displaymath}
+Si $b \in \left]-1,0 \right[$ et $t\in \left[b,0 \right]$ alors $t-b < -b \leq 1$ donc
+\begin{displaymath}
+0 \leq \int_b^0\frac{(t-b)^n}{(1+t)^{n+1}}\, dt \leq \int_b^0\frac{dt}{(1+t)^{n+1}}
+= -\frac{1}{n}\left[ \frac{1}{(1+t)^n}\right]_b^0
+= \frac{1}{n}\left( \frac{1}{(1+b)^n} - 1\right) 
+\end{displaymath}
+La suite $\frac{1}{(1+b)^n}$ est géométrique de raison $\frac{1}{1+b}>1$. Elle diverge vers $+\infty$ et malgré le $n$ au dénominateur, on ne peut conclure par encadrement. Il faut majorer autrement.\newline
+Pour $b \in ]-1,0[$ effectuons le changement de variable 
+\begin{displaymath}
+u = \frac{t-b}{1+t} \text{ dans } J_n = \int_b^0 \frac{(t-b)^n}{(1+t)^{n+1}}
+\end{displaymath}
+Les bornes: $t=b \leftrightsquigarrow u=0$, $t=0 \leftrightsquigarrow u=-b$.\newline
+L'élément différentiel
+\begin{displaymath}
+u = \frac{t+1 -(1+b)}{1+t} = 1-\frac{1+b}{1+t}
+\Rightarrow
+\left\lbrace 
+\begin{aligned}
+\frac{1}{1+t}&=\frac{1-u}{1+b} \\
+du &= \frac{1+b}{(1+t)^2}dt = \frac{(1-u)^2}{1+b}dt
+\end{aligned}
+\right. 
+\end{displaymath}
+Changement de variable
+\begin{displaymath}
+J_n = \int_0^{-b}u^n\, \frac{1-u}{1+b}\, \frac{1+b}{(1-u)^2}\,du = \int_0^{-b}\frac{u^n}{1-u}\, du
+\end{displaymath}
+On majore alors avec
+\begin{displaymath}
+  0\leq u \leq -b \Rightarrow 1- u \geq 1+b >0 \Rightarrow 0 < \frac{1}{1-u}\leq \frac{1}{1+b}
+\Rightarrow
+0<J_n \leq \frac{1}{1+b}\int_0^{-b}u^n\,du = \frac{(-b)^{n+1}}{(n+1)(1+b)}
+\end{displaymath}
+Ce qui assure cette fois la convergence.
+
+\section{Intégration et négligeabilité}
+\index{lemme d'intégration de négligeabilité}
+\begin{prop}[lemme d'intégration de négligeabilité]
+ Soit $f$ et $g$ deux fonctions continues dans un intervalle $I$ contenant $a$. On suppose que $g$ ne s'annule pas sauf éventuellement en $a$ et que $f$ est négligeable devant $g$ en $a$. Soit $F$ la primitive de $f$ nulle en $a$ et $G$ la primitive de $g$ nulle en $a$ alors :
+\begin{displaymath}
+  F \in o_a(G)
+\end{displaymath}
+la fonction $F$ est négligeable en $a$ devant $G$.
+\end{prop}
+\begin{demo}
+ La fonction $g$ ne s'annule pas sauf peut être en $a$, cela a deux conséquences.\\
+ D'une part la fonction $\varphi=\frac{f}{g}$ est définie et continue dans $I\setminus\{a\}$. On peut la prolonger en une fonction continue dans $I$ en posant $\varphi(a)=0$ car $f$ est négligeable devant $g$ en $a$. On peut donc écrire $f=\varphi g$.\\
+ D'autre part la fonction $g$ garde un signe constant dans $I_-=I\cap\left]-\infty,a\right[$ et dans  $I_+ = I \cap \left]a, +\infty\right[$. Il existe des constantes $\varepsilon_-$ et  $\varepsilon_+$ égales à $+1$ ou $-1$ telles que  $\varepsilon_-\, g>0$ sur $I_-$ et $\varepsilon_+\, g>0$ sur $I_+$. On en déduit, par positivité, 
+\begin{align*}
+x>a &\Rightarrow \varepsilon_+G(x) = \int_a^x\varepsilon_+g(t)dt > 0 \Rightarrow |G(x)|= \varepsilon_+G(x) \\
+x<a &\Rightarrow \varepsilon_-G(x) = \int_a^x\varepsilon_-g(t)dt < 0 \Rightarrow |G(x)|= -\varepsilon_-G(x) 
+\end{align*}
+On en déduit, pour $x<a$
+\begin{displaymath}
+|F(x)|=\left\vert\int_a^x\varphi(t)g(t)dt \right\vert
+\leq \int_x^a |\varphi(t)||g(t)|dt
+\leq \int_x^a |\varphi(t)\varepsilon_-g(t)dt
+\leq \sup_{[x,a]}|\varphi(t)|\varepsilon_-\int_x^ag(t)dt = \sup_{[x,a]}|\varphi(t)||G(x)|. 
+\end{displaymath}
+De même pour $x>a$
+\begin{displaymath}
+|F(x)|=\left\vert\int_a^x\varphi(t)g(t)dt \right\vert
+\leq \int_x^a |\varphi(t)||g(t)|dt
+\leq \int_a^x |\varphi(t)\varepsilon_+g(t)dt
+\leq \sup_{[a,x]}|\varphi(t)|\varepsilon_+\int_a^xg(t)dt = \sup_{[a,x]}|\varphi(t)||G(x)| .
+\end{displaymath}
+Comme $\varphi$ converge vers $0$ en $a$, on obtient la négligeabilité de $F$ devant $G$.
+\end{demo}
+\begin{rem}
+ Cette proposition conduit à \href{\baseurl C5779.pdf}{l'intégration d'un développement limité}\index{intégration d'un développement limité}. Il suffit de prendre pour $g$ une fonction de la forme $\lambda(x-a)^p$. Cette possibilité d'intégrer un développement limité conduit à la démonstration de la formule de Taylor avec reste de Young.\index{formule de Taylor avec reste de Young}
+\end{rem}
+
+\end{document}

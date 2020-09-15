@@ -1,0 +1,524 @@
+\input{courspdf_expo.tex}
+\debutcours{Isométries vectorielles}{0.1 \tiny{le \today}}
+
+Les sections II et III reproduisent la définition du produit vectoriel introduit dans le document sur la \href{\baseurl C2006.pdf}{Géométrie élémentaire de l'espace}.
+\section{Isométries vectorielles d'un espace euclidien}
+\subsection{Matrice d'un endomorphisme dans une base orthonormée}
+\begin{prop}
+ Soit $\mathcal U=(u_1,\cdots,u_p)$ une base orthonormée d'un espace euclidien $E$ dont le produit scalaire est noté $(./.)$, soit $f$ un endomorphisme de $E$. Pour $i$ et $j$ entre $1$ et $p$, le terme $i,j$ de la matrice de $f$ dans $\mathcal U$ est 
+\begin{displaymath}
+ (u_i/f(u_j)).
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Soit $A=\Mat_{\mathcal U}f$, par définition :
+\begin{displaymath}
+ f(u_j) = \sum_{k=1}^p a_{k,j}u_k.
+\end{displaymath}
+En formant le produit scalaire contre $u_i$, comme la base est orthonormée, tous les $(u_k/u_j)$ sont nuls sauf pour $k=i$ où le terme vaut $1$. On en déduit la formule annoncée.
+\end{demo}
+\newpage
+\begin{prop}[hors programme]
+ Soit $E$ un espace euclidien dont le produit scalaire est noté $(./.)$ et $f$ un endomorphisme de $E$. Les deux propriétés suivantes sont équivalentes:
+\begin{align*}
+ &(1)& &\forall (x,y)\in E^2 : (f(x)/y) = (x/f(y)). \\
+ &(2)& &\text{Pour toute base orthonormée }\mathcal U : \Mat_{\mathcal U}f \text{est symétrique .}
+\end{align*}
+\end{prop}
+\begin{exple}
+ Les projections orthogonales vérifient cette propriété. Les affinités orthogonales qui sont des combinaisons linéaires de projections orthogonales la vérifient aussi. Les symétries orthogonales qui sont des affinités particulières la vérifient aussi.\newline
+En effet, soit $p$ une projection orthogonale sur $A$. Introduisons la projection orthogonale $q$ sur $A^\bot$. On a alors :
+\begin{displaymath}
+ (p(x)/y)=(p(x)/p(y))+ \underset{=0}{\underbrace{(p(x),q(y))}}
+= (p(x)/p(y))+ \underset{=0}{\underbrace{(q(x),p(y))}}
+= (x,p(y)
+\end{displaymath}
+\end{exple}
+Exercice traité en classe \hyperref{\urlexo _fex_ao.pdf}{exo}{Eao10}{Eao10}: adjoint d'un endomorphisme, image et noyau, équations linéaires sans solution.
+\clearpage
+\subsection{Conservation du produit scalaire}
+Dans un espace euclidien $E$ avec un produit scalaire $(./.)$, on dira qu'un endomorphisme $f$ conserve le produit scalaire si et seulement si :
+\begin{displaymath}
+ \forall(x,y)\in E^2 : (f(x)/f(y)) = (y/y).
+\end{displaymath}
+On dira que $f$ conserve la norme si et seulement si :
+\begin{displaymath}
+ \forall x\in E : \Vert f(x)\Vert = \Vert x \Vert.
+\end{displaymath}
+Comme $\Vert x \Vert = \sqrt{(x/x)}$, tout endomorphisme qui conserve le produit scalaire conserve la norme. Réciproquement, comme $(x/y)=\frac{1}{4}\left(\Vert x+y\Vert^2  - \Vert x-y\Vert^2\right)$, tout endomorphisme qui conserve la norme conserve le produit scalaire.
+\begin{rem}
+  On peut montrer (exercice \hyperref{\urlexo _fex_ee.pdf}{exo}{Eee01}{Eee01} de la feuille sur les espaces euclidiens) que si $f$ est une application quelconque dans un espace euclidien $E$ (elle n'est \emph{pas} supposée linéaire) la conservation du produit scalaire \emph{entraine} la linéarité.
+\end{rem}
+\index{automorphisme orthogonal}\index{isométrie vectorielle}
+\newpage
+\begin{defi}
+ Dans un espace euclidien $E$, un endomorphisme est une isométrie vectorielle (on dit aussi endomorphisme orthogonal) si et seulement si il conserve le produit scalaire (ou la norme). L'ensemble des endomorphismes orthogonaux est noté $\mathcal O(E)$.
+\end{defi}
+
+\index{groupe orthogonal} \index{groupe spécial orthogonal}
+\begin{prop}
+ L'ensemble des endomorphismes orthogonaux $(\mathcal O(E),\circ)$ est un sous-groupe du groupe $(GL(E),\circ)$ des automorphismes de $E$.
+\end{prop}
+\begin{demo}
+ En effet tout $f$ orthogonal est bijectif car son noyau est réduit à $\{0_E\}$ à cause de la conservation de la norme. Il est évident que si $f$ et $g$ sont orthogonaux alors $f\circ g$ et $f^{-1}$ conservent le produit scalaire et sont donc orthogonaux.
+\end{demo}
+\begin{rem}
+  Les mots \emph{isométrie vectorielle} et \emph{automorphisme orthogonal} sont strictement synonymes.
+\end{rem}
+\begin{defi}
+  L'ensemble des isométries vectorielles dont le déterminant est strictement positif est noté $\mathcal{SO}(E)$ ou $\mathcal{O}^+(E)$.
+\end{defi}
+\begin{rem}
+  L'ensemble des isométries vectorielles dont le déterminant est strictement négatif est noté $\mathcal{O}^-(E)$. On vérifie que $\mathcal{O}^+(E)$ est un sous-groupe de $\mathcal{O}(E)$ mais pas $\mathcal{O}^-(E)$.
+\end{rem}
+\newpage
+\index{symétrie orthogonale}\index{réflexion}
+\begin{exple}
+ Les symétries orthogonales sont des endomorphismes orthogonaux (en particulier les réflexions : symétries par rapport à un hyperplan).
+\end{exple}
+\begin{demo}
+  Supposons que $f$ soit la symétrie orthogonale par rapport à un sous-espace $A$. Alors $f = p_A - p_{A^{\bot}}$ et:
+  \begin{multline*}
+\forall (x,y)\in E^2, \;
+(f(x)/f(y)) = (p_{A}(x) - p_{A^{\bot}}(x) /p_{A}(y) - p_{A^{\bot}}(y)) \\
+= (p_{A}(x) /p_{A}(y)) + (p_{A^{\bot}}(x) /p_{A^{\bot}}(y)) 
+   -  \underset{ = 0}{\underbrace{\left( (p_{A}(x) /p_{A^{\bot}}(y)) + (p_{A^{\bot}}(x) /p_{A}(y))\right)}} \\ 
+= (p_{A}(x) /p_{A}(y)) + (p_{A^{\bot}}(x) /p_{A^{\bot}}(y)) 
+   +  \underset{ = 0}{\underbrace{\left( (p_{A}(x) /p_{A^{\bot}}(y)) + (p_{A^{\bot}}(x) /p_{A}(y))\right)}} \\ 
+= (p_{A}(x) + p_{A^{\bot}}(x) /p_{A}(y) + p_{A^{\bot}}(y)) = (x/y). 
+   \end{multline*}
+Ceci traduit qu'une symétrie orthogonale conserve le produit scalaire.
+\end{demo}
+\newpage
+\begin{prop}
+ Un endomorphisme $f$ de $E$ euclidien est orthogonal si et seulement si l'image par $f$ d'une base orthonormée est une base orthonormée.
+\end{prop}
+\begin{demo}
+ Un sens est évident, l'autre résulte de la bilinéarité du produit scalaire.
+\end{demo}
+
+\newpage
+\subsection{Matrices orthogonales}\index{matrice orthogonale}
+\begin{defi}
+ Une matrice $A$ à $p$ lignes et $p$ colonnes est dite orthogonale lorsque
+\begin{displaymath}
+ \trans A A = I_p .
+\end{displaymath}
+\end{defi}
+\begin{nota}
+ L'ensemble des matrices orthogonales à $p$ lignes et $p$ colonnes est noté $O_p(\R)$.
+\end{nota}
+\begin{rem}
+ Comme $\det \trans P = \det P$, le déterminant d'une matrice orthogonale est $\pm 1$. On note $SO_p(\R)$ ou $O_{p}^+(\R)$ l'ensemble des matrices orthogonales de déterminant $+1$ et $O_{p}^{-}(\R)$ l'ensemble des matrices orthogonales de déterminant $-1$.
+\end{rem}
+
+\begin{rem}
+\begin{displaymath}
+  \trans A A=I_p \Leftrightarrow A \trans A = I_p \Leftrightarrow \trans A = A^{-1}.
+\end{displaymath}
+En effet, lorsque le produit de deux matrices carrées est égal à 1. Le produit des déterminants de ces matrices est aussi égal à 1. Elles sont donc inversibles. En multipliant par l'inverse de l'une, on montre qu'elles sont inverses l'une de l'autre. Ainsi une matrice est orthogonale si et seulement si elle est inversible avec son inverse égale à sa transposée.
+\end{rem}
+
+\begin{propn}
+ $(O_p(\R),\times)$ est un sous-groupe de $(GL_n(\R),\times)$ et $(SO_p(\R),\times)$ est un sous-groupe de $(O_p(\R),\times)$.
+\end{propn}
+On a déjà défini le produit scalaire \emph{canonique} sur les matrices colonnes :
+\begin{displaymath}
+\forall (X,Y) \in \mathcal C_{n,1}(\R)^2  (X,Y) \rightarrow \trans X\,Y =(X/Y)
+\end{displaymath}
+Il permet de caractériser l'orthogonalité d'une matrice par une propriété de ses colonnes.
+\begin{propn}
+ Une matrice est orthogonale si et seulement si la famille formée par ses colonnes est orthonormée pour le produit scalaire canonique.
+\end{propn}
+\begin{demo}
+ à compléter
+\end{demo}
+
+\begin{propn}
+ Soit $E$ euclidien de dimension $p$, soit $\mathcal U$ une base orthonormée de $E$ et $f\in \mathcal L(E)$. Alors $f$ est une isométrie vectorielle si et seulement si $\Mat_{\mathcal U}f$ est orthogonale.
+\end{propn}
+\begin{demo}
+ à compléter
+\end{demo}
+\begin{rem}
+  Le déterminant d'une isométrie vectorielle est donc $+1$ ou $-1$.
+\end{rem}
+\clearpage
+\begin{propn}
+  Soit $\mathcal{A}$ une base orthonormée, $\mathcal{B}$ une base et $P=P_{\mathcal{A} \mathcal{B}}$ la matrice de passage. Alors $\mathcal{B}$ est une base orthonormée si et seulement si $P$ est orthogonale. 
+\end{propn}
+\begin{rem}
+  Dans une formule de changement de base pour un endomorphisme, si les deux bases sont orthonormées, on peut écrire $\trans P$ au lieu de $P^{-1}$.
+\end{rem}
+\begin{demo}
+ à compléter
+\end{demo}
+
+\begin{prop}[hors programme]
+ Soit $E$ euclidien et $f\in \mathcal L(E)$. L'application $f$ est une symétrie orthogonale si et seulement si sa matrice dans une base orthonormée directe est symétrique et orthogonale.
+\end{prop}
+\begin{demo}
+  Supposons que $f$ soit la symétrie orthogonale par rapport à un sous-espace $A$. Soit $A$ la matrice de $f$ dans une certaine base orthonormée. On sait déjà que $A$ est orthogonale car $f$ est une isométrie. On en déduit $A^{-1} = \trans A$. Comme $f$ est une symétrie $f^circ f= \Id_E$ donc $A^2 = I$ donc $A^{-1} = A$. On en déduit $\trans A = A$ c'est à dire que $A$ est symétrique.\newline
+  Réciproquement, si la matrice $A$ d'un endomorphisme $f$ dans une base orthonormée est symétrique et orthogonale, alors
+  \[
+   \left. 
+   \begin{aligned}
+    &\trans A = A &\text{ (symétrique)}\\ \trans &A = A^{-1} &\text{ (orthogonale)}
+   \end{aligned}
+\right\rbrace \Rightarrow A = A^{-1} \Rightarrow A^2 = I \Rightarrow f^2 = \Id_E.
+  \]
+On en déduit que $f$ est la symétrie par rapport à $A=\ker(f-\Id_E)$ dans la direction $B = \ker(f+\Id_E)$ avec $A$ et $B$ supplémentaires. Il reste à montrer que $A$ et $B$ sont orthogonaux.
+\[
+ \forall (a,b)\in A\times B,\;
+ \left. 
+ \begin{aligned}
+  f(a) &= a \\ f(b) &= b
+ \end{aligned}
+\right\rbrace 
+\Rightarrow (a/b) = (f(a)/-f(b)) = -(f(a)/f(b)) = -(a/b)
+\]
+car $f$ est orthogonale. On en déduit $(a,b)=0$ dons $A \subset B^{\bot}$. On conclut avec l'égalité des dimensions. 
+\end{demo}
+
+\subsection{Orientation - Déterminant}
+Lorsque l'espace est orienté, comme le déterminant d'une matrice orthogonale directe est égal à $1$, le déterminant d'une famille de vecteurs est le même \emph{dans n'importe quelle base orthonormée directe}. Ce déterminant d'une famille de vecteurs dans une base orthonormée directe est appelé \emph{produit mixte}\index{produit mixte}. La justification de cette terminologie vient de la définition en dimension $3$ du \emph{produit vectoriel}.
+ \clearpage
+\section{Isométries vectorielle en dimension 2}
+\begin{prop}[Forme des matrices de $\mathcal O_2^+(\R)$ et $\mathcal O_2^-(\R)$.]
+\begin{multline*}
+ \mathcal{O}^+(\R) = \left\lbrace 
+ \begin{pmatrix}
+  a & -b \\ b & a
+ \end{pmatrix}
+\text{ avec } a^2 + b^2 = 1\right\rbrace ,
+\\
+\mathcal O_2^+(\R) =
+\left\lbrace 
+ \begin{pmatrix}
+  a & b \\ b & -a
+ \end{pmatrix}
+\text{ avec } a^2 + b^2 = 1\right\rbrace .
+\end{multline*}
+\end{prop}
+\begin{demo}
+ Considérons une matrice $M= \begin{pmatrix} a & c \\ b & d\end{pmatrix}$ à coefficients réels. 
+ \[
+  M \in \mathcal O_2(\R) \Leftrightarrow 
+  \left\lbrace 
+  \begin{aligned}
+   a^2 + b^2 &= 1\\
+   c^2 + d^2 &= 1\\
+   ac + bd &= 0
+  \end{aligned}
+\right. 
+ \]
+Supposons $M$ orthogonale et notons $\varepsilon$ son déterminant. On peut exprimer $c$ et $d$ en fonction de $a$, $b$ et $\varepsilon$ en formant un sytème d'équations aux inconnues $c$ et $d$.
+\[
+ \left\lbrace 
+ \begin{aligned}
+  ac + bd &= 0 \\ -bc + ad &= \varepsilon 
+ \end{aligned}
+\right. \Rightarrow 
+\left\lbrace 
+\begin{aligned}
+ c &= \frac{\begin{vmatrix}
+             0 & b \\ \varepsilon & b 
+            \end{vmatrix}
+}{a^2 + b^2}
+= -\varepsilon b\\
+ d &= \frac{\begin{vmatrix}
+             a & 0 \\ -b & \varepsilon  
+            \end{vmatrix}
+}{a^2 + b^2}
+= \varepsilon a
+\end{aligned}
+\right. 
+\]
+On en déduit qu'une matrice orthogonale est obligatoirement de l'une des deux formes indiquées. Réciproquement, on vérifie immédiatement que les matrices proposées sont bien orthogonales et directes ou indirectes.
+\end{demo}
+
+\begin{rem}
+ $\mathcal O_2^-(\R)$ est constitué de matrices symétriques. Les éléments de $\mathcal O^-(E)$ sont des réflexions.
+\end{rem}
+
+Le groupe $\mathcal O_2^+(\R)$ est isomorphe à $\U$. En particulier il est commutatif. Ses éléments sont appelés des \emph{rotations}.
+
+Lorsque $E$ est orienté, la matrice d'un élément de $\mathcal O^+(E)$ est la même dans n'importe quelle base orthonormée directe.
+
+\index{rotation}
+Définition d'une rotation d'angle orienté $\theta$ dans un plan orienté. Comment change l'angle si on change l'orientation du plan?
+\clearpage
+\begin{prop}
+ Si $r$ est une rotation d'angle orienté $\theta$ dans un plan orienté et $x$ un vecteur non nul alors 
+\begin{displaymath}
+(x/r(x)) = \Vert x \Vert^2 \cos \theta \hspace{1cm} \det(x,r(x))= \Vert x\Vert^2 \sin \theta
+\end{displaymath}
+\end{prop}
+\begin{demo}
+Il existe une base orthonormée directe dont le premier vecteur est $x$. Dans cette base ...  à rédiger... 
+\end{demo}
+
+\index{angle orienté de deux vecteurs} \index{angle orienté de deux droites}
+\begin{defi}
+ angle orienté de deux vecteurs à rédiger
+\end{defi}
+\begin{defi}
+ angle orienté de deux droites à rédiger
+\end{defi}
+Dans un plan euclidien orienté, soit $\theta$ l'angle orienté entre les droites $\mathcal{D}_1$ et $\mathcal{D}_1$. Montrer que $s_{\mathcal{D}_2}\circ s_{\mathcal{D}_1}$ est la rotation d'angle $2\theta$. On remarque que le fait qu'un angle orienté entre deux droites soit une classe modulo $\pi$ est bien compatible avec le fait qu'un angle orienté de rotation est une classe modulo $2\pi$.
+\clearpage
+\section{Isométries vectorielles en dimension 3 (hors programme)}
+\subsection{Produit vectoriel}
+On se place dans un $\R$ espace vectoriel \emph{orienté} de dimension $3$.
+\begin{propn}
+ Soit $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs fixés. Il existe un unique vecteur noté $\overrightarrow{u} \wedge \overrightarrow{v}$ appelé produit vectoriel des deux vecteurs tel que :
+\begin{displaymath}
+ \forall \overrightarrow w \in E : \det(\overrightarrow u , \overrightarrow v , \overrightarrow w)
+=  \left(  \overrightarrow u \wedge \overrightarrow v / \overrightarrow w \right) 
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ Pour $\overrightarrow u$ et $\overrightarrow v$ fixés, l'application de $E$ dan $\R$ qui à $w$ associe $\det(\overrightarrow u,\overrightarrow v,\overrightarrow w)$ est une forme linéaire. Il existe donc un unique vecteur (noté $u\wedge v$) tel que 
+ \[
+  \forall \overrightarrow w \in E,\; \; det(\overrightarrow{},\overrightarrow v,\overrightarrow w) = (\overrightarrow u \wedge \overrightarrow v / \overrightarrow w).
+ \]
+\end{demo}
+
+Cette formule justifie le terme \emph{produit mixte} utilisée pour le déterminant de 3 vecteurs.\index{produit mixte} Elle dépend de manière cruciale de l'orientation de l'espace.
+
+Dans la suite, on se passe des flèches au dessus des vecteurs.
+\begin{propn}
+ Le déterminant est bilinéaire et antisymétrique de $E\times E$ dans $E$. Le produit vectoriel de deux vecteurs est orthogonal à ces deux vecteurs donc au plan qu'ils engendrent.
+\end{propn}
+\begin{demo}
+ Bilinéarité et antisymétrie résultent du caractère multilinéaire antisymétrique du déterminant. Pour tous vecteurs $a$ et $b$
+ \[
+  (a\wedge b /a) = \det(a,b,a) = 0 = \det(a,b,b) = (a\wedge b / b).
+ \]
+\end{demo}
+\clearpage
+\begin{propn}
+ Pour tous $a$ et $b$ dans $E$, $a \wedge b = 0_E$ si et seulement si $(a,b)$ liée. De plus, si $(a,b)$ est libre, $(a,b,a \wedge b)$ est une base directe.
+\end{propn}
+\begin{demo}
+ Si $(a,b)$ est liée alors $(a,b,a\wedge b)$ aussi. Donc
+ \[
+  0 = \det(a,b,a\wedge b) = \Vert a\wedge b \Vert^2 \Rightarrow a\wedge b = 0_E.
+ \]
+Si $(a,b)$ est libre alors d'après le théorème de la base incomplète, il existe $c$ tel que $(a,b,c)$ base. On en déduit
+\[
+ 0 \neq \det(a,b,c) = (a\wedge b / c) \Rightarrow a\wedge b \neq 0_E.
+\]
+De plus dans ce cas $(a,b,a\wedge c)$ est aussi libre car $a\wedge b$ est un vecteur non nul de l'orthogonal et la base $(a,b,a\wedge b)$ est directe car
+\[
+\det(a,b,a \wedge b) = \Vert a\wedge b \Vert^2 > 0. 
+\]
+\end{demo}
+
+\begin{propn}[fabrication de bases orthonormées directes]
+ Soit $a,b$ unitaires et orthogonaux. La famille $(a,b,c)$ est une base orthonormée directe si et seulement si $c = a \wedge b$. 
+\end{propn}
+\begin{demo}
+ à compléter
+\end{demo}
+
+\begin{propn}[Tournicoter]
+\[
+ \forall (a,b,c) \in E^3, \; (a\wedge b / c) = (b\wedge c /a).
+\]
+\end{propn}
+\begin{demo}
+ Immédiat par permutation circulaire au niveau du déterminant.
+\end{demo}
+\clearpage
+\textbf{Expression du produit vectoriel en coordonnées dans une base orthonormée directe.}\newline
+Considérons les matrices colonnes des coordonnées de $a$, $b$ et $x$ respectivement et le déterminant
+\[
+ a: \begin{pmatrix}
+     \alpha \\ \alpha' \\ \alpha"
+    \end{pmatrix}, \hspace{0.5cm}
+ b: \begin{pmatrix}
+     \beta \\ \beta' \\ \beta"
+    \end{pmatrix}, \hspace{0.5cm}
+ w: \begin{pmatrix}
+     x \\ y \\ z
+    \end{pmatrix} \hspace{0.5cm}
+\det(a,b,w) = 
+\begin{vmatrix}
+ \alpha & \beta & x \\
+ \alpha' & \beta' & y \\
+ \alpha'' & \beta'' & z
+\end{vmatrix}
+\]
+Le développement de ce déterminant suivant la troisième colonne s'interprète comme l'expression dans la base orthonormée du produit scalaire de $w$ et de $a\wedge b$. On en déduit que les coordonnées de $a\wedge b$.
+\[
+ a\wedge b : 
+ \begin{pmatrix}
+  \begin{vmatrix}
+   \alpha' & \beta' \\ \alpha'' & \beta''
+  \end{vmatrix}\\
+  -\begin{vmatrix}
+   \alpha & \beta \\ \alpha'' & \beta ''
+  \end{vmatrix} \\
+  \begin{vmatrix}
+   \alpha & \beta \\ \alpha' & \beta'
+  \end{vmatrix}
+ \end{pmatrix}
+ =
+ \begin{pmatrix}
+  \alpha' \beta'' -\alpha'' \beta' \\ -\alpha \beta'' + \alpha'' \beta \\ \alpha \beta' - \alpha' \beta
+ \end{pmatrix}
+.
+\]
+
+\begin{propn}
+ Soient $\overrightarrow u$ et $\overrightarrow v$ deux vecteurs et $\alpha$ l'angle orienté $(\overrightarrow u , \overrightarrow v)$ dans le plan $\Vect(\overrightarrow u , \overrightarrow v)$ orienté autour de $\overrightarrow u \wedge \overrightarrow v$. Alors
+\begin{displaymath}
+ \Vert \overrightarrow u \wedge \overrightarrow v\Vert =
+ \Vert \overrightarrow u \Vert  \Vert\overrightarrow v\Vert \sin \alpha
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ Il existe un vecteur $v_1$ tel que $\mathcal{B} = (\frac{1}{\Vert u\Vert}u, v_1 , \frac{1}{\Vert u\wedge v \Vert} u\wedge v)$ soit une base orthonormée directe. Dans cette base, les coordonnées sont
+ \[
+  u: 
+  \begin{pmatrix}
+   \Vert u\Vert \\ 0 \\ 0
+  \end{pmatrix}
+, \hspace{0.5cm}
+  v: 
+  \begin{pmatrix}
+   \Vert v\Vert \cos \alpha \\ \Vert v\Vert \sin \alpha  \\ 0
+  \end{pmatrix}
+, \hspace{0.5cm}
+u \wedge v : 
+\begin{pmatrix}
+ 0 \\ 0 \\ \Vert u\wedge v\Vert
+\end{pmatrix}.
+ \]
+Avec l'expression des coordonnée du produit vectoriel donnée plus haut on obtient bien la formule annoncée dans la troisième coordonnée.
+\end{demo}
+\begin{rem}
+ On constate donc que si on oriente le plan autour de $\overrightarrow u \wedge \overrightarrow v$, l'angle orienté a toujours un représentant dans $[0,\pi]$. On peut se représenter aussi ce résultat de la manière suivante. Le produit vectoriel de $\overrightarrow u \wedge \overrightarrow v$ est l'unique vecteur $\overrightarrow P$ orthogonal à $\overrightarrow u$ et $\overrightarrow v$ tel que $(\overrightarrow u, \overrightarrow v, \overrightarrow P)$ soit une base directe et que la longueur de $\overrightarrow P$ soit l'aire (positive) du parallélogramme construit sur les deux vecteurs.
+\end{rem}
+\clearpage
+\index{formule du double produit vectoriel}
+\begin{propn}[formule du double produit vectoriel]
+ \begin{displaymath}
+ \forall(\overrightarrow u, \overrightarrow v, \overrightarrow w)\in E^3 : 
+(\overrightarrow u \wedge \overrightarrow v ) \wedge \overrightarrow w
+= (\overrightarrow u / \overrightarrow w )\overrightarrow v 
+- (\overrightarrow v / \overrightarrow w )\overrightarrow u
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ à compléter
+\end{demo}
+\index{équation $\overrightarrow a \wedge \overrightarrow x = \overrightarrow b$}
+\'Etude de l'équation $\overrightarrow a \wedge \overrightarrow x =\overrightarrow b$ d'inconnue $\overrightarrow x$.
+
+\subsubsection{Matrice antisymétrique}
+Définition de la fonction $\varphi_w$.
+Si une matrice est antisymétrique, c'est la matrice d'une application $\varphi_w$ dans une base orthonormée directe. Les coordonnées de $x$ se lisent sur la matrice sans résoudre de système.\index{matrice antisymétrique}
+\subsubsection{Description géométrique}
+La restriction de $\varphi_w$ au plan orthogonal à $x$ est une rotation d'angle $\frac{\pi}{2}$ composée avec la multiplication par $\Vert x\Vert$ (lorsque ce plan est orienté autour de $x$).
+\subsection{Rotations et rotations-miroirs}
+Dans ce paragraphe, on \emph{définit} deux types de tranformations particulières.\index{rotation} \index{rotation-miroir}
+\begin{propn}
+ Soit $D$ une droite vectorielle dans un espace euclidien $E$ de dimension $3$, soit $A$ le plan orthogonal à $D$. La projection orthogonale sur $D$ est notée $p$, celle sur $A$ est notée $q$. Soit $r$ une rotation de $A$ les applications
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ E &\rightarrow E\\
+ x &\rightarrow p(x)+r(q(x))
+\end{aligned}
+\right. 
+\hspace{1cm}
+ \left\lbrace 
+\begin{aligned}
+ E &\rightarrow E\\
+ x &\rightarrow -p(x)+r(q(x))
+\end{aligned}
+\right. 
+\end{displaymath}
+sont des automorphismes orthogonaux de $E$ appelés respectivement rotation et rotation-miroir (vectorielle) d'axe $D$.
+\end{propn}
+Attention à l'angle ! Il n'est défini que si on oriente le plan perpendiculaire à l'axe autour d'un vecteur particulier de l'axe.
+
+Une rotation-miroir n'admet aucun vecteur invariant non nul.
+
+Déterminant, matrice , formule particulière pour un vecteur dans le plan perpendiculaire à l'axe.
+\clearpage
+\subsection{Classification}
+\subsubsection{Droite stable}
+\begin{propn}
+ Pour tout automorphisme orthogonal $f$ d'un espace euclidien de dimension trois, il existe des droites vectorielles stables. Lorsque $f$ n'est pas une symétrie, il existe une unique droite vectorielle stable et $f$ est une rotation ou une rotation-miroir.
+\end{propn}
+\begin{demo}
+ \begin{itemize}
+ \item[1. Existence : première démonstration.] L'application $\lambda \rightarrow \det(f-\lambda \Id)$ est une fonction polynomiale de degré $3$ à coefficients réels, elle admet donc au moins une racine réelle d'après le théorème de la valeur intermédiaire. ...
+\item [2. Existence : deuxième démonstration.]
+Si $f$ est une symétrie, elle admet des droites stables.\newline
+Si $f$ n'est pas une symétrie on considère l'endomorphisme
+\begin{displaymath}
+ \frac{1}{2}\left( f - f^{-1}\right) 
+\end{displaymath}
+sa matrice dans une base orthonormée est antisymétrique car la matrice de $f^{-1}$ est la transposée de la matrice de $f$. Pour une orientation fixée de $E$, il existe donc un unique vecteur $w$ tel que
+\begin{displaymath}
+ \varphi_w = \frac{1}{2}\left( f - f^{-1}\right) .
+\end{displaymath}
+Examinons son noyau :
+\[
+\forall x \in E, \; x \in \ker \varphi_w \Leftrightarrow f(x) = f^{-1}(x) \Leftrightarrow f^2(x) = x
+\]
+car $f$ est un isomorphisme. D'autre part, on sait que $\ker \varphi_w = \Vect(x)$ donc
+\begin{multline*}
+ f^2(x) = x \Rightarrow f^3(x) = f(x) \Rightarrow f^2(f(x)) = f(x) \Rightarrow f(x) \in \ker \varphi_w\\
+ \Rightarrow \exists \lambda\in \R\;\text{ tq } f(x) = \lambda x.
+\end{multline*}
+\item [3.] Si $f(x)=\lambda x$ avec $x$ non nul, alors $\lambda$ vaut $1$ ou $-1$ par conservation du produit scalaire.
+\item [4. Unicité.] Si $f(x)=x$ ou $f(x)=-x$ alors $x\in \Vect(u)$ pour le $u$ défini en 2.
+\item [5. Classification.] On considère $\Vect(u)^\bot$, stable discussion déterminant et restriction.
+\end{itemize}
+\end{demo}
+\clearpage
+\subsubsection{\'Elements géométriques d'une matrice orthogonale : pratique}
+\begin{rems}
+ \begin{enumerate}
+ \item Le $\cos$ de l'angle s'obtient en considérant la trace de la matrice qui est la même pour toutes les bases.
+\item Lorsque l'axe est orienté par le vecteur $u$ lu dans la partie antisymétrique de la matrice, l'angle a un sinus positif. On peut donc l'exprimer avec un $\arccos$ puisque son $\cos$ est calculable.
+\item Si l'axe est obtenu en résovant une équation, et si $v$ est un vecteur directeur de cet axe. On peut obtenir le signe du sinus de l'angle $\theta$ autour de ce vecteur en utilisant
+\begin{displaymath}
+ \det(x,f(x),v)=\Vert q(x)\Vert^2\sin\theta
+\end{displaymath}
+où $q$ est la projection orthogonale sur $\Vect(v)^\bot$.
+\item Les rotations-miroirs n'ont pas de vecteur invariant autre que $0_E$.
+\item Lorsque la matrice est symétrique la nature de la symétrie se lit sur la trace.
+\begin{itemize}
+ \item pour une réflexion : $1$
+\item pour un retournement : $-1$
+\end{itemize}
+\end{enumerate}
+\end{rems}
+\subsubsection{Décompositions en réflexions ou retournements}
+En dimension $2$. Angle de la rotation $r=s_{\mathcal{D}'}\circ s_{\mathcal{D}}$  lorsque l'on connait l'angle orienté des droites $(\mathcal D , \mathcal D')$.
+\begin{prop}
+ Toute rotation d'axe $\Vect(u)$ est la composée de deux réflexions par rapport à des plans contenant $\Vect(u)$. Une de ces réflexions est arbitraire.
+\end{prop}
+\begin{proof}
+ Considérons un plan $H$ contenant $\Vect(u)$. Il existe $v$ formant avec $u$ une base orthogonale de $H$. Formons $s_H\circ f$. C'est un élément de $O^-(E)$ pour lequel $u$ est invariant. Il ne peut être une rotation-miroir car il contient des points fixes non nuls.C'est donc une réflexion par rapport à un plan $H'$ qui contient $u$. On en déduit :
+\begin{displaymath}
+ f = s_H \circ s_H'
+\end{displaymath}
+\end{proof}
+\begin{prop}
+ Toute rotation d'axe $\Vect(u)$ est la composée de deux retournements par rapport à des droites orthogonales à $\Vect(u)$. Un de ces retournement est arbitraire.
+\end{prop}
+\begin{proof}
+ Cela résulte de ce que $S_H$ est une réflexion si et seulement si $-s_H$ est un retournement. 
+\end{proof}
+\begin{prop}
+ Si une matrice est symétrique et orthogonale, c'est la matrice d'une symétrie orthogonale dans une base orthonormée. Lorsque la trace est égale à $+1$ c'est une réflexion, lorsque la trace est égale à $-1$ c'est un retournement.
+\end{prop}
+
+\end{document}

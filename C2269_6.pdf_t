@@ -1,0 +1,19 @@
+\begin{picture}(0,0)%
+\includegraphics{C2269_6.pdf}%
+\end{picture}%
+\setlength{\unitlength}{2113sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(4636,3092)(2668,-5451)
+\put(3781,-3346){\makebox(0,0)[lb]{\smash{{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\gamma(t)$}%
+}}}}
+\put(4996,-2626){\makebox(0,0)[lb]{\smash{{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\overrightarrow{X}(\gamma(t))$}%
+}}}}
+\put(5176,-3706){\makebox(0,0)[lb]{\smash{{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\overrightarrow{\gamma'(t)}$}%
+}}}}
+\end{picture}%

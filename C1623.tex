@@ -1,0 +1,407 @@
+\input{courspdf.tex}
+\debutcours{Fractions rationnelles}{ 0.4 \tiny{ le \today}}
+
+
+La partie du programme intitulée \og Polynômes et fractions rationnelles\fg~ est présentée dans trois documents distincts \href{\baseurl C1622.pdf}{Polynômes}, \href{\baseurl C2160.pdf}{Arithmétique polynomiale} et \href{\baseurl C1623.pdf}{Fractions rationnelles} (ce document) .
+
+Sauf mention explicite, toutes les fractions rationnelles sont à coefficients complexes.
+
+\section{Définitions}
+\subsection{Définition axiomatique}
+\index{corps des fractions d'un anneau intègre}
+Le corps noté $\K$ est $\R$ ou $\C$. Il existe un ensemble noté $\K(X)$ appelé corps des fractions rationnelles à coefficients dans $K$ et vérifiant une présentation axiomatique.
+\begin{pa}
+ \item[c'est plus gros que ] : $\K[X]$ est un sous-anneau de $\K(X)$.
+ \item[c'est bien ] : $\K(X)$ est un corps.
+ \item[c'est pas trop gros] : pour tout $F\in K(X)$ il existe $A$ et $B$ dans $K[X]$, le polynôme $B$ étant non nul tels que
+ \begin{displaymath}
+   F = A B^{-1}\text{ on notera } F = \frac{A}{B}
+ \end{displaymath}
+\end{pa}
+Comme d'habitude, on ne cherchera pas à construire $\K(X)$ c'est à dire à fabriquer un objet mathématique vérifiant ces propriétés.\newline
+D'après le premier axiome, tout polynôme est une fraction rationnelle et tout polynôme non nul est inversible dans $\K(X)$. Le corps $\K(X)$ doit contenir toutes les fractions $\frac{A}{B}$. Le troisième axiome indique justement qu'il ne contient que celles là.\newline
+Les règles de calcul usuelles (y compris les manipulations de fractions) sont valables dans un corps. On notera en particulier
+\begin{displaymath}
+  \frac{A_1}{B_1} = \frac{A_2}{B_2} \Leftrightarrow  \frac{A_1}{B_1} - \frac{A_2}{B_2} = 0 \Leftrightarrow
+  \frac{A_1B_2 - B_1A_2}{B_1B_2} = 0 \Leftrightarrow A_1B_2 - B_1A_2 =0
+\end{displaymath}
+\index{réprésentants d'une fraction}Lorsque $F = \frac{A}{B}$ avec $A$ et $B$ deux polynômes ($B$ non nul), on dit que $(A,B)$ est un \emph{représentant de la fraction} 
+
+\subsection{Propriétés}
+\index{forme irréductible d'une fraction rationnelle}
+\begin{prop}[Forme irréductible d'une fraction rationnelle.]
+  Pour toute $F\in \K(X)$ non nulle, il existe des polynômes non nuls et premiers entre eux $A$, $B$ tels que $F = \frac{A}{B}$. On dit que  $(A,B)$ est un couple représentant irréductible de $F$. Tout autre couple représentant irréductible est de la forme $(\lambda A, \frac{1}{\lambda}B)$ avec $\lambda \in \K^*$.
+\end{prop}
+\begin{demo}
+  Soit $(A_0,B_0)$ un couple représentant $F$ et $D= A_0 \wedge B_0$. Il existe alors $A$ et $B$ premiers entre eux tels que $A0=DA$, $B_0=DB$. Alors:
+\begin{displaymath}
+  F = \frac{A_0}{B_0}=\frac{DA}{DB}=\frac{A}{B}.
+\end{displaymath}
+Si $\frac{A}{B}$ et $\frac{A_1}{B_1}$ sont deux représentants irréductibles d'une même fraction, alors $AB_1=A_1 B$. Par le théorème de Gauss, $A\wedge B = 1$ entraine $A$ divise $A_1$ et $A_1 \wedge B_1=1$ entraine $A_1$ divise $A$. Les polynômes $A$ et $A_1$ se divisent mutuellement donc ils sont égaux à la multiplication près par un élément non nul du corps.
+\end{demo}
+
+\index{degré d'une fraction rationnelle} 
+\begin{prop}[Définition du degré.]
+  Soit $F \in \K(X)$. Pour tous les couples $(A,B)$ représentant la fraction $F$, la valeur de $\deg(A)-\deg(B)$ est la même. Cette valeur commune est appelée le \emph{degré} de la fraction $F$.
+\end{prop}
+\begin{demo}
+  Soit $(A_1,B_1)$ et $(A_2,B_2)$ deux couples représentant la fraction. Alors
+\begin{multline*}
+  A_1B_2 - B_1A_2 = 0 \Rightarrow A_1B_2 = B_1A_2 \Rightarrow \deg(A_1)+\deg(B_2) = \deg(B_1)+\deg(A_2)\\
+  \Rightarrow \deg(A_1)-\deg(B_1) = \deg(A_2) - \deg(B_2)
+\end{multline*}
+\end{demo}
+\begin{rem}
+  La fraction $\frac{X^4 + X +1}{X^4 + X^3 + 2}$ est de degré $0$. Il est inutile de prendre la forme irréductible pour évaluer le degré d'une fraction.
+\end{rem}
+
+\index{valuation d'une fraction rationnelle}
+\begin{defi}[Définition de la valuation en $X-a$]
+  Soit $F\in \K(X)$ non nulle et $a\in \K$. Il existe $m \in \Z$ et $A$, $B$ dans $\K[X]$ non nuls tels que $F = (X-a)^m \,\frac{A}{B}$ avec $\widetilde{A}(a) \neq 0$ et $\widetilde{B}(a) \neq 0$. Cet entier $m$ est appelé la \emph{valuation} de $F$ en $X-a$, il est noté $v_a(F)$.
+\end{defi}
+
+\begin{prop}
+ Soit $F$ et $G$ dans $K(X)$ non nulles et $a \in \K$.
+\begin{align*}
+ &\deg(FG)=\deg(F)+\deg(G) & &\deg(F+G)\leq \max(\deg(F),\deg(G))  \hspace{0.5cm}\left( \text{égalité si } \deg(F) \neq \deg(G)\right). \\
+ &v_a(FG)=v_a(F)+v_a(G) & &v_a(F+G)\geq \min(v_a(F),v_a(G)) \hspace{0.5cm}\left( \text{égalité si } v_a(F) \neq v_a(G))\right) .
+\end{align*}
+\end{prop}
+\begin{demo}
+ Introduisons $A_F$, $B_F$, $A_G$, $B_G$ dans $\C[X]$ avec $B_F, B_G \neq 0$ tels que $F = \frac{A_F}{B_F}$, $G = \frac{A_G}{B_G}$.
+\begin{multline*}
+F G = \frac{A_F A_G }{B_F B_G}
+\Rightarrow \deg(FG) = \deg(A_F A_G )-\deg(B_F B_G) \\
+= \deg(A_F)-\deg(B_F) + \deg(A_G )-\deg(B_G)
+= \deg(F) + \deg(G).
+\end{multline*}
+\begin{multline*}
+F + G = \frac{A_F B_G + B_F A_G}{B_F B_G}
+\Rightarrow \deg(F + G) = \deg(A_F B_G + B_F A_G)-\deg(B_F B_G) \\
+\leq \max\left( \deg(A_F B_G), \deg(B_F A_G)\right) - \deg(B_F B_G)\\
+= \max\left( \deg(A_F B_G)  - \deg(B_F B_G), \deg(B_F A_G)  - \deg(B_F B_G)\right)\\
+= \max\left( \deg(A_F)  - \deg(B_F), \deg(A_G)  - \deg(B_G)\right)
+= \max\left( \deg(F), \deg(G)\right)
+\end{multline*}
+L'égalité avec le max des degrés se produit lorsque 
+\[
+ \deg(A_F B_G) = \deg(B_F A_G) \Leftrightarrow \deg(A_F) - \deg(B_F) = \deg(A_G) - \deg(B_G) \Leftrightarrow \deg(F) = \deg(G).
+\]
+Pour la valuation en $a$, introduisons $F_1$ et $G_1$ dans $\C(X)$ pour lesquelles $a$ n'est ni un pôle ni un zéro telles que 
+\[
+ F=(X-a)^{v_a(F)}F_1, \hspace{1cm} G=(X-a)^{v_a(G)}G_1.
+\]
+Alors $FG = (X-a)^{v_a(F)+v_a(G)}F_1G_1$ où $a$ n'est ni un pôle ni un zéro de$F_1G_1$ donc $v_a(FG) = v_a(F) + v_a(G)$.
+Supposons $v_a(F) \leq v_a(G)$ ($F$ et $G$ jouent des rôles symétriques). 
+\[
+ F + G 
+ = (X-a)^{v_a(F)}\left( \underset{ = H}{\underbrace{F_1 + (X-a)^{v_a(G) - v_a(F)}G_1}}\right) 
+\]
+Comme $a$ n'est un pôle ni de $F_1$ ni de $G_1$, il n'est pas non plus un pôle de $H$ donc 
+\[
+ v_a(F+G)\geq v_a(F) \geq \min(v_a(F),v_a(G)).
+\]
+Si $v_a(F) < v_a(G)$ alors $v_a(G) - v_a(F) >0$ donc $\widetilde{H}(a) = \widetilde{F_1}(a) \neq 0$ donc $v_a(F+G) = v_a(F) = \min(v_a(F),v_a(G))$.
+\end{demo}
+
+\index{pôle d'une fraction rationnelle} \index{zéro d'une fraction rationnelle}
+\begin{defi}[Pôle, zéro, multiplicité]
+Soit $F \in \K(X)$ non nulle et $a\in \K$.\newline
+On dit que $a$ est un \emph{zéro} de $F$ si et seulement si $v_a(F) > 0$. La \emph{multiplicité} de $a$ comme zéro de $F$ est alors $v_a(F)$.\newline
+On dit que $a$ est un \emph{pôle} de $F$ si et seulement si $v_a(F) < 0$. La \emph{multiplicité} de $a$ comme zéro de $F$ est alors $-v_a(F)$. 
+\end{defi}
+
+Si $F \in \C(X)$ et $a \in \C$ \emph{n'est pas un pôle} de $F$, on peut substituer $a$ à $X$ dans $F$.
+\index{fonction rationnelle}
+\begin{defi}[fonction rationnelle]
+Soit $F = \frac{A}{B}\in \C(X)$ avec $A, B \in \C[X]$, $B\neq 0$ et $\mathcal{P}$ l'ensemble des pôles de $F$. La fonction rationnelle attachée à $F$ est la fonction de $\C \setminus \mathcal{P}$ dans $\C$ notée $\widetilde{F}$ définie par:
+\[
+ \forall a \in \C \setminus \mathcal{P}, \hspace{0.5cm} \widetilde{F}(a) = \frac{\widetilde{A}(a)}{\widetilde{B}(a)}.
+\]
+\end{defi}
+\begin{rem}
+  Dans n'importe quelle $F\in \K(X)$, on peut substituer à $X$ n'importe quelle $G\in K(X)$. La fraction obtenue est notée $\widehat{F}(G)$ ou $F \circ G$.
+\[
+  F = \frac{X + 1}{X^2 - 1},\; G = \frac{1}{X},\; \widehat{F}(\frac{1}{X}) = \frac{(1 + X)X}{1-X^2} .
+\]
+\end{rem}
+
+\subsection{Exercice traité en classe}
+\index{dérivée d'une fraction rationnelle}
+On veut étendre l'opérateur de dérivation de $\K[X]$ à $K(X)$ par: 
+\[
+\forall (A,B)\in \K[X]^2,\; B\neq 0\;, \left( \frac{A}{B}\right)' = \frac{A' B - AB'}{B^2}. 
+\]
+\begin{enumerate}
+ \item Montrer que $\frac{A_1}{B_1} = \frac{A_2}{B_2} \Rightarrow \left( \frac{A_1}{B_1}\right)'  = \left( \frac{A_2}{B_2}\right)'$.\newline Justifier que l'on a bien défini une fonction de dérivation sur l'ensemble des fractions rationnelles.
+ \item Vérifier les formules suivantes
+\[
+ \forall (F,G) \in \K(X)^2, \; (F+G)' = F' + G', \; (FG)' = F'G + FG'.
+\]
+On vérifie aussi la formule de Leibniz.
+ \item \'Etude du degré de la dérivée.
+\begin{enumerate}
+ \item Montrer que si $F$ est une fraction rationnelle de degré non nul alors $\deg(F')=\deg(F)-1$. 
+ \item Montrer que si $F$ est une fraction rationnelle de degré $0$ qui n'est pas un complexe, alors $\deg(F')\leq2$.
+ \item Montrer qu'une fraction de degré $-1$ n'est pas la dérivée d'une fraction rationnelle.
+\end{enumerate}
+\end{enumerate}
+Détaillons seulement une preuve du premier point. Notons
+\[
+  T = A_1B_2 - B_1A_2, \; M =(A_1'B_1-A_1B_1')B_2^2 - (A_2'B_2-A_2B_2')B_1^2.
+\]
+Il s'agit de montrer que $T= 0 \Rightarrow M = 0$. Supposons $T=0$ et réarrangeons $M$.
+\begin{multline*}
+  M = (A_1'B_2)(B_1B_2) -\underset{=B_1A_2}{\underbrace{(A_1B_2)}}(B_1'B_2) - (B_1A_2')(B_1B_2) + \underset{=A_1B_2}{\underbrace{(B_1A_2)}}(B_1B_2')\\
+  = (B_1B_2)\left(A_1'B_2 - A_2B_1' - B_1A_2' + A_1B_2' \right)
+  = (B_1B_2)M' = 0.
+\end{multline*}
+
+
+\section{\'Etude locale - Décompositions}
+Le corps de base est $\C$. Comme tout polynôme non constant admet au moins une racine, une fraction rationnelle est un polynôme si et seulement si elle n'a aucun pôle.
+
+\subsection{Parties polaires}
+\index{partie polaire d'une fraction rationnelle}
+La partie polaire en $a$ d'une fraction rationnelle dont $a$ est un pôle est une fraction rationnelle qui concentre tout ce qui fait que $a$ est un pôle.
+\begin{prop}[Existence et unicité des parties polaires]
+ Soit $F \in \C(X), F \neq 0$ et $a$ un de ses pôles de multiplicité $m$. Il existe une unique fraction rationnelle notée $\Pi_a$ (appelée partie polaire en $a$) telle que :
+\begin{displaymath}
+ a \text{ est le seul pôle de } \Pi_a \text{ sa multiplicité est } m,\hspace{0,5cm}
+ \deg(\Pi_a) <0 ,\hspace{0,5cm}
+ a \text{ n'est pas un pôle de } F-\Pi_a 
+\end{displaymath}
+Il existe des nombres complexes $\lambda_1,\cdots\lambda_m$ tels que
+\begin{displaymath}
+ \Pi_a = 
+\frac{\lambda_1}{(X-a)^m}+\frac{\lambda_2}{(X-a)^{m-1}}+\cdots +\frac{\lambda_i}{(X-a)^{m+1-i}}+\cdots+ \frac{\lambda_m}{(X-a)}.
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Cette proposition est démontrée en \ref{demo}\ref{ppol}.
+\end{demo}
+\begin{rems}
+\begin{itemize}
+ \item Si $a$ n'est pas un pôle de $F$, sa partie polaire est nulle.
+ \item \index{coefficient facile} \index{résidu} J'appelle $\lambda_1$ le coefficient \og facile \fg~ (attention cette dénomination n'est pas utilisée en dehors de la classe).
+ \item Le coefficient $\lambda_m$ est appelé \emph{résidu} (dénomination universelle). En général c'est le plus difficile à calculer.
+\end{itemize}
+\end{rems}
+
+\index{éléments simples}
+\begin{defi}
+ Un éléments simple (de première espèce) est une fraction rationnelle de la forme
+\begin{displaymath}
+ \frac{\lambda}{(X-a)^m}\text{ où } \lambda\in \C,\; a\in\C,\; m\in \N^*.
+\end{displaymath}
+\end{defi}
+
+\subsection{Partie entière}
+\index{partie entière d'une fraction rationnelle}
+\begin{prop}
+ Soit $F \in \C(X), F \neq 0$. Il existe un unique polynôme noté $\Pi_\infty$ (appelée partie entière) tel que 
+\begin{displaymath}
+ \deg(F-\Pi_\infty) < 0
+\end{displaymath}
+De plus, $\Pi_\infty$ est le quotient de la division euclidienne du numérateur de $F$ par son dénominateur. Il est nul lorsque $\deg(F)<0$, sinon son degré est égal à celui de $F$.
+\end{prop}
+\begin{demo}
+ Cette proposition est démontrée en \ref{demo}\ref{pent}.
+\end{demo}
+La partie entière (privée de son terme de degré $0$) peut être regardée comme une partie polaire en l'infini. En effet elle rassemble tout ce qui \og diverge\fg~ à l'infini comme la partie polaire en $a$ rassemble tout ce qui \og diverge\fg~ en $a$.
+
+\subsection{Décomposition en éléments simples}
+\begin{prop}
+ Toute fraction rationnelle est la somme de sa partie entière et de ses parties polaires.
+\end{prop}
+\begin{demo}
+ Notons $G$ la somme des parties polaires et de la partie entière de $F$ et $H=F-G$. Pour tout pôle $a$,
+\begin{displaymath}
+ H = (F-\Pi_a) + R_a
+\end{displaymath}
+où $R_a$ est la somme des parties polaires pour les pôles autres que $a$ (y compris $\infty$). D'après les propriétés des parties polaires, $a$ n'est un pôle ni de $F-\Pi_a$ ni de $R_a$. Comme ceci est valable pour tous les pôles de $F$ et que les autres nombres complexes ne sont évidemment pas non plus des pôles, on en déduit que $H$ \emph{n'admet aucun} pôle. Si $H$ est non nulle, elle ne peut être qu'un polynôme. Mais ceci aussi lui est refusé. en effet:
+\begin{displaymath}
+ H = (F-\Pi_\infty) + R_\infty
+\end{displaymath}
+D'après la définition de la partie entière et des parties polaires, $F-\Pi_\infty$ et $R_\infty$ sont des fractions rationnelles de degré strictement négatif. Leur somme ne peut être un polynôme que si celui ci est nul. 
+\end{demo}
+
+Toute fraction est la somme d'un polynôme et d'\emph{éléments simples}.
+Soit $F\in \C(X), F\neq 0$. Ses pôles sont $a_1, \cdots, a_p$ avec les multiplicités $m_1,\cdots m_p$. Alors
+\begin{multline*}
+ F = \Pi_\infty 
+ + \frac{\lambda_{1,1}}{(X-a_1)^{m_1}} + \frac{\lambda_{1,2}}{(X-a_1)^{m_1-1}} + \cdots + \frac{\lambda_{1,m_1}}{(X-a_1)} \\
+ + \frac{\lambda_{2,1}}{(X-a_2)^{m_2}} + \frac{\lambda_{2,2}}{(X-a_2)^{m_2-1}} + \cdots + \frac{\lambda_{2,m_2}}{(X-a_2)} \\
+ + \cdots \\
+ + \frac{\lambda_{p,1}}{(X-a_p)^{m_p}} + \frac{\lambda_{p,2}}{(X-a_p)^{m_p-1}} + \cdots + \frac{\lambda_{p,m_p}}{(X-a_p)}.
+\end{multline*}
+où les $\lambda_{i,j}\in \C$.
+
+\subsection{Décomposition en éléments simples réels}
+\index{éléments simples réels (deuxième espèce)}
+\begin{defi}
+ Un éléments simple réel de deuxième espèce  est une fraction rationnelle de la forme
+\begin{displaymath}
+ \frac{u X + v}{A^m}\hspace{1cm} \text{ avec } u \in \R,\; v \in\R,\; A\in \R[X] \text{ de degré $2$ sans racine réelle}, \; m\in \N^*.
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ Soit $F\in \R(X), F\neq 0$, soit $a_1,\cdots, a_p$ ses pôles réels de multiplicités $m_1,\cdots, m_p$, soit $z_1,\cdots, z_s$ ses pôles complexes non réels de multiplicités $n_1,\cdots, n_s$. Alors
+\begin{multline*}
+ F = \Pi_\infty 
+ + \left( \frac{\lambda_{1,1}}{(X-a_1)^{m_1}}  + \cdots + \frac{\lambda_{1,m_1}}{(X-a_1)} \right) 
+ + \cdots 
+ + \left( \frac{\lambda_{p,1}}{(X-a_p)^{m_p}} + \cdots + \frac{\lambda_{p,m_p}}{(X-a_p)}\right)  \\
+ + \left( \frac{u_{1,1} + v_{1,1}X}{(X^2-2\Re(z_1)X + |z_1|)^{n_1}} + \cdots + \frac{u_{1,n_1}+ v_{1,n_1}X}{(X^2-2\Re(z_1)X + |z_1|)}\right)  \\
+ + \cdots 
+ + \left( \frac{u_{s,1} + v_{s,1}X}{(X^2-2\Re(z_s)X + |z_s|)^{n_s}} + \cdots + \frac{u_{s,m_s}+ v_{s,m_s}X}{(X^2-2\Re(z_s)X + |z_s|)}\right) .
+\end{multline*}
+avec les $\lambda_{i,j}, u_{i,j}, v_{i,j}$ réels.
+\end{prop}
+\begin{demo}
+ On peut démontrer ce résultat en commençant par regrouper les éléments simples complexes conjugués ou par une voie plus arithmétique. Cette démonstration n'est pas détaillée ici. Ce résultat est admis. 
+\end{demo}
+
+
+\section{Démonstrations} \label{demo}
+\subsection{Supertildation}
+\index{supertildation}
+Soit $a$ un pôle de multiplicité $m$ d'une fraction rationnelle $F$. On ne peut pas prendre la valeur de $F$ en $a$ mais il est possible de définir une opération qui associe un complexe au triplet $(F,a,m)$. Il suffit de multiplier $F$ par $(X-a)^m$ \emph{avant} de substituer $a$ à $X$ car $a$ n'est plus alors un pôle de la fraction obtenue. 
+J'appelle \emph{supertildation} cette opération\footnote{attention cette notation et ce vocabulaire sont spécifiques à ce cours.}
+\begin{displaymath}
+ \widetilde{\widetilde{F}}(a) = \widetilde{(X-a)^mF}(a)
+\end{displaymath}
+Attention, le $m$ est la multiplicité du pôle $a$ dans la fraction. Il dépend donc des deux à la fois. Cette supertildation est un outil fondamental aussi bien théorique que pratique de la décomposition des fractions de $\C(X)$.
+
+\subsection{Parties polaires (algorithmique)} \label{ppol}
+Soit $a\in \C$ un pôle de $F$ de multiplicité $m$. Démontrons l'existence, l'unicité et la forme de la partie polaire relative à $a$ par analyse-synthèse.
+
+\textbf{Analyse.}\newline
+Supposons qu'il existe une fraction $\Pi_a$ vérifiant les conditions. Alors $\deg(\Pi_a) <0$ et $a$ est son seul pôle. Il existe donc $\Lambda \in \C[X]$ tel que 
+\[
+ \Pi_a = \frac{\Lambda}{(X-a)^m} \; \text{ avec } \; \deg(\Lambda) \leq m -1 \; \text{ et } \; \widetilde{\Lambda}(a) \neq 0.
+\]
+En écrivant $\Lambda$ à l'aide de la formule de Taylor en $a$ puis en divisant par $(X-a)^m$, on obtient la formule annoncée:
+\begin{multline*}
+ \Lambda = \widetilde{\Lambda}(a) + \frac{\widetilde{\Lambda'}(a)}{1!}(X-a) + \cdots + \frac{\widetilde{\Lambda^{(m-1)}}(a)}{(m-1)!}(X-a)^{m-1} \\
+\Rightarrow
+\Pi_a =\frac{\widetilde{\Lambda}(a)}{(X-a)^m} + \frac{\widetilde{\Lambda'}(a)}{1!(X-a)^{m-1}} + \cdots + \frac{\widetilde{\Lambda^{(m-1)}}(a)}{(m-1)!(X-a)} \\
+  = \frac{\lambda_1}{(X-a)^m}+\frac{\lambda_2}{(X-a)^{m-1}}+\cdots +\frac{\lambda_i}{(X-a)^{m+1-i}}+\cdots+ \frac{\lambda_m}{(X-a)}.
+\end{multline*}
+On peut remarquer que le coefficient facile est $\lambda_1 = \widetilde{\Lambda}(a) \neq 0$.\newline
+En fait, comme $a$ n'est pas un pôle de $F-\Pi_a$, on a  $\lambda_1 = \widetilde{\widetilde{F}}(a)$. Posons alors
+\[
+ F_1 = F -\frac{\lambda_1}{(X-a)^m}
+\]
+et montrons que la multiplicité de $a$ comme pôle de $F_1$ est $\leq m-1$.\newline
+Par définition de la multiplicité, il existe $A$ et $B$ dans $\C[X]$ tels que $F = \frac{A}{(X-a)^m\,B}$  avec $\widetilde{A}(a)\neq 0$, $\widetilde{B}(a)\neq 0$. Donc
+\[
+ \lambda_1 = \frac{\widetilde{A}(a)}{\widetilde{B}(a)}\\
+ \Rightarrow F_1 = \frac{\widetilde{B}(a)A-\widetilde{A}(a)B}{\widetilde{B}(a)(X-a)^mB}=\frac{(X-a)A_1}{\widetilde{B}(a)(X-a)^mB}
+=\frac{A_1}{\widetilde{B}(a)(X-a)^{m-1}B}
+\]
+avec $A_1\in \C[X]$ car $a$ est clairement racine du numérateur. On en déduit que la multiplicité de $a$ comme pôle de $F_1$ est inférieure ou égale à $m-1$. \newline
+On peut recommencer la supertildation.
+\begin{align*}
+ &\lambda_2 = \widetilde{\widetilde{F_1}}(a),& &F_2 = F_1 -\frac{\lambda_2}{(X-a)^{m-1}},   &\text{ multiplicité de $a$ comme pôle de $F_2$ } \leq m-1\\
+ &\lambda_3 = \widetilde{\widetilde{F_2}}(a),& &F_3 = F_2 -\frac{\lambda_3}{(X-a)^{m-2}}, &\text{ multiplicité de $a$ comme pôle de $F_3$ } \leq m-3\\
+&  & \vdots & & \\
+&\lambda_m = \widetilde{\widetilde{F_{m-1}}}(a),& &F_m = F_{m-1} -\frac{\lambda_m}{(X-a)}, &\text{ multiplicité de $a$ comme pôle de $F_m$} \leq 0
+\end{align*}
+Cette suite de relations est justifiée par le fait que la multiplicité de $a$ comme pôle de $F_i$ décroît à chaque étape exactement comme pour la première. 
+
+\textbf{Synthèse.}\newline
+Définissons des complexes $\lambda_i$ par les relations précédentes.
+\begin{align*}
+ &\lambda_1 = \widetilde{\widetilde{F}}(a)\neq 0,& &F_1 = F -\frac{\lambda_1}{(X-a)^m},   &\text{ multiplicité de $a$ comme pôle de $F_1$ } \leq m-1\\
+ &\lambda_2 = \widetilde{\widetilde{F_1}}(a),& &F_2 = F_1 -\frac{\lambda_2}{(X-a)^{m-1}}, &\text{ multiplicité de $a$ comme pôle de $F_2$ } \leq m-2\\
+&  & \vdots & & \\
+&\lambda_m = \widetilde{\widetilde{F_{m-1}}}(a),& &F_m = F_{m-1} -\frac{\lambda_m}{(X-a)}, &\text{ multiplicité de $a$ comme pôle de $F_m$ } \leq 0
+\end{align*}
+et définissons $\Pi_a$ par
+\[
+ \Pi_a = \frac{\lambda_1}{(X-a)^m}+\frac{\lambda_2}{(X-a)^{m-1}}+\cdots +\frac{\lambda_i}{(X-a)^{m+1-i}}+\cdots+ \frac{\lambda_m}{(X-a)}.
+\]
+Alors $\deg(\Pi_a) < 0$ et $a$ est bien le seul pôle de $\Pi_a$. Sa multiplicité est $m$ et $a$ n'est pas un pôle de $F - \Pi_a = F_m$ puisque la multiplicité de $a$ comme pôle de $F_m$ est négative ou nulle.
+
+\begin{rem}
+ Cette méthode est un moyen pratique de calculer une décomposition en éléments simples.
+\end{rem}
+
+\subsection{Partie entière}
+\label{pent}
+
+\textbf{Analyse.}\newline
+Soit $\Pi_\infty \in \C[X]$ tel que $\deg(F - \Pi_\infty) < 0$. Il existe alors $A$ et $B$ dans $\C[X]$, $B\neq 0$ tels que
+\[
+ F= \frac{A}{B} 
+ \Rightarrow F - \Pi_\infty = \frac{A - B \Pi_\infty}{B}.\hspace{0.5cm}
+ \deg(F - \Pi_\infty) < 0 \Rightarrow \deg(A - B \Pi_\infty) < \deg(B).
+\]
+Si $R = A - B \Pi_\infty$, alors $A = B \Pi_\infty + R$ est la division euclidienne de $A$ par $B$ car $\deg(R) < \deg(B)$. On en déduit que $\Pi_\infty$ est le quotient de la division euclidienne de $A$ par $B$ ce qui assure l'unicité de la partie entière. 
+
+\textbf{Synthèse.}\newline
+Soit $F=\frac{A}{B}$, $\Pi_\infty$ le quotient de la division euclidienne de $A$ par $B$ et $R$ son reste. Alors
+\[
+ F = \frac{B\Pi_\infty + R}{B} = \Pi_\infty + \frac{R}{B} \text{ avec }
+ \deg(\frac{R}{B}) = \deg(R) - \deg(B) < 0.
+\]
+Ce qui assure que $\Pi_\infty$ est la partie entière.
+\begin{rem}
+ La partie entière d'une fraction rationnelle se calcule en général par cette méthode comme le quotient dans la division euclidienne du numérateur par le dénominateur.
+\end{rem}
+
+\subsection{Parties polaires (arithmétique)}
+Démonstration de l'existence et de l'unicité de la partie polaire.
+\begin{demo}
+La fraction $F$ est de la forme $F=\frac{A}{(X-a)^mQ}$.
+D'après les conditions imposées, $\Pi_a$ doit être de la forme $\frac{U}{(X-a)^m}$ avec $U$ un polynôme de degré strictement inférieur à $m$ tel que $\widetilde{U}(a)\neq0$. Alors, le reste $R=F-\Pi_a$ doit vérifier
+\begin{displaymath}
+ R= \frac{A}{(X-a)^mQ} - \frac{U}{(X-a)^m} = \frac{W}{(X-a)^mQ}
+\end{displaymath}
+et $(X-a)^m$ doit diviser $W$ car $a$ n'est pas un  pôle du reste. Il existe donc un polynôme $V$ tel que
+\begin{displaymath}
+ A = UQ + V(X-a)^m \text{ avec } \deg(U)< m
+\end{displaymath}
+On reconnait une \index{équation de Bezout} \href{\baseurl C5546.pdf}{équation de Bezout} aux inconnues $U$ et $V$ avec $Q$ et $(X-a)^m$ premiers entre eux car $\widetilde{Q}(a)\neq 0$. Elle admet un unique couple solution tel que $\deg(U)<m=\deg(X-a)^m$. Ceci démontre l'existence et l'unicité de la partie polaire.\\
+\end{demo}
+
+\section{Pratique - Compléments}
+
+\subsection{Développements classiques}
+Décomposition de $\frac{P'}{P}$.\newline
+Si les racines de $P$ sont $z_1,\cdots, z_p$ avec les multiplicités $m_1,\cdots, m_p$,
+\[
+ \frac{P'}{P} = \frac{m_1}{X - z_1} + \cdots + \frac{m_p}{X - z_p}.
+\]
+
+
+\subsection{Méthode générale}
+La fraction doit être donnée sous une forme factorisée. Tous les pôles et leurs multiplicités sont connus.
+\begin{enumerate}
+ \item \'Ecrire la décomposition avec des coefficients indéterminés.
+ \item Exploiter l'unicité avec des symétries.
+ \item Calculer les coefficients faciles
+ \item S'il reste des coefficients à calculer, former de nouvelles relationset résoudre un système d'équations.
+\end{enumerate}
+
+\subsection{Exemples de symétries}
+
+\subsection{Calculer les coefficients faciles}
+Supertildation
+\index{dérivée du dénominateur pour un pôle simple}
+\index{astuce de la dérivée}
+\begin{prop}[astuce de la dérivée]
+Si $a$ est un pôle simple de $F=\frac{A}{B}$, le coefficient dans la partie polaire de $F$ en $a$ est $\frac{\widetilde{A}(a)}{\widetilde{B'}(a)}$. 
+\end{prop}
+
+\subsection{Former de nouvelles relations}
+Multiplier par $X$ et \og tilder\fg~ à l'infini. Prendre une valeur qui n'est pas un pôle.
+
+\subsection{Cas d'une multiplicité élevée}
+Utilisation d'un développement limité.
+
+\subsection{\'Eléments simples de deuxième espèce}
+Supertider en un pôle complexe, les coefficients sont réels.
+
+\end{document}

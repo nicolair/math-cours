@@ -1,0 +1,104 @@
+\input{courspdf.tex}
+\debutcours{\'Etude métrique des courbes}{alpha}
+
+\section{Introduction. Définitions}
+\subsection{Changement de paramètre admissible}
+\begin{figure}[ht]
+ \centering
+\input{C2265_5.pdf_t}
+\caption{changement de paramètre admissible}
+\label{fig:C2265_5}
+\end{figure}
+
+\subsection{Repère de Frénet}
+
+\subsection{Abscisse curviligne}
+Paramétrisation normale
+
+\subsection{Exemples , vocabulaire, conventions}
+exemples de "mesures" : coordonnées rectangulaires, longueur (figure \ref{fig:C2265_1}), angle de la tangente avec une direction fixe (figure \ref{fig:C2265_3}), aire (figure \ref{fig:C2265_2})
+\begin{figure}[ht]
+ \centering
+\input{C2265_1.pdf_t}
+\caption{$s(M)$ : longueur de l'arc}
+\label{fig:C2265_1}
+\end{figure}
+\begin{figure}[ht]
+ \centering
+\input{C2265_2.pdf_t}
+\caption{$\mathcal A (M)$ : aire balayée}
+\label{fig:C2265_2}
+\end{figure}
+\begin{figure}[ht]
+ \centering
+\input{C2265_3.pdf_t}
+\label{fig:C2265_3}
+\caption{$\alpha (M)$ : angle de la tangente avec une direction fixe}
+\end{figure}
+
+
+Dans quelles situations géométriques ces mesures sont-elles des paramètres admissibles ?
+\section{Théorème de relèvement}
+\begin{prop}
+ Soit $I$ un intervalle de $\R$, soit $z\in \mathcal C^k(I,\C)$ où $k\geq 1$, on suppose de plus que $z(t)$ est de module $1$ pour tout $t\in I$. Il existe alors une fonction $\alpha \in \mathcal C^{k}(I,\R)$ telle que :
+\begin{displaymath}
+ f(t)=e^{i\alpha(t)}
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Comme la fonction $t\mapsto z(t)\overline{z(t)}$ est constante, sa dérivée est nulle. On en déduit que $z'(t)\overline{z(t)}$ est imaginaire pur. Définissons une fonction $\theta$ par :
+\begin{displaymath}
+ \theta(t) = \dfrac{1}{i}z'(t)\overline{z(t)} = i\frac{z't)}{z(t)}
+\end{displaymath}
+car $z(t)$ est de module $1$. Cette fonction est clairement $\mathcal C^{k-1}$. Fixons un $t_0$ dans $I$ et notons $\alpha_0$ un argument de $z(t_0)$. Définissons une fonction $\alpha$ par :
+\begin{displaymath}
+ \forall t\in I : \alpha(t) = \alpha_0 + \int_{t_0}^{t}\theta(u)du
+\end{displaymath}
+Cette fonction est $\mathcal C^k$ car $\theta$ est $\mathcal C^{k-1}$. Considérons alors $w(t)=z(t)e^{i\alpha(t)}$ et calculons sa dérivée :
+\begin{displaymath}
+ w'(t) = (z'(t)+i\alpha'(t)z(t))e^{i\alpha(t)}=(z'(t)+i\theta(t)z(t))e^{i\alpha(t)}=0
+\end{displaymath}
+On en déduit que $w$ est constante. Comme elle prend la valeur $1$ et $t_0$, on en déduit que
+\begin{displaymath}
+ \forall t\in I : z(t) = e^{i\alpha(t)}
+\end{displaymath}
+
+\end{demo}
+
+Fonctions à valeur dans $\U$. Application au théorème du programme.
+
+\section{Courbure}
+\subsection{Définition par une paramétrisation normale}
+définition de la courbure, utilisation de $\tan$,  du rayon de courbure, du centre de courbure, du cercle osculateur, de la développée.
+\subsection{Diverses expressions}
+\subsubsection{Expression avec l'angle de la tangente et une paramétrisation normale}
+\subsubsection{Expression avec un déterminant et une paramétrisation quelconque}
+\subsubsection{Expression locale avec une paramétrisation quelconque}
+\begin{prop}
+ Soit $f\in \mathcal{C}^2(I)$ une paramétrisation quelconque d'une courbe $\Gamma$. Soit $t_0\in I$ et $m_0=f(t_0)$. On note $\overrightarrow{\tau}_0=\overrightarrow{\tau}(m_0)$ et $\overrightarrow{n}_0= \overrightarrow{n}(m_0)$ et $X$, $Y$ les fonctions coordonnées dans le repère de Frénet $(m_0,(\overrightarrow{\tau}_0,\overrightarrow{n}_0))$.\newline
+On peut alors exprimer localement la courbure $\gamma(m_0)$:
+\begin{displaymath}
+ \gamma(m_0)=\lim_{t_0}\frac{2Y(f(t))}{X^2(f(t))}
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ à rédiger
+\end{demo}
+
+
+\section{Exemples}
+\subsection{Cardioïde}
+\subsection{Développante}
+La développante d'une courbe $\Gamma$ est une courbe dont la développée est $\Gamma$.
+\subsection{Ellipse}
+Calcul de la courbure par la formule locale aux points d'intersection avec les axes pour une ellipse d'équation cartésienne
+\begin{displaymath}
+ \dfrac{x^2}{a^2} + \dfrac{y^2}{b^2}=1
+\end{displaymath}
+Calcul de la courbure avec la formule utilisant le déterminant pour la paramétrisation trigonométrique. La développée est une astroïde.
+\subsection{Intégrales de fonctions à valeurs complexes comme courbes paramétrées}
+\begin{displaymath}
+ t \rightarrow z_0 + \int_{0}^{t}r(u)e^{i\theta(u)}du
+\end{displaymath}
+équation intrinsèque.
+\end{document}

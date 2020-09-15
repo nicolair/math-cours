@@ -1,0 +1,556 @@
+\input{courspdf.tex}
+\debutcours{Structures algébriques usuelles}{0.4 \tiny{le \today}}
+
+Cette section n'est qu'une simple introduction au vocabulaire des structures introduites.
+
+\section{Opérations}
+Le programme utilise le terme \emph{loi de composition interne}; on préfère ici le terme \emph{opération interne}. On réservera \og loi de composition\fg~ au contexte de la composition des fonctions (loi $\circ$).
+\subsection{Définitions}
+\begin{defi}[Notation infixe. Opération]\index{notation infixe}
+  Soit $A$, $B$, $C$ trois ensembles et une fonction
+  \begin{displaymath}
+    A\times B \longrightarrow C
+  \end{displaymath}
+La notation infixe de l'image  d'un couple par une fonction consiste à placer le nom de la fonction entre les constituants du couple.
+\end{defi}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|} \hline
+nom de la fonction de $A\times B$ dans $C$ & notation préfixe d'une image & notation infixe d'une image\\ \hline
+$T$ & $T((a,b))$ & $a \,T \, b$ \\ \hline
+\end{tabular}
+\end{center}
+Noter la double parenthèse dans la notation fonctionnelle habituelle (préfixe); la parentèse interne servant de \emph{constructeur} du couple.
+\begin{defi}[opération]\index{opération interne}\index{opération externe}
+Une \emph{opération} est une fonction définie sur un produit cartésien et dont les images sont notées de manière infixe.\newline
+Une \emph{opération interne} sur un ensemble $A$ est une opération de $A\times A$ dans $A$. Une \emph{opération externe} est une opération de $A\times B$ dans $A$ ou dans $B$.
+\end{defi}
+\begin{exples}
+\begin{itemize}
+  \item Opérations internes: addition multiplication dans des ensembles de nombres.
+  \item Opérations externes: dans un $\R$-espace vectoriel $E$, la multiplication externe est une opération de $\R\times E$ dans $E$.
+  \item Une opération ni interne ni externe: la composition des fonctions. Soit $A$, $B$, $C$ trois ensembles,
+\begin{displaymath}
+  \circ : \hspace{0.5cm} 
+\left\lbrace 
+\begin{aligned}
+  \mathcal{F}(A,B)\times\mathcal{F}(B,C) &\longrightarrow \mathcal{F}(A,C)\\
+  (f,g) &\mapsto g \circ f
+\end{aligned}
+\right. 
+\end{displaymath}
+(noter le renversement)
+\end{itemize}
+\end{exples}
+\begin{defi}[partie stable]\index{partie stable}
+  Soit $(E,*)$ un ensemble muni d'une opération interne et $A$ un partie de $E$. On dit que $A$ est \emph{stable} pour $*$ si et seulement si:
+\begin{displaymath}
+  \forall (a,b)\in A^2,\hspace{0.5cm} a*b \in A
+\end{displaymath}
+\end{defi}
+\begin{exple}
+  Dans $\Z$ muni de la multiplication, $\N$ est stable.
+\end{exple}
+
+\begin{defi}[associativité, commutativité]\index{associativité}\index{commutativité}
+Soit $*$ une opération interne dans un ensemble $E$.
+\begin{itemize}
+  \item La loi $*$ est \emph{associative} si et seulement si
+\begin{displaymath}
+  \forall(x,y,z) \in E^3,\;(x*y)*z = x*(y*z) .
+\end{displaymath}
+On note alors $x*y*z$ sans parenthèse.
+\item La loi $*$ est \emph{commutative} si et seulement si
+\begin{displaymath}
+  \forall(x,y) \in E^2,\;x*y = y*x .
+\end{displaymath}
+\end{itemize}
+\end{defi}
+\begin{rem}
+  La soustraction ou le produit vectoriel (dans un espace vectoriel euclidien orienté de dimension $3$) sont des opérations qui ne sont pas associatives. Pour une opération interne $*$, si deux éléments particuliers $a$ et $b$ vérifient $a*b=b*a$, on dit qu'ils commutent.
+\end{rem}
+\begin{defi}[élément neutre]\index{élément neutre}\index{élément neutre à droite}\index{élément neutre à gauche}
+Un élément $e$ d'un ensemble $E$ muni d'une opération interne $*$ est dit \emph{neutre} (pour $(E,*)$) si et seulement si:
+\begin{displaymath}
+  \forall x \in E,\hspace{0.5cm} x*e = e*x = x .
+\end{displaymath}
+On dit que $e$ est \emph{neutre à droite} si et seulement si 
+\begin{displaymath}
+  \forall x \in E,\hspace{0.5cm} x*e = x.
+\end{displaymath}
+On dit que $e$ est \emph{neutre à gauche} si et seulement si 
+\begin{displaymath}
+  \forall x \in E,\hspace{0.5cm} e*x = x.
+\end{displaymath}
+\end{defi}
+\begin{exples}
+\begin{itemize}
+  \item Pour $(\N, +)$, le nombre $0$ est un élément neutre.
+  \item Pour $(\N, *)$, le nombre $1$ est un élément neutre.
+  \item Pour $\mathcal{F}(E,E),\circ)$, la fonction $\Id_E$ est un élément neutre.
+\end{itemize}
+\end{exples}
+\begin{defi}[élément inversible - inverse d'un élément]\index{élément inversible}\index{inverse d'un élément}
+  Soit $(E,*)$ un ensemble muni d'une opération interne avec un élément neutre $e$ et $x$ un élément de $E$.\newline
+On dit que $x$ est inversible si et seulement si il existe $y\in E$ tel que
+\begin{displaymath}
+  x*y = y*x = e .
+\end{displaymath}
+On dit alors que $y$ est un inverse de $x$.
+\end{defi}
+\index{table d'une opération interne}
+On peut caractériser une opération interne sur un ensemble fini en présentant les valeurs dans un tableau. Par exemple, la table de \og l'addition de Cro-Magnon\fg~ sur $E=\left\lbrace 1, 2, B\right\rbrace$ où $B$ désigne \og beaucoup\fg~ est:
+\begin{center}
+\begin{tabular}{|l|l|l|l|} \hline
+    & $1$ & $2$ & $B$\\ \hline
+$1$ & $2$ & $B$ & $B$\\ \hline
+$2$ & $B$ & $B$ & $B$\\ \hline
+$B$ & $B$ & $B$ & $B$ \\ \hline
+\end{tabular}
+\end{center}
+Une opération est commutative si et seulement si sa table est symétrique par rapport à la première bissectrice.
+
+\subsection{Premiers résultats}
+\begin{prop}[unicité de l'élément neutre]\index{unicité de l'élément neutre}
+Soit $(E,*)$ un ensemble muni d'une opération interne. Il existe alors au plus un élément neutre dans $E$.
+\end{prop}
+\begin{demo}
+Considérons des éléments neutres $e$ et $e'$.
+\begin{displaymath}
+\left. 
+\begin{aligned}
+&e \text{ neutre (à gauche)} &\Rightarrow e*e' = e'\\
+&e' \text{ neutre (à droite)} &\Rightarrow e*e' = e
+\end{aligned}
+\right\rbrace \Rightarrow e = e'
+\end{displaymath}
+\end{demo}
+
+\begin{prop}[unicité de l'inverse]\index{unicité de l'inverse d'un inversible}\index{monoïde}
+Soit $(E,*)$ un ensemble muni d'une opération interne \emph{associative} et d'un élément neutre $e$ (on dit alors que $(E,*)$ est un \emph{monoïde}. Tout élément inversible de $E$ admet alors un seul inverse. On note\footnote{sauf dans le cas d'une notation additive pour l'opération. On notera alors $-x$.} $x^{-1}$ l'unique inverse de l'élément inversible $x$. 
+\end{prop}
+\begin{demo}
+  Soit $x$ un élément inversible de $E$ et $u$, $v$ deux éléments de $E$ tels que $u*x = x*u = e$ et $v*x = x*v = e$. Alors, en exploitant l'associativité,
+\begin{displaymath}
+v = v*e = v * (x * u) = (v*x) * u = e * u = u.
+\end{displaymath}
+\end{demo}
+\begin{rem}
+  La preuve montre que l'on peut affaiblir les hypothèses. Si $x$ admet un inverse $u$ d'un côté ($x*u=e$) et un inverse $v$ de l'autre côté ($v*x=e$), cela suffit à assurer que $u=v$.
+\end{rem}
+
+\begin{prop}[stabilité de l'ensemble des inversibles]\index{stabilité de l'ensemble des inversibles}
+Soit $(E,*)$ un ensemble muni d'une opération interne \emph{associative} et d'un élément neutre $e$. Soient $a$ et $b$ deux éléments inversibles de $E$. Alors $a*b$ est inversible d'inverse $b^{-1}*a^{-1}$.
+\end{prop}
+\begin{demo}
+  Ici encore, l'associativité permet de vérifier les égalités requises
+\begin{displaymath}
+(a*b)*(b^{-1}*a^{-1}) = a*(b*b^{-1})*a^{-1}=a*a^{-1}=e\hspace{1cm}
+(b^{-1}*a^{-1})*(a*b) = b^{-1}*(a^{-1})*a)*b = b^{-1}*b =e .
+\end{displaymath}
+donc $a*b$ est inversible d'inverse $b^{-1}*a^{-1}$.
+\end{demo}
+
+\begin{rem}
+ On peut définir l'inversibilité d'un seul côté. Soit $a$ et $b$ dans $E$ ($*$ associative, neutre $e$. Si $a * b = e$, on dit que $a$ est inverse à gauche de $b$ et $b$ est inverse à droite de $a$. Un élément qui admet un inverse à gauche est dit inversible à gauche. Un élément qui admet un inverse à droite est dit inversible à droite.\newline
+ Exemple. Soit $E$ l'ensemble des fonctions de $\N$ dans $\N$ muni de $\circ$ composition des fonctions qui est associative. L'élément neutre est alors la fonction identité notée $i$. On considère des éléments $s$ et $p_k$ définis par
+\[
+ s: 
+\left\lbrace 
+  \begin{aligned}
+    \N &\rightarrow \N \\ n &\mapsto n+1
+  \end{aligned}
+\right. , \hspace{1cm}
+\forall k \in \N,\; p_k :
+\left\lbrace 
+  \begin{aligned}
+    \N &\rightarrow \N \\ 
+    n &\mapsto 
+      \left\lbrace  
+        \begin{aligned}
+          n-1 &\text{ si } n > 0 \\
+          k &\text{ si } n = 0 
+         \end{aligned}
+       \right. 
+  \end{aligned}
+\right.
+\]
+Alors $p_k \circ s = i$ pour tous les $k$. Donc $s$ est inversible à gauche et admet une infinité d'inverses à gauche. 
+\end{rem}
+
+
+\subsection{Notation additive ou multiplicative}
+\index{notation additive ou multiplicative}
+ Lorsque l'opération est notée avec un signe qui rappelle "+", on dit qu'elle est notée additivement. Lorsque l'opération est notée avec un signe qui rappelle "." on dit qu'elle est notée multiplicativement. Souvent on omet le signe d'une opération notée multiplicativement en écrivant $ab$ pour le résultat de $a$ "multiplié" (pour l'opération en jeu) par $b$.
+\begin{rem}
+Pour mériter l'honneur d'être notée additivement, une loi doit être associative et commutative. Si on ne respecte pas cette convention, les erreurs dues à nos habitudes de calculs sont quasi-certaines.\newline
+Pour une notation multiplicative, on peut se contenter de l'associativité (mais elle est absolument indispensable). Il faut commencer à s'habituer au fait que la commutativité n'est pas automatique et que $ab \neq ba$ sauf si il y a une bonne raison assurant l'égalité.  
+\end{rem}
+
+Ces deux types de notation conduisent à d'autres conventions.
+\begin{itemize}
+ \item Pour une opération notée multiplicativement (par exemple "$*$" avec un neutre $e$), on parle \emph{d'élément inversible} et d'\emph{inverse} d'un élément $a$. Il sera noté $a^{-1}$. De plus
+\begin{displaymath}
+ \forall n \in \Z,
+a^n = 
+\left\lbrace 
+\begin{aligned}
+ &\underset{n \text{ fois} }{\underbrace{a * a * \cdots *a}}&\text{ si } n>0 \\
+ &e &\text{ si } n=0 \\
+ &\underset{-n \text{ fois} }{\underbrace{a^{-1} * a^{-1} * \cdots *a^{-1}}}&\text{ si } n<0
+\end{aligned}
+\right. 
+\end{displaymath}
+
+ \item Dans le cas d'une opération notée additivement (par exemple "$+$" avec un neutre "$\bar0$"), ces notions se traduisent en \emph{élément symétrisable} et \emph{symétrique} d'un élément $a$. Il est noté $-a$, de plus
+\begin{displaymath}
+ \forall n \in \Z,
+na = 
+\left\lbrace 
+\begin{aligned}
+ &\underset{n \text{ fois} }{\underbrace{a + a + \cdots *a}}&\text{ si } n>0 \\
+ &\bar 0 &\text{ si } n=0 \\
+ &\underset{-n \text{ fois} }{\underbrace{(-a)+ (-a) + \cdots +(-a)}}&\text{ si } n<0
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{itemize}
+
+\begin{rem}
+Comme les additions usuelles sont commutatives, il est d'usage de n'utiliser une notation additive que \emph{pour certaines opérations commutatives}. Dans toute la suite, les propositions générales valables pour tous les groupes seront donc formulées pour des opérations notées multiplicativement. Elles commenceront donc en général par \og Soit $(G,*)$ un groupe ...\fg.
+\end{rem}
+
+
+\section{Groupes}
+\subsection{Définitions }
+\begin{defi}\index{groupe}
+ Un groupe est un ensemble muni d'une opération associative, avec un élément neutre et pour lequel chaque élément est inversible.
+\end{defi}
+
+\begin{exples}
+  $\U_n$ avec la multiplication complexe. Soit $*$ une opération interne dans un ensemble $E$ associative avec un élément neutre; l'ensemble des inversibles est un groupe pour la restriction de $*$.
+\end{exples}
+
+  \begin{defi}\href{\baseurl C2260.pdf}{Groupe des permutations d'un ensemble}\index{groupe des permutations d'un ensemble}\newline
+Soit $X$ un ensemble, on note $\mathfrak{S}_X$ l'ensemble des bijections de $X$ dans lui même. Dans ce contexte, une bijection de $X$ dans lui même est appelée \emph{permutation} \index{permutation}. L'ensemble $\mathfrak{S}_X$ muni de la composition des fonctions $\circ$ forme un groupe.
+  \end{defi}
+\begin{rem}
+  Le neutre est l'identité, l'inverse d'une permutation est sa bijection réciproque.
+\end{rem}
+Plusieurs notations sont possibles pour les permutations lorsque $X = \llbracket 1,n \rrbracket$. On peut par exemple utiliser une notation matricielle à deux lignes. La première ligne contient les entiers de $1$ à $n$ et la deuxième contient les images de ces entiers. Par exemple, avec $n=7$,
+\begin{displaymath}
+ \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  3 & 7 & 1 & 2 & 6 & 4 & 5
+ \end{pmatrix}
+\circ
+ \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  6 & 4 & 1 & 3 & 2 & 7 & 5
+ \end{pmatrix}
+=
+ \begin{pmatrix}
+  1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  4 & 2 & 1 & 2 & 7 & 3 & 6
+ \end{pmatrix}
+\end{displaymath}
+
+\begin{prop}
+  Soit $(G,*)$ un groupe. Pour tout $a\in G$, les applications de \og multiplication\fg~ par $a$ à droite ou à gauche 
+\begin{displaymath}
+  \gamma_a:\;\left\lbrace 
+  \begin{aligned}
+    G &\rightarrow G \\ x &\mapsto a*x
+  \end{aligned}
+\right. \hspace{1cm}
+  \delta_a:\;\left\lbrace 
+  \begin{aligned}
+    G &\rightarrow G \\ x &\mapsto x*a
+  \end{aligned}
+\right.
+\end{displaymath}
+  sont des bijections. Pour un groupe fini, la table de l'opération est un carré latin \index{carré latin} (chaque élément se retrouve une seule fois dans chaque ligne et colonne).
+\end{prop}
+\begin{demo}
+  Soit $G$ un groupe fini avec une opération $*$. La propriété 
+\begin{center}
+  \og chaque élément se retrouvent une seule fois dans chaque ligne\fg
+\end{center}
+se traduit par 
+\begin{displaymath}
+  \forall a\in E \text{ (caractéristique de la ligne)},\; \forall x \in E \text{ (élément quelconque) },\; \text{il existe un unique }b\in E\text{ tq } x = a*b
+\end{displaymath}
+De même, la propriété 
+\begin{center}
+  \og chaque élément se retrouvent une seule fois dans chaque colonne\fg
+\end{center}
+se traduit par 
+\begin{displaymath}
+  \forall a\in E \text{ (caractéristique de la colonne)},\; \forall x \in E \text{ (élément quelconque) },\; \text{il existe un unique }b\in E\text{ tq } x = b*a
+\end{displaymath}
+La propriété pour la table d'être un carré latin est donc bien une traduction dans le cas fini des bijectivités de $\gamma_a$ et $\delta_a$.  Ces bijections découlent des relations
+\begin{displaymath}
+  \gamma_a \circ \gamma_{a^{-1}} = \gamma_{a^{-1}} \circ \gamma_a = \Id_G, \hspace{1cm}
+  \delta_a \circ \delta_{a^{-1}} = \delta_{a^{-1}} \circ \delta_a = \Id_G
+\end{displaymath}
+qui assurent de plus que ${\gamma_a}^{-1} = \gamma_{a^{-1}}$ et ${\delta_a}^{-1} = \delta_{a^{-1}}$.
+\end{demo}
+Exercice traité en classe. Former la table du groupe des permutations d'un ensemble à trois éléments en calculant des compositions puis en complétant façon sudoku. Former la table de $\U_5$.
+\begin{prop}
+ Soit $(G,*)$ un groupe dont l`élément neutre est noté $e$.
+\begin{displaymath}
+ \forall (a,b)\in G^2,\; (a*b)^{-1} = b^{-1}* a^{-1}.
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On calcule les produits en utilisant l'associativité.
+\end{demo}
+\index{groupe produit}\index{produit de groupe}
+\begin{propdef}
+ Soit $(G,*)$ et $(H,\intercal)$ deux groupes. On définit une opération $\perp$ sur $G\times H$ par:
+\begin{displaymath}
+ \forall ((g,h),(g',h'))\in (G\times H)^2,\;(g,h)\perp (g',h')=(g*g',h\intercal h')
+\end{displaymath}
+Pour cette opération, $(G\times H,\perp)$ est un groupe appelé \emph{produit} des deux groupes.
+\end{propdef}
+Ceci est utilisé en particulier en prenant plusieurs fois le même groupe: addition sur $\R^2$, sur $\R^n$.
+
+\subsection{Sous-groupe}
+\begin{defi}
+ Soit $(G,*)$ un groupe et $H$ une partie de $G$. On dit que $(H,*)$ est \emph{un sous-groupe} de $(G,*)$ si et seulement si $H$ est non vide et stable pour $*$ et l'inversion.
+\begin{displaymath}
+ \forall (a,b)\in H^2,\; a*b \in H, \; A^{-1}\in H .
+ \end{displaymath}
+\end{defi}
+\begin{prop}
+  Si $H$ est un sous-groupe de $G$ alors l'élément neutre de $G$ est un élément de $H$.
+\end{prop}
+\begin{demo}
+  Comme $H$ n'est pas vide, il contient un élément $h$, donc son inverse $h^{-1}$ ainsi que le produit des deux $h*h^{-1}=e$.
+\end{demo}
+
+\begin{rems}
+\begin{itemize}
+  \item Le singleton réduit à l'élément neutre est un sous-groupe de $G$. Si $G$ est un groupe, alors $G$ est aussi un sous-groupe de lui même.
+  \item Lorsque $H$ est un sous-groupe, les conditions de stabilité imposées entraînent que la restriction de l'opération à $H\times H$ définit une structure de groupe sur $H$ (avec le même élément neutre).
+  \item On peut caractériser le fait que $H$ soit un sous-groupe par 
+\begin{displaymath}
+  \forall(h,h')\in H^,\; h * h'^{-1} \in H .
+\end{displaymath}
+Cette condition n'est pas très utile. Elle combine artificiellement les deux conditions de stabilité qui souvent découlent de propriétés différentes.
+\end{itemize}
+\end{rems}
+
+\begin{prop}
+ L'intersection d'une famille de sous-groupes d'un même groupe $(G,*)$ est un sous-groupe de $(G,*)$.
+\end{prop}
+\begin{demo}
+  Soit $\left( H_i\right)_{i\in I}$ une famille de sous-groupes d'un groupe $(G,*)$ et $H = \bigcap_{i\in I}H_i$. On ne fait aucune hypothèse sur $I$, la famille peut être infinie. Comme n'importe quel sous-groupe $H_i$ contient le neutre $H$ n'est pas vide car il contient le neutre.\  Il reste à vérifier les deux stabilités. Pour tout $h$ et $h'$ dans $H$, on doit montrer que $h*h'$ et $h^{-1}$ sont dans $H$.
+\begin{displaymath}
+\left( \forall i\in I,
+\left. 
+\begin{aligned}
+  h &\in H_i \\ h' &\in H_i
+\end{aligned}
+\right\rbrace \Rightarrow h*h \in H_i 
+\right) \Rightarrow h*h' \in \left( H_i\right)_{i\in I} = H
+\end{displaymath}
+\begin{displaymath}
+  \left( \forall i \in I, h\in H_i \Rightarrow h^{-1}\in H_i \right) \Rightarrow h^{-1} \in \left( H_i\right)_{i\in I} = H
+\end{displaymath}
+\end{demo}
+
+\begin{rem}
+ En revanche l'union de deux sous-groupes n'est pas en général un sous groupe. Cela est vrai si et seulement si l'un des sous-groupes est inclus dans l'autre. 
+\end{rem}
+
+\begin{defi}[Notations $Hx$ et $xH$.]
+  Soit $H$ un sous-groupe d'un groupe $(G,*)$ et $x\in G$, on définit les parties notées $Hx$ et $xH$ de $G$ par:
+\begin{displaymath}
+  Hx = \left\lbrace hx, h\in H\right\rbrace \hspace{0.5cm} xH = \left\lbrace xh, h\in H\right\rbrace
+\end{displaymath}
+\end{defi}
+
+
+\subsection{Morphisme de groupe}
+\begin{defi}
+ Soit $(E,*)$ et $(F,\top)$ deux groupes, une application $f$ de $E$ dans $F$ est un morphisme de groupe si et seulement si :
+\begin{displaymath}
+ \forall(g,g')\in G^2 : f(g*g') = f(g) \top f(g')
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ Soit $f$ un morphisme de groupe de $G$ dans $F$ alors:
+\begin{align*}
+    &f(e_G) = e_F \\
+ \forall g\in G: &f(g^{-1}) = (f(g))^{-1}.
+\end{align*}
+\end{prop}
+\begin{exple}
+ Soit $(G,*)$ un groupe quelconque et $g$ un élément fixé de $G$, l'application
+\begin{displaymath}
+e_g : \left\lbrace 
+\begin{aligned}
+ \Z &\rightarrow G \\
+ n &\rightarrow g^n
+\end{aligned}
+\right. 
+\end{displaymath}
+est un morphisme de groupe de $(\Z,+)$ dans $(G,*)$.
+\end{exple}
+\index{noyau}
+\begin{defi}[noyau d'un morphisme de groupe]
+Soit $f$ un morphisme de groupe de $G$ dans $F$, le noyau de $f$ est l'ensemble des éléments de $G$ dont l'image est le neutre de $F$. Il est noté $\ker f$.
+\end{defi}
+\begin{rem}
+ On peut utiliser les notions d'images directes et réciproques pour caractériser le noyau et l'image.
+\begin{displaymath}
+ \ker f = f^{-1}(\{e_F\}),\hspace{1cm} \Im f = f(E) .
+\end{displaymath}
+\end{rem}
+
+\begin{prop}
+Soit $f$ un morphisme de groupe de $G$ dans $F$, le noyau $\ker f$ de $f$ est un sous-groupe de $G$, l'image $\Im f$ est un sous-groupe de $F$. 
+\end{prop}
+
+\subsection{Sous-groupes engendrés.}
+\index{sous-groupe engendré}
+\begin{defi}
+  Dans un groupe $(G,*)$, le sous-groupe engendré par une partie $A$ est l'intersection de la famille  des sous-groupes contenant $A$.
+\end{defi}
+Cette définition est justifiée par le fait que l'intersection de n'importe quelle famille de sous-groupe est un sous-groupe. Il existe des sous-groupes contenant une partie $A$ quelconque: au moins le groupe $G$ tout entier. Le sous groupe engendré par $A$ se note $<A>$. C'est aussi le plus petit (au sens de l'inclusion) des sous-groupes contenant $A$.
+Dans le cas particulier d'un sous-groupe engendré par un élément $a$, on notera $<a>$ le sous-groupe engendré. On peut vérifier que 
+\begin{displaymath}
+  <a> = \left\lbrace a^n, n\in Z \right\rbrace 
+\end{displaymath}
+Lorsque ce sous-groupe est fini d'ordre (de cardinal) $m$, ce nombre $m$ est aussi appelé l'ordre de $a$ 
+\index{ordre d'un élément d'un groupe}
+\index{groupe monogène}
+Un groupe $G$ est dit \emph{monogène} si est seulement si il existe $a\in G$ tel que $G=<a>$.
+\index{groupe cyclique} Un groupe est dit \emph{cyclique} si et seulement si il est monogène et fini.
+
+\subsection{Sous-groupes du groupe additif des entiers relatifs}
+\begin{prop}
+ Pour tout sous-groupe $H$ de $(\Z,+)$, il existe un unique élément $m$ de $\N$ tel que 
+\begin{displaymath}
+ H = \Z m .
+\end{displaymath}
+\end{prop}
+\begin{demo}
+Montrons d'abord l'unicité.\newline
+Si $p$ et $p'$ sont deux entiers naturels tels que $p\Z = p'\Z$ alors $p\in p'\Z$ et $p'\in p\Z$ donc il existe $q$ et $q'$ dans $\N$ tels que 
+\begin{displaymath}
+  \left( p = qp' \text{ et } p' = q' p\right) \Rightarrow p =qq'p \Rightarrow 1 = qq' \Rightarrow q=q'=1 \text{ (dans $\Z$)}\Rightarrow p = p'
+\end{displaymath}
+Montrons ensuite l'existence.\newline
+Si $H$ se réduit à $0$ alors $p=0$ convient.\newline
+Si $H$ n'est pas réduit à $0$. Il contient un élément non nul $h$ ainsi que son opposé $-h$. On en déduit que $H\cap \N^* \neq \emptyset$. On note $p$ le plus petit élément de cet ensemble. Par définition $p\in H$. A cause des stabilités d'un sous-groupe, $\Z p \subset H$.\newline
+Réciproquement, pour tout $h\in H$, considérons la division euclidienne de $h$ par $p$. Il existe $m\in \Z$ et $r\in \llbracket 0 , p-1 \rrbracket$ tels que 
+\begin{displaymath}
+  h = mp +r \Rightarrow r = \underset{\in H}{\underbrace{h}} + \underset{\in H}{\underbrace{(-m)r}} \in H \; \text{ (stabilités d'un sous-groupe)}
+\end{displaymath}
+Comme $r\in \N \cap H$ et $r<p=\min(\N^* \cap H)$ il doit être nul donc $h=mp \in p\Z$.
+\end{demo}
+
+\section{Structure d'anneau et de corps.}
+\subsection{Anneau}
+\begin{defi}\index{anneau}\index{distributivité}
+  Un anneau est un triplet $(A,+,.)$ constitué de
+\begin{itemize}
+  \item un ensemble non vide $A$
+  \item une opération interne additive $+$ telle que $(A,+)$ soit un groupe commutatif. Son neutre est noté $0_A$.
+  \item une opération interne multiplicative $.$ associative, avec un élément neutre noté $1_A$.
+  \item l'opération multiplicative doit être \emph{distributive} sur l'opération additive c'est à dire:
+\begin{displaymath}
+\forall (a,b,c)\in A^3:
+\left\lbrace 
+\begin{aligned}
+  &a.(b+c) = a.b +a.c \\ &(b+c).a = b.a + c.a
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{itemize}
+\end{defi}
+\begin{defi}
+  Un anneau est dit \emph{commutatif} si et seulement si son opération multiplicative est commutative.
+\end{defi}
+Exemples: $\Z$, $\Q$, $\R$, $\C$. Si $A$ est un anneau et $\Omega$ un ensemble quelconque, on peut définir une structure d'anneau fonctionnel sur $\mathcal{F}(\Omega,A)$. \index{anneau fonctionnel}
+
+\begin{rems}
+\begin{itemize}
+  \item La distributivité est la propriété qui permet le \emph{développement} et la \emph{factorisation}.
+  \item Dans un anneau $A$, si $a\in A$ et $n\in \Z$, sont définis aussi :
+\begin{displaymath}
+  0_A, 1_A, -a, na
+\end{displaymath}
+$a^n$ avec $n\in \N$ ainsi que pour $n\in \Z$ si $a$ est inversible.
+\end{itemize}
+\end{rems}
+\begin{prop}
+  Soit $A$ un anneau.
+\begin{align*}
+  &\forall a\in A, 0_Aa = a0_A = 0_A\\
+  &\text{si $A$ contient au moins deux éléments distincts}: 0_A \neq 1_A\\
+  &\forall(a,b)\in A^2, (-a)b = a(-b) = -(ab), (-1_A)a = -a, (-a)(-b) = ab \\
+  &(-1_A)(-1_A) = 1_A \\
+  &\forall(a,b)\in A^2, \forall n\in \Z, (na)b = a(nb) = n(ab)\\
+\end{align*}
+\end{prop}
+\begin{demo}
+Considérer $a(1_A + 0_A)$.  Considérer $(a+(-a))b$. Considérer $(-1_A)(-1_A)+1(-1_A) = 0_A (-1_A) = 0$ donc $-1_A = -(-1_A) = 1_A$.
+\end{demo}
+Si $a$ commute avec $b$ et $n\in \N$: formule du binôme, expression de $a^n - b^n$.
+\begin{displaymath}
+ (a+b)^n = \sum_{k=0}^{n} \binom{k}{n}a^kb^{n-k}, \hspace{1cm}a^n - b^n = (a-b)\sum_{k=0}^{n-1}a^{n-1-k}b^k
+\end{displaymath}
+
+\begin{prop}\index{groupe des inversibles d'un anneau}
+  L'ensemble des inversibles d'un anneau muni de la restriction de l'opération multiplicative forme un groupe appelé groupe des inversibles de l'anneau.
+\end{prop}
+
+\begin{defi}\index{élément nilpotent}
+  Dans un anneau $A$, un élément $a$ est dit \emph{nilpotent} si et seulement si il existe $n\in \N$ tel que $a^n = 0_A$.
+\end{defi}
+
+\begin{defi}[sous-anneau]
+  Dans un anneau $A$, une partie $B$ est un sous-anneau si et seulement si elle contient le neutre multiplicatif et elle est stable pour l'addition, la symétrisation et la multiplication.
+\end{defi}
+\index{sous-anneaux}
+\begin{rems}
+\begin{itemize}
+  \item Un sous-anneau est en particulier un sous-groupe additif.
+  \item La restriction des deux opérations à un sous-anneau définit une structure d'anneau sur celui-ci. 
+\end{itemize}
+\end{rems}
+\begin{exple}
+  L'ensemble
+\begin{displaymath}
+  \Z[i] = \left\lbrace a+ib,\,(a,b)\in \Z^2 \right\rbrace 
+\end{displaymath}
+est appelé l'anneau des \emph{entiers de Gauss}\index{anneau des entiers de Gauss}, c'est un sous-anneau de $(\C,+,.)$.
+\end{exple}
+
+\subsection{Corps}
+\begin{defi}
+  Un corps est un anneau commutatif contenant au moins deux éléments et pour lequel tout élément autre que le neutre additif est inversible.
+\end{defi}
+\begin{defi}\index{sous-corps}
+  Une partie $k$ d'un corps $K$ est un \emph{sous-corps} si et seulement si $k$ est un sous-anneau de $K$ tel que 
+\begin{displaymath}
+  \forall x\in k x\neq 0_K \Rightarrow x^{-1}\in k
+\end{displaymath}
+\begin{rem}
+  Les restrictions des opérations une structure de corps définissent sur un sous-corps. 
+\end{rem}
+\begin{exples}
+\begin{itemize}
+  \item $\Q$ sous-corps de $\R$, $\R$ sous-corps de $\C$. Mais il existe bien d'autres sous-corps.
+  \item $\Q(i)=\left\lbrace  x+iy, (x,y)\in \Q^2 \right\rbrace$ sous-corps de $\C$.
+  \item $\Q(\sqrt{2})=\left\lbrace  x+\sqrt{2}y, (x,y)\in \Q^2 \right\rbrace$ sous-corps de $\R$.
+\end{itemize}
+\end{exples}
+
+\end{defi}
+
+
+\end{document}

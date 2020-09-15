@@ -1,0 +1,127 @@
+\input{courspdf.tex}
+\debutcours{Fonctions d'une variable réelle : vocabulaire}{alpha}
+
+L'étude des \href{\baseurl C2063.pdf}{fonctions d'une variable réelle} est réparti entre divers documents.\newline
+Toutes les fonctions considérées ici sont à valeurs réelles. Un point important dans le vocabulaire relatif aux fonctions est de bien faire la différence entre ce qui se rapporte à l'espace de départ et ce qui se rapporte à l'espace d'arrivée. Cela est d'autant plus difficile dans le cas des fonctions d'une variable réelle à valeurs réelles qu'il s'agit chaque fois de $\R$ ou d'une partie de $\R$. Il est commode de s'aider de schémas en convenant de dessiner la droite réelle \emph{horizontalement} quand elle est associée à l'espace de départ et \emph{verticalement} quand elle est associée à l'espace d'arrivée.  
+\section{Opérations}
+\begin{defi}
+ Soit $f$ et $g$ deux fonctions définies sur un intervalle $I$. Somme, produit de deux fonctions. Multiplication d'une fonction par un réel.\newline
+Les fonctions $\sup(f,g)$ et $\inf(f,g)$ sont définies par :
+\begin{displaymath}
+ \forall x\in I \left\lbrace
+\begin{aligned}
+ \sup(f,g)(x) &= \max(f(x),g(x)) \\
+ \inf(f,g)(x) &= \min(f(x),g(x))
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{defi}
+$f^+$, $f^-$, $|f|$
+\begin{figure}[h!t]
+ \centering
+\input{C3901_1.pdf_t}
+\caption{Expression de $\sup$ et $\inf$ avec une valeur absolue}
+\label{fig:C3901_1}
+\end{figure}
+
+\begin{prop}
+ \begin{align*}
+  \sup(f,g)=\frac{1}{2}\left(f + g + |f-g| \right)
+& &  
+ \inf(f,g)=\frac{1}{2}\left(f + g - |f-g| \right)
+ \end{align*}
+
+\end{prop}
+
+\section{Inégalités}
+\subsection{Fonctions majorées, minorées, bornées}
+\index{fonctions majorées, minorées, bornées}
+\begin{defi}[fonctions majorées, minorées, bornées]
+ Une fonction $f$ est dite majorée (respectivement minorée, bornée) si et seulement si l'ensemble de ses valeurs est majoré (resp minoré, borné)
+\end{defi}
+
+L'ensemble des fonctions définies sur un ensemble $I$ et bornées et noté $\mathcal{B(I,\R)}$, il est stable pour les cinq opérations.
+\index{borne supérieure ou inférieure d'une fonction}
+\begin{defi}[borne supérieure ou inférieure d'une fonction]
+ Pour une fonction $f$ définie dans $I$.\newline
+Lorsque $f$ est majorée, on appelle  borne supérieure de $f$ la borne supérieure de l'ensemble de ses valeurs. Lorsque $f$ est minorée, on appelle  borne inférieure de $f$ la borne inférieure de l'ensemble de ses valeurs. Notations
+\begin{align*}
+ \sup_I f = \sup \left\lbrace f(t), t\in I\right\rbrace = \sup f(I)
+& &
+  \inf_I f = \inf \left\lbrace f(t), t\in I\right\rbrace = \inf f(I)
+\end{align*}
+\end{defi}
+\begin{defi}[Inégalités entre fonctions.]
+ Soit $f$ et $g$ deux fonctions définies dans $I$, on dira que $f\leq g$ si et seulement si $f(t)\leq g(t)$ pour tous les $t$ dans $I$.
+\end{defi}
+ 
+
+\index{extrémum, extémum local}
+\subsection{Extrémum, extrémum local}
+\begin{defi}[extrémum global, extémum local]
+ Soit $I$ un intervalle de $\R$ et $f$ une fonction définie dans $I$ ...
+\end{defi}
+\begin{rems}
+ \begin{itemize}
+  \item Tout extrémum global est un extrémum local.
+  \item Une fonction $f$ admet un maximum global si et seulement si l'ensemble de ses valeurs admet un plus grand élément.
+  \item Une fonction $f$ admet un minimum global si et seulement si l'ensemble de ses valeurs admet un plus petit élément.
+ \end{itemize}
+
+\end{rems}
+
+Cette notion d'extrémum local joue un rôle très important dans le \index{théorème de Rolle} \href{\baseurl C2070.pdf}{théorème de Rolle}.
+
+\subsection{Fonctions monotones}
+Fonctions croissantes, strictement croissantes, décroissantes, strictement décroissante.
+\begin{rem}
+ Une fonction strictement monotone est injective.
+\end{rem}
+
+\begin{prop}[Composition des fonctions monotones.]
+ La composée de deux fonctions monotones de même sens est croissante, la composée de deux fonctions monotones de sens contraire est décroissante.
+\end{prop}
+ 
+\section{Fonctions périodiques}
+\index{fonctions périodiques}
+\begin{defi}
+ Une fonction $f$ définie dans $\R$ est \emph{périodique} si et seulement si il existe un $T$ réel non nul tel que $f(x+T)=f(x)$ pour tous les $x\in\R$. On dit alors qu'elle est $T$-périodique.
+\end{defi}
+\index{groupe additif des périodes}
+\begin{prop}
+ L'ensemble des $T$ réels tels que $f(x+T)=f(x)$ pour tous les $x\in\R$ forme un sous-groupe additif de $\R$.
+\end{prop}
+\begin{demo}
+ à rédiger
+\end{demo}
+Pour un $T\neq 0$ fixé, l'ensemble des fonctions $T$-périodiques est stable pour les cinq opérations.
+\section{Fonctions lipschitziennes}
+\index{fonctions lipschitziennes}
+\begin{defi}
+ Une fonction $f$ définie sur un intervalle $I$ de $\R$ est \emph{lipschitzienne} de rapport $k$ si et seulement si 
+\begin{displaymath}
+ \forall (x,y)\in I^2 : |f(y)-f(x)|\leq k |y-x|
+\end{displaymath}
+Une fonction est lipschitzienne si et seulement si il existe un réel $k$ pour lequel elle est lipschitzienne de rapport $k$.
+\end{defi}
+\begin{exples}
+ \begin{itemize}
+  \item La fonction valeur absolue définie dans $\R$ est lipschitzienne de rapport 1 .
+  \item La fonction $t\rightarrow t$ définie dans $\R$ est lipschitzienne de rapport 1.
+  \item La fonction $t\rightarrow t^2$ définie dans $\R$ n'est pas est lipschitzienne.
+  \item La fonction $t\rightarrow t^2$ définie  dans un segment est lipschitzienne.
+ \end{itemize}
+\end{exples}
+ La restriction d'une fonction lipschitzienne de rapport $k$ est lipschitzienne de rapport $k$.
+
+\section{Propriété locale}
+\index{propriété locale d'une fonction}
+Soit $a$ un nommbre réel, on dira qu'une fonction définie dans un intervalle $I$ vérifie une propriété \emph{localement en } $a$ si et seulement si il existe un $\alpha >0$ tel que \emph{la restriction} de la fonction à $I\cap]a-\alpha,a+\alpha[$ vérifie la propriété.
+\begin{exples}
+ \begin{itemize}
+  \item Une fonction $f$ est localement bornée en $a$ si et seulement si il existe un $\alpha>0$ et un $M$ tels que $|f(t)|\leq M$ pour tous les $t$ de $I\cap]a-\alpha,a+\alpha[$.
+ \end{itemize}
+
+\end{exples}
+
+\end{document}

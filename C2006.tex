@@ -1,0 +1,348 @@
+\input{courspdf.tex}
+\debutcours{Géométrie élémentaire de l'espace}{alpha}
+
+On reprend les conventions du chapitre de géométrie élémentaire plane. On désigne par $\mathcal E$ un espace géométrique et par $E$ son espace vectoriel sous-jacent.
+\section{Orientation. Produit scalaire. Déterminant}
+\subsection{Orientation}
+Dans tout espace vectoriel réel, on peut classer les bases en deux catégories. Orienter\index{orientation d'un espace vectoriel réel} l'espace c'est décréter que les bases de l'une des deux catégories sont appelées directes et les autres indirectes.\\
+Par exemple dans le plan $\R^2$, l'orientation usuelle est celle pour laquelle la base $((1,0),(0,1))$ est directe. Dans un espace de dimension trois, la convention habituelle est de décréter qu'une base $(\overrightarrow u ,\overrightarrow v ,\overrightarrow w)$ est directe si on peut la représenter par les trois doigts de la \emph{main droite}\index{règle des trois doigts}
+\begin{displaymath}
+ (\overrightarrow u ,\overrightarrow v ,\overrightarrow w)
+=
+(\overrightarrow{\text{Pouce}},\overrightarrow{\text{Index}},\overrightarrow{\text{Majeur}})
+\end{displaymath}
+Si on ne peut le faire avec la main droite on peut le faire avec la main gauche ce qui rend compte du résultat cité au début sur les deux catégories de base.\\
+On admet intuitivement que si $(\overrightarrow u ,\overrightarrow v)$ est un couple de vecteurs non colinéaires, ils définissent deux demi-espace. Suivant que $\overrightarrow w$ est dans l'un ou l'autre de ces demi-espaces, la base $(\overrightarrow u ,\overrightarrow v ,\overrightarrow w)$ sera de l'une ou l'autre des deux catégories.
+
+ATTENTION. On dispose d'une convention claire pour définir une orientation dans le plan $\R^2$ ou dans l'espace usuel en dimension 3, en revanche un plan dans un espace n'est pas \emph{en lui même} muni d'une orientation. Si on veut l'orienter, on ne peut le faire qu'avec l'aide d'un vecteur qui n'est pas dans le plan.\index{orientation d'un plan autour d'un vecteur}\\
+Soit $E$ un espace de dimension $3$ et $P$ un plan qui est une partie de $E$. On suppose $E$ orienté. Le plan $P$ n'hérite pas d'une orientation naturelle. Soit $\overrightarrow w$ un vecteur qui n'est pas dans $P$. On peut définir un orientation de $P$ \emph{autour de $\overrightarrow w$} de la manière suivante: une base $(\overrightarrow u , \overrightarrow v)$ de vecteurs de $P$ est dite directe si et seulement si $(\overrightarrow u , \overrightarrow v , \overrightarrow w)$ est une base directe de $E$.\\
+En conséquence, \emph{il est impossible de définir une notion satisfaisante d'angle orienté entre deux vecteurs non nuls dans l'espace}. Deux vecteurs étant fixés, on peut toujours se placer dans le plan qu'ils engendrent. Dans un tel plan, on pourrait définir l'angle orienté des deux vecteurs mais pour cela il faudrait que le plan lui même soit orienté. Il n'existe pas de moyen universel pour orienter un plan quelconque. Le seul moyen est de l'orienter \emph{autour} d'un vecteur fixé (en général orthogonal au plan). En revanche on peut définir la notion d'écart angulaire (qui est d'ailleurs complètement indépendante de la dimension).
+ 
+\subsection{Produit scalaire}
+ Il existe\footnote{voir le chapitre sur les \href{\baseurl C2262.pdf}{espaces vectoriels euclidiens}} une application \emph{produit scalaire} notée $(./.)$ définie dans $E^2$ et vérifiant les propriétés de symétrie, bilinéarite, positivité précisées dans la section produit scalaire et déterminant du chapitre de \href{\baseurl C2005.pdf}{géométrie élémentaire plane}.\\
+Cela permet de définir les notions \emph{d'orthogonalité}, de \emph{base orthogonale}, de \emph{base orthonormée} (on dit aussi orthonormale. En ajoutant une orientation, on définit la notion de base orthogonale ou orthonormée directe. On a alors la proposition suivante qui exprime le produit scalaire avec des coordonnées dans une base orthonormée directe.
+\begin{prop}
+ Pour toute base orthonormée directe $\mathcal{B}$,
+\begin{displaymath}
+\forall (\overrightarrow{u},\overrightarrow{v})\in E^2 :\hspace{0.5cm}
+\left( \overrightarrow{u}/\overrightarrow{v}\right) = aa' + bb' + cc'
+\end{displaymath}
+où $(a,b,c)$ et $(a',b',c')$ sont respectivement les coordonnées de $\overrightarrow{u}$ et $\overrightarrow{v}$ dans la base $\mathcal B$.
+\end{prop}
+Une conséquence de la positivité est l'inégalité de Cauchy-Schwarz \index{inégalité de Cauchy Schwarz}.
+\begin{prop}
+ Pour $\overrightarrow u$ et $\overrightarrow v$ deux vecteurs quelconques de $E$:
+\begin{displaymath}
+ |(\overrightarrow u / \overrightarrow v)|\leq \Vert \overrightarrow u \Vert \Vert \overrightarrow v \Vert
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On considère l'application $t\in \R \rightarrow \Vert \overrightarrow u +t \overrightarrow v \Vert^2$.\newline
+à rédiger
+\end{demo}
+Une conséquence est la définition de l'écart angulaire \index{écart angulaire}
+\begin{defi}[écart angulaire]
+  Soient $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs non nuls, l'écart anguailre entre ces deux vecteurs est par définition:
+\begin{displaymath}
+ \arccos\dfrac{(\overrightarrow{u}/\overrightarrow{v})}{ \left\Vert \overrightarrow{u} \right\Vert \, \left\Vert \overrightarrow{v} \right\Vert}
+\end{displaymath}
+\end{defi}
+
+
+\subsection{Déterminant}
+Cette partie utilise les définitions et propriétés introduites dans l'entrée \emph{matrices et déterminants 3x3} du \href{\baseurl C4199.pdf}{Glossaire de début d'année}
+\begin{prop}
+ Il existe une application \emph{déterminant} notée $\det$ définie dans $E^3$ et à valeurs réelles telle que, pour toute base orthonormée directe $\mathcal{B}$,
+\begin{displaymath}
+\forall (\overrightarrow{u},\overrightarrow{v},\overrightarrow{w})\in E^3 :\hspace{0.5cm}
+\det(\overrightarrow{u},\overrightarrow{v},\overrightarrow{w})=
+\begin{vmatrix}
+ a & a' & a'' \\
+ b & b' & b'' \\
+ c & c' & c''
+\end{vmatrix}
+\end{displaymath}
+où $(a,b,c)$, $(a',b',c')$, $(a'',b'',c'')$ sont respectivement les coordonnées de $\overrightarrow{u}$, $\overrightarrow{v}$, $\overrightarrow{w}$ dans la base $\mathcal B$.
+\end{prop}
+Trilinéarité, antisymétrie.
+
+\begin{prop}
+ Trois vecteurs sont coplanaires si et seulement si leur déterminant est nul.
+\end{prop}
+Trois vecteurs dont le déterminant est non nul forment une base. Cette base est directe si le déterminant est strictement positif et indirecte s'il est strictement négatif.
+Volume du parallélépipède\footnote{On trouve aussi la notation $\text{vol}$ à la place de $\det$.}.
+
+\section{Modes de repérage}
+\subsection{Coordonnées cartésiennes. Changement de repère}
+\subsection{Coordonnées cylindriques}
+\begin{figure}[ht]
+ \centering
+\input{C2006_1.pdf_t}
+\caption{Coordonnées cylindriques}
+\label{fig:C2006_1}
+\end{figure}
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+x(M) =& \rho(M)\sin \cos \phi(M) \\
+y(M) =& \rho(M)\sin \theta(M) \\
+z(M) =& z(M) 
+ \end{aligned}
+ \right. 
+\end{displaymath}
+
+\subsection{Coordonnées sphériques}
+\begin{figure}[ht]
+ \centering
+\input{C2006_2.pdf_t}
+\caption{Coordonnées sphériques}
+\label{fig:C2006_2}
+\end{figure}
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+x(M) =& \rho(M)\sin \theta(M) \cos \phi(M) \\
+y(M) =& \rho(M)\sin \theta(M) \sin \phi(M) \\
+z(M) =& \rho(M)\cos \theta(M) 
+ \end{aligned}
+ \right. 
+\end{displaymath}
+Le nombre $\theta\in[0,\pi]$ est appelé la colatitude.
+
+\section{Produit vectoriel. Produit mixte}
+\begin{defi}
+ Soit $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs fixés. Il existe un unique vecteur noté $\overrightarrow{u} \wedge \overrightarrow{v}$ tel que :
+\begin{displaymath}
+ \forall \overrightarrow w \in E : \det(\overrightarrow u , \overrightarrow v , \overrightarrow w)
+=  \left(  \overrightarrow u \wedge \overrightarrow v / \overrightarrow w \right) 
+\end{displaymath}
+\end{defi}
+
+Expression des coordonnées dans une base orthonormée directe.
+\begin{prop}
+ Soient $\overrightarrow u$ et $\overrightarrow v$ deux vecteurs non coplanaires et $\alpha$ l'angle orienté $(\overrightarrow u , \overrightarrow v)$ dans le plan $\Vect(\overrightarrow u , \overrightarrow v)$ orienté autour de $\overrightarrow u \wedge \overrightarrow v$. Alors
+\begin{displaymath}
+ \Vert \overrightarrow u \wedge \overrightarrow v\Vert =
+ \Vert \overrightarrow u \Vert  \Vert\overrightarrow v\Vert \sin \alpha
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On considère la bon+ ... à rédiger
+\end{demo}
+\begin{rem}
+ On constate donc que si on oriente le plan autour de $\overrightarrow u \wedge \overrightarrow v$, l'angle orienté a toujours un représentant dans $[0,\pi]$. On peut se représenter aussi ce résultat de la manière suivante. Le produit vectoriel de $\overrightarrow u \wedge \overrightarrow v$ est l'unique vecteur $\overrightarrow P$ orthogonal à $\overrightarrow u$ et $\overrightarrow v$ tel que $(\overrightarrow u, \overrightarrow v, \overrightarrow P)$ soit une base directe et que la longueur de $\overrightarrow P$ soit l'aire (positive) du parallélogramme construit sur les deux vecteurs.
+\end{rem}
+
+\begin{prop} Soient $\overrightarrow u$ et $\overrightarrow v$ deux vecteurs quelconques.
+\begin{itemize}
+ \item antisymétrie : $\overrightarrow u \wedge \overrightarrow v = -\overrightarrow v \wedge \overrightarrow u$.
+ \item bilinéarité
+ \item $\overrightarrow u \wedge \overrightarrow v$ est orthogonal à $\overrightarrow u$ et $\overrightarrow v$.
+ \item aire et $\sin$
+\begin{displaymath}
+ \Vert \overrightarrow u \wedge \overrightarrow v\Vert =
+ \Vert \overrightarrow u \Vert  \Vert\overrightarrow v\Vert \sin \delta
+\end{displaymath}
+où $\delta$ est l'écart angulaire entre les deux vecteurs. Le module du produit vectoriel est l'aire du parallélogramme construit sur les vecteurs.
+\item  $\overrightarrow u \wedge \overrightarrow v = \overrightarrow 0$ si et seulement si les vecteurs sont colinéaires.
+\item $\overrightarrow u$ et $\overrightarrow v$ non colinéaires entraine $\overrightarrow u, \overrightarrow v,\overrightarrow u \wedge \overrightarrow v$ base directe de $E$. 
+\item $(\overrightarrow u,\overrightarrow v)$ famille orthonormée entraine $\overrightarrow u, \overrightarrow v,\overrightarrow u \wedge \overrightarrow v$ base orthonormée directe de $E$. 
+\end{itemize}
+\end{prop}
+\begin{demo}
+ 
+\end{demo}
+
+\index{qc formule du double produit vectoriel}
+\begin{prop}[formule du double produit vectoriel]
+ \begin{displaymath}
+ \forall(\overrightarrow u, \overrightarrow v, \overrightarrow w)\in E^3 : 
+(\overrightarrow u \wedge \overrightarrow v ) \wedge \overrightarrow w
+= (\overrightarrow u / \overrightarrow w )\overrightarrow v 
+- (\overrightarrow v / \overrightarrow w )\overrightarrow u
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ 
+\end{demo}
+\index{qc équation $\overrightarrow a \wedge \overrightarrow x = \overrightarrow b$}
+\'Etude de l'équation $\overrightarrow a \wedge \overrightarrow x =\overrightarrow b$ d'inconnue $\overrightarrow x$.
+\section{Plans et droites}
+\subsection{\'Equations et paramétrisations}
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+% use packages: array
+\begin{tabular}{p{4cm}|c|c}
+plan donné par : & équation cartésienne & définition paramétrique \\ \hline 
+ & $ax(M)+by(M)+cz(M)+d=0$ &  \\ \hline
+un point et deux vecteurs $A+\Vect(\overrightarrow{u},\overrightarrow{v})$ & $\det(\overrightarrow{AM},\overrightarrow{u},\overrightarrow{v})=0$ &
+$\exists(\lambda,\mu) \text{ tq } M= A +\lambda\overrightarrow{u}+\mu\overrightarrow{v}$\\ \hline 
+trois points $A, \, B,\, C$ &
+$\det(\overrightarrow{AM},\overrightarrow{AB},\overrightarrow{AC})=0$ &
+$\exists(\lambda,\mu) \text{ tq } M= A +\lambda\overrightarrow{AB}+\mu\overrightarrow{AC}$ \\ \hline
+un point, un vecteur normal $A$, $\overrightarrow n$ &
+$(\overrightarrow{AM}/\overrightarrow{n})=0$ &
+\\ \hline
+\end{tabular}
+\end{center}
+\renewcommand{\arraystretch}{2.6}
+\begin{center}
+\begin{tabular}{p{4cm}|c|c}
+ droite donnée par : & équations cartésiennes & définition paramétrique\\ \hline
+intersection de deux plans &
+$\left\lbrace  
+\begin{aligned}
+ ax(M)+by(M)+c=&0\\
+ a'x(M)+b'y(M)+c'=&0
+\end{aligned}
+\right. $
+& \\ \hline
+un point $A$ et un vecteur $\overrightarrow u$ &
+ &
+$\exists\lambda \in \R \text{ tq } M=A+\lambda \overrightarrow u$ \\ \hline
+deux points $A$ et $B$ &
+ &
+$\exists\lambda \in \R \text{ tq } M=A+\lambda \overrightarrow{AB}$ \\ \hline
+orthogonale en $A$ au plan $A+\Vect(\overrightarrow u , \overrightarrow v)$ &
+$\left\lbrace  
+\begin{aligned}
+ (\overrightarrow{AM}/\overrightarrow u)=& 0\\
+ (\overrightarrow{AM}/\overrightarrow v)=& 0
+\end{aligned}
+\right. $ &
+$\exists\lambda \in \R \text{ tq } M=A+\lambda \overrightarrow u \wedge \overrightarrow v$ \\ \hline
+\end{tabular}
+\end{center}
+Dans le cas d'une droite définie par un point et un vecteur directeur, on peut écrire $\overrightarrow{AM}\wedge \overrightarrow u = \overrightarrow 0$ mais cela donne un système de trois équations équivalent à un système de deux. Il vaut mieux utiliser dans les cas numériques la méthode générale.\\
+\index{résoudre}\emph{Résoudre} est juste un autre mot pour passer d'un système d'équations à une paramétrisation.\\
+On peut toujours exprimer une ou deux inconnues particulière en fonction des ou de celle qui reste. Cela permet de former une définition paramétrique.
+\begin{exple}
+ à rédiger
+\end{exple}
+
+\index{éliminer} \emph{\'Eliminer} est juste un autre mot pour passer d'une paramétrisation à un système d'équations.
+On peut toujours exprimer le ou les paramètres en fonction des coordonnées et remplacer dans les ou la équation restante. Cela donne un système de deux ou d'une équation sans paramètre.
+\begin{exple}
+ à rédiger
+\end{exple}
+\begin{rems}
+ \begin{enumerate}
+  \item Lorsqu'un plan est donné par une équation $ax+by+cz+d=0$, les coefficients $(a,b,c)$ sont les coordonnées d'un vecteur normal au plan. (On utilise un repère orthonormé)
+  \item Lorsqu'une droite est donnée par un système de deux équations (c'est à dire comme un intersection de deux plans)
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ ax+by+cz+d=0 \\
+a'x+b'y+c'z+d=0
+\end{aligned}
+\right. 
+\end{displaymath}
+On obtient un vecteur directeur de la droite en faisant le produit vectoriel des vecteurs orthogonaux aux plans.
+ \end{enumerate}
+
+\end{rems}
+
+\subsection{Perpendiculaire commune} \index{qc perpendiculaire commune}
+\begin{figure}[ht]
+ \centering
+\input{C2006_3.pdf_t}
+\caption{Perpendiculaire commune}
+\label{fig:C2006_3}
+\end{figure}
+Soit $\mathcal D = A+\Vect(\overrightarrow{u})$ et $\mathcal{D}'= A'+\Vect(\overrightarrow{u}')$ des droites qui ne sont pas parallèles (figure \ref{fig:C2006_3}). Elles peuvent être coplanaires et sécantes. Il existe une unique droite dite \emph{perpendiculaire commune} qui coupe $\mathcal D$ et $\mathcal D '$ et qui est orthogonale à ces deux droites.\\
+Remarquons d'abord que ces deux droites sont dans des plans parallèles. On peut les imaginer tracées une sur le plan du sol de la pièce et l'autre sur celui du plafond. Notons $\mathcal P = A+\Vect(\overrightarrow{u},\overrightarrow{u}')$ et $P' = A'+\Vect(\overrightarrow{u},\overrightarrow{u}')$ ces deux plans.\\
+La perpendiculaire commune est l'intersection des deux plans $\Pi = A+\Vect(\overrightarrow{u},\overrightarrow{u}\wedge\overrightarrow{u}')$ et $\Pi' = A'+\Vect(\overrightarrow{u}',\overrightarrow{u}\wedge\overrightarrow{u}')$. Elle coupe $\mathcal D$ en $H$ et $\mathcal{D}'$ en $H'$.\\
+On peut écrire des équations des quatre plans en jeu avec des déterminants. Tous les objets sont les intersections de plusieurs de ces plans.
+\begin{align*}
+ M\in \mathcal P \Leftrightarrow \det(\overrightarrow{AM,\overrightarrow{u},\overrightarrow{u}'})=0 & &
+ M\in \mathcal P' \Leftrightarrow \det(\overrightarrow{A'M},\overrightarrow{u},\overrightarrow{u}')=0 \\
+ M\in \Pi \Leftrightarrow \det(\overrightarrow{AM,\overrightarrow{u},\overrightarrow{u}\wedge \overrightarrow{u}'})=0 & &
+ M\in \Pi' \Leftrightarrow \det(\overrightarrow{A'M,\overrightarrow{u'},\overrightarrow{u}\wedge \overrightarrow{u}'})=0
+\end{align*}
+ \begin{align*}
+  \Delta = \mathcal{P}\cap \Pi' & & \Delta' = \mathcal{P}'\cap \Pi
+ & & \{H\}=\mathcal{P}\cap \Pi \cap\Pi' & & \{H\}=\mathcal{P}'\cap \Pi \cap\Pi'
+ \end{align*}
+
+\subsection{Distances et projections}
+\begin{prop}[projection sur une droite]\index{qc projection sur une droite}
+Soit $\mathcal D$ la droite passant par $A$ est dirigée par $\overrightarrow u$ et $M$ un point de l'espace. Le projeté orthogonal $H$ de $M$ sur $\mathcal D$ vérifie
+ \begin{displaymath}
+  \overrightarrow{AH} = \frac{(\overrightarrow{AM} /\overrightarrow u)}{\Vert\overrightarrow u\Vert^2}\overrightarrow u
+ \end{displaymath}
+\end{prop}
+\begin{demo}
+ Il suffit de vérifier que si $H$ est défini par $H=A+d\frac{(\overrightarrow{AM}/ \overrightarrow u)}{\Vert \overrightarrow u\Vert^2}\overrightarrow u$ alors $\overrightarrow{HM}$ est orthogonal à $\overrightarrow{u}$. Calculons le produit scalaire:
+\begin{displaymath}
+ (\overrightarrow{HM}/\overrightarrow u) = (\overrightarrow{HA}/\overrightarrow u)+(\overrightarrow{AM}/\overrightarrow u)
+ = - \frac{(\overrightarrow{AM}\wedge \overrightarrow u)}{\Vert \overrightarrow u\Vert^2}(\overrightarrow u/\overrightarrow u)
++ (\overrightarrow{AM}/\overrightarrow u) = 0
+\end{displaymath} 
+\end{demo}
+\begin{prop}[projection sur un plan]
+ Soit $\mathcal P$ le plan passant par $A$ et orthogonal à $\overrightarrow n$ et $M$ un point de l'espace. Le projeté orthogonal $H$ de $M$ sur $\mathcal{P}$ vérifie
+\begin{displaymath}
+\overrightarrow{MH} = \frac{(\overrightarrow{MA}/\overrightarrow n)}{\Vert \overrightarrow n\Vert^2}\overrightarrow n 
+\end{displaymath}
+\end{prop}
+\begin{demo}
+\end{demo}
+\begin{rem}
+ Lorsque $\mathcal{P}=A+\Vect(\overrightarrow{u},\overrightarrow{u}')$, on peut remplacer $\overrightarrow n$ par un produit vectoriel et la formule devient
+\begin{displaymath}
+\overrightarrow{MH} = \frac{(\overrightarrow{MA}/\overrightarrow{u}\wedge \overrightarrow{u}')}
+                           {\Vert \overrightarrow{u}\wedge \overrightarrow{u}'\Vert^2}\overrightarrow{u}\wedge \overrightarrow{u}'
+= \frac{\det(\overrightarrow{u}, \overrightarrow{u}',\overrightarrow{MA})}
+{\Vert \overrightarrow{u}\wedge \overrightarrow{u}'\Vert^2}\overrightarrow{u}\wedge \overrightarrow{u}'
+\end{displaymath} 
+\end{rem}
+
+\begin{prop}[distance à une droite]\index{qc distance point-droite}
+ \begin{displaymath}
+  d(M,\mathcal D) = MH = \frac{\Vert\overrightarrow{AM}\wedge \overrightarrow u \Vert}{\Vert \overrightarrow u\Vert}
+ \end{displaymath}
+réalise la plus petite distance (à rédiger)
+\end{prop}
+\begin{demo}
+
+\end{demo}
+
+\begin{prop}[distance entre deux droites]\index{qc distance droite-droite}
+ \begin{displaymath}
+  d(\mathcal D,\mathcal D') = HH' 
+= \frac{\vert \det(\overrightarrow{AA'}, \overrightarrow u', \overrightarrow u')\vert}
+       {\Vert \overrightarrow u \wedge \overrightarrow u'\Vert}
+ \end{displaymath}
+\end{prop}
+\begin{demo}
+ 
+\end{demo}
+
+\begin{prop}[distance d'un point à un plan]
+Si $\mathcal P$ passe par $A$ en étant orthogonal à $\overrightarrow n$:
+ \begin{displaymath}
+  d(M,\mathcal P)= MH = \frac{|(\overrightarrow{AM}/\overrightarrow n)|}{\Vert \overrightarrow n \Vert}
+ \end{displaymath}
+Si $\mathcal{P}$ est le plan d'équation $ax+by+cz+d=0$,
+\begin{displaymath}
+ d(M,\mathcal P)= \frac{|ax(M)+by(M)+cz(M)+d|}{\sqrt{a^2+b^2+c^2}}
+\end{displaymath}
+
+\end{prop}
+ \index{qc distance point-plan}
+\section{Sphères}
+\subsection{\'Equation cartésienne.}
+\subsection{Intersection sphère-droite.}
+\begin{exple}
+Puissance d'un point par rapport à une sphère.\index{puissance d'un point par rapport à une sphère}
+Soit $\mathcal S$ une sphère de centre $A$ et de rayon $r$. Soit $M$ un point quelconque de l'espace et $\mathcal D$ une droite quelconque qui perce la sphère en $P$ et $Q$. Alors:
+\begin{displaymath}
+ (\overrightarrow{MP}/\overrightarrow{MQ}) = \Vert\overrightarrow{MA}\Vert^2 - r^2
+\end{displaymath}
+\end{exple}
+
+\subsection{Intersection sphère-plan.}
+Plan tangent. Règle du dédoublement.
+\subsection{Intersection sphère-sphère.}
+
+\end{document}

@@ -1,0 +1,164 @@
+\input{courspdf.tex}
+\debutcours{Fonctions d'une variable géométrique : continuité}{alpha}
+
+\section{Topologie}
+\subsection{Normes}
+\index{norme}\index{norme euclidienne}
+Définition. Exemples $N_1$, $N_2$, $N_\infty$. Distance associée à une norme.
+\index{normes équivalentes}\index{théorème d'équivalence des normes en dimension finie}
+Normes équivalentes. On admet que toutes les normes sont équivalentes.
+\index{boules}
+Disques (boules). \newline
+
+ici des dessins de boules carrés manquent
+
+Traduction avec des boules de l'équivalence des normes.
+
+\subsection{Parties ouvertes}
+\index{partie ouverte}
+Définition. Un disque ouvert est une partie ouverte.
+
+\subsection{Suites}
+Convergence d'une suite. Unicité de la limite. Indépendance vis à vis de la norme.
+\index{théorème de Bolzano-Weirstrass}
+Théorème de Bolzano-Weirstrass
+
+Exercice: une partie est dite fermée si et seulement si son complémentaire est une partie ouverte. Une partie $F$ est fermée si et seulement si, pour toute suite convergente d'éléments de $F$, la limite est dans $F$.
+
+\section{Fonctions à valeurs numériques}
+\subsection{Exemples - Opérations}
+
+Les fonctions coordonnées $x$ et $y$. Les fonctions qui s'expriment algébriquement à partir des fonctions coordonnées.
+Si $f$ est une fonction dont les valeurs réelles sont dans un intervalle $I$ et si $\varphi$ est une fonction définie dans $I$ et à valeurs réelles alors $\varphi \circ f$ est une fonction à valeurs numériques d'une variable géométrique.
+
+Le graphe d'une fonction est une surface. Les lignes de niveau : représentation "IGN".
+
+\subsection{Limite - continuité}
+\subsubsection{Définitions}
+Soit $\Omega$ une partie de $E$ définition de $\overline{\Omega}$.
+
+Limite et continuité en un point $a$.
+
+La convergence est indépendante de la norme choisie.
+
+Les normes sont continues, les fonctions coordonnées sont continues.
+
+\subsubsection{Opérations}
+\begin{prop}
+ Soit $f$ et $g$ deux fonctions définies dans $\Omega$, soit $\lambda\in \R$, $a\in \overline{\Omega}$ ,$l\in R$:
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ f\xrightarrow{a}l_f\\
+ g\xrightarrow{a}l_g
+\end{aligned}
+\right\rbrace 
+\Rightarrow 
+\left\lbrace 
+\begin{aligned}
+ f+g &\xrightarrow{a} l_f+l_g\\
+ \lambda f &\xrightarrow{a} \lambda l_f\\
+ fg &\xrightarrow{a} l_fl_g\\
+ \sup(f,g) &\xrightarrow{a} \max(l_fl_g)\\
+ \inf(fg) &\xrightarrow{a} \min(l_f,l_g)\\
+\end{aligned}
+\right. 
+\end{displaymath}
+Soit $\varphi$ une fonction définie dans un intervalle $I$ de $\R$ et à valeurs dans $\R$ tel que $f(\Omega)\subset I$.
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ f\xrightarrow{a}l_f\\
+ \varphi \xrightarrow{l_f}\lambda_\varphi
+\end{aligned}
+\right\rbrace 
+\Rightarrow
+\varphi \circ f \xrightarrow{a}\lambda_\varphi
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ à rédiger ... ou pas !
+\end{demo}
+
+\begin{rems}
+ \begin{itemize}
+  \item On peut étendre facilement certaines implications pour des limites dans $\overline{\R}$.
+  \item Ces implications sont valables pour les fonctions continues avec $a\in \Omega$ et $l_f=f(a)$. En particulier, $\mathcal C^0(\Omega,\R)$ est une sous-algèbre de $\mathcal F(\Omega, \R)$.
+ \end{itemize}
+
+\end{rems}
+
+\subsubsection{Restrictions}
+\begin{prop}
+ Soit $f$ une fonction définie dans $\Omega$ et à valeur dans $\R$. Soit $a\in \overline{\Omega}$. Soit $\gamma$ une courbe paramétrée définie dans un intervalle $I$ et à valeurs dans $\Omega$, soit $t_0\in \overline{I}$.
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ f\xrightarrow{a} l_f\\
+\gamma \xrightarrow{t_0} a
+\end{aligned}
+\right\rbrace 
+\Rightarrow f\circ \gamma \xrightarrow{t_0} l_f
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ à rédiger ... ou pas !
+\end{demo}
+\begin{prop}
+ Soit $f$ une fonction définie dans $\Omega$ et à valeur dans $\R$, soit $a\in \overline{\Omega}$. Soit $\left( a_n\right) _{n\in \N}$ une suite de points de $\Omega$.
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ f &\xrightarrow{a} l_f\\
+ \left( a_n\right) _{n\in \N} &\rightarrow a
+\end{aligned}
+\right\rbrace 
+\Rightarrow \left( f(a_n)\right) _{n\in \N} \rightarrow l_f
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ à rédiger ... ou pas !
+\end{demo}
+ici deux petits dessins manquent : un chemin continu et un en pointillé
+\begin{rem}
+ Le terme \emph{application partielle} qui apparait dans le programme est largement généralisé par les notions de restrictions présentées ici. Une application partielle ou sens du programme est simplement la restriction de la fonction à une droite parallèle à l'un des axes. Une telle droite est le support d'une courbe paramétrée évidente.
+\end{rem}
+
+\subsubsection{Encadrement}
+\begin{prop}
+ Soit $f$, $g$, $h$ des fonctions définies dans $\Omega$ et à valeurs réelles, soit $a\in \overline{\Omega}$ et $l\in \R$.
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ &f\leq g \leq h\\
+ &f\xrightarrow{a}l\\
+ &h\xrightarrow{a}l\\
+\end{aligned}
+\right\rbrace 
+\Rightarrow g\xrightarrow{a}l
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ à rédiger ... ou pas !
+\end{demo}
+
+\subsubsection{Exemples-Pratique}
+
+On définit une fonction $f$ dans $\R^2$ privé des deux axes par:
+\begin{displaymath}
+ \forall (x,y)\in \R^2\text{ tels que } x\neq 0 \text{ et } y\neq 0 :
+f((x,y))=\frac{\ch(xy)-\cos(xy)}{x^2y^2}
+\end{displaymath}
+On peut définir $\varphi$ dans $\R^*$ par :
+\begin{displaymath}
+ \forall t\in \R^* : \varphi(t)=\frac{\ch(t)-\cos(t)}{t^2}
+\end{displaymath}
+On change alors la signification des lettres $x$ et $y$. Elles désignent maintenant \emph{les FONCTIONS coordonnées} et on peut exprimer $f$ à l'aide des opérations introduites plus haut :
+\begin{displaymath}
+ f = \varphi \circ xy
+\end{displaymath}
+On vérifie à l'aide d'un développement limité usuel que $\varphi\xrightarrow{0}1$ et on en déduit avec les résultats relatifs aux opérations que $f\xrightarrow{O}1$ où $O$ désigne l'origine du repère. La convergence est la même $f\xrightarrow{a}1$ pour tout point $a$ situé sur les axes.
+
+Fonctions homogènes de degré $0$.\index{fonction homogène}
+Une fonction homogène de degré $0$ est continue en $O$ si et seulement si elle est constante.
+\end{document}

@@ -1,0 +1,325 @@
+\input{courspdf.tex}
+\debutcours{Calculs de primitives}{1.1 \tiny{le 10/03/18}}
+
+Les calculs présentés dans cette section ne doivent pas faire perdre de vue que :
+\begin{itemize}
+ \item Toute fonction continue admet une primitive
+ \item En général une primitive ne s'exprime pas à l'aide de fonctions \og usuelles\fg.
+\end{itemize}
+Aucun théorème permettant de décider si une primitive est ou n'est pas exprimable à l'aide des fonctions usuelles ne sera donné. On formera seulement une liste de cas dans lesquels l'expression d'une primitive avec des fonctions usuelles est possible et, pour chacun, des méthodes permettant cette expression. Ces méthodes sont générales, il existe souvent des méthodes plus rapides valables pour des cas particuliers.\newline
+Le recours à une intégrale n'est pas obligatoire. Dans certains cas, on peut mettre la fonction à intégrer sous une forme qui permet de donner directement une primitive.\newline
+\'Eviter la notation
+\begin{displaymath}
+ \int f(x)dx
+\end{displaymath}
+pour désigner une primitive. On peut à la rigueur utiliser
+\begin{displaymath}
+ \int^x f(t)dt
+\end{displaymath}
+en se permettant de ne pas écrire la borne du bas qui ne fait que préciser une constante d'intégration. Lorsque la fonction est continue dans un intervalle et non dans $\R$, il est prudent de choisir une borne explicite dans l'intervalle.
+On terminera par une liste (sans justification) de primitives usuelles et de fonctions dont les primitives ne s'expriment pas avec les fonctions usuelles de la classe (à faire !).
+
+\section{Autour des polynômes}
+Dans les deux premiers cas, l'idée générale est de passer en exponentielle et de développer, on obtient alors une combinaison linéaire d'exponentielles $t\rightarrow e^{\lambda t}$ dont une primitive est $\frac{1}{\lambda}e^t$ que $\lambda$ soit réel ou complexe.\\
+Le troisième cas relève plutôt de l'algèbre linéaire.
+\subsection{Polynômes trigonométriques (circulaires)}
+\begin{itemize}
+ \item Un produit de la forme $\sin^mx\cos^nx$ se traite facilement lorsque au moins un de exposants est impair.\newline
+Si $m$ est impair, utiliser $\sin^{2p}x = (1-\cos^2x)^p$ et développer. On obtient une primitive qui est un polynôme en $\cos x$.\newline
+Si $n$ est impair, procéder de manière analogue avec le $\cos$. Lorsque les deux sont impairs, choisir la plus simple des deux transformations possibles.
+\item Dans les autres cas, \href{\baseurl C2004.pdf}{linéariser}.
+\begin{align*}
+ 2\sin x \cos y = \sin(x+y)+\sin(x-y) & & 2\sin y \cos x = \sin(x+y) - \sin(x-y) \\
+2\cos x \cos y = \cos(x+y)+\cos(x-y) & & 2\sin x \sin y = \cos(x-y) - \cos(x+y) \\
+\end{align*}
+\end{itemize}
+
+\subsection{Polynômes trigonométriques (hyperboliques)}
+Lorsque un des exposants est impair, on procède comme dans le cas circulaire avec $\ch^2 = 1 +\sh^2$ et $\sh^2 = \ch^2 -1$.\newline
+Lorsque les deux exposants sont pairs, on peut tout exprimer avec des exponentielles et développer. On trouve facilement une primitive comme une combinaison d'exponentielles.
+
+\subsection{Pseudo polynômes}
+\index{pseudo-polynome}\index{polynome-exponentiel}
+Un \emph{pseudo-polynôme} (ou \emph{polynôme-exponentiel}) est une fonction de la forme $t\rightarrow P(t)e^{\lambda t}$. avec $\lambda$ complexe non nul et $P$ polynôme.\newline
+On peut en chercher une primitive sous la forme $t\rightarrow Q(t)e^{\lambda t}$ avec $Q$ de même degré. Pour cela, on forme un système d'équations linéaires dont les inconnues sont les coefficients de $Q$. Cette méthode est très proche de celle utilisée pour résoudre les \href{\baseurl C1616.pdf}{équations différentielles linéaires à coefficients constants}. On exploite la linéarité en utilsant des combinaisons linéaires ainsi que les parties réelles et imaginaires.
+\paragraph{Exemple} $f(t)=(t^2+1)\cos t$.\newline
+Il s'agit de la partie réelle du pseudo-polynôme $(t^2+1)e^{it}$. On en cherche une primitive $F(t) = (at^2 + bt +c)e^{it}$ en identifiant les coefficients de la dérivée . Puis on prend la partie réelle de cette primitive.
+\[
+\left. 
+\begin{aligned}
+ ia &= 1 \\
+ 2a + ib &= 0\\
+ b + ic &= 1
+\end{aligned}
+\right\rbrace \Rightarrow
+\left\lbrace 
+\begin{aligned}
+ a &= -i \\
+ b &= 2 \\
+ c &= i
+\end{aligned}
+\right. , \hspace{1cm}
+\Re\left( -it^2+2t+i)e^{it}\right) = (t^2 -1)\sin t +2t\cos t. 
+\]
+
+
+\paragraph{Justification de la méthode} Pourquoi existe-t-il toujours une primitive de cette forme? 
+Pour $n\in \N$ et $\lambda \in \C$ fixés désignons par $E$ l'ensemble des pseudo polynômes de la forme $t \mapsto P(t)e^{\lambda t}$ avec $\deg(P) \leq n$. \newline
+C'est un sous-espace vectoriel de dimension finie $n+1$ de l'espace des fonctions à valeurs complexes. Notons $D$ la restriction de l'opérateur de dérivation à $E$. C'est un endomorphisme de $E$. Son noyau ne contient que la fonction nulle car pour $P\neq 0$:
+\[
+ D(P(t)e^{\lambda t}) = (\lambda P + P')(t)e^{\lambda t} \text{ avec } \deg(\lambda P + P') = \deg(P).
+\]
+Comme $E$ est de dimension finie, c'est un automorphisme donc chaque élement de $E$ admet un unique antécédent c'est à dire une unique primitive dans $E$.
+
+\section{Fonctions rationnelles}
+Il s'agit essentiellement de décomposer en éléments simples et d'utiliser la linéarité.
+\subsection{Primitives des éléments simples complexes}
+Pour $z\in\C -\R$ avec $\Re z =a$ et $\Im z=b$:
+\begin{align*}
+ \frac{1}{t-z}    &:& \ln |t-z| +i \arctan\frac{t-a}{b} \\
+\frac{1}{(t-z)^k} \text{ avec } k\neq 1   &:& \frac{1}{(1-k)(t-z)^{k-1}}
+\end{align*}
+
+\subsection{Primitives des éléments simples réels}
+Les éléments simples réels ne figurent plus réellement au programme. Les pôles complexes conjugués se combinent et toute fraction rationnelle à coefficients réels se décompose en un polynome à coefficients réels, des éléments simples de la forme 
+\begin{displaymath}
+ \frac{\lambda}{(X-a)^m} \text{ avec } a\in \R \text{ et } m\in \N^*
+\end{displaymath}
+et des termes (dits éléments simples de deuxième espèce) de la forme
+\begin{displaymath}
+ \frac{\lambda X + \mu }{(X^2-2\Re z X +|z|^2)^m} \text{ avec } z\in\C\setminus \R \text{ et } m\in \N^*
+\end{displaymath}
+Lorsque la multiplicité est $1$. Pour calculer une primitive de $t\rightarrow \frac{\lambda t + \mu }{t^2-2\Re z t +|z|^2}$, il faut
+\begin{itemize}
+ \item Faire apparaitre la dérivée du dénominateur
+\begin{displaymath}
+ \frac{\lambda t + \mu }{t^2-2\Re z t +|z|^2} 
+= \frac{\lambda}{2} \frac{2 t -2\Re z }{t^2-2\Re z t +|z|^2}
+  + \frac{K }{t^2-2\Re z t +|z|^2} 
+\end{displaymath}
+qui conduit à un terme en $\ln(t^2-2\Re z t +|z|^2)$ dans la primitive.
+\item Se ramener à un $\arctan$ pour le reste 
+\begin{displaymath}
+ \frac{1}{t^2-2\Re z t +|z|^2} = \frac{1 }{(t-a)^2 +(b)^2}
+=\frac{1}{b^2} \frac{1 }{1+ \left( \frac{t-a}{b}\right) ^2}
+\end{displaymath}
+dont une primitive est
+\begin{displaymath}
+ \frac{1}{b}\arctan \frac{t-a}{b}
+\end{displaymath}
+\end{itemize}
+Lorsque la multiplicité est supérieure à $1$, on peut toujours faire apparaitre la dérivée du dénominateur mais le calcul d'une primitive du reste
+\begin{displaymath}
+ \frac{1 }{(t^2-2\Re z t +|z|^2)^m}
+\end{displaymath}
+est désagréable. On peut faire une intégration par partie dans 
+\begin{displaymath}
+ \int_0^x \frac{1 }{t^2-2\Re z t +|z|^2}dt
+\end{displaymath}
+pour faire apparaitre et calculer
+\begin{displaymath}
+ \int_0^x \frac{1 }{(t^2-2\Re z t +|z|^2)^2}dt
+\end{displaymath}
+Si $m$ n'est pas trop grand, on peut remonter de $1$ vers $m$ par une succession d'intégrations par parties \og en crabe\fg. \index{intégration par parties \og en crabe\fg}.
+
+\section{Fonctions rationnelles trigonométriques}
+Il s'agit essentiellement de se ramener au calcul d'une primitive d'une fraction rationnelle par un changement de variable approprié.
+\subsection{Trigonométrie circulaire}
+Essayer (dans cet ordre) un des changements de variable suivants :
+\begin{align*}
+ u=\tan x &,& u=\sin x &,& u=\cos x &,& u=\tan \frac{x}{2}
+\end{align*}
+\subsection{Trigonométrie hyperbolique}
+Essayer (dans cet ordre) un des changements de variable suivants :
+\begin{align*}
+ u=\th x &,& u=\sh x &,& u=\ch x &,& u= e^{x}
+\end{align*}
+
+\section{Intégrales \og abéliennes\fg}\index{intégrale abélienne}
+Il s'agit de calculer une primitive d'une fraction rationnelle faisant intervenir la racine d'une expression polynomiale $\sqrt{P}$. Cette primitive s'exprime avec des fonctions usuelles lorsque le degré du polynôme $P$ est $1$ ou $2$. Par un changement de variable approprié, on se ramène au calcul soit d'une primitive d'une fraction rationnelle trigonométrique soit directement d'une primitive d'une fraction rationnelle.\newline
+On se limite ici à un degré inférieur à 2.  Le degrés plus élevés conduisent aux véritables intégrales abéliennes qui ne se s'expriment pas en général avec des fonctions usuelles.
+\subsection{Cas du degré 1}
+Utiliser le changement de variable $u=\sqrt{P(t)}$.
+\subsection{Cas du degré 2}
+On peut décider quel changement de variable utiliser en examinant la forme sous laquelle on peut mettre le polynôme du seond degré $P(t)$ à l'aide d'une factorisation canonique. Il existe un réel $K>0$ tel que 
+\begin{displaymath}
+ P(t)=\left\lbrace
+\begin{aligned}
+ K\left( 1 - truc^2(t)\right)& \text{ poser }& truc(t)=&\sin u \\ 
+ K\left( 1 + truc^2(t)\right)& \text{ poser }& truc(t)=&\sh u \\ 
+K\left( truc^2(t) -1 \right)& \text{ poser }& truc(t)=&
+\left\lbrace
+\begin{aligned}
+  \ch u &\text{ si } truc(t)>1\\ \\
+  -\ch u &\text{ si } truc(t)<-1
+\end{aligned} \right. 
+\end{aligned} \right. 
+\end{displaymath}
+
+\subsection{Cas homographique}
+La fraction rationnelle contient un terme en $\sqrt{h(t)}$ avec  $h(t)=\sqrt{\frac{t-a}{t-b}}$ ou $h(t)=\sqrt{\frac{a-t}{t-b}}$. On peut alors poser $u=\sqrt{h(t)}$ et les calculs sont désagréables. On peut aussi remarquer que 
+\begin{displaymath}
+ \sqrt{\frac{t-a}{t-b}} = \frac{\sqrt{(t-a)(t-b)}}{|t-b|}
+\end{displaymath}
+et se ramener au cas 2.
+\subsection{Autres cas}
+Dans les autres cas les primitives ne s'expriment pas en général à l'aide de fonctions usuelles.
+
+\section{Liste de primitives}
+Une liste de primitives usuelles est donnée en figure \ref{fig:list_prim}.
+\begin{figure}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+Lorsque $z\in \C$: $a=\Re z$, $b=\Im z$. \index{primitives usuelles}
+\begin{align*}
+\frac{1}{\cos ^{2}}   &:& \tan  \\
+\frac{1}{\sin ^{2}}   &:& -\cot  \\
+\frac{1}{\sin }   &:&
+\frac{1}{2}\ln \left( 1-\cos \right) -\frac{1}{2}\ln \left( 1+\cos \right)  \\
+\frac{1}{\cos }  &:&
+\frac{1}{2}\ln \left( 1+\sin \right) -\frac{1}{2}\ln \left( 1-\sin \right)  \\
+\tan   &:& -\ln \left( \left| \cos \right| \right)  \\
+\cot   &:& \ln \left( \left| \sin \right| \right) \\
+\frac{1}{\ch ^{2}}   &:& \th  \\
+\frac{1}{\sh ^{2}}   &:& -\coth  \\
+\frac{1}{\sh }   &:&
+\frac{1}{2}\ln \left( \ch -1\right) -\frac{1}{2}\ln \left( \ch +1\right)
+ =\ln \left| e^{x}-1\right| -\ln(e^{x}+1) \\
+\frac{1}{\ch }   &:& \arctan (\sh )=2\arctan (\exp )-\frac{\pi }{2} \\
+\th   &:& \ln (\ch ) \\
+\coth   &:& \ln (\left| \sh \right| )\\
+a\neq 0\quad \frac{1}{a^{2}+x^{2}} &:& \frac{1}{a}\arctan 
+\frac{x}{a} \\
+\frac{1}{1-x^{2}} &:& \frac{1}{2}\ln \left| 1+x\right| -%
+\frac{1}{2}\ln \left| 1-x\right|  \\
+a\neq 0\quad \frac{1}{\sqrt{a^{2}-x^{2}}} &:& \arcsin \frac{x}{a} \\
+\frac{1}{\sqrt{1+x^{2}}} &:& \ln \left( x+\sqrt{1+x^{2}}\right)  \\
+\frac{1}{\sqrt{x^{2}-1}} &:& \ln \left( \left| x+\sqrt{x^{2}-1}\right| \right) \\ 
+z \in \C\setminus\R  : \frac{1}{\left|x-z\right| ^{2}}=\frac{1}{(t-a)^{2}+b^{2}} &:&
+\frac{1}{b}\arctan \left( \frac{t-a}{b}\right)  \\
+z \in \C\setminus\R :  \frac{t-\Re z}{\left|x-z\right| ^{2}}=\frac{t-a}{(t-a)^{2}+b^{2}} &:&
+\ln \left( \left|x-z\right| \right)\\ 
+z \in \C  , n\in \Z\setminus\{ -1 \} : (t-z)^{n} &:& \frac{1}{n+1}(t-z)^{n+1} \\
+z \in \R :  \frac{1}{t-z} &:&
+\ln \left( \left|x-z\right| \right)  \\
+z \in \C\setminus\R : \frac{1}{t-z} &:& \ln \left( \left|x-z\right| \right) +i\arctan \left(\frac{t-a}{b}\right)\\
+\ln t &:& t\ln t -t
+\end{align*}
+\end{minipage}
+}
+\caption{Liste de primitives}
+\label{fig:list_prim}
+\end{figure}
+
+\section{Exemples}
+\paragraph{Exemple 1. (connaitre le résultat par c{\oe}ur)}
+\begin{multline*}
+ \int^x\frac{dt}{\cos t} = \int^{\sin x}\frac{du}{1-u^2} \hspace{0.5cm}\text{ (chgt. de v. $u=\sin t$) }
+= \int^{\sin x}\left( \frac{\frac{1}{2}}{1-u}+\frac{\frac{1}{2}}{1+u}\right)du  \hspace{0.5cm}\text{ (dec. elts. simples) }\\
+= -\frac{1}{2}\ln(1-\sin x)+\frac{1}{2}\ln(1+\sin x)
+\end{multline*}
+
+\paragraph{Exemple 2. (connaitre le résultat par c{\oe}ur)}
+\begin{multline*}
+ \int^x\frac{dt}{\sin t} = -\int^{\cos x}\frac{du}{1-u^2} \hspace{0.5cm}\text{ (chgt. de v. $u=\cos t$) }
+= -\int^{\cos x}\left( \frac{\frac{1}{2}}{1-u}+\frac{\frac{1}{2}}{1+u}\right)du  \hspace{0.5cm}\text{ (dec. elts. simples) }\\
+= \frac{1}{2}\ln(1-\cos x)-\frac{1}{2}\ln(1+\cos x)
+\end{multline*}
+
+\paragraph{Exemple 3}
+\begin{multline*}
+ \int_{0}^{\frac{\pi}{2}}\frac{\cos^3x \sin^3x}{1+\sin^2x}dx = \int_{0}^{1}\frac{(1-u^2)u^3}{1+u^2}du \hspace{0.5cm}\text{ (chgt. de v. $ u=\sin x$ )} \\
+= \int_{0}^{1}(-u^3+2u-\frac{2u}{1+u^2})du \hspace{0.5cm} \text{(div. euclidienne)}
+=\left[ -\frac{1}{4}u^4+u^2-\ln(u^2 +1)\right]_{0}^1 = \frac{3}{4}-\ln 2 
+\end{multline*}
+
+\paragraph{Exemple 4}
+\begin{multline*}
+ \int_{0}^{\frac{\pi}{4}}\frac{\sin^6x}{\cos^4x}dx
+=\int_0^1\frac{u^6}{(1+u^2)^2}du \hspace{0.5cm}\text{ (chgt. de v. $u=\tan x$) }
+=\int_0^1(u^2 - 2 +\frac{3u^2+2}{(1+u^2)^2})du \hspace{0.5cm}\text{ (div. euclid.) }\\
+=\int_0^1(u^2 - 2 +\frac{3}{1+u^2} - \frac{1}{(1+u^2)^2})du \hspace{0.5cm}\text{ ($u^2=u^2+1-1$ dans dern. frac.) }
+=\frac{1}{3} - 2 +3\,\frac{\pi}{4}-\int_0^1\frac{1}{(1+u^2)^2}du
+\end{multline*}
+Calcul de $\int_0^1\frac{1}{(1+u^2)^2}du$ par intégration par parties (\og en crabe\fg)\index{intégration par parties \og en crabe\fg}
+\begin{multline*}
+ \frac{\pi}{4}=\int_0^1\frac{du}{1+u^2}
+=\left[ \frac{u}{1+u^2}\right]_0^1 -\int_0^1u\frac{(-2u)}{(1+u^2)^2}du
+= \frac{1}{2}+2\int_0^1\frac{u^2}{(1+u^2)^2}du 
+= \frac{1}{2}+2\left( \frac{\pi}{4} -\int_0^1\frac{1}{(1+u^2)^2}du\right) \\
+\Rightarrow
+\int_0^1\frac{1}{(1+u^2)^2}du = \frac{1}{4}+\frac{\pi}{8}
+\end{multline*}
+
+\paragraph{Exemple 5} Pour $x\geq 1$.
+\begin{multline*}
+\int_1^x \frac{\sqrt{t-1}}{t+1}\,dt 
+= \int_0^{\sqrt{x-1}}\frac{2u^2}{2+u^2}\,du \hspace{0.5cm}\text{ (chgt. de v. $u=\sqrt{t-1}$) }
+= \int_0^{\sqrt{x-1}}\left( 2-\frac{4}{2+u^2}\right) du\\
+= 2\sqrt{x-1} -2\int_0^{\sqrt{x-1}}\frac{du}{1+(\frac{u}{\sqrt{2}})^2}
+= 2\sqrt{x-1} -2\sqrt{2}\arctan\sqrt{\frac{x-1}{2}}
+\end{multline*}
+
+
+\paragraph{Exemple 6}
+\begin{multline*}
+ \int^x\frac{dt}{5\ch t + 3\sh t +4}
+=\int^{e^x}\frac{du}{4u^2+4u+1}\hspace{0.5cm}\text{ (chgt. de v. $u=e^t$) }
+=\int^{e^x}\frac{du}{(2u+1)^2}=\left[ \frac{-1}{2(2u+1)}\right]^{e^x}\\
+=\frac{-1}{2(2e^x+1)} 
+\end{multline*}
+
+\paragraph{Exemple 7}
+\begin{displaymath}
+ \int_{\frac{1}{2}}^1\frac{x+1}{\sqrt{-4x^2+4x+1}}\,dx
+= \int_0^{\frac{\pi}{4}}\frac{\sqrt{2}\sin u +3}{4}\,du
+\hspace{0.5cm}\text{ (chgt. de v. $2x-1 = \sqrt{2}\sin u$) }
+= \frac{\sqrt{2}}{4}-\frac{1}{4}. + \frac{3\pi}{16}
+\end{displaymath}
+Le changement de variable est justifié par :
+\begin{displaymath}
+ -4x^2+4x+1 = -(2x-1)^2+2
+\end{displaymath}
+
+\paragraph{Exemple 8}
+\begin{multline*}
+ \int_{-7}^{-4}\frac{x-1}{(x+1)\sqrt{x^2-4x-5}}\,dx
+=\frac{1}{3}\int_{\argch 2}^{\argch 3}\frac{1-3\ch t}{1- \ch t}\, dt
+\hspace{0.5cm}\text{ (chgt. de v. $x-2 = -3\ch t$) } \\
+=\frac{1}{3}\int_{2+\sqrt{3}}^{3+2\sqrt{2}}\frac{3u^2-2u+3}{(u-1)^2u}\,du
+\hspace{0.5cm}\text{ (chgt. de v. $u = e^t$) } \\
+= \left[ \ln u - \frac{4}{3(u-1)}\right]_{2+\sqrt{3}}^{3+2\sqrt{2}} 
+= \ln(3+2\sqrt{2})- \ln(2+\sqrt{3}) -\frac{2\sqrt{2}}{3} +\frac{2\sqrt{3}}{3}
+\end{multline*}
+en décomposant la fraction rationnelle en éléments simples avec des coefficients indéterminés
+\begin{displaymath}
+ \frac{3u^2-2u+3}{(u-1)^2u} = \frac{a}{u} + \frac{b}{(u-1)^2} + \frac{c}{u-1}
+\end{displaymath}
+
+\paragraph{Exemple 9}
+\begin{multline*}
+ \int_{-\frac{1}{2}}^{0}\frac{2x}{(x+1)\sqrt{4x^2+4x+5}}\,dx
+=\int_{0}^{\argsh \frac{1}{2}}\frac{2\sh u \overset{+1-2}{\overbrace{-1}}}{2\sh u +1}\,dt \hspace{0.5cm}\text{ (chgt. de v. $x+\frac{1}{2} = \sh u$) } \\
+= \ln\frac{1+\sqrt{5}}{2} - 2 \int_{0}^{\ln\frac{1+\sqrt{5}}{2}}\frac{du}{2\sh u +1} \hspace{0.5cm} \argsh \frac{1}{2} = \ln\frac{1+\sqrt{5}}{2}\\
+= \ln\frac{1+\sqrt{5}}{2} -2\int_{1}^{\frac{1+\sqrt{5}}{2}}\frac{dv}{v^2-1+v} \hspace{0.5cm}\text{ (chgt. de v. $v = e^u$) } \\
+= \ln\frac{1+\sqrt{5}}{2}-\frac{2}{\sqrt{5}}\left[ \ln(v+\frac{1+\sqrt{5}}{2}) - \ln(v+\frac{1-\sqrt{5}}{2})\right]_1^\frac{1+\sqrt{5}}{2} 
+\end{multline*}
+en décomposant en éléments simples.
+
+\paragraph{Exemple 10}
+\begin{multline*}
+\int_0^1 \frac{2x+1}{x+1}\, \sqrt{\frac{1-x}{1+x}}\, dx 
+= 2 \int_0^1 \frac{3u^2 -u^4}{(1+u^2)^2}\, du \hspace{0.5cm} \text{( chgt. de v. } u=\sqrt{\frac{1-x}{1+x}} \text{ )}\\
+= 2\int_{0}^{1}\left( -1 + \frac{5}{1+u^2} - \frac{4}{(1+u^2)^2}\right)du  \hspace{0.5cm} \text{ (décomp. elts. simples)}
+= -2 + 5\,\frac{\pi}{2} -8\left( \frac{\pi}{8} + \frac{1}{4}\right) =  \frac{3\pi}{2} - 4
+\end{multline*}
+Le calcul de 
+\begin{displaymath}
+  \int_{0}^{1}\frac{du}{(1+u^2)^2} = \frac{\pi}{8} + \frac{1}{4}
+\end{displaymath}
+se fait par une intégration par parties \og en crabe\fg~ \index{intégration par parties \og en crabe\fg} à partir de 
+\begin{displaymath}
+  \frac{\pi}{4} = \int_0^1 1\,\frac{1}{1+u^2} \, du = \left[ \frac{u}{1+u^2}\right]_{0}^{1} 
+  -2 \int_{0}^{1}\frac{du}{(1+u^2)^2}.
+\end{displaymath}
+\end{document}

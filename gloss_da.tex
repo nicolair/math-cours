@@ -1,0 +1,202 @@
+%<dscrpt>Fichier de déclarations Latex à inclure au début d'un élément de cours.</dscrpt>
+
+\documentclass[a4paper]{article}
+\usepackage[hmargin={1.8cm,1.8cm},vmargin={2.4cm,2.4cm},headheight=13.1pt]{geometry}
+
+%includeheadfoot,scale=1.1,centering,hoffset=-0.5cm,
+\usepackage[pdftex]{graphicx,color}
+\usepackage[french]{babel}
+\selectlanguage{french}
+\usepackage{fancyhdr}
+\usepackage{floatflt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ucs}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage[pdftex]{hyperref}
+
+\usepackage{makeidx}
+
+
+%pr{\'e}sentation du compteur de niveau 2 dans les listes
+\makeatletter
+\renewcommand{\labelenumii}{\theenumii.}
+\renewcommand{\thesection}{\Roman{section}.}
+\renewcommand{\thesubsection}{\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+\makeatother
+
+
+%dimension des pages, en-t{\^e}te et bas de page
+%\pdfpagewidth=20cm
+%\pdfpageheight=14cm
+%   \setlength{\oddsidemargin}{-2cm}
+%   \setlength{\voffset}{-1.5cm}
+%   \setlength{\textheight}{12cm}
+%   \setlength{\textwidth}{25.2cm}
+   \columnsep=1cm
+   \columnseprule=0.5pt
+
+%En tete et pied de page
+\pagestyle{fancy}
+\lhead{MPSI-\'Eléments de cours}
+\rhead{\today}
+%\rhead{25/11/05}
+\lfoot{\tiny{Cette création est mise à disposition selon le Contrat\\ Paternité-Partage des Conditions Initiales à l'Identique 2.0 France\\ disponible en ligne http://creativecommons.org/licenses/by-sa/2.0/fr/
+} }
+\rfoot{\tiny{Rémy Nicolai \jobname}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\K}{\mathbf{K}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\U}{\mathbf{U}}
+
+
+\newcommand{\card}{\mathop{\mathrm{Card}}}
+\newcommand{\Id}{\mathop{\mathrm{Id}}}
+\newcommand{\Ker}{\mathop{\mathrm{Ker}}}
+\newcommand{\Vect}{\mathop{\mathrm{Vect}}}
+\newcommand{\cotg}{\mathop{\mathrm{cotan}}}
+\newcommand{\sh}{\mathop{\mathrm{sh}}}
+\newcommand{\ch}{\mathop{\mathrm{ch}}}
+\newcommand{\tr}{\mathop{\mathrm{tr}}}
+\newcommand{\rg}{\mathop{\mathrm{rg}}}
+\newcommand{\rang}{\mathop{\mathrm{rg}}}
+\renewcommand{\Re}{\mathop{\mathrm{Re}}}
+\renewcommand{\Im}{\mathop{\mathrm{Im}}}
+\renewcommand{\th}{\mathop{\mathrm{th}}}
+\newcommand{\repere}{$(O,\overrightarrow{i},\overrightarrow{j},\overrightarrow{k})$}
+
+\newcommand{\absolue}[1]{\left| #1 \right|}
+\newcommand{\fonc}[5]{#1 : \begin{cases}#2 \rightarrow #3 \\ #4 \mapsto #5 \end{cases}}
+\newcommand{\depar}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\norme}[1]{\left\| #1 \right\|}
+\newcommand{\se}{\geq}
+\newcommand{\ie}{\leq}
+
+\newtheorem*{thm}{Théorème}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{pa}{Présentation axiomatique}
+
+\theoremstyle{definition}
+\newtheorem*{defi}{Définition}
+\newtheorem*{nota}{Notation}
+\newtheorem*{exple}{Exemple}
+\newtheorem*{exples}{Exemples}
+\newtheorem*{demo}{Preuve}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remarque}
+\newtheorem*{rems}{Remarques}
+
+\makeindex
+
+\begin{document}
+\chead{Glossaire de début d'année}
+
+Le cours de début d'année utilise des termes qui ne seront définis précisément que plus tard. Ce glossaire présente ces termes à peu près dans leur ordre d'apparition dans le cours. Un index alphabétique est présenté à la fin.
+\begin{description}
+
+\item[langage mathématique]\index{langage mathématique} Le point de vue adopté est "naïf" c'est à dire que le langage mathématique est une partie du langage usuel (le sens de certains mots étant différent de leur sens habituel). En réalité, le véritable langage mathématique est complètement formalisé à partir d'un petit nombre de signes et de règles relatives aux combinaisons possibles de ces signes. Il est important de faire la différence entre une phrase incorrecte (syntaxiquement) et une phrase fausse (logiquement)\index{phrase incorrecte, phrase fausse}. On ne peut pas attribuer une valeur logique à une phrase syntaxiquement incorrecte. Les termes "phrase mathématique"  (syntaxiquement correcte) et proposition logique sont synonimes.
+\begin{itemize}
+ \item ``\emph{Certaines araignées ont six pattes}'' est syntaxiquement correcte mais logiquement fausse.
+ \item ``\emph{araignées Certaines six ont  pattes}'' est syntaxiquement incorrecte, la question de sa valeur logique ne se pose pas.
+\end{itemize}
+Les principaux constituants du langage mathématique sont :
+\begin{itemize}
+ \item les ensembles, les quantificateurs, le verbe "appartient à" qui permettent de former des phrases élémentaires
+ \item les opérateurs logiques ("et" , "ou", "implique", "équivaut à", "non") qui permettent de combiner des phrases correctes. Ces opérateurs ne seront pas formalisés davantage (pas de "table de vérité"). On s'attachera plutôt à "faire sens" à l'aide du langage usuel.
+\end{itemize}
+
+\item[ensemble]\index{ensemble} Un ensemble est considéré de manière "naïve" c'est à dire comme une collection. Les objets d'une telle collection sont appelé \emph{éléments}. Attention, \emph{seules certaines collections sont des ensembles}. Par exemple la collection de tous les ensembles ne constitue pas un ensemble car un tel ensemble permet de former une phrase correcte et contradictoire (logiquement). On ne cherchera pas davantage à préciser des conditions assurant qu'une collection est un ensemble.\newline
+Une présentation plus précise de la théorie des ensembles est indissociable d'un exposé de \emph{logique} et de formalisation du langage mathématique. Ces questions constituent les fondements des mathématiques et ne seront pas développées. \newline
+On admet certaines propriétés et constructions. La liste suivante ne prétend pas être complète.
+\begin{itemize}
+ \item Il existe un ensemble particulier dit \emph{vide} noté $\emptyset$ et qui ne contient aucun élément. La phrase "$a\in \emptyset$" est correcte et toujours fausse.
+\item  Si $A$ et $B$ sont deux ensembles, il existe un ensemble noté $A\times B$ dit \emph{produit cartésien} des deux ensembles\index{produit cartésien de deux ensembles} dont les éléments sont des \emph{couples}. Ils sont notés $(a,b)$ avec $a$ élément de $A$ et $b$ élément de $B$. Par définition, si $(a,b)$ et $(a^\prime,b^\prime )$ sont deux éléments des $A\times B$ :
+\begin{displaymath}
+ (a,b) = (a^\prime,b^\prime ) \Leftrightarrow a=a^\prime \text{ et } b=b^\prime
+\end{displaymath}
+\item Si $A$ est un ensemble, toute collection d'éléments de $A$ forme un ensemble. Un tel ensemble est appelé une \emph{partie} de $A$ \index{partie d'un ensemble}. Un ensemble $B$ est une partie de $A$ lorsque tout élément de $B$ est un élément de $A$. On note alors $B \subset A$, on dit aussi que $B$ \emph{est une partie} de $A$. Par convention $\emptyset$ est une partie de n'importe quel ensemble.\newline
+La collection des parties de $A$ forme \emph{l'ensemble des parties} de $A$. Cet ensemble est noté $\mathcal P (A)$.
+\end{itemize}
+
+\item[appartient à]\index{appartient à} Ce verbe est synonime de "est élément de" et joue un rôle fondamental en langage mathématique. Il s'écrit $\in$ en langage formalisé. La phrase "$a \in A $" est la formalisation de $a$ est un élément de l'ensemble $A$. Lorsqu'une telle phrase est vraie, la lettre $A$ désigne obligatoirement un ensemble.
+\begin{itemize}
+ \item "$1 \in \N$" est correcte et vraie
+ \item "$\N \in \Z$" est correcte et fausse
+ \item "$ 1\in 2 $" est correcte et fausse (car $2$ n'est pas un ensemble)
+\end{itemize}
+
+\item[quantificateurs]\index{quantificateurs} Des éléments de syntaxe indispensables à la constitution d'une phrase correcte.
+\begin{itemize}
+ \item[quelque soit .. : ]\index{pour tout} formalisé par le signe $\forall$. La phrase formalisée "$\forall a \in A$" se traduit en langage usuel par "Pour tout élément $a$ de l'ensemble $A$" ou par "Soit $a$ un élément quelconque de l'ensemble $A$". Elle se poursuit après le ":" par une phrase traduisant une propriété. Plusieurs $\forall$ peuvent se suivre, l'ordre dans lequel ils s'écrivent est sans importance.
+\item [il existe ... tel que ] \index{il existe}formalisé par le signe $\exists$. La phrase formalisée "$\exists a \in A$" se traduit en langage usuel par "Il existe un élément $a$ de $A$". Une phrase de ce genre se poursuit par "tel que" qui peut être sous-entendu en langage formel ce "tel que" s'écrit ":".
+\end{itemize}
+\begin{exples}
+ \item Soit $A$ et $B$ deux ensembles : $A\subset B$ si et seulement si :
+\begin{displaymath}
+ \forall a \in A : a\in B
+\end{displaymath}
+On peut formaliser davantage :
+\begin{displaymath}
+ A\in \mathcal P(B) \Leftrightarrow A\subset B \Leftrightarrow\left( \forall a \in A : a\in B \right) 
+\end{displaymath}
+ \item Les quantificateurs s'échangent lors d'une négation.\newline
+La négation d'une phrase "Tous les éléments $a$ de $A$ vérifient une propriété $P(a)$" (traduction formelle "$\forall a \in A : P(a)$" est "Il existe un élément $a$ de $A$ qui ne vérifie pas $P(a)$  (traduction formelle "$\exists a \in A : \mathrm{non}P(a)$").\newline
+La négation d'une phrase "Il existe un élément de $A$ qui vérifie $P(a)$" (traduction formelle "$\exists a \in A : P(a)$") est "Aucun élément de $A$ ne vérifie $P(a)$" ou encore "$\forall a \in A : \mathrm{non} P(a)$".\newline
+Ainsi la négation de "Certaines araignées ont six pattes" est "Aucune araignée n'a six pattes" (ce qui est vrai car les araignées ont toujours huit pattes).
+\end{exples}
+
+\item[fonction]\index{fonction - application} Une fonction définie dans un ensemble $A$ et à valeurs dans un ensemble $B$ associe à chaque élément de $A$ un unique élément de $B$. Les fonctions définies dans un ensemble $A$ et à valeurs dans un ensemble $B$ forment un ensemble noté
+\begin{displaymath}
+ \mathcal F (A,B)
+\end{displaymath}
+Lorsque $f$ est une fonction définie dans $A$ et à valeurs dans $B$ (on dit aussi simplement de $A$ vers $B$), et $a$ un élément quelconque de $A$. L'unique élément de $B$ associé à $a$ par $f$ est appelé \emph{image} de $a$ par $f$ et noté $f(a)$.\newline
+Dans ce cours, les termes "fonction " et "application" sont équivalents.
+
+\item[opération]\index{opération}Une opération interne (on dit aussi une loi interne) sur un ensemble $A$ est une fonction définie dans $A\times A$ et à valeurs dans $A$.\newline
+En général une image par une opération n'est pas notée comme une image de fonction. Par exemple l'addition de $\N$ est une opération interne. C'est bien une fonction de $\N \times \N$ dans  $\N$ notée "$+$" mais on utilisera $1+1$ au lieu de $+((1,1))$.\newline
+Une opération interne peut avoir diverses propriétés : associativité, commutativité, existence d'un élément neutre.\newline
+On peut aussi considérer des opérations externes c'est à dire des fonctions d'un ensemble $K\times A$ à valeurs dans $A$. Dans ce cas aussi, l'image (le résultat d'une opération) est notée avec un signe \emph{entre} les lettres désignant les deux éléments.
+
+ \item[groupe]\index{groupe} Un ensemble muni d'une seule opération interne vérifiant certaines propriétés. Par exemple $(\Z, +)$, $(\Q,\times)$ sont des groupes mais $(\N,+)$ n'est pas un groupe.
+ 
+ \item[corps]\index{corps}Un ensemble muni de deux opérations internes une addition et une multiplication vérifiant un certain nombres de propriétés. Par exemples $(\Q,+,\times)$, $(\R,+,\times)$, $(\C,+,\times)$ sont des corps mais $(\Z,+,\times)$ n'est pas un corps. Dans un corps les règles de calculs usuelles sont valables, en particulier tout élément non nul admet un inverse. 
+
+\item[bijection]\index{bijection} Une application telle que pour tout élément $x$ de l'espace d'arrivée, il existe un unique élément de l'espace de départ dont l'image soit $x$.
+
+\item[morphisme] \index{morphisme - isomorphisme} Très généralement, un morphisme est une application entre deux espaces munis d'opérations et qui transporte l'opération de l'espace de départ vers l'opération de l'espace d'arrivée. Si $T$ est l'opération dans l'espace de départ et $*$ celle de l'espace d'arrivée :
+\begin{displaymath}
+ f(a T b) = f(a) * f(b)
+\end{displaymath}
+Par exemple la fonction $\ln$ est un morphisme de $(]0,\infty[,\times)$ vers $(\R,+)$. \newline
+Un isomorphisme est un morphisme bijectif.
+
+\item[analyse-synthèse]\index{analyse-synthèse} Un mode de démonstration (en deux temps) d'une proposition du genre
+\begin{quote}
+ Il existe un unique élément $x$ vérifiant une propriété $\mathcal P (x)$
+\end{quote}
+Premier temps : analyse. On considère un élément $x$ vérifiant $\mathcal P (x)$ et on forme des conséquences pour obtenir des propriétés de $x$. Dans certains cas on peut arriver à prouver que $x$ ne peut être qu'un certain $x_0$. \newline
+Ceci prouve la partie \emph{unicité} de la proposition à démontrer.
+
+Deuxième temps : synthèse. On considère l'élément particulier $x_0$ et on montre (en général par un calcul) qu'il vérifie la propriété $\mathcal P (x_0)$. Ce raisonnement ne peut \emph{jamais} s'appuyer sur l'analyse. 
+
+La synthèse prouve l'existence d'une solution explicite au problème (à savoir $x_0$). L'analyse montre que c'est la seule possible.
+
+\item[injection, surjection bijection]\index{injection, surjection bijection} Une fonction $f$ définie dans un ensemble $A$ et à valeurs dans un ensemble $B$  est dite
+\begin{itemize}
+ \item bijective : lorsque pour tout élément $b\in B$, il existe exactement un $a\in A$ tel que $f(a)=b$.
+\item injective : lorsque deux éléments \emph{distincts} $a$ et $a^\prime$ de $A$ ont des images distinctes. C'est équivalent à dire que pour tout élément $b\in B$, il existe \emph{au plus} un élément $a\in A$ tel que $f(a)=b$.
+\item surjective : lorsque pour tout élément $b\in B$, il existe un élément $a\in A$ tel que $f(a)=b$. Si il existe plusieurs éléments $a$ vérifiant cette propriété, la fonction n'est pas injective.
+\end{itemize}
+
+\end{description}
+\printindex
+\end{document}

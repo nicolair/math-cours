@@ -1,0 +1,193 @@
+\input{courspdf.tex}
+\debutcours{Relations binaires}{alpha}
+
+\section{Vocabulaire}
+L'objet de cette section est de préciser mathématiquement les termes \og ranger\fg  et \og classer\fg. Ces termes sont ambigus dans le langage usuel. Que signifie ranger une collection d'objets ? Deux acceptions seront considérées ici. \newline
+On peut utiliser des tiroirs ou des boîtes et plaçer les objets que l'on estime de même catégorie dans un même tiroir. On peut aussi hiérarchiser les objets : du plus petit au plus grand ou bien du plus précieux au moins précieux ou selon tout autre critère.\newline
+ Dans les deux cas le classement se fait à partir de \emph{relations} entre les objets. Ces relations ne sont pas de même nature ou plutôt ne possèdent pas les mêmes propriétés. On va d'abord préciser mathématiquement la notion de relation puis définir certaines propriétés que peuvent posséder les relations. Chacune des deux manières de classer correspond alors à une combinaison de ces propriétés définissant deux types de relations \emph{d'équivalence} ou \emph{d'ordre}.
+\begin{defi}
+ Une relation binaire sur un ensemble $E$ est une proposition faisant intervenir exactement deux éléments génériques de $E$.
+\end{defi}
+Une relation binaire est complètement déterminée par l'ensemble des couples dans $E\times E$ pour lesquels la proposition est vraie.\newline
+On adopte les notations suivantes.
+\begin{itemize}
+ \item si une proposition $\mathcal P(x,y)$ est donnée, on note $x\mathcal R y$ lorsque $\mathcal P(x,y)$ est vraie. On définit alors 
+\begin{displaymath}
+ G_\mathcal R = \left\lbrace (x,y)\in E\times E \text{ tels que } x\mathcal R y \right\rbrace 
+\end{displaymath}
+\item si une partie $G$ de $E \times E$ est donnée, on définit $\mathcal R_G$ par
+\begin{displaymath}
+ \forall (x,y)\in E\times E : x \mathcal R y \Leftrightarrow (x,y)\in G
+\end{displaymath}
+\end{itemize}
+
+ \begin{defi}[relation réflexive]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{réflexive} si et seulement si 
+\begin{displaymath}
+ \forall x\in E : x \mathcal R x
+\end{displaymath}
+ \end{defi}\index{relation réflexive}
+
+ \begin{defi}[relation symétrique]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{symétrique} si et seulement si 
+\begin{displaymath}
+ \forall (x,y)\in E\times E  : x \mathcal R y \Rightarrow y \mathcal R x
+\end{displaymath}
+ \end{defi}\index{relation symétrique}
+
+\begin{defi}[relation antisymétrique]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{antisymétrique} si et seulement si 
+\begin{equation*}
+ \forall (x,y)\in E^2  : 
+\left\lbrace 
+\begin{aligned}
+x &\mathcal R y \\
+y &\mathcal R x
+\end{aligned}
+\right. 
+ \Rightarrow x = z
+\end{equation*}
+ \end{defi}\index{relation antisymétrique}
+
+
+ \begin{defi}[relation transitive]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{transitive} si et seulement si 
+\begin{equation*}
+ \forall (x,y,z)\in E^3  : 
+\left\lbrace 
+\begin{aligned}
+x &\mathcal R y \\
+y &\mathcal R z
+\end{aligned}
+\right. 
+ \Rightarrow x \mathcal R z
+\end{equation*}
+ \end{defi}\index{relation transitive}
+
+\section{Relation d'équivalence}
+On s'intéresse ici à la première manière de ranger: avec des boîtes ou des tiroirs. Rappelons la définition d'une partition, puis définissons la notion de relation d'équivalence. Ces deux notions sont indissociables, le passage entre les deux est le concept de \emph{classe d'équivalence}.\newline
+Une partition d'un ensemble $E$ est une partie de $\mathcal{P}(E)$ vérifiant certaines conditions.
+\index{partition}
+\begin{defi}[partition]
+Soit $E$ un ensemble et $\mathcal{A}$ une partie de $\mathcal{P}(E)$.\newline
+On dira que $\mathcal A$ est une \emph{partition} de $E$ si est seulement si :
+\begin{align*}
+ &\emptyset \not \in \mathcal A \\
+ &\forall x\in E,\: \exists A \in \mathcal{A} \text{ tel que } x\in A \\
+ &\forall (A,B)\in \mathcal{A}^2, \: A \neq B \Rightarrow A \cap B =\emptyset
+\end{align*}
+\end{defi}
+
+
+\begin{defi}[relation d'équivalence]
+ Une relation réflexive, symétrique et transitive elle dite \emph{d'équivalence}
+\end{defi}\index{relation d'équivalence}
+
+\begin{exple}[relation d'équivalence attaché à une partition]
+ Soit $E$ un ensemble et $\mathcal{A}$ une partition de $E$. On peut définir à partir de $\mathcal A$ une relation $\mathcal{R}$ sur $E$ en posant :
+\begin{displaymath}
+ \forall (x,y)\in E^2 ,\:
+x\mathcal R y \Leftrightarrow \exists A \in \mathcal A \text{ tel que } x\in A \text{ et } y\in A
+\end{displaymath}
+On peut vérifier que $\mathcal R$ est une relation d'équivalence. On retrouve bien l'essence du rangement au sens des boîtes ou des tiroirs.
+\end{exple}
+Réciproquement, en se donnant une relation d'équivalence, on peut définir une partition en utilisant les classes d'équivalence.
+\index{classe d'équivalence}
+\begin{defi}[classe d'équivalence]
+ Soit $E$ un ensemble et $\mathcal R$ une relation d'équivalence sur $E$. Pour tout $x\in E$, on appelle \emph{classe d'équivalence} de $x$ la partie de $E$ notée $Cl_\mathcal{R}(x)$ définie par :
+\begin{displaymath}
+ \forall y\in E: y\in Cl_\mathcal{R}(x) \Leftrightarrow y \mathcal R x
+\end{displaymath}
+On dira qu'une partie $A$ de $E$ est une classe d'équivalence si et seulement si il existe un $x\in E$ tel que $A=Cl_\mathcal{R}(x)$.
+\end{defi}
+\begin{prop}
+ Soit $E$ un ensemble et $\mathcal R$ une relation d'équivalence sur $E$. L'ensemble des classes d'équivalence forme une partition de $E$. La relation d'équivalence attachée à cette partition est la relation de départ.
+\end{prop}
+\begin{demo}
+ rédiger une justification. Une démonstration formelle semble inutile.
+\end{demo}
+
+
+\begin{exple}[relation d'équivalence attaché à une fonction]
+ Soit $E$ et $\Omega$ deux ensembles et $f$ une fonction définie dans $E$ et à valeurs dans $\Omega$. On définit une relation $\mathcal R_f$ par : 
+\begin{displaymath}
+ \forall (a,b)\in E^2 : a\mathcal R_f b \Leftrightarrow f(a)=f(b)
+\end{displaymath}
+On peut vérifier que $\mathcal R_f$ est une relation  d'équivalence. Les classes d'équivalence sont les images réciproques des singletons d'éléments de l'image c'est à dire les
+\begin{displaymath}
+ f^{-1}(\{x\})\text{ pour } x\in f(E).
+\end{displaymath}
+\end{exple}
+
+\section{Relation d'ordre}
+\begin{defi}[relation d'ordre]
+ Une relation réflexive, antisymétrique et transitive est appelée \emph{relation d'ordre}
+\end{defi}\index{relation d'ordre}
+\begin{exples}
+\`A rédiger exples : $\subset$, $\leq$, divisibilité.  
+\end{exples}
+
+\index{ordre total}\index{ordre partiel}
+\begin{defi}[Ordre total ordre partiel]
+ Soit $E$ un ensemble muni d'une relation d'ordre $\prec$. On dira que $E$ est \emph{totalement ordonné} par $\prec$ ou que l'ordre (défini par $\prec$) est total si et seulement si 
+\begin{displaymath}
+ \forall (x,y)\in E^2 : x \prec y \text{ ou } y \prec x
+\end{displaymath}
+On dira que l'ordre est \emph{partiel} si et seulement si il n'est pas total.
+\end{defi}
+\begin{exples}
+ Dans $\mathcal P(E)$, l'ordre défini par $\subset$ n'est pas total. Lorsque $E$ est totalement ordonné, on peut définir une autre relation d'ordre à partir de la négation de $\prec$.
+\end{exples}
+
+\index{majorant} \index{minorant}
+\begin{defi}[Majorant, minorant]
+  Soit $E$ un ensemble muni d'une relation d'ordre $\prec$ et $A$ une partie de $E$.\newline
+On dit que $x$ est un \emph{majorant} de $E$ si et seulement si 
+\begin{displaymath}
+ \forall a\in A : a \prec x
+\end{displaymath}
+On dit que $x$ est un \emph{minorant} de $E$ si et seulement si 
+\begin{displaymath}
+ \forall a\in A : x \prec a
+\end{displaymath}
+\end{defi}
+\begin{rem}
+ Bien noter que l'on ne parle de majorant ou de minorant que d'une partie. On se permet de dire que si $a \prec b$ alors $b$ est un majorant de $a$ car $b$ c'est équivalent à $b$ est un majorant de $\{a\}$.
+\end{rem}
+
+
+\index{min : plus petit élément} \index{max : plus grand élément}
+\begin{propdef}[plus grand et plus petit élément]
+  Soit $E$ un ensemble muni d'une relation d'ordre $\prec$ et $A$ une partie de $E$.\newline
+Il existe dans $A$ au plus un minorant de $A$. Lorsqu'il en existe un, on dit que $A$ \emph{admet un plus petit élément} et on le note $\min A$. Cet élément est appelé le \emph{plus petit élément} de $A$.\newline
+Il existe dans $A$ au plus un majorant de $A$. Lorsqu'il en existe un, on dit que $A$ \emph{admet un plus grand élément} et on le note $\max A$. Cet élément est appelé le \emph{plus grand élément} de $A$.
+\end{propdef}
+\begin{demo}
+ à rédiger
+\end{demo}
+
+
+\begin{exple}
+Exple Dans $\R$ ordonné par $\leq$, la partie $[0,1[$ n'admet pas de plus grand élément.\newline
+$\Omega \subset \mathcal P(E)$, $\Omega$ est majoré par $E$. L'ensemble des majorants de $\Omega$ est non vide, il admet un plus petit élément. 
+\begin{displaymath}
+ \bigcup_{B\in \Omega}B
+\end{displaymath}
+\end{exple}
+
+ 
+\index{sup : borne supérieure} \index{inf : borne inférieure} 
+\begin{defi}[borne supérieure, borne inférieure]
+  Soit $E$ un ensemble muni d'une relation d'ordre $\prec$ et $A$ une partie de $E$.\newline
+On dit que $A$ admet \emph{une borne supérieure} lorsque l'ensemble des majorants de $A$ admet un plus petit élément. Dans ce cas, il est noté $\sup A$.\newline
+On dit que $A$ admet \emph{une borne inférieure} lorsque l'ensemble des minorants de $A$ admet un plus grand élément. Dans ce cas, il est noté $\inf A$.
+\end{defi}
+\begin{rem}
+ Si $A$ admet un plus grand élément alors il admet une borne supérieure et $\sup A = \max A$.\newline
+En effet : ... à rédiger\newline
+En revanche un ensemble peut admettre une borne supérieure sans admettre de plus grand élément. Exple $[0,1[$ dans $(\R,\leq)$. Idem pour les bornes inférieures et les plus petits éléments. 
+\end{rem}
+Les notions d'ensemble ordonné, de plus petit et de plus grand élément jouent un rôle capital dans l'\href{\baseurl C2007.pdf}{axiomatique des entiers naturels}.
+La notion de borne supérieure est capitale dans l'\href{\baseurl C2192.pdf}{axiomatique du corps des réels}.
+\end{document}
+

@@ -1,0 +1,98 @@
+\input{courspdf.tex}
+\debutcours{Suites définies par récurrence}{alpha}
+
+Obsolète transféré dans le cours sur les fonctions dérivables
+Cette section ne fait pas partie du programme de la classe de MPSI. Les résultats présentés ne doivent donc pas être utilisés directement surtout à l'écrit. L'objectif est de dégager certaines situations caractéristiques.
+
+Le contexte général est l'étude de suites vérifiant une relation de récurrence du ype
+\begin{displaymath}
+ x_{n+1}=f(x_n)
+\end{displaymath}
+où $f$ est une fonction définie dans une partie de $\R$ et à valeurs réelles.
+
+Les résultats présentés ici ne couvrent que des cas très particuliers et ne représentent absolument pas la complexité de la question.
+\section{Vocabulaire - Résultats généraux}
+\begin{defi}
+ On dira qu'un intervalle $I$ est stable \index{intervalle stable} pour une fonction $f$ lorsque $I$ est inclus dans l'espace de départ de $f$ et que $f(I)\subset I$.\newline
+On dira que $a$ appartenant à l'espace de départ d'une fonction $f$ est un \emph{point fixe} de $f$ lorsque $f(a)=a$.  
+\end{defi}
+\begin{prop}
+ Lorsque $I$ est un intervalle stable pour $f$, pour toute condition initiale $x_0\in I$, la suite $(x_n)_{n\in \N}$ est définie pour tous les entiers $n$.
+\end{prop}
+\begin{defi}
+ On dira qu'un point fixe $a$ de $f$ est stable (ou attractif) si et seulement si il est à l'intérieur d'un intervalle $J$ stable pour $f$ et tel que, pour toute condition initiale $x_0\in J$, la suite $(x_n)_{n\in \N}$ converge vers $a$.
+\end{defi}
+\begin{defi}
+ On dira qu'un point fixe $a$ de $f$ est stable (ou attractif) si et seulement si il existe un intervalle $J$ stable pour $f$ tel que $a$ est à l'intérieur de $J$ et que, pour toute condition initiale $x_0\in J$, la suite $(x_n)_{n\in \N}$ converge vers $a$.
+\end{defi}
+\begin{defi}
+ On dira qu'un point fixe $a$ de $f$ est instable (ou répulsif) si et seulement si il existe un intervalle $J$ tel que $a$ est à l'intérieur de $J$ et que, pour toute condition initiale $x_0\in J$, il existe un entier $N(x_0)$ tel que :
+\begin{displaymath}
+ x_0\in J, x_1\in J, \cdots , x_{N(x_0)-1}\in J, x_{N(x_0)} \not \in J
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ Lorsque la suite converge vers un réel $a$ dans l'espace de départ de $f$ et que $f$ est continue en $a$, ce point $a$ est un point fixe de $f$.
+\end{prop}
+\begin{demo}
+ En effet, par continuité de $f$ en $a$, $(f(x_{n}))_{n\in \N}$ converge vers $f(a)$ mais cette suite est aussi égale à la suite extraite $(x_{n+1})_{n\in \N}$ qui converge vers $a$.
+\end{demo}
+\begin{defi}
+Le \emph{bassin d'attraction} d'un point fixe $a$ est formé par l'ensemble des conditions initiales $x_0$ pour lesquelles la suite $(x_{n})_{n\in \N}$ converge vers $a$.
+\end{defi}
+
+\section{Fonctions monotones}
+\subsection{Fonction croissante}
+\begin{figure}[h!t]
+ \centering
+ \includegraphics{C4792_1.pdf}
+ % C4792_1.pdf: 99x198 pixel, 72dpi, 3.49x6.99 cm, bb=0 0 99 198
+ \caption{Divergence monotone}
+ \label{fig:C4792_1}
+\end{figure}
+
+\begin{prop}
+ Lorsque $I$ est un intervalle stable pour $f$ et que $f$ est croissante sur $I$, alors, pour toute condition initiale $x_0\in I$, la suite $(x_n)_{n\in \N}$ est monotone.
+\end{prop}
+\begin{demo}
+ En fait la première inégalité, celle entre les valeurs $x_0$ et $x_1$, va \emph{se propager} par récurrence:
+\begin{align*}
+ x_0\leq x_1 &\Rightarrow \forall n \in \N : x_n \leq x_{n+1} &:\text{ suite croissante}\\
+x_0\geq x_1 &\Rightarrow \forall n \in \N : x_n \geq x_{n+1} &:\text{ suite décroissante}
+\end{align*}
+\end{demo}
+\subsection{Fonction décroissante}
+\subsection{Conditions suffisantes de stabilité ou d'instabilité}
+Lorsque le signe de $f(x)-x$ est connu dans un intervalle autour d'un point fixe, on peut parfois savoir si ce point est stable ou instable.
+\begin{itemize}
+ \item Le point fixe est \emph{instable} lorsque la distribution des signes dans un intervalle $J$ est comme dans le tableau suivant :
+\begin{center}
+ \begin{tabular}{c|ccc|}
+   &  & a &  \\  \hline
+ f(x)-x   & - & 0 & + \\ \hline
+\end{tabular}
+\end{center}
+Lorsque la fonction est $\mathcal C^1$ dans $J$, la condition $f'(a)>1$ entraine une telle distribution locale des signes.
+
+ \item Le point fixe est \emph{stable} lorsque la distribution des signes dans un intervalle $J$ est comme dans le tableau suivant :
+\begin{center}
+ \begin{tabular}{c|ccc|}
+   &  & a &  \\  \hline
+ f(x)-x   & + & 0 & - \\ \hline
+\end{tabular}
+\end{center}
+Lorsque la fonction est $\mathcal C^1$ dans $J$, la condition $0\leq f'(a) < 1$ entraine une telle distribution locale des signes.
+\end{itemize}
+\begin{rems}
+ \begin{itemize}
+  \item Méthode de Newton
+  \item Application contractante. Toute applcation contractante dans un intervalle stable admet un unique point fixe.
+ \end{itemize}
+
+\end{rems}
+
+\section{Expressions particulières}
+\subsection{Récurrence arithmético-géométrique}
+\subsection{Récurrence homographique}
+\subsection{Récurrence linéaire}
+\end{document}

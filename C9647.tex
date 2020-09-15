@@ -1,0 +1,484 @@
+\input{courspdf.tex}
+\debutcours{Variables aléatoires sur un espace probabilisé fini}{0.1 \tiny{le \today}}
+
+\section{Variables aléatoires}
+Une variable aléatoire est une fonction définie sur un univers. Dans le dictionnaire des traductions entre les langages ensembliste et probabiliste, \og variable aléatoire\fg ~ est le synonyme probabiliste de \og fonction\fg.\newline 
+On dit qu'une variable aléatoire est \emph{réelle}, lorsqu'elle prend ses valeurs dans $\R$.
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|} \hline
+$X$: fonction définie dans $\Omega$ à valeurs dans $E$. & $X$ : variable aléatoire sur l'univers $\Omega$ à valeurs dans $E$.\\ \hline
+$A\subset E$, $X^{-1}(A)$ partie de $\Omega$   & événement de $\Omega$ noté $\{X \in A\}$ ou $(X\in A)$. \\ \hline
+$x\in E$, $X^{-1}(\{x\})$ partie de $\Omega$   & événement de $\Omega$ noté $\{X =x\}$ ou $(X=x)$. \\ \hline
+$x\in \R$, $X^{-1}(]-\infty,x])$ partie de $\Omega$   & événement de $\Omega$ noté $\{X \leq x\}$ ou $(X \leq x)$. \\ \hline
+\end{tabular} 
+\end{center}
+
+La notation $X^{-1}(A)$ désigne l'image réciproque par $X$ de la partie $A$.
+\index{loi de probabilité d'une variable aléatoire}
+\begin{defi}
+  Soit $(\Omega, \p)$ un univers probabilisé et $X$ une variable aléatoire (fonction) de $\Omega$ dans $E$.\newline
+  La \emph{loi de probabilité de la variable aléatoire} $X$ (notée $\p_X$) est la fonction probabilité définie sur l'ensemble des parties de $E$ :
+\begin{displaymath}
+\forall A \in \mathcal{P}(E), \; \p_X(A) = \p((X\in A)) = \p(X\in A) = \p(X^{-1}(A)).
+\end{displaymath}
+\end{defi}
+\begin{rem}
+Dans ce cours, comme les univers (ensembles des éventualités) sont finis, l'ensemble des valeurs d'une variable aléatoire est aussi fini donc seules les parties de $E$ qui contiennent des valeurs de la variable aléatoire ont une probabilité non nulle. Même si $E$ est infini, on peut définir la probabilité $\p_X$ sur l'ensemble de toutes le parties de $E$. Parmi les parties $E$, seules les parties qui coupent $X(\Omega)$ (elles forment un ensemble fini) auront une probabilité non nulle.   
+\end{rem}
+
+L'application probabilité $\p_X$ est donc caractérisée par les valeurs des $\p((X=x))$ pour les $x$ de $E$. \newline
+\index{fonction de répartition d'une loi réelle}
+\begin{defi}
+Soit $X$ une variable aléatoire à valeurs réelles, la \emph{fonction de répartition} attachée à la loi de $X$ est définie par 
+\begin{displaymath}
+ x\rightarrow \p_X((X\leq x)) = \p(X^{-1}(]-\infty, x])).
+\end{displaymath}
+\end{defi}
+\begin{rems}
+\begin{itemize}
+  \item La fonction de répartition est souvent notée $F_X$. Il est important de noter qu'elle ne dépend que de la \emph{loi} de probabilité de $X$.
+  \item Une fonction de répartition est toujours croissante.
+\end{itemize}
+\end{rems}
+L'intérêt des variables aléatoires vient des opérations que l'on peut définir entre elles pour $\Omega$ et $E$ fixés. Par exemple, l'ensemble des variables aléatoires réelles définies sur $\Omega$ est un $\R$-espace vectoriel (pour les opérations fonctionnelles usuelles).\newline
+On peut aussi composer une variable aléatoire par une fonction.\newline
+Soit $X$ une variable aléatoire réelle qui prend ses valeurs dans un intervalle $I$ et $f$ une fonction à valeurs réelles définie dans $I$. La fonction $Y=f\circ X$ de $\Omega$ dans $\R$ est une variable aléatoire réelle. On peut lui associer une loi.
+\begin{exple}
+  Pour un univers quelconque, la fonction caractéristique d'un événement particulier qui prend la valeur $1$ si l'événement se réalise et $0$ sinon est une variable aléatoire à valeurs dans $\llbracket 0, 1\rrbracket$.
+\end{exple}
+
+\section{Lois usuelles}
+Plusieurs variables aléatoires distinctes sur des espaces probabilisés distincts mais à valeurs dans le même ensemble (une partie de $\R$) peuvent définir la même loi de probabilité. C'est à dire en fait le même espace probabilisé. Les lois usuelles sont ces espaces probabilisés usuels. Il faut les connaitre pour eux même et connaitre aussi les situations et les variables aléatoires types qui satisfont à ces lois.\newline
+Dans toute cette section $n$ est un entier naturel non nul.
+\subsection{Loi uniforme}
+\index{loi uniforme}
+\begin{defi}
+\begin{displaymath}
+\forall k \in E=\llbracket 1 , n\rrbracket, \hspace{0.5cm} \p(X=k) = \frac{1}{n}. 
+\end{displaymath}  
+\end{defi}
+
+\subsection{Loi de Bernoulli}
+\index{loi de Bernoulli}
+\begin{defi}
+Loi de Bernoulli de paramètre $p$: notation $\mathcal{B}(p)$.
+\begin{displaymath}
+E=\{0  , 1\}, \hspace{0.5cm} \p(X=0) = 1-p , \hspace{0.5cm} \p(X=1) = p  .
+\end{displaymath}  
+\end{defi}
+Une expérience de Bernoulli est une expérience aléatoire à deux issues : $S$ (succès) et $E$ (échec). On définit $X$ par $X(S)=1$, $X(E)=0$.
+\begin{nota}
+Si la loi de probabilité d'une variable aléatoire $X$ est la loi de Bernoulli de paramètre $p$, on note $X\hookrightarrow \mathcal{B}(p)$.
+\end{nota}
+\begin{exple}
+  Pour tout événement $A$ d'un univers probabilisé quelconque, la \index{fonction caractéristique} fonction caractéristique de $A$ est une variable aléatoire qui suit une loi de Bernoulli de paramètre $\p(A)$.
+\end{exple}
+
+\subsection{Loi binomiale}  
+\begin{defi}
+Loi binomiale de paramètres $n$ et $p\in [0,1]$ : notation $\mathcal{B}(n,p)$.
+\begin{displaymath}
+\forall k \in E=\llbracket 0 , n\rrbracket, \hspace{0.5cm} \p(X=k) = \binom{n}{k}p^k(1-p)^{n-k}. 
+\end{displaymath}  
+\end{defi}
+\begin{nota}
+Si la loi de probabilité d'une variable aléatoire $X$ est la loi binomiale de paramètres $n,p$, on note $X\hookrightarrow \mathcal{B}(n,p)$.
+\end{nota}
+\begin{exple}
+  Le nombre de succès dans la répétition de $n$ expériences de Bernoulli indépendantes. (tirage avec remise par exemple) est une variable aléatoire qui suit une loi binomiale de paramètres $(n,p)$.\newline
+  Notons $X$ ce nombre de succès. Alors $X(\Omega) = \llbracket 0, n\rrbracket$. On classe les $n$-uplets de résultats conduisant à $k$ réussite selon l'ensemble des numéros des expériences réussies. Pour n'importe quel ensemble particulier à $k$ éléments, la probabilité est $p^k(1-p)^{n-k}$. En tenant compte du nombre de parties à $k$ éléments, on obtient la loi binomiale. 
+\end{exple}
+
+\section{Couples de variables aléatoires}
+\begin{defi}
+Soit $X$ et $Y$ deux variables aléatoires définies dans $\Omega$ et à valeurs dans $E$ et $F$. La fonction notée $X\times Y$ (ou $(X,Y)$) définie par
+\begin{displaymath}
+\left\lbrace 
+\begin{aligned}
+\Omega &\rightarrow E \times F \\ \omega &\mapsto (X(\omega),Y(\omega)) 
+\end{aligned}
+\right. 
+\end{displaymath}
+est une variable aléatoire. 
+\index{loi conjointe} \index{lois marginales}
+La loi de la variable aléatoire $(X,Y)$ est appelée la \emph{loi conjointe} de $X$ et $Y$. 
+\end{defi}
+\begin{defi}
+Pour toute variable aléatoire $Z$ à valeurs dans un produit cartésien $E\times F$, il existe des variables aléatoires $X$ et $Y$ telles que $Z=(X,Y)$. Les lois que vérifient $X$ et $Y$ sont déterminées par la lois de $Z$, on les appelle les \emph{lois marginales} de $Z$. Elles sont définies par 
+\[
+ \forall \omega \in \Omega, \; Z(\omega) = \left( X(\omega), Y(\omega)\right). 
+\]  
+\end{defi}
+\begin{rem}
+  Bien noter que la loi conjointe détermine les lois marginales mais pas le contraire.
+\end{rem}
+La présentation en tableau des probabilités pour un couple $(X,Y)$ justifie la terminologie de loi \emph{marginales}.\newline
+Supposons que $X$ prenne les valeurs $x_1, \cdots, x_p$ et que $Y$ prenne les valeurs $y_1,\cdots, y_q$.
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|c|c|c|c|c|c||c|}\hline
+×        & $x_1$                        & $\cdots$ & $x_i$                       & $\cdots$ & $x_p$                        & \\ \hline
+$y_1$    & $\p(X=x_1 \text{ et }Y=y_1)$ & $\cdots$ & $\p(X=x_i \text{ et }Y=y_1)$& $\cdots$ & $\p(X=x_p \text{ et }Y=y_1)$ & $\p(Y=y_1)$\\ \hline
+$\vdots$ & $\vdots$                     & ×        & $\vdots$                    & ×        & $\vdots$                     &  $\vdots$ \\ \hline
+$y_j$    & $\p(X=x_1 \text{ et }Y=y_j)$ & $\cdots$ & $\p(X=x_i \text{ et }Y=y_j)$& $\cdots$ & $\p(X=x_p \text{ et }Y=y_j)$ &  $\p(Y=y_j)$ \\ \hline
+$\vdots$ & $\vdots$                     & ×        & $\vdots$                    & ×        & $\vdots$                     &  $\vdots$ \\ \hline
+$y_q$    & $\p(X=x_1 \text{ et }Y=y_q)$ & $\cdots$ & $\p(X=x_i \text{ et }Y=y_q)$& $\cdots$ & $\p(X=x_p \text{ et }Y=y_q)$ &  $\p(Y=y_q)$ \\ \hline \hline
+         & $\p(X=x_1)$                  & $\cdots$ & $\p(X=x_i)$                 & $\cdots$ & $\p(X=x_p)$& \\ \hline
+\end{tabular}
+\end{center}
+La loi conjointe de $X$ (resp $Y$) est présentée dans la dernière colonne (resp ligne). La valeur est la somme des valeur de la ligne (resp colonne) associée.  
+\begin{defi}
+  Soit $X$ et $Y$ deux variables aléatoires définies sur $\Omega, \p)$. On définit la loi de $X$ sachant que $Y=y$  par :
+\[
+  \forall x \in X(\Omega), \p_{Y = y}(X = x) = \frac{\p(X=x \text{ et } Y=y}{\p(Y=y)}.
+\]
+\end{defi}
+\begin{nota}
+  On peut noter aussi $\p(X=x | Y=y)$.
+\end{nota}
+
+\section{Variables aléatoires indépendantes}
+\index{variables aléatoires indépendantes}
+\begin{defi}
+ Soit $X$ et $Y$ deux variables aléatoires définies sur un même espace probabilisé fini $(\Omega,p)$ et à valeurs dans $E$ et $F$, on dit que $X$ et $Y$ sont \emph{indépendantes} si et seulement si,
+\begin{displaymath}
+\forall (A,B) \in \mathcal{P}(E)\times \mathcal{P}(F), \hspace{0.5cm} \p\left((X\in A)\text{ et } (Y\in B)\right) = \p(X\in A)\, \p(Y\in B).
+\end{displaymath}
+\end{defi}
+On peut caractériser les variables indépendantes par le fait que la loi conjointe s'obtient par produit à partir des lois marginales.
+\begin{prop}
+Soit $X$ et $Y$ deux variables aléatoires définies sur un espace probabilisé fini $(\Omega,p)$ et à valeurs dans $E$ et $F$. Les variables $X$ et $Y$ sont \emph{indépendantes} si et seulement si :
+\begin{displaymath}
+ \forall(x,y)\in X(\Omega)\times Y(\Omega),\hspace{0.5cm}
+\p((X=x)\text{ et } (Y=y)) = \p(X=x) \p(Y=y)
+\end{displaymath}
+\end{prop}
+\begin{demo}
+Si la formule est valable pour toutes les parties, elle est valable pour les singletons. Réciproquement, pour tout couple $(A,B)$ de parties,
+\begin{multline*}
+ \p(X\in A\text{ et }Y\in B)= \sum_{(a,b)\in A\times B}\p( (X=a)\cap\p(Y=b))
+= \sum_{(a,b)\in A\times B}\p(X=a) \p(Y=b)\\
+= \left( \sum_{a\in A}\p(X=a)\right) \left( \sum_{b\in B}\p(Y=b)\right) = \p(A) \p(B).
+\end{multline*}
+\end{demo}
+\begin{rem}
+ On peut caractériser l'indépendance de deux lois avec les lois conditionnelles.
+\end{rem}
+\begin{prop}
+Si les variables $X$ et $Y$ sont indépendantes, les variables $f\circ X$ et $g\circ Y$ le sont aussi. 
+\end{prop}
+\begin{demo}
+ Soit $a\in f\circ X(\Omega))$ et $b\in g\circ Y(\Omega))$,
+\begin{multline*}
+ \p((f\circ X=a)\cap (g\circ Y=b)) = \p\left( (X\in f^{-1}(\{a\})\cap (Y\in f^{-1}(\{b\})\right)
+ = \p\left( (X\in f^{-1}(\{a\})\right) \p\left(  (Y\in f^{-1}(\{b\})\right)\\
+=\p(f\circ X =a) \,\p(g\circ Y =b)
+\end{multline*}
+\end{demo}
+
+\index{variables mutuellement indépendantes}
+\begin{defi}
+ Soient $X_1,\cdots, X_n$ des variables aléatoires sur le même espace probabilisé $(\Omega,p)$. On dit qu'elles sont \emph{mutuellement indépendantes} si et seulement si, pour toute famille de parties $A_1,\cdots,A_n$ de $X_1(\Omega),\cdots X_n(\Omega)$, les événements $(X_1\in A_1), \cdots (X_n\in A_n)$ sont mutuellement indépendants.
+\end{defi}
+On peut représenter la réalisation de $n$ expériences aléatoires indépendantes sur le même espace par une suite de $n$ variables aléatoires indépendantes en associant la valeur 1 à un succès et la valeur 0 à un échec. Le fait que la variable égale au nombre de succès soit binomiale de paramètres $(n,p)$ donne la proposition suivante.
+\begin{prop}
+ Si $X_1, \cdots, X_n$ sont mutuellement indépendantes de loi $\mathcal{B}(p)$ alors la somme $X_1+\cdots+X_n$ suit la loi $\mathcal{B}(n,p)$ (loi binomiale).
+\end{prop}
+
+\section{Espérance}
+\index{espérance d'une variable aléatoire} Dans cette section, sauf mention particulière, les variables aléatoires sont réelles.
+\begin{defi}
+ Soit $X$ une variable aléatoire sur un espace probabilisé fini $(\Omega,p)$. \emph{L'espérance} de $X$ est définie par:
+\begin{displaymath}
+ E(X) = \sum_{\omega \in \Omega}X(\omega)\p(\{\omega\}). 
+\end{displaymath}
+\end{defi}
+\begin{rem}
+  Comme tous les espaces probabilisés sont finis, toutes les variables aléatoires ont une espérance.
+\end{rem}
+
+\begin{prop} Dans les conditions de la définition précédente,
+\[
+ E(X) = \sum_{x\in X(\Omega)}x\,\p(X=x).
+\]
+\end{prop}
+\begin{demo}
+ On rassemble dans un même événement $(X=x)$ tous les $\omega$ qui ont la même image. Cela permet de mettre $x$ en facteur.
+\end{demo}
+
+\begin{rems}
+\begin{itemize}
+ \item L'espérance est la moyenne pondérée des valeurs atteintes. Elle est comprise entre la plus grande et la plus petite valeur que prend la variable.
+ \item La proposition entraine que l'espérance d'une variable ne dépend que de la loi qu'elle suit. 
+\end{itemize}
+\end{rems}
+\begin{prop}[linéarité, positivité, croissance]
+  Soit $X$ et $Y$ des variables aléatoires définies sur $(\Omega,\p)$ espace probabilisé fini. Soit $\lambda \in \R$.
+\[
+  E(X + Y) = E(X) + E(Y), \hspace{0.5cm} E(\lambda X) = \lambda E(X),\hspace{0.5cm} X \geq 0 \Rightarrow E(X) \geq 0, \hspace{0.5cm} x \leq Y \Rightarrow E(X) \leq E(Y).
+\]
+\end{prop}
+\begin{demo}
+  La démonstration est évidente à partir de la définition et des propriétés usuelles des sommations.
+\end{demo}
+\begin{rem}
+Cela implique en particulier que pour \emph{toute} famille $(X_1, \cdots, X_n)$ de variables aléatoires (elles n'ont pas à être indépendantes,
+\[
+ E(\sum_{i=1}^{n}X_i) = \sum_{i=1}^nE(X_i).
+\]  
+\end{rem}
+
+\index{variable aléatoire centrée}
+\begin{defi}
+ Une variable aléatoire est dite centrée lorsque son espérance est nulle.
+\end{defi}
+\begin{rem}
+Par linéarité, pour centrer une loi, il suffit de lui soustraire la variable constante de valeur l'espérance.  
+\end{rem}
+\begin{exple} Calculs d'espérance pour des lois usuelles.
+\begin{itemize}
+ \item variable constante : valeur moyenne
+ \item Bernoulli de paramètre $p$ : espérance $p$.
+ \item Binomiale $\mathcal{B}(n,p)$ : espérance $np$
+\end{itemize}
+Pour les lois de Bernoulli et binomiale, trois démonstrations à connaitre: sommation avec bricolage de coefficients, sommation avec dérivation, somme de variables de Bernoulli
+\end{exple}
+\index{formule de transfert}\index{théorème de transfert}
+\begin{prop}[formule de transfert]
+ Soit $X$ variable aléatoire réelle définie sur $\Omega$, soit $f$ fonction définie sur $X(\Omega)$ à valeurs réelles,
+\begin{displaymath}
+ E(f\circ X) = \sum_{x\in X(\Omega)} f(x)\p(X=x).
+\end{displaymath}
+\end{prop}
+\begin{demo}
+  On classe toutes les issues élémentaires $\omega \in \Omega$ selon la valeur de $f(\omega)$.
+\end{demo}
+\begin{rem}
+On en déduit que l'espérance d'une variable $f\circ X$ ne dépend que de la loi de $X$.  
+\end{rem}
+\index{inégalité de Markov}
+\begin{prop}[inégalité de Markov]
+ Soit $X$ une variable aléatoire à valeurs positives sur un espace probabilisé $(\Omega,p)$. Soit $a>0$,
+\begin{displaymath}
+ \p(X\geq a) \leq \frac{E(X)}{a}.
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Par définition,
+\[
+ E(X) = \sum_{\omega \in \Omega}X(\omega)\p(\{\omega\})
+= \underset{\geq 0}{\underbrace{\sum_{\stackrel{\omega \in \Omega}{X(\omega)<a}}X(\omega)\p(\{\omega\})}}
+ + \sum_{\stackrel{\omega \in \Omega}{X(\omega)\geq a}}\underset{\geq a}{\underbrace{X(\omega)}} \p(\{\omega\})\\
+\geq a \sum_{\stackrel{\omega \in \Omega}{X(\omega)\geq a}} \p(\{\omega\})
+= a \p(X\geq a).
+\]
+\end{demo}
+
+\begin{prop}
+ Si les variables aléatoires $X$ et $Y$ sont indépendantes, l'espérance du produit est le produit des espérances.
+\end{prop}
+\begin{demo}
+Démonstration 1.\newline
+ On commence par le cas où chaque variable ne prend que deux valeurs distinctes dont $0$. On démontre que lorsque ces deux variables sont indépendantes, le produit est du même type et son espérance est le produit des espérances.\newline
+La suite du raisonnement consiste à décomposer chaque variable comme une somme de variables de ce type.\newline
+Pour chaque $x$ et $y$ non nuls respectivement dans $X(\Omega)$ et $Y(\Omega)$, on définit des variables aléatoires $Y_x$ et $X_y$ par:
+\begin{displaymath}
+ X_x(\omega)=
+\left\lbrace 
+\begin{aligned}
+ &x &\text{ si }X(\omega)=x \\ &0 &\text{ sinon}
+\end{aligned}
+\right.
+,\hspace{1cm}
+Y_y(\omega)=
+\left\lbrace 
+\begin{aligned}
+ &y &\text{ si }Y(\omega)=y \\ &0 &\text{ sinon}
+\end{aligned}
+\right. 
+\end{displaymath}
+Notons $X(\Omega)^*$ et $Y(\Omega)^*$ les ensembles d'images non nulles et montrons les égalités entre variables aléatoires
+\begin{displaymath}
+ X = \sum_{x\in X(\Omega)^*}X_x ,\hspace{1cm} Y = \sum_{y\in Y(\Omega)^*}Y_y 
+\end{displaymath}
+En effet, pour un $\omega$ fixé, le seul $x$ qui contribue réellement à la première somme est $x=X(\omega)$ lorsqu'il n'est pas nul. Le raisonnement est identique pour l'autre somme.\newline
+Par définition, $(X_x=x) = (X=x)$ et $(Y_y=y) = (Y=y)$. Le caractère indépendant des variables $X$ et $Y$ entraine que, pour tous les couples de valeurs non nulles $(x,y)$, les variables $X_x$ et $Y_y$ sont indépendantes. On conclut par linéarité avec le cas particulier du début de la preuve.
+\begin{multline*}
+ XY = \sum_{(x,y)}X_x\,Y_y \Rightarrow
+E(XY) = \sum_{(x,y)}E(X_x\,Y_y)
+= \sum_{(x,y)}E(X_x) E(Y_y)\text{ (indépendance et cas particulier)}\\
+= \left(\sum_{x}E(X_x) \right) \left(\sum_{y} E(Y_y) \right)
+= \left(\sum_{x}x\,\p(X=x) \right) \left(\sum_{y} y\,\p(Y=y) \right)
+= E(X)\, E(Y)
+\end{multline*}
+Démonstration 2.\newline
+On forme une expression de $E(XY)$ comme somme double.
+\begin{multline*}
+  E(XY) = \sum_{\omega \in \Omega} (XY)(\omega)\p(\left\lbrace\omega\right\rbrace)
+= \sum_{\omega \in \Omega} X(\omega)Y(\omega)\p(\left\lbrace\omega\right\rbrace)
+= \sum_{x\in X(\Omega)}x\sum_{\omega \in (X=x)}Y(\omega)\p(\left\lbrace\omega\right\rbrace) \\
+= \sum_{x\in X(\Omega)}x\sum_{y\in Y(\Omega)}y \sum_{\omega \in (X=x)\cap(Y=y)}\p(\left\lbrace\omega\right\rbrace)
+= \sum_{(x,y)\in X(\Omega)\times Y(\Omega)}xy\, \p((X=x)\cap(Y=y)).
+\end{multline*}
+Lorsque les variables sont indépendantes, on peut conclure
+\begin{displaymath}
+  E(XY) = \sum_{(x,y)\in X(\Omega)\times Y(\Omega)}xy\, \p(X=x)\p(Y=y)
+  = \left( \sum_{x\in X(\Omega)}x\,\p(X=x)\right) \left( \sum_{y\in Y(\Omega)}y\,\p(Y=y)\right)
+  = E(X)E(Y)
+\end{displaymath}
+\end{demo}
+\begin{rem}
+Au cours des démonstrations précédentes, on a prouvé la relation suivante qui peut être utile.
+\[
+ E(XY) = \sum_{(x,y)\in X(\Omega)\times Y(\Omega)}xy\, \p((X=x)\cap(Y=y)).
+\]  
+\end{rem}
+à compléter
+\index{lemme des coalitions}
+lemme de coalition. Soit $X_1,\cdots,X_n$ des variables aléatoires mutuellement indépendantes, soit $p < n$. Alors les expressions $f(X_1,\cdots,X_p)$ et $g(X_{p+1}, \cdots,X_n)$ sont indépendantes. Exemple avec un déterminant 2x2 formé avec des variables réelle indépendantes: son espérance est le déterminant des espérances.
+fin de à compléter
+
+\section{Variance, écart type, covariance}
+\subsection{Variance}
+\index{moments}
+\begin{defi}[moments]
+ Soit $X$ une variable aléatoire sur un espace probabilisé fini $(\Omega,p)$ et $r$ un naturel non nul. Le moment d'ordre $r$ de $X$ est l'espérance de $X^r$, il est noté $m_r(X)$.
+\end{defi}
+\begin{prop}
+ Soit $X$ une variable alétoire sur un espace probabilisé fini $(\Omega,p)$ et $r$ un naturel non nul.
+\begin{displaymath}
+ m_r(X)=\sum_{x\in X(\Omega)}x^r\p(X=x).
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Conséquence immédiate de la formule de transfert.
+\end{demo}
+\index{variance}\index{écart-type}
+\begin{defi}
+ La \emph{variance} d'une variable aléatoire $X$ sur un espace probabilisé fini est le moment d'ordre $2$ de la variable centrée associée. L'\emph{écart-type} est la racine carrée de la variance. Notations:
+\begin{displaymath}
+ V(X) = E((X-E(X))^2),\hspace{1cm}\sigma(X)=\sqrt{V(X)}.
+\end{displaymath}
+\end{defi}
+\begin{rems}
+ \begin{enumerate}
+  \item Avec la formule de transfert, on peut calculer avec
+\begin{displaymath}
+ V(X) = \sum_{x\in X(\Omega)}(x-E(X))^2\p(X=x).
+\end{displaymath}
+
+\item Par définition même, on ne change pas la variance en ajoutant une constante. La variance et l'écart type sont des indicateurs de dispersion des valeurs autour de la moyenne.
+\item En revanche $V(\lambda X)=\lambda^2V(X)$.
+\item On peut rassembler les deux propriétés précédentes:
+\begin{displaymath}
+ V(\lambda X +\mu) = \lambda^2 V(X).
+\end{displaymath}
+ \end{enumerate}
+\end{rems}
+
+\index{variable aléatoire réduite}
+\begin{defi}
+ On dit qu'une variable aléatoire est \emph{réduite} si et seulement si elle est de variance $1$.
+\end{defi}
+\begin{rem}
+ Si $\sigma(X)>0$, la variable $\frac{1}{\sigma(X)}\left(X -E(X) \right)$ est centrée réduite.
+\end{rem}
+
+\begin{prop}
+Soit $X$ une variable aléatoire sur un espace probabilisé fini, alors
+\begin{displaymath}
+ V(X) = E(X^2) -E(X)^2.
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ \begin{multline*}
+V(X)= \sum_{x\in X(\Omega)}(x-E(X))^2\p(X=x)\\
+= \sum_{x\in X(\Omega)}x^2 \p(X=x) 
+-2E(X)\underset{=E(X)}{\underbrace{\sum_{x\in X(\Omega)}x\p(X=x)}} 
++ E(X)^2\underset{=1}{\underbrace{\sum_{x\in X(\Omega)}\p(X=x)}}
+=E(X^2)-E(X)^2.
+ \end{multline*}
+\end{demo}
+
+\begin{exples}
+ \begin{itemize}
+  \item La variance d'une variable de Bernoulli de paramètre $p$ est $p-p^2 = p(1-p)$ car $X=X^2$.
+  \item La variance d'une variable binomiale de paramètres $(n,p)$ est $n p(1-p)$. On peut faire directement ce dernier calcul, mais il est plus intéressant d'utiliser la covariance et les sommes de variables indépendantes.
+ \end{itemize}
+\end{exples}
+\begin{demo}[Calcul direct de la variance pour une variable binomiale]
+  Soit $X$ une variable binomiale de paramètres $n$ et $p$. On introduit $X(X-1)$ pour simplifier les coefficients du binôme.
+\begin{multline*}
+E(X(X-1)) = \sum_{k=2}^{n}k(k-1)\binom{n}{k}p^k(1-p)^{n-k} 
+= n(n-1)\,p^2\sum_{k=2}^{n}\binom{n-2}{k-2}p^{k-2}(1-p)^{n-2-(k-2)} = n(n-1)p^2\\
+\Rightarrow V(X) = E(X(X-1))+E(X)-E(X)^2 = n(n-1)p^2 + np -n^2p^2 = np(1-p).
+\end{multline*}
+
+\end{demo}
+
+\index{inégalité de Bienaymé-Chebychev}
+\begin{prop}[inégalité de Bienaymé-Chebychev]
+ Soit $X$ une variable aléatoire sur un espace probabilisé fini, alors
+\begin{displaymath}
+ \forall \varepsilon >0,\hspace{0.5cm}
+\p(\left|X - E(X)\right|\geq \varepsilon) \leq \frac{V(X)}{\varepsilon^2}.
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On remarque que $\left( \left|X - E(X)\right|\geq \varepsilon\right) = \left( (X-E(X))^2\geq \varepsilon^2\right)$. Puis on applique l'inégalité de Markov à la variable aléatoire $(X-E(X))^2$ qui est à valeurs positives.  
+\end{demo}
+
+\subsection{Covariance}
+\index{covariance}
+\begin{prop}
+ Soit $X$ et $Y$ deux variables aléatoires sur un même espace probabilisé fini $(\Omega,p)$.  Alors:
+\begin{multline*}
+ \sum_{(x,y)\in X(\Omega)\times Y(\Omega)}xy\left[ \p(X=x \text{ et } Y=y)-\p(X=x)\p(Y=y)\right] 
+= E(XY) - E(X)E(Y)\\
+=E\left((X-E(X))(Y-E(Y)) \right) .
+\end{multline*}
+\end{prop}
+\begin{demo}
+ La première égalité vient de la formule de transfert. La deuxième de la linéarité de l'espérance.
+\end{demo}
+\begin{defi}
+ La \emph{covariance} de deux variables aléatoires sur un même espace probabilisé fini est l'un de ces nombres.
+\begin{displaymath}
+ \cov(X,Y) = E(XY) - E(X)E(Y) = E\left((X-E(X))(Y-E(Y))\right) .
+\end{displaymath}
+\end{defi}
+\begin{prop}
+ Bilinéarité, symétrie, positivité de la covariance
+\begin{displaymath}
+ \cov(X,X) = V(X)\geq 0 \hspace{0.5cm} V(X+Y)=V(X)+V(Y)+2\cov(X,Y).
+\end{displaymath}
+\end{prop}
+\begin{rems}
+ \begin{itemize}
+  \item Attention $V(X)=0$ n'entraine pas que la variable aléatoire $X$ soit constante, seulement que, pour la probabilité de l'espace, la partie où elle prend des valeurs différentes de son espérance a une probabilité nulle.
+\item La covariance d'un couple de variables indépendantes est nulle mais cela ne caractérise pas l'indépendance.
+ \end{itemize}
+\end{rems}
+\begin{prop}
+ Si $X_1,\cdots,X_n$ sont des variables deux à deux indépendantes, 
+\begin{displaymath}
+ V(X_1+\cdots+X_n) = V(X_1)+\cdots+V(X_n).
+\end{displaymath}
+\end{prop}
+On en déduit la variance d'une variable binomiale.
+
+\begin{prop}[inégalité de Cauchy-Schwarz]
+ \begin{displaymath}
+  \left|\cov(X,Y)\right|\leq \sigma(X)\sigma(Y)
+ \end{displaymath}
+\end{prop}
+\begin{demo}
+  Comme pour les autres formules de Cauchy-Schwarz, c'est une conséquence de la positivité de la variance qui s'obtient à l'aide du discriminant de l'expression du second degré en $\lambda$: 
+\[
+  \forall \lambda \in \R, \hspace{0.5cm} V(\lambda X + Y) = \lambda^2 V(X) + 2\cov(X,Y) + V(Y) \geq 0.
+\]
+
+\end{demo}
+
+\end{document}

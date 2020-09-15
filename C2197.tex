@@ -1,0 +1,197 @@
+\input{courspdf.tex}
+\debutcours{Approximations d'un nombre réel}{alpha}
+On donne dans cette partie des formules donnant des valeurs approchées d'un nombre défini de diverses manières. Il est important de disposer également d'une majoration de l'erreur.
+
+\section{Approximations des valeurs d'une fonction}
+\subsection{Formule de Taylor idiote}
+Soit $f$ une fonction définie dans un intervalle $I$, soit $a$ et $b$ deux éléments de $I$. On suppose que $f$ est $n$ fois ($n$ entier naturel)  dérivable en $a$. Il existe alors un nombre $R_n(a,b)$ tel que
+\begin{displaymath}
+ f(b)= f(a)+\frac{b-a}{1!}f'(a)+\frac{(b-a)^2}{2!}f^{(2)}(a) + \cdots +
+\frac{(b-a)^{n-1}}{(n-1)!}f^{(n-1)}(a) +
+R_n(a,b)
+\end{displaymath}
+Il suffit en effet de prendre pour $R_n(a,b)$ (le \emph{reste}) la différence
+\begin{displaymath}
+R_n(a,b)= f(b)- \left( f(a)+\frac{b-a}{1!}f'(a)+\frac{(b-a)^2}{2!}f^{(2)}(a) + \cdots +
+\frac{(b-a)^{n-1}}{(n-1)!}f^{(n-1)}(a)\right) 
+\end{displaymath}
+Une telle formule pourrait être désigne par : formule de Taylor \emph{idiote}, \emph{à l'ordre $n$}, \emph{entre $a$ et $b$}. Lorsque l'on cite une formule de Taylor, il convient de préciser : le type de la formule (reste intégral, reste de Lagrange, ...), l'ordre (le nombre de termes dans la partie principale) et les points entre lesquels on prend la formule.\\
+Les véritables formules de Taylor (non idiotes) données dans les deux sections suivantes fournissent une propriété du reste.
+
+\subsection{Formules de Taylor avec reste intégral}
+\index{formule de Taylor avec reste intégral}
+Le théorème suivant a été démontré dans la partie sur les relations entre \href{\baseurl C2190.pdf}{Intégrales et Primitives}. C'est une conséquence immédiate d'une succession d'intégrations par parties.
+\begin{prop}
+ Soit $f\in \mathcal C^{n}(I)$ où $I$ est un segment d'extrémités $a$ et $b$. Alors :
+\begin{displaymath}
+ f(b)= f(a)+\frac{b-a}{1!}f'(a)+\frac{(b-a)^2}{2!}f^{(2)}(a) + \cdots +
+\frac{(b-a)^{n-1}}{(n-1)!}f^{(n-1)}(a) +
+\int_{a}^{b}\frac{(b-t)^{n-1}}{(n-1)!}f^{(n)}(t)dt
+\end{displaymath}
+\end{prop}
+\begin{rems}
+\begin{itemize}
+\item  Il est inutile de supposer dans cette formule que $a<b$.
+\item La formule est dite entre $a$ et $b$ à l'ordre $n$. 
+\end{itemize}
+\end{rems}
+
+\subsection{Formule et inégalité de Taylor-Lagrange}
+\index{inégalité de Taylor-Lagrange}
+\begin{prop}[inégalité de Taylor-Lagrange]
+ Soit $f\in \mathcal C^{n}(I)$ où $I$ est un segment d'extrémités $a$ et $b$. Alors 
+\begin{displaymath}
+ f(b)= f(a)+\frac{b-a}{1!}f'(a)+\frac{(b-a)^2}{2!}f^{(2)}(a) + \cdots +
+\frac{(b-a)^{n-1}}{(n-1)!}f^{(n-1)}(a) +
+R_n(a,b)
+\end{displaymath}
+avec
+\begin{displaymath}
+ |R_n(a,b)|\leq \frac{|b-a|^n}{n!}M_n \text{ où } M_n = \sup_{\overleftrightarrow{[a,b]}}\left|f^{(n)}\right|
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Définissons une fonction $\varphi$ dans $I$ par
+\begin{displaymath}
+ \varphi(x)=f(x)-\left(f(a)+(x-a)f'(a)+\cdots+\frac{(x-a)^{n-1}}{(n-1)!}f^{(n-1)}(a) \right) 
+\end{displaymath}
+On vérifie facilement que $\varphi^{(n)}(x)=f^{(n)}(x)$ et que $\varphi^{(k)}(a)=0$ pour $k$ entre $0$ et $n-1$. Introduisons les plus grandes et plus petites valeurs de $f^{(n)}$. On les note respectivement $M_n$ et $mn$. Supposons que $a$ soit la plus petite valeur de $I$ et intégrons successivement entre $a$ et $x$ les encadrements en exploitant
+\begin{displaymath}
+ \varphi^{(k)}(x)= \varphi^{(k)}(x) - \varphi^{(k)}(a)=\int_a^x\varphi^{((k+1)}(t)\,dt
+\end{displaymath}
+Il vient
+\begin{multline*}
+ m_n\leq \varphi^{((n)}(x)= f^{((n)}(x) \leq M_n \Rightarrow 
+m_n(x-a)\leq \varphi^{((n-1)}(x) \leq M_n(x-a)\\
+\Rightarrow m_n\frac{(x-a)^2}{2!}\leq \varphi^{((n-2)}(x) \leq M_n\frac{(x-a)^2}{2!}
+\Rightarrow m_n\frac{(x-a)^3}{3!}\leq \varphi^{((n-3)}(x) \leq M_n\frac{(x-a)^3}{3!}\\
+\Rightarrow \cdots \Rightarrow
+m_n\frac{(x-a)^n}{n!}\leq \varphi(x) \leq M_n\frac{(x-a)^n}{n!}
+\end{multline*}
+En particulier pour $x=b$, on tire
+\begin{displaymath}
+ m_n \frac{(b-a)^n}{n!}\leq \varphi(b)\leq M_n \frac{(b-a)^n}{n!} 
+\end{displaymath}
+Si $a$ est la plus grande valeur de l'intervalle, on peut se ramener au cas précédent en définissant une fonction dans l'intervalle symétrique en posant $g(y)=f(-y)$. En effet
+\begin{displaymath}
+ (-x-(-a))^kg^{(k)}(-a) = (-x+a)^k(-1)^kf^{(k)}(a) = (x-a)^kf^{(k)}(a)
+\end{displaymath}
+\end{demo}
+\index{formule de Taylor avec reste de Lagrange}
+\begin{prop}[formule de Taylor avec reste de Lagrange]
+ Soit $f\in \mathcal C^{n}(I)$ où $I$ est un segment d'extrémités $a$ et $b$. Alors il existe $c\in I$ tel que
+\begin{displaymath}
+ f(b)= f(a)+\frac{b-a}{1!}f'(a)+\frac{(b-a)^2}{2!}f^{(2)}(a) + \cdots +
+\frac{(b-a)^{n-1}}{(n-1)!}f^{(n-1)}(a) +
+\frac{(b-a)^{n}}{(n)!}f^{(n)}(c)
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ On applique le théorème de la valeur intermédiaire à $f^{(n)}$.
+\end{demo}
+
+\section{Approximations d'une intégrale}
+\subsection{Sommes de Riemann} \index{sommes de Riemann}
+\begin{defi}
+ Soit $f$ une fonction continue sur un segment $[a,b]$ et $\mathcal S=(a_0,\cdots,a_n)$ une subdivision régulière de $[a,b]$. L'expression
+\begin{displaymath}
+ R_n(f)= \frac{b-a}{n}\sum_{k=0}^{n-1}f(a_k)
+\end{displaymath}
+est appelée une somme de Riemann de $f$.
+\end{defi}
+\begin{prop}
+ Soit $f$ une fonction continue sur un segement $[a,b]$, la suite des sommes de Riemann de $f$ converge vers l'intégrale :
+\begin{displaymath}
+ \left( \frac{b-a}{n}\sum_{k=0}^{n-1}f(a_k)\right)_{n\in \N} \rightarrow \int_a^b f(t)dt 
+\end{displaymath}
+\end{prop}
+\begin{rem}
+ La définition d'une somme de Riemann et le résultat précédent peuvent se généraliser beaucoup 
+\end{rem}
+\begin{demo}
+ Pour toute subdivision régulière $\mathcal S=(a_0,\cdots,a_n)$, notons respectivement $m_i=f(u_i)$ et $M_i=f(v_i)$ la plus petite et la plus grande valeur prise par la restriction au segment $[a_i,a_{i+1}]$ de la fonction $f$. Ces valeurs permettent de définir des fonctions en escalier $\varphi_n\in \mathcal E^-(f)$ et $\psi_n\in \mathcal E^+(f)$. (voir les notations de \href{\baseurl C2189.pdf}{Une théorie de l'intégration sur un segment}). On a lors :
+\begin{displaymath}
+ \left.
+\begin{aligned}
+ \int_{[a,b]}\varphi_n \leq& \int_{[a,b]}f \leq& \int_{[a,b]}\psi_n \\
+ \int_{[a,b]}\varphi_n \leq& R_n(f) \leq& \int_{[a,b]}\psi_n
+\end{aligned}
+ \right\rbrace 
+\Rightarrow
+\left\vert \int_{[a,b]}f - R_n(f)\right\vert \leq \int_{[a,b]}(\psi_n-\varphi_n)
+\end{displaymath}
+D'après le théorème de Heine, la fonction continue $f$ sur le segment $[a,b]$ est uniformément continue. Pour tout $\varepsilon >0$, il existe donc un $\alpha >0$ tel que :
+\begin{displaymath}
+ \forall(x,y)\in [a,b]^2 : |x-y|<\alpha \Rightarrow |f(x)-f(y)|<\varepsilon
+\end{displaymath}
+En particulier, il existe $N_\varepsilon$ tel que  $n\geq N_\varepsilon$ entraine $\frac{b-a}{n}<\alpha$, les $u_i$ et $v_i$ sont alors $\alpha$-proches donc $M_i-m_i<\varepsilon$ et 
+\begin{displaymath}
+ \left\vert \int_{[a,b]}f - R_n(f)\right\vert \leq \int_{[a,b]}(\psi_n-\varphi_n)\leq (b-a)\varepsilon
+\end{displaymath}
+Ce qui entraine le résultat cherché.
+\end{demo}
+\begin{rem}
+ On est souvent en dehors des conditions d'utilisation de ce théorème. Il faut remplacer alors son utilisation impossible par des encadrements exploitant la monotonie.\newline
+Exemple trouver un équivalent pour la suite
+\begin{displaymath}
+ \left( (n!)^{\frac{1}{n}}\right)_{n\in\N^*}
+\end{displaymath}
+\end{rem}
+
+\subsection{Méthode des rectangles et des trapèzes}
+\index{méthode des rectangles}
+\index{méthode des trapèzes}
+Les méthodes d'approximation numérique d'une intégrale considérées ici consistent à découper l'intégrale à l'aide d'une subdivision régulière puis à approcher chaque intégrale sur un segment de la subdivision à l'aide d'une formule particulière qui donne son nom à la méthode.
+Pour une fonction $f$ de classe $\mathcal C^2([a,b])$ et un entier naturel non nul $n$, on forme la subdivision régulière
+\begin{displaymath}
+ a_k = a+k\frac{b-a}{n}\text{ pour } k\in\{0,\cdots ,n\}
+\end{displaymath}
+et les approximations
+\begin{align*}
+ &R_n=\frac{(b-a)}{n}\sum_{k=0}^{n-1}f(a_k) &:&\text{ méthodes des rectangles}\\
+&T_n=\frac{(b-a)}{n}\sum_{k=0}^{n-1}\frac{f(a_k)+f(a_{k+1})}{2} &:&\text{ méthodes des trapèzes}
+\end{align*}
+On dispose de formules majorant l'erreur entre la valeur de l'intégrale et sa valeur approchée. On expose ici seulement le cas de la formule des trapèzes qui est plus précise que celle des rectangles. Le principe de la démonstration s'applique de la même façon pour la formule des rectangles.\newline
+Voir le problème \href{http://back.maquisdoc.net/data/devoirs_nicolair/Aintapprox.pdf}{Approximation d'une intégrale par interpolation régulière} qui étend les deux methodes précédentes en donnant une formule de majoration de l'erreur.
+\begin{prop}
+ Pour une fonction $f$ de classe $\mathcal C^2([a,b])$ et un entier naturel non nul $n$:
+\index{méthodes trapèzes: majoration de l'erreur}
+\begin{displaymath}
+ \left\vert \int_a^bf(t)dt - \frac{(b-a)}{n}\sum_{k=0}^{n-1}\frac{f(a_k)+f(a_{k+1})}{2} \right\vert 
+\leq \frac{(b-a)^3M_2}{12n^2}
+\end{displaymath}
+avec $M_2=\max_{[a,b]}|f|$.
+\end{prop}
+\begin{demo}
+ On majore l'erreur sur un segment non subdivisé avant de sommer. On considère une fonction d'erreur en faisant varier l'extrémité droite du segment. On dérive plusieurs fois cette fonction:
+\begin{align*}
+ &E(x)= \int_a^x f(t)dt - (x-a)\frac{f(a)+f(x)}{2} &: E(a)&=0\\
+ &E'(x)=\frac{f(x)-f(a)}{2}-(x-a)\frac{f'(x)}{2} &: E'(a)&=0\\
+ &E''(x)=-(x-a)\frac{f''(x)}{2} &: E''(a)&=0
+\end{align*}
+On peut alors majorer et intégrer ces majorations :
+\begin{multline*}
+ \forall t\in [a,b] : |E''(t)|\leq (t-a)\frac{M_2}{2}\\ \Rightarrow
+ \forall x\in [a,b] : |E'(x)|=|E'(x)-E'(a)|\leq \int_a^b |E''(t)|dt \leq \int_a^b (t-a)\frac{M_2}{2}
+= (x-a)^2\frac{M_2}{4}
+\end{multline*}
+De même :
+\begin{multline*}
+ \forall t\in [a,b] : |E'(t)|\leq (t-a)^2\frac{M_2}{4} \Rightarrow
+ |E(b)|=|E(b)-E(a)|\leq \int_a^b |E'(t)|dt \leq \int_a^b (t-a)2\frac{M_2}{4}
+= (b-a)^3\frac{M_2}{12}
+\end{multline*}
+Comme $M_2$ est la plus grande valeur sur  tout l'intervalle, on peut écrire, pour chaque intervalle de la subdivision :
+\begin{displaymath}
+\left\vert \int_{a_k}^{a_{k+1}}f(t)dt - \frac{(b-a)}{n}\frac{f(a_k)+f(a_{k+1})}{2} \right\vert 
+\leq \frac{(b-a)^3M_2}{12n^3}
+\end{displaymath}
+Ce qui entraine la formule annoncée en sommant de $0$ à $n-1$.
+\end{demo}
+\begin{rem}
+ Si on souhaite calculer plusieurs approximation pour des subdivisions différentes, il est intéressant d'utiliser des subdivsions dichotomiques. En effet pour passer de l'ordre $n$ à l'ordre $n+1$ il est nécessaire de recalculer les $n+1$ nouvelles valeurs. Alors que pour passer de $n$ à $2n$, on peut conserver les valeurs déjà calculées, on doit calculer $n$ nouvelles valeurs et la présion est meilleure pour $2n$ que pour $n+1$. 
+\end{rem}
+
+\section{\href{\baseurl C2195.pdf}{Approximations des zéros d'une fonctions}}
+\section{\href{\baseurl C2142.pdf}{\'Ecriture dans une base}}
+\end{document}

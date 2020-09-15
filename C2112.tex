@@ -1,0 +1,656 @@
+\input{courspdf.tex}
+\debutcours{Dimension des espaces vectoriels}{0.5 \tiny{le \today}}
+Le cours d'algèbre linéaire (hors calcul matriciel) est réparti sur trois documents:  \href{\baseurl C2076.pdf}{Espaces vectoriels (sans dimension)},  \href{\baseurl C2112.pdf}{Dimensions des espaces vectoriels}  (ce texte) et \href{\baseurl C9587.pdf}{Applications linéaires}.
+
+\section{Familles de vecteurs}\label{FamVect}
+\subsection{Vocabulaire}
+\begin{defi}\index{canonique}
+ Pour un ensemble particulier muni d'une structure, un objet est dit \emph{canonique} lorsqu'il peut être défini à partir de la définition spécifique de l'ensemble considéré.
+\end{defi}
+Par exemple, dans le $\K$-espace vectoriel $\K^n$, on peut considérer la base \emph{canonique}. Elle se définit à partir de ce qu'est $\K^n$ c'est à dire un ensemble de $n$-uplets. Cela n'a aucun sens de parler de base canonique pour un espace vectoriel quelconque. En revanche,on peut aussi appeler canonique la base $(1,X,\cdots,X^n)$ de $\K_n[X]$.
+Lorsque ce n'est pas précisé les familles sont formées de vecteurs d'un $K$-espace vectoriel $E$. On considère ici seulement de familles \emph{finies}.
+\begin{defi}\index{famille extraite}
+ Soit $\mathcal F = (x_1,x_2,\cdots,x_p)$ une famille de vecteurs de $E$.
+\begin{itemize}
+ \item On dira qu'une famille $(y_1,\cdots,y_q)$ est \emph{extraite} de $\mathcal F$ si et seulement si il existe une application injective $\varphi$ de $\llbracket 1,q \rrbracket$ dans $\{1,\cdots,p\}$ telle que,
+\begin{displaymath}
+ \forall i\in\llbracket 1,q \rrbracket, \; y_i = x_{\varphi(i)}
+\end{displaymath}
+ \item  On dira que $\mathcal F$ contient un vecteur $x$ si et seulement si il existe un $j\in\{1,\cdots,p\}$ tel que $x=x_j$.
+ \item On dira qu'une famille $(y_1,\cdots,y_p)$ est \emph{obtenue par permutation} à partir de $\mathcal F$ si et seulement si  il existe une application bijective $\varphi$ de $\{1,\cdots,p\}$ dans $\{1,\cdots,p\}$ telle que,
+\begin{displaymath}
+ \forall i\in\llbracket 1,q \rrbracket, \; y_i = x_{\varphi(i)}
+\end{displaymath}
+\end{itemize}
+\end{defi}
+\begin{rem}
+  On peut reformuler \og $(y_1,\cdots,y_q)$ est une famille extraite de $(x_1,\cdots x_p)$\fg~ de la manière suivante:
+\begin{displaymath}
+\forall i\in \llbracket1,q \rrbracket, \; \exists j_i\in \llbracket 1,p \rrbracket \text{ tq } y_i = x_{i_j}
+\text{avec les $(i_1, \cdots ,i_q)$ deux à deux distincts.}
+\end{displaymath}
+\end{rem}
+
+\begin{defi}[symbole de Kronecker] Pour $i$ et $j$ des objets quelconques, $\delta_{i,j}$ est défini par :
+ \begin{displaymath}
+  \delta_{i,j}=\left\lbrace 
+\begin{aligned}
+ 0 &\text{ si } i\neq j \\ \\
+ 1 &\text{ si } i= j
+\end{aligned}
+\right.  
+ \end{displaymath}
+\end{defi}\index{symbole de Kronecker}
+\begin{rem}
+ Soit $\mathcal A$ une partie de $E$ à $p$ éléments. On peut former $p!$ familles de $p$ vecteurs deux à deux distincts avec les éléments de $\mathcal A$. Ces familles s'obtiennent par permutation à partir de l'une quelconque d'entre elles. Inversement à partir d'une famille dont les éléments sont deux à deux distincts, on peut former une unique partie à $p$ éléments.
+\end{rem}
+
+\subsection{Familles génératrices}\index{famille génératrice}
+\begin{defi}
+ Une famille $(a_1,a_2,\cdots,a_p)$ de vecteurs d'un $K$-espace vectoriel $E$ est génératrice (ou engendre $E$) lorsque  $E = \Vect(a_1,a_2,\cdots,a_p)$
+\end{defi}
+\begin{exples}
+ \begin{enumerate}
+ \item La famille canonique de $K^p$ engendre $K^p$.
+\item Toute famille de vecteurs est génératrice du sous-espace vectoriel qu'elle engendre.
+\end{enumerate}
+\end{exples}
+\begin{propn}
+ On ne change pas le caractère générateur d'une famille en permutant ses vecteurs.
+\end{propn}
+
+On peut donc parler de \emph{partie} génératrice.
+\begin{propn}
+ Soit $(a_1,a_2,\cdots,a_p)$ une famille extraite de $(b_1,b_2,\cdots,b_q)$ :
+\begin{displaymath}
+ (a_1,a_2,\cdots,a_p) \text{ génératrice } \Rightarrow (b_1,b_2,\cdots,b_p) \text{ génératrice }
+\end{displaymath}
+\end{propn}
+
+\begin{propn}
+ Soit $(a_1,a_2,\cdots,a_p)$ une famille génératrice et $(b_1,b_2,\cdots,b_q)$ une famille telle que
+\begin{displaymath}
+ \forall i\in \llbracket 1, p\rrbracket,\; a_i\in \Vect (b_1,b_2,\cdots,b_q)
+\end{displaymath}
+alors $(b_1,b_2,\cdots,b_q)$ est génératrice.
+\end{propn}
+Cette proposition est utile en pratique. Pour montrer qu'une famille $(b_1,b_2,\cdots,b_q)$ est génératrice, on exprime en fonction des $b_i$ les vecteurs d'une famille dont on sait qu'elle est génératrice.
+\begin{exple}
+ Dans $K^3$, la famille canonique $(e_1,e_2,e_3)$ est génératrice. On considère trois vecteurs
+\begin{align*}
+ u &= (1,2,3) = e_1 + 2e_2 +3e_3 \\
+ v &= (0,2,3) = 2e_2 +3e_3 \\
+ w &= (1,1,1) =e_1+e_2+e_3
+\end{align*}
+On exprime facilement les $e_i$ en fonction de $u$, $v$, $w$.
+\begin{align*}
+ e_1 &= u-v \\
+ e_2 + e_3 &= w-e_1 = -u +v +w \\
+ 2e_2+3e_3 &= v \\
+ e_3 &= v -2(e_2+e_3)= 2u -v -2w \\
+ e_2 &= -u+v+w -e_3 = -3u +2v +3w 
+\end{align*}
+On en déduit que $(u,v,w)$ est génératrice.
+\end{exple}
+
+\subsection{Familles libres ou liées}
+\index{famille libre}\index{famille liée}
+\begin{defi}
+ Une famille est liée lorsqu'il existe une relation linéaire entre ses vecteurs. Une famille est libre si et seulement si elle n'est pas liée.
+\end{defi}
+Caractérisations :
+\begin{propn}
+ Une famille $(a_1,\cdots,a_p)$ est liée si et seulement si :
+\begin{displaymath}
+ \exists(\lambda_1,\cdots,\lambda_p)\in\K^p , (\lambda_1,\cdots,\lambda_p)\neq (0_K,\cdots,0_K) \text{ tel que : }
+\lambda_1a_1 + \cdots +\lambda_pa_p = 0_E
+\end{displaymath}
+\end{propn}
+\begin{propn}
+ Une famille $(a_1,\cdots,a_p)$ est libre si et seulement si :
+\begin{displaymath}
+ \forall(\lambda_1,\cdots,\lambda_p)\in\K^p :  \lambda_1a_1 + \cdots +\lambda_pa_p = 0_E \Rightarrow 
+(\lambda_1,\cdots,\lambda_p)= (0_K,\cdots,0_K) 
+\end{displaymath}
+\end{propn}
+\begin{exple}
+ On se place dans l'espace des fonctions de $\R$ dans $\R$. On se donne $p$ nombres réels $c_1<c_2<\cdots<c_p$ et les vecteurs (fonctions) $e_1$, $e_2$, ..., ,$e_p$ définies par :
+\begin{displaymath}
+ \forall t\in\R : e_i(t) = e^{c_it}
+\end{displaymath}
+Montrons que la famille $(e_1,e_2,\cdots,e_p)$ est libre. On considère des réels $\lambda_1, \cdots, \lambda_p$ tels que :
+\begin{displaymath}
+ \lambda_1e_1 + \lambda_2 e_2 + \cdots \lambda_pe_p = \text{fonction nulle}
+\end{displaymath}
+Il s'agit d'une relation fonctionnelle qui se traduit par une famille de relations numériques :
+\begin{displaymath}
+ \forall t\in\R : \lambda_1e^{c_1t} + \lambda_2e^{c_2t} + \cdots +\lambda_pe^{c_pt} = 0
+\end{displaymath}
+On peut diviser par $e^{c_pt}$
+\end{exple}
+\begin{displaymath}
+ \forall t\in\R : \lambda_1e^{(c_1-c_p)t} + \lambda_2e^{(c_2-c_p)t} + \cdots +\lambda_{p-1}e^{(c_{p-1}-c_p)t}+\lambda_p = 0
+\end{displaymath}
+Puis considérer la limite en $+\infty$, ce qui conduit à $\lambda_p=0$. On peut reprendre ensuite le même raisonnement avec $p-1$ et montrer que tous les coefficients sont nuls.
+\begin{propn}
+ Une famille $(a)$ constituée d'un seul vecteur est libre si et seulement si $a\neq 0_E$.
+\end{propn}
+\begin{demo}
+ Une famille $(a)$ constituée du seul vecteur nul est liée car $1\,a$ est une relation linéaire donc $(a)$ libre entraine $a\neq 0_E$.\newline
+ Réciproquement, on a vu que $\lambda a = O_E$ avec $a\neq 0_E$ entraine $\lambda=0$ ce qui traduit exactement $(a)$ libre.
+\end{demo}
+
+\begin{propn}
+ On ne change pas le caractère libre ou lié d'une famille en permutant ses vecteurs.
+\end{propn}
+On peut donc parler de parties libres ou liées.
+\begin{propn}
+ Soit $\mathcal{A}=(a_1,a_2,\cdots,a_q)$ une famille extraite de $\mathcal{B}=(b_1,b_2,\cdots,b_p)$ :
+\begin{displaymath}
+ \mathcal{A} \text{ liée } \Rightarrow \mathcal{B} \text{ liée } \hspace{1cm}
+ \mathcal{B} \text{ libre } \Rightarrow \mathcal{A} \text{ libre}
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ Par définition d'une famille extraite, il existe $(j_1,\cdots j_q)$ deux à deux distincts tels que $a_i = b_{j_i}$. \`A partir d'une relation linéaire entre les $a_i$, on forme une relation linéaire entre les $b_j$
+ \begin{displaymath}
+ \sum_{i=1}^q \lambda_i a_i = 0_E \Rightarrow \sum_{j=1}^q \mu_j b_j = 0_E \hspace{0.5cm} \text{ avec }
+ \mu_j = 
+ \left\lbrace 
+ \begin{aligned}
+   \lambda_i &\text{ si } \exists i \text{ tq } j = j_i \\
+   0 &\text{ sinon}
+ \end{aligned}
+\right. 
+ \end{displaymath}
+Comme certains des $\lambda_i$ sont non nuls, certains des $\mu_j$ aussi.\newline
+La deuxième implication est la simple contraposée de la première.
+\end{demo}
+
+\begin{propn}
+ Une famille $(a_1,a_2,\cdots,a_p)$ qui \og contient\fg~ le vecteur nul (c'est à dire qu'il existe un $i$ tel que $a_i=0_E$) est liée.
+\end{propn}
+On pourrait dire aussi une famille qui prend la valeur $0_E$
+\begin{demo}
+Supposons $a_i=0_E$. Considérons la famille presque nulle $(\lambda_1, \cdots,\lambda_p)$: tous les $\lambda_j$ sont nuls sauf $\lambda_i$ qui est égal à $1$. Alors $\sum_{j=1}^{p}\lambda_j a_j$ est une relation linéaire.
+\end{demo}
+
+\begin{propn}
+ Une famille $(a_1,a_2,\cdots,a_p)$ qui \og contient\fg~ deux fois le même vecteur (c'est à dire qu'il existe $i$ et $j$ distincts tel que $a_i=a_j$) est liée.
+\end{propn}
+On pourrait dire aussi une famille qui prend deux fois la même valeur.
+\begin{demo}
+On considère encore une famille presque nulle $(\lambda_1, \cdots,\lambda_p)$: tous les $\lambda$ sont nuls sauf $\lambda_i$ et $\lambda_j$ qui sont non nuls et opposés. Alors $\sum_{j=1}^{p}\lambda_j a_j$ est une relation linéaire.
+\end{demo}
+
+\begin{propn}\label{cliee}
+ Une famille est liée si et seulement si un de ses vecteurs est combinaison linéaire des autres.
+\end{propn}
+\begin{demo}
+Si un vecteur est combinaison linéaire des autres, on peut obtenir une relation linéaire 
+\begin{displaymath}
+  a_i = \sum_{j\neq i} \lambda_j a_j \Rightarrow 0_E = \sum_{j} \lambda_j a_j \text{ avec } \lambda_i = -1 \neq 0
+\end{displaymath}
+Si la famille est liée, il existe une relation linéaire avec un coefficient $\lambda_i$ non nul. On peut exprimer le vecteur associé
+\begin{displaymath}
+  \sum_{j}\lambda_j a_j = 0_E \Rightarrow a_i = \sum_{j\neq i}\left(-\frac{\lambda_j}{\lambda_i} \right)a_j 
+\end{displaymath}
+\end{demo}
+
+\begin{propn}\label{lib+v}
+ Soit $(a_1,a_2,\cdots,a_p)$ une famille libre et $x$ un vecteur quelconque de $E$.
+\begin{displaymath}
+(a_1,a_2,\cdots,a_p,x) \text{ liée } \Leftrightarrow x \in \Vect(a_1,a_2,\cdots,a_p)
+\end{displaymath}
+\end{propn}
+\begin{demo}
+Supposons $(a_1,a_2,\cdots,a_p,x)$ liée. Il existe $(\lambda_1,\lambda_2,\cdots,\lambda_p,\lambda)\neq(0,\cdots 0)$ tel que 
+\begin{displaymath}
+  \sum_{j=1}^p\lambda_j a_j + \lambda x = 0_E
+\end{displaymath}
+Si $\lambda$ était nul, un des autres $\lambda_i$ serait non nul et $\sum_{j=1}^p\lambda_j a_j$ constituerai une relation entre les $a_i$ en contradiction avec l'hypothèse. Ainsi $\lambda\neq 0$ et on peut exprimer $x$ comme combinaison linaire des $a_i$.
+\begin{displaymath}
+  x = - \sum_{j=1}^p\frac{\lambda_j}{\lambda} a_j
+\end{displaymath}
+Réciproquement, si $x$ est dans le sous-espace engendré alors $(a_1,a_2,\cdots,a_p,x)$ est liée d'après la proposition \ref{cliee}.
+\end{demo}
+
+\subsection{Bases}
+Rappelons les définitions et premiers résultats présentés dans \href{\baseurl C2076.pdf}{Espaces vectoriels (sans dimension)}.\newline
+Une base est une famille libre et génératrice.
+\begin{exple}
+  La base canonique de $\K^n$ est la famille
+\begin{displaymath}
+  \left( (1,0,\cdots,0), (0,1,0 \cdots ,0), \cdots, (0,\cdots , 0,1) \right) 
+\end{displaymath}
+\end{exple}
+On peut caractériser une famille comme étant une base par le fait que tout vecteur de l'espace se décompose de manière unique comme une combinaison linéaire de la famille. Ceci permet de définir le \emph{système de fonctions coordonn\'ees} associé à une base.\newline
+Soit $(a_1,a_2,\cdots, a_p)$ une base d'un $\K$-espace vectoriel $E$.  La famille des fonctions coordonnées attachée à cette base est la famille de fonctions à valeurs scalaires $(\alpha_1,\cdots,\alpha_p)$ définie par 
+\begin{displaymath}
+  \forall x \in E, \; x = \sum_{k=1}^p \alpha_k(x) a_k
+\end{displaymath}
+
+\begin{rem}
+  Une base et sa famille de fonctions coordonnées vérifient les relations 
+\begin{displaymath}
+ \forall (i,j)\in\{1,\cdots,p\}^2 : \alpha_i(a_j) = \delta_{i,j}
+\end{displaymath}
+\end{rem}
+
+
+\emph{Attention les coordonnées dépendent de la famille et non des vecteurs.}
+\begin{exple} Soit $(a_1,a_2,a_3)$ une base d'un $\K$-espace vectoriel $E$. On considère trois autres vecteurs :
+\begin{align*}
+ a'_1 = a_1 & & a'_2 = a_2 & & a'_3 = a_2+a_3
+\end{align*}
+On montre que $(a'_1,a'_2,a'_3)$ est génératrice en exprimant $a_1$, $a_2$, $a_3$ en fonction de $a'_1$, $a'_2$, $a'_3$.
+\begin{align*}
+ a_1 = a'_1 & & a_2 = a'_2 & & a_3 = -a'_2 + a'_3
+\end{align*}
+Pour montrer que $(a'_1,a'_2,a'_3)$ est libre, on considère une combinaison nulle:
+\begin{multline*}
+ 0_E = \lambda_1a'_1+\lambda_2a'_2+\lambda_3a'_3 = \lambda_1a_1+(\lambda_2+\lambda_3)a_2+\lambda_3a_3
+\Rightarrow 0_K =\lambda_1 = \lambda_2+\lambda_3=\lambda_3  
+\Rightarrow 0_K =\lambda_1 = \lambda_2=\lambda_3 
+\end{multline*}
+La famille $(a'_1,a'_2,a'_3)$ est donc une base. L'expression des $a$ en fonction des $a'$ conduit facilement à:
+\begin{align*}
+ (\alpha_1(x),\alpha_2(x),\alpha_3(x)) &\text{ coordonnées de } x \text{ relativement à } (a_1,a_2,a_3) \\
+(\alpha_1(x),\alpha_2(x)-\alpha_3(x),\alpha_3(x)) &\text{ coordonnées de } x \text{ relativement à } (a_1,a_2,a_2+a_3)
+\end{align*}
+La deuxième coordonnée a changé bien que le deuxième vecteur soit le même.
+\end{exple}
+
+\index{base d'un produit d'espaces vectoriels}
+\begin{propn}[base d'un produit]\label{baseprod}
+Soit $(a_1,\cdots,a_p)$ une base d'un $\K$-espace vectoriel $E$, soit $(b_1,\cdots,b_q)$ une base d'un $\K$-espace vectoriel $F$. La famille
+\begin{displaymath}
+ \left( 
+(a_1,0_F),(a_2,0_F),\cdots,(a_p,0_F),(0_E,b_1),(0_E,b_2),\cdots,(0_E,b_q)
+\right) 
+\end{displaymath}
+est une base de $E\times F$.
+\end{propn}
+\begin{demo}
+Montrons que la famille est libre.
+\begin{multline*}
+\forall(\lambda_1,\cdots,\lambda_p,\mu_1,\cdots , \mu_q), \;
+\lambda_1(a_1,0_F) + \cdots + \lambda_p(a_p,0_F) + \mu_1(0_E,b1) + \cdots + \mu_q(0_E,bq) = (0_E, 0_F) \\
+\Rightarrow
+\left( \sum_{i=1}^p \lambda_i a_i, \sum_{j=1}^q \mu_j b_j\right) = (0_E, 0_F) 
+\Rightarrow
+\left\lbrace 
+\begin{aligned}
+  \sum_{i=1}^p \lambda_i a_i =& 0_E \\
+  \sum_{j=1}^q \mu_j b_j =& 0_F
+\end{aligned}
+\right. 
+\Rightarrow
+\left\lbrace 
+\begin{aligned}
+\lambda_1& = \cdots = \lambda_p = 0_K \\
+\mu_1& = \cdots = \mu_p = 0_K
+\end{aligned}
+\right. 
+\end{multline*}
+car les deux familles sont libres.\newline
+Montrons que la famille est génératrice. Pour tout $(a,b)\in E\times F$, comme les familles sont génératrices, il existe $(\lambda_1, \cdots, \lambda_p)$ et $(\mu_1,\cdots,\mu_q)$ tels que
+\begin{displaymath}
+  \left. 
+  \begin{aligned}
+    a =& \sum_{i=1}^p \lambda_i a_i \\ b =& \sum_{j=1}^q \mu_j b_j
+  \end{aligned}
+\right\rbrace 
+\Rightarrow
+(a,b)= \sum_{i=1}^p \lambda_i (a_i,0_F) + \sum_{j=1}^q \mu_j (0_E,b_j)
+\end{displaymath}
+\end{demo}
+
+\section{ Dimension d'un espace vectoriel}
+\subsection{Condition suffisante de dépendance}
+La proposition suivante joue un rôle capital dans les raisonnements suivants. \index{lemme d'échange} \index{lemme de Steiniz}
+\begin{propn} \label{csd}
+ Soit $(a_1,a_2,\cdots,a_p)$ une famille de vecteurs d'un $\K$-espace vectoriel $E$ ($p$ est un entier naturel non nul). Toute famille de $p+1$ vecteurs de $\Vect(a_1,a_2,\cdots,a_p)$ est liée\footnote{ce résultat est aussi connu sous le nom de \emph{lemme d'échange} ou de \emph{lemme de Steiniz}.}.
+\end{propn}
+\begin{demo}
+ Pour tout entier $p\geq1$, on note $\mathcal P_p$ la propriété à démontrer.
+\begin{align*}
+ \mathcal P_p &:& \text{toute famille de } p+1 \text{ vecteurs de } \Vect(a_1,a_2,\cdots,a_p) \text{ est liée.}
+\end{align*}
+Démontrons cette propriété par récurrence.
+\begin{itemize}
+ \item Preuve de $\mathcal P_1$.\newline
+Considérons une famille $(b_1,b_2)$ de deux vecteurs de $\Vect(a_1)$. Il existe des scalaires $\lambda_1$ et $\lambda_2$ tels que $b_1=\lambda_1 a_1$, $b_2 = \lambda_2a_2$. Alors :
+\begin{displaymath}
+ \lambda_2 b_1 - \lambda_1 b_2 = 0_E
+\end{displaymath}
+Si un des scalaires est non nul, la famille est liée. Si les deux scalaires sont nuls, les deux vecteurs de la famille sont nuls. La famille est donc encore liée.
+ \item Preuve de $\mathcal P_{p-1}\Rightarrow \mathcal P_{p}$.\newline
+Soit $(b_1,\cdots,b_p,b_{p+1})$ une famille de vecteurs de $\Vect(a_1,\cdots,a_p)$. \'Ecrivons les décompositions :
+\begin{align*}
+ b_1 &= \lambda_{1,1}a_1 + \cdots + \lambda_{1,p}a_p \\
+ b_2 &= \lambda_{2,1}a_1 + \cdots + \lambda_{2,p}a_p \\
+     &\vdots\\
+ b_p &= \lambda_{p,1}a_1 + \cdots + \lambda_{p,p}a_p \\
+ b_{p+1} &= \lambda_{p+1,1}a_1 + \cdots + \lambda_{p+1,p}a_p
+\end{align*}
+Si tous les coefficients de la dernière colonne sont nuls, c'est à dire si
+\begin{displaymath}
+ \lambda_{1,p}=\lambda_{2,p}=\cdots = \lambda_{p+1,p}=0_K
+\end{displaymath}
+Les vecteurs $b_1,\cdots ,b_{p+1}$ sont alors tous dans $\Vect(a_ ,\cdots,a_{p-1})$. D'après $\mathcal P_{p-1}$, la famille $b_1,\cdots ,b_{p}$ est liée donc $b_1,\cdots ,b_{p+1}$ (dont elle est extraite) est également liée.\newline
+Supposons maintenant qu'il existe un $i$ entre $1$ et $p+1$ tel que 
+\begin{displaymath}
+ \lambda_{i,p}\neq 0
+\end{displaymath}
+En permutant les vecteurs $b_1,\cdots ,b_{p+1}$, on peut supposer que $i=p+1$. Soit
+\begin{displaymath}
+ \lambda_{p+1,p}\neq 0
+\end{displaymath}
+On utilise alors un procédé qui s'apparente à la méthode du pivot de Gauss\index{méthode du pivot de Gauss}. On forme $p$ vecteurs 
+\begin{align*}
+ c_1 &= b_1 - \dfrac{\lambda_{1,p}}{\lambda_{p+1,p}}b_{p+1} = 
+(\lambda_{1,1}-\dfrac{\lambda_{1,p}}{\lambda_{p+1,p}}\lambda_{p+1,1})a_1 + \cdots +
+(\lambda_{1,p-1}-\dfrac{\lambda_{1,p}}{\lambda_{p+1,p}}\lambda_{p+1,p-1})a_{p-1} + (0_\K)a_p \\
+ c_2 &= b_2 - \dfrac{\lambda_{2,p}}{\lambda_{p+1,p}}b_{p+1} = 
+(\lambda_{2,1}-\dfrac{\lambda_{2,p}}{\lambda_{p+1,p}}\lambda_{p+1,1})a_1 + \cdots +
+(\lambda_{2,p-1}-\dfrac{\lambda_{2,p}}{\lambda_{p+1,p}}\lambda_{p+1,p-1})a_{p-1} + (0_\K)a_p \\
+   &\vdots \\
+ c_p &= b_p - \dfrac{\lambda_{p,p}}{\lambda_{p+1,p}}b_{p+1} = 
+(\lambda_{p,1}-\dfrac{\lambda_{1,p}}{\lambda_{p+1,p}}\lambda_{p+1,1})a_1 + \cdots +
+(\lambda_{p,p-1}-\dfrac{\lambda_{p,p}}{\lambda_{p+1,p}}\lambda_{p+1,p-1})a_{p-1} + (0_\K)a_p 
+\end{align*}
+Comme ces $p$ vecteurs sont tous dans $\Vect(a_1,\cdots,a_{p-1})$, ils forment (d'après $\mathcal P_{p-1}$) une famille libre.
+\begin{displaymath}
+ \exists(\mu_1,\cdots,\mu_p)\neq(0_\K,\cdots,0_\K) \text{ tel que } \mu_1c_1+\cdots+\mu_pc_p = 0_E
+\end{displaymath}
+Exprimons une relation entre les $b$ en remplaçant les $c$ :
+\begin{displaymath}
+ \mu_1 b_1 +\mu_2b_2 + \cdots +\mu_pb_p +\textit{scalairecompliqué}\,b_{p+1} = 0_E
+\end{displaymath}
+Peu importe que \textit{scalairecompliqué} soit $0_\K$ ou non :
+\begin{displaymath}
+ (\mu_1,\cdots,\mu_p)\neq(0_\K,\cdots,0_\K) \Rightarrow (\mu_1,\cdots,\mu_p,\textit{scalairecompliqué})\neq(0_\K,\cdots,0_\K)
+\end{displaymath}
+Ce qui prouve que $(b_1,\cdots ,b_{p+1})$ est liée.
+\end{itemize}
+\end{demo}
+\begin{exple}[Conséquences de la condition suffisante de dépendance]
+  Soit $(u_1,\cdots,u_p)$ et $(v_1,\cdots,v_q)$ deux familles de vecteurs.
+\begin{displaymath}
+\left. 
+\begin{aligned}
+  (v_1,\cdots,v_q)\text{ génératrice } \\ q < p
+\end{aligned}
+\right\rbrace \Rightarrow (u_1,\cdots,u_p)\text{ liée.}, \hspace{1cm}
+\left. 
+\begin{aligned}
+  (u_1,\cdots,u_p)\text{ libre } \\ (v_1,\cdots,v_q)\text{ génératrice }
+\end{aligned}
+\right\rbrace \Rightarrow p \leq q.
+\end{displaymath}
+\end{exple}
+
+
+\subsection{Définition d'un espace de dimension finie. Existence d'une base.}
+\index{espace vectoriel de dimension finie}
+\begin{defi}
+ On dit qu'un espace vectoriel est \emph{de dimension finie} lorsqu'il admet une famille génératrice finie.
+\end{defi}
+\begin{rem}
+ Pour le moment, la notion de dimension n'est pas définie. Elle le sera à la section suivante.
+\end{rem}
+\index{existence d'une base dans un espace de dimension finie}
+\begin{propn}
+ Un espace vectoriel de dimension finie admet des bases.
+\end{propn}
+\begin{demo}
+ Soit $E$ l'espace vectoriel étudié. On suppose qu'il admet une famille génératrice $\mathcal A =(a_1,\cdots,a_p)$. On peut prouver l'existence d'une base de deux manières : soit en formant une famille libre \emph{maximale}, soit en formant une famille génératrice \emph{minimale}. Le sens des mots \og maximal\fg~ et \og minimal \fg~ sera précisé.
+\begin{itemize}
+ \item Famille libre maximale.\\
+Considérons l'ensemble de toutes les familles libres et l'ensemble $\mathcal N$ constitué par les nombres d'éléments des familles libres. D'après la condition suffisante de dépendance, comme il existe une famille génératrice à $p$ éléments, toute famille libre contient moins de $p$ éléments. L'ensemble $\mathcal N$ est donc une partie de $\N$ majorée par $p$. Cet ensemble contient $1$ car une famille formée d'un seul vecteur non nul est libre.\\
+On peut donc considérer le plus grand élément $m$ de $\mathcal N$ et une famille libre $\mathcal U = (u_1,\cdots,u_m)$. Par définition (maximalité du nombre d'éléments), pour tout $x$ de $E$, la famille $(u_1,\cdots,u_m,x)$ est liée. Or d'après une propriété démontrée plus haut
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ (u_1,\cdots,u_m,x)\text{ liée}\\
+ (u_1,\cdots,u_m)\text{ libre}
+\end{aligned}
+\right\rbrace \Rightarrow
+x\in \Vect(u_1,\cdots,u_m)
+\end{displaymath}
+  Ce qui montre que $\mathcal U$ est génératrice.
+
+\item Famille génératrice minimale.\\
+Considérons cette fois les familles génératrices et extraites de $\mathcal A$. Il existe de telles familles, par exemple $\mathcal A$ elle même. Formons la partie non vide de $\N$ constituée par les nombres d'éléments de telles familles. Elle admet un plus petit élément $n$. Il existe donc une famille génératrice $\mathcal B =(b_1,\cdots,b_n)$ extraite de $\mathcal A$. \\
+La minimalité de $n$ assure que $\mathcal B$ est libre. En effet, si elle était liée, un de ses vecteurs (disons $b_n$ car permuter les vecteurs ne change rien) serait combinaison linéaire des autres. Mais alors tout vecteur étant combinaison de $(b_1,\cdots,b_n)$, il le serait aussi de $(b_1,\cdots,b_{n-1})$ car $b_n$ est combinaison de $(b_1,\cdots,b_n)$. La famille $(b_1,\cdots,b_n)$ serait génératrice en contradiction avec la minimalité de $n$.
+\end{itemize}
+\end{demo}
+
+\subsection{Dimension}
+\index{dimension d'un espace vectoriel}
+\begin{propdef}
+Toutes les bases d'un espace vectoriel $E$ de dimension finie sont finies et ont le m\^eme nombre d'\'el\'ements, appel\'e dimension de $E$.\\ On convient que l'espace vectoriel r\'eduit \`a  $\{0\}$ est de dimension nulle.
+\end{propdef}
+\begin{demo}
+ Considérons deux bases $\mathcal U=(u_1,\cdots,u_p)$ et $\mathcal V=(v_1,\cdots,v_p)$. On utilise deux fois la condition suffisante de dépendance :
+\begin{displaymath}
+ \left. 
+\begin{aligned}
+ \mathcal{U}\text{ libre }\\
+ \mathcal{V}\text{ génératrice }
+\end{aligned}
+\right\rbrace 
+\Rightarrow p\leq q
+\hspace{1cm}
+ \left. 
+\begin{aligned}
+ \mathcal{V}\text{ libre }\\
+ \mathcal{U}\text{ génératrice }
+\end{aligned}
+\right\rbrace 
+\Rightarrow q\leq p
+\end{displaymath}
+On a donc bien $p=q$.
+\end{demo}
+On présente dans un tableau des implications souvent utiles 
+\begin{propn} \label{propfamdim}
+Soit $\mathcal{S}$ une famille de $p$ vecteurs d'un espace vectoriel $E$ de dimension finie.
+\begin{center} \renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|l|l|l|l|l|l|} \hline
+hypothèse sur $\mathcal{S}$ & libre           & libre et $p=\dim E$ & génératrice    & génératrice et $p=\dim E$ & $p > \dim E$ \\ \hline
+conclusion sur $\mathcal{S}$& $p \leq \dim E$ &  base               & $p\geq \dim E$ & base                      & liée \\ \hline
+\end{tabular}
+\end{center}
+\end{propn}
+\begin{demo}
+ à rédiger.
+\end{demo}
+\begin{rem}
+  Dans un espace de dimension $n$, pour une famille de $n$ vecteurs: être une base est équivalent à être libre ou à être génératrice.
+\end{rem}
+\begin{propn}
+ Soit $E$ et $F$ deux $\K$-espaces vectoriels de dimension finie. L'espace produit $E\times F$ est de dimension finie avec $\dim(E \times F) = \dim(E) + \dim(F)$.
+\end{propn}
+\begin{demo}
+ C'est une conséquence de la proposition \ref{baseprod} donnant une base d'un produit d'espaces de dimension finie.
+\end{demo}
+
+
+\subsection{Théorème de la base incomplète}
+\index{théorème de la base incomplète} \label{tbi}
+\begin{thmn}[Th\'eor\`eme de la base incompl\`ete]
+ Soit $E$ un $\K$-espace vectoriel de dimension finie $n$ et $\mathcal{A}=(a_1,\cdots,a_p)$ une famille libre de vecteurs de $E$. Alors $p\leq \dim(E)$. Si $p=\dim(E)$ $\mathcal{A}$ est une base de $E$. Si $p<\dim(E)$, il existe des vecteurs $a_{p+1},\cdots,a_n$ de $E$ tels que $(a_1,\cdots,a_p,a_{p+1},\cdots,a_n)$ est une base de $E$.
+\end{thmn}
+ \begin{demo}
+On peut raisonner comme dans la démonstration avec une famille libre maximale de la proposition sur l'existence d'une base. On considère l'ensemble des familles libres dont on peut extraire la famille libre donnée. Le nombre d'élement d'une telle famille est plus petit que la dimension. Pour une telle famille de dimension maximale, la proposition \ref{lib+v} montre qu'elle est libre donc une base.
+ \end{demo}
+
+\section{Dimension d'un sous-espace vectoriel}
+\subsection{Dimension}
+\begin{propn}
+Tout sous-espace vectoriel $A$ d'un $\K$-espace vectoriel de dimension finie $E$ est de dimension finie avec
+\begin{displaymath}
+ \dim A \leq \dim E
+\end{displaymath} 
+\end{propn}
+\begin{rem}
+  Si on considère une base quelconque de $E$, il n'y a aucune raison pour que certains de ces vecteurs soient dans le sous-espace $A$. On ne peut donc directement extraire une base de $A$ et on doit reproduire un raisonnement semblable à celui prouvant l'existence d'une base. 
+\end{rem}
+\begin{demo}
+Considérons l'ensemble des familles libres de vecteurs de $A$ et $\mathcal{L}$ la partie de $\N$ formée par les nombres d'éléments de ces familles. Comme une famille libre dans $A$ l'est également dans $E$, la condition suffisante de dépendance montre que $\mathcal{L}$ est majorée par $\dim E$. Soit $\alpha =\max \mathcal{L}$ et $(a_1,\cdots,a_\alpha)$ une famille libre de vecteurs de $A$. Par maximalité, pour tout $x\in A$, la famille $(a_1,\cdots,a_\alpha,x)$ est liée donc ( proposition \ref{lib+v}) $x\in \Vect(a_1,\cdots,a_p)$.
+\end{demo}
+\index{rang d'une famille de vecteurs}
+\begin{defi}[Rang d'une famille de vecteurs]
+ Soit $E$ un $\K$-espace vectoriel de dimension finie. Le rang d'une famille  $(a_1,a_2,\cdots,a_p)$ de vecteurs de $E$ est la dimension de l'espace vectoriel qu'elle engendre. On note le $\rg$.
+\begin{displaymath}
+ \rg (a_1,a_2,\cdots,a_p) = \dim \left( \Vect(a_1,a_2,\cdots,a_p)\right) 
+\end{displaymath}
+\end{defi}
+
+
+\subsection{Propriétés}
+\begin{propn}\label{dimsev}
+Soit $A$ un sous-espace vectoriel d'un $\K$-espace vectoriel de dimension finie $E$:
+\begin{displaymath}
+ \dim A \leq \dim E \hspace{0.5cm}\text{ et } \hspace{0.5cm}
+ \dim A = \dim E \Rightarrow A = E
+\end{displaymath}
+\end{propn}
+\begin{demo}
+La première inégalité résulte de la condition suffisante de dépendance (proposition \ref{csd}) car une base de $A$ est une famille libre de $E$.\newline
+La deuxième propriété (implication) vient de la proposition \ref{propfamdim}. Une base de $A$ est libre et contient $\dim E$ vecteurs, c'est donc une base de $E$ ce qui entraîne $A=E$ car tous les vecteurs de $E$ sont alors combinaisons linéaires de vecteurs de $A$ donc ils appartiennet à $A$. 
+\end{demo}
+
+\begin{propn}
+ Soit $(a_1,a_2,\cdots,a_p)$ une famille de vecteurs d'un $\K$-espace vectoriel $E$  de dimension finie. Alors:
+\begin{align*}
+ \rg (a_1,a_2,\cdots,a_p) &\leq \min(p,\dim E) \\
+ \rg (a_1,a_2,\cdots,a_p)=\dim E &\Leftrightarrow (a_1,a_2,\cdots,a_p) \text{ est génératrice}\\
+ \rg (a_1,a_2,\cdots,a_p)=p &\Leftrightarrow (a_1,a_2,\cdots,a_p) \text{ est libre}
+\end{align*}
+\end{propn}
+\begin{demo}
+ à rédiger.
+\end{demo}
+
+\subsection{Dimension d'une somme. Supplémentaires}
+\begin{propn}[dimension d'une somme directe]\label{dimsomdir}
+ Soit $A$, $B$ deux sous-espaces en somme directe d'un $\K$-espace vectoriel $E$ de dimension finie. Alors :
+$\dim (A) + \dim(B) = \dim(A + B)$.
+\end{propn}
+\begin{demo}
+Soit $(a_1,\cdots,a_\alpha)$ une base de $A$ et $(b_1,\cdots,b_{\beta})$ une base de $B$. Montrons que $(a_1,\cdots,a_\alpha,b_1,\cdots,b_\beta)$ est une base de $A + B$.\newline
+Par définition, pour tout $x \in A + B$, il existe $a\in A$ et $b\in B$ tels que $x = a + b$. Comme les familles sont génératrices, il existe des scalaires $\lambda_1, \cdots, \lambda_\alpha$ et $\mu_1, \cdots, \mu_\beta$ tels que 
+\[
+  x = a + b = \lambda_1 a_1 + \cdots \lambda_\alpha a_\alpha + \mu_1 b_1 + \cdots \mu_\beta b_\beta .
+\]
+Ceci montre que la famille est génératrice. Pour montrer que la famille est libre, considérons des scalaires $\lambda_1, \cdots, \lambda_\alpha$ et $\mu_1, \cdots, \mu_\beta$.
+\[
+  \lambda_1 a_1 +  \cdots + \lambda_\alpha a_\alpha + \mu_1 b_1 + \cdots + \mu_\beta b_\beta = 0_E 
+  \Rightarrow
+  \lambda_1 a_1 +  \cdots + \lambda_\alpha a_\alpha = -\left( \mu_1 b_1 + \cdots + \mu_\beta b_\beta\right) \in A \cap B = \left\lbrace 0_E \right\rbrace.
+\]
+On en déduit que tous les coefficients sont nuls car les familles sont libres.
+\end{demo}
+\begin{rem}\label{dimsup}
+  Des sous espaces sont supplémentaires dans $E$ si et seulement si ils sont en somme directe et que leur somme est $E$. On en déduit que 
+\[
+  a \text{ et } B \text{ supplémentaires dans } E \Rightarrow \dim A + \dim B = \dim E.
+\]
+\end{rem}
+
+\begin{propn}
+Soit $A$, $B$ deux sous-espaces d'un $\K$-espace vectoriel $E$ de dimension finie.\newline
+Si $\dim(A) + \dim(B) = \dim(E)$ et $A\cap B= \{0_E\}$ alors $A$ et $B$ sont supplémentaires.
+\end{propn}
+\begin{demo}
+ Supposons $A\cap B= \{0_E\}$ c'est à dire $A$ et $B$ en somme directe. Alors d'après la proposition \ref{dimsomdir} 
+ \[
+   \dim(A + B) = \dim A + \dim B = \dim E .
+ \]
+ Donc $A + B$ est un sous-espace de $E$ de même dimension que $E$; d'où $A + B = E$ d'après la proposition \ref{dimsev}. 
+\end{demo}
+
+\begin{propn}[existence de supplémentaires]\label{existsup}
+Soit $A$ un sous-espace vectoriel d'une $\K$-espace vectoriel $E$ de dimension finie. Il existe des sous-espaces vectoriels supplémentaires de $A$. 
+\end{propn}
+\begin{demo}
+On sait que $A$ est de dimension finie. Il admet une base $(a_1,\cdots,a_\alpha)$. Cette base est une famille libre de vecteurs de $E$. On peut la compléter (théorème de la base incomplète \ref{tbi}) en une base $(a_1,\cdots,a_\alpha,b_1,\cdots,b\beta)$ de $E$. On vérifie facilement que $B=\Vect(b_1,\cdots,b_{\beta})$ est un supplémentaire de $A$ dans $E$.
+\end{demo}
+
+\begin{prop}[formule de Grassmann]\index{formule de Grassmann}\label{fgrass}
+  Soit $A$ et $B$ deux sous-espaces vectoriels de dimension finie d'un $\K$-espace vectoriel $E$. Alors $A+B$ est de dimension finie et
+\begin{displaymath}
+  \dim(A + B) = \dim A + \dim B - \dim(A\cap B)
+\end{displaymath}
+\end{prop}
+\begin{demo}
+Le sous-espace $A+B$ est de dimension finie inférieure ou égale à $\dim A + \dim B$ car, en concaténant une base de $A$ et une base de $B$, on obtient une famille génératrice. Notons $S=A+B$ et travaillons dans $S$ en \og oubliant\fg~ le grand espace $E$.\newline
+Considérons $A\cap B$ dans l'espace de dimension finie $B$. D'après la proposition \ref{existsup}, il admet un supplémentaire $C$. Montrons que $A$ et $C$ sont supplémentaires dans $S$.
+\begin{itemize}
+  \item Pour tout $x\in S$, il existe $a\in A$ et $b\in B$ tel que $x=a+b$. Comme $A\cap B$ et $C$ sont supplémentaires dans $B$, il existe $u\in A\cap B$ et $c\in C$ tels que $b = u + c$. On peut donc écrire
+\begin{displaymath}
+  x = a +b = \underset{\in A}{\underbrace{a+u}} + c \in A + C
+\end{displaymath}
+\item De plus, $A\cap C = (A\cap C)\cap B = (A\cap B) \cap C = \left\lbrace 0_E\right\rbrace$ car $(A\cap C)\subset B$. 
+\end{itemize}
+Les sous-espaces sont donc bien supplémentaires dans $S$. On en déduit (proposition \ref{dimsup})
+\begin{displaymath}
+\left. 
+\begin{aligned}
+  \dim S = \dim(A) + \dim C \\
+  \dim B = \dim(A\cap B) + \dim C
+\end{aligned}\right\rbrace  \Rightarrow \dim S = \dim (A+B) = \dim A + \dim B - \dim(A\cap B).
+\end{displaymath}
+On trouvera plus loin une autre démonstration utilisant le thérème du rang. 
+\end{demo}
+
+\begin{rem} Signalons deux conséquences de la proposition précédente pour deux sous-espaces $A$, $B$ d'un $\K$-espace vectoriel $E$ de dimension finie.
+  \begin{enumerate}
+    \item Si $\dim(A) + \dim(B) = \dim(E)$ et $A + B= E$ alors $A$ et $B$ sont supplémentaires car $\dim A\cap B = 0$.
+    \item Si $\dim(A) + \dim(B) = \dim(E)$ et $A + B= E$ alors $A\cap B \neq \left\lbrace 0_E \right\rbrace$ car 
+$\dim A\cap B = \dim A + \dim B - \dim E > 0$.
+  \end{enumerate}
+\end{rem}
+
+\begin{propn}
+  Soient $F_1,\cdots, F_p$ des sous-espace vectoriels d'un $K$-espace vectoriel $E$. Alors:
+\begin{displaymath}
+  \dim\left( F_1 + \cdots + F_p\right) \leq \dim F_1 + \cdots + \dim F_p
+\end{displaymath}
+avec égalité si et seulement si $F_1,\cdots, F_p$ sont en somme directe.
+\end{propn}
+\begin{demo}
+ Notons $S = F_1 + \cdots + F_p$. Formons une famille $\mathcal{F}$ en concaténant (mettant bout à bout) une base de chaque $F_i$. Cette famille contient 
+\begin{displaymath}
+  \dim F_1 + \cdots + \dim F_p
+\end{displaymath}
+ vecteurs et engendre $S$. On en déduit $\dim S \leq \dim F_1 + \cdots + \dim F_p$. \newline
+Supposons maintenant $\dim S = \dim F_1 + \cdots + \dim F_p$ la famille $\mathcal{F}$ est toujours génératrice de $S$ et elle contient $\dim S$ éléments. C'est donc une base de $S$. Pour montrer que les sous-espaces sont en somme directe, considérons $x \in S$ admettant deux décompositions dans la somme
+\begin{displaymath}
+\left. 
+  \begin{aligned}
+    x &= a_1 + \cdots +a_p \\ x &= a_1' + \cdots +a_p'
+  \end{aligned}
+\right\rbrace \Rightarrow 0_E = (a_1-a_1') + \cdots + (a_p -a_p').
+\end{displaymath}
+En décomposant chaque $a_i - a_i'$ dans la base de son $F_i$, on forme une combinaison linéaire nulle des vecteurs de $\mathcal{F}$. Comme $\mathcal{F}$ est libre tous les coefficients sont nuls donc $a_i= a_i'$ pour tous les $i$. Ceci assure l'unicité de la décomposition donc le fait que les $F_i$ sont en somme directe.
+\end{demo}
+
+
+\section{Suites vérifiant une relation de récurrence linéaire}
+Fixons $a$, $b$ dans $K$. Notons $E$ l'ensemble des suites vérifiant la relation de récurrence linéaire définie à partir de $a$ et $b$.
+\[
+  (x_n)_{n\in \N} \in E \Leftrightarrow \left( \forall n \in \N, \; u_{n+2} = au_{n+1} + bu_n\right).
+\]
+On suppose $a$ et $b$ non nuls pour que la récurrence soit vraiment d'ordre 2. Une suite dans $E$ est complètement définie par récurrence à partir de ses deux premiers termes (indices $0$ et $1$). On peut donc définir deux suites particulières:
+\[
+  (z_n)_{n\in \N} \in E \text{ définie par } z_0 = 1, z_1 = 0,\hspace{0.5cm} (u_n)_{n\in \N} \in E \text{ définie par } u_0 = 0, u_1 = 1.
+\]
+La famille $\left (z_n)_{n\in \N}, (u_n)_{n\in \N} \right)$ est une base de $E$.\newline
+Le point important pour la preuve est que, pour tous $x_0$ et $x_1$ dans $K$, la suite $x_0 (z_n)_{n\in \N} + x_1 (u_n)_{n\in \N}$ est la suite de $E$ définie par récurrence par les conditions initiales $x_0$ et $x_1$.\newline
+Si cette combinaison est la suite nulle, les conditions initiales sont aussi nulles donc $x_0= x_1=0$. La famille est libre.\newline
+Pour n'importe quelle suite $(x_n)_{n\in \N} \in E$, on a $(x_n)_{n\in \N} = x_0 (z_n)_{n\in \N} + x_1 (u_n)_{n\in \N}$ avec les conditions initiales $x_0$ et $x_1$ donc la famille est génératrice.\newline
+On en déduit que $E$ est de dimension $2$. On peut alors réinterpréter la partie correspondante du cours sur les \href{\baseurl C2069.pdf}{suites particulières} en termes de bases.
+\end{document}

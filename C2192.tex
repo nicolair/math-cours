@@ -1,0 +1,417 @@
+\input{courspdf.tex}
+\debutcours{Axiomatique du corps des réels}{0.4 \tiny{\today}}
+
+\section{Pré-requis}
+\begin{description}
+ \item [Ensembles infinis d'entiers. Vocabulaire général relatif aux suites.]
+Toute partie non vide de $\N$ admet un plus petit élément. On utilisera aussi souvent que $1$ est le plus petit élément de $\N^*$ ce qui se traduit par:
+\begin{displaymath}
+\forall (a,b)\in \Z^2:\; a-1 < b < a+1 \Rightarrow b = a  
+\end{displaymath}
+
+Pour toute partie infinie $\mathcal I$ de $\N$, il existe une bijection strictement croissante de $\N$ dans $\mathcal I$. Voir \href{\baseurl C2007.pdf}{Entiers naturels - Dénombrement}.\\
+Opérations sur les suites. Ensembles de valeurs associés à une suite. Suites majorées, minorées, bornées. Suites extraites. voir \href{\baseurl C2069.pdf}{Suites de réels.}
+\item [Groupe des entiers relatifs. Corps des rationnels] Présentation axiomatique de $\Z$ : groupe avec une relation d'ordre (à rédiger).\\
+Présentation axiomatique de $\Q$: corps avec une relation d'ordre (à rédiger).\\
+Division euclidienne dans $\Z$, conséquence dans $\Q$.
+\item [Bornes supérieures et inférieures]
+rappel des définitions. Voir \href{\baseurl C3548.pdf}{Relations}
+\item [Convergence d'une suite vers 0.]
+\item {Borne inférieure. Borne supérieure}
+Présentons une définition des notions de borne supérieure et de borne inférieure dans le cadre général d'un ensemble ordonné c'est à dire muni d'une relation d'ordre.
+\begin{defi}
+  Soit $E$ un ensemble ordonné et $A$ une partie de $E$. On dit que $A$ admet une borne supérieure si et seulement si l'ensemble de ses majorants admet un plus petit élément. Ce plus petit élément est appelé la borne supérieure de $A$ et noté $\sup A$. On dit que $A$ admet une borne inférieure si et seulement si l'ensemble de ses minorants admet un plus grand élément. Ce plus grand élément est appelé la borne inférieure de $A$ et noté $\inf A$.
+\end{defi}
+\begin{rem}
+  Pour admettre une borne supérieure, une partie $A$ doit être majorée mais ce n'est pas forcément suffisant. Un exemple est donné plus loin avec $E=\Q$
+\end{rem}
+\end{description}
+
+\index{présentation axiomatique!corps des réels}
+\section{Présentation axiomatique}
+\begin{pa}
+ \item[$\R$ c'est plus gros que $\Q$] : $\Q$ est un sous-corps ordonné de  $\R$.
+ \item[$\R$ c'est bien] : Toute partie non vide et majorée de $\R$ admet une borne supérieure.
+ \item[$\R$ c'est pas trop gros] : la suite (définie dans $\N^*$) des inverses des entiers converge vers $0$.
+\end{pa}
+
+\section{Premières propriétés}
+\subsection{Autour de la relation d'ordre}
+On présente ici quelques conséquences du premier groupe de propriétés qui résultent des propriétés usuelles des opérations et de l'inégalité dans $\R$.
+\subsubsection{Plus grand et plus petit élément.}
+Tout ensemble fini de nombres réels admet un plus grand et un plus petit élément.
+\begin{defi}
+ Soit $a$ un nombre réel, on définit :
+\begin{align*}
+ a_+ = \max(0,a) & & a_- = \max(0,-a) & & |a| = \max(a,-a)
+\end{align*}
+\end{defi}
+Bien remarquer que $a_+$ et $a_-$ sont des réels positifs.
+\begin{prop}
+ Soit $a$ et $b$ des nombres réels, alors :
+\begin{align*}
+ a = a_+ - a_- & & |a| = a_+  + a_- & & \left\vert |a|-|b|\right\vert \leq |a+b| \leq |a| + |b|
+\end{align*}
+\end{prop}
+
+\subsubsection{Intervalles}
+Définition des neuf types d'intervalles : 
+\begin{align*}
+ [a,b] & & ]a,b] & & ]a,b[ & & [a,b] & & [a,+\infty[ & & ]a,+\infty[ & & ]-\infty, b] & & ]-\infty, b[ & & \R
+\end{align*}
+avec des inégalités larges ou strictes. On définit aussi :
+\begin{displaymath}
+ \overleftrightarrow{[a,b]} = [\min(a,b), \max(a,b)]
+\end{displaymath}
+\begin{defi}
+ La longueur d'un intervalle du type $[a,b]$, $]a,b]$, $]a,b[$, $[a,b]$ est $b-a$.
+\end{defi}
+\begin{rem}
+ Tout intervalle de longueur strictement plus petite que $1$ contient au plus un entier. Tout intervalle de longueur strictement plus grande que $1$ contient au moins un entier.
+\end{rem}
+
+
+\index{raisonnement à la Cauchy}
+\subsubsection{Raisonnement à la Cauchy}
+Un raisonnement à la Cauchy consiste à déduire une inégalité large à partir d'une famille d'inégalités strictes plus faibles.\newline
+Par exemple : soit $a$ et $b$ deux réels, alors
+\begin{displaymath}
+ \left( \forall x \in \R: x < a \Rightarrow x\leq b\right)  \Rightarrow a\leq b
+\end{displaymath}
+On prouve la contraposée : \newline
+Lorsque $b<a$, il existe bien un $x<a$ (par exemple $\frac{a+b}{2}$) tel que $b<x$. La réciproque est vraie mais ne présente en général pas d'intérêt.\newline
+Voir par exemple la démonstration du \href{\baseurl C2069.pdf}{théorème de passage à la limite dans une inégalité}.
+
+
+\subsection{Autour du "c'est pas trop gros".}
+\begin{figure}[ht]
+ \centering
+ \input{C2192_1.pdf_t}
+ \caption{Densité et petits bonds}
+ \label{fig:C2192_1}
+\end{figure}
+
+\subsubsection{Caractère archimédien}
+\begin{prop}
+$\R$ est archimédien c'est à dire que 
+\begin{displaymath}
+ \forall a> 0 , \forall b> 0 : \exists n\in \N \text{ tel que } b \leq na
+\end{displaymath}
+\end{prop}
+\begin{demo}
+ Considérons le réel strictement positif $\frac{a}{b}$. La définition de la convergence vers $0$ de la suite $\left(   \frac{1}{n} \right)_{n\in\N^*}$ assure l'existence d'un entier $N$ tel que 
+\begin{displaymath}
+ \forall n \geq N : \frac{1}{n}<\frac{a}{b}
+\end{displaymath}
+Choisissons un $n\geq N$, on a bien alors $b<na$ d'après les propriétés usuelles de l'inégalité.
+\end{demo}
+
+\subsubsection{Densités}
+\begin{defi}[partie dense]\index{partie dense}
+ Une partie $A$ de $\R$ est dite \emph{dense} si et seulement si, pour tout intervalle $I$ de $\R$ non réduit à un point, $A\cap I\neq \emptyset$.
+\end{defi}
+\begin{prop}
+Tout intervalle contient une infinité de nombres rationnels et une infinité de nombres irrationnels. Les ensembles $\Q$ et $\R-\Q$ sont denses dans $\R$. 
+\end{prop}
+ \index{question de cours!rationnels, irrationnels, densité}
+\begin{demo}
+ Le principe (voir figure \ref{fig:C2192_1}) est de former un "petit bond" assez petit (la suite des inverses converge vers $0$) puis de progresser en faisant de tels petits bonds (caractère archimédien).\\
+On veut montrer qu'un intervalle de la forme $]a,b[$ avec $a<b$ contient un rationnel.\\
+Comme la suite des inverses des entiers converge vers $0$, il existe un entier $q_0$ tel que $\frac{1}{q_0}<b-a$. \\
+Comme $\R$ est archimédien, l'ensemble $\mathcal N$ des entiers $p$ tels que $p\frac{1}{q_0}>a$ est non vide. \`A cause de la propriété fondamentale de $\N$, cet ensemble admet un plus petit élément $p_0$. Par définition, $p_0 \in \mathcal N$ donc $a < \frac{p_0}{q_0}$. D'autre part :
+\begin{multline*}
+p_0-1<p_0\Rightarrow p_0\leq p_0-1 \text{ est faux}
+\Rightarrow p_0-1 \notin \mathcal N
+\Rightarrow (p_0-1)\frac{1}{q_0}\leq a
+\Rightarrow \frac{p_0}{q_0}\leq a + \frac{1}{q_0}
+\Rightarrow \frac{p_0}{q_0} < a + (b-a)=b
+\end{multline*}
+On a donc montré qu'il existait un rationnel $\frac{p_0}{q_0}\in \left]a,b\right[$. On peut poursuivre le raisonnement:
+\begin{align*}
+ \exists \,\frac{p_1}{q_1} \in \left]a,\frac{p_0}{q_0} \right[ & &
+ \exists \,\frac{p_2}{q_2} \in \left]a,\frac{p_1}{q_1} \right[ & & \cdots
+\end{align*}
+On veut montrer maintenant qu'un intervalle de la forme $]a,b[$ avec $a<b$ contient un irrationnel.\\
+On verra plus loin que $\Q$ ne vérifie pas la propriété de la borne supérieure. Comme $\Q\varsubsetneq \R$, il existe donc au moins un nombre irrationnel $x$. Alors $-x$ est aussi irrationnel (comme $x=-(-x)$, si $-x$ était rationnel, $x$ le serait aussi). On peut donc supposer que l'irrationnel $x$ est strictement positif. On peut reprendre le raisonnement.\\
+Comme la suite des inverses converge vers $0$, il existe un entier $q_0$ tel que
+\begin{displaymath}
+ \frac{1}{q_0} < \frac{b-a}{x} \Rightarrow \frac{x}{q_0}<b-a
+\end{displaymath}
+Le raisonnement est exactement le même avec les petits bonds $\frac{x}{q_0}$ de longueur irrationnelle. Il existe donc un entier $p_0$ tel que
+\begin{displaymath}
+ x_0 = \frac{p_0x}{q_0} \in \left] a,b \right[
+\end{displaymath}
+Le nombre $x_0$ est irrationnel car $x=\frac{q_0}{p_0}x_0$. Donc si $x_0$ était rationnel, $x$ le serait aussi. La suite du raisonnement est identique.
+\end{demo}
+
+\subsubsection{Fonction partie entière. Division euclidienne réelle. }
+\index{fonction partie entière} \index{partie entière}
+\begin{propdef}[partie entière]
+ Pour tout réel $x$, il existe un unique entier appelé partie entière de $x$ et noté $E(x)$ ou $\lfloor x \rfloor$ tel que
+\begin{displaymath}
+ \lfloor x \rfloor \leq x < \lfloor x \rfloor +1 \Leftrightarrow x - 1 <\lfloor x \rfloor \leq x
+\end{displaymath}
+\end{propdef}
+\begin{demo}
+Montrons d'abord l'unicité. Si $p$ et $p'$ sont des naturels vérifiant l'encadrement de définition:
+\begin{displaymath}
+\left. 
+\begin{aligned}
+  &p\leq x < p+1 \\ & p'\leq x < p'+1 
+\end{aligned}
+\right\rbrace \Rightarrow
+\left. 
+\begin{aligned}
+  &x-1 < p \leq x \\ &x-1 < p' \leq x 
+\end{aligned}
+\right\rbrace \Rightarrow
+x-1 -x < p - p' < x -(x-1) \Rightarrow -1 < p-p' < 1 \Rightarrow p=p'
+\end{displaymath}
+
+Soit  $x >0$,  comme $\R$ est archimédien, il existe un ensemble non vide $\mathcal{M}=\left\lbrace k\in \N \text{ tq } x < k \right\rbrace$. Notons $m$ le plus petit élément de $\mathcal{M}$.\newline
+De $m-1 < m$, on tire que $m\leq m-1$ est faux donc $m-1\notin \mathcal{M}$ ce qui entraîne $m-1\leq x$. De $m\in \mathcal{M}$, on tire $x<(m-1)+1$. 
+\end{demo}
+\begin{rems}
+\begin{enumerate}
+ \item L'encadrement définissant la partie entière de $x$ peut aussi s'écrire :
+\begin{displaymath}
+ x-1 < \lfloor x \rfloor \leq x
+\end{displaymath}
+
+ \item Pour tout réel $x$, on note $\{x\}=x - \lfloor x  \rfloor$. On dit que c'est la partie fractionnaire de $x$ \index{partie fractionnaire}.On a alors $x = \lfloor x  \rfloor + \{x\}$ avec $\{x\}\in [0,1[$.
+ \item On peut démontrer de même l'existence et l'unicité d'un réel $\lceil x \rceil$ tel que
+\begin{displaymath}
+ \lceil x \rceil -1 < x \leq \lceil x \rceil
+\end{displaymath}
+\end{enumerate}
+\end{rems}
+
+
+\subsubsection{Approximations décimales.}
+\begin{defi}[Nombres décimaux] \index{nombres décimaux}
+Pour tout $n\in \N$, on définit $\D_n$ par  
+\[
+ \mathbb D_n = \Z \, \frac{1}{10^n} \hspace{0.5cm} \text{ ensemble des multiples de } 10^{-n}.
+\]
+L'ensemble des nombres décimaux est noté $\D$ avec $\D = \cup_{n\in \N} \D_n$.
+\end{defi}
+On peut remarquer que $\D_0 = \Z$ et que $\D$ est une partie de $\Q$ mais $\D \neq \Q$. Un nombre rationnel est décimal si et seulement son produit par une certaine puissance de $10$ est un entier. Ainsi $\frac{1}{3}$ n'est pas un nombre décimal. L'ensemble $\D_n$ est aussi l'ensemble des réels que l'on peut atteindre à partir de $0$ par des \og petits bonds\fg~ de $\pm 10^{-n}$.
+
+\begin{defi}[valeurs décimales approchées]
+Pour tout réel $x>0$ et tout $n\in \N$, définissons $m_n(x)$ et $r_n(x)$ par :
+\[
+  x = m_n(x) + r_n(x) \text{ avec } m_n(x)\in \D_n \;\text{ et } \; r_n(x) \in \left[0, 10^{-n}\right[.
+\]
+Le nombre $m_n(x)$ est \emph{l'approximation décimale par défaut à l'ordre} $n$ de $x$\index{approximations décimales}.
+\end{defi}
+\index{développement décimal}
+Par définition,
+\[
+ m_n(x)\leq x \leq M_n(x) \hspace{0.5cm}  0 \leq M_n(x) -m_n(x) \leq 10^{-n}
+\]
+On convient de noter $r_n(x)$ le reste de la décomposition c'est à dire
+\begin{rems}
+\begin{itemize}
+  \item Les ensembles $\D_n$ sont de plus en plus grands: chacun est inclus dans le suivant $\mathbb D_n \subset \mathbb D_{n+1}$. Ceci entraîne que la suite des approximations par défaut est croissante.
+  \item Cette définition s'interprète avec des parties entières:
+\[
+  10^n\, x = \underset{\in \Z}{\underbrace{10^n\,m_n(x)}} + \underset{\in [0,1[}{\underbrace{10^n\,r_n(x)}}
+  \Leftrightarrow 
+  \left\lbrace
+  \begin{aligned}
+    10^n\,m_n(x) &= \lfloor 10^n\,x\rfloor& &\text{partie entière} \\
+    10^n\,r_n(x) &= \{ 10^n\,x \}& &\text{partie fractionnaire}
+  \end{aligned}
+  \right.
+.
+\]
+\end{itemize}
+\end{rems}
+Considérons le reste modulo $10$ de $\lfloor 10^n\,x\rfloor$ (notons $u_n$ ce reste et $q_n$ le quotient). Il appartient à $\llbracket 0, 9 \rrbracket$ et
+\begin{multline*}
+  10^n\, x = 10\, q_n + u_n + \{ 10^{n}\,x \}
+  \Rightarrow 10^{n-1}\, x = \underset{\in \Z}{\underbrace{q_n}} + 10^{-1}\left(\underset{\in \left[0,9\right]}{\underbrace{u_n}} + \underset{\in \left[0,1\right[}{\underbrace{\{ 10^{n}\,x \}}}\right)\\
+  \Rightarrow \{ 10^{n-1}\,x \} = 10^{-1}\left( u_n + \{ 10^{n}\,x \}\right)
+  \Rightarrow 10\, \{ 10^{n-1}\,x \} = \underset{\in \Z}{\underbrace{u_n}} + \underset{\in \left[0,1\right[}{\underbrace{\{ 10^{n}\,x \}}}
+\end{multline*}
+On en déduit que $u_n$ est aussi la partie entière de $ 10\times\{ 10^{n-1}\,x \}$.\newline
+On \emph{définit} la décimale d'ordre $n$ de $x$ notée $d_n(x)$ comme étant cet entier entre $0$ et $9$.
+\[
+ d_n(x) =
+ \left\lbrace
+ \begin{aligned}
+   &\text{le reste modulo $10$ de $\lfloor 10^n\,x\rfloor$}\\
+   &\text{le chiffre des unités dans l'écriture décimale de $10^n\, m_n(x)$}\\
+   &\text{le reste de la division par 10 de $10^n\, m_n(x)$}\\
+   &\text{la partie entière de $ 10\times\{ 10^{n-1}\,x \}$}
+ \end{aligned}
+\right.
+\]
+
+\begin{rem}
+ Si la suite des décimales d'un nombre réel est périodique à partir d'un certain rang, alors ce réel est rationnel (la réciproque est  \href{\baseurl C2142.pdf}{vraie}).
+\end{rem}
+\begin{prop}[forme normalisée. Notation scientifique]\index{forme normalisée d'un réel} \index{notation scientifique d'un réel}
+ Pour tout nombre réel $x$ strictement positif, il existe un unique couple $(m,e)$ tel que 
+\[
+ x = m\, 10^{e} \text{ avec } m \in \left[ 1, 10\right[ \text{ et } e\in \Z.
+\]
+\end{prop}
+\begin{defi}
+  On dit que $m$ est la \emph{mantisse} du réel.\index{mantisse d'un nombre réel}
+\end{defi}
+
+\begin{demo}
+  Comme $10^n \geq n$ pour $n\in \N^*$, le caractère archimédien de $\R$ montre que l'ensemble $E$ des $k\in \N^*$ tels que $x < 10^k$ est non vide. Soit $k_0$ le plus petit élément de cet ensemble. Alors
+\[
+ \left. 
+ \begin{aligned}
+   k_0 &\in A \\ k_0-1 &\notin A 
+ \end{aligned}
+\right\rbrace 
+\Rightarrow
+10^{k_0 -1} \leq x < 10^{k_0} \Rightarrow 1 \leq x\, 10^{1-k_0} < 10.
+\]
+On en déduit que le couple $(m,e)$ avec $m = x\, 10^{1-k_0}$ et $e = 1-k_0$ convient. L'unicité résulte de
+\[
+  m\,10^e = m'\,10^{e'} \Rightarrow m'\,10^{e' - e}< 10 \Rightarrow 10^{e' - e}< 10 \Rightarrow e' \leq e. 
+\]
+L'autre inégalité se prouve de la même manière; d'où $e=e'$ puis $m=m'$.
+\end{demo}
+
+\begin{prop}[Algorithme naïf de développement décimal d'un réel]
+Soit $x\in \left[ 1, 10 \right[$. Il admet une seule décimale avant la virgule qui est $d_0(x) = \lfloor x \rfloor$. \newline
+Le dévelopement après la virgule s'obtient par l'algorithme suivant :
+\begin{align*}
+ &x_1 = 10\left( x - \lfloor x\rfloor)\right) \in \left[ 0, 10 \right[,  &d_1(x) = \lfloor x_1 \rfloor \in \llbracket 0, 9 \rrbracket \\
+ &x_2 = 10\left( x_1 - d_1(x)\right) \in \left[ 0, 10 \right[,           &d_2(x) = \lfloor x_2 \rfloor \in \llbracket 0, 9 \rrbracket \\
+ &x_3 = 10\left( x_2 - d_2(x)\right) \in \left[ 0, 10 \right[,           &d_3(x) = \lfloor x_2 \rfloor \in \llbracket 0, 9 \rrbracket \\
+ &\vdots &\vdots 
+\end{align*}
+\end{prop}
+\begin{demo}
+ La relation fondamentale de l'algorithme s'écrit comme 
+\[
+  x_{n+1} = 10(x_n - d_n(x)) \Leftrightarrow x_n = d_n(x) + \frac{x_{n+1}}{10}.
+\]
+On en déduit la décomposition décimale de $x$:
+\begin{multline*}
+  x = \lfloor x \rfloor + (x - \lfloor x \rfloor) = d_0(x) + \frac{x_1}{10}
+  = d_0(x) + \frac{d_1(x)}{10} + \frac{x_2}{10^2}
+  = d_0(x) + \frac{d_1(x)}{10} + \frac{d_2(x)}{10^2} + \frac{x_3}{10^3}\\
+  = \cdots = d_0(x) + \frac{d_1(x)}{10} + \cdots \frac{d_n(x)}{10^n} + \frac{x_{n+1}}{10^{n+1}}
+  \;\text{ avec }\; \frac{x_{n+1}}{10^{n+1}} \in \left[ 0, 10^{-n} \right[.
+\end{multline*}
+
+\end{demo}
+Cet algorithme est naïf car on ne dispose en général d'aucun moyen commode pour évaluer les nombres indiqués. 
+
+\subsection{Autour de la propriété de la borne supérieure.}
+
+\subsubsection{Partie non vide minorée.}
+\begin{prop}
+ Une partie non vide minorée de $\R$ admet une borne inférieure.
+\end{prop}
+\begin{demo}
+ Soit $B$ une partie non vide et minorée. On note $A$ la partie de $\R$ formée par les $x$ tels que $-x\in B$.\newline
+Soit $m$ un minorant de $B$. Pour tout $x$ de $A$, $-x \in B$ donc $m\leq -x$ donc $x\leq -m$. Ainsi $-m$ est un majorant de $A$ qui est donc une partie non vide et majorée.\newline
+Montrons que $-\sup A$ est la borne inférieure de $B$. On a déjà vu que si $m$ est un minorant de $B$ alors $-m$ est un majorant de $A$ donc $\sup A \leq -m$ donc $m \leq -\sup A$. Ainsi $-\sup A$ est un majorant de l'ensemble des minorants de $B$.\newline
+D'autre part, pour tout $b\in B$ on a  $-b\in A$ donc $-b \leq \sup A$ donc $-\sup A\leq b$ donc $-\sup A$ est un minorant de $B$. C'est donc le plus grand des minorants c'est à dire la borne inférieure.   
+\end{demo}
+
+
+\subsubsection{L'ensemble des rationnels ne vérifie pas la propriété de la borne supérieure.} \label{contrexbsup}
+On se propose ici de donner un exemple de partie de $\Q$ majorée mais n'admettant pas de borne supérieure. Toute démonstration faisant appel à un nombre réel positif dont le carré est $2$ n'est pas satisfaisante car il faudrait commencer par démontrer son existence. Attention, on ne peut pas utiliser la fonction $x\rightarrow x^2$ car les résultats sur les fonctions continues et les tableaux de variations sont démontrés à partir des propriétés de $\R$. On doit travailler uniquement avec des nombres rationnels.\newline
+Introduisons les parties $A$ et $B$
+\begin{displaymath}
+  A = \left\lbrace x\in\Q\text{ tq } x\geq 0 \text{ et } x^2 < 2\right\rbrace \hspace{1cm} 
+  B = \left\lbrace x\in\Q\text{ tq } x\geq 0 \text{ et } x^2 > 2\right\rbrace
+\end{displaymath}
+On veut montrer que $A$ est majoré et ne possède pas de borne supérieure. On pourrait le faire en raisonnant par l'absurde et en montrant que $(\sup A)^2=2$ mais cela revient à ce qui est proposé ici.\newline 
+On va prouver et utiliser trois résultats :
+\begin{enumerate}
+ \item Si $x\in A$, il existe $y\in A$ tel que $x<y$. 
+ \item Si $x\in B$, il existe $y\in B$ tel que $y<x$.
+ \item Il n'existe pas d'entiers $p$ et $q$ tels que $p^2=2q^2$.
+\end{enumerate}
+Le point 3. a été prouvé comme un exemple de la \href{\baseurl C2007.pdf}{propriété fondamentale de $\N$} (descente infinie). On peut en déduire que $A$ et $B$ sont complémentaires dans $\Q$.
+\begin{displaymath}
+  A \cap B = \emptyset \hspace{1cm} A \cup B = \Q^+
+\end{displaymath}
+Pour démontrer 1., considérons un $y=x+h$ avec $h$ rationnel et $0<h<\frac{2-x^2}{4}$.\newline
+Alors, d'une part $h<\frac{2}{4}=\frac{1}{2}<1$ donc $h^2<h$, d'autre part $x<\frac{3}{2}$ car $x^2<2$ alors que $\frac{9}{4}>2$. On en déduit 
+\begin{displaymath}
+ 2-y^2 = 2-x^2 -\underset{< h}{\underbrace{h^2}} - \underset{<3}{\underbrace{2x}}h
+> 2-x^2 -4h > 0 \Rightarrow y \in A
+\end{displaymath}
+La démonstration de 2. est du même type. On considère $y=x-h$ avec $h$ rationnel tel que $0<h<\frac{x^2-2}{2}$ et on vérifie que $y^2-2 > 0$.\newline
+Montrons que l'ensemble des majorants de $A$ est égal à $B$.
+\begin{itemize}
+ \item Le résultat 1 montre que $A$ n'admet pas de plus grand élément. Donc, si $m$ est un majorant de $A$, alors $m\notin A$ donc $m\in B$.
+\item Si $m\in B$, alors pour tout $x\in A$, $x^2 < 2 < m^2$. Comme les deux sont strictement positifs, $x<m$. Ceci est valable pour tous les $x\in A$ donc $m$ est un majorant de $A$.
+\item Le résultat 2 est symétrique du résultat 1. Il signifie que $B$ n'admet pas de plus petit élément.
+\end{itemize}
+Ainsi, en restant dans l'ensemble $\Q$, la partie majorée $A$ n'admet pas de borne supérieure.\newline
+En revanche, si on se place dans $\R$, la partie $A$ admet une borne supérieure, notons la $m$. Avec les outils utilisés ici, il n'est pas facile de montrer que $m^2=2$. Pour prouver l'existence de racines carrées dans $\R$, il vaut mieux utiliser le théorème des valeurs intermédiaires qui sera prouvé plus loin (en utilisant les propriétés de $\R$). La fonction $x\rightarrow x^2 - 1$ est continue. Elle est strictement négative en $1$ et strictement positive en $2$, elle prend donc la valeur $0$ quelque part entre les deux.
+
+\subsubsection{Parties convexes.}
+\index{partie convexe}
+\begin{defi}[partie convexe]
+ Une partie $I$ de $\R$ est dite convexe lorsque 
+\begin{displaymath}
+ \forall (a,b)\in I^2 : \overleftrightarrow{[a,b]}\subset I
+\end{displaymath}
+\end{defi}
+Il est clair par définition que tout intervalle est convexe.
+\begin{prop}
+ Toute partie convexe de $\R$ est un intervalle.
+\end{prop}
+Ce résultat est à relier au théorème des valeurs intermédiaires\index{théorème des valeurs intermédiaires} de la partie \href{\baseurl C2072.pdf}{Propriétés globales des fonctions continues}
+\index{question de cours!partie convexe de $\R$}
+\begin{demo}
+ Soit $I$ une partie convexe de $\R$ : neuf cas sont possibles :
+\begin{itemize}
+ \item $I$ est borné. \begin{description}
+ \item[cas 1.]  $I$ admet un plus petit élément $a=\min I$ et un plus grand élément $b=\max I$.
+ \item[cas 2.]  $I$ admet un plus petit élément $a=\min I$ et n'admet pas de plus grand élément (on note $b=\sup I$).
+ \item[cas 3.]  $I$ n'admet pas de plus petit élément (on note $a=\inf I$) et admet un plus grand élément $b=\max I$.
+ \item[cas 4.]  $I$ n'admet pas de plus petit élément (on note $a=\inf I$) et n'admet pas de plus grand élément (on note $b=\sup I$).
+\end{description}
+ \item $I$ est majoré et n'est pas minoré. \begin{description}
+   \item[cas 5.] $I$ admet un plus grand élément $b=\max I$.
+   \item[cas 6.] $I$ n'admet pas de plus grand élément (on note $b=\sup I$).
+\end{description}
+
+ \item $I$ est minoré et n'est pas majoré.\begin{description}
+   \item[cas 7.] $I$ admet un plus petit élément $a=\min I$. 
+   \item[cas 8.] $I$ n'admet pas de plus petit élément (on note $a=\inf I$).
+\end{description}
+
+ \item (cas 9.) $I$ n'est ni minoré ni majoré.
+
+\end{itemize}
+Dans chaque cas $I$ est un intervalle de l'un des neuf types présentés.\newline
+Par exemple dans le cas 3, montrons que $I= ]a,b]$.\begin{itemize}
+ \item Pour tout $x\in I$ : $a < x \leq b$ car $a$ est un minorant qui n'est pas dans $I$ et $b$ est un majorant.
+ \item Considérons un $x$ quelconque dans $]a,b]$. Si $x=b$ alors $x\in I$ car $b=\max I$. Si $a<x<b$, alors $a$ n'est ni un minorant ni un majorant de $I$. Il existe alors $u\in I$ tel que $u<x$ et un $v\in I$ tel que $x<v$ donc $x\in [u,v]$ ce qui entraine (par convexité de $I$) que $x\in I$.
+\end{itemize}
+On vient de prouver l'égalité annoncée par une double inclusion.
+
+Les autres cas sont analogues. Leur traitement constitue un bon exercice d'entrainement aux manipulations de borne supérieures et inférieures. 
+\end{demo}
+
+\subsubsection{Suites monotones.}
+\begin{thm}
+ Toute suite croissante majorée converge vers la borne supérieure de l'ensemble de ses valeurs.
+\end{thm}
+\begin{demo}
+Soit $\left( a_n\right) _{n\in \N}$ une suite croissante de nombre réels. Cette suite est majorée, l'ensemble (noté $V$) de ses valeurs admet donc une borne supérieure notée $M$.\newline
+Pour tout $\varepsilon>0$, $M-\varepsilon$ n'est pas un majorant de $V$. En effet $M\leq M - \varepsilon$ est faux et $M$ est le plus petit des majorants de $V$. Il existe donc $N \in \N$ tel que $u_N\leq M - \varepsilon$ est faux autrement dit $M-\varepsilon < u_N$.
+Mais alors, pour tous les entiers $n\geq N$, comme la suite est croissante,
+\begin{displaymath}
+ M-\varepsilon < u_N < u_{N+1}\leq \cdots \leq u_n \leq M < M + \varepsilon
+\end{displaymath}
+ Ce qui est la définition de la convergence vers $M$.
+\end{demo}
+
+\end{document}

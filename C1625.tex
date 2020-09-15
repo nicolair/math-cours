@@ -1,0 +1,78 @@
+\input{courspdf.tex}
+\debutcours{Systèmes d'équations linéaires}{alpha}
+
+\section{Présentations}
+Trois formes équivalentes sont possibles : la forme système, la forme matricielle, la forme vectorielle.
+\begin{description}
+ \item[forme système]
+Système de $p$ équations à $q$ inconnues $x_1,\cdots, x_q$ dans un corps $\K$:
+\begin{displaymath}
+ \left\lbrace
+\begin{aligned}
+ a_{11}x_1+a_{12}x_2+\cdots +a_{1q}x_q &= b_1 \\
+ a_{21}x_1+a_{22}x_2+\cdots +a_{2q}x_q &= b_2 \\
+   &\vdots \\
+a_{p1}x_1+a_{p2}x_2+\cdots +a_{pq}x_q &= b_p 
+\end{aligned}
+\right. 
+\end{displaymath}
+les $a_{ij}$ et les $b_k$ sont des paramètres dans $\K$.
+\item [forme matricielle]
+\'Equation à une inconnue matricielle $X\in \mathcal M_{q,1}(\K)$
+\begin{displaymath}
+ AX = Y
+\end{displaymath}
+avec
+\begin{align*}
+ A=\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1q} \\
+a_{21} & a_{22} & \cdots & a_{2q} \\
+ \vdots  & \vdots &        & \vdots \\
+a_{p1}& a_{p2} & \cdots & a_{pq}
+   \end{bmatrix}
+& &
+Y=\begin{bmatrix}
+   b_1\\
+   b_2\\
+\vdots \\
+b_q
+  \end{bmatrix}
+\end{align*}
+\item[forme vectorielle]
+\'Equation à une inconnue vectorielle $x$ dans un $\K$ espace vectoriel $E$
+\begin{displaymath}
+ f(x)=y
+\end{displaymath}
+où $E$ est un $\K$-espace vectoriel de dimension $q$ muni d'une base $\mathcal U$, $F$ est un $\K$-espace vectoriel de dimension $p$ muni d'une base $\mathcal V$, $f\in \mathcal L(E,F)$ et $y\in F$ sont définis par :
+\begin{align*}
+ \Mat_{\mathcal U \mathcal V}(f) = A & & \Mat_{\mathcal V}(y) = Y
+\end{align*}
+\end{description}
+\begin{rem}
+ On peut aussi interpréter un système comme une intersection de $p$ hyperplans affines. Chaque ligne représentant
+\begin{displaymath}
+ \varphi_i(x)=b_i
+\end{displaymath}
+pour $p$ formes linéaires $\varphi_1,\cdots,\varphi_p$.
+\end{rem}
+
+\section{Espace des solutions. Rang}
+La forme vectorielle est la plus commode pour discuter de l'existence de solutions et de la structure de l'espace des solutions.
+\begin{prop}
+ L'équation $f(x)=y$ d'inconnue $x\in E$ avec $E$ et $F$ deux $\K$-espaces vectoriels et $f\in\mathcal L(E,F)$ admet des solutions si et seulement si $y\in \Im F$. Lorsque l'équation admet une solution $y_0$, l'ensemble des solutions et le sous-espace affine de direction $\ker f$:
+\begin{displaymath}
+ y_0 + \ker f
+\end{displaymath}
+\end{prop}
+\index{rang d'un système}
+Par définition, le rang d'un système est le rang de la matrice $A$ ou de l'application linéaire $f$ ou de la famille de formes linéaires $(\varphi_1,\cdots,\varphi_p)$.\newline
+Lorsque le système admet des solutions, la dimension de l'espace affine des solutions est égal au nombre d'inconnues moins le rang du système.
+\section{Systèmes de Cramer}
+Un système est dit de Cramer lorsque le nombre d'inconnues est égal au nombre d'équations et qu'il existe une unique solution. Lorsqu'un système est de Cramer pour un second membre particulier, il l'est pour tout second membre.
+\section{Utilisation pratique des systèmes}
+Par transformations élémentaires, un système est transformé en un système équivalent. Il existe essentiellement deux objectifs dans le traitement d'un système : \emph{résoudre} et \emph{éliminer}.Le principe général est d'adapter à chaque cas particulier l'algorithme I en s'autorisant de plus la permutation des inconnues. On arrive à un système équivalent d'une forme triangulaire.\newline
+Si ce système ne contient pas d'équations sans solution, on peut résoudre en sépareant les inconnues en deux groupes. Les inconnues d'un groupe s'expriment an fonction des inconnues de l'autre groupe qui deviennent alors des paramètres.\newline
+Lorsque le système contient des équations sans inconnues, ces équations fournissent des conditions nécessaires et suffisantes pour que le système admette des solutions.
+\index{résoudre} \index{éliminer}
+
+\end{document}

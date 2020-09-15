@@ -1,0 +1,8 @@
+digraph G {
+  0 -> B [label ="1/2"];
+  B -> BB [label ="1/3"];
+  B -> BN [label ="2/3"];
+  0 -> N [label ="1/2"] ;
+  N -> NN [label ="1/3"];
+  N -> BN [label ="2/3"];
+}

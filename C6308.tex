@@ -1,0 +1,586 @@
+\input{courspdf.tex}
+\debutcours{Fonctions d'une variable géométrique : démonstrations}{alpha}
+
+Il est utile présenter ces démonstrations car elles utilisent systématiquement une \emph{expression intégrale}. Ce genre de technique est très important dans l'analyse de deuxième année et peut être introduit utilement en fin de première année.\\
+Les trois premières démonstrations n'utilisent que la définition de la continuité des fonctions d'une variable géométrique. La démonstration du lemme de Poincaré utilise un théorème de dérivation sous intégrale qui sera admis.
+\section{Expression intégrale de l'accroissement suivant les axes.}
+\begin{figure}[ht]
+ \centering
+ \input{C6308_0.pdf_t}
+ \caption{Expression intégrale d'un accroissement suivant les axes}
+ \label{fig:C6308_0}
+\end{figure}
+
+\begin{prop}
+ Soit $\Omega$ un domaine d'un plan. Un repère $(O,(\overrightarrow i, \overrightarrow j))$ est fixé. Les fonctions coordonnées dans ce repère sont notées $x$ et $y$. Soit $m_0$ un point de $\Omega$, le point $m_1$ est dans $\Omega$ et de même ordonnée que $m_0$, le point $m_2$ est dans $\Omega$ et de même abscisse que $m_0$. On note $a=x(m_1)-x(m_0)$ et $b=y(m_2)-y(m_0)$. On suppose que les segments  $[m_0,m_1]$ et $[m_0,m_2]$ sont inclus dans $\Omega$ (fig \ref{fig:C6308_0}).\newline
+On peut alors exprimer les accroissements suivant les directions des axes d'une fonction $f\in \mathcal C^1(\Omega)$ comme des intégrales :
+\begin{align*}
+ f(m_1)-f(m_0) =& \int_{0}^{1}\frac{\partial f}{\partial x}\left( m_0+ua\overrightarrow i \right) a \,du \\
+ f(m_2)-f(m_0) =& \int_{0}^{1}\frac{\partial f}{\partial y}\left( m_0+vb\overrightarrow j \right) b \,dv 
+\end{align*}
+\end{prop}
+\begin{demo}
+Définissons une fonction $\varphi$ dans un intervalle $I$ contenant $[0,1]$ par :
+\begin{displaymath}
+ \forall t\in I: \varphi(t)=f\left(m_t\right)\text{ avec } m_t=m_0+ ta\overrightarrow i
+\end{displaymath}
+L'accroissement de $f$ entre $m_0$ et $m_1$ est alors l'accroissement de $\varphi$ entre $0$ et $1$. On va chercher à l'exprimer comme l'intégrale de sa dérivée.\newline
+ Par définition de la dérivée en un point dans une direction :
+\begin{displaymath}
+ D_{\overrightarrow i}f(m_t)=\psi'(0)\text{ avec } \psi(\lambda)=f(m_t+\lambda \overrightarrow i)
+\end{displaymath}
+On peut exprimer $\Psi$ à l'aide de $\varphi$ :
+\begin{displaymath}
+ \psi(\lambda)=f(m_0+ (ta+\lambda)\overrightarrow i)=f(m_0+ a(t+\frac{\lambda}{a})\overrightarrow i)=\varphi(t+\frac{\lambda}{a})
+\end{displaymath}
+Comme la fonction $f$ est $\mathcal C^1$, ces fonctions sont dérivables avec :
+\begin{displaymath}
+ \psi'(0) = \frac{1}{a}\varphi'(t)
+\Rightarrow \varphi'(t) = a \psi'(0) = D_{\overrightarrow i}f(m_t) = \frac{\partial f}{\partial x}\left(m_0+ua\overrightarrow i\right) a
+\end{displaymath}
+Comme la fonction $f$ est $\mathcal C^1$, la fonction $\varphi$ l'est aussi et :
+\begin{displaymath}
+ f(m_1)-f(m_0)=\varphi(1)-\varphi(0)
+=\int_0^1\varphi'(t)dt=\int_0^1 \frac{\partial f}{\partial x}\left(m_0+ua\overrightarrow i\right) a \,dt
+\end{displaymath}
+La démonstration pour l'accroissement suivant l'autre direction de base est analogue.
+\end{demo}
+\begin{rems}
+ \begin{enumerate}
+ \item On pourrait démontrer de manière analogue une expression intégrale de l'accroissement en utilisant un segment quelconque entre deux points.
+\item L'expression de l'accroissement de la fonction le long d'un chemin qui n'est pas rectiligne est en revanche une conséquence du théorème fondamental qui fait l'objet de la section suivante.
+\end{enumerate}
+
+\end{rems}
+
+\section{Théorème d'approximation au premier ordre.}
+\begin{figure}[ht]
+ \centering
+ \input{C6308_1.pdf_t}
+ \caption{Théorème d'approximation}
+ \label{fig:C6308_1}
+\end{figure}
+
+\begin{thm}[Théorème fondamental d'approximation]
+ Un repère $(O,(\overrightarrow i, \overrightarrow j))$ est fixé. Les fonctions coordonnées dans ce repère sont notées $x$ et $y$. Soit $f\in \mathcal C^1(\Omega)$ et $m_0\in \Omega$, soit $r$ la fonction définie dans $\Omega$ par :
+\begin{displaymath}
+ \forall m \in \Omega :
+f(m) = f(m_0) +\dfrac{\partial f}{\partial x}(m_0)(x(m)-x(m_0))
++\dfrac{\partial f}{\partial y}(m_0)(y(m)-y(m_0)) +r(m)
+\end{displaymath}
+alors, pour toute norme $N$ :
+\begin{displaymath}
+ \frac{r(m)}{N(m-m_0)} \xrightarrow{m_0} 0
+\end{displaymath}
+\end{thm}
+\begin{demo}
+ Notons $a=x(m)-x(m_0)$, $b=y(m)-y(m_0)$, introduisons un point $m_1=m_0+a\overrightarrow i$ (fig \ref{fig:C6308_1}) et exprimons l'accroissement $f(m)-f(m_0)$ comme une intégrale en utilisant le résultat de la section précédente.
+\begin{displaymath}
+ f(m)-f(m_0)=f(m)-f(m_1)+ f(m_1)-f(m_0)
+= 
+\int_{0}^1 \dfrac{\partial f}{\partial y}\left( m_1+tb\overrightarrow j\right)b \,dt
++
+\int_{0}^1 \dfrac{\partial f}{\partial x}\left( m_0+ta\overrightarrow i\right)a \,dt 
+\end{displaymath}
+Pour toute constante $C$, on peut toujours écrire $C=\int_0^1 C\,dt$, cela permet de mettre $r$ sous la forme d'une intégrale:
+\begin{multline*}
+ r(m)= \int_{0}^1 \dfrac{\partial f}{\partial y}\left( m_1+tb\overrightarrow j\right)b \,dt
++
+\int_{0}^1 \dfrac{\partial f}{\partial x}\left( m_0+ta\overrightarrow i\right)a \,dt 
+- \int_{0}^1 \dfrac{\partial f}{\partial x}(m_0)a\,dt 
+- \int_{0}^1 \dfrac{\partial f}{\partial y}(m_0)b\,dt \\
+= \int_{0}^1 \left(
+\Big(
+\dfrac{\partial f}{\partial x}\left( m_0+ta\overrightarrow i\right)
+-
+\dfrac{\partial f}{\partial x}(m_0)
+\Big)a
++
+\Big(
+\dfrac{\partial f}{\partial y}\left( m_1+tb\overrightarrow j\right)
+-
+\dfrac{\partial f}{\partial y}(m_0)
+\Big)b
+\right)dt
+\end{multline*}
+Par commodité, introduisons la norme $N_1$ égale à la somme des valeurs absolues des coordonnées :
+\begin{displaymath}
+ N_1(m-m_0)=|a|+|b|
+\end{displaymath}
+Supposons que $m$ soit dans un disque $D(m_0,\alpha)$ de centre $m_0$ et de rayon $\alpha$ (fig \ref{fig:C6308_1}). Peu importe que ce disque soit relatif à la norme euclidienne et non la norme $N_1$ car toutes les normes sont équivalentes.\newline
+Tous les points intervenant dans les intégrales sont alors dans ce disque et on peut majorer :
+\begin{displaymath}
+ |r(m)|\leq
+\left(
+\sup_{D(m_0,\alpha)}\left\vert\dfrac{\partial f}{\partial x}-\dfrac{\partial f}{\partial x}(m_0) \right\vert
++
+\sup_{D(m_0,\alpha)}\left\vert\dfrac{\partial f}{\partial y}-\dfrac{\partial f}{\partial y}(m_0) \right\vert
+\right)N_1(m-m_0)
+\end{displaymath}
+Comme les dérivées partielles sont des fonctions continues, pour tout $\varepsilon>0$, il existe un $\alpha$ assez petit pour que la somme des deux bornes supérieures soit inférieure à $\varepsilon$. Autrement dit :
+\begin{displaymath}
+ \frac{r(m)}{N_1(m-m_0)} \xrightarrow{m_0} 0
+\end{displaymath}
+\end{demo}
+
+\section{Théorème de Schwarz.}
+\begin{figure}[ht]
+ \centering
+ \input{C6308_2.pdf_t}
+ \caption{Lemme de Schwarz}
+ \label{fig:C6308_2}
+\end{figure}
+\begin{thm}[théorème de Schwarz]
+ Soit $f\in \mathcal C^2(\Omega)$, alors :
+\begin{displaymath}
+ \dfrac{\partial}{\partial x}\left( \dfrac{\partial f}{\partial y}\right)
+=
+ \dfrac{\partial}{\partial y}\left( \dfrac{\partial f}{\partial x}\right)
+\end{displaymath}
+\end{thm}
+\begin{demo}
+Considérons $m_0$ et $m$ dans $\Omega$. Posons $a=x(m)-x(m_0)$, $b=y(m)-y(m_0)$ et introduisons les points $m_1=m_0+a\overrightarrow i$ et $m_2=m_0+b\overrightarrow j$ (fig \ref{fig:C6308_2}). La démonstration repose sur l'évaluation de la quantité (fig \ref{fig:C6308_2}) 
+\begin{displaymath}
+A = f(m) - f(m_1) - f(m_2) + f(m_0) 
+\end{displaymath}
+de deux manières à l'aide de l'expression d'un accroissement dans la direction d'un axe de coordonnées. Un passage à la limite conduit ensuite au théorème sous la forme.
+\begin{displaymath}
+ \dfrac{\partial}{\partial x}\left( \dfrac{\partial f}{\partial y}\right)(m_0)
+=
+ \dfrac{\partial}{\partial y}\left( \dfrac{\partial f}{\partial x}\right)(m_0)
+\end{displaymath}
+\begin{figure}[ht]
+ \centering
+ \input{C6308_4.pdf_t}
+ \caption{Décomposition pour la première expression de $A$.}
+ \label{fig:C6308_4}
+\end{figure}
+La première expression consiste à écrire
+\begin{displaymath}
+ A= \left(f(m)-f(m_1)\right)- \left(f(m_2)-f(m_0)\right) 
+\end{displaymath}
+puis à utiliser l'écriture intégrale, d'abord pour un accroissement dans la direction $\overrightarrow j$, puis dans la direction $\overrightarrow i$ :
+\begin{multline*}
+ A = \int_{0}^1\frac{\partial f}{\partial y}(\mu'_v)b\,dv 
+-
+\int_{0}^1\frac{\partial f}{\partial y}(\mu_v)b\,dv 
+= \int_{0}^1
+\left( 
+\frac{\partial f}{\partial y}(\mu'_v)
+-
+\frac{\partial f}{\partial y}(\mu_v)
+\right) b\,dv \\
+=ab \int_0^1
+\left(
+\int_0^1
+\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y} \right)
+(m_0 + ua\overrightarrow i +vb\overrightarrow j)\,du 
+ \right)dv 
+\end{multline*}
+\begin{figure}[ht]
+ \centering
+ \input{C6308_5.pdf_t}
+ \caption{Décomposition pour la deuxième expression de $A$.}
+ \label{fig:C6308_5}
+\end{figure}
+La deuxième expression s'obtient de manière analogue :
+\begin{multline*}
+ A= \left(f(m)-f(m_2)\right)- \left(f(m_1)-f(m_0)\right)
+= \int_{0}^1\frac{\partial f}{\partial x}(m_2+ua\overrightarrow i)a\,du 
+-
+\int_{0}^1\frac{\partial f}{\partial x}(m_0+ua\overrightarrow i)a\,du \\
+= \int_{0}^1
+\left( 
+\frac{\partial f}{\partial x}(m_2+ua\overrightarrow i)
+-
+\frac{\partial f}{\partial x}(m_0+ua\overrightarrow i)
+\right) a\,du 
+=ab \int_0^1
+\left(
+\int_0^1
+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x} \right)
+(m_0 + ua\overrightarrow i +vb\overrightarrow j)\,dv 
+ \right)du
+\end{multline*}
+De l'égalité entre les deux expressions, on tire, \emph{en simplifiant par $ab$}, 
+\begin{displaymath}
+ \int_0^1
+\left(
+\int_0^1
+\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y} \right)
+(m_0 + ua\overrightarrow i +vb\overrightarrow j)\,du 
+ \right)dv
+=
+\int_0^1
+\left(
+\int_0^1
+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x} \right)
+(m_0 + ua\overrightarrow i +vb\overrightarrow j)\,dv 
+ \right)du
+\end{displaymath}
+Les deux dérivées partielles secondes sont des fonctions continues dans $\Omega$. Pour tout $\varepsilon>0$, il existe donc un $\alpha>0$ et un disque $D(m_0,\alpha)$ tel que :
+\begin{displaymath}
+ \forall A\in D(m_0,\alpha) : 
+\left\lbrace 
+\begin{aligned}
+ \left\vert
+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x} \right)(A)\,dv
+-
+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x} \right)(m_0)\,dv
+ \right\vert \leq& \varepsilon\\
+ \left\vert
+\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y} \right)(A)\,dv
+-
+\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y} \right)(m_0)\,dv
+ \right\vert \leq& \varepsilon
+\end{aligned}
+\right. 
+\end{displaymath}
+Comme plus haut, pour toute constante $C$,
+\begin{displaymath}
+ C = \int_0^1\left(\int_0^1 C \,dv \right)du = C = \int_0^1\left(\int_0^1 C \,du \right)dv
+\end{displaymath}
+Lorsque $m\in D(m_0,\alpha)$, tout le rectangle est dans $D(m_0,\alpha)$ (fig \ref{fig:C6308_3}). On en déduit :
+\begin{displaymath}
+ \forall \varepsilon>0, 
+\left\vert
+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x} \right)(m_0)
+-
+\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial 2} \right)(m_0)
+ \right\vert \leq 2\varepsilon
+\Rightarrow
+\frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x} \right)(m_0)
+=
+\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial 2} \right)(m_0)
+\end{displaymath}
+
+\end{demo}
+
+\section{Lemme de Poincaré.}
+\begin{figure}[ht]
+ \centering
+ \input{C6308_3.pdf_t}
+ \caption{Lemme de Poincaré dans un domaine étoilé.}
+ \label{fig:C6308_3}
+\end{figure}
+\begin{defi}
+ On dira qu'une partie $\Omega$ d'un plan est étoilée lorsqu'il existe un point $O\in \Omega$ tel que, pour tout point $m\in \Omega$, le segment $[O,m]$ est inclus dans $\Omega$.
+\end{defi}
+\begin{rem}
+ Toute partie convexe est étoilée car \emph{tous} les segments entre deux points quelconques de $\Omega$ sont inclus dans $\Omega$.
+\end{rem}
+\begin{thm}[Lemme de Poincaré]
+Lorsque $\Omega$ est une partie étoilée d'un plan, toute 1-forme fermée de classe $\mathcal C^1$ dans $\Omega$  est exacte. 
+\end{thm}
+\begin{demo}
+ Dans un domaine étoilée $\Omega$, considérons une 1-forme fermée $\omega = Adx+Bdy$ avec $A$ et $B$ dans $\mathcal C^1(\Omega)$. Le caractère fermé se traduit par :
+\begin{displaymath}
+ \frac{\partial A}{\partial y}= \frac{\partial B}{\partial x}
+\end{displaymath}
+Un repère $(O,\overrightarrow i ,(\overrightarrow j))$ est fixé. Les fonctions coordonnées attachées à ce repère sont notées $x$ et $y$.\newline
+La démonstration consiste à former une fonction $f$ à l'aide d'une intégrale curviligne et à vérifier $df=\omega$. On sera amené à utiliser un théorème (admis) de dérivation d'une intégrale dépendant d'un paramètre ainsi qu'une intégration par parties.\newline
+Comme $\Omega$ est étoilé, on peut définir une fonction $f$ par l'intégrale curviligne:
+\begin{displaymath}
+ f(m)=\int_{[O,m]}\omega
+\end{displaymath}
+Le segment $[O,m]$ est paramétré pour $t$ entre $0$ et $1$ par $m_t=O+t\,\overrightarrow{Om}$. On en déduit :
+\begin{multline*}
+ f(m) = \int_0^1\left(A(m_t)x(m)+B(m_t)y(m) \right) dt \\ =
+\int_0^1\left(
+A\left(O+tx(m)\overrightarrow i +ty(m)\overrightarrow j\right)x(m)
++
+B\left(O+tx(m)\overrightarrow i +ty(m)\overrightarrow j\right)y(m) \right) dt
+\end{multline*}
+Admettons que l'on puisse calculer $\frac{\partial f}{\partial x}(m)$ en faisant passer l'opérateur sous l'intégrale. C'est essentiellement la continuité des dérivées qui le permet. Un énoncé précis du théorème utilisé ne sera pas donné ici. On obtient alors :
+\begin{multline*}
+ \frac{\partial f}{\partial x}(m) 
+= \int_0^1\left(
+A(m_t)+ \frac{\partial A}{\partial x}(m_t)tx(m) + \frac{\partial B}{\partial x}(m_t)ty(m)
+\right) dt \\
+= \int_0^1 A(m_t) \, dt +
+\int_0^1\left(
+\frac{\partial A}{\partial x}(m_t)x(m) + \frac{\partial A}{\partial y}(m_t)y(m)
+\right)t\, dt
+\end{multline*}
+En utilisant le caractère fermé de la forme. On peut considérer alors une fonction $\varphi$ de la variable réelle $t$:
+\begin{displaymath}
+ \varphi(t)=A(m_t)=A\left(O+tx(m)\overrightarrow i +ty(m)\overrightarrow j \right)
+\Rightarrow
+\varphi'(t)= \frac{\partial A}{\partial x}(m_t)x(m) + \frac{\partial A}{\partial y}(m_t)y(m)
+\end{displaymath}
+Cela permet de réécrire la dérivée partielle et de conclure par une intégration par parties :
+\begin{displaymath}
+ \frac{\partial f}{\partial x}(m) 
+= \int_0^1 \varphi(t)\,dt + \int_0^1 \varphi'(t)t\,dt
+= \left[ \varphi(t)t\right]_{t=0}^{t=1}
+= \varphi(1)=A(m) 
+\end{displaymath}
+On démontre de manière analogue l'autre relation
+\begin{displaymath}
+ \frac{\partial f}{\partial y}(m)=B(m) 
+\end{displaymath}
+\end{demo}
+
+\section{Théorème d'approximation au deuxième ordre.}
+\begin{thm}[Théorème d'approximation à l'ordre $2$]
+ Soit $f\in \mathcal C^2(\Omega)$ et $a\in \Omega$, soit $r$ la fonction définie dans $\Omega$ par :
+\begin{multline*}
+f(m) = f(a) +\dfrac{\partial f}{\partial x}(a)(x(m)-x(a))
++\dfrac{\partial f}{\partial y}(a)(y(m)-y(a)) \\
++\frac{1}{2}\left( \dfrac{\partial^2 f}{\partial x^2}(a)(x(m)-x(a))^2
++2\dfrac{\partial^2 f}{\partial x\partial y}(a)(x(m)-x(a))(y(m)-y(a))
++\dfrac{\partial^2 f}{\partial y^2}(a)(y(m)-y(a))^2\right)  
++r(m)
+\end{multline*}
+alors, pour toute norme $N$,
+\begin{displaymath}
+ \dfrac{r(m)}{N^2(m-a)} \xrightarrow{a} 0
+\end{displaymath}
+\end{thm}
+\begin{demo}
+ La démonstration est très proche de celle du théorème au premier ordre. Elle fait intervenir la relation suivante valable pour toute constante $C$ :
+\begin{displaymath}
+ \frac{1}{2}C =\int_0^1\left(\int_0^1Cdt_1 \right)t\, dt
+\end{displaymath}
+Dans la première démonstration (fig \ref{fig:C6308_1}), on a obtenu une expression intégrale de la différence entre l'accroissement et son approximation au premier ordre
+\begin{multline*}
+ f(m)-f(m_0)-\frac{\partial f}{\partial x}(m_0)a  -\frac{\partial f}{\partial b}(m_0)b \\
+=
+\int_0^1\left(
+\frac{\partial f}{\partial x}\left(m_0+ta\overrightarrow i\right)
+-
+\frac{\partial f}{\partial x}\left(m_0\right) \right)dt 
++
+\int_0^1\left(
+\frac{\partial f}{\partial y}\left(m_1+tb\overrightarrow j\right)
+-
+\frac{\partial f}{\partial y}\left(m_0\right) \right)dt 
+\end{multline*}
+On insère $\frac{\partial f}{\partial y}(m_1)$ dans la deuxième intégrale et on exprime encore les accroissements comme des intégrales. On obtient alors deux intégrales doubles et une simple
+\begin{multline*}
+ f(m)-f(m_0)-\frac{\partial f}{\partial x}(m_0)a  -\frac{\partial f}{\partial b}(m_0)b 
+=
+\left(
+  \int_0^1
+    \left( 
+      \int_0^1
+        \frac{\partial^2f}{\partial x^2}
+        \left(m_0+t_1ta\overrightarrow i\right)  
+      dt_1
+    \right)
+  t\,dt
+\right)a^2  \\
++\left(
+  \int_0^1
+    \left( 
+      \int_0^1
+        \frac{\partial^2f}{\partial y^2}
+        \left(m_1+t_1tb\overrightarrow j\right)  
+      dt_1
+    \right)
+  t\,dt
+\right)b^2  
++
+\left(
+ \int_0^1 
+    \frac{\partial^2f}{\partial x \partial y}
+    \left(m_0+ta\overrightarrow i\right)  
+  dt  
+\right) ab
+\end{multline*}
+Avec la remarque du début de la démonstration, on peut exprimer les termes au deuxième ordre comme des intégrales: une simple et deux doubles. On en déduit l'évaluation suivante du reste
+\begin{displaymath}
+ r(m)= Aa^2 + B b^2 + Cab
+\end{displaymath}
+avec
+\begin{multline*}
+A = 
+  \int_0^1
+    \left( 
+      \int_0^1
+        \left( 
+          \frac{\partial^2f}{\partial x^2}\left(m_0+t_1ta\overrightarrow i\right)
+           -  
+          \frac{\partial^2f}{\partial x^2}\left(m_0\right)
+        \right)dt_1
+    \right)
+  t\,dt \\
+B = 
+  \int_0^1
+    \left( 
+      \int_0^1
+        \left( 
+          \frac{\partial^2f}{\partial y^2}\left(m_1+t_1ta\overrightarrow i\right)
+           -  
+          \frac{\partial^2f}{\partial y^2}\left(m_0\right)
+        \right)dt_1
+    \right)
+  t\,dt \\
+C=
+ \int_0^1 
+    \left( 
+      \frac{\partial^2f}{\partial x \partial y}\left(m_0+ta\overrightarrow i\right)
+       -
+      \frac{\partial^2f}{\partial x \partial y}\left(m_0\right)
+    \right)  
+  dt  
+\end{multline*}
+Comme la fonction $f$ est $\mathcal C^2$, pour tout $\varepsilon>0$, il existe un $\alpha>0$ tel que, lorsque $m$ est dans le disque $D(m_0,\alpha)$, les valeurs absolues des différences entre les dérivées secondes dans les intégrales soient inférieures à $\varepsilon$. Les majorations de $|A|$, $|B|$, $|C|$ conduisent à :
+\begin{displaymath}
+ |r(m)|\leq \frac{1}{2}\varepsilon |a|^2 + \frac{1}{2}\varepsilon |b|^2 + \varepsilon |a| |b|
+=\frac{\varepsilon}{2}N_1(m-m_0)
+\end{displaymath}
+Ce qui démontre le théorème.
+\end{demo}
+\begin{rem}
+On peut adapter la démonstration précédente pour prouver en même temps le théorème de Schwarz et le théorème d'approximation au deuxième ordre
+\end{rem}
+
+
+\section{Indépendance de la différentielle d'une 1-forme par rapport au système de coordonnées.}
+\begin{thm}
+ Soit $(x,y)$ et $(u,v)$ deux systèmes de fonctions coordonnées dans un domaine $\Omega$. Soit $\omega$ une 1-forme différentielle de classe $\mathcal C^1$ qui s'exprime à l'aide des deux systèmes
+\begin{displaymath}
+ \omega = Adx+Bdy = Udu + Vdv
+\end{displaymath}
+alors :
+\begin{displaymath}
+ \left(
+-\frac{\partial A}{\partial y}+\frac{\partial B}{\partial x}
+ \right) dx\wedge dy 
+=
+  \left(
+-\frac{\partial U}{\partial v}+\frac{\partial V}{\partial u}
+ \right) du\wedge dv
+\end{displaymath}
+\end{thm}
+\begin{demo}
+ La démonstration se déroule selon les étapes suivantes:
+\begin{itemize}
+ \item Expression de $U$ et $V$ en fonction de $A$, $B$ et des dérivées partielles de $x$ et $y$ par rapport à $u$ et $v$.
+\item Simplification de 
+\begin{displaymath}
+-\frac{\partial U}{\partial v}+\frac{\partial V}{\partial u} 
+\end{displaymath}
+en utilisant le théorème de Schwarz
+\item Expression des opérateurs $\frac{\partial}{\partial u}$ et $\frac{\partial}{\partial v}$ en fonction de $\frac{\partial}{\partial x}$ et $\frac{\partial}{\partial y}$. Application aux dérivées de $A$ et $B$.
+\item Simplification et factorisation.
+\end{itemize}
+\begin{enumerate}
+ \item Exprimons les différentielles puis combinons les :
+\begin{displaymath}
+ \left\lbrace
+\begin{aligned}
+dx =& \frac{\partial x}{\partial u}du+\frac{\partial x}{\partial v}dv &\times& A\\
+dy =& \frac{\partial y}{\partial u}du+\frac{\partial y}{\partial v}dv &\times& B
+\end{aligned}
+ \right. 
+\hspace{0.5cm}\Rightarrow \hspace{0.5cm}
+\left\lbrace
+\begin{aligned}
+ U=& A\frac{\partial x}{\partial u}+B\frac{\partial y}{\partial u} \\
+ V=& A\frac{\partial x}{\partial v}+B\frac{\partial y}{\partial v}
+\end{aligned}
+ \right. 
+\end{displaymath}
+\item On compose par les opérateurs de dérivation, une simplification de termes croisés se produit par le théorème de Schwarz, il reste quatre termes :
+\begin{displaymath}
+\left\lbrace
+\begin{aligned}
+ \frac{\partial ^2 x}{\partial u \partial v}=& \frac{\partial ^2 x}{\partial v \partial u}\\
+ \frac{\partial ^2 y}{\partial u \partial v}=& \frac{\partial ^2 y}{\partial v \partial u}
+\end{aligned}
+\right.
+\hspace{0.5cm}\Rightarrow \hspace{0.5cm}
+ -\frac{\partial U}{\partial v}+\frac{\partial V}{\partial u}
+=
+-\frac{\partial A}{\partial v}\frac{\partial x}{\partial u} 
+-\frac{\partial B}{\partial v}\frac{\partial y}{\partial u} 
++\frac{\partial A}{\partial u}\frac{\partial x}{\partial v} 
++\frac{\partial B}{\partial u}\frac{\partial y}{\partial v}
+\end{displaymath}
+\item Les opérateurs de dérivation par rapport à $u$ et $v$ s'expriment en fonction des opérateurs de dérivation par rapport à $x$ et $y$.
+\begin{displaymath}
+ \left\lbrace
+\begin{aligned}
+ \frac{\partial }{\partial u}
+=&
+ \frac{\partial u}{\partial x}\frac{\partial }{\partial x}
++
+ \frac{\partial u}{\partial y}\frac{\partial }{\partial y}\\
+ \frac{\partial }{\partial v}
+=&
+ \frac{\partial v}{\partial x}\frac{\partial }{\partial x}
++
+ \frac{\partial v}{\partial y}\frac{\partial }{\partial y}
+\end{aligned}
+ \right. 
+\hspace{0.5cm}\Rightarrow \hspace{0.5cm}
+\left\lbrace
+\begin{aligned}
+  \frac{\partial A}{\partial u} =& 
+\underset{\blacklozenge}{\underbrace{\frac{\partial x}{\partial u}\frac{\partial A}{\partial x}}} +
+\frac{\partial y}{\partial u}\frac{\partial A}{\partial y} &\times & 
++\frac{\partial x}{\partial v} \\
+  \frac{\partial A}{\partial v} =& 
+\underset{\blacklozenge}{\underbrace{\frac{\partial x}{\partial v}\frac{\partial A}{\partial x}}} +
+\frac{\partial y}{\partial v}\frac{\partial A}{\partial y} &\times & 
+-\frac{\partial x}{\partial u} \\
+  \frac{\partial B}{\partial u} =& 
+\frac{\partial x}{\partial u}\frac{\partial B}{\partial x} +
+\underset{\clubsuit}{\underbrace{\frac{\partial y}{\partial u}\frac{\partial B}{\partial y}}} &\times & 
++\frac{\partial y}{\partial v} \\
+  \frac{\partial B}{\partial v} =& 
+\frac{\partial x}{\partial v}\frac{\partial B}{\partial x} +
+\underset{\clubsuit}{\underbrace{\frac{\partial y}{\partial v}\frac{\partial B}{\partial y}}} &\times & 
+-\frac{\partial y}{\partial u} \\
+\end{aligned}
+ \right. 
+\end{displaymath}
+Quatre termes se simplifient, il reste
+\begin{displaymath}
+ -\frac{\partial U}{\partial v}+\frac{\partial V}{\partial u}
+=
+\left(
+\frac{\partial x}{\partial v}\frac{\partial y}{\partial u}
+-
+\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}
+ \right)\frac{\partial A}{\partial y}
++
+\left(
+\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}
+-
+\frac{\partial x}{\partial v}\frac{\partial y}{\partial u}
+ \right)\frac{\partial B}{\partial x} 
+=
+\left(
+\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}
+-
+\frac{\partial x}{\partial v}\frac{\partial y}{\partial u}
+ \right)
+\left(
+-\frac{\partial A}{\partial y}+\frac{\partial B}{\partial x}
+\right) 
+\end{displaymath}
+On obtient alors le résultat annoncé en tenant compte de
+\begin{displaymath}
+ \left\lbrace
+\begin{aligned}
+dx =& \frac{\partial x}{\partial u}du+\frac{\partial x}{\partial v}dv \\
+dy =& \frac{\partial y}{\partial u}du+\frac{\partial y}{\partial v}dv 
+\end{aligned}
+ \right. 
+\hspace{0.5cm}\Rightarrow \hspace{0.5cm}
+dx\wedge dy = 
+\left(
+\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}
+-
+\frac{\partial x}{\partial v}\frac{\partial y}{\partial u}
+ \right)
+du\wedge dv
+\end{displaymath}
+\end{enumerate}
+
+\end{demo}
+
+\end{document}

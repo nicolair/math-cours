@@ -1,0 +1,113 @@
+\input{courspdf.tex}
+\debutcours{Rang d'une matrice}{alpha}
+
+
+Plusieurs définitions sont possibles pour le rang d'une matrice. On s'attachera ici à montrer qu'elles conduisent toutes au même nombre.
+\section{Introduction}
+Soit $M$ une matrice à $p$ lignes, $q$ colonnes et coefficients dans un corps $\K$. On peut définir plusieurs rangs attachés à $M$. L'objet de cette section est de montrer qu'ils sont tous égaux entre eux.
+\subsection{Outils vectoriels}
+Définition du rang d'une famille de vecteurs. Conservation par isomorphisme du rang d'une famille de vecteurs. Caractérisation du caractère libre ou générateur de la famille.
+\subsection{Rang des colonnes}
+\begin{defi}
+Le rang d'une matrice à $p$ lignes et $q$ colonnes est égal au rang de ses colonnes dans l'espace $\mathcal M_{p,1}(\K)$
+\end{defi}
+Exemple pour les colonnes canoniques on en déduit le rang d'une matrice trapèze.
+\index{Invariance du rang par multiplication par une matrice inversible}
+\begin{prop}
+ Soit $A\in\mathcal M_{p,q}(\K)$ et $P\in GL_{p}(\K)$:
+\begin{displaymath}
+ \rg(PA) = \rg(A)
+\end{displaymath}
+\begin{demo}
+Par définition du rang d'une matrice, et propriétés élémentaires du produit matriciel :
+\begin{displaymath}
+  \rg(PA) = \rg\left( C_1(PA),\cdots,C_q(PA)\right) 
+= \rg\left( PC_1(A),\cdots,PC_q(A)\right)
+\end{displaymath}
+Introduisons l'endomorphisme $\mu_P$ de multiplication à gauche par $P$ dans l'espace des matrices colonnes:
+\begin{displaymath}
+ \mu_P :
+\left\lbrace 
+\begin{aligned}
+ \mathcal M_{p,1}(\K) &\rightarrow \mathcal M_{p,1}(\K) \\
+ X &\rightarrow PX
+\end{aligned}
+\right. 
+\end{displaymath}
+En fait $\mu_P$ est un isomorphisme de bijection réciproque $\mu_{P^{-1}}$. On a alors
+\begin{displaymath}
+ \rg(PA) =\rg\left( \mu_P\left( C_1(A)\right) ,\cdots,\mu_P\left( C_q(A)\right) \right)
+= \rg\left( C_1(A),\cdots,C_q(A)\right) = \rg (A)
+\end{displaymath}
+car l'isomorphisme $\mu_P$ conserve le rang d'une famille de vecteurs.
+\end{demo}
+\end{prop}
+
+\begin{prop}
+ Soit $A\in\mathcal M_{p,q}(\K)$ et $Q\in GL_{q}(\K)$:
+\begin{displaymath}
+ \rg(AQ) = \rg(A)
+\end{displaymath}
+\end{prop}
+\begin{demo}
+La démonstration est assez différente de la précédente, car la multiplication à droite par $Q$ n'opère pas simplement sur les colonnes de $A$.
+\begin{displaymath}
+  \rg(AQ) = \rg\left( C_1(AQ),\cdots,C_q(AQ)\right) 
+= \rg\left( AC_1(Q),\cdots,AC_q(Q)\right)
+\end{displaymath}
+On rappelle que
+\begin{displaymath}
+ A
+\begin{bmatrix}
+\lambda_1\\ \vdots \\ \lambda_q 
+\end{bmatrix}
+= \lambda_1 C_1(A) + \cdots + \lambda_q C_q(A)\in \Vect\left(C_1(A),\cdots,C_q(A) \right) 
+\end{displaymath}
+Ceci se produit lorsque l'on remplace la colonne des $\lambda_i$ de la formule précédente par des $C_j(Q)$. On en déduit que:
+\begin{displaymath}
+ \forall j\in\{1,\cdots,q\} : AC_j(Q) \in \Vect\left(C_1(A),\cdots,C_p(A) \right)
+\end{displaymath}
+Ceci entraine
+\begin{displaymath}
+ \rg\left( AC_1(Q),\cdots,AC_q(Q)\right) \leq \dim\left( \Vect\left(C_1(A),\cdots,C_p(A) \right)\right)
+= \rg \left(C_1(A),\cdots,C_p(A) \right)
+\end{displaymath}
+On a donc prouvé
+\begin{displaymath}
+ \rg(AQ) \leq \rg(A)
+\end{displaymath}
+On applique cette même inégalité à $AQ$ dans le rôle de $A$ et $Q^{-1}$ dans celui de $Q$, la matrice $Q$ étant supposée inversible.
+\begin{displaymath}
+ \rg(A)=\rg((AQ)Q^{-1})\leq \rg(AQ)
+\end{displaymath}
+On a donc bien prouvé par double inégalité que
+\begin{displaymath}
+ \rg(AQ)=\rg(A)
+\end{displaymath}
+\end{demo}
+\`A partir des deux résultat précédent, la proposition suivante est immédiate:
+\begin{prop}[Invariance du rang par multiplication par une matrice inversible]
+\begin{displaymath}
+\forall A\in \mathcal M_{p,q}(\K),
+\forall P \in GL_p(\K), \forall Q \in GL_q(\K) :
+\rg(PAQ)=\rg(A)
+\end{displaymath}
+\end{prop}
+
+\subsection{Rang des matrices de familles de vecteurs ou d'applications linéaires}
+\subsection{Rang des lignes}
+\index{Rang de la transposée d'une matrice}
+\section{Calculs pratiques}
+Pour calculer pratiquement le rang d'une matrice, le principe est d'utiliser des transformations élémentaires pour transformer la matrice en une autre pour laquelle le rang est évident. On doit s'inspirer de l'algorithme du \href{\baseurl C2234.pdf}{pivot total}\index{algorithme du pivot total} sans manquer d'éventuelles simplifications spécifiques. On se ramène en général à une matrice de la forme
+\begin{align*}
+\begin{bmatrix}
+ \neq 0 &  &  &  &  &  \\
+ 0 & \ddots &  &  &  &  \\
+ \vdots &\ddots  &\neq 0 & .& .& . \\
+        &        &0      &0 & \cdots &  0\\
+        &        &\vdots & \vdots &  &\vdots  \\
+ 0      &        &   0   &   0    & \cdots & 0
+\end{bmatrix}
+\end{align*}
+
+\end{document}

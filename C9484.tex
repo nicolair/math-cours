@@ -1,0 +1,234 @@
+\input{courspdf.tex}
+\debutcours{TFCA - Inégalités entre nombres réels}{0.2 \tiny{\today}}
+\section{Inégalités et vocabulaire associé}
+La relation d'ordre dans $\R$ est l'inégalité large $\leq$. L'ensemble des réels est \emph{totalement ordonné} c'est à dire :
+\[
+  \forall (a,b)\in \R^2, \; \left( a \leq b \text{ ou } b \leq a\right).
+\]
+Dans un premier temps, une bonne pratique est de n'utiliser que cette relation en évitant $\geq$. Par exemple remplacer $b\geq a$ par $a\leq b$. On peut remarquer aussi que les inégalités strictes \emph{ne sont pas} des relations d'ordre.
+\begin{displaymath}
+ b > a \Leftrightarrow \text{non }\left( b \leq a\right) 
+\end{displaymath}
+La compatibilité avec les opérations se traduit par les règles usuelles.
+\begin{displaymath}
+\forall a\in \R, \forall b\in \R,\forall c\in \R,\;
+\left\lbrace 
+     \begin{aligned}
+         a \leq b &\Rightarrow a + c \leq b + c\\
+         \left. 
+             \begin{aligned}
+                a &\leq b \\ 0 &\leq c 
+             \end{aligned}
+         \right\rbrace &\Rightarrow ac \leq bc
+    \end{aligned}
+\right. 
+\end{displaymath}
+On peut en déduire la propriété suivante: soit $a\leq b$ réels avec $a\neq b$, il existe $c\in \R$ tel que $a < c < b$. En effet, il suffit de choisir $c= \frac{a+b}{2}$. 
+
+\begin{defi} \index{partie majorée} \index{majorant d'une partie}
+  Une partie $A$ de $\R$ est \emph{majorée} si et seulement si 
+  \begin{displaymath}
+    \exists M\in \R \text{ tel que } \forall a\in A, \; a\leq M .
+  \end{displaymath}
+  On dit alors que $M$ est un \emph{majorant} de $A$.
+\end{defi}
+\begin{defi} \index{partie minorée} \index{minorant d'une partie}
+  Une partie $A$ de $\R$ est \emph{minoréee} si et seulement si 
+  \begin{displaymath}
+    \exists m\in \R \text{ tel que } \forall a\in A, \; m\leq a
+  \end{displaymath}
+  On dit alors que $m$ est un \emph{minorant} de $A$.
+\end{defi}
+
+\begin{defi}
+  Une partie de $\R$ est dite bornée si et seulement si elle est majorée et minorée.
+\end{defi}
+
+\begin{prop}
+  Au plus un élément d'une partie $A$ de $\R$ est un majorant (resp minorant) de $A$.
+\end{prop}
+\begin{demo}
+  Considérons $a$ et $a'$ deux éléments de $A$ qui sont des majorants.
+\begin{displaymath}
+ \left. 
+ \begin{aligned}
+  a &\in A \\ a' &\text{ majorant de }A
+ \end{aligned}
+\right\rbrace \Rightarrow a \leq a'
+,\hspace{1cm}
+ \left. 
+ \begin{aligned}
+  a' &\in A \\ a &\text{ majorant de }A
+ \end{aligned}
+\right\rbrace \Rightarrow a' \leq a
+\end{displaymath}
+On déduit $a=a'$ de la double inégalité. Le raisonnement est analogue pour les minorants.
+\end{demo}
+\begin{defi}\index{plus petit élément}
+  Lorsqu'une partie $A$ possède un élément qui est aussi un minorant de $A$, cet unique élément est appelé \emph{le plus petit élément} de $A$ et noté $\min A$.
+\end{defi}
+\begin{defi}\index{plus grand élément}
+  Lorsqu'une partie $A$ possède un élément qui est aussi un majorant de $A$, cet unique élément est appelé \emph{le plus grand élément} de $A$ et noté $\max A$.
+\end{defi}
+\begin{rems}
+  \begin{itemize}
+    \item Le caractère totalement ordonné peut se reformuler en : toute paire de réels admet un plus petit élément et un plus grand élément. On peut en déduire que toute partie finie de $\R$ admet un plus grand et un plus petit élément. Pour une partie finie, on note
+\begin{displaymath}
+  \max(a_1,a_2, \cdots, a_p) \text{ au lieu de } \max\left\lbrace a_1,a_2, \cdots, a_p\right\rbrace .
+\end{displaymath}
+    \item La partie $]0,1[$ n'admet ni plus grand ni plus petit élément.
+  \end{itemize} 
+\end{rems}
+
+\begin{defi} \index{partie positive d'un réel} \index{partie negative d'un réel} \index{valeur absolue d'un réel}
+  Soit $x\in \R$, on définit la partie positive notée $x^+$ et la partie négative notée $x_-$ par:
+\begin{displaymath}
+  x^+ = \max(0,x), \hspace{1cm} x^- = \max(-x,0)
+\end{displaymath}
+\end{defi}
+\begin{prop}
+  \begin{displaymath}
+    \forall x\in x, \hspace{0.5cm} x = x^+ - x^-, \hspace{0.5cm} |x| = x^+ + x^-
+  \end{displaymath}
+\end{prop}
+Bien noter que la partie négative d'un nombre réel est positive.
+
+ \index{inégalité triangulaire}
+\begin{prop}[Inégalité triangulaire] Pour tous nombres réels $a$ et $b$.
+  \begin{displaymath}
+    |a + b| \leq |a| + |b| \hspace{1cm} \left| |a| - |b| \right| \leq |a-b|.
+  \end{displaymath}
+\end{prop}
+L'égalité dans la première inégalité se produit si et seulement si $a$ et $b$ sont de même signe.
+\begin{demo}
+  La démonstration de l'inégalité triangulaire est analogue à celle pour les nombres complexes et repose sur l'élévation au carré
+\begin{displaymath}
+  2ab \leq 2|a||b| \Rightarrow (a+b)^2 = a^2 + 2ab + b^2 \leq |a|^2 + 2|a||b| + |b|^2 = (|a| + |b|)^2 .
+\end{displaymath}
+L'égalité se produit donc si et seulemnt si $2ab = 2|a||b|$ c'est à dire si et seulement si $a$ et $b$ sont de même signe.\newline
+La deuxième inégalité se déduit de la première avec des décompositions idiotes
+\begin{displaymath}
+  \left. 
+  \begin{aligned}
+    |a| = |(a-b)+b|\leq |a-b| + |b| &\Rightarrow |a| - |b| \leq |a-b| \\
+    |b| = |(b-a)+a|\leq |b-a| + |a| &\Rightarrow |b| - |a| \leq |b-a|= |a-b| 
+  \end{aligned}
+\right\rbrace \Rightarrow \left| |a| - |b|\right| \leq |a-b|
+\end{displaymath}
+\end{demo}
+Les intervalles de $\R$ \index{intervalles réels} sont définis par des inégalités strictes ou larges. Il en existe 9 types ($a$ et $b$ sont des réels)
+\begin{itemize}
+ \item 4 bornés : $[a,b]=\left\lbrace x\in \R \text{ tq } a\leq x \leq b\right\rbrace$ , $[a,b[$, $]a,b]$, $]a,b[$.
+ \item 2 minorés et non majorés : $[a, +\infty[$, $]a,+\infty[$.
+ \item 2 majorés et non minorés : $]-\infty,b]$, $]-\infty,b[$.
+ \item ni majoré ni minoré : ce type d'intervalle se réduit à un seul intervalle $\R$ lui même. 
+\end{itemize}
+
+\begin{rems}
+ \begin{itemize}
+  \item \index{partie convexe}On introduira dans le cours sur l'\href{\baseurl C2192.pdf}{axiomatique des réels} la notion de \emph{partie convexe} et on démontrera que les intervalles sont les parties convexes de $\R$.
+  \item Pour $a$ et $b$ réels (avec $b>0$), l'ensemble des $x$ tels que $|x-a|\leq b$ est le segment $[a-b, a+b]$ (centré en $a$).
+ \end{itemize}
+\end{rems}
+
+\section{Exemples}
+\subsection{Inégalité de Cauchy Schwarz}
+\index{question de cours!inégalité de Cauchy-Schwarz}\index{inégalité de Cauchy-Shwarz}
+\begin{prop}
+ Soient $n$ naturels et $a_1,\cdots,a_n$, $b_1,\cdots,b_n$ des nombres réels. Alors :
+\begin{displaymath}
+ \left\vert \sum_{k=1}^n a_kb_k\right\vert \leq
+\sqrt{\sum_{k=1}^na_k^2} \,\sqrt{\sum_{k=1}^nb_k^2}.
+\end{displaymath}
+Lorsque les $a_i$ ne sont pas tous nuls, l'égalité a lieu si et seulement si il existe un réel $\lambda$ tel que $b_i=\lambda a_i$ pour tous les $i$ entre $1$ et $n$.
+\end{prop}
+\begin{demo}
+On considère l'expression du second degré en $t$ réel
+\begin{displaymath}
+ \varphi(t) = \sum_{k=1}^n(a_k+tb_k)^2.
+\end{displaymath}
+Par définition, elle ne prend que des valeurs positives et se développe en
+\begin{displaymath}
+ \varphi(t) = \left( \sum_{k=1}^nb_k^2\right)t^2 + 2\left( \sum_{k=1}^na_kb_k\right)t + \left( \sum_{k=1}^na_k^2\right) 
+\end{displaymath}
+Comme elle ne prend que des valeurs positives, son discriminant est négatif ou nul car s'il était strictement positif, l'expression serait strictement négative entre les racines. Le discriminant négatif traduit l'inégalité de Cauchy Schwarz.\newline
+Il y a égalité si et seulement si le discriminant est nul. Il existe alors un $t$ pour lequel l'expression est nulle. Tous les carrés doivent être nuls d'où la condition d'égalité.
+\end{demo}
+Exemple
+\begin{displaymath}
+ \left\vert a_1 a_3 + a_2 a_5 +a_3 a_6 + a_4 a_1 + a_5 a_2  + a_6 a_4 \right \vert \leq \sum_{i=1}^6 a_i^2.
+\end{displaymath}
+Dans cet exemple, les $b_i$ sont des $a_j$ permutés.
+
+\subsection{Le plus simple des encadrements}
+Pour $n$ nombres réels $a_1,a_2,\cdots,a_n$ compris entre $m$ et $M$ :
+\begin{displaymath}
+ nm\leq a_1+a_2+\cdots +a_n \leq nM .
+\end{displaymath}
+Ceci s'applique en particulier lorsque $m= \min(a_1,a_2,\cdots,a_n)$ ou $M= \max(a_1,a_2,\cdots,a_n)$.
+\index{inégalité de la moyenne}
+Cet  encadrement est aussi nommé \emph{inégalité de la moyenne} car il s'écrit
+\begin{displaymath}
+ m\leq \frac{1}{n}(a_1+\cdots+a_n)\leq M
+\end{displaymath}
+où le terme encadré est la \index{moyenne arithmétique} moyenne arithmétique des $a_i$.\newline
+Application à la série harmonique\index{série harmonique}. Notons
+\begin{displaymath}
+\forall n\in \N^*:\, h_n=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n} 
+\end{displaymath}
+et montrons que la série harmonique $(h_n)_{n\in \N^*}$ diverge vers $+\infty$. 
+\begin{demo}
+On peut se contenter que de montrer que l'ensemble des valeurs de la suite pour les puissances de $2$ n'est pas borné. On note donc 
+\begin{displaymath}
+  H_n = h_{2^n} = \sum_{k=1}^{2^n}\frac{1}{k}
+\end{displaymath}
+et on forme la différence entre deux termes consécutifs
+\begin{displaymath}
+  H_2 - H_1 = \frac{1}{3} + \frac{1}{4},\hspace{0.5cm}
+  H_3 - H_2 = \frac{1}{5} + \frac{1}{6} +\frac{1}{7} +\frac{1}{8} ,\hspace{0.5cm}
+  \cdots ,\hspace{0.5cm}
+  H_{p+1} - H_p = \frac{1}{2^p+1} + \frac{1}{2^p+2} + \cdots + \frac{1}{2^{p+1}}.
+\end{displaymath}
+La dernière somme contient $2^{p+1}-2^{p} = 2^{p}$ termes décroissants. Le plus petit est le dernier $\frac{1}{2^{p + 1}}$. On en tire
+\begin{displaymath}
+  H_{p+1} - H_p \geq 2^{p}\,\frac{1}{2^{p + 1}} = \frac{1}{2} 
+\end{displaymath}
+et cette inégalité est valable pour n'importe quel $p\geq 1$. On en tire
+\begin{displaymath}
+H_n = 1 + \frac{1}{2} + (H_2 - H_1) + \cdots (H_{n} - H_{n-1}) \geq 1 + \frac{1}{2} + (n-1)\times\frac{1}{2} = 1+\frac{n}{2} . 
+\end{displaymath}
+
+\end{demo}
+
+\subsection{Encadrement d'une somme de produits}
+\begin{prop}
+  Soit $a_1, a_2, \cdots, a_n$ réels et $b_1, b_2, \cdots, b_n$ réels strictement positifs. alors:
+  \begin{displaymath}
+    \min(a_1,a_2,\cdots,a_n) \sum_{i=1}^n b_i \leq a_1b_1 + a_2b_2 + \cdots + a_n b_n \leq \max(a_1,a_2,\cdots,a_n) \sum_{i=1}^n b_i.
+  \end{displaymath}
+\end{prop}
+\begin{demo}
+  Notons $m = \min(a_1,a_2,\cdots,a_n)$ et $M = \max(a_1,a_2,\cdots,a_n)$. Comme les $b_i$ sont positifs,
+  \begin{displaymath}
+    m \leq a_i \leq M \Rightarrow m b_i \leq a_i b_i \leq Mb_i .
+  \end{displaymath}
+En sommant les inégalités précédentes, on obtient l'encadrement annoncé.
+\end{demo}
+Application. Soit $0 < p < q$ entiers. On se propose de montrer
+\begin{displaymath}
+  S = \sum_{k = p}^{q}\frac{1}{k^2} \hspace{0.5cm}\Rightarrow \hspace{0.5cm}\frac{q-p+1}{pq} \leq S \leq \frac{(p+1)(q-p+1)}{p^2q}
+\end{displaymath}
+\begin{demo}
+  On se ramène à la forme précédente avec une des deux suites qui se somme facilement par dominos
+\begin{displaymath}
+  \frac{1}{k^2} = \underset{= a_k}{\underbrace{\frac{k+1}{k}}}\:\underset{= b_k}{\underbrace{\frac{1}{k(k+1)}}}
+\end{displaymath}
+Comme $\frac{k+1}{k} = 1+\frac{1}{k}$, le plus petit terme est $1+\frac{1}{q}$ et le plus grand $1+\frac{1}{p}$. De plus
+\begin{displaymath}
+  \sum_{k=p}^{q}\frac{1}{k(k+1)} = \sum_{k=p}^{q}\left( \frac{1}{k}-\frac{1}{k+1}\right) = \frac{1}{p}-\frac{1}{q+1} .
+  = \frac{q-p+1}{p(q+1)}
+\end{displaymath}
+On en déduit l'encadrement annoncé.
+\end{demo}
+
+\end{document}

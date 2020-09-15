@@ -1,0 +1,905 @@
+\input{courspdf.tex}
+\debutcours{Vocabulaire relatif aux ensembles et aux applications}{Version 0.6 \tiny{\today}}
+
+\section{Rudiments de logique - Ensembles}
+\subsection{Langage mathématique. Ensembles}
+\subsubsection{Vocabulaire}
+Le point de vue adopté est \og naïf\fg~ c'est à dire que le langage mathématique ne sera considéré dans ce cours que comme une partie du langage usuel (le sens de certains mots étant différent de leur sens habituel).
+\begin{description}
+ \item[langage mathématique]\index{langage mathématique}  En réalité, le véritable langage mathématique est complètement formalisé à partir d'un petit nombre de signes et de règles relatives aux combinaisons possibles de ces signes (syntaxe). On peut attribuer une valeur logique (c'est à dire \og VRAI\fg~ ou \og FAUX\fg~) à une phrase syntaxiquement correcte et convenir d'appeler \emph{proposition} une telle phrase. On parle alors d'évaluation booléenne de la proposition.\newline
+ Il est important de faire la différence entre une phrase incorrecte (syntaxiquement) et une proposition fausse\index{phrase incorrecte, phrase fausse}. Les termes \og phrase mathématique\fg~  (syntaxiquement correcte) et proposition (logique) sont synonymes.
+\begin{itemize}
+ \item \og\emph{Certaines araignées ont six pattes}\fg~ est syntaxiquement correcte mais logiquement fausse.
+ \item \og\emph{ont araignées Certaines six  pattes}\fg~ est syntaxiquement incorrecte. La question de sa valeur booléenne ne se pose pas.
+\end{itemize}
+Les constituants élémentaires du langage mathématique permettent de former des propositions. Ces constituants sont:
+\begin{itemize}
+ \item les variables,
+ 
+ \item les quantificateurs,
+
+ \item le verbe \og appartient à\fg,
+ 
+ \item les opérateurs logiques.
+\end{itemize}
+\`A partir de ces éléments, on peut former des propositions qui seront considérés comme des \emph{axiomes} c'est à dire de valeur booléenne \og VRAI\fg~ et qui constituent la \emph{théorie des ensembles}.
+
+\item[variable] Une variable est une lettre qui devient un nom lorsqu'elle est placée à droite d'un quantificateur.
+
+\item[quantificateurs]\index{quantificateurs} Seulement deux quantificateurs.
+\begin{itemize}
+ \item[\og quel que soit .. \fg: ] ou \og pour tout\fg~\index{pour tout} formalisé par le signe $\forall$. La phrase formalisée \og$\forall a$\fg~ signifie que $a$ désigne un objet quelconque indéfini.  Plusieurs $\forall$ peuvent se suivre, l'ordre dans lequel ils s'écrivent est sans importance.
+\item [\og il existe ... tel que \fg] \index{il existe}formalisé par le signe $\exists$. La phrase formalisée \og$\exists a $\fg~ signifie qu'il existe un objet mathématique désigné par $a$. Une phrase de ce genre se poursuit par un \og tel que\fg~ qui peut être sous-entendu (en langage formel ce \og tel que \fg~ s'écrit \og : \fg~ ou \og / \fg~) précédant une proposition contenant la lettre $a$ et qui s'évalue à \og VRAI \fg~ pour l'objet particulier représenté.
+\end{itemize}
+
+\item[appartient à]\index{appartient à} formalisé par le signe $\in$. La phrase \og $a \in A $\fg~ est la formalisation de \og$a$ est un élément de l'ensemble $A$\fg.
+\begin{itemize}
+ \item \og $1 \in \N$\fg~ est correcte et vraie
+ \item \og $\N \in \Z$\fg~ est correcte et fausse
+ \item \og $ 1\in 2 $\fg~ est correcte et fausse (car $2$ n'est pas un ensemble\footnote{en fait si car d'un point de vue constructif, tous les objets mathématiques sont des ensembles, mais cet ensemble particulier ne contient pas l'ensemble 1 par construction. Je ne donnerai pas de construction ensembliste de $\N$.})
+\end{itemize}
+
+\item[opérateurs logiques] Un opérateur logique permet de former une nouvelle proposition à partir de une ou plusieurs propositions. La nouvelle proposition peut être évaluée à une valeur booléenne lorsque l'on évalue les propositions qui la forment.\newline
+On commence avec seulement deux opérateurs logiques fondamentaux (ou universels)
+\begin{center}
+  \og non \fg \hspace{1cm} \og et \fg.
+\end{center}
+Ils permettent de combiner des propositions. Si $\mathcal{P}$ et $\mathcal{Q}$ sont des propositions alors \og$\text{non } \mathcal{P}$\fg, \og$\mathcal{P} \text{ et } \mathcal{Q}$\fg, \og$\mathcal{P} \text{ ou } \mathcal{Q}$\fg~ sont aussi des propositions.\newline
+En combinant les opérateurs universels, on peut former d'autres opérateurs: par exemple \og ou \fg\footnote{le \og ou \fg~ mathématique courant est le \og ou\fg~ \emph{inclusif}. Le \og ou \fg~ exclusif est plutôt désigné par \texttt{XOR} (eXclusive OR).}.
+\[
+ \left( \mathcal{P} \text{ ou } \mathcal{Q}\right)  = \text{non}\left( (\text{non } \mathcal{P}) \text{ et } (\text{non }\mathcal{Q})\right) .
+\]
+L'évaluation booléenne de ces nouvelles propositions se fait à partir de celles de $\mathcal{P}$ et $\mathcal{Q}$ et des \emph{tables de vérité} \index{table de vérité} des opérateurs.
+\begin{center}
+\hfill
+ \begin{tabular}{|c|c|}
+\hline
+$\mathcal{P}$ & non $\mathcal{P}$ \\ \hline
+V             & F                 \\ \hline
+F             & V                 \\ \hline
+ \end{tabular} 
+\hfill
+ \begin{tabular}{|c|c|c|}
+\hline
+$\mathcal{P}$ & $\mathcal{Q}$ & $\mathcal{P}$ et $\mathcal{Q}$ \\ \hline
+V             & V             &   V  \\ \hline
+V             & F             &   F \\ \hline
+F             & V             &   F \\ \hline
+F             & F             &   F  \\ \hline
+ \end{tabular} 
+\hfill  
+ \begin{tabular}{|c|c|c|}
+\hline
+$\mathcal{P}$ & $\mathcal{Q}$ & $\mathcal{P}$ ou $\mathcal{Q}$ \\ \hline
+V             & V             &   V  \\ \hline
+V             & F             &   V  \\ \hline
+F             & V             &   V  \\ \hline
+F             & F             &   F  \\ \hline
+ \end{tabular} 
+\hspace*{2cm}
+\end{center}
+Deux autres opérateurs d'usage courant sont l'\og implication\fg~ et l'\ogéquivalence\fg~ définis par
+\begin{itemize}
+  \item \og non $\mathcal{P}$ ou $\mathcal{Q}$\fg~ s'écrit \og $\mathcal{P} \Rightarrow \mathcal{Q}$\fg.\index{implication}
+  \item \og $\mathcal{P} \Rightarrow \mathcal{Q}$ et $\mathcal{Q} \Rightarrow \mathcal{P}$\fg~ s'écrit \og $\mathcal{P} \Leftrightarrow \mathcal{Q}$\fg.\index{éqivalence logique}
+\end{itemize}
+Ces opérateurs ne seront pas formalisés davantage. On s'attachera plutôt à \og faire sens\fg~ à l'aide du langage usuel.
+\end{description}
+
+\subsubsection{Bonnes pratiques}
+\begin{itemize}
+  \item Lorsque deux quantificateurs distincts se suivent, l'ordre est très important pour la signification de la phrase.
+  \begin{itemize}
+    \item \og$\forall x \;\exists N$ tel que ...\fg: le $N$ \emph{dépend} du $x$. Il est conseillé d'écrire plutôt $\forall x, \exists N_x$ de manière à rendre bien perceptible la dépendance de $N$ vis à vis de $x$. Pour chaque $x$ il existe bien un $N$ mais celui-ci dépend de $x$. Il n'y a aucune raison de supposer que ce sera le même pour deux $x$ distincts.
+    \item \og$\exists N$ tel que $\forall x  ...$\fg: cette fois le $N$ est valable \emph{pour tous} les $x$. 
+  \end{itemize}
+
+  \item Les quantificateurs s'échangent lors d'une négation.\newline
+La négation d'une phrase \og Tous les éléments $a$ de $A$ vérifient une propriété $P(a)$\fg~ (traduction formelle \og $\forall a \in A : P(a)$\fg~ est \og Il existe un élément $a$ de $A$ qui ne vérifie pas $P(a)$  (traduction formelle \og $\exists a \in A : \mathrm{non}P(a)$\fg~).\newline
+La négation d'une phrase \og Il existe un élément de $A$ qui vérifie $P(a)$\fg~ (traduction formelle \og $\exists a \in A : P(a)$\fg~) est \og Aucun élément de $A$ ne vérifie $P(a)$\fg~ ou encore \og $\forall a \in A : \mathrm{non} P(a)$\fg~.\newline
+Ainsi la négation de \og Certaines araignées ont six pattes\fg~ est \og Aucune araignée n'a six pattes\fg~ (ce qui est vrai car les araignées ont toujours huit pattes).
+
+  \item Les opérateurs logiques \og et \fg~ et \og ou \fg~ s'échangent dans une négation.
+\[
+  \text{non }\left( \mathcal{P} \text{ et } \mathcal{Q}\right) 
+  = \left( (\text{non }\mathcal{P}) \text{ ou } (\text{non }\mathcal{Q})\right)
+  \hspace{0.5cm}
+  \text{non }\left( \mathcal{P} \text{ ou } \mathcal{Q}\right) 
+  = \left( (\text{non }\mathcal{P}) \text{ et } (\text{non }\mathcal{Q})\right).
+\]
+  On en déduit la négation d'une implication
+\[
+  \text{non }(\mathcal{P} \Rightarrow \mathcal{Q}) 
+  = \text{non }((\text{non }\mathcal{P}) \text{ ou } \mathcal{Q})
+  = ( \mathcal{P} \text{ et } (\text{ non } \mathcal{Q}).
+\]
+
+  
+  \item \emph{IMPORTANT} Dans une phrase mathématique correcte, il ne doit figurer qu'une lettre après un quantificateur. \'Evitez en particulier les expressions. Par exemple
+\begin{displaymath}
+ \forall (x+iy) \in \C
+\end{displaymath}
+est à éviter. Préférer
+\begin{displaymath}
+ \forall z \in \C,\text{ posons } x=\Re(z)\text{ et } y=\Im(z)
+\end{displaymath}
+  
+  \item Attention au caractère contre-intuitif de la définition de l'implication et de sa table de vérité \bigskip 
+\begin{center} 
+ \begin{tabular}{|c|c|c|}
+\hline
+$\mathcal{P}$ & $\mathcal{Q}$ & non $\mathcal{P}$ ou $\mathcal{Q}$ \\ \hline
+V             & V             &   V  \\ \hline
+V             & F             &   F  \\ \hline
+F             & V             &   V  \\ \hline
+F             & F             &   V  \\ \hline
+ \end{tabular}   
+\end{center}\bigskip
+qui signifie par exemple que l'\emph{implication} \og $1 = 0 \Rightarrow \pi =0$\fg~ est vraie.\newline
+Pour n'importe quel ensemble $A$, la propriété $\emptyset \subset A$ est bien justifiée car, comme \og$x\in \emptyset$\fg~ est fausse, l'implication
+\begin{displaymath}
+  x\in \emptyset \Rightarrow x\in A
+\end{displaymath}
+est vraie.\newline
+La contraposition \index{contraposition} aussi est bien claire car \og $\text{ non } \mathcal{Q} \Rightarrow \text{ non } \mathcal{P}$\fg~ s'écrit
+\og $\mathcal{Q}$ ou non $\mathcal{P}$\fg.
+\end{itemize}
+
+\subsubsection{Propriétés des ensembles}
+\index{ensemble} Un ensemble est considéré de manière naïve c'est à dire comme une collection. Les objets d'une telle collection sont appelés \emph{éléments}. Attention, \emph{seules certaines collections sont des ensembles}. Par exemple la collection de tous les ensembles ne constitue pas un ensemble car un tel ensemble permet de former une phrase correcte et contradictoire (voir le paragraphe précédent). On ne cherchera pas davantage à préciser des conditions assurant qu'une collection est un ensemble.\newline
+On admet certaines propriétés et constructions. La liste suivante ne prétend pas être complète.
+\begin{itemize}
+ \item Il existe un ensemble particulier dit \emph{vide} noté $\emptyset$ et qui ne contient aucun élément. La phrase $\left(\forall x,\;  x\notin \emptyset \right) $ est vraie. On peut la considérer comme un axiome. 
+
+\item Toute collection n'est pas un ensemble. \label{paradox} \index{paradoxe de Russel} On ne peut pas non plus définir un ensemble par une proposition $\mathcal{P}$ quelconque c'est à dire par 
+\begin{displaymath}
+\forall x, \; \left( x\in A \Leftrightarrow  \mathcal{P}(x) \right) 
+\end{displaymath}
+En effet, on pourrait définir alors (paradoxe de Russel) un ensemble $E$ par
+\begin{displaymath}
+  \forall x, \; \left( x\in E \Leftrightarrow x \notin x \right) 
+\end{displaymath}
+On en déduit $E \in E \Leftrightarrow E\notin E$ et la proposition $E\in E$ serait donc à la fois vraie et fausse rendant la théorie inconsistante. 
+
+\item Pour garder le principe de la collection en évitant le paradoxe de Russel on utilise l'\emph{axiome de séparation}\index{axiome de séparation} qui consiste à limiter les propositions définissant un ensemble en se plaçant dans un ensemble déja fixé. On peut définir un ensemble $A$ à partir d'un ensemble $X$ et d'une proposition $\mathcal{P}$ par:
+\begin{displaymath}
+\forall x, \; \left( x\in A \Leftrightarrow \left( x \in X \text{ et } \mathcal{P}(x) \right) \right)   
+\end{displaymath}
+L'ensemble $A$ défini au dessus se note 
+\begin{displaymath}
+  A = \left\lbrace x\in X \text{ tq } \mathcal{P}(x) \right\rbrace .
+\end{displaymath}
+Un tel ensemble est une \emph{partie} de $X$ \index{partie d'un ensemble}.\newline
+Un ensemble $B$ est une partie de $A$ (ce qui se note $B \subset A$) si et seulement si tout élément de $B$ est un élément de $A$.
+\begin{displaymath}
+A \subset B \Leftrightarrow \left(\forall b, \;\left( b\in B \Rightarrow b \in A \right)   \right)   .
+\end{displaymath}
+Comme $b \in \emptyset$ est faux l'implication caractérisant $\emptyset \subset A$ est vraie. L'ensemble vide est une partie de n'importe quel ensemble.\newline
+D'autre part, $\forall A$, $A \subset A$. En effet, $\forall x$, $x\in X \Rightarrow x \in X$.
+
+\item La collection des parties d'un ensemble $A$ forme \emph{l'ensemble des parties} de $A$ (cette propriété est considérée ici comme axiome). Cet ensemble est noté $\mathcal P (A)$.
+\begin{displaymath}
+X \subset A \Leftrightarrow X \in \mathcal{P}(A) \Leftrightarrow \left(\forall x,\,  x\in X \Rightarrow x \in A \right)   
+\end{displaymath}
+D'après des remarques précédentes, pour tout $A$, $\emptyset$ et $A$ sont des éléments de $\mathcal{P}(A)$.
+
+\item Il n'existe pas d'ensemble $T$ (tout) qui vérifierait une propriété symétrique de celle caractérisant l'ensemble vide:
+\begin{displaymath}
+  \forall x,\;  x\in T .
+\end{displaymath}
+\index{la collection de tous les ensembles n'est pas un ensemble} En effet, un tel ensemble réactiverait le paradoxe de Russel malgré l'axiome de séparation. Considérons $E=\left\lbrace x\in T \text{ tq } x \notin x \right\rbrace$ alors:
+\begin{displaymath}
+ E\in E \Rightarrow E\notin E \Rightarrow \left( E\in T \text{ et } E\notin E\right)\text{ FAUX}
+ \Rightarrow E \in E \text{ car } E\in T \text{ par définition de $T$}
+\end{displaymath}
+
+\item Axiome de la paire. \index{axiome de la paire}
+\begin{displaymath}
+  \forall A, \forall B, \; \exists C \text{ tq } \forall x,\; \left( x\in C \Leftrightarrow x = A \text{ ou } x = B \right) 
+\end{displaymath}
+Lorsque $A\neq B$ l'ensemble $C$ est une \emph{paire} notée $\left\lbrace A,B \right\rbrace$. Si $A=B$, ceci définit un singleton $\left\lbrace A \right\rbrace$.\newline
+On peut vérifier que si $X$ est un singleton
+\[
+  \mathcal{P}(X) = \left\lbrace \emptyset , X\right\rbrace \text{ en particulier } 
+  \mathcal{P}(\left\lbrace \emptyset \right\rbrace) = \left\lbrace \emptyset, \left\lbrace \emptyset \right\rbrace \right\rbrace. 
+\]
+
+\item L'intersection de deux ensembles est un ensemble d'après l'axiome de séparation.
+
+\item Le complémentaire d'une partie d'un ensemble est défini à partir du principe de séparation. Pour toute partie $A$ de $X$, le complémentaire de $A$ dans $X$ est 
+\[
+  \left\lbrace x \in X \text{ tq } x\in A \text{ faux }\right\rbrace. 
+\]
+On le note $C_X(A)$. Lorsqu'il n'y a pas d'ambiguité sur le \og grand ensemble\fg~ $X$, on peut se permettre de le noter $\overline{A}$.
+
+
+\item La définition de la réunion est plus difficile à cause de l'impossibilité de la définir par la seule propriété
+\begin{displaymath}
+  x \in A \cup B \Leftrightarrow x\in A \text{ ou } x\in B
+\end{displaymath}
+Cette propriété est vraie mais elle ne suffit pas définir $A\cup B$ à cause du paradoxe de Russel. On introduit l'\emph{axiome de la réunion} \index{axiome de la réunion}
+\begin{displaymath}
+\forall X, \; \exists Y \text{ tel que } \left(\forall y, \; y\in Y \Leftrightarrow \exists A \in X \text{ tq } y \in A \right)   
+\end{displaymath}
+Lorsque $X$ est un ensemble d'ensembles, $Y$ apparait bien comme la réunion des éléments de $X$.\newline
+Imaginons que $X$ désigne un placard contenant des paquets de pâtes. Alors $Y$ désigne un très grand bocal dans lequel on aurait versé les contenus de tous les paquets du placard. On a bien que $y \in Y$ si et seulement il existe un paquet $A$ du placard contenant $y$.
+
+\item  Si $A$ et $B$ sont deux ensembles, il existe un ensemble noté $A\times B$ dit \emph{produit cartésien} des deux ensembles\index{produit cartésien de deux ensembles} dont les éléments sont des \emph{couples}. Ils sont notés $(a,b)$ avec $a$ élément de $A$ et $b$ élément de $B$. Par définition, si $(a,b)$ et $(a^\prime,b^\prime )$ sont deux éléments des $A\times B$ :
+\begin{displaymath}
+ (a,b) = (a^\prime,b^\prime ) \Leftrightarrow a=a^\prime \text{ et } b=b^\prime.
+\end{displaymath}
+\end{itemize}
+\begin{defi}[différence ensembliste]
+  Soit $A$ et $B$ deux parties d'un ensemble $E$. On définit $A \setminus B$ par
+\[
+  A \setminus B = A \cap \overline{B} = \left\lbrace a\in A \text{ tq } a\notin B \right\rbrace .
+\]
+\end{defi}
+\index{différence ensembliste}
+La \emph{complémentation} échange l'union et l'intersection.
+\begin{prop}
+  Soit $E$ un ensemble et $A$, $B$ des parties de $E$.
+\[
+  \overline{\overline{A}} = A,\hspace{0.5cm} \overline{A \cup B} = \overline{A} \cap \overline{B}
+  ,\hspace{0.5cm} \overline{A \cap B} = \overline{A} \cup \overline{B}.
+\]
+\end{prop}
+\begin{demo}
+Il s'agit simplement de la traduction dans le langage des ensembles définis par une condition (principe de séparation) de l'échange de \og et\fg~ avec \og ou\fg~ par la  négation logique.
+\end{demo}
+
+\begin{prop}
+  Soit $E$ un ensemble et $A$, $B$, $C$ des parties de $E$
+\begin{displaymath}
+  (1)\hspace{0.5cm} A\cup(B\cap C) = (A\cup B) \cap (A\cup C), \hspace{1cm}
+  (2)\hspace{0.5cm} A\cap(B\cup C) = (A\cap B) \cup (A\cap C).
+\end{displaymath}
+\end{prop}
+\begin{demo}
+$(1)$. On va prouver les deux inclusions.
+\begin{itemize}
+  \item Montrons d'abord que: $\forall x,\; x\in A \cup(B\cap C) \Rightarrow x \in (A\cup B) \cap (A\cup C)$. \newline
+  Considérons un $x$ quelconque dans $A \cup(B\cap C)$.
+  \begin{itemize}
+    \item Si $x\in A$ alors $x\in A\cup B$ et $x\in A\cup C$ donc $x \in (A\cup B) \cap (A\cup C)$.
+    \item Si $x\in B\cap C$ alors $x\in B$ et $x\in C$ donc $x\in A\cup B$ et $x\in A\cup C$ donc $x \in (A\cup B) \cap (A\cup C)$.
+  \end{itemize}
+Remarquer que les cas précédents ne s'excluent pas mais que la conclusion est la même pour les deux. On en déduit $A \cup(B\cap C) \subset (A\cup B) \cap (A\cup C)$. 
+  \item Montrons ensuite que: $\forall x,  x \in (A\cup B) \cap (A\cup C) \Rightarrow x\in A \cup(B\cap C)$. \newline
+  Considérons un $x$ quelconque dans $(A\cup B) \cap (A\cup C)$. Il appartient à $A\cup B$ et à $A\cup C$.
+  \begin{itemize}
+    \item Si $x\in A$ alors $x\in A \cup(B\cap C)$.
+    \item Si $x\notin A$ alors $x\in B$ et $x\in C$ donc $x\in B\cap C$ donc $x\in A \cup (B\cap C)$.
+  \end{itemize}
+La conclusion est la même dans les deux cas. On en déduit $(A\cup B) \cap (A\cup C) \subset A \cup(B\cap C)$.
+\end{itemize}
+On va déduire la relation (2) de la relation (1) appliquée aux complémentaires.
+\begin{multline*}
+\overline{A}\cup(\overline{B}\cap \overline{C}) = (\overline{A}\cup \overline{B}) \cap (\overline{A}\cup \overline{C}) 
+\Rightarrow
+\overline{\overline{A}\cup(\overline{B}\cap \overline{C})}
+= \overline{(\overline{A}\cup \overline{B}) \cap (\overline{A}\cup \overline{C})} \\
+\Rightarrow A \cap (B\cup C) = (A\cap B) \cup (A \cap C)
+\end{multline*}
+\end{demo}
+
+
+\subsection{Logique pratique}
+\subsubsection{Contraposition}
+La contraposée d'une implication $\mathcal{P} \Rightarrow \mathcal{Q}$ est l'implication $\text{ non } \mathcal{Q} \Rightarrow \text{ non } \mathcal{P}$.
+\index{raisonnement par contraposition}
+\subsubsection{Raisonnement par récurrence.}
+Soit $\mathcal{P}_n$ une proposition faisant intervenir une variable $n$ désignant un nombre entier. Le raisonnement par récurrence (dite \emph{faible}) utilise l'implication:
+\begin{displaymath}
+ \left( \mathcal{P}_0 \text{ et } \left( \forall n \in \N, \mathcal{P}_n \Rightarrow \mathcal{P}_{n+1}\right) \right) 
+ \Rightarrow \left( \forall n \in \N, \mathcal{P}_n\right) 
+\end{displaymath}
+La récurrence \emph{forte} utilise \emph{toutes} les hypotèses depuis le début. Pour tout $n\in \N$, notons
+\begin{displaymath}
+ \mathcal{Q}_n = \left( \mathcal{P}_0\text{et } \mathcal{P}_1 \text{ et } \cdots \text{ et } \mathcal{P}_n\right) 
+\end{displaymath}
+La récurrence forte est l'implication
+\begin{displaymath}
+ \left( \mathcal{P}_0 \text{ et } \left( \forall n \in \N, \mathcal{Q}_n \Rightarrow \mathcal{P}_{n+1}\right) \right) 
+ \Rightarrow \left( \forall n \in \N, \mathcal{P}_n\right) 
+\end{displaymath}
+On ne cherchera pas ici à justifier ces deux implications. Elle sont attachées à une propriété axiomatique de $\N$: toute partie non vide de $\N$ admet un plus petit élément dont on parlera plus loin.
+\index{raisonnement par récurrence (faible ou forte)}
+Elle est reliée au fait que toute partie non vide de $\N$ admet un plus petit élément.
+\subsubsection{Raisonnement par l'absurde}
+\index{raisonnement par l'absurde} Pour montrer qu'une proposition est vraie, on montre que sa négation est fausse. Pour montrer qu'une proposition est fausse, on forme une conséquence de cette proposition qui est clairement fausse.
+\subsubsection{Analyse-synthèse}
+\index{analyse-synthèse} Il s'agit d'un mode de démonstration (en deux temps) d'une proposition du type
+\begin{quote}
+ Il existe un unique élément $x$ vérifiant une propriété $\mathcal P (x)$.
+\end{quote}
+\begin{itemize}
+ \item Premier temps : analyse. On considère un élément $x$ vérifiant $\mathcal P (x)$ et on forme des conséquences pour obtenir des propriétés de $x$. Dans certains cas on peut arriver à obtenir des conditions vérifiées par $x$ tellement contraignantes qu'elles entrainent que $x$ ne peut être qu'un certain $x_0$. \newline
+Ceci prouve la partie \emph{unicité} de la proposition à démontrer.
+ \item Deuxième temps : synthèse. On considère l'élément particulier $x_0$ et on montre (en général par un calcul) qu'il vérifie la propriété $\mathcal P (x_0)$. Ce raisonnement ne peut \emph{jamais} s'appuyer sur l'analyse. La synthèse prouve l'existence d'une solution explicite au problème (à savoir $x_0$). L'analyse montre que c'est la seule possible.
+\end{itemize}
+
+Un raisonnement qui suppose que quelque chose (satisfaisant à des conditions) existe sert de deux manières seulement.
+\begin{itemize}
+ \item Pour montrer que cette chose \emph{n'existe pas} en formant une conséquence impossible.  (raisonnement par l'absurde)
+ \item Pour montrer que ces contraintes conduisent à un seul objet. (partie analyse d'une analyse-synthèse)  
+\end{itemize}
+\'Evidemment, on ne peut jamais prouver ainsi l'existence d'un objet vérifiant les contraintes imposées.
+
+
+\section{Applications - Familles}
+
+\subsection{Définitions - Vocabulaire}
+
+\subsubsection{Graphe fonctionnel}
+\index{graphe} \index{graphe fonctionnel}
+\begin{defi}
+Soit $A$ et $B$ deux ensembles, un \emph{graphe} est une partie de $A\times B$. Un graphe $G$ dans $A\times B$ est dit \emph{fonctionnel} si et seulement si il vérifie:
+\begin{displaymath}
+  \forall a\in E,\;\left( \{a\}\times B\right) \cap G \text{ est un singleton}
+\end{displaymath}  
+\end{defi}
+\begin{defi}
+\item[fonction]\index{fonction - application} Une fonction définie dans un ensemble $A$ et à valeurs dans un ensemble $B$ associe à chaque élément de $A$ un unique élément de $B$. Les fonctions définies dans un ensemble $A$ et à valeurs dans un ensemble $B$ forment un ensemble noté
+\begin{displaymath}
+ \mathcal F (A,B)
+\end{displaymath}
+Lorsque $f$ est une fonction définie dans $A$ et à valeurs dans $B$ (on dit aussi simplement de $A$ vers $B$), et $a$ un élément quelconque de $A$. L'unique élément de $B$ associé à $a$ par $f$ est appelé \emph{image} de $a$ par $f$ et noté $f(a)$.
+\end{defi}
+
+Un graphe fonctionnel définit une unique fonction et réciproquement.
+
+Dans ce cours, les termes \emph{fonction} et \emph{application} sont synonymes.
+
+La collection des fonctions de $E$ dans $F$ est un ensemble En effet il est formé des parties de l'ensemble $E\times F$ vérifiant une certaine propriété (celle d'être un graphe fonctionnel. L'ensemble des fonctions de $E$ dans $F$ est noté $\mathcal F(E,F)$. L'ensemble des fonctions de $E$ dans lui même est noté $\mathcal{F}(E)$.
+\newline
+On présente habituellement une fonction de $E$ vers $F$ sous la forme 
+\begin{displaymath}
+ f:
+\left\lbrace 
+\begin{aligned}
+ E &\rightarrow F \\ x &\mapsto f(x)
+\end{aligned}
+\right. 
+\end{displaymath}
+
+
+\subsubsection{Restrictions et prolongement}
+\index{restriction d'une fonction} 
+\begin{defi}[restriction d'une fonction]
+Soit $f$ une fonction de $E$ vers $F$ et $A$ une partie de $E$. La \emph{restriction} de $f$ à $A$ est définie seulement dans $A$ où elle coïncide avec $f$. Elle est notée $f_{|A}$.
+\begin{displaymath}
+ f_{|A}:
+\left\lbrace 
+\begin{aligned}
+ A &\rightarrow F \\ a &\mapsto f(a)
+\end{aligned}
+\right.  
+\end{displaymath}
+\end{defi}
+
+\index{prolongements d'une fonction}
+\begin{defi}[prolongements d'une fonction]
+ Soit $E$ et $F$ deux ensembles et $A$ une partie d'un ensemble $E$. Soit $f$ une fonction de $A$ dans $F$. Un \emph{prolongement} de $f$ est une fonction $g$ définie dans $E$ et dont la restriction à $A$ est $f$.  
+\end{defi}
+\begin{rems}
+ \begin{itemize}
+  \item Comme une fonction admet en général \emph{plusieurs} restriction, il n'existe pas de notation systématique pour un prolongement.
+  \item Soit $f\in \mathcal{A,F}$ et $g\in \mathcal{F}(E,F)$, $g$ est un prolongement de $f$ si et seulement si 
+\begin{displaymath}
+ \forall a\in A, \; f(a) = g(a)
+\end{displaymath}
+ \end{itemize}
+\end{rems}
+
+\index{corestriction d'une fonction}
+\begin{defi}[corestriction d'une fonction]
+ Soit $f$ une fonction de $E$ dans $F$ et $Y$ une partie de $F$ contenant toutes les images par $f$ c'est à dire telle que : $\forall a\in E$, $f(a)\in X$. La \emph{corestriction} de $f$ à $Y$ est l'application notée $f^{|Y}$ définie par:
+\begin{displaymath}
+ f^{|Y}:
+\left\lbrace 
+\begin{aligned}
+ E &\rightarrow Y \\ a &\mapsto f(a)
+\end{aligned}
+\right.  
+\end{displaymath} 
+\end{defi}
+
+\subsubsection{Exemples}
+\index{fonction caractéristique}
+\begin{defi}[fonction caractéristique d'une partie]
+Soit $E$ un ensemble et $A$ une partie de $E$, la fonction \emph{caractérisque} de $A$ (appelée aussi \emph{indicatrice}) est la fonction notée $1_A$ définie par:
+\begin{displaymath}
+ 1_A :
+\left\lbrace 
+\begin{aligned}
+    E &\rightarrow \Z \\
+    x &\mapsto
+        \left\lbrace 
+            \begin{aligned}
+                0 &\text{ si } x\notin A \\
+                1 &\text{ si } x\in A
+            \end{aligned}
+        \right. 
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{defi}
+\begin{rem}
+ On a choisi de définir une fonction caractéristique comme prenant ses valeurs dans $\Z$ car les fonctions à valeurs dans $\Z$ héritent des opérations dans $\Z$.
+\end{rem}
+
+\begin{defi}[fonctions identités.]
+ Soit $E$ un ensemble, la fonction \emph{identité} de $E$ est notée $\Id_E$. 
+\begin{displaymath}
+ \Id_E:
+\left\lbrace 
+\begin{aligned}
+ E &\rightarrow E \\ x &\mapsto x
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{defi}
+
+\subsubsection{Composition}
+\begin{defi}[composition de deux fonctions]
+ Soit $E$, $F$, $G$ trois ensembles et $f\in \mathcal{F}(E,F)$, $g\in \mathcal{F}(F,G)$. La composée des fonctions $f$ et $g$ est une fonction de $E$ dans $G$ notée $g \circ f$ et définie par:
+\begin{displaymath}
+ g \circ f:
+\left\lbrace 
+\begin{aligned}
+ E &\rightarrow G \\ x &\mapsto g(f(x))
+\end{aligned}
+\right. 
+\end{displaymath}
+\end{defi}
+\begin{rems}
+ \begin{itemize}
+  \item On vérifie facilement que cette opération est \emph{associative}.
+\begin{displaymath}
+ \forall f\in \mathcal{F}(E,F)\;\forall g\in \mathcal{F}(F,G)\;\forall h\in \mathcal{F}(G,H),
+\hspace{0.5cm}
+h \circ (g\circ f) = (h \circ g)\circ f
+\end{displaymath}
+On notera simplement $h\circ g \circ f$. Ceci s'étend à un nombre quelconque de fonctions.
+  \item Les fonctions identités sont des \ogéléments neutres \fg~ pour la composition.
+\begin{displaymath}
+\forall f\in \mathcal{F}(E,f),\; f \circ \Id_E = \Id_F \circ f = f.
+\end{displaymath}
+ \end{itemize}
+\end{rems}
+
+
+\subsubsection{Images directes et réciproques}
+\index{image directe d'une partie par une fonction} \index{image réciproque d'une partie par une fonction}
+\begin{defi}
+  Soit $f\in \mathcal{F}(E,F)$, soit $A$ une partie de l'espace de départ $E$ et $X$ une partie de l'espace d'arrivée $F$.\newline
+L'\emph{image directe} de $A$ par $f$ est l'ensemble des images par $f$ des éléments de $A$.\newline
+L'\emph{image réciproque} de $X$ par $f$ est l'ensemble des antécédents pour $f$ des éléments de $X$.
+\end{defi}
+Dans un premier temps, évitons de préciser une notation pour ces objets et reformulons les définitions.
+\begin{align*}
+\text{(image directe de $A$ par $f$)} &= \left\lbrace f(a), a\in A \right\rbrace \\
+\text{(image réciproque de $X$ par $f$)} &= \left\lbrace a\in A \text{ tq } f(a)\in X\right\rbrace\\
+\forall a\in A, \; a\in \text{(image réciproque de $X$ par $f$)} &\Leftrightarrow f(a)\in X\\
+\forall x\in X,\; x\in \text{(image directe de $A$ par $f$)} &\Leftrightarrow \exists a\in A \text{ tel que } x= f(a)
+\end{align*}
+On peut introduire des notations provisoires et poser
+\begin{displaymath}
+  \Phi(A) = \text{(image directe de $A$ par $f$)}\hspace{1cm} \varphi(X) = \text{(image directe de $A$ par $f$)}
+\end{displaymath}
+On définit ainsi, à partir de $f$, deux nouvelles fonctions $\Phi \in \mathcal{F}(\mathcal{P}(E),\mathcal{P}(F))$ et $\varphi \in \mathcal{F}(\mathcal{P}(F),\mathcal{P}(E))$ qui permettent d'énoncer et de démontrer les principales propriétés.
+\[
+\begin{aligned}
+ \forall (A,B)\in \mathcal{P}(E)^2,&\; A \subset B \Rightarrow \Phi(A) \subset \Phi(B) \\
+ \forall (X,Y)\in \mathcal{P}(F)^2,&\; X \subset Y \Rightarrow \varphi(X) \subset \varphi(Y)
+\end{aligned}
+\]
+
+Tout va bien pour les images réciproques.
+\begin{displaymath}
+\forall (X,Y)\in \mathcal{P}(F)^2, \; \varphi(X\cup Y) = \varphi(X) \cup \varphi(Y), \; \varphi(X\cap Y) = \varphi(X) \cap \varphi(Y), \;
+\varphi(\overline{X}) = \overline{\varphi(X)}
+\end{displaymath}
+Tout ne va pas tout à fait aussi bien pour les images directes.
+\begin{displaymath}
+\forall (A,B)\in \mathcal{P}(E)^2, \; \Phi(A\cup B) = \Phi(A) \cup \Phi(B), \; \Phi(A\cap B) \subset \Phi(A) \cap \Phi(B).
+\end{displaymath}
+Bien noter qu'il manque une inclusion. 
+
+Les notations définitives sont en contradiction avec les notations usuelles des fonctions.
+\begin{itemize}
+  \item Pour tout $A\in \mathcal{P}(E)$ (ou $A\subset E$), l'image directe de $A$ par $f$ est notée $f(A)$ (alors que $A$ n'est pas un élément de l'espace de définition de $f$).
+  \item Pour tout $X\in \mathcal{P}(F)$ (ou $X\subset F$), l'image réciproque de $X$ par $f$ est notée $f^{-1}(A)$ (alors que la fonction $f^{-1}$ n'est pas définie).
+\end{itemize}
+
+
+\subsection{Injections. Surjections. Bijections.}
+\begin{defi}
+Une fonction $f$ définie dans un ensemble $A$ et à valeurs dans un ensemble $B$  est dite
+\begin{itemize}
+ \item bijective : lorsque pour tout élément $b\in B$, il existe exactement un $a\in A$ tel que $f(a)=b$.
+\item injective : lorsque deux éléments \emph{distincts} $a$ et $a^\prime$ de $A$ ont des images distinctes. C'est équivalent à dire que pour tout élément $b\in B$, il existe \emph{au plus} un élément $a\in A$ tel que $f(a)=b$.
+\item surjective : lorsque pour tout élément $b\in B$, il existe un élément $a\in A$ tel que $f(a)=b$. Si il existe plusieurs éléments $a$ vérifiant cette propriété, la fonction n'est pas injective.
+\end{itemize}  
+\end{defi}
+
+
+\index{injection}\index{surjection}\index{bijection}
+\begin{rems}
+\begin{itemize}
+  \item Une application est bijective si et seulement si elle est injective et surjective.
+  \item   Montrons que $f$ injective entraine
+\[
+  \forall (A,B)\in \mathcal{P}(E)^2, \Phi(A\cap B) = \Phi(A) \cap \Phi(B).
+\]
+Il suffit de montrer que $\Phi(A) \cap \Phi(B) \subset \Phi(A\cap B)$.\newline
+Pour tout $x\in \Phi(A) \cap \Phi(B)$, il existe $a\in A$ et $b\in B$ tels que $x = f(a) = f(b)$. Comme $f$ est injective, cela entraine $a=b \in A \cap B$ ce qui prouve l'inclusion annocée.
+  \item Expression avec les images directes et réciproques:
+\[
+  f \text{ surjective} \Leftrightarrow F = f(E).
+\]
+  \item Dans le cas d'une fonction bijective seulement, les notations sont cohérentes.
+\[
+  f^{-1}(X) \text{ (image réciproque) } = \left\lbrace f^{-1}(x), x\in X \right\rbrace
+  = f^{-1}(X) \text{ (image directe) }.
+\]
+
+\end{itemize}
+\end{rems}
+
+\begin{propn}\label{condinjsurj}
+Soit $f$ une fonction de $E$ dans $F$ et $g$ une fonction de $F$ dans $G$. Alors:
+ \begin{align}
+  f \text{ injective et } g \text{ injective } &\Rightarrow g\circ f \text{ injective} \\
+  f \text{ surjective et } g \text{ surjective } &\Rightarrow g\circ f \text{ surjective} \\
+  f \text{ bijective et } g \text{ bijective } &\Rightarrow g\circ f \text{ bijective} \\
+  g\circ f \text{ injective } &\Rightarrow f \text{ injective} \\
+  g\circ f \text{ surjective } &\Rightarrow g \text{ surjective} 
+ \end{align}
+\end{propn}
+\begin{demo}
+\begin{enumerate}
+ \item Soit $a$ et $b$ quelconques dans $E$ tels que $g\circ f(a)= g\circ f(b)$. Alors $g(f(a)) = g(f(b))$ donc $f(a) = f(b)$ car $g$ est injective. Comme $f$ est injective, $f(a) = f(b)$ entraine $a = b$ ce qui assure l'injectivité de $g\circ f$.  
+ \item Soit $x$ quelconque dans $G$. Comme $g$ est surjective, il existe un $u\in F$ tel que $g(u) = x$. Comme $f$ est surjective, il existe $a\in E$ tel que $f(a)=u$. On en déduit que $g\circ f (a) = g(f(a)) = g(u) = x$. Ceci assur que $g\circ f$ est surjective. 
+ \item Cette implication découle des deux premières.
+ \item Soit $a$ et $b$ dans $E$ tels que $f(a) = f(b)$. Alors $g(f(a)) = g(f(b))$ donc $g \circ f (a) = g\circ f(b)$. Comme $g\circ f$ est injective, ceci entraine $a=b$ ce qui prouve l'injectivité de $f$.
+ \item Soit $x$ un élément quelconque de $G$. Comme $g\circ f$ est surjective, il existe $a\in E$ tel que $g\circ f(a) =x$. Alors $f(a)$ est un antécédent de $x$ pour $g$ car $x = g(f(a))$ ce qui prouve que $g$ est surjective.
+\end{enumerate}
+
+\end{demo}
+
+\begin{propn}\label{carbij}
+ $f$ est bijective si et seulement si il existe une fonction $g$ telle que
+\begin{align*}
+ f\circ g =\Id _F & & g\circ f = \Id _E
+\end{align*}
+Il existe au plus une telle fonction $g$. Lorsque $f$ est bijective cette unique fonction $g$ est notée $f^{-1}$ et appelée la bijection réciproque de $f$.
+\end{propn}
+\begin{demo}
+Supposons qu'il existe une fonction $g$ vérifiant les deux relations. Comme toute application identité est clairement bijective, on peut utiliser les deux dernières implications de la proposition \ref{condinjsurj}
+\begin{displaymath}
+\left. 
+\begin{aligned}
+ g\circ f \text{ injective }&\Rightarrow f \text{ injective}  \\ f\circ g \text{ surjective } &\Rightarrow f \text{ surjective} 
+\end{aligned}
+\right\rbrace 
+ \Rightarrow f \text{ bijective}
+\end{displaymath}
+Supposons $f$ bijective. Tout élément de $x\in F$ admet alors un unique $f$-antécédent. On définit une fonction $g$ de $F$ dans $G$ en notant $g(x)$ cet unique antécédent.\newline
+Par définition $f(g(x))=x$ car $g(x)$ est un $f$-antécédent de $x$ donc $f\circ g = \Id_F$. \newline
+Tout $a\in E$ est évidemment un antécédent de $f(a)$ donc $a=g(f(a))$ c'est à dire l'unique $f$-antécédent de $f(a)$. On en déduit l'autre relation $g \circ f  = \Id_E$.\newline
+Il reste à montrer l'unicité d'une telle fonction $g$. Supposons que $g_1$ et $g_2$ vérifient ces relations:
+\begin{displaymath}
+  f\circ g_1 = \Id_F \Rightarrow g_2\circ \left(f\circ g_1\right)  = g_2\circ\Id_F \Rightarrow
+\underset{= \Id_E}{\underbrace{\left(g_2\circ f\right)}}\circ g_1  = g_2  \Rightarrow g_1 = g_2
+\end{displaymath}
+\end{demo}
+\begin{rem}
+ Attention, $g\circ f$ bijective (ou même $g\circ f = \Id_F$ n'entraîne pas que $f$ et $g$ soient bijectives. Exemple du \og pousser \fg : $P$ et du \og tirer \fg : $T_0$.
+\end{rem}
+
+\begin{propn}
+  Soit $f$ bijective de $E$ dans $F$ et $g$ bijective de $F$ dans $G$. On sait que $g\circ f$ est bijective de plus:
+  \begin{displaymath}
+    (g\circ f)^{-1} = f^{-1} \circ g^{-1}
+  \end{displaymath}
+\end{propn}
+\begin{demo}
+  On vérifie facilement les relations de la proposition \ref{carbij} assurant que $f^{-1} \circ g^{-1}$ est la bijection réciproque de $g\circ f$.
+\end{demo}
+
+\begin{propn}
+ Si $E$ et $F$ sont deux ensembles finis avec le même nombre d'éléments, l'injectivité est équivalente à la surjectivité est équivalente à la bijectivité.
+\end{propn}
+\begin{demo}
+  Cette proposition résulte d'une propriété fondamentale de $\N$. On peut s'en convraincre en la reformulant ... à compléter
+\end{demo}
+
+\subsection{Familles. Suites}
+Les \emph{suites} et les familles sont des fonctions particuières que l'on choisit de ne pas présenter comme telles. \newline
+Par exemple une suite de nombres réels définie dans $\N$ est une fonction de $\N$ dans $\R$. On convient seulement de noter les images avec des indices plutôt qu'avec des parenthèses.
+\begin{displaymath}
+  \left( x_n\right)_{n\in \N} = 
+  \left\lbrace 
+  \begin{aligned}
+    \N &\rightarrow \R \\ n &\mapsto x_n
+  \end{aligned}
+\right. 
+\end{displaymath}
+Il faut surtout veiller à ne pas confondre une valeur particulière $x_n$ de la suite avec la suite elle même.
+Ainsi écrire \og la suite $x_n$\fg~ est une mauvaise pratique qui va retarder le moment où vous maitriserez vraiment les concepts. Soyez patients et obligez vous à écrire \og la suite $\left( x_n\right)_{n\in \N}$\fg.
+
+On parle aussi de familles d'éléments. Par exemple, si $I$ est un ensemble quelconque la famille $(e_i)_{i\in I}$ d'éléments d'un ensemble $E$ est une fonction
+\begin{displaymath}
+  (e_i)_{i\in I} = 
+  \left\lbrace 
+  \begin{aligned}
+    I &\rightarrow E \\ i &\mapsto e_i
+  \end{aligned}
+\right.   
+\end{displaymath}
+Dans le cas particuliers des familles de parties d'un ensemble, on peut généraliser l'union et l'intersection.
+\begin{defi}
+  Soit $(A_i)_{i\in I}$ une famille de parties d'un ensemble $E$. On définit $\bigcap_{i\in I}A_i$ et $\bigcup_{i\in I}A_i$ par :
+\begin{displaymath}
+  \forall x \in E,\hspace{0.5cm}
+  \left\lbrace 
+  \begin{aligned}
+    x\in \bigcap_{i\in I}A_i &\Leftrightarrow \forall i \in I,\; x\in A_i \\
+    x\in \bigcup_{i\in I}A_i &\Leftrightarrow \exists i \in I,\; x\in A_i 
+  \end{aligned}
+\right. 
+\end{displaymath}
+\end{defi}
+Vérifier les relations suivantes:
+\[
+ X \cap \left( \bigcup_{i\in I}A_i\right) = \bigcup_{i\in I}(X \cap A_i), \hspace{1cm}
+ \overline{\bigcap_{i \in I} A_i} = \bigcup_{i \in I} \overline{A_i}.
+\]
+
+
+\section{Relations}
+voir \href{\baseurl C3548.pdf}{Relations}
+\subsection{Vocabulaire}
+L'objet de cette section est de préciser mathématiquement les termes \og ranger\fg~  et \og classer\fg. Ces termes sont ambigus dans le langage usuel. Que signifie ranger une collection d'objets ? Deux acceptions seront considérées ici. \newline
+On peut utiliser des tiroirs ou des boîtes et plaçer les objets que l'on estime de même catégorie dans un même tiroir. On peut aussi hiérarchiser les objets : du plus petit au plus grand ou bien du plus précieux au moins précieux ou selon tout autre critère.\newline
+ Dans les deux cas le classement se fait à partir de \emph{relations} entre les objets. Ces relations ne sont pas de même nature ou plutôt ne possèdent pas les mêmes propriétés. On va d'abord préciser mathématiquement la notion de relation puis définir certaines propriétés que peuvent posséder les relations. Chacune des deux manières de classer correspond alors à une combinaison de ces propriétés définissant deux types de relations \emph{d'équivalence} ou \emph{d'ordre}.
+\begin{defi}
+ Une relation binaire sur un ensemble $E$ est une proposition faisant intervenir exactement deux éléments génériques de $E$.
+\end{defi}
+Une relation binaire est complètement déterminée par l'ensemble des couples dans $E\times E$ pour lesquels la proposition est vraie.\newline
+On adopte les notations suivantes.
+\begin{itemize}
+ \item si une proposition $\mathcal P(x,y)$ est donnée, on note $x\mathcal R y$ lorsque $\mathcal P(x,y)$ est vraie. On définit alors 
+\begin{displaymath}
+ G_\mathcal R = \left\lbrace (x,y)\in E\times E \text{ tels que } x\mathcal R y \right\rbrace 
+\end{displaymath}
+\item si une partie $G$ de $E \times E$ est donnée, on définit $\mathcal R_G$ par
+\begin{displaymath}
+ \forall (x,y)\in E\times E : x \mathcal R y \Leftrightarrow (x,y)\in G
+\end{displaymath}
+\end{itemize}
+
+ \begin{defi}[relation réflexive]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{réflexive} si et seulement si 
+\begin{displaymath}
+ \forall x\in E : x \mathcal R x
+\end{displaymath}
+ \end{defi}\index{relation réflexive}
+
+ \begin{defi}[relation symétrique]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{symétrique} si et seulement si 
+\begin{displaymath}
+ \forall (x,y)\in E\times E  : x \mathcal R y \Rightarrow y \mathcal R x
+\end{displaymath}
+ \end{defi}\index{relation symétrique}
+
+\begin{defi}[relation antisymétrique]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{antisymétrique} si et seulement si 
+\begin{equation*}
+ \forall (x,y)\in E^2  : 
+\left\lbrace 
+\begin{aligned}
+x &\mathcal R y \\
+y &\mathcal R x
+\end{aligned}
+\right. 
+ \Rightarrow x = z
+\end{equation*}
+ \end{defi}\index{relation antisymétrique}
+
+
+ \begin{defi}[relation transitive]
+  Une relation $\mathcal R$ définie sur un ensemble $E$ est \emph{transitive} si et seulement si 
+\begin{equation*}
+ \forall (x,y,z)\in E^3  : 
+\left\lbrace 
+\begin{aligned}
+x &\mathcal R y \\
+y &\mathcal R z
+\end{aligned}
+\right. 
+ \Rightarrow x \mathcal R z
+\end{equation*}
+ \end{defi}\index{relation transitive}
+
+\subsection{Relation d'équivalence}
+On s'intéresse ici à la première manière de ranger: avec des boîtes ou des tiroirs. Rappelons la définition d'une partition, puis définissons la notion de relation d'équivalence. Ces deux notions sont indissociables, le passage entre les deux est le concept de \emph{classe d'équivalence}.\newline
+Une partition d'un ensemble $E$ est une partie de $\mathcal{P}(E)$ vérifiant certaines conditions.
+\index{partition}
+\begin{defi}[partition]
+Soit $E$ un ensemble et $\mathcal{A}$ une partie de $\mathcal{P}(E)$.\newline
+On dira que $\mathcal A$ est une \emph{partition} de $E$ si est seulement si :
+\begin{align*}
+ &\emptyset \not \in \mathcal A \\
+ &\forall x\in E,\: \exists A \in \mathcal{A} \text{ tel que } x\in A \\
+ &\forall (A,B)\in \mathcal{A}^2, \: A \neq B \Rightarrow A \cap B =\emptyset
+\end{align*}
+\end{defi}
+
+
+\begin{defi}[relation d'équivalence]
+ Une relation réflexive, symétrique et transitive elle dite \emph{d'équivalence}
+\end{defi}\index{relation d'équivalence}
+
+\begin{exple}[relation d'équivalence attaché à une partition]
+ Soit $E$ un ensemble et $\mathcal{A}$ une partition de $E$. On peut définir à partir de $\mathcal A$ une relation $\mathcal{R}$ sur $E$ en posant :
+\begin{displaymath}
+ \forall (x,y)\in E^2 ,\:
+x\mathcal R y \Leftrightarrow \exists A \in \mathcal A \text{ tel que } x\in A \text{ et } y\in A
+\end{displaymath}
+On peut vérifier que $\mathcal R$ est une relation d'équivalence. On retrouve bien l'essence du rangement au sens des boîtes ou des tiroirs.
+\end{exple}
+Réciproquement, en se donnant une relation d'équivalence, on peut définir une partition en utilisant les classes d'équivalence.
+\index{classe d'équivalence}
+\begin{defi}[classe d'équivalence]
+ Soit $E$ un ensemble et $\mathcal R$ une relation d'équivalence sur $E$. Pour tout $x\in E$, on appelle \emph{classe d'équivalence} de $x$ la partie de $E$ notée $Cl_\mathcal{R}(x)$ définie par :
+\begin{displaymath}
+ \forall y\in E: y\in Cl_\mathcal{R}(x) \Leftrightarrow y \mathcal R x
+\end{displaymath}
+On dira qu'une partie $A$ de $E$ est une classe d'équivalence si et seulement si il existe un $x\in E$ tel que $A=Cl_\mathcal{R}(x)$.
+\end{defi}
+\begin{propn}\label{pclasse}
+ Soit $E$ un ensemble et $\mathcal R$ une relation d'équivalence sur $E$. Pour tous éléments $x$ et $y$ de $E$:
+ \begin{displaymath}
+   y \in Cl_\mathcal{R}(x) \Rightarrow Cl_\mathcal{R}(x) = Cl_\mathcal{R}(y) 
+ \end{displaymath}
+\end{propn}
+\begin{demo}
+  On suppose $ y \in Cl_\mathcal{R}(x)$ c'est à dire $y \mathcal{R} x$. Alors, pour tout $z \in Cl_\mathcal{R}(y)$, par transitivité,
+  \begin{displaymath}
+  \left. 
+  \begin{aligned}
+    z \mathcal{R} y \\ y \mathcal{R} x
+  \end{aligned}
+\right\rbrace \Rightarrow z\mathcal{R} x \Rightarrow z \in Cl_\mathcal{R}(x)
+  \end{displaymath}
+Ceci prouve $y \mathcal{R} x \Rightarrow Cl_\mathcal{R}(y) \subset Cl_\mathcal{R}(x)$. Or, par symétrie $y \mathcal{R} x \Rightarrow x \mathcal{R} y$ qui fournit l'inclusion dans l'autre sens.
+\end{demo}
+
+\begin{propn}
+ Soit $E$ un ensemble et $\mathcal R$ une relation d'équivalence sur $E$. L'ensemble des classes d'équivalence forme une partition de $E$. La relation d'équivalence attachée à cette partition est la relation de départ.
+\end{propn}
+\begin{demo}
+Comme une seule relation est en jeu, on note $Cl$ au lieu de $Cl_\mathcal{R}$. Soit $x$ et $y$ deux éléments de $E$, on va montrer que $Cl(x)\cap Cl(y)\neq \emptyset$ entraîne $Cl(x)=Cl(y)$.\newline
+Soit $z\in Cl(x)\cap Cl(y)$. Alors d'après la proposition \ref{pclasse}, 
+\begin{displaymath}
+  \left. 
+  \begin{aligned}
+    z\in Cl(x) \Rightarrow Cl(z)= Cl(x) \\ z\in Cl(y) \Rightarrow Cl(z)= Cl(y)  
+  \end{aligned}
+\right\rbrace \Rightarrow Cl(x) = Cl(y) 
+\end{displaymath}
+De plus chaque élément est évidemment dans sa propre classe ce qui achève de montrer que les classes d'équivalence constituent une partition.
+\end{demo}
+
+
+\begin{exple}[relation d'équivalence attachée à une fonction]
+ Soit $E$ et $\Omega$ deux ensembles et $f$ une fonction définie dans $E$ et à valeurs dans $\Omega$. On définit une relation $\mathcal R_f$ par : 
+\begin{displaymath}
+ \forall (a,b)\in E^2 : a\mathcal R_f b \Leftrightarrow f(a)=f(b)
+\end{displaymath}
+On peut vérifier que $\mathcal R_f$ est une relation  d'équivalence. Les classes d'équivalence sont les images réciproques des singletons d'éléments de l'image c'est à dire les
+\begin{displaymath}
+ f^{-1}(\{x\})\text{ pour } x\in f(E).
+\end{displaymath}
+\end{exple}
+
+\subsection{Relation d'ordre}
+\begin{defi}[relation d'ordre]
+ Une relation réflexive, antisymétrique et transitive est appelée \emph{relation d'ordre}
+\end{defi}\index{relation d'ordre}
+\begin{exples}
+\`A rédiger exples : $\subset$, $\leq$, divisibilité.  
+\end{exples}
+
+\index{ordre total}\index{ordre partiel}
+\begin{defi}[Ordre total ordre partiel]
+ Soit $E$ un ensemble muni d'une relation d'ordre $\prec$. On dira que $E$ est \emph{totalement ordonné} par $\prec$ ou que l'ordre (défini par $\prec$) est total si et seulement si 
+\begin{displaymath}
+ \forall (x,y)\in E^2 : x \prec y \text{ ou } y \prec x
+\end{displaymath}
+On dira que l'ordre est \emph{partiel} si et seulement si il n'est pas total.
+\end{defi}
+\begin{exples}
+ Dans $\mathcal P(E)$, l'ordre défini par $\subset$ n'est pas total. Lorsque $E$ est totalement ordonné, on peut définir une autre relation d'ordre à partir de la négation de $\prec$.
+\end{exples}
+
+\index{majorant} \index{minorant}
+\begin{defi}[Majorant, minorant]
+  Soit $E$ un ensemble muni d'une relation d'ordre $\prec$ et $A$ une partie de $E$.\newline
+On dit que $x$ est un \emph{majorant} de $E$ si et seulement si 
+\begin{displaymath}
+ \forall a\in A : a \prec x
+\end{displaymath}
+On dit que $x$ est un \emph{minorant} de $E$ si et seulement si 
+\begin{displaymath}
+ \forall a\in A : x \prec a
+\end{displaymath}
+\end{defi}
+\begin{rem}
+ Bien noter que l'on ne parle de majorant ou de minorant que d'une partie. On se permet de dire que si $a \prec b$ alors $b$ est un majorant de $a$ car $b$ c'est équivalent à $b$ est un majorant de $\{a\}$.
+\end{rem}
+
+
+\index{min : plus petit élément} \index{max : plus grand élément}
+\begin{propdef}[plus grand et plus petit élément]
+  Soit $E$ un ensemble muni d'une relation d'ordre $\prec$ et $A$ une partie de $E$.\newline
+Il existe dans $A$ au plus un minorant de $A$. Lorsqu'il en existe un, on dit que $A$ \emph{admet un plus petit élément} et on le note $\min A$. Cet élément est appelé le \emph{plus petit élément} de $A$.\newline
+Il existe dans $A$ au plus un majorant de $A$. Lorsqu'il en existe un, on dit que $A$ \emph{admet un plus grand élément} et on le note $\max A$. Cet élément est appelé le \emph{plus grand élément} de $A$.
+\end{propdef}
+\begin{demo}
+Considérons deux minorants $a$ et $a'$ dans $A$.Alors
+\begin{itemize}
+ \item $a \prec a'$ car $a$ est un minorant de $A$ et $a'$ un élément de $A$.
+ \item $a' \prec a$ car $a'$ est un minorant de $A$ et $a$ un élément de $A$.
+\end{itemize}
+Come $\prec$ est antisymétrique, on en déduit $a=a'$. Il existe donc au plus un plus petit élément. \newline
+On raisonne de même pour le plus grand élément.
+\end{demo}
+
+\begin{prop}[Propriété fondamentale de $\N$]
+  Toute partie non vide de $\N$ admet un plus petit élément.
+\end{prop}
+Cette propriété ne se démontre pas. Elle constitue une des propriétés d'une présentation axiomatique de $\N$. C'est elle qui assure la validité du raisonnement par  récurrence. \newline
+Pour tout $n\in \N$ soit $\mathcal{P}_n$ une proposition. Supposons  
+\[
+  \mathcal{P}_0 \text{ et } \left( \forall n \in \N, \; \mathcal{P}_n \Rightarrow \mathcal{P}_{n+1}\right).
+\]
+Considérons alors l'ensemble noté $\mathcal{A}$ des $n\in \N$ tels que $\mathcal{P}_n$ soit faux. Si $\mathcal{A}$ est non vide, il admet un plus petit élément $m$. De plus $m> 0$ car $\mathcal{P}_0$ est vrai. On peut donc considérer $m-1 \in \N$. De $\mathcal{P}_{m-1} \Rightarrow \mathcal{P}_m$ avec $\mathcal{P}_m$ faux, on déduit $\mathcal{P}_{m-1}$ faux c'est à dire $m-1 \in \mathcal{A}$ en contradiction avec le fait que $m$ est le plus petit élément de $\mathcal{A}$. Par conséquent $\mathcal{A}$ doit être vide c'est à dire que $\mathcal{P}_n$ est vraie pour tous les $n\in \N$.
+
+\begin{exples}
+\begin{itemize}
+  \item Dans $\R$ ordonné par $\leq$, la partie $[0,1[$ n'admet pas de plus grand élément.
+  \item Plaçons nous dans $\mathcal P(E)$ muni de la relation \og $\subset$ \fg. Soit $\Omega$ une partie de $\mathcal P(E)$.  Les éléments de $\Omega$ sont donc des parties de $E$. Soit $M \in \mathcal{P}(E)$:
+\[
+  M \text{ est un majorant de } \Omega \Leftrightarrow  \left( \forall A \in \Omega, \; A \subset M \right).
+\]
+En particulier $E$ est un majorant de $\Omega$. Notons $\mathcal{M}$ l'ensemble des majorants de $\Omega$. Il est non vide car il contient $E$. Pour s'entrainer à manier ces notions, on peut montrer que $\mathcal{M}$ admet un plus petit élément:  
+\[
+ \min(\mathcal{M}) = \bigcup_{A\in \Omega}A .
+\]
+\end{itemize}
+\end{exples}
+
+ 
+\index{sup : borne supérieure} \index{inf : borne inférieure} 
+\begin{defi}[borne supérieure, borne inférieure]
+  Soit $E$ un ensemble muni d'une relation d'ordre $\prec$ et $A$ une partie de $E$.\newline
+On dit que $A$ admet \emph{une borne supérieure} lorsque l'ensemble des majorants de $A$ admet un plus petit élément. Dans ce cas, il est noté $\sup A$.\newline
+On dit que $A$ admet \emph{une borne inférieure} lorsque l'ensemble des minorants de $A$ admet un plus grand élément. Dans ce cas, il est noté $\inf A$.
+\end{defi}
+\begin{rem}
+ Si $A$ admet un plus grand élément alors il admet une borne supérieure et $\sup A = \max A$.\newline
+En effet notons $m$ le plus petit élémentde $A$ et $\mathcal{M}$ l'ensemble des majorants de $A$. On veut montrer que $m$ est la bornne supérieure de $A$ c'est à dire le plus petit élément de $\mathcal{M}$. Par définition $m$ est un majorant de $A$ donc $m\in \mathcal{M}$. D'autre part $m\in A$, donc pour tout $\mu \in \mathcal{M}$, $a \prec \mu$ car $m\in A$ et $\mu$ est un majorant de $A$. On a bien montré que $m$ est un minorant de $\mathcal{M}$ donc
+\[
+ m = \min \mathcal{M} = \sup A.
+\]
+
+En revanche un ensemble peut admettre une borne supérieure sans admettre de plus grand élément. Exple $[0,1[$ dans $(\R,\leq)$. Idem pour les bornes inférieures et les plus petits éléments. 
+\end{rem}
+Les notions d'ensemble ordonné, de plus petit et de plus grand élément jouent un rôle capital dans l'\href{\baseurl C2007.pdf}{axiomatique des entiers naturels}.
+La notion de borne supérieure est capitale dans l'\href{\baseurl C2192.pdf}{axiomatique du corps des réels}.
+
+\end{document}

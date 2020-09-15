@@ -1,0 +1,174 @@
+\subsection{Espaces préhilbertiens réels}
+\begin{itshape}
+La notion de produit scalaire a été étudiée d'un point de vue élémentaire
+dans l'enseignement secondaire. Les objectifs  de ce chapitre sont les suivants :
+\begin{itemize}
+\item
+généraliser cette notion et  exploiter, principalement à travers l'étude des projections orthogonales, l'intuition acquise dans des situations géométriques en dimension $2$ ou $3$ pour traiter des problèmes posés dans un contexte plus abstrait ;
+\item
+approfondir l'étude de la géométrie euclidienne du plan, notamment à travers l'étude des isométries vectorielles.
+\end{itemize}
+Le cours doit être illustré par de nombreuses figures. Dans toute la suite, $E$ est un espace vectoriel réel.
+\end{itshape}
+
+\subsubsubsection{a) Produit scalaire}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Produit scalaire.}
+  \colchunk{Notations $\langle x , y \rangle$, $(x|y)$, $x \cdot y$.}
+  \colplacechunks
+
+  \colchunk{Produit scalaire canonique sur $\R^n$,\newline
+produit scalaire $(f |g)=\int_a^b fg$ sur $\mathcal{C} \big( [ a , b ] , \R \big)$.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{b) Norme associée à un produit scalaire}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Norme associée à un produit scalaire, distance.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Inégalité de Cauchy-Schwarz, cas d'égalité.}
+  \colchunk{Exemples : sommes finies, intégrales.}
+  \colplacechunks
+  
+  \colchunk{Inégalité triangulaire, cas d'égalité.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Formule de polarisation :
+\begin{displaymath}
+ 2 \big< x , y \big> = \| x+y \|^2 - \| x \|^2 - \| y \|^2 
+\end{displaymath}}
+  \colchunk{}
+  \colplacechunks
+  \end{parcolumns}
+
+\subsubsubsection{c) Orthogonalité}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Vecteurs orthogonaux, orthogonal d'une partie.}
+  \colchunk{Notation $X^\perp$.
+
+  L'orthogonal d'une partie est un sous-espace.}
+  \colplacechunks
+
+  \colchunk{Famille orthogonale, orthonormale (ou orthonormée).}
+  \colchunk{}
+  \colplacechunks
+  
+  \colchunk{Toute famille orthogonale de vecteurs non nuls est libre.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Théorème de Pythagore.}
+  \colchunk{}
+  \colplacechunks
+  
+  \colchunk{Algorithme d'orthonormalisation de Schmidt.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{d) Bases orthonormales}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Existence de bases orthonormales dans un espace euclidien. Théorème de la base orthonormale incomplète.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Coordonnées dans une base orthonormale, expressions du produit scalaire et de la norme.}
+  \colchunk{$\dbf$ PC et SI : mécanique et électricité.}
+  \colplacechunks
+  
+  \colchunk{Produit mixte dans un espace euclidien orienté.}
+  \colchunk{Notation $\big[ x_1 , \ldots , x_n \big]$.
+
+  Interprétation géométrique en termes de volume orienté, effet d'une application linéaire.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{e) Projection orthogonale sur un sous-espace de dimension finie}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Supplémentaire orthogonal d'un sous-espace de dimension finie.}
+  \colchunk{En dimension finie, dimension de l'orthogonal.}
+  \colplacechunks
+
+  \colchunk{Projection orthogonale. Expression du projeté orthogonal dans une base orthonormale.}
+  \colchunk{}
+  \colplacechunks
+  
+  \colchunk{Distance d'un vecteur à un sous-espace. Le projeté orthogonal de $x$ sur $V$ est l'unique élément de $V$ qui minimise la distance de $x$ à $V$.}
+  \colchunk{Notation $d (x , V)$.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{f) Hyperplans affines d'un espace euclidien}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Vecteur normal à un hyperplan affine d'un espace euclidien. Si l'espace est orienté, orientation d'un hyperplan par un vecteur normal.}
+  \colchunk{Lignes de niveau de $M \mapsto \overrightarrow{AM} \cdot \vec{n}$.}
+  \colplacechunks
+
+  \colchunk{\'Equations d'un hyperplan affine dans un repère orthonormal.}
+  \colchunk{Cas particuliers de $\R^2$ et $\R^3$.}
+  \colplacechunks
+  
+  \colchunk{Distance à un hyperplan affine défini par un point $A$ et un vecteur normal unitaire $\vec{n}$ : $\quad \big| \overrightarrow{AM} \cdot \vec{n} \big|$.}
+  \colchunk{Cas particuliers de $\R^2$ et $\R^3$.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{g) Isométries vectorielles d'un espace euclidien}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Isométrie vectorielle (ou automorphisme orthogonal) : définition par la linéarité et la conservation des normes, caractérisation par la conservation du produit scalaire, caractérisation par l'image d'une base orthonormale.}
+  \colchunk{}
+  \colplacechunks
+  
+  \colchunk{Symétrie orthogonale, réflexion.}
+  \colchunk{}
+  \colplacechunks
+
+
+  \colchunk{Groupe orthogonal.}
+  \colchunk{Notation $\mbox{O} (E)$.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{h) Matrices orthogonales}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Matrice orthogonale : définition ${}^t\!\! A A = I_n$, caractérisation par le caractère orthonormal de la famille des colonnes, des lignes.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Groupe orthogonal.}
+  \colchunk{Notations $\mbox{O}_n (\R)$, $\mbox{O} (n)$.}
+  \colplacechunks
+  
+  \colchunk{Lien entre les notions de base orthonormale, isométrie et matrice orthogonale.}
+  \colchunk{}
+  \colplacechunks
+
+  \colchunk{Déterminant d'une matrice orthogonale, d'une isométrie. Matrice orthogonale positive, négative ; isométrie positive, négative.}
+  \colchunk{}
+  \colplacechunks
+  
+  \colchunk{Groupe spécial orthogonal.}
+  \colchunk{Notations $\mbox{SO} (E)$, $\mbox{SO}_n (\R)$, $\mbox{SO} (n)$.}
+  \colplacechunks
+\end{parcolumns}
+
+\subsubsubsection{i) Isométries vectorielles en dimension 2}
+\begin{parcolumns}[rulebetween,distance=2.5cm]{2}
+  \colchunk{Description des matrices orthogonales et orthogonales positives de taille 2.}
+  \colchunk{Lien entre les éléments de $\mbox{SO}_2 (\R)$ et les nombres complexes de module 1.}
+  \colplacechunks
+
+  \colchunk{Rotation vectorielle d'un plan euclidien orienté.}
+  \colchunk{On introduira à cette occasion, sans soulever de difficulté sur la notion d'angle, la notion de mesure d'un angle orienté de vecteurs.
+
+$\dbf$ SI : mécanique.}
+  \colplacechunks
+  
+  \colchunk{Classification des isométries d'un plan euclidien orienté.}
+  \colchunk{}
+  \colplacechunks
+\end{parcolumns}

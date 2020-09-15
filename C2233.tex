@@ -1,0 +1,1067 @@
+\input{courspdf.tex}
+\debutcours{Matrices de familles de vecteurs et d'applications linéaires}{1.6 \tiny{le \today}}
+
+\section{Matrices d'une famille de vecteurs}
+\index{matrice d'un vecteur dans une base}
+\begin{defi}[Matrice d'un vecteur dans une base]
+ Soit $E$ un $\K$-espace vectoriel de dimension $p$ dont $\mathcal E = (e_1,\cdots,e_p)$ est une base. Soit $u\in E$.  La matrice de $u$ dans $\mathcal E$ est la matrice colonne des coordonnées de $u$ dans $\mathcal E$. Elle est notée $\Mat_{\mathcal{E}}(u)$.
+\[
+ \Mat_{\mathcal E}(u)=\begin{bmatrix}
+  \lambda_1\\
+  \vdots\\
+ \lambda_p
+                      \end{bmatrix}
+\Leftrightarrow
+u = \lambda_1e_1+\cdots+\lambda_pe_p.
+\]
+\end{defi}
+
+\begin{exples}
+ \begin{enumerate}
+  \item Soit $\mathcal{C}=(e_1,e_2,e_3)$ la base canonique de $\R^3$ et $x=(x_1,x_2,x_3)$. Alors
+\begin{displaymath}
+\Mat_{\mathcal{C}}(x)=
+\begin{bmatrix}
+ x_1 \\ x_2 \\ x_3 
+\end{bmatrix} .
+\end{displaymath}
+
+\item Polynômes d'interpolation. Soit $(a_0,a_1, \cdots, a_n)$ des éléments distincts de $\K$ et $\mathcal{L}=(L_0,\cdots , L_n)$ la base (de $\K_n[X]$) des \href{https://maquisdoc-math.fra1.digitaloceanspaces.com/C2233_1.pdf}{polynômes d'interpolation de Lagrange} attachée à ces valeurs.
+\[
+  \forall P \in \K_n[X], \hspace{0.5cm} 
+\Mat_{\mathcal{L}}(P) =
+\begin{bmatrix}
+  \widetilde{P}(a_0)\\ \vdots \\ \widetilde{P}(a_n)
+\end{bmatrix}
+\text{ car } P = \widetilde{P}(a_0)L_0 + \cdots + \widetilde{P}(a_n)L_n.
+\]
+
+\item Les espaces de matrices disposent de la base canonique formée par les matrices élémentaires. La matrice d'une matrice est la colonne des coordonnées dans la base canonique.\newline
+Par exemple $\mathcal{E} = \left( E(1,1), E(1,2), E(2,1), E(2,2) \right)$ est une base de $\mathcal{M}_2(\K)$ et 
+\begin{displaymath}
+  A= \begin{pmatrix}
+       a & b \\ c & d
+     \end{pmatrix}
+     = aE(1,1) + bE(1,2) + cE(2,1) + dE(2,2) 
+\Rightarrow
+\Mat_\mathcal{E}(A) =
+\begin{pmatrix}
+  a \\ b \\ c \\ d
+\end{pmatrix}.
+\end{displaymath}
+En particulier dans la base canonique, la matrice d'une matrice colonne est elle même alors que la matrice d'une ligne est sa \href{https://maquisdoc-math.fra1.digitaloceanspaces.com/C2233_2.pdf}{transposée}.
+ \end{enumerate}
+\end{exples}
+
+\begin{propn}
+ Soit $\mathcal{B}$ une base d'un $\K$-espace vectoriel $E$ de dimension $p$. L'application
+\begin{displaymath}
+ \left\lbrace 
+\begin{aligned}
+ E &\rightarrow \mathcal{M}_{p,1}(\K)\\
+ x&\mapsto \mathop{\mathrm{Mat}}_{\mathcal B}(x)
+\end{aligned}
+\right. 
+\end{displaymath}
+est un isomorphisme.
+\end{propn}
+\begin{demo}
+Ceci est justifié par le fait qu'un vecteur est caractérisé par ses coordonnées dans une base donnée et que les fonctions coordonnées dans une base sont linéaires.  
+\end{demo}
+\begin{rem}
+ La linéarité de cette application se traduit par:
+\begin{displaymath}
+ \mathop{\mathrm{Mat}}_{\mathcal B}(\lambda_1 x_1+\lambda_1 x_1+\cdots \lambda_q x_q)
+= \lambda_1 \mathop{\mathrm{Mat}}_{\mathcal B}(x_1) + \lambda_2 \mathop{\mathrm{Mat}}_{\mathcal B}(x_2) +\cdots +
+\lambda_q \mathop{\mathrm{Mat}}_{\mathcal B}(x_q).
+\end{displaymath}
+\end{rem}
+
+\index{matrice d'une famille de vecteurs dans une base}
+\begin{defi}[Matrice d'une famille de vecteurs dans une base]
+ Soit $E$ un $\K$-espace vectoriel de dimension $p$, $\mathcal B = (e_1,\cdots,e_p)$ une base de $E$ et $\mathcal U=(u_1,\cdots,u_q)$ une famille de vecteurs de $E$.  La matrice de $\mathcal U$ dans $\mathcal B$ est la matrice dont la colonne $j$ (quelconque entre $1$ et $q$) est $\Mat_\mathcal B(u_j)$. 
+Elle est notée
+\[
+ \Mat_\mathcal B(\mathcal U) = \Mat_\mathcal B(u_1,\cdots,u_q)\;
+\text{ et vérifie }\;
+ \forall j\in\{1,\cdots,q\} : C_j\left( \Mat_\mathcal B(\mathcal U)\right) = \Mat_\mathcal B(u_j).
+\]
+\end{defi}
+\begin{rem}
+ Dans les conditions de la définition précédente, $\Mat_\mathcal B(\mathcal U)$ est une matrice à $p$ lignes et $q$ colonnes.
+\end{rem}
+
+\begin{propn}
+Soit $\mathcal B $ une base d'un $\K$-espace vectoriel $E$, $(u_1,\cdots,u_q)\in E^q$ et $(\lambda_1,\cdots,\lambda_q) \in \K^q$.
+ \begin{displaymath}
+  \Mat_\mathcal B(u_1,\cdots,u_q)
+\begin{bmatrix}
+  \lambda_1\\
+  \vdots\\
+ \lambda_q
+\end{bmatrix} 
+= \Mat_\mathcal B(\lambda_1u_1 + \cdots + \lambda_qu_q).
+ \end{displaymath}
+\end{propn}
+\begin{demo}
+ D'après une des propriétés du produit matriciel, par linéarité,
+\begin{multline*}
+   \Mat_\mathcal B(u_1,\cdots,u_q)
+\begin{bmatrix}
+  \lambda_1\\
+  \vdots\\
+ \lambda_q
+\end{bmatrix} 
+= C_1(\Mat_\mathcal B(u_1,\cdots,u_q))\lambda_1+C_2(\Mat_\mathcal B(u_1,\cdots,u_q))\lambda_2+\cdots+ C_q(\Mat_\mathcal B(u_1,\cdots,u_q))\lambda_q \\ 
+= \lambda_1 \Mat_\mathcal B(u_1) + \lambda_2 \Mat_\mathcal B(u_2) + \cdots + \lambda_q \Mat_\mathcal B(u_q) 
+= \Mat_\mathcal B(\lambda_1u_1 + \cdots + \lambda_qu_q).
+\end{multline*}
+\end{demo}
+\index{matrice de passage}
+\begin{defi}[Matrice de passage]
+Soit $\mathcal B$ et $\mathcal B'$ deux bases d'un $\K$-espace vectoriel $E$ de dimension finie. La matrice de passage de  $\mathcal B$ vers $\mathcal B'$ est la matrice de la famille $\mathcal B'$ dans la base $\mathcal B$. Elle est notée $P_{\mathcal B \mathcal B'}$.
+ \begin{displaymath}
+  P_{\mathcal B \mathcal B'}= \Mat_\mathcal B (\mathcal B')
+ \end{displaymath}
+\end{defi}
+\begin{exples}
+ \begin{enumerate}
+  \item Soit $\mathcal{A} = (a_1,a_2,a_3)$ une base d'un $\K$-espace vectoriel $E$ et $\mathcal{B}=(b_1,b_2,b_3)$ une famille de vecteurs définie par 
+\[
+ \left\lbrace 
+ \begin{aligned}
+  b_1 &= a_1 + a_2 \\
+  b_2 &= a_1 + a_2 + a_3 \\
+  b_3 &= a_1 -a_2 + a_3
+ \end{aligned}
+\right. \Rightarrow
+\Mat_{\mathcal{A}}(\mathcal{B})
+= \begin{pmatrix}
+ 1 & 1 & 1 \\
+ 1 & 1 & -1 \\
+ 0 & 1 & 1
+  \end{pmatrix}
+.
+\]
+Ici, les $a$ s'expriment en fonction des $b$, la famille $\mathcal{B}$ est aussi une base (car génératrice à 3 vecteurs) et on peut former les deux matrices de passage.
+\[
+\left\lbrace 
+\begin{aligned}
+ a_1 &= b_1 -\frac{1}{2} b_2 + \frac{1}{2}b_3\\
+ a_2 &= \frac{1}{2}b_2 - \frac{1}{2}b_3\\
+ a_3 &= b_2 - b_1
+\end{aligned}
+\right. \Rightarrow
+P_{\mathcal{B} \mathcal{A}}=
+\begin{pmatrix}
+ 1 & 0 & -1 \\
+ -\frac{1}{2} & \frac{1}{2} &1 \\
+ \frac{1}{2} & -\frac{1}{2} & 0
+\end{pmatrix}, \hspace{0.5cm}
+P_{\mathcal{B} \mathcal{A}} = \Mat_{\mathcal{A}}(\mathcal{B})
+= \begin{pmatrix}
+ 1 & 1 & 1 \\
+ 1 & 1 & -1 \\
+ 0 & 1 & 1
+  \end{pmatrix}
+.
+\]
+On remarque que le produit des deux matrices de passage est $I_3$ (voir proposition \ref{prop: passinv}).
+  \item Par définition : $P_{\mathcal B \mathcal B}= \Mat_\mathcal B (\mathcal B)=I_p$.
+ \end{enumerate}
+\end{exples}
+
+\index{formule du changement de base}
+\begin{propn}[Formules de changement de base]
+ Soit $\mathcal B$ et $\mathcal B'$ deux bases d'un $\K$-espace vectoriel $E$ de dimension finie, soit $u$ un vecteur de $E$ et $(u_1,\cdots,u_q)$ une famille de $E$:
+\[
+ \Mat_{\mathcal B}(u) = P_{\mathcal B \mathcal B'}\Mat_{\mathcal B'}(u), \hspace{0.5cm}
+\Mat_{\mathcal B}(u_1,\cdots,u_q) = P_{\mathcal B \mathcal B'}\Mat_{\mathcal B'}(u_1,\cdots,u_q).
+\]
+\end{propn}
+\begin{demo}
+ Notons $p$ la dimension de $E$ avec $\mathcal{B}'=(e'_1,\cdots,e'_p)$ et 
+\begin{displaymath}
+ \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_p \end{pmatrix}= \Mat_{\mathcal B '}(u)
+\end{displaymath}
+les coordonnées de $u$. On peut alors écrire
+\begin{displaymath}
+ P_{\mathcal B \mathcal B'}\Mat_{\mathcal B'}(u)
+= \Mat_{\mathcal B}(e'_1,\cdots,e'_q)\begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_p \end{pmatrix}
+= \Mat_{\mathcal B}(\lambda_1 e'_1 + \cdots + \lambda_q e'_q)
+= \Mat_{\mathcal B}(u).
+\end{displaymath}
+Pour une famille de vecteurs, il suffit d'appliquer le premier résultat colonne par colonne.
+\end{demo}
+
+\begin{propn} \label{prop: passinv}
+Soit $\mathcal B$ et $\mathcal B'$ deux bases d'un $\K$-espace vectoriel $E$ de dimension finie. La matrice de passage $P_{\mathcal B \mathcal B'}$ est inversible d'inverse $P_{\mathcal B' \mathcal B}$
+\end{propn}
+\begin{demo}
+ On utilise la formule de changement de base en prenant $\mathcal{B}$ dans le rôle de la famille $(u_1,u_2,\cdots,u_p)$. On en déduit
+\begin{displaymath}
+ P_{\mathcal B \mathcal B'}P_{\mathcal B' \mathcal B}=P_{\mathcal B \mathcal B'}\Mat_{\mathcal B'}(\mathcal B)= \Mat_{\mathcal B}(\mathcal B) = I_p.
+\end{displaymath}
+On obtient l'autre produit en échangeant les rôles de $\mathcal{B}$ et $\mathcal{B}'$.
+\end{demo}
+\begin{rem}
+ Si on connait les coordonnées d'un vecteur $u$ dans une base $\mathcal B$ et les coordonnées des vecteurs de $\mathcal B$ dans une base $\mathcal B'$ (c'est à dire $P_{\mathcal B' \mathcal B}$), il est facile \href{https://maquisdoc-math.fra1.digitaloceanspaces.com/C2233_3.pdf}{(en remplaçant, développant, regroupant)} d'obtenir les coordonnées de $u$ dans $\mathcal B'$. Cela se traduit par la relation matricielle
+\begin{displaymath}
+ \Mat_{\mathcal B'} (u) = P_{\mathcal B' \mathcal B}\Mat_\mathcal B (u).
+\end{displaymath}
+En revanche si on connait seulement la matrice de passage $P_{\mathcal B \mathcal B'}$, un calcul supplémentaire est nécessaire.
+\end{rem}
+\begin{rems}
+On peut traduire matriciellement le caractère libre ou lié d'une famille de vecteurs. Soit $E$ un $\K$-espace vectoriel de dimension $p$, soit $\mathcal B$ une base de $E$.
+ \begin{enumerate}
+  \item Soit $u_1,\cdots,u_p$ une famille de $p$ vecteurs de $E$.
+\begin{displaymath}
+(u_1,\cdots,u_p)\text{ base de } E \Leftrightarrow (u_1,\cdots,u_p)\text{ libre }
+\Leftrightarrow \Mat_\mathcal B(u_1,\cdots,u_p) \text{ inversible}.
+\end{displaymath}
+\item Soit $u_1,\cdots,u_q$ une famille de $q$ vecteurs de $E$.
+\begin{displaymath}
+(u_1,\cdots,u_q)\text{ liée }
+\Leftrightarrow \exists X\in \mathcal M_{q,1}, 
+X\neq
+\begin{bmatrix}
+  0\\
+  \vdots\\
+ 0
+\end{bmatrix} 
+\text{ tel que }
+\Mat_\mathcal B(u_1,\cdots,u_q)X=
+\begin{bmatrix}
+  0\\
+  \vdots\\
+ 0
+\end{bmatrix} .
+\end{displaymath}
+\end{enumerate}
+\end{rems}
+
+\section{Matrices d'une application linéaire}
+\subsection{Définition. Image d'un vecteur.}
+\index{matrice d'une application linéaire dans des bases}
+\begin{defi}[matrice d'une application linéaire dans des bases]
+ Soit $E$ et $F$ deux $\K$-espaces vectoriels, soit $\mathcal U=(u_1,\cdots,u_q)$ une base de $E$ et $\mathcal V=(v_1,\cdots,v_p)$ une base de $F$, soit $f$ une application linéaire de $E$ dans $F$. La matrice de $f$ dans les bases $\mathcal U$ et $\mathcal V$ est la matrice à $p$ lignes et $q$ colonnes définie par
+\begin{displaymath}
+ \Mat_{\mathcal U \mathcal V}f = \Mat_{\mathcal V}(f(\mathcal U))= \Mat_{\mathcal V}(f(u_1),\cdots,f(u_q))
+\end{displaymath}
+Dans le cas d'un endomorphisme $f\in\mathcal L(E)$, lorsque la base est la même au départ et à l'arrivée, on note
+\begin{displaymath}
+ \Mat_{\mathcal U}f =\Mat_{\mathcal U \mathcal U}f
+\end{displaymath}
+\end{defi}
+\begin{rem}
+ Soit $\mathcal U$ et $\mathcal V$ des bases d'un $\K$-espace vectoriel $E$
+\[
+ \Mat_{\mathcal U} Id_E = I_p , \hspace{1cm}
+ \Mat_{\mathcal V \mathcal U}Id_E = P_{\mathcal U \mathcal V} \; \text{ (matrice de passage).}
+\]
+\end{rem}
+
+\begin{propn} \label{matimagevect}
+ Soit $E$ et $F$ deux $\K$-espaces vectoriels, soit $\mathcal U=(u_1,\cdots,u_q)$ une base de $E$ et $\mathcal V=(v_1,\cdots,v_p)$ une base de $F$, soit $f$ une application linéaire de $E$ dans $F$ et $u$ un vecteur de $E$:
+\begin{displaymath}
+ \Mat_{\mathcal V}(f(u)) = \Mat_{\mathcal U \mathcal V}f \, \Mat_{\mathcal U}u
+\end{displaymath}
+\end{propn}
+\begin{demo}
+Notons $A = \Mat_{\mathcal U \mathcal V}f$ et $X = \Mat_{\mathcal U}u$.
+\[
+ f(x) = f(x_1u_1 + \cdots + x_q u_q) = \sum_{j=1}^q x_jf(u_j)
+ = \sum_{j=1}^q x_j \left( \sum_{i=1}^p a_{i j}v_i\right) 
+ = \sum_{i=1}^p \left( \sum_{j=1}^q a_{i j}x_j\right)v_i
+\]
+où $\sum_{i=1}^p a_{i j}x_j$ est à la fois la ligne $i$ de la matrice colonne $AX$ et la coordonnée de $f(x)$ relative à $v_i$.
+\end{demo}
+
+\begin{propn} \label{prlgtlin}
+ Soit $E$ et $F$ deux $\K$-espaces vectoriels, soit $\mathcal U=(u_1,\cdots,u_q)$ une base de $E$ et $\mathcal V=(v_1,\cdots,v_p)$ une base de $F$. L'application \og$\Mat_{\mathcal U \mathcal V}$\fg~ de $\mathcal L (E,F)$ dans $\mathcal M _{pq}(\K)$ qui, à une application linéaire, associe sa matrice dans les bases considérées est un isomorphisme de $\K$-espace vectoriel.
+\end{propn}
+\begin{demo}
+ Il s'agit en fait d'une reformulation du théorème de prolongement linéaire \href{https://maquisdoc-math.fra1.digitaloceanspaces.com/C2233_5.pdf}{(détail manuscrit)}.\index{théorème de prolongement linéaire}
+\end{demo}
+
+\begin{propn} \label{matcomp}
+Soit $E$, $F$, $G$ trois $\K$-espaces vectoriels, soit $\mathcal U$ une base de $E$ et $\mathcal V$ une base de $F$ et $\mathcal W$ une base de $G$, soit $f\in\mathcal L(E,F)$ et $g\in\mathcal L(F,G)$:
+\begin{displaymath}
+ \Mat_{\mathcal U \mathcal W}g\circ f = \Mat_{\mathcal V \mathcal W}g\,\Mat_{\mathcal U \mathcal V}f
+\end{displaymath}
+\end{propn}
+\begin{demo}
+On note $A = \Mat_{\mathcal V \mathcal W}g \in \mathcal{M}_{p q}(\K)$ et $B = \Mat_{\mathcal U \mathcal v}f \in \mathcal{M}_{q r}(\K)$ c'est à dire $\dim(E) = r$, $\dim(F) = q$ et $\dim(G) =p$. Alors, d'après la proposition \ref{matimagevect},
+\[
+ \forall k \in \llbracket 1,r \rrbracket,\;  C_k(AB) = AC_k(B) = \Mat_{\mathcal V \mathcal W}g\, \Mat_{\mathcal{V}}(f(u_k))
+ = \Mat_{\mathcal{W}}(g\circ f (u_k))
+ = C_k(\Mat_{\mathcal U \mathcal W}g \circ f).
+\]
+Ce qui prouve le résultat (\href{https://maquisdoc-math.fra1.digitaloceanspaces.com/C2233_4.pdf}{détail manuscrit}).
+\end{demo}
+
+\begin{propn}
+ Soit $\mathcal U$ une base d'un $\K$-espace vectoriel $E$ de dimension $p$. L'application de $\mathcal L(E)$ dans $\mathcal M_p(\K)$ qui à tout $f$ associe $\Mat_{\mathcal U}f$ est un isomorphisme d'algèbre.
+\end{propn}
+\begin{demo}
+Cette application est bijective (proposition \ref{prlgtlin}). Elle transporte les opérations (proposition \ref{matcomp}) et l'élément unité (neutre multiplicatif):
+\begin{multline*}
+\forall (f,g) \in \mathcal{L}(E)^2, \forall \lambda \in \K, \hspace{1cm}
+ \Mat_{\mathcal U}(f+g) =  \Mat_{\mathcal U}(f) +  \Mat_{\mathcal U}(g),  \; \Mat_{\mathcal U}(\lambda f) =  \lambda \Mat_{\mathcal U}(f), \\
+ \Mat_{\mathcal U}(f\circ g) =  \Mat_{\mathcal U}(f)  \Mat_{\mathcal U}(g), \; \Mat_{\mathcal U}(\Id_E) = I_p.
+\end{multline*}
+\end{demo}
+
+\subsection{Application linéaire canoniquement associée à une matrice}
+\index{application linéaire canoniquement associée à une matrice}
+\index{noyau d'une matrice} \index{image d'une matrice} \index{rang d'une matrice}
+\begin{defi}
+  Soit $M\in \mathcal{M}_{p,q}(\K)$. L'application linéaire canoniquement associée à $M$ est la multiplication (notée $\mu_M$ ou $\gamma_M$) d'une colonne par $M$ soit:
+\begin{displaymath}
+\mu_M:\;  \left\lbrace 
+  \begin{aligned}
+    \mathcal{M}_{q,1}(\K) \rightarrow& \mathcal{M}_{p,1}(\K) \\
+    X \mapsto& MX
+  \end{aligned}
+  \right. 
+\end{displaymath}
+Le noyau de $M$ est le noyau de $\mu_M$, l'image de $M$ est l'image de $\mu_M$, le rang de $M$ est le rang de $\mu_M$.
+\end{defi}
+\begin{rems}
+  \begin{itemize}
+    \item Les colonnes de $M$ engendrent son image.
+    \item Les lignes de $M$ forment un système d'équations de son noyau.
+    \item $\forall (M,M') \in \mathcal{M}_{p}(\K)^2$, $\mu_M \circ \mu_{M'} = \mu_{MM'}$. On en déduit la proposition suivante 
+  \end{itemize}
+\end{rems}
+\begin{propn}\label{carctinvers}
+  Une matrice carrée $M$ est inversible si et seulement si $\mu_M$ est bijective si et seulement si son noyau est réduit au sous espace nul ou si ses colonnes forment une base de l'espace des matrices colonnes.
+\end{propn}
+
+\begin{propn}
+  Une matrice triangulaire est inversible si et seulement si ses termes diagonaux sont tous non nuls.
+\end{propn}
+\begin{demo}
+Soit $A$ triangulaire supérieure avec les termes diagonaux $a_{i i}$ tous non nuls. Montrons que la famille des colonnes est libre. Si
+\[
+\lambda_1 
+ \begin{pmatrix}
+  a_{1 1} \\ 0 \\ 0 \\ \vdots \\ 0
+ \end{pmatrix}
++ \lambda_2 
+\begin{pmatrix}
+  a_{1 2} \\ a_{2 2} \\ 0 \\ \vdots \\ 0
+ \end{pmatrix}
+ \cdots 
++ \lambda_p 
+\begin{pmatrix}
+  a_{1 p} \\ a_{2 p} \\ \vdots \\ 0 \\ a_{p p}
+ \end{pmatrix} 
+ =
+\begin{pmatrix}
+  0 \\ 0 \\ \vdots \\ 0 \\ 0
+ \end{pmatrix} 
+\text{ alors }
+\left.
+\begin{aligned}
+  \lambda_p a_{p p} &= 0 \\ a_{p p} &\neq 0
+\end{aligned}
+\right\rbrace \Rightarrow \lambda_p = 0
+\]
+en considérant seulement la dernière ligne de cette relation. On considère ensuite la ligne $p-1$ et on remonte....\newline
+D'après la proposition \ref{carctinvers}, la matrice $A$ est inversible car la famille de ses colonnes est libre.\newline
+Si $A$ est triangulaire inférieure, on raisonne de la même manière mais en descendant en considérant d'abord la première ligne de la combinaison puis la deuxième ...\newline
+Supposons qu'il existe $i$ tel que $a_{i i} = 0$. Alors les $i$ premières colonnes de $A$ sont dans $\Vect(X_1,\cdots, X_{i-1})$ où les $X_k$ forment la base canonique de l'espace des colonnes. D'après la condition suffisante de dépendance, une famille de $i$ vecteurs dans un espace de dimension $i-1$ est toujours liée donc $A$ n'est pas inversible. Ceci montre que $A$ inversible entraine que tous ses termes diagonaux sont non nuls.
+\end{demo}
+
+\begin{propn}
+  L'inverse d'une matrice inversible triangulaire supérieure (resp inférieure) est triangulaire supérieure (resp inférieure).
+\end{propn}
+\begin{demo}
+  Soit $A$ triangulaire supérieure inversible $p\times p$. Notons $Y_1, \cdots Y_p$ ses colonnes. Elles s'expriment en fonctions des $(X_1, \cdots X_p)$ de la base canonique des colonnes.
+\[
+  \left\lbrace
+  \begin{aligned}
+    \underset{\neq 0}{a_{1 1}} X_1&              &                     & &= Y_1 \\
+    a_{1 2} X_1& + \underset{\neq 0 }{a_{2 2}}X_2&                     & &= Y_2 \\
+               &             &                                         & &\vdots \\
+    a_{1 2} X_1& + a_{2 2}X_2& + \cdots + \underset{\neq 0}{a_{p p}}X_p& &= Y_p
+  \end{aligned}
+  \right.
+\]
+On peut exprimer les $Y$ avec les $X$ car les $a_{i i}$ sont non nuls. Il existe des $b_{i j}$ formant une matrice $B$ tels que :
+\[
+  \left\lbrace
+  \begin{aligned}
+    X_1 &= b_{1 1} Y_1\\
+    X_2 &= b_{1 2} Y_1 + b_{2 2}Y_2 \\
+        &\vdots \\
+    X_p &= b_{1 p} Y_1& + b_{2 p}Y_2& + \cdots + b_{p p}Y_p
+  \end{aligned}
+  \right.
+  \Leftrightarrow
+  I_p = B A
+  \text{ avec }
+  B =
+  \begin{pmatrix}
+    b_{1 1} & b_{1 2} & \cdots &b_{1 p} \\
+    0       & b_{2 2} & \cdots &b_{2 p} \\
+            &  0      & \ddots & \vdots \\
+    0       & 0       &        &b_{p p} \\
+  \end{pmatrix}
+\]
+qui est triangulaire supérieure. Pour les matrices triangulaires inférieures, on peut raisonner de manière analogue ou utiliser la transposition pour se ramener au premier cas.
+\end{demo}
+
+
+\subsection{Des bases pour une matrice simple}
+\begin{propn} \label{prop: equivJr}
+ Soit $E$ de dimension $q$ et $F$ de dimension $p$ deux $\K$-espaces vectoriels. Soit $f\in\mathcal L(E,F)$ une application linéaire de rang $r$. Alors $r\leq\min(p,q)$ et il existe des bases $\mathcal U$ de $E$ et $\mathcal V$ de $F$ telles que :
+\begin{displaymath}
+ \Mat_{\mathcal U \mathcal V}f = 
+\begin{bmatrix}
+1      & 0      &   &   &        & 0 \\
+0      & \ddots & 0 &   &        & \\
+       & 0      & 1 & 0 &        & 0 \\
+\vdots & \vdots & 0 & 0 &        & \vdots \\
+       &        &   &   & \ddots & \\
+0      & \cdots & 0 &   & \cdots & 0
+\end{bmatrix}\;
+\text{ (notée $J_r(p,q)$) }.
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ Le rang $r$ de $f$ est la dimension de $f(E)$ qui est un sous-espace vectoriel de $F$ donc $r\leq \dim F = p$. 
+ D'autre part, d'après le théorème du rang, $\dim E=\dim(\ker f) + \rg f$ donc $\rg f\leq \dim E = q$.\newline
+Considérons une base $(v_1,\cdots,v_r)$ de $f(E)$.\newline
+Chacun de ses vecteurs étant une image, il existe $(u_1,\cdots,u_r) \in E^r$ tels que $f(u_i)=v_i$ pour $i \in \llbracket 1, r\rrbracket$. D'après le théorème du rang, $\dim(\ker f) = q-r$, considérons une base $(u_{r+1},\cdots,u_q)$ de $\ker f$ et formons la famille
+\begin{displaymath}
+ \mathcal U = (u_1,\cdots ,u_r,u_{r+1},\cdots,u_q).
+\end{displaymath}
+Montrons que c'est une base de $E$.\newline
+Comme elle est formée de $q=\dim E$ vecteurs, il suffit de prouver qu'elle est libre.
+\[
+\forall (\lambda_1,\cdots,\lambda_q) \in \R^q,\hspace{0.5cm} \text{ si } \lambda_1 u_1 +\cdots +\lambda_q u_q = 0_E,                                                                                                                                                    
+\]
+en composant par $f$, on élimine les vecteurs du noyau d'où
+\begin{displaymath}
+\lambda_1 f(u_1) + \cdots +\lambda_r f(u_r) = \lambda_1 v_1 +\cdots +\lambda_r v_r = 0_F   .                                                                                                                                                          
+\end{displaymath}
+La famille $(v_1,\cdots,v_r)$ est libre car c'est une base de $f(E)$ donc $\lambda_i = 0$ pour $i \in \llbracket 1, r\rrbracket$.\newline
+Pour les autres $\lambda_j$, on exploite le fait que $(u_{r+1},\cdots,u_q)$ est libre car c'est une base du noyau.\newline
+La famille $\mathcal{U}$ est bien libre, c'est une base de $E$.\newline
+On complète la famille libre $(v_1,\cdots,v_r)$ en une base $\mathcal{V} = (v_1,\cdots,v_p)$.\newline
+On aura alors $f(u_i)=v_i$ pour $i$ entre $1$ et $r$ et $f(u_i)=0_F$ pour les autres $i$. La matrice de $f$ dans les bases $\mathcal{U}$ et $\mathcal{V}$ est bien celle annoncée.
+\end{demo}
+
+\subsection{Changements de bases}
+\index{formule du changement de base}
+\begin{propn}[formule du changement de base] \label{chgtbase}
+ Soit $E$ et $F$ deux $\K$-espaces vectoriels et $f\in\mathcal L(E,F)$, soit $\mathcal U$ et $\mathcal U'$ deux bases de $E$, soit $\mathcal V$ et $\mathcal V'$ deux bases de $F$: 
+\begin{displaymath}
+ \Mat_{\mathcal U' \mathcal V'}f 
+= P_{\mathcal V' \mathcal V} \, \Mat_{\mathcal U \mathcal V}f \, P_{\mathcal U \mathcal U'}
+= P_{\mathcal V \mathcal V'}^{-1} \, \Mat_{\mathcal U \mathcal V}f \, P_{\mathcal U \mathcal U'}
+\end{displaymath}
+\end{propn}
+\begin{demo}
+On utilise l'interprétation d'une matrice de passage comme la matrice d'une identité et la proposition \ref{matcomp} sur la matrice d'une composée d'applications linéaires.
+\begin{displaymath}
+\left\lbrace 
+\begin{aligned}
+P_{\mathcal V' \mathcal V} &= \Mat_{\mathcal V \mathcal V'}\Id_F\\ 
+P_{\mathcal U \mathcal U'} &= \Mat_{\mathcal U' \mathcal U}\Id_E
+\end{aligned}
+\right. \Rightarrow 
+P_{\mathcal V' \mathcal V} \, \Mat_{\mathcal U \mathcal V}f \, P_{\mathcal U \mathcal U'}
+= \Mat_{\mathcal V \mathcal V'}\Id_F \, \Mat_{\mathcal U \mathcal V}f \, \Mat_{\mathcal U' \mathcal U}\Id_E = \Mat_{\mathcal U' \mathcal V'}f.
+\end{displaymath}
+\end{demo}
+
+\begin{propn}[formule du changement de base pour un endomorphisme]
+ Soit $E$ un $\K$-espace vectoriel, soit $\mathcal U$, $\mathcal{U}'$ deux bases de $E$, soit $f\in\mathcal L(E)$. La formule du changement de base pour les matrices de $f$ obtenues avec la même base au départ et à l'arrivée s'écrit:
+\begin{displaymath}
+ \Mat_{\mathcal{U}'} f = P_{\mathcal{U}' \mathcal U} \Mat_{\mathcal U}( f) P_{\mathcal U \mathcal{U}'}
+= P_{\mathcal U \mathcal{U}'}^{-1}\Mat_{\mathcal U}( f) P_{\mathcal U \mathcal{U}'}.
+\end{displaymath}
+\end{propn}
+\begin{demo}
+ On applique la formule précédente avec $\mathcal{U} = \mathcal{V}$ et $\mathcal{U}' = \mathcal{V}'$.
+\[
+ P_{\mathcal{V}\mathcal{V}'} = P_{\mathcal{U}\mathcal{U}'} 
+ \Rightarrow 
+ \Mat_{\mathcal{U}'}(f) = P_{\mathcal U \mathcal{U}'}^{-1}\Mat_{\mathcal U}( f) P_{\mathcal U \mathcal{U}'}.
+\]
+\end{demo}
+
+
+\section{Matrices d'une famille de formes linéaires}
+\index{matrice d'une forme linéaire}
+\begin{defi}
+ Soit $\mathcal U =(u_1,\cdots,u_p)$ une base d'un $\K$-espace vectoriel $E$ et $\varphi\in E^*$ une forme linéaire sur $E$. La matrice de $\varphi$ dans la base $\mathcal U$ est définie par
+\begin{displaymath}
+ \Mat_{\mathcal U}\varphi = \Mat_{\mathcal U (1)}\varphi
+=
+\begin{bmatrix}
+ \varphi(u_1) & \varphi(u_2) & \cdots & \varphi(u_p)
+\end{bmatrix}
+\end{displaymath}
+où $(1)$ désigne la base canonique de $\K$ considéré comme $\K$-espace vectoriel.
+\end{defi}
+\begin{rem}
+ Attention à ne pas confondre la matrice ligne $\Mat_{\mathcal U}\varphi$ avec la matrice colonne $\Mat_{\mathcal U^*}\varphi$ où $\mathcal U^*$ désigne la base de $E^*$.
+\begin{align*}
+ \Mat_{\mathcal U}\varphi
+=
+\begin{bmatrix}
+ \varphi(u_1) & \varphi(u_2) & \cdots & \varphi(u_p)
+\end{bmatrix}
+& &
+ \Mat_{\mathcal U^*}\varphi
+=
+\begin{bmatrix}
+ \varphi(u_1) \\ \varphi(u_2) \\ \vdots \\ \varphi(u_p)
+\end{bmatrix}
+\end{align*}
+\end{rem}
+
+\section{Matrices équivalentes et rang}
+\begin{defi}[\'Equivalence entre deux matrices]
+Soit $A$ et $B$ deux matrices de même taille ($p$ lignes et $q$ colonnes). On dit que $A$ et $B$ sont équivalentes si et seulement si 
+\[
+ \exists P\in \text{GL}_p(\K),\;\exists Q\in \text{GL}_q(\K)\;\text{ tq } B = P\, A\, Q.
+\]
+\end{defi}
+\index{matrices équivalentes}
+\begin{rem}
+  D'après la proposition \ref{chgtbase} (formule de changement de base), deux matrices sont équivalentes si et seulement si elles représentent la \emph{même} application linéaire dans des bases différentes.
+\end{rem}
+Il n'existe pas de notation universellement reconue pour cette notion. Dans ce chapitre, on notera $A \sim B$ lorsque les matrices $A$ et $B$ sont équivalentes.
+\begin{propn}
+La relation d'équivalence est une relation d'équivalence. 
+\end{propn}
+\begin{demo}
+On doit vérifier les propriétés caractéristiques d'une relation d'équivalence. Soit $A$, $B$, $C$ dans $\mathcal{M}_{p q}(\K)$.
+\begin{itemize}
+ \item Réflexivité. $A = I_p\, A\, I_q$ entraine $A \sim A$.
+ \item Symétrie. $B \sim A$ entraine qu'il existe $P \in \text{GL}_p(\K)$ et $Q \in \text{GL}_q(\K)$ tels que $B = P\, A \, Q$ donc $A = P^{-1}B\, Q^{-1}$ donc $A \sim B$. 
+ \item Transitivité. Si $A\sim B$ et $B \sim C$, il existe $P, P' \in \text{GL}_p(\K)$ et $Q,Q' \in \text{GL}_q(\K)$ tels que
+\[
+ \left. 
+ \begin{aligned}
+  B &= P A Q \\ C &= P' B Q'
+ \end{aligned}
+\right\rbrace \Rightarrow C = (P'P) A (QQ') \Rightarrow C \sim A.
+\]
+\end{itemize}
+\end{demo}
+
+\begin{defi}
+Le rang (des colonnes) d'une matrice est le rang de la famille de ses colonnes.  
+\end{defi}
+\begin{rem}
+ On a vu dans le chapitre sur les matrices pour elles mêmes qu'une matrice carrée $p \times p$ est inversible si et seulement si ses colonnes engendrent $\mathcal{M}_{p,1}(\K)$ c'est à dire si et seulement si son rang est $p$.
+\end{rem}
+
+\begin{propn}
+Si une matrice représente une famille de vecteurs dans une base, son rang est égal au rang de la famille de vecteurs.\newline
+Si une matrice représente une application linéaire dans des bases, son rang est égal au rang de l'application linéaire. 
+\end{propn}
+\begin{demo}
+Soit $A\in \mathcal{M}_{p q}(\K)$ représentant une famille de vecteurs dans une base. $A = \Mat_{\mathcal{E}}(u_1,\cdots, u_q)$ pour $\mathcal{E}$ une base d'un $\K$-espace vectoriel $E$ de dimension $p$ et $(u_1, \cdots, u_q)$ une famille de vecteurs de $E$.  
+\begin{multline*}
+ \rg(A) = \rg\left( C_1(A), \cdots , C_q(A)\right) \hspace{0.5cm} \text{ (rang (des colonnes) d'une matrice)} \\
+  = \rg\left( \MatB{E}{u_1}, \cdots , \MatB{E}{u_q}\right) \hspace{0.5cm} \text{ (matrice dans une base d'une famille de vecteurs)} \\
+  = \rg(u_1, \cdots, u_q) \hspace{0.5cm} \text{ car $\MatB{E}{.}$ isomorphisme de } E \text{ dans } \mathcal{M}_{p,1}(\K).
+\end{multline*}
+Soit $A\in \mathcal{M}_{p q}(\K)$ représentant une application linéaire dans des bases: $A= \MatBB{U}{V}{f}$ avec $\mathcal{U} = (u_1, \cdots, u_q)$ base de $E$ et $\mathcal{V} = (v_1, \cdots, v_p)$ base de $F$.
+\begin{multline*}
+ A = \MatB{U}{f(u_1), \cdots, f(u_q) } \hspace{0.5cm} \text{ (matrice d'une application linéaire dans des bases)}\\
+ \Rightarrow \rg(A) = \rg(f(u_1), \cdots, f(u_q))\text{ (première partie de la proposition)}\\
+  = \dim \left( \Vect(f(u_1), \cdots, f(u_q))\right) = \rg(f) \text{ (rang d'une application linéaire)}.
+\end{multline*}
+\end{demo}
+
+\begin{propn}
+  Deux matrices équivalentes sont de même rang.
+\end{propn}
+\begin{demo}
+  En effet elles représentent une même application linéaire dans des bases différentes.
+\end{demo}
+\begin{rem}
+  On ne change pas le rang d'une matrice en la multipliant d'un côté ou de l'autre par une matrice inversible. En effet la matrice obtenue ainsi est équivalente à la première.
+\end{rem}
+
+\begin{propn}
+  Soit $M \in \mathcal{M}{p,q}(\K)$ et $r\in \llbracket 0, \min(p,q)\rrbracket$.
+\[
+  \rg(M) = r \Leftrightarrow M \sim J_r(p,q).
+\]
+  Deux matrices $p\times q$ sont équivalentes si et seulement si elles ont le même rang.
+\end{propn}
+\begin{demo}
+ La première propriété est une reformulation de la proposition \ref{prop: equivJr} proposant un jeu de \og bonnes bases\fg~ pour une application linéaire en fonction de son rang.\newline
+ On a déjà vu que deux matrices équivalentes ont le même rang. Réciproquement, si deux matrices ont le même rang $r$, elles sont toutes les deux équivalentes à $J_r(p,q)$. Elles sont équivalentes par transivité et symétrie de la relation.
+\end{demo}
+
+\begin{propn}
+  Le rang d'une matrice est égal à celui de sa transposée.
+\end{propn}
+\begin{demo}
+Soit $M \in \mathcal{M}{p,q}(\K)$ de rang $r$. D'après la proposition précédente,
+\begin{displaymath}
+  \exists P \in \text{GL}_p(\K), \; \exists Q \in \text{GL}_q(\K)\;\text{ telles que } M = P J_r(p,q) Q
+  \Rightarrow \trans{M} = \trans{Q}\, \trans{J_r(p,q)}\, \trans{P}
+\end{displaymath}
+Comme $\trans{P}$ et $\trans{Q}$ sont inversibles, le rang de $\trans{M}$ est celui de $\trans{J_r(p,q)} = J_r(q,p)$ c'est à dire $r = \rg(M)$.
+\end{demo}
+\begin{rem}
+  Une matrice et sa transposée ne sont pas de même taille.
+\end{rem}
+\begin{propn}
+  Le rang des lignes est égal au rang des colonnes.
+\end{propn}
+\begin{demo}
+ Soit $A \in \mathcal{M}_{p, q}(\K)$. Le rang des lignes de $A$ est le rang de la famille $\left( L_1(A),\cdots, L_p(A)\right)$ de $p$ matrices lignes. La transposition définit un isomorphisme entre les matrices lignes et les matrices colonnes donc elle conserve le rang:
+\[
+ \rg\left( L_1(A),\cdots, L_p(A)\right) = \rg \left( \trans{L_1(A)},\cdots, \trans{L_p(A)}\right)
+ = \rg\left( C_1(\trans{A}),\cdots, C_p(\trans{A})\right)
+ = \rg(\trans{A})
+\]
+par définition du rang (des colonnes) de $\trans{A}$. On conclut avec $\rg(\trans{A}) = \rg(A)$.
+\end{demo}
+\noindent La notion de matrice extraite \index{matrices extraites} a été définie dans le chapitre sur les matrices pour elles mêmes.
+\begin{propn}
+ Soit $A \in \mathcal{M}_{pq}(\K)$ et $E$ extraite de $A$. Alors $\rg(E) \leq \rg(A)$.
+\end{propn}
+\begin{demo}
+Soit $I\subset\llbracket 1,p \rrbracket$ et $J \subset \llbracket 1,q \rrbracket$ tels que $E = A_{I J}$.\newline
+En utilisant le rang des colonnes: 
+\[
+ \rg(A) = \rg(C_1(A), \cdots, C_q(A)) \geq \rg(C_j(A), j\in J) = \rg(A_{\llbracket 1, p\rrbracket J}).
+\]
+En utilisant le rang des lignes et en notant $B = A_{\llbracket 1, p\rrbracket J}$
+\[
+\rg(A_{\llbracket 1, p\rrbracket J}) = \rg(B) = \rg\left( L_1(B), \cdots, L_p\right)
+ \geq \rg\left( L_i(B), i \in I\right) = \rg(E). 
+\]
+\end{demo}
+
+\begin{propn}[Rang et matrices carrées extraites] \label{prop: rgmatext}
+  Soit $A$ une matrice non nulle et $\mathcal{I}$ l'ensemble des $s$ tels qu'il existe une matrice carrée inversible $s\times s$ extraite de $A$. Le rang de $A$ est alors le plus grand élément de $\mathcal{I}$.
+\end{propn}
+\begin{demo}
+Le rang d'une matrice nulle est nul, on ne considère que des matrices non nulles. De toute matrice non nulle, on peut extraire des matrices carrées inversibles: au moins les matricettes $1\times 1$ associées aux coefficients non nuls. On en déduit que $1 \in \mathcal{I}$.\newline
+Pour tout $i\in \mathcal{I}$, $i$ est la taille d'une matrice carrée extraite inversible donc $i$ est le rang d'une matrice extraite donc $i \leq \rg(A)$ d'après la proposition précédente.\newline
+Il reste à montrer que si $r = \rg(A)$, on peut extraire de $A$ une matrice $r\times r$ inversible.\newline
+Utilisons d'abord le rang des colonnes. Soit $J = \left\lbrace j_1, \cdots, j_r\right\rbrace $ tel que 
+\[
+ \Vect\left( C_1(A), \cdots, C_q(A)\right) = \Vect\left( C_{j_1}(A), \cdots, C_{j_r}(A)\right)
+\]
+Considérons la matrice $p\times r$ extraite de $A$ en conservant toutes les lignes et les colonnes associées à $J$ seulement, son rang est $r$. Le rang de ses lignes est aussi $r$ donc on peut en extraire $r$ lignes formant une famille libre. La matrice extraite $A_{I J}$ est de rang $r$ donc inversible. \href{https://maquisdoc-math.fra1.digitaloceanspaces.com/C2233_8.pdf}{(détail manuscrit)}
+\end{demo}
+
+\section{Matrices semblables et trace}
+\index{matrices semblables}
+\subsection{Définitions}
+\begin{defi}
+  Deux matrices carrées de même taille $A$ et $B$ dans $\mathcal{M}_p(\K)$ sont semblables si et seulement si il existe $P\in GL_p(\K)$ telle que 
+\begin{displaymath}
+  B = P^{-1}\, A\, P.
+\end{displaymath}
+\end{defi}
+\begin{rem}
+ Comme pour la notion de \emph{matrices équivalentes}, il n'existe pas de notation universelle pour les matrices semblables. On note encore $A \sim B$ pour indiquer que les matrices sont semblables. Cela contribue grandement à la confusion entre ces deux notions distinctes. Cette confusion est augmentée encore par le fait que la relation de similitude est \emph{une relation d'équivalence} qui n'est pas \emph{la} relation d'équivalence entre deux matrices.
+\end{rem}
+\begin{rem}
+  D'après la formule de changement de base pour les matrices d'endomorphismes, deux matrices carrées sont semblables si et seulement si elles représentent \emph{le même endomorphisme} dans des bases différentes.
+\end{rem}
+
+On rappelle que la trace \index{trace d'une matrice carrée} d'une matrice carrée est la somme de ses termes diagonaux. La fonction trace notée $\tr$ est une forme linéaire sur $\mathcal{M}_p(\K)$. Elle vérifie
+\begin{displaymath}
+  \forall (A,B)\in \mathcal{M}_p(\K)^2,\; \tr(AB) = \tr(BA)
+\end{displaymath}
+\begin{propn}
+  Deux matrices semblables ont la même trace.
+\end{propn}
+\begin{demo}
+ Si $A$ et $B$ sont semblables dans $\mathcal{M}_p(\K)$, il existe $P\in \text{GL}_(\K)$ telles que $B = P^{-1}A\,P$. La trace d'un produit est indépendant de l'ordre des facteurs:
+\[
+ \tr(B) = \tr\left( P^{-1}(AP)\right) = \tr\left( (AP)P^{-1}\right) = \tr\left( A\right) . 
+\]
+\end{demo}
+\begin{rem}
+  On dit que la trace est un invariant par similitude.
+\end{rem}
+
+\begin{rem}
+ \index{trace d'un endomorphisme} On en déduit que les traces des matrices représentant un endomorphisme dans une base sont égales entre elles donc indépendantes de la base choisie. Si $\mathcal U$ et $\mathcal V$ sont deux bases d'un $\K$-espace vectoriel $E$ et $f$ un endomorphisme de $E$:
+\begin{displaymath}
+ \tr\left( \Mat_{\mathcal V} f\right) 
+=\tr \left(P_{\mathcal V \mathcal U}^{-1} \, \Mat_{\mathcal U}f \, P_{\mathcal U \mathcal V} \right) 
+=\tr \left(\Mat_{\mathcal U}f \, P_{\mathcal U \mathcal V} P_{\mathcal U \mathcal V}^{-1}\right)
+=\tr \left(\Mat_{\mathcal U}f\right) 
+\end{displaymath}
+Cet élément de $\K$ est appelé \emph{trace} de $f$ et noté $\tr (f)$. C'est la trace de l'\emph{endomorphisme}.
+Cette nouvelle fonction trace est une forme linéaire sur l'espace des endomorphismes. 
+\end{rem}
+\begin{defi}
+  La trace d'un endomorphisme est la trace de n'importe quelle matrice rerésentant cet endomorphisme dans une base.
+\end{defi}
+
+\begin{propn}
+  Si $p$ est un projecteur dans un espace $E$ de dimension finie, sa trace est le dimension de son image. Si $A$ et $B$ sont deux sous-espaces supplementaires et $p$ la projection sur $A$ parallèlement à $B$, alors $\tr(p) = \dim(A)$.
+\end{propn}
+\begin{demo}
+  On considère une base $\mathcal{E} = (a_1,\cdots,a_{\alpha},b_1,\cdots,b_{\beta})$ de $E$ avec $(a_1,\cdots,a_{\alpha})$ base de $A$ et $(b_1,\cdots,b_{\beta})$ base de $B$. Alors
+\begin{displaymath}
+  \Mat_{\mathcal{E}}(p)=
+\begin{pmatrix}
+1      & 0 &        &        & 0      &        & 0      \\
+0      & 1 & \ddots &        &        &        &        \\
+\vdots &   & \ddots & 0      & \vdots &        & \vdots \\
+0      &   &        & 1      & 0      &        & 0      \\
+0      &   &        & 0      & \vdots &        & \vdots \\
+\vdots &   &        & \vdots &        &        &        \\
+0      &   & \cdots & 0      & 0      &        & 0
+\end{pmatrix}
+\end{displaymath}
+\end{demo}
+
+\subsection{Introduction à la réduction des endomorphismes}
+Cette partie utilise les méthodes de la section de \href{\baseurl C2234.pdf}{cours portant sur les opérations élémentaires} (calcul de rang et résolution de sysèmes d'équations).
+Dans toute cette partie, $E$ désigne un $\K$-espace vectoriel de dimension $p > 0$.
+\subsubsection{Polynômes}
+\begin{defi}
+  Soit $f\in \mathcal{L}(E)$, $A \in \mathcal{M}_p(\K)$, $P\in \K[X]$. On peut substituer $f$ ou $A$ à $X$ et définir 
+  $P(f)$ et $P(A)$ par:
+\[
+  P = a_0 + a_1X + \cdots +a_nX^n
+  \Rightarrow
+  \left\lbrace
+  \begin{aligned}
+    P(f) &= a_0 \Id_E + a_1 f + \cdots + a_n f^n \in \mathcal{L}(E) \\
+    P(A) &= A_0 I_p + a_1 A + \cdots + a_n A^n \in \mathcal{M}_p(\K)
+  \end{aligned}
+  \right. .
+\]
+\end{defi}
+\begin{rem}
+  On renonce aux notations $\widetilde{P}$ et $\widehat{P}$ qui étaient utilisées pour la substitution d'un élément du corps ou d'un autre polynôme.
+\end{rem}
+
+Les propriétés suivantes traduisent les règles de calculs usuelles qui sont les mêmes dans les algèbres $\K[X]$, $\mathcal{L}(E)$ et $\mathcal{M}_p(\K)$. Attention tout de même à la commutativité qui n'est vérifiée que pour les polynômes.
+\begin{propn}
+  Soit $f\in \mathcal{L}(E)$, $A \in \mathcal{M}_p(\K)$. Pour tous $P$ et $Q$ dans $\K[X]$, pour tous $\lambda \in \K$.
+\[
+\begin{aligned}
+  &(P+Q)(f) = P(f) + Q(f) & &(P+Q)(A) = P(A) + Q(A) \\
+  &(\lambda p)(f) = \lambda P(f) & &(\lambda p)(A) = \lambda P(A)\\
+  &(PQ)(f) = P(f) \circ Q(f) & &(PQ)(A) = P(A) Q(A)
+\end{aligned}
+\]
+\end{propn}
+\index{polynôme annulateur}
+\begin{defi}[Polynome annulateur] Soit $P \in \K[X]$ non nul.\newline
+  $P \in \K[X]$ est un polynôme annulateur de $f\in \mathcal{L}(E)$ $\Leftrightarrow P(f) = 0_{\mathcal{L}(E)}$.\\
+  $P \in \K[X]$ est un polynôme annulateur de $A\in \mathcal{M}_p(\K)$ $\Leftrightarrow P(A) = 0_{\mathcal{M}_{p}(\K)}$.
+\end{defi}
+\begin{propn}
+  Soit $f \in \mathcal{L}(E)$ et $A \in \mathcal{M}_p(\K)$. Ils admettent des polynômes annulateurs.
+\end{propn}
+\begin{demo}
+  Les espaces vectoriels $\mathcal{L}(E)$ et $\mathcal{M}_p(\K)$ sont de dimension $p^2$. D'après la condition suffisante de dépendance, \index{condition suffisante de dépendance} les familles
+  \[
+    \left( \Id_E, f, \cdots , f^{p^2}\right) \hspace{0.5cm} \text{ et} \hspace{0.5cm} \left( I_p, A, \cdots , A^{p^2}\right)
+  \]
+sont liées. Une relation linéaire donne les coefficients d'un polynôme annulateur.
+\end{demo}
+\begin{propn}
+  Soit $f \in \mathcal{L}(E)$ et $A \in \mathcal{M}_p(\K)$.
+  \begin{enumerate}
+    \item L'ensemble des degrés des polynômes annulateurs de $f$ (resp $A$) admet un plus petit élément $m$.
+    \item Un polynôme annulateur de degré $m$ est appelé un polynôme minimal de $f$ (resp de $A$).
+    \item Un polynôme minimal de $f$ divise tout polynôme annulateur de $f$ (resp $A$).
+    \item Deux polynômes minimaux de $f$ (resp de $A$) sont égaux à la multiplication près par un élément non nul du corps $\K$.
+  \end{enumerate} 
+\end{propn}
+\begin{demo}
+  Pour la proposition 2. Soit $M$ minimal et $P$ annulateur de $f$. Divisons $P$ par $M$.
+\[
+  \exists (Q,R)\in \K[X]^2, \text{ tq } P = QM + R \text{ avec } \deg(R) < m = \deg(M). 
+\]
+En substituant $f$ à $X$, on obtient $R(f) = \underset{=0_{\mathcal{L}(E)}}{\underbrace{P(f)}} 
++ Q(f) \circ \underset{=0_{\mathcal{L}(E)}}{\underbrace{M(f)}} = 0_{\mathcal{L}(E)} \Rightarrow \deg(R) \geq m$ (si $R$ non nul) ce qui est absurde. Donc $R$ est nul c'est à dire que $M$ divise $P$.\newline
+La dernière propriété vient de ce que deux polynômes minimaux se divisent mutuellement.
+\end{demo}
+\index{polynôme caractéristique}
+\begin{propn}[Polynôme caractéristique]
+  Soit $f \in \mathcal{L}(E)$ et $A \in \mathcal{M}_p(\K)$.
+\[
+\begin{aligned}
+  \exists P\in \K[X] \text{ tq } \forall \lambda \in \K, \; \rg(f - \lambda \Id_E) < p \Leftrightarrow P(\lambda) = 0 \\
+  \exists P\in \K[X] \text{ tq } \forall \lambda \in \K, \; \rg(A - \lambda I_p) < p \Leftrightarrow P(\lambda) = 0
+\end{aligned}
+\]
+\end{propn}
+\begin{demo}
+  On transforme la matrice $A - \lambda I_p$ par des opérations élémentaires (algorithme du pivot total) dans un contexte formel (paramètre $\lambda$). On obtient que le rang est $p$ sauf si $\lambda$ est racine d'un certain polynôme $P$.\newline
+  On verra plus tard une autre preuve utilisant le \href{\baseurl C2261.pdf}{déterminant} d'une matrice carrée.\newline
+  Pour un endomorphisme, on utilise une matrice carrée le représentant dans une base.
+\end{demo}
+\begin{rem}
+  On dispose d'algorithmes élémentaires pour calculer un polynôme caractéristique. Ce n'est pas le caspour un polynôme minimal.
+\end{rem}
+\index{valeur propre}\index{vecteur propre}\index{spectre}
+\begin{defi}
+  Soit $f \in \mathcal{L}(E)$ et $A \in \mathcal{M}_p(\K)$. Soit $\lambda \in \K$.\medskip
+  \begin{itemize}
+    \item $\lambda$ est une valeur propre de $f \Leftrightarrow \exists x\in E,\; x\neq 0_E \text{ tel que } f(x)= \lambda x$.\medskip
+    \item $\lambda$ est une valeur propre de $A \Leftrightarrow \exists X\in \mathcal{M}_{p ,1}(\K) \; X\neq 0_{\mathcal{M}_{p ,1}(\K)} \text{ tel que } f(x)= \lambda x$.\medskip
+  \end{itemize}
+On dit alors que $x$ est un vecteur propre de valeur propre $\lambda$ et que $X$ est une colonne propre de valeur propre $\lambda$.\newline
+Le spectre de $f$ (resp $A$) est l'ensemble des valeurs propres de $f$ (resp $A$).
+\end{defi}
+\begin{propn} \label{polycarac}
+  Soit $f \in \mathcal{L}(E)$ et $A \in \mathcal{M}_p(\K)$. Soit $P$ un polynôme caractéristique de $f$ (resp $(A)$.
+\[
+  \lambda \text{ valeur propre de } f \text{ (resp $A$) } \Leftrightarrow P(\lambda) = 0.
+\]
+Les valeurs propres sont les racines d'un polynôme caractéristique.
+\end{propn}
+\begin{demo}
+  Il suffit de remarquer que 
+\[
+  \forall x \in E, \; f(x) = \lambda x \Leftrightarrow x \in \ker(f - \lambda \Id_E).
+\]
+Donc $\lambda$ est une valeur propre si et seulement si $ker(f - \lambda \Id_E)$ n'est pas réduit à $0$ c'est à dire que l'endomorphisme n'est pas bijectif donc de rang strictement plus petit que $p$.
+\end{demo}
+\begin{propn} \label{vpracpolmin}
+  Soit $f \in \mathcal{L}(E)$ et $A \in \mathcal{M}_p(\K)$. Soit $M$ un polynôme minimal de $f$ (resp $A$):
+\[
+  \lambda \text{ valeur propre de } f \text{ (resp $A$) } \Leftrightarrow M(\lambda) = 0.
+\]
+\end{propn}
+\begin{demo}
+  Soit $\lambda$ une valeur propre. Montrons que $M(\lambda) = 0$.\newline
+  En effet, il existe un vecteur propre $x$ (non nul) de valeur propre $\lambda$ donc 
+\[
+  f(x) = \lambda x \Rightarrow M(f)(x) = M(\lambda) x \Rightarrow M(\lambda) = 0 \text{ car } x\neq 0_E.
+\]
+Réciproquement, si $\lambda$ est une racine de $M$ alors il existe $M_1 \in \K[X]$ tel que 
+\[
+  M = (X- \lambda) M_1 \Rightarrow 0_{\mathcal{L}(E)} = (f - \lambda \Id_E) \circ M_1(f)
+\] 
+Si $f - \lambda \Id_E$ était bijective, en composant par la bijection réciproque, on en déduirait $M_1(f) = 0_{\mathcal{L}(E)}$ en contradiction avec le minimalité de $M$. On peut conclure que $f - \lambda \Id_E$ n'est pas injective donc que $\lambda$ est une valeur propre.
+\end{demo}
+
+
+\subsubsection{Réduction}
+\index{diagonalisation} \index{triangularisation}
+Réduire un endomorphisme c'est une trouver une base dans laquelle la matrice a une forme simple. On envisage ici deux réductions: la diagonalisation et la triangularisation (ou trigonalisation). Pour une matrice carrée, il s'agit de trouver une matrice diagonale ou triangulaire semblable à la matrice donnée et de préciser les matrices de passage.
+ns le paragraphe suivant.
+\begin{center}
+  \begin{Large}\textbf{IMPORTANT}\end{Large}\newline
+  Transformer par opérations élémentaires une matrice en une matrice triangulaire \begin{large}\textbf{ce n'est pas}\end{large} triangulariser.
+\end{center}
+
+Exemple de triangularisation  à compléter
+
+Les endomorphismes ou les matrices carrées ne sont pas forcément diagonalisables ou triangularisable. La proposition suivante caractérise le caractère diagonalisable. On présente  d'autres conditions dans le paragraphe suivant. 
+\begin{propn}\label{caracdiag}
+  Soit $f\in \mathcal{L}(E)$ et $\lambda_1, \cdots ,\lambda_s$ ses valeurs propres.
+\[
+  f \text{ est diagonalisable } \Leftrightarrow \ker(f-\lambda_1 \Id_E) \oplus \cdots \oplus \ker(f-\lambda_s \Id_E) = E. 
+\]
+\end{propn}
+\begin{defi}
+  $\ker(f-\lambda_i \Id_E)$ est le sous-espace propre de valeur propre $\lambda_i$.
+\end{defi}
+
+\begin{demo}
+  Soit $f\in \mathcal{L}(E)$. Il est diagonalisable si et seulement si il existe une base $\mathcal{U}=(u_1, \cdots, u_p)$ dans laquelle la matrice de $f$ est diagonale. En notant $\lambda_1, \cdots, \lambda_p$ les termes de la diagonale, cela signifie que
+\[
+  \forall i \in \llbracket 1,p \rrbracket, \; f(u_i) = \lambda_i u_i.
+\]
+Autrement dit, $f$ est diagonalisable si et seulement si il existe une base de vecteurs propres de $f$.\medskip\newline 
+\indent \textbullet\hspace{0.5cm} Plan de la preuve de $f \text{ est diagonalisable } \Rightarrow \ker(f-\lambda_1 \Id_E) \oplus \cdots \oplus \ker(f-\lambda_s \Id_E) = E$.\newline
+Supposons $f$ diagonalisable dans une base $\mathcal{U}=(u_1, \cdots, u_p)$ de vecteurs propres pour laquelle
+\[
+  \MatB{U}{f} = D =
+  \begin{pmatrix}
+          d_1 & 0      & \cdots & 0        \\
+            0 & \ddots & \ddots & \vdots   \\
+    \vdots    & \ddots & \ddots &    0     \\
+      0       & \cdots &   0    & d_p 
+  \end{pmatrix}.
+\]
+\begin{enumerate}
+  \item Les $d_i$ sont les seules valeurs propres. Ils ne sont pas forcément deux à deux distincts. On note $\lambda_1, \cdots, \lambda_s$ avec $s \leq p$ les valeurs distinctes des $d_i$.
+  \item $E$ est la somme des sous-espaces propres.
+  \item Par récurrence: $m$ sous-espaces propres attachés à des valeurs propres distinctes sont en somme directe.
+\end{enumerate} 
+Preuve de 1.\newline
+Le polynôme caractéristique de $f$ est $(X-d_1)\cdots(X-d_p)$ car
+\[
+\forall \lambda \in \C,\;
+\MatB{U}{f-\lambda\Id_E}=
+  \begin{pmatrix}
+  d_1 - \lambda & 0      & \cdots & 0        \\
+              0 & \ddots & \ddots & \vdots   \\
+      \vdots    & \ddots & \ddots &    0     \\
+        0       & \cdots &   0    & d_p - \lambda 
+  \end{pmatrix}.  
+\]
+qui est diagonale donc triangulaire supérieure ce qui permet de caractériser $\rg(f-\lambda \Id_E) < p$.\medskip\newline
+Preuve de 2.\newline
+Pour tout $x\in E$, chaque composante de sa décomposition dans $\mathcal{U}$ est un vecteur propres. La somme des composantes attachées à la même valeur propre $\lambda_i$ appartient à $\ker(f-\lambda_i \Id_E)$. Ceci assure 
+\[
+  \left( \forall x \in E, \; x\in \ker(f-\lambda_1 \Id_E) + \cdots +\ker(f-\lambda_s \Id_E)\right)
+  \Rightarrow E = \ker(f-\lambda_1 \Id_E) + \cdots +\ker(f-\lambda_s \Id_E).
+\]
+Preuve de 3. \newline
+Montrons la propriété pour 2 sous-espaces propres.
+\[
+  \left. 
+  \begin{aligned}
+     x &\in \ker(f-\lambda_1 \Id_E)\\
+     x &\in \ker(f-\lambda_2 \Id_E)
+  \end{aligned}
+  \right\rbrace
+  \Rightarrow f(x) = \lambda_1 x = \lambda_2 x \Rightarrow \underset{\neq 0}{\underbrace{(\lambda_2 - \lambda_1)}}x = 0_E \Rightarrow x = 0_E.
+\]
+Montrons que la propriétés pour $m-1$ sous-espaces propres entraine celle pour $m$. Considérons des $x_i \in \ker(f-\lambda_i \Id_E)$ pour $i\in \llbracket 1,m\rrbracket$:
+\begin{multline*}
+  x_1 + \cdots +x_m = 0_E
+  \Rightarrow
+  \left\lbrace
+  \begin{aligned}
+  x_1 + \cdots +x_m &= 0_E &\times& -\lambda_1\\  
+  f(x_1 + \cdots +x_m)= \lambda_1 x_1 + \cdots + \lambda_m x_m  &= 0_E &\times&1 
+  \end{aligned}
+   \right. \\
+   \Rightarrow
+   (\lambda_2 - \lambda_1)x_2 + \cdots + (\lambda_m - \lambda_1)x_m = 0_E
+   \Rightarrow x_2 = \cdots = x_m = 0_E
+\end{multline*}
+d'après l'hypothèse de récurrence pour $m-1$.\medskip\newline 
+\indent \textbullet\hspace{0.5cm} Preuve de  $\ker(f-\lambda_1 \Id_E) \oplus \cdots \oplus \ker(f-\lambda_s \Id_E) = E \Rightarrow f \text{ est diagonalisable }$.\newline
+Il suffit de concaténer des bases de chaque sous-espace propre pour obtenir une base de $E$ constituée uniquement de vecteurs propres.
+\end{demo}
+
+\subsubsection{Conditions}
+\begin{propn}
+  Soit $f\in \mathcal{L}(E)$ avec $K = \C$. Alors $f$ est triangularisable.
+\end{propn}
+\begin{demo}
+  On raisonne par récurrence sur la dimension du $\C$-espace vectoriel. Considérons la proposition:
+  \begin{quote}
+    $\mathcal{P}_p : \hspace{0.5cm} \left( \dim(E) = p \text{ et } f\in \mathcal{L}(E)\right) \Rightarrow f \text{ triangularisable}.$
+  \end{quote}
+Il n'y a rien à démontrer pour $\mathcal{P}_1$. On propose deux méthodes pour $\mathcal{P}_{p-1} \Rightarrow \mathcal{P}_p$.\newline
+Le début est le même. soit $f\in \mathcal{L}(E)$ avec $\dim(E)=p$. Comme le corps de base est $\C$, le polynôme caractéristique admet au moins une racine $\lambda$ qui est une valeur propre.
+
+Méthode 1: avec une projection.\newline
+Il existe $u_1\in E$ non nul tel que $f(u_1) = \lambda u_1$. On complète en une base $\mathcal{U} = (u_1,u_2,\cdots,u_p)$ de $E$ et on note $H = \Vect(u_2,\cdots,u_p)$.\newline
+Le sous-espace $H$ n'est pas forcément stable par $f$. On considère
+\[
+  g = p \circ f_H \in \mathcal{L}(H)
+\]
+où $p$ est la projection sur $H$ parallèlement à $\Vect(u_1)$. D'après $\mathcal{P}_{p-1}$ appliqué à $g$, il existe une base $(v_2, \cdots, v_p)$ de $H$ telle que $\MatB{V}{g}$ soit triangulaire supérieure. \`A cause de la projection, il existe des $\mu_i$ tels que $f(v_i) = g(v_i) + \mu_i u_1$. On en déduit 
+\[
+  \Mat_{(u_1,v_2,\cdots,v_p)}=
+  \begin{pmatrix}
+    \lambda                                        &   \begin{matrix} \mu_2 & \cdots & \mu_p \end{matrix}\\
+    \begin{matrix} 0 \\ \vdots \\0 \end{matrix}    & \MatB{V}{g}
+  \end{pmatrix}
+\]
+qui est triangulaire supérieure.\medskip
+
+Méthode 2: hyperplan stable.\newline
+Comme $\rg(f - \lambda \Id_E) < \dim(E)$, son image est incluse dans un hyperplan $H = \ker \varphi$. On en déduit
+\[
+  \varphi \circ (f - \lambda \Id_E) = 0_{\mathcal{L}(E)} \Rightarrow \varphi \circ f = \lambda \varphi.
+\]
+Ceci montre que $H = \ker \varphi$ est stable par $f$. En effet
+\[
+  x\in H \Rightarrow \varphi(f(x)) = \varphi \circ f(x) = \lambda \varphi(x) = O_E \Rightarrow f(x) \in H.
+\]
+La restriction $g$ de $f$ à $H$ est dans $\mathcal{L}(H)$ sans avoir besoin de projeter. D'après l'hypothèse de récurrence, il existe une base $(u_1, \cdots,u_{p-1})$ de $H$ dans laquelle la matrice de $g$ est triangulaire supérieure. Complétons en une base $\mathcal{U} = (u_1,\cdots, u_{p-1},u_p)$ de $E$. On se sait rien de $f(u_p)$, notons $\mu_1, \cdots, \mu_p$ ses coordonnées dans $\mathcal{U}$. Alors
+\[
+  \MatB{U}{f}=
+  \begin{pmatrix}
+    \Mat_{(u_1, \cdots, u_{p-1})}(g)          & \begin{matrix} \mu_1 \\ \vdots \\ \mu_{p-1}\end{matrix} \\
+    \begin{matrix} 0 & \cdots & 0\end{matrix} & \mu_p
+  \end{pmatrix}.
+\]
+qui est triangulaire supérieure.
+\end{demo}
+\begin{propn} \label{caracsupp}
+  Soit $f\in \mathcal{L}(E)$, $M$ un polynôme minimal de $f$. On suppose $M$ scindé:
+\[
+  M = (X - \lambda_1)^{m_1} \cdots (X - \lambda_s)^{m_s} \text{ avec les $\lambda_i$ deux à deux distincts}
+\]
+On note $E(\lambda_i) = \ker((f - \lambda_i \Id_E)^{m_i})$ alors ils sont supplementaires
+\[
+  E(\lambda_1) \oplus \cdots \oplus E(\lambda_s) = E.
+\]
+\end{propn}
+\begin{demo}
+  Pour $i\in \llbracket 1, s \rrbracket$, on note $M_i = \prod_{\substack{ j \in \llbracket 1,s \rrbracket \\ j \neq i}} (X- \lambda_j)^{m_j}$. Les polynômes $(M_1, \cdots, M_s)$ sont premiers entre eux dans leur ensemble (mais pas deux à deux). D'après le théorème de Bezout, il existe des polynômes $U_1, \cdots , U_s$ tels que 
+\[
+  1 = U_1 M_1 + \cdots +U_s M_s.
+\]
+On note $p_i = U_i(f) \circ M_i(f)$. On montre que 
+\begin{enumerate}
+  \item $E(\lambda_i)$ est stable par $f$ et $\Im(p_i) \subset E(\lambda_i)$. 
+  \item $ i\neq j \Rightarrow p_i \circ p_j = 0_{\mathcal{L}(E)}$.
+  \item $p_1 + \cdots + p_s = \Id_E \Rightarrow E(\lambda_1)+ \cdots + E(\lambda_s) = E$ .
+  \item Pour $i \in \llbracket 1,s\rrbracket$, $F_i = \sum_{\substack{j \in \llbracket 1,s\rrbracket \\ j \neq i}}E(\lambda_j)$ est stable par $f$, le polynôme $M_i$ est annulateur de $f_{F_i}$ et $(X- \lambda_i)^{m_i}$ est un polynôme annulateur de $f_{E(\lambda_i)}$ (restrictions).
+  \item Que dire des polynômes annulateurs des restrictions de $f$ à $E(\lambda_i)\cap F_i$?
+  \item Conclure.
+\end{enumerate}
+Preuve de 1.\newline
+Le sous-espace $E(\lambda_i) = \ker(f- \lambda_i\Id_E)^{m_i}$ est stable par $f$ car $f$ commute avec $(f- \lambda_i\Id_E)^{m_i}$.\newline
+Pour tout $i \in \llbracket 1,s \rrbracket$, $M = (X-\lambda)^{m_i}M_i$. Comme $M$ est annulateur: 
+\[
+  0_{\mathcal{L}(E)} = M(f) = (f-\lambda_i \Id_E)^{m_i}\circ M(i)(f) \Rightarrow \Im(M_i(f))\subset E(\lambda_i)
+  \Rightarrow \Im(p_i) \subset U_i(f)(E(\lambda_i)) \subset E(\lambda_i)
+\]
+car $E(\lambda_i)$ est stable par $f$ donc par $U_i(f)$.\medskip\newline
+Preuve de 2.\newline
+Pour $i\neq j$, $M$ divise $M_i M_j$ donc dans $p_i\circ p_j$ figure un composé $M(f)$ qui est l'endomorphisme nul.\medskip\newline
+Preuve de 3.\newline
+En substituant $f$ à $X$:
+\[
+  1 = U_iM_i + \cdots + U_sM_s\Rightarrow \Id_E = p_1 + \cdots + p_s \Rightarrow E = \Im(p_1) + \cdots +\Im(p_s)
+  = E(\lambda_1) + \cdots + E(\lambda_s).
+\]
+Preuve de 4.\newline
+Comme les $E(\lambda_i)$ sont stables, leurs sommes le sont aussi en particulier les $F_i$.\newline
+Par définition de $E(\lambda_i)$ comme noyau, $(X-\lambda_i)^{m_i}$ est annulateur de $f_{E(\lambda_i)}$. Pour tous les $j\neq i$, $(f-\lambda_i\Id_E)^{m_j}$ est un composée de $M_i(f)$ donc $M_i(f)$ est nul sur tous les sous-espaces qui composent $F_i$. On en déduit que $M_i$ est un polynome annulateur de $f_{F_1}$.\medskip\newline
+Preuve de 5.\newline
+Plaçons dans un cadre un peu plus général. Considérons des sous-espaces $A$ et $B$ stables par $f$ et notons $M_A$ (resp $M_B$) un polynôme minimal de $f_A$ (resp de $f_B$). Le sous-espace $C = A\cap B$ est encore stable par $f$, que peut-on dire du polynôme minimal $M_C$ de $f_C$?\newline
+Il est clair que $M_A$ et $M_B$ sont annulateurs de $f_C$ donc $M_C$ divise les deux donc aussi leur pgcd. On en déduit que si $M_A$ et $M_B$ sont premiers entre eux, $1$ est anulateur ce qui signifie que $C$ est réduit au vecteur nul.\newline
+Ceci s'applique ici avec $E(\lambda_i),(X-\lambda_i)^{m_i}$ et $F_i,M_i$. On en déduit $E(\lambda_i) \cap F_i = \left\lbrace 0_E \right\rbrace$ ce qui traduit que la somme est directe.\medskip\newline
+6. conclusion\newline
+On déduit de 3 et 5 que les sous-espaces caractéristiques sont supplémentaires.
+\end{demo}
+
+\begin{propn}
+  Soit $f\in \mathcal{L}(E)$, $M$ un polynôme minimal de $f$. Montrer que 
+\[
+  f \text{ diagonalisable } \Leftrightarrow M \text{ scindé et toutes ses racines sont simples}.
+\]
+\end{propn}
+\begin{demo}
+D'après la proposition \ref{caracdiag}
+\begin{multline*}
+  f \text{ est diagonalisable } \Rightarrow \ker(f-\lambda_1 \Id_E) \oplus \cdots \oplus \ker(f-\lambda_s \Id_E) = E  \\
+  \Rightarrow (f-\lambda_1 \Id_E) \circ \cdots \circ (f-\lambda_s \Id_E) = 0_{\mathcal{L}(E)}
+  \Rightarrow (X-\lambda_1)\cdots (X-\lambda_s) \text{ annulateur}.
+\end{multline*}
+Réciproquement si le polynôme annulateur $M$ et scindé sans racine multiple, la proposition \ref{caracsupp} montre que les sous-espaces caractéristiques qui en l'occurrence sont aussi les sous-espaces propres sont supplémentaires donc $f$ est diagonalisable d'après l'autre implication de la proposition \ref{caracdiag}.
+\end{demo}
+
+
+\end{document}

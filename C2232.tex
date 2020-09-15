@@ -1,0 +1,542 @@
+\input{courspdf.tex}
+\debutcours{Les matrices pour elles mêmes}{0.5 \tiny{ le \today}}
+
+L'objet de cette section est d'introduire les matrices et les opérations matricielles \emph{pour elles mêmes}. Les espaces vectoriels de matrices fournissent en effet des exemples concrets d'espaces vectoriels et les multiplications matricielles des exemples concrets d'applications linéaires.\newline
+La caractérisation des \href{#qc.caracinv}{matrices inversibles} est un bon exemple de mise en {\oe}uvre des résultats relatifs à la dimension finie dans le cadre des espaces de matrices. 
+
+\section{Définitions}
+\begin{defi}
+L'ensemble $\mathcal M_{p,q}(\K)$ des matrices à $p$ lignes $q$ colonnes et coefficients dans le corps $\K$ est l'ensemble des fonctions définies dans $\{1,\cdots ,p\}\times\{1,\cdots ,q\}$ et à valeurs dans $\K$. 
+\end{defi}
+On utilisera terme, valeur ou coefficient pour désigner les valeurs de la fonction associée.
+
+Notation matricielle :
+\begin{displaymath}
+ A = \left(a_{ij} \right)_{(i,j)\in\llbracket 1,p \rrbracket\times\llbracket 1,q \rrbracket}. 
+\end{displaymath}
+\begin{defi}
+ La \emph{diagonale} d'une matrice $A\in \mathcal M_{p,q}(\K)$ est la famille
+\begin{displaymath}
+ (a_{11},\cdots, a_{mm})\text{ avec } m=\min(p,q)
+\end{displaymath}
+\end{defi}
+Quand on présente une matrice avec tous ses termes, on utilise des parenthèses ou des crochets et rien (un espace) entre les termes
+\begin{align*}
+ \begin{pmatrix}
+  a_{11}& a_{12} & a_{13} \\
+  a_{21}& a_{22} & a_{23}
+ \end{pmatrix}
+& &
+ \begin{bmatrix}
+  a_{11}& a_{12} & a_{13} \\
+  a_{21}& a_{22} & a_{23}
+ \end{bmatrix}
+\end{align*}
+
+On définit des types particuliers de matrices.
+\begin{description}
+  \item[Matrices nulles] $0_{p,q}$ tous les termes sont nuls.
+
+  \item [Matrices carrées]$\mathcal M_{p}(\K)=\mathcal M_{p,p}(\K)$. 
+
+  \item [Matrices lignes] $p=1$ \index{matrice ligne}
+\begin{displaymath}
+  \begin{bmatrix}
+  x_{1}& x_{2} & \cdots & x_{q} 
+ \end{bmatrix} \in \mathcal M_{1,q}(\K)
+\end{displaymath}
+Il vaut mieux ne pas identifier les matrices lignes (à $q$ colonnes) et les $q$-uplets
+\begin{displaymath}
+  (x_{1}, x_{2}, \cdots , x_{q}) \in \K^q
+\end{displaymath}
+
+  \item [Matrices colonnes] $q=1$ \index{matrice colonne}
+\begin{displaymath}
+  \begin{bmatrix}
+  x_{1} \\ x_{2} \\ \vdots \\ x_{p} 
+ \end{bmatrix} \in \mathcal M_{p,1}(\K)
+\end{displaymath}
+
+  \item [\og Matricettes\fg] $p=q=1$. \index{matricette} La différence est mince entre une \og matricette\fg~ et un élément de $\K$. En général on peut les identifier sans problème.
+\begin{displaymath}
+  \begin{bmatrix}
+  a  
+ \end{bmatrix} \in \mathcal M_{1,1}(\K) = a \in \K
+\end{displaymath}
+
+  \item [Matrices diagonales] \index{matrice diagonale} $A$ est diagonale si et seulement si
+\begin{displaymath}
+ i\neq j \Rightarrow a_{ij}=0
+\end{displaymath}
+
+  \item[Matrices identités] notées $I_p$ : matrice carrée ($p$ lignes, $p$ colonnes) diagonale avec seulement des $1$ sur la diagonale.
+  
+  \item [Matrices triangulaires] (carrées) \index{matrice triangulaire} supérieures ou inférieures strictes ou non. On présente dans un tableau la condition sur $i$ et $j$ qui entraîne que $a_{i j}=0$ pour les matrices triangulaires de chaque type.
+  
+\begin{table}[h!]  
+\begin{center}
+%\skipdef{3}
+\medskip
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|c|c|c|} \hline 
+type & supérieure & supérieure stricte & inférieure & inférieure stricte\\ \hline
+condition assurant nullité terme $i,j$ & $i > j$ & $i \geq j$ & $i < j$ & $i \leq j$ \\ \hline
+\end{tabular}
+\end{center}
+\caption{Matrices triangulaires}\label{tab:triang}
+\end{table}
+\medskip
+Présentation d'une matrice triangulaire supérieure :
+\begin{displaymath}
+ \begin{bmatrix}
+  a_{11}& a_{12} & \cdots & a_{1q} \\
+  0 & a_{22} & \cdots & a_{2q} \\
+  \vdots  &\ddots  & \ddots &\vdots  \\
+  0 & \cdots & 0 & a_{pp}
+ \end{bmatrix}
+\end{displaymath}
+
+  \item[Matrices élémentaires] \index{matrices élémentaires} Pour tout $(i,j)\in \{1,\dots,p\}\times\llbracket 1,q \rrbracket$, la matrice $E_{p,q}(i,j) \in \mathcal M_{p}(\K)$  est  définie par :
+\begin{displaymath}
+ \forall (k,l)\in \{1,\dots,p\}\times\llbracket 1,q \rrbracket : 
+\text{ terme } k,l \text{ de } E_{p,q}(i,j) = \delta_{ki}\delta_{lj}
+\end{displaymath}
+Le seul terme non nul de cette matrice est celui en position $i,j$ et ce terme vaut $1$.
+
+ \item[Lignes ou colonnes d'une matrice] Pour $A\in \mathcal{M}_{p,q}(\K)$, on définit la matrice $i$-eme ligne $L_i(A)$ et la matrice $j$-eme colonne $C_j(A)$.
+\begin{displaymath}
+  L_i(A) = \begin{pmatrix} a_{i1} & a_{i2} & \cdots & a_{iq}\end{pmatrix} \hspace{1cm}
+  C_j(A) = \begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{pj} \end{pmatrix}
+\end{displaymath}
+
+  \item[Matrice extraite] \index{matrice extraite} Plus généralement, si $I\subset \llbracket 1,p \rrbracket$, $J\subset\llbracket 1,q \rrbracket$, la matrice extraite $A_{I,J}$ ne contient que les $a_{ij}$ avec $i\in I$ et $j\in J$.\newline
+  Exemple:
+\[
+ I = \left\lbrace 2, 4\right\rbrace \subset \llbracket 1,5 \rrbracket, \;
+ J = \left\lbrace 1, 3\right\rbrace \subset \llbracket 1,a \rrbracket,\hspace{0.5cm}
+ A_{I,J} = 
+ \begin{pmatrix}
+ a_{2 1} & a_{2 3} \\ 
+ a_{4 1} & a_{4 3}
+ \end{pmatrix} 
+ \in \mathcal{M}_{2}(\K).
+\]
+\end{description}
+
+\section{Structure d'espace vectoriel.}
+\subsection{Base et dimension.}
+L'ensemble $\mathcal M_{p,q}(\K)$ hérite de la structure de $\K$-espace vectoriel fonctionnel. On vérifie la proposition suivante.
+
+Les $pq$ matrices $E_{p,q}(i,j)$ pour $(i,j)\in \llbracket 1,p \rrbracket\times \llbracket 1,q \rrbracket$ forment une base de $\mathcal M_{p,q}(\K)$.
+\begin{displaymath}
+ \dim \mathcal M_{p,q}(\K) = pq
+\end{displaymath}
+L'ensemble $\mathcal{M}_{p,q}(\C)$ est à la fois un $\C$-espace vectoriel et un $\R$-espace vectoriel. On peut \emph{conjuguer} une matrice complexe ou prendre sapartie réelle ou sa partie imaginaire.
+\[
+ Z = \left(z_{ij} \right)_{(i,j)\in\llbracket 1,p \rrbracket\times\llbracket 1,q \rrbracket} \in \mathcal{M}_{p,q}(\C),\;
+ \left\lbrace 
+ \begin{aligned}
+  \overline{Z} &= \left(\overline{z_{ij}} \right)_{(i,j)\in\llbracket 1,p \rrbracket\times\llbracket 1,q \rrbracket} \in \mathcal{M}_{p,q}(\C) \\
+   A = \Re(Z) &= \left(\Re(z_{ij}) \right)_{(i,j)\in\llbracket 1,p \rrbracket\times\llbracket 1,q \rrbracket} \in \mathcal{M}_{p,q}(\C)\\
+   B = \Im(Z) &= \left(\Im(z_{ij}) \right)_{(i,j)\in\llbracket 1,p \rrbracket\times\llbracket 1,q \rrbracket} \in \mathcal{M}_{p,q}(\C)  
+ \end{aligned}
+\right. 
+.
+\]
+Les formules sont semblables à celles dans $\C$:
+\[
+ Z = A + iB, \; \overline{Z} = A - iB,\; A = \frac{1}{2}(Z + \overline{Z}),\; B = \frac{1}{2i}(Z - \overline{Z}).
+\]
+
+
+\subsection{Applications linéaires.}
+Les $\K$-espaces vectoriels $\mathcal M_{p,1}(\K)$ (colonnes) et $\mathcal M_{1,p}(\K)$ (lignes) sont isomorphes à $\K^p$ ($p$-uplets). De même $\mathcal M_{p,q}(\K)$ est isomorphe à $K^{pq}$.
+\begin{rem}
+ Il est déconseillé d'identifier les matrices $p$-colonnes ou $p$-lignes avec $\K^p$. En revanche, on peut identifier les \emph{``matricettes''} $1\times1$ avec des éléments du corps.
+\end{rem}
+
+\begin{defi}[Transposition]
+ La transposition de $A\in \mathcal{M}_{p q}(\K)$ est $A\trans \mathcal{M}_{q p}(\K)$ définie par:
+\[
+ \forall (i,j) \in \llbracket 1,p \rrbracket \times \llbracket 1,q \rrbracket, \;
+ \text{ terme $j,i$ de } A\trans = a_{i j}.
+\]
+Pour chaque couple $(p,q)$, l'application transposition est un isomorphisme de $\mathcal{M}_{p q}(\K)$ vers $\mathcal{M}_{q p}(\K)$.
+\end{defi}
+\index{transposition}
+\begin{defi}[matrices carrées symétriques ou antisymétriques]
+ Une matrice $A\in \mathcal{M}_{p}(\K)$ est dite \emph{symétrique} si et seulement si $A\trans = A$. Elle est dite \emph{antisymétrique} si et seulement si $A\trans = -A$.
+\end{defi}
+
+\begin{defi}[Trace]\index{trace d'une matrice}
+ La trace d'une matrice carrée $A\in \mathcal{M}_p(\K)$ est définie par : $\tr(A) = \sum_{i=1}^p a_{ii}$. L'application $\tr$ est une forme linéaire de $\mathcal{M}_p(\K)$.
+\end{defi}
+
+Les applications $i$-ème ligne $L_i$ (avec $i\in\llbracket 1,p \rrbracket$) de $\mathcal{M}_{p q}(\K)$ dans $\mathcal{M}_{1 q}(\K)$ et $j$-ème colonne $C_j$ (avec $j\in\llbracket 1,q \rrbracket$) $\mathcal{M}_{p q}(\K)$ dans $\mathcal{M}_{p 1}(\K)$ sont linéaires et surjectives.
+
+\section{Produit matriciel}
+\subsection{Ligne par colonne}
+Le produit d'une matrice ligne (à gauche) par une matrice colonne (à droite) est une matrice $1\times 1$ défini par:
+\begin{multline*}
+ \begin{pmatrix}
+  x_1 & x_2 & \cdots & x_p
+ \end{pmatrix}
+ \begin{pmatrix}
+  y_1 \\ y_2 \\ \cdots \\ y_p
+ \end{pmatrix}
+=
+ \begin{pmatrix}
+  x_1y_1 + x_2 y_2 + \cdots + x_p y_p
+ \end{pmatrix}
+ \text{ (matricette) }\\
+ = x_1y_1 + x_2 y_2 + \cdots + x_p y_p \text{ identifié à un élément de $\K$}
+\end{multline*}
+
+\subsection{Généralisation}
+Le produit $AB$ avec $A\in \mathcal M_{p,q}(\K)$, $B\in \mathcal M_{q,r}(\K)$ est la matrice de $\mathcal M_{p,r}(\K)$ dont chaque terme est obtenu en faisant le produit d'une ligne de la matrice de gauche et d'une colonne de la matrice de droite. Précisément : 
+\[
+ \forall (i,k)\in \llbracket 1,p\rrbracket \times \llbracket 1, r\rrbracket,\;
+ \text{ terme $i,j$ de } AB = L_{i}(A)C_{k}(B) = \sum_{j=1}^q a_{i j}b_{j k}.
+\]
+\begin{rem}
+ Le produit matriciel \emph{n'est pas commutatif}.\newline
+ Si le produit $AB$ est défini, le produit $BA$ ne l'est pas forcément. Si la matrice $BA$ est définie, elle n'est pas forcément de même taille que $AB$. Si les matrices $AB$ et $BA$ sont de même taille, elles ne sont pas forcément égales.
+\[
+ L = \begin{pmatrix}
+      x_1 & \cdots & x_p
+     \end{pmatrix}, \;
+ C = \begin{pmatrix}
+      y_1 \\ \vdots \\ y_p
+     \end{pmatrix}, \;
+LC \text{ matricette } 1\times 1, \hspace{0.5cm}
+CL = \begin{pmatrix}
+      y_1x_1 & y_1x_2 & \cdots &y_1x_p \\
+      y_2x_1 & y_2x_2 & \cdots &y_2x_p \\
+      \vdots & \vdots & \cdots & \vdots \\
+      y_px_1 & y_px_2 & \cdots &y_px_p \\
+     \end{pmatrix}
+\in \mathcal{M}_p(\K).
+\]
+\end{rem}
+
+Introduisons des conventions de nommage usuelles pour les indices des différents intervalles.
+\begin{table}[!ht]
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|l|l|l|} \hline
+intervalles & entre $1$ et $p$ & entre $1$ et $q$ & entre $1$ et $r$ & entre $1$ et $s$ \\ \hline
+noms & $i,i_0,i',\cdots$ & $j,j_0,j',\cdots$ & $k,k_0,k',\cdots$ & $l,l_0,l',\cdots$ \\ \hline
+\end{tabular}
+\end{center}
+\caption{Conventions de nommage} \label{tab: convnom}
+\end{table} 
+
+\begin{prop}[propriétés du produit matriciel]
+Dans les propositions suivantes, on utilise les conventions de nommage de la table \ref{tab: convnom}. 
+ \begin{itemize}
+  \item Bilinéarité. Soit $(A,A') \in \mathcal{M}_{pq}(\K)^2$, $(B,B') \in \mathcal{M}_{qr}(\K)^2$, $\lambda  \in\K$. 
+\[ 
+ \left\lbrace 
+ \begin{aligned}
+  (A + A') B = AB + A'B &, (\lambda A)B= (\lambda AB)\\
+  A(B+B') = Ab + AB' &, A(\lambda B) = \lambda (AB)
+ \end{aligned}
+\right. .
+\]
+
+\item Colonne et ligne d'un produit.
+\[
+\forall k \in \llbracket 1,r\rrbracket,\; C_{k}(AB) = AC_{k}(B).\hspace{0.5cm}
+\forall i \in \llbracket 1,p \rrbracket, \;  L_{i}(AB) = L_{i}(A)B. 
+\]
+
+\item Terme $i,k$ de $AB$ = $L_i(A)C_k(B)$.
+\item Colonne d'un produit.
+\[
+\forall k \in \llbracket 1,r\rrbracket,\; C_k(AB) = A C_k(B). 
+\]
+
+\item Ligne d'un produit.
+\[
+\forall i \in \llbracket 1,p \rrbracket, \;L_i(AB) = L_i(A) B. 
+\]
+
+\item Le produit d'une matrice quelconque par une matrice nulle est une matrice nulle.
+
+\item Produits par une matrice identité.
+\[
+ \forall A \in \mathcal{M}_{p,q}(\K),\; I_p A = A = A I_q.
+\]
+
+\item  Transposée d'un produit.
+\[
+ \forall A \in \mathcal{M}_{p,q}(\K), \forall B \in \mathcal{M}_{q,r}(\K), \hspace{0.5cm} \trans{(AB)} = \trans{B}\, \trans{A}\,.
+\]
+
+\item Associativité:\index{associativité du produit matriciel}
+\begin{displaymath}
+ \forall A\in \mathcal M_{p,q}(\K), \forall B\in \mathcal M_{q,r}(\K), \forall C\in \mathcal M_{r,s}(\K) : \hspace{0.5cm}
+(AB)C = A(BC)
+\end{displaymath}
+
+\item Combinaison de colonnes comme produit matriciel.$AC$ où $C$ est une matrice colonne comme combinaison linéaire des colonnes de $A$.
+\[
+ \forall A \in \mathcal{M}_{p,q}(\K),\; \forall (\lambda_1, \cdots, \lambda_q) \in \K^q, \;
+ A 
+\begin{bmatrix}
+\lambda_1\\ \vdots \\ \lambda_q 
+\end{bmatrix}
+= \lambda_1 C_1(A) + \cdots + \lambda_q C_q(A)\in \Vect\left(C_1(A),\cdots,C_p(A) \right) 
+\]
+ \end{itemize}
+\end{prop}
+\begin{rem}
+ La bilinéarité traduit la linéarité des fonctions \og multiplication à gauche par $A$\fg et \og multiplication à droitee par $A$\fg. à compléter 
+\end{rem}
+
+\begin{demo}[\hyperdef{qc}{assocmat}{Preuve de l'associativité}]
+\begin{multline*}
+ \text{terme $i_0,l_0$ de }(AB)C
+=\sum_{k=1}^r(\text{ terme $i_0,k$ de}AB)c_{kl_0}
+= \sum_{k=1}^r\left( \sum_{j=1}^qa_{i_0j}b_{jk}\right)c_{kl_0} 
+=\sum_{(j,k)\in\llbracket 1,q \rrbracket\times\{1,\cdots,r\}}a_{i_0j}b_{jk}c_{kl_0} \\
+= \sum_{j=1}^q a_{i_0j} \left( \sum_{k=1}^rb_{jk}c_{kl_0}\right) 
+= \sum_{j=1}^q a_{i_0j}\text{terme $j,l_0$ de }BC
+= \text{terme $i_0,l_0$ de }A(BC) 
+\end{multline*}
+\end{demo}
+
+
+\begin{exple}[produits de matrices élémentaires]
+\begin{displaymath}
+ E_{p,q}(i_0,j_0)E_{q,r}(j_1k_1) = \delta_{j_0j_1}E_{p,r}(i_0,k_1)
+\end{displaymath}
+ Application : une matrice $Z\in \mathcal M_{p}(\K)$ commute avec toutes les matrices élémentaires $E_{p,p}(i,j)$ si et seulement si il existe $\lambda\in \K$ tel que $Z=\lambda I_p$.
+\end{exple}
+
+\subsection{Propriétés.}
+\begin{prop}
+Le produit de deux matrices triangulaires supérieures (resp inférieures) est une matrice triangulaire supérieure (resp inférieure).   
+\end{prop}
+\begin{demo}
+  Soit $A$ et $B$ deux $p\times p$ matrices triangulaires supérieures. On veut montrer que $C = AB$ est triangulaire supérieure. D'après la table \ref{tab:triang}, la condition assurant que $C$ est triangulaire supérieure est $ u < v \Rightarrow c_{u v} = 0$.\newline
+  Pour $i$ et $j$ dans $\llbracket 1,p \rrbracket$ tels que $i<j$, montrons que $c_{i j}$ est nul.
+\[
+ c_{i j} = \sum_{k=1}^{p}a_{i k} b_{k j}
+  = \sum_{k=1}^{j-1}a_{i k} \underset{= 0 \text{ car } k < j}{\underbrace{b_{k j}}} + \sum_{k=j}^{p}\underset{= 0 \text{ car } i<j\leq k}{\underbrace{a_{i k}}} b_{k j} = 0.
+\]
+La démonstration est analogue pour les matrices triangulaires inférieures.
+\end{demo}
+
+\begin{prop} Pour des matrices carrées $A$, $B$ dans $\mathcal{M}_p(\K)$ :
+ $\tr (AB)=\tr (BA)$
+\end{prop}
+\begin{demo}
+Par définition de la trace 
+\begin{multline*}
+ \tr(AB) = \sum_{i=1}^{p}\text{ terme $i i$ de}AB
+ = \sum_{i=1}^{p} \left( \sum_{j=1}^{p}a_{i j} b_{j i}\right) 
+ = \sum_{(i,j)\in \llbracket 1,p \rrbracket^2} a_{i j} b_{j i}
+ = \sum_{(i,j)\in \llbracket 1,p \rrbracket^2} b_{j i} a_{i j} \\
+ = \sum_{j=1}^{p} \left( \sum_{i=1}^{p} b_{j i}a_{i j}\right)
+ =\sum_{j=1}^{p}\text{ terme $j j$ de} BA
+ =\tr(BA).
+\end{multline*}
+\end{demo}
+
+\subsection{Algèbre de matrices carrées}
+
+Structure d'anneau, de $\K$-algèbre sur $\mathcal M_{p}(\K)$. Une $\K$-algèbre est à la fois un anneau et un $\K$-espace vectoriel pour lequel les multiplications à droite et à gauche par des éléments fixés sont des endomorphismes.
+
+\begin{defi}
+L'ensemble des matrices inversibles de $\mathcal{M}_p(\K)$ est noté $\text{GL}_p(\K)$. 
+\end{defi}
+
+\begin{prop}
+  Pour le produit matriciel, $\text{GL}_p(\K)$ est un groupe.
+\end{prop}
+\begin{demo}
+  Il s'agit du groupe des inversibles de l'anneau $\mathcal{M}_p(\K)$.
+\end{demo}
+\begin{rem}
+  Si $A$ et $B$ sont inversibles, $AB$ aussi et $(AB)^{-1} = B^{-1}A^{-1}$.
+\end{rem}
+\begin{prop}
+ La transposée d'une matrice inversible est inversible. La transposée de l'inverse d'une matrice inversible est l'inverse de sa transposée.
+\[
+ \forall P \in \text{GL}_p(\K) \left( \trans{A}\right)^{-1} = \trans{\left( A^{-1}\right) }. 
+\]
+\end{prop}
+\begin{demo}
+ Il suffit de transposer la définition de l'inverse:
+\[
+ A\, A^{-1} = A^{-1}\, A = I_p 
+ \Rightarrow \trans{\left( A\, A^{-1}\right)}  = \trans{\left( A^{-1}\, A\right) } = \trans{I_p}
+ \Rightarrow \trans{\left( A^{-1}\right)}\,\trans{A} = \trans{A}\,\trans{\left( A^{-1}\right)} = I_p
+ \Rightarrow \left( \trans{A} \right)^{-1} =  \trans{\left( A^{-1}\right)}.
+\]
+\end{demo}
+Dans une matrice carrée, les règles de calculs usuelles sont valides. Il faut seulement tenir compte du fait que la multiplication n'est pas commutative.
+\begin{prop}[Formule du binôme et somme télescopique]
+\[
+ \forall (A,B) \in \mathcal{M}_{p}(\K), \forall n \in \N^*\;
+ A B = B A \Rightarrow
+ \left\lbrace 
+ \begin{aligned}
+  (A + B)^n &= \sum_{k=0}^n \binom{n}{k}A^k\, B^{n-k} \\
+  A^{n+1} - B^{n+1} &= (A - B)\sum_{k=0}^n A^k\,B^{n-k} 
+ \end{aligned}
+\right. .
+\]
+\end{prop}
+\begin{rem}
+ Ces formules sont valables en particulier lorsque l'une des deux matrices est $I_p$qui commute avec toutes les matrices.
+\end{rem}
+\begin{defi}[matrice nilpotente]
+ Une matrice est dite \emph{nilpotente} \index{matrice nilpotente} lorsqu'une de ses puissances est la matrice nulle.
+\end{defi}
+
+\begin{exple} 
+\[
+ A = 
+ \begin{pmatrix}
+  0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 
+ \end{pmatrix}, \;
+A^2 = 
+ \begin{pmatrix}
+  0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 
+ \end{pmatrix},\;
+ A^3 = 0_{\mathcal{M}_3(\R)}.
+\] 
+\end{exple}
+
+\subsection{Produit par blocs}
+Retenir que le produit par blocs est exact lorsqu'il est possible \index{produit par blocs}:  à compléter
+
+
+\section{Matrices colonnes}
+\subsection{Base canonique}
+\begin{defi} \index{base canonique de l'espace des matrices colonnes}
+ La base canonique de $\mathcal{M}_{p,1}(\K)$ est 
+\[
+ ( 
+ \begin{pmatrix}
+  1 \\ 0 \\ 0 \\ \vdots \\ 0
+ \end{pmatrix},
+\begin{pmatrix}
+  0 \\ 1 \\ 0 \\ \vdots \\ 0
+ \end{pmatrix},
+ \cdots, 
+ \begin{pmatrix}
+  0 \\ 0 \\ \vdots \\ 0 \\ 1
+ \end{pmatrix}
+ )
+\hspace{0.5cm} \text{ces colonnes sont notées } (X_1, \cdots, X_p). 
+\]
+\end{defi}
+
+
+\subsection{Noyau et image d'une matrice}
+Cette section présente quelques résultats et notions relatifs aux matrices colonnes.
+\begin{defi} \index{noyau et image d'une matrice}
+Soit $A\in \mathcal{M}_{p,q}(\K)$. Son \emph{noyau} est le sous-espace de $\mathcal{M}_{q,1}(\K)$ formé par les colonnes $X$ telles que $AX = 0_{\mathcal{M}_{p,1}(\K)}$, son \emph{image} est le sous-espace de $\mathcal{M}_{p,1}(\K)$ formé par les colonnes $AX$ avec $X\in \mathcal{M}_{q,1}(\K)$.
+\end{defi}
+Le noyau et l'image de $A$ sont en fait le noyau et l'image de l'application linéaire de $\mathcal{M}_{q,1}(\K)$ dans $\mathcal{M}_{p,1}(\K)$ qui à une colonne $X$ à $q$ ligne associe $AX$ (colonne à $p$ lignes). 
+L'image d'une matrice est aussi le sous-espace engendré par ses colonnes.
+
+\subsection{Inversibilité}
+\`A cause de la définition du produit matriciel, on peut remarquer que, pour $M$ matrice carrée à $p$ lignes et colonnes:
+\begin{itemize}
+  \item il existe $Q\in \mathcal{M}_p(_K)$ telle que $MQ = I_p$ est équivalent à $(C_1(M),C_2(M),\cdots,C_p(M))$ génératrice,
+  \item il existe $P\in \mathcal{M}_p(_K)$ telle que $PM = I_p$ entraîne $(C_1(M),C_2(M),\cdots,C_p(M))$ libre.
+\end{itemize}
+
+\begin{prop}[\hyperdef{qc}{caracinv}{caractérisation des matrices inversibles}]\index{caractérisation des matrices inversibles}
+ Une matrice $A\in\mathcal M_{p}(\K)$ est inversible si et seulement si la famille de ses colonnes
+\begin{displaymath}
+ \left(C_1(A),\cdots C_p(A) \right) 
+\end{displaymath}
+est une base de $\mathcal M_{p,1}(\K)$
+\end{prop}
+\begin{demo}
+ On commence par caractériser les matrices inversibles à droite. On dira qu'une matrice $A\in \mathcal M_p(\K)$ est inversible à droite si et seulement si il existe $B\in \mathcal M_p(\K)$ tel que $AB=I_p$. On va montrer que $A$ est inversible à droite si et seulement si les colonnes $(C_1(A),\cdots,C_p(A))$ forment une famille génératrice de $\mathcal M_{p,1}(\K)$.\newline
+L'espace $\mathcal M_{p,1}(\K)$ est de dimension $p$, une base est formée par
+\begin{displaymath}
+ X_1 = 
+\begin{pmatrix}
+1 \\ 0 \\  \vdots \\ 0
+\end{pmatrix}
+,
+ X_2 = 
+\begin{pmatrix}
+0 \\ 1  \\  \vdots \\ 0
+\end{pmatrix}
+, \cdots ,
+ X_p = 
+\begin{pmatrix}
+0 \\  \vdots \\ 0 \\1
+\end{pmatrix}
+\end{displaymath}
+Supposons qu'il existe une matrice $B$ telle que $AB=I_p$ et considérons la colonne $j$ de ce produit :
+\begin{displaymath}
+ X_j = C_j(I_p)=C_j(AB) = AC_j(B) = b_{1j}C_1(A) + \cdots + b_{pj}C_p(A)
+\end{displaymath}
+Ceci montre que les colonnes $X_j$ de la base sont combinaisons linéaires des $C_i(A)$. La famille des colonnes de $A$ est donc une famille génératrice de $\mathcal M_{p,1}(\K)$. Réciproquement, si ces colonnes forment une base, chaque $X_j$ en est une combinaison linéaire. On peut ainsi constituer colonne après colonne une matrice $B$ telle que $AB=I_p$.\newline
+Comme dans un espace de dimension $p$ toute famille génératrice de $p$ vecteurs est libre, ceci montre que $A$ inversible à droite entraîne $(C_1(A),\cdots,C_p(A))$ base de $\mathcal M_{p,1}(\K)$.
+
+Supposons $(C_1(A),\cdots,C_p(A))$ base de $\mathcal M_{p,1}(\K)$. On vient de voir qu'il existe une matrice $B$ telle que $AB=I_p$. Il s'agit maintenant de prouver que $BA=I_p$.\newline
+Montrons que la famille des colonnes $(C_1(B),\cdots,C_p(B))$ est libre.\newline
+En effet, soit $(\lambda_1,\cdots,\lambda_p)\in\K^p$ tels que
+\begin{displaymath}
+ \lambda_1C_1(B)+\cdots + \lambda_pC_p(B)=
+\begin{pmatrix}
+0 \\  \vdots \\ 0 
+\end{pmatrix}
+\end{displaymath}
+On peut alors écrire matriciellement la relation et exploiter l'associativité:
+\begin{displaymath}
+ B
+\begin{pmatrix}
+\lambda_1 \\  \vdots \\ \lambda_p
+\end{pmatrix}=
+\begin{pmatrix}
+0 \\  \vdots \\ 0 
+\end{pmatrix}
+\Rightarrow 
+AB
+\begin{pmatrix}
+\lambda_1 \\  \vdots \\ \lambda_p
+\end{pmatrix}
+=A
+\begin{pmatrix}
+0 \\  \vdots \\ 0 
+\end{pmatrix}
+\Rightarrow
+I_p \begin{pmatrix}
+\lambda_1 \\  \vdots \\ \lambda_p
+\end{pmatrix}
+=\begin{pmatrix}
+0 \\  \vdots \\ 0 
+\end{pmatrix}
+\Rightarrow
+\begin{pmatrix}
+\lambda_1 \\  \vdots \\ \lambda_p
+\end{pmatrix}
+=\begin{pmatrix}
+0 \\  \vdots \\ 0 
+\end{pmatrix}
+\end{displaymath}
+Ce qui montre bien que cette famille est libre. Comme elle contient $n$ vecteurs, elle est génératrice. Il existe donc une matrice $A_1$ telle que $BA_1=I_p$. En composant cette relation à gauche par $A$, on obtient $ABA_1=A$ ce qui entraine $A_1=A$ car $AB=I$. On a donc bien $BA=I_p$.
+\end{demo}
+\begin{rem}
+  \'Evidemment, il faut aussi connaître d'autres argumentations pour ce résultat, avec une famille de vecteurs ou avec le déterminant.
+\end{rem}
+\begin{prop}
+Une matrice triangulaire est inversible si et seulement si les termes de sa diagonale sont non nuls. 
+\end{prop}
+\begin{demo}
+ On peut appliquer la caractérisation précédente car les colonnes d'une telle matrice forment clairement une famille libre. à compléter (détail direct + réciproque)
+\end{demo}
+
+
+\end{document}
