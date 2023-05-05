@@ -4,3 +4,8 @@
 *.out
 *.synctex.gz
 *.idx
+/auxdir
+/pdfdir
+S*.pdf
+C[0-9][0-9][0-9][0-9].pdf
+

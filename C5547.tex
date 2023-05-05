@@ -238,7 +238,7 @@ est l'écriture de la division euclidienne de $\lambda m$ par $\lambda n$. L'alg
   \begin{displaymath}
     \forall (a,b)\in (\Z^*)^2,\, \forall \lambda \in \N^*, \; (\lambda a)\wedge (\lambda b) = \lambda (a\wedge b)
   \end{displaymath}
-\end{prop}
+\end{propn}
 \begin{demo}
   Il suffit de remarquer qu'une division euclidienne multipliée par un $\lambda \in \N^*$ reste une division euclidienne. La suite des divisions euclidiennes de l'algorithme d'Euclide pour$\lambda a$ et $\lambda b$ est donc formée par les divisions de l'algorithme pour $a$ et $b$ simplement multipliées par $\lambda$. Les suites s'arrêtent ensemble ce qui prouve le résultat.
 \end{demo}
@@ -303,10 +303,10 @@ Dispositif pratique.\index{algorithme d'Euclide étendu! disposition pratique} O
 % use packages: array
 \begin{array}{l|l|l|l|l}
  & 0 & 1 & 2 & 3 \\ \hline
-a & a_0 & a_1 & × & × \\ 
-q & × & × & × & × \\ 
-u & 1 & 0 & × & × \\
-v & 0 & 1 & × & ×
+a & a_0 & a_1 &   &   \\
+q &   &   &   &   \\
+u & 1 & 0 &   &   \\
+v & 0 & 1 &   &
 \end{array}
 \end{displaymath}
 puis on progresse vers la droite avec chaque division euclidienne: d'abord $a_2$ et $q_1$, puis en utilisant la relation $\mathcal Q$,  $u_2$ et $v_2$ à partir des éléments de leur ligne respective et ainsi de suite
@@ -314,17 +314,17 @@ puis on progresse vers la droite avec chaque division euclidienne: d'abord $a_2$
 % use packages: array
 \begin{array}{l|l|l|l|l}
  & 0 & 1 & 2 & 3 \\ \hline
-a & a_0 & a_1 & a_2 & × \\ 
-q & ×   & q_1 & ×   & × \\ 
-u & 1   & 0   & 1 & × \\
-v & 0   & 1   & -q_1 & ×
+a & a_0 & a_1 & a_2  &   \\
+q &     & q_1 &      &   \\
+u & 1   & 0   & 1    &   \\
+v & 0   & 1   & -q_1 &
 \end{array}
 \hspace{1cm}\rightarrow\hspace{1cm}
 \begin{array}{l|l|l|l|l}
  & 0 & 1 & 2 & 3 \\ \hline
-a & a_0 & a_1 & a_2 & a_3 \\ 
-q & ×   & q_1 & q_2   & × \\ 
-u & 1   & 0   & 1 & -q_2 \\
+a & a_0 & a_1 & a_2  & a_3 \\
+q &     & q_1 & q_2  &   \\
+u & 1   & 0   & 1    & -q_2 \\
 v & 0   & 1   & -q_1 & 1+q_1q_2
 \end{array}
 \hspace{1cm}\rightarrow \hspace{1cm}\cdots
