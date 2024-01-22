@@ -4,3 +4,15 @@
 *.out
 *.synctex.gz
 *.idx
+*.backup
+*.ilg
+*.ind
+*.xoj
+*.xopp
+*.eps
+/pdfdir
+/auxdir
+*.pdf
+# fichiers graphiques inclus
+!*_*.pdf
+*_expo.pdf

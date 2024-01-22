@@ -38,12 +38,12 @@ Si $n$ est impair, procéder de manière analogue avec le $\cos$. Lorsque les de
 Lorsque un des exposants est impair, on procède comme dans le cas circulaire avec $\ch^2 = 1 +\sh^2$ et $\sh^2 = \ch^2 -1$.\newline
 Lorsque les deux exposants sont pairs, on peut tout exprimer avec des exponentielles et développer. On trouve facilement une primitive comme une combinaison d'exponentielles.
 
-\subsection{Pseudo polynômes}
-\index{pseudo-polynome}\index{polynome-exponentiel}
-Un \emph{pseudo-polynôme} (ou \emph{polynôme-exponentiel}) est une fonction de la forme $t\rightarrow P(t)e^{\lambda t}$. avec $\lambda$ complexe non nul et $P$ polynôme.\newline
+\subsection{Polynômes exponentiels}
+\index{polynôme-exponentiel}
+Un \emph{polynôme-exponentiel} est une fonction de la forme $t\rightarrow P(t)e^{\lambda t}$. avec $\lambda$ complexe non nul et $P$ polynôme.\newline
 On peut en chercher une primitive sous la forme $t\rightarrow Q(t)e^{\lambda t}$ avec $Q$ de même degré. Pour cela, on forme un système d'équations linéaires dont les inconnues sont les coefficients de $Q$. Cette méthode est très proche de celle utilisée pour résoudre les \href{\baseurl C1616.pdf}{équations différentielles linéaires à coefficients constants}. On exploite la linéarité en utilsant des combinaisons linéaires ainsi que les parties réelles et imaginaires.
 \paragraph{Exemple} $f(t)=(t^2+1)\cos t$.\newline
-Il s'agit de la partie réelle du pseudo-polynôme $(t^2+1)e^{it}$. On en cherche une primitive $F(t) = (at^2 + bt +c)e^{it}$ en identifiant les coefficients de la dérivée . Puis on prend la partie réelle de cette primitive.
+Il s'agit de la partie réelle du polynôme exponentiel $(t^2+1)e^{it}$. On en cherche une primitive $F(t) = (at^2 + bt +c)e^{it}$ en identifiant les coefficients de la dérivée . Puis on prend la partie réelle de cette primitive.
 \[
 \left. 
 \begin{aligned}
@@ -64,7 +64,7 @@ Il s'agit de la partie réelle du pseudo-polynôme $(t^2+1)e^{it}$. On en cherch
 
 
 \paragraph{Justification de la méthode} Pourquoi existe-t-il toujours une primitive de cette forme? 
-Pour $n\in \N$ et $\lambda \in \C$ fixés désignons par $E$ l'ensemble des pseudo polynômes de la forme $t \mapsto P(t)e^{\lambda t}$ avec $\deg(P) \leq n$. \newline
+Pour $n\in \N$ et $\lambda \in \C$ fixés désignons par $E$ l'ensemble des polynômes exponetiels de la forme $t \mapsto P(t)e^{\lambda t}$ avec $\deg(P) \leq n$. \newline
 C'est un sous-espace vectoriel de dimension finie $n+1$ de l'espace des fonctions à valeurs complexes. Notons $D$ la restriction de l'opérateur de dérivation à $E$. C'est un endomorphisme de $E$. Son noyau ne contient que la fonction nulle car pour $P\neq 0$:
 \[
  D(P(t)e^{\lambda t}) = (\lambda P + P')(t)e^{\lambda t} \text{ avec } \deg(\lambda P + P') = \deg(P).
@@ -120,7 +120,7 @@ pour faire apparaitre et calculer
 \begin{displaymath}
  \int_0^x \frac{1 }{(t^2-2\Re z t +|z|^2)^2}dt
 \end{displaymath}
-Si $m$ n'est pas trop grand, on peut remonter de $1$ vers $m$ par une succession d'intégrations par parties \og en crabe\fg. \index{intégration par parties \og en crabe\fg}.
+Si $m$ n'est pas trop grand, on peut remonter de $1$ vers $m$ par une succession d'intégrations par parties \og en crabe\fg. \index{intégration par parties en crabe}.
 
 \section{Fonctions rationnelles trigonométriques}
 Il s'agit essentiellement de se ramener au calcul d'une primitive d'une fraction rationnelle par un changement de variable approprié.
@@ -241,7 +241,7 @@ z \in \C\setminus\R : \frac{1}{t-z} &:& \ln \left( \left|x-z\right| \right) +i\a
 =\int_0^1(u^2 - 2 +\frac{3}{1+u^2} - \frac{1}{(1+u^2)^2})du \hspace{0.5cm}\text{ ($u^2=u^2+1-1$ dans dern. frac.) }
 =\frac{1}{3} - 2 +3\,\frac{\pi}{4}-\int_0^1\frac{1}{(1+u^2)^2}du
 \end{multline*}
-Calcul de $\int_0^1\frac{1}{(1+u^2)^2}du$ par intégration par parties (\og en crabe\fg)\index{intégration par parties \og en crabe\fg}
+Calcul de $\int_0^1\frac{1}{(1+u^2)^2}du$ par intégration par parties (\og en crabe\fg)\index{intégration par parties en crabe}
 \begin{multline*}
  \frac{\pi}{4}=\int_0^1\frac{du}{1+u^2}
 =\left[ \frac{u}{1+u^2}\right]_0^1 -\int_0^1u\frac{(-2u)}{(1+u^2)^2}du
@@ -317,7 +317,7 @@ Le calcul de
 \begin{displaymath}
   \int_{0}^{1}\frac{du}{(1+u^2)^2} = \frac{\pi}{8} + \frac{1}{4}
 \end{displaymath}
-se fait par une intégration par parties \og en crabe\fg~ \index{intégration par parties \og en crabe\fg} à partir de 
+se fait par une intégration par parties \og en crabe\fg~ \index{intégration par parties en crabe} à partir de 
 \begin{displaymath}
   \frac{\pi}{4} = \int_0^1 1\,\frac{1}{1+u^2} \, du = \left[ \frac{u}{1+u^2}\right]_{0}^{1} 
   -2 \int_{0}^{1}\frac{du}{(1+u^2)^2}.
