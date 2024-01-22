@@ -303,10 +303,10 @@ Dispositif pratique.\index{algorithme d'Euclide étendu! disposition pratique} O
 % use packages: array
 \begin{array}{l|l|l|l|l}
  & 0 & 1 & 2 & 3 \\ \hline
-a & a_0 & a_1 & \times & \times \\ 
-q & \times & \times & \times & \times \\ 
-u & 1 & 0 & \times & \times \\
-v & 0 & 1 & \times & \times
+a & a_0 & a_1 &   &   \\
+q &   &   &   &   \\
+u & 1 & 0 &   &   \\
+v & 0 & 1 &   &
 \end{array}
 \end{displaymath}
 puis on progresse vers la droite avec chaque division euclidienne: d'abord $a_2$ et $q_1$, puis en utilisant la relation $\mathcal Q$,  $u_2$ et $v_2$ à partir des éléments de leur ligne respective et ainsi de suite
@@ -314,17 +314,17 @@ puis on progresse vers la droite avec chaque division euclidienne: d'abord $a_2$
 % use packages: array
 \begin{array}{l|l|l|l|l}
  & 0 & 1 & 2 & 3 \\ \hline
-a & a_0 & a_1 & a_2 & \times \\ 
-q & \times   & q_1 & \times   & \times \\ 
-u & 1   & 0   & 1 & \times \\
-v & 0   & 1   & -q_1 & \times
+a & a_0 & a_1 & a_2  &   \\
+q &     & q_1 &      &   \\
+u & 1   & 0   & 1    &   \\
+v & 0   & 1   & -q_1 &
 \end{array}
 \hspace{1cm}\rightarrow\hspace{1cm}
 \begin{array}{l|l|l|l|l}
  & 0 & 1 & 2 & 3 \\ \hline
-a & a_0 & a_1 & a_2 & a_3 \\ 
-q & \times   & q_1 & q_2   & \times \\ 
-u & 1   & 0   & 1 & -q_2 \\
+a & a_0 & a_1 & a_2  & a_3 \\
+q &     & q_1 & q_2  &   \\
+u & 1   & 0   & 1    & -q_2 \\
 v & 0   & 1   & -q_1 & 1+q_1q_2
 \end{array}
 \hspace{1cm}\rightarrow \hspace{1cm}\cdots
