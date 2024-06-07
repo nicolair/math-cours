@@ -1,0 +1,817 @@
+\input{courspdf.tex}
+\debutcours{Notes sur \emph{Measure an Integration} de König}{beta 1.4 \tiny{ le \today} }
+\noindent Ce texte est constitué de notes de lecture sur le livre Measure and Integration de Heinz König.
+
+\noindent L'ouvrage est très abstrait, il fournit des méthodes de théorie des ensembles utiles pour les constructions et les démonstrations dans la théorie des mesures.
+
+Une mesure sur un ensemble $X$ est définie à partir d'une partie $\mathfrak{S}$ de $\mathcal{P}(X)$ et d'une fonction $\varphi$ de $\mathfrak{S}$ à valeurs dans $\overline{\R}$.
+
+Les propriétés et les constructions sont présentées dans un cadre tellement abstrait et général que j'ai beaucoup de mal à faire sens avec le texte. L'idée de ces notes est de lire ces propriétés et constructions avec en tête des exemples précis.
+
+On notera $A'$ le complémentaire d'une partie $A \in \mathcal{P}(X)$ pour un ensemble $X$ quelconque.
+
+\section{Exemples}
+\subsection{Union de classes de congruences dans $\Z$}
+\subsubsection{Résultats sur les congruences}
+\begin{lem}
+  Pour tous $\alpha_1, \cdots, \alpha_p, \beta$ entiers naturels:
+  \begin{displaymath}
+    \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right) = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right).
+  \end{displaymath}
+\end{lem}
+\begin{demo}
+  Notons $T$ le terme de gauche dans l'égalité et $M$ celui de droite. Notons $\alpha_m$ le plus grand des $\alpha_i$ de sorte que $T = \min(\alpha_m, \beta)$.\newline
+  Pour tout $i$, $\min(\alpha_i, \beta) \leq \min (\alpha_m, \beta) = T$ donc $M = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right) \leq T$.\newline
+  D'autre part, $T=\min (\alpha_m, \beta)$ est l'un des $\min(\alpha_i, \beta)$ figurant dans $M$ donc $T \leq M$.
+\end{demo}
+
+\begin{propn}[distributivité du pgcd sur le ppcm]
+  Pour tous $a_1, \cdots ,a_p, b$ entiers relatifs non nuls:
+  \begin{displaymath}
+    \left(a_1 \vee \cdots \vee a_p\right)\wedge b = (a_1 \wedge b) \vee \cdots \vee (a_p \wedge b).
+  \end{displaymath}
+\end{propn}
+\begin{demo}
+  On utilise la décomposition en facteurs premiers dans $\Z$ en comparant les exposants d'un nombre premier $p$ quelconque. Notons $\alpha_1, \cdots, \alpha_p, \beta$ les exposants respectifs de $p$ dans $a_1, \cdots, a_p, b$. D'après la proposition précédente:
+  \begin{align*}
+    \text{exposant de $p$ dans } \left(a_1 \vee \cdots \vee a_p\right)\wedge b 
+    = \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right) 
+    = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right) \\
+    = \text{exposant de $p$ dans } (a_1 \wedge b) \vee \cdots \vee (a_p \wedge b).
+  \end{align*}
+\end{demo}
+
+\begin{propn}[Équation de Bezout]
+  Soit $m_1, m_2$ des entiers non nuls et $u\in \Z$. L'équation aux inconnues $\lambda_1, \lambda_2$
+  \begin{displaymath}
+    u = \lambda_1 m_1 - \lambda_2 m_2
+  \end{displaymath}
+  admet des solutions si et seulement si $u$ est un multiple de $m_1 \wedge m_2$ (pgcd). Dans ce cas si $(l_1, l_2)$ est un couple solution, l'ensemble des couples solutions est
+  \begin{displaymath}
+    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace .
+  \end{displaymath}
+\end{propn}
+\begin{demo}
+  L'équation admet des solutions si et seulement si $u \in \Z m_1 + \Z m_2 = \Z (m_1\wedge m_2)$. Dans ce cas, si $(l_1,l_2)$ et $(\lambda_1, \lambda_2)$ sont deux couples solutions:
+  \begin{displaymath}
+    \left. 
+    \begin{aligned}
+      u &= l_1 m_1 - l_2 m_2 \\
+      u &= \lambda_1 m_1 - \lambda_2 m_2
+    \end{aligned}
+    \right\rbrace \Rightarrow (\lambda_1 - l_1)m_2 = (\lambda_2 - l_2)m_1 \Rightarrow (\lambda_1 - l_1)\frac{m_2}{m_1 \wedge m_2} = (\lambda_2 - l_2)\frac{m_1}{m_1 \wedge m_2}
+  \end{displaymath}
+en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \wedge m_2}$ sont premiers entre eux, le théorème de Gauss entraine qu'il existe $\lambda \in \Z$ tel que $\lambda_1 - l_1 = \lambda \frac{m_2}{m_1 \wedge m_2}$. En remplaçant dans la relation et simplifiant, il vient $\lambda_2 - l_2 = \lambda \frac{m_1}{m_1 \wedge m_2}$.
+\end{demo}
+
+\begin{propn}[Système de 2 congruences]
+  Soit $m_1, m_2$ des entiers non nuls et $a_1 a_2$ des entiers relatifs. Le système de congruences
+  \begin{displaymath}
+    \left\lbrace 
+      \begin{align*}
+        x &\equiv a_1 \mod m_1 \\
+        x &\equiv a_2 \mod m_2
+      \end{align*}
+    \right.
+  \end{displaymath}
+  admet des solutions si et seulement si $a_1$ et $a_2$ sont congrus modulo $m_1 \wedge m_2$ (pgcd). Dans ce cas, l'ensemble des solutions est une classe de congruence modulo $m_1 \vee m_2$.
+\end{propn}
+\begin{demo}
+  Si le système admet une solution $x$, il existe $\lambda_1$ et $\lambda_2$ entiers tels que 
+  \begin{displaymath}
+    \left. 
+    \begin{aligned}
+      x &= a_1 + \lambda_1 m_1 \\
+      x &= a_2 + \lambda_2 m_2
+    \end{aligned}
+    \right \rbrace \Rightarrow
+    a_1 - a_2 = -\lambda_1 m_1 + \lambda_2 m_2 \in \Z (m_1 \wedge m_2).
+  \end{displaymath}
+  Supposons $a_1$ et $a_2$ congrus modulo $m_1 \wedge m_2$.
+  \begin{align*}
+        \left\lbrace 
+      \begin{aligned}
+        x &\equiv a_1 \mod m_1 \\
+        x &\equiv a_2 \mod m_2
+      \end{aligned}
+    \right.
+    \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
+            \left\lbrace 
+      \begin{aligned}
+        x &= a_1 + \lambda_1 m_1 \\
+        x &= a_2 + \lambda_2 m_2
+      \end{aligned}
+    \right. \\
+    \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
+            \left\lbrace 
+      \begin{aligned}
+        x &= a_1 + \lambda_1 m_1 \\
+        a_2 - a_1 &= \lambda_1 m_1 - \lambda_2 m_2
+      \end{aligned}
+    \right.
+  \end{align*}
+  La deuxième relation est une équation de Bezout admettant des solutions car $m_1$ et $m_2$ sont congrus modulo le pgcd. L'ensemble des couples solutions et de la forme
+  \begin{displaymath}
+    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace 
+  \end{displaymath}
+  d'après la proposition précédente sur l'équation de Bezout. En réinjectant l'expression des solutions $\lambda_1$ dans la première équation, on trouve qu'un $x$ solution est de la forme
+  \begin{displaymath}
+    x = a_1 + l_1 m_1 + \lambda \frac{m_1 m_2}{m_1 \wedge m_2} = b + \lambda (m_1 \vee m_2).
+  \end{displaymath}
+\end{demo}
+
+On peut étendre à un système de $p$ congruences en utilisant la distributivité du pgcd sur le ppcm.
+\begin{propn}[Système de congruences]\label{SystCong}
+  Soit $m_1, \cdots, m_p$ des entiers non nuls et $a_1, \cdots, a_p$ des entiers relatifs. Le système de congruences
+  \begin{displaymath}
+    \left\lbrace 
+      \begin{align*}
+        x &\equiv a_1 \mod m_1 \\
+          &\vdots \\
+        x &\equiv a_p \mod m_p
+      \end{align*}
+    \right.
+  \end{displaymath}
+  admet des solutions si et seulement si $a_i \equiv a_j$ modulo $m_i \wedge m_j$ pour tous les couples $(i,j)$ avec $i \neq j$. Dans ce cas, l'ensemble des solutions est une classe de congruence modulo $m_1 \vee \cdots \vee m_p$ (ppcm des $m_i$).
+\end{propn}
+\begin{demo}
+  \begin{enumerate}
+    \item Il est évident que la condition d'existence de solutions est nécessaire car elle correspond à l'existence de solutions pour tous les sous-systèmes de 2 congruences. On peut remarquer que si un système vérifie la condition tous ses sous-systèmes la vérifient aussi.
+    \item Si l'ensemble $S$ des solutions est non vide avec $x \in S$ et $y$ congrus à $x$ modulo $m_1 \vee \cdots \vee m_p$ alors pour chaque $i$, $y \equiv x \equiv a_i$ modulo $m_i$ donc $x + \Z (m_1 \vee \cdots \vee m_p) \subset S$.\newline
+    Réciproquement, $y \in S$ entraine que $y-x = y-a_i + a_i - x$ est divisible par $m_i$ pour tous les $i$ donc $y \in x + \Z (m_1 \vee \cdots \vee m_p)$. Ceci prouve que s'il est non vide, l'ensemble des solutions est une classe de congruence modulo le ppcm des $m_i$.
+    \item Montrons par récurrence que la condition  énoncée assure l'existence de solutions. Le cas $p=2$ est traité par la proposition sur les systèmes de 2 congruences.\newline
+    Pour le passage de $p$ à $p+1$, considérons un système de $p+1$ congruences vérifiant $a_i \equiv a_j$ modulo $m_i \wedge m_j$ pour tous les couples $(i,j)\in \llbracket 1,  p+1\rrbracket ^2$ avec $i \neq j$.\newline
+    Le sous-système formé par les $p$ premières congruences vérifie la condition d'existence de solutions. Par hypothèse de récurrence, il existe $b$ tel que
+  \begin{displaymath}
+        \left\lbrace 
+      \begin{align*}
+        x &\equiv a_1 \mod m_1 \\
+          &\vdots \\
+        x &\equiv a_{p+1} \mod m_{p+1}
+      \end{align*}
+    \right.
+    \Leftrightarrow
+    \left\lbrace 
+      \begin{align*}
+        x &\equiv b \mod m_1 \vee \cdots \vee m_p \\
+        x &\equiv a_{p+1} \mod m_{p+1}
+      \end{align*}
+    \right. .
+  \end{displaymath}
+  Ce système de 2 congruences admet-il des solutions?
+  \begin{displaymath}
+    a_{p+1} - b = (a_{p+1} - a_i) + (a_i - b) \in \Z (m_{p+1} \wedge m_i ) + \Z m_i \subset \Z (m_{p+1} \wedge m_i )
+  \end{displaymath}
+  pour tous les $i \in \llbracket 1, p \rrbracket$. On en déduit que $a_{p+1} - b$ est divisible par
+  \begin{displaymath}
+    (m_1 \wedge m_{p+1}) \vee \cdots \vee (m_1 \wedge m_{p+1}) =  (m_1 \vee \cdots \vee m_p) \wedge m_{p+1}
+  \end{displaymath}
+  qui est la condition assurant que le système de 2 congruences admet des solutions.
+  \end{enumerate}
+\end{demo}
+
+\subsubsection{Ensembles de parties}
+Ici $X = \Z$.
+\begin{defi}
+On désigne par $\mathfrak{U}$ l'ensemble des classes de congruences modulo un naturel non nul et par $\mathfrak{S}$ l'ensemble des unions finies d'éléments de $\mathfrak{U}$. On impose aussi $\emptyset \in \mathfrak{S}$.\newline
+  Soit $A \subset \Z$, 
+  \begin{align*}
+ A \in \mathfrak{U}  &\Leftrightarrow \exists m\in \N^*,\, \exists a \in \llbracket 0, m \llbracket \text{ tq } A = a + \Z m \\
+ A\in \mathfrak{S} &\Leftrightarrow \exists (m_1,\cdots,m_p) \in (\N^*)^p, \exists (a_1,\cdots,a_p)\in \llbracket 0,m_1\llbracket \times \dots \times \llbracket 0,m_p\llbracket \text{ tq }\;
+ A = \bigcup_{i=1}^{p}(a_i + \Z m_i)
+  \end{align*}
+\end{defi}
+
+
+\begin{rems}
+\begin{enumerate}
+  \item Par définition, $\mathfrak{S}$ est stable pour $\cup$.
+  
+  \item  Aucun singleton n'est dans $\mathfrak{U}$ car les modulos sont non nuls. $\Z \in \mathfrak{S}$ car c'est la classe de $0$ modulo $1$.
+  
+  \item Le complémentaire d'une classe de congruence est une union finie de classes de congruences.\newline
+En effet, soit $m \in \N^*$ et $a\in \llbracket 0, m \llbracket$
+\begin{displaymath}
+  x \not \equiv a \mod m \Leftrightarrow \exists b \in \llbracket 0, m \llbracket \setminus\{a\} \text{ tq } x \equiv b \mod m
+\end{displaymath}
+Autrement dit 
+\begin{displaymath}
+  \left(a + \Z m\right)' = \bigcup_{b \in \llbracket 0, m \llbracket \setminus\{a\}}\left(b + \Z m\right) \in \mathfrak{S}
+\end{displaymath}
+
+  \item Une intersection de classes de congruences correspond à un système:
+\begin{displaymath}
+  x \in \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right) \Leftrightarrow
+  \left\lbrace 
+    \begin{align*}
+      x &\equiv a_1 \mod m_1 \\
+      &\vdots \\
+      x &\equiv a_p \mod m_p
+    \end{align*}
+  \right.
+\end{displaymath}
+D'après la proposition \ref{SystCong}, le système admet des solutions si et seulement si $a_i$ congru à $a_j$ modulo $m_i\wedge m_j$ pour tous les couples $(i,j)$ avec $i \neq j$. Dans ce cas l'intersection est la classe d'un certain $b$ modulo le ppcm des $m_i$.
+\begin{displaymath}
+  \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right) = \left( b + \Z (a_1 \vee \cdots \vee a_p) \right) \in \mathfrak{S}.
+\end{displaymath}
+
+  \item Pour que l'intersection de deux classes soit toujours dans $\mathfrak{S}$, on impose par définition $\emptyset \in \mathfrak{S}$. 
+  
+  \item $\mathfrak{S}$ est stable par complémentation. En effet:
+\begin{multline*}
+  A = \bigcup_{i=1}^{p}\left(a_i + \Z m_i\right) \Rightarrow A' = \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right)'
+  = \bigcap_{i=1}^{p} \bigcup_{b \in \llbracket 0, m_i\llbracket \setminus\{a_i\}}\left(b + \Z m_i\right)\\
+  = \bigcup_{(b_1,\cdots,b_p) \in \left(\llbracket 0, m_1\llbracket \setminus\{a_1\}\right) \times \cdots \times \left(\llbracket 0, m_p\llbracket \setminus\{a_p\}\right)} \underbrace{\bigcap_{i=1}^p \left( b_i + \Z m_i\right)}_{\in \mathfrak{S} \text{ d'après 4}} \in \mathfrak{S} .
+\end{multline*}
+
+  \item $\mathfrak{S}$ est stable par intersection car il est stable par union et par complémentation.
+  
+\end{enumerate}
+\end{rems}
+
+Avec le vocabulaire du livre on formule la propriété suivante.
+\begin{prop}
+  $\mathfrak{S}$ est une algèbre qui contient $\emptyset$ et $X=\Z$.
+\end{prop}
+
+\subsubsection{Nouvelle caractérisation}
+Soit $X \subset \Z$, considérons l'ensemble $I_X$ des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$.
+\begin{rems}
+  \begin{enumerate}
+    \item $I_X$ est un sous-groupe additif de $\Z$.
+    \item Il existe un unique $\mu_X \in \N$ tel que $I_X = \Z \mu_X$. Pour tout $x\in X$, $x + \Z \mu_X \in X$.
+    \item $\mu_X = 1$ si et seulement si $X=\Z$.
+    \item Si $X = a + \Z m$ avec $m \geq 1$, $\mu_X = m$.
+    \item On suppose $\mu_X > 1$. Pour tout $x \in X$, $x + \Z \mu_X \subset X$.
+    \item On suppose $\mu_X > 1$. En notant $A  = \llbracket 0 , \mu_X \llbracket \, \cap \, X$, 
+\begin{displaymath}
+  X = \bigcup_{a \in A}\left(a + \Z \mu_X\right).
+\end{displaymath}
+  \end{enumerate}
+\end{rems}
+
+\begin{demo}
+  \begin{enumerate}
+    \item $0\in I_X$.\newline
+    Soit $\mu \in I_X$.\newline
+      Pour tout $y \in X-\mu$, il existe $x \in X$ tel que $y=x-\mu$. Comme $X \subset X + \mu$, il existe $x'\in X$ tel que
+$x = x' + \mu$. Donc $y = x - \mu =x'\in X$. Ceci montre $X - \mu \subset X$.\newline
+      Pour tout $x \in X$, $x = (x + \mu) - \mu$ avec $x + \mu \in X + \mu \subset X$donc $x \in X - \mu$. Ceci montre $X \subset X - \mu$.
+    \item La division euclidienne montre que les sous-groupes additifs de $\Z$ sont de cette forme.
+    \item C'est le principe même du raisonnement par récurrence.
+    \item Par définition de $X$, $m \in I_X$ donc $\mu_X$ divise $m$. Comme $\mu_X \in I_X$, $x + \mu_x \in X = x +\Z m$ donc $m$ divise $\mu_X$.
+    \item Conséquence immédiate de la définition de $\mu_X$.
+    \item On déduit de 5 que $\bigcup_{a \in A}\left(a + \Z \mu_X\right) \subset X$. Réciproquement, soit $x\in X$, il existe un $a$ dans $\llbracket 0, \mu_X \llbracket$ congru à $x$ modulo $\mu_x$. Il est encore dans $X$ d'après 5 ce qui prouve l'inclusion réciproque.
+  \end{enumerate}
+\end{demo}
+On en déduit une nouvelle caractérisation de l'ensemble $\mathfrak{S}$ introduit dans les paragraphes précédents.
+\begin{propn}
+  Soit $X$ une partie $\Z$, les deux propriétés suivantes sont équivalentes.
+\begin{enumerate}
+  \item $X \in \mathfrak{S}$ c'est à dire est une réunion finie de classes de congruences.
+  \item $\mu_X \geq 1$.
+\end{enumerate}
+Si $X$ vérifie cette condition, en notant $A  = \llbracket 0 , \mu_X \llbracket \, \cap \, X$: $X = \bigcup_{a \in A}\left(a + \Z \mu_X\right)$.
+\end{propn}
+\begin{demo}
+  Les remarques précédentes montrent que (2) entraine (1). Réciproquement, si $X$ est une union finie de classes de congruences, le ppcm des modulos de ces classes est un élément non nul de $I_X$. L'expression de $X$ est une reformulation de la remarque 6.
+\end{demo}
+\begin{propn}
+  Soit $X \in \mathfrak{S}$, $n \in I_X$, $\pi_n$ la projection canonique $\Z \rightarrow \Z / n\Z$ et $A = \pi_n(X)$: alors $X = \pi_n^{-1}(A)$.
+\end{propn}
+\begin{demo}
+  Il s'agit seulement de reformuler la proposition précédente en terme de projection canonique.
+\end{demo}
+
+Les stabilités définissant la notion d'algèbre s'éclairent.
+\begin{prop}
+  Pour tous $X$ et $Y$ dans $\mathfrak{S}$:
+\begin{align*}
+  X \cup Y \in \mathfrak{S} &\text{ avec } \mu_{X\cup Y} \text{ divise } \mu_X \vee \mu_Y  \\
+  X \cap Y \in \mathfrak{S} &\text{ avec } \mu_{X\cap Y} \text{ divise } \mu_X \vee \mu_Y \\
+  X' \in \mathfrak{S} &\text{ avec } \mu_{X'} = \mu_X 
+\end{align*}
+\end{prop}
+\begin{demo}
+  \begin{enumerate}
+    \item Vérifier $(X+\mu) \cup (Y+\mu) = (X\cup Y) + \mu$ et $(X+\mu) \cap (Y+\mu) = (X\cap Y) + \mu$. On en déduit $I_X \cap I_Y \subset I_{X\cup Y}$ et $I_X \cap I_Y \subset I_{X\cap Y}$ puis les divisibilités.
+    \item Vérifier $(X + \mu)' = X' + \mu$. On en déduit 
+\begin{displaymath}
+  X + \mu = X \Leftrightarrow (X+ \mu)' = X' \Leftrightarrow X' + \mu = X'.
+\end{displaymath}
+On en déduit $I_{X'} = I_X$.
+  \end{enumerate}
+\end{demo}
+ 
+
+\begin{rem}
+  Attention, cette proposition ne se généralise pas lorsque $m$ et $m'$ ne sont pas premiers entre eux. Par exemple
+  \begin{displaymath}
+    \Z = (0 + \Z 4) \cup (2 + \Z 4) \cup (3 + \Z 4) \cup (1 + 6 \Z) \cup (3 + 6 \Z) \cup (5 + 6 \Z). 
+  \end{displaymath}
+
+\end{rem}
+
+\subsubsection{Fonction d'ensembles}
+Quand on cherche à probabiliser $\Z$, on peut considèrer, pour $m$ non nul donné les classes modulo $m$. Considérons une expérience aléatoire consistant à tirer au hasard un entier et à former son reste modulo $m$. Les évènements élémentaires sont les classes modulo $m$. La probabilité d'un tel évènement est $\frac{1}{m}$. 
+
+On définit donc naturellement une fonction \og probabilité\fg \, $\varphi$ sur $\mathfrak{U}$ par
+\begin{displaymath}
+  \varphi(\emptyset) = 0, \;\varphi(a + \Z m) = \frac{1}{m}.
+\end{displaymath}
+
+Dans un univers probablisé, la fonction probabilité définie sur l'ensemble des évènements est modulaire au sens introduit par l'ouvrage. 
+\begin{defi}
+  On dit qu'une fonction $\varphi$ définie dans $\mathfrak{S}$ est modulaire si et seulement si
+  \begin{displaymath}
+    \forall (A,B)\in \mathfrak{S}^2,\; \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
+  \end{displaymath}
+\end{defi}
+\begin{rem}
+  Lorsque les éléments de $\mathfrak{S}$ sont des ensembles finis, la fonction \og nombre d'éléments \fg \, est modulaire.
+\end{rem}
+
+\noindent Peut-on étendre de manière consistante $\varphi$ à une fonction \emph{modulaire} sur l'ensemble $\mathfrak{S}$ des unions finies de classes de congruences?\newline
+Je donne plus loin une telle définition qui rend évidentes les remarques qui suivent. Je les ai conservés car elles m'ont encouragé à creuser cet exemple.
+\begin{enumerate}
+  \item Par définition $\varphi(\Z) = 1$.
+  \item Dans le cas d'une famille finie de classes disjointes, l'image de l'union doit être la somme des images. 
+  \item Si $\varphi(A)$ est défini et $A'$ son complémentaire on doit avoir $\varphi(A') + \varphi(A) = 1$. 
+  \item Avec les conventions précédentes, pour $A = \left(a + \Z p\right)$, $B = \left(b + \Z q\right)$, montrons que 
+  \begin{displaymath}
+    \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
+  \end{displaymath}
+  En effet :
+  \begin{displaymath}
+    \varphi(A) = \frac{1}{p} \hspace{0.5cm}
+    \varphi(B) = \frac{1}{q} \hspace{0.5cm}
+    \varphi(A \cap B) =
+    \left\lbrace
+      \begin{aligned}
+        0 &\text{ si } a \not \equiv b \mod p\wedge q\\
+        \frac{1}{p\vee q} &\text{ si } a \equiv b \mod p\wedge q
+      \end{aligned}
+    \right.
+  \end{displaymath}
+  La formule est vérifiée si $A\cap B = \emptyset$. Dans l'autre cas, considérons $(A\cup B)'$ et la propriété 3 pour prouver la formule.
+\begin{multline*}
+  (A \cup B)' = A' \cap B' 
+  =     \left( \bigcup_{a'\in \llbracket 0, p\llbracket \setminus\{a\} } \left(a' + p\Z\right)\right) 
+   \cap \left( \bigcup_{b'\in \llbracket 0, q\llbracket \setminus\{b\} } \left(b' + p\Z\right)\right) \\
+  = \bigcup_{(a',b')\in (\llbracket 0, p\llbracket \setminus\{a\}) \times (\llbracket 0, q\llbracket \setminus\{b\})} \left(a' + p\Z\right)\cap \left(b' + q\Z\right) 
+\end{multline*}
+Chaque intersection est l'ensemble des solutions d'un système de 2 congruences c'est à dire le vide ou une classe modulo $p\vee q$.\newline
+Si on oublie les conditions $a'\not \equiv a \mod p$ et $b'\not \equiv b \mod q$, parmi les $pq$ couples $(a',b')\in \llbracket 0,p\llbracket \times \llbracket 0,q\llbracket$, combien vérifient $a' \equiv b' \mod p \wedge q$ ? \newline
+Pour chaque $a'$ fixé, $b'$ doit être dans la classe de $a'$ modulo $p\wedge q$. Dans $\llbracket 0, q \llbracket$, cette classe contient $\frac{q}{p \wedge q}$ entiers. Le nombre total de couples possibles est donc
+\begin{displaymath}
+  \frac{pq}{p \wedge q}.
+\end{displaymath}
+Combien de couples doit-on enlever à ce nombre?\newline
+Pour $a' = a$, il faut enlever les $\frac{q}{p \wedge q}$ éléments de la classe de $a$ modulo $p \wedge q$ dans $\llbracket 0, q\llbracket$. Parmi ceux là se trouve $(a,b)$ car $a \equiv b \mod p\wedge q$. De même pour $b' = b$, il faut enlever $\frac{p}{p \wedge q}-1$ couples (avec -1 pour ne pas compter deux fois $(a,b)$).\newline
+Finalement, le nombre de couples $(a',b')$ contribuant réellement à la grande union est 
+\begin{displaymath}
+  \frac{pq}{p \wedge q} - \frac{q}{p \wedge q} - \frac{p}{p \wedge q} + 1 = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right).
+\end{displaymath}
+Avec la convention 3, on obtient
+\begin{multline*}
+  \varphi((A \cup B)') = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right) \frac{1}{p \vee q}\\
+  \Rightarrow
+  \varphi(A \cup B) = 1 - \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right) \frac{1}{p \vee q}.
+\end{multline*}
+En distribuant avec $(p \wedge q)(p \vee q) = pq$, il vient
+\begin{displaymath}
+  \varphi(A \cup B) = 1 - 1 + \frac{1}{p} + \frac{1}{q} - \frac{1}{p \vee q} = \varphi(A) + \varphi(B) - \varphi(A\cap B).
+\end{displaymath}
+\end{enumerate}
+
+La définition commode de $\varphi$ utilise la nouvelle caractérisation des éléments de $\mathfrak{S}$.\newline
+Soit $X \subset \Z$, $I_X$ est l'ensemble des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$. Il existe $\mu_X \in \N$ tel que $I_X = \Z \mu_X$.
+\begin{displaymath}
+  X \in \mathfrak{S} \Leftrightarrow \mu_X \leq 1 .
+\end{displaymath}
+
+
+\begin{lem}
+  Soit $X\in \mathfrak{S}$ et $m=\mu_X$. Pour tout $n\in I_X$,
+  \begin{displaymath}
+      \frac{\sharp \pi_n(X)}{n} = \frac{\sharp \pi_m(X)}{m}.    
+  \end{displaymath}
+\end{lem}
+\begin{demo}
+  En fait $n = pm$ avec $p$ entier car $n \in I_X = \Z m$. Chaque classe modulo $n$ est la réunion de $p$ classes disjointes modulo $m$.
+  \begin{displaymath}
+    \frac{\sharp \pi_n(X)}{n} = \frac{p \, \sharp \pi_m(X)}{ p m} = \frac{\sharp \pi_m(X)}{m}.  
+  \end{displaymath}
+\end{demo}
+\begin{defi}
+  On définit une fonction $\varphi$ dans $\mathfrak{S}$ par:
+  \begin{displaymath}
+    \forall X \in \mathfrak{S}, \; \varphi(X) = \frac{\sharp \pi_n(X)}{n}
+  \end{displaymath}
+pour n'importe quel $n\in I_X$.
+\end{defi}
+\begin{prop}
+  La fonction $\varphi$ est modulaire, $\varphi(a + \Z m) = \frac{1}{m}$.
+\end{prop}
+\begin{demo}
+  Soit $A$ et $B$ dans $\mathfrak{S}$. Le ppcm $m = \mu_A \vee \mu_B$ est dans $I_A, I_B, I_{A\cup B}, I_{A\cap B}$. En l'utilisant pour exprimer les valeurs de $\varphi$, on est ramené à la modularité de la fonction nombre d'éléments.\newline
+  Si $A= a + \Z m$, $m \in I_A$ et $\pi_m(A)$ est un singleton. 
+\end{demo}
+
+
+\subsection{Exemple principal: volume dans $\R^n$.}
+Voir page 19.
+Soit $n\geq 1$. Pour tout entier naturel $s$, on note $\mathfrak{M}_s$ l'ensemble des cubes (poly-cubes?) fermés dont les sommets sont des points consécutifs de $\frac{1}{2^n}\Z^n$.
+
+On définit une fonction $\lambda$ constante sur chaque $\mathfrak{M}_s$.
+\begin{displaymath}
+  \forall Q \in \mathfrak{M}_s, \; \lambda(Q) = \frac{1}{2^{ns}}.
+\end{displaymath}
+
+\subsection{Différence symétrique et Crible de Poincaré}\label{criblePoinc}
+Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent une rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
+
+\noindent Soit $X$ un ensemble quelconque et $A_1, \cdots, A_p$ des parties de $X$. Notons $\chi_A$ la fonction caractéristique d'une partie $A$ de $X$. Rappelons les relations fonctionnelles
+\begin{displaymath}
+  \chi_{A'} = 1 - \chi_A, \; \chi_{A \cap B} = \chi_A \, \chi_B.
+\end{displaymath}
+
+\noindent Considérons pour chaque $x\in X$ le nombre de parties $A_i$ contenant $x$ et notons $\nu$ la fonction de $X$ dans $\llbracket 0, p \rrbracket$ ainsi définie. En fait 
+\begin{displaymath}
+  \nu = \chi_{A_1} + \cdots + \chi_{A_p}.
+\end{displaymath}
+Pour $I \subset \llbracket 0,p \rrbracket$ non vide, notons
+\begin{displaymath}
+  A_I = \bigcap_{i \in I} A_i, \; A'_I = \bigcap_{i \in I} A'_i.
+\end{displaymath}
+Soit $m \in \llbracket 1,p\rrbracket$ et $x \in X$ alors:
+\begin{displaymath}
+  \nu(x) \geq m \Leftrightarrow \exists I \in \mathcal{P}_m \text{ tq } x \in A_I
+\end{displaymath}
+en notant $\mathcal{P}_m$ l'ensemble des parties $\llbracket 1,p \rrbracket$ à $m$ éléments. On en déduit 
+\begin{displaymath}
+  \{ \nu \geq m \} = \bigcup_{I \in \mathcal{P}_m}A_I.
+\end{displaymath}
+Pour $m=0$, logiquement $A_\emptyset = X$ car il n'y a pas de condition à vérifier, $\mathcal{P}_0 = \{\emptyset\}$, $\{ \nu \geq 0 \} = X$ donc la formule reste valable.
+Pour $m < p $:
+\begin{displaymath}
+  \{ \nu \geq m + 1 \} = \bigcup_{I \in \mathcal{P}_{m+1}}A_I \subset \{ \nu \geq m \} = \bigcup_{I \in \mathcal{P}_{m}}A_I
+  \Rightarrow
+  \{ \nu = m \} = \left( \bigcup_{I \in \mathcal{P}_{m}}A_I\right) \setminus \left( \bigcup_{I \in \mathcal{P}_{m+1}}A_I\right).
+\end{displaymath}
+D'autre part $\nu(x) = m$ si et seulement si il existe $m$ indices $i$ tels que $x$ appartienne à tous ces $A_i$ et à aucun autre $A_j$. Donc
+\begin{displaymath}
+  \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'} \text{ avec } A'_{I'} = \bigcap_{j\notin I}A'_j.
+\end{displaymath}
+On peut convenir de noter 
+\begin{displaymath}
+\Delta_m(A_1,\cdots,A_p) = \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'}.  
+\end{displaymath}
+Remarquons que les $A_I \cap A'_{I'}$ de cette union sont deux à deux disjoints. En effet si $I$ et $J$ sont distincts, un des deux n'est pas inclus dans l'autre. Par exemple $I \not \subset J$. Il existe alors $i\in I$ avec $i \in J'$. Donc $A_I \subset A_i$, $A'_J \subset A'_i$ d'où 
+\begin{displaymath}
+  \left( A_I \cap A'_{I'} \right) \cap \left( A_J \cap A'_{J'} \right) \subset A_i \cap A'_i = \emptyset.
+\end{displaymath}
+On retrouve le cas particulier de la différence symétrique
+\begin{displaymath}
+  A \Delta B = (A\cap B') \cup (A' \cap B) = \Delta_1(A,B). 
+\end{displaymath}
+
+\noindent Venons-en aux formules du type crible de Poincaré. Le point central est 
+\begin{displaymath}
+  (A_1 \cup \cdots \cup A_p)' = A'_1 \cap \cdots \cap A'_p
+\end{displaymath}
+et sa traduction avec les fonctions caractéristiques
+\begin{displaymath}
+  1 - \chi_{A_1 \cup \cdots \cup A_p} = \prod_{i=1}^p(1 - \chi_{A_i})
+  \Rightarrow
+  \chi_{A_1 \cup \cdots \cup A_p} = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\chi_{A_I} 
+\end{displaymath}
+en développant et simplifiant par 1.\newline
+En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle précédente en chaque $x\in X$ pour former des égalités numériques. En sommant ces égalités, on obtient
+\begin{displaymath}
+  \card(A_1 \cup \cdots \cup A_p) = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\card(A_I).
+\end{displaymath}
+
+
+\noindent Remarquons que la notion de différence symétrique généralisée permet de caractériser la liberté d'une famille de fonctions caractéristiques dans le $\F_2$ espace vectoriel des fonctions de $X$ dans $\F_2$.
+\begin{align*}
+  (\chi_{A_1}, \cdots, \chi_{A_p}) \text{ libre } &\Leftrightarrow \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p) \not = \emptyset \\
+  \chi_A = \chi_{A_1} + \cdots + \chi_{A_p} &\Leftrightarrow A = \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p)
+\end{align*}
+
+
+\section{Chap I du livre. Systèmes d'ensembles - Fonctions d'ensembles}
+\subsection{Systèmes d'ensembles}
+Dans le livre, le terme \emph{paving} (pavage ?) d'un ensemble $X$ désigne simplement une partie de $\mathcal{P}(X)$ qui ne contient pas forcément $\emptyset$. Le terme \emph{système d'ensembles} (set system) désigne aussi une partie de $\mathcal{P}(X)$ mais qui possède certaines propriétés. Quatre types sont dégagés.
+
+L'ouvrage introduit une opération ternaire inhabituelle.\newline
+Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
+\begin{displaymath}
+  U \mid A \mid V = (U \cap A') \cup ( A \cap V).
+\end{displaymath}
+
+\begin{defi}
+  Soit $\mathfrak{S}$ une partie de $\mathcal{P}(X)$
+  \begin{itemize}
+    \item $\mathfrak{S}$ est un treillis (lattice) si et seulement si $\mathfrak{S}$ est stable pour l'union et l'intersection.
+    \item $\mathfrak{S}$ est un ovale (oval) si et seulement si $U$, $V$, $A$ dans $\mathfrak{S}$ entraine $U \mid A \mid V \in \mathfrak{S}$.
+    \item $\mathfrak{S}$ est un anneau (ring) si et seulement si $\mathfrak{S}$ est stable pour l'union, l'intersection et la soustraction. La stabilité pour la soustraction signifie
+    \begin{displaymath}
+      \forall A, B \in \mathfrak{S}, B \subset A \Rightarrow A \setminus B = A \cap B' \in \mathfrak{S}.
+    \end{displaymath}
+    \item $\mathfrak{S}$ est une algèbre (algebra) si et seulement si $\mathfrak{S}$ est stable pour l'union, l'intersection et la complémentation.
+  \end{itemize}
+\end{defi}
+
+\begin{prop}
+  algèbre $\Rightarrow$ anneau $\Rightarrow$ ovale $\Rightarrow$ treillis
+\end{prop}
+\begin{demo}
+Par exemple pour montrer qu'un anneau est un ovale, il suffit de remarquer qur 
+\begin{displaymath}
+  U \mid A \mid V = (U \setminus (A \cap U)) \cup (A \cap V).
+\end{displaymath}
+Pour montrer qu'un ovale est un treillis:
+\begin{align*}
+  U \mid U \mid V = (U \cap U') \cup (U \cap V) = U \cap V \\
+  U \mid V \mid V = (U \cap V') \cup (V \cap V) = U \cup V
+\end{align*}
+On vérifie facilement les autres implications.
+\end{demo}
+\begin{rem}
+  Un ovale qui contient $\emptyset$ est un anneau. En effet
+  \begin{displaymath}
+    U \mid A \mid \emptyset = (A \cap A')\cup (A \cap \emptyset) = A \cap A'
+  \end{displaymath}
+\end{rem}
+
+\subsection{Fonctions d'ensembles}
+\subsubsection{Définitions}
+Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.
+\begin{defi}
+  Une fonction $\varphi$ définie dans un treillis $\mathfrak{S}$ à valeurs dans $\overline{\R}$ est dite croissante (isotone) si et seulement si
+  \begin{displaymath}
+    \forall (A,B) \in \mathfrak{S},\; A \subset B \Rightarrow \varphi(A) \leq \varphi(B).
+  \end{displaymath}
+\end{defi}
+\noindent En général, les fonctions d'ensembles considérées sont croissantes.
+
+\begin{defi}
+  Une fonction $\varphi$ définie dans un treillis $\mathfrak{S}$ à valeurs dans $\overline{\R}$ est dite modulaire pour une extension de l'addition si et seulement si
+\begin{displaymath}
+  \forall (A,B) \in \mathfrak{S}^2, \varphi(A \cup B) + \varphi(A \cap B) = \varphi(A) + \varphi(B)
+\end{displaymath}
+pour cette extension. De même
+\begin{align*}
+  \varphi \text{ est sous-modulaire } &\Leftrightarrow \forall (A,B) \in \mathfrak{S}^2, \varphi(A \cup B) + \varphi(A \cap B) \leq \varphi(A) + \varphi(B) \\
+  \varphi \text{ est sur-modulaire } &\Leftrightarrow \forall (A,B) \in \mathfrak{S}^2, \varphi(A \cup B) + \varphi(A \cap B) \geq \varphi(A) + \varphi(B)
+\end{align*}
+\end{defi}
+
+  \noindent Exercice 2.8 (p 13). La modularité dépend vraiment de l'extension choisie.\newline
+  On convient de noter $\overset{.}{+}$ l'extension de l'addition vérifiant $(-\infty) \overset{.}{+} (+\infty) = +\infty$ et $\underset{.}{+}$ l'extension de l'addition vérifiant $(-\infty) \underset{.}{+} (+\infty) = -\infty$.
+  \begin{enumerate}
+    \item Sur $\mathfrak{S} = \mathcal{P}(X)$ où $X$ est un ensemble à deux éléments, définir une fonction $\varphi$ croissante et modulaire pour $\underset{.}{+}$ mais pas sous-modulaire pour $\overset{.}{+}$. 
+    \item Soit $\varphi$ croissante de $\mathfrak{S}$ dans $\overline{\R}$, montrer que 
+\begin{displaymath}
+  \varphi \text{ sous-modulaire pour } \overset{.}{+} \Rightarrow \varphi \text{ sous-modulaire pour } \underset{.}{+}.
+\end{displaymath}
+  \end{enumerate}
+  \begin{demo}
+  \begin{enumerate}
+    \item Soit $X=\{a,b\}$ un ensemble à 2 éléments. On définit $\varphi$ dans $\mathcal{P}(X)$ par $\varphi(X) = +\infty$ et $\varphi(A) = - \infty$ pour toutes les autres parties $A$ de $X$. La fonction est bien $\underset{.}{+}$ modulaire car la somme des images par $\varphi$ de 2 parties distinctes sera toujours $-\infty$ sauf si $A=B=X$. En revanche, elle n'est pas $\overset{.}{+}$ sous-modulaire car 
+    \begin{displaymath}
+      \varphi(\{a\}\cup \{b\}) \overset{.}{+} \varphi(\{a\}\cap \{b\}) = (+\infty) \overset{.}{+} (-\infty) = + \infty 
+    \end{displaymath}
+    n'est pas inférieur ou égal à
+    \begin{displaymath}
+      \varphi(\{a\}) \overset{.}{+} \varphi(\{b\}) = (-\infty) \overset{.}{+} (-\infty) = - \infty. 
+    \end{displaymath}
+
+    \item On forme un tableau en plaçant dans les deux premières colonnes toutes les situations possibles pour les valeurs de $\varphi(A)$ et $\varphi(B)$ en tenant compte des symétries. On peut remplir beaucoup de cases dans  les autres colonnes en utilisant les conséquences de la croissance et de la sous-modularité pour $\overset{.}{+}$ de $\varphi$. On laisse vide les cases pour lesquelles on ne peut rien déduire.
+\begin{center}
+\begin{tabular}{lllllll}
+$\varphi(A)$ & $\varphi(B)$ & $\varphi(A\cup B)$ & $\varphi(A\cap B)$ & $\varphi(A) \overset{.}{+} \varphi(B)$ & $\varphi(A\cup B) \underset{.}{+} \varphi(A\cap B)$ & $\varphi(A) \underset{.}{+} \varphi(B)$\\ \hline
+$-\infty$    & $-\infty$    &                    & $-\infty$          & $-\infty$                              & $-\infty$   & $-\infty$ \\  \hline
+$-\infty$    & $\in \R$     & $> -\infty$        & $-\infty$          & $-\infty$                              & $-\infty$   & $-\infty$ \\ \hline
+$-\infty$    & $+\infty$    & $+\infty$          & $-\infty$          & $+\infty$                              & $-\infty$   & $-\infty$\\ \hline
+$\in \R$     & $\in \R$     & $\in \R$           & $< +\infty$        & $\in \R$                               & $< +\infty$ & $\in \R$\\ \hline
+$\in \R$     & $+\infty$    & $+\infty$          & $< +\infty$        & $+\infty$                              & $< +\infty$ & $+\infty$ \\ \hline
+$+\infty$    & $+\infty$    & $+\infty$          &                    & $+\infty$                              &             & $+\infty$\\ \hline
+\end{tabular}
+\end{center}
+  \end{enumerate}
+  \end{demo}
+La comparaison des deux dernières colonnes montre que l'inégalité caractérisant la sous-modularité $\underset{.}{+}$ est toujours vérifiée.\newline
+Dans le cas $\varphi(A)$ et $\varphi(B)$ réels, si $\varphi(A\cap B)$ est réel, les 4 termes sont réels, l'addition dans l'inégalité est l'addition habituelle. Si $\varphi(A\cap B) = - \infty$,  $\varphi(A\cup B) \underset{.}{+} \varphi(A\cap B) = -\infty$ donc l'inégalité est vérifiée.\newline
+Dans le cas où $\varphi(A)$ et $\varphi(B)$ valent $+\infty$, peu importe la valeur de $\varphi(A\cup B) \underset{.}{+} \varphi(A\cap B)$, elle sera toujours $\leq +\infty$.
+Venons en aux formules qui ressemblent au crible de Poincaré (exercie 2.5 du livre). On reprend les notations de la partie I. \ref{criblePoinc}.
+\begin{propn}\label{modulaire_ordre_n}
+  Soit $\varphi$ une fonction modulaire sur un treillis $\mathfrak{S}$ et $A_1, \cdots , A_p$ dans $\mathfrak{S}$:
+  \begin{displaymath}
+    \varphi(\bigcup_{i=1}^p A_i) = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\varphi(A_I).
+  \end{displaymath}
+\end{propn}
+\begin{demo}
+  Pour $p=2$, les parties $I$ intervenant sont $\{1\}$, $\{2\}$ et $\{1,2\}$. la formule à montrer s'écrit 
+  \begin{displaymath}
+    \varphi(A_1 \cup A_2) = - \left( -\varphi(A_1) - \varphi(A_2) + \varphi(A_1\cap A_2)\right)
+  \end{displaymath}
+qui est la définition de la modularité.\newline
+Montrons que la formule à l'ordre $p$ entraine celle à l'ordre $p+1$. Partons de la somme à l'ordre $p+1$ et trions les $I$ : ceux qui ne contiennent pas $p+1$, ceux qui le contiennent entre autres et le singleton $\{p+1\}$:
+\begin{align*}
+  - \sum_{I \subset \llbracket 1,p+1 \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\varphi(A_I)
+  = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\varphi(A_I) 
+  + \sum_{J \subset \llbracket 1,p \rrbracket, J\neq \emptyset} (-1)^{\sharp J}\varphi(A_I \cap A_{p+1})
+  + \varphi(A_{p+1}) \\
+  = \varphi(\bigcup_{i=1}^p A_i) - \varphi(\bigcup_{i=1}^p A'_i) + \varphi(A_{p+1}) 
+  = \varphi(\bigcup_{i=1}^p A_i) + \varphi(A_{p+1}) -\varphi(\left(\bigcup_{i=1}^p A_i\right) \cap A_{p+1}) 
+  = \varphi(\bigcup_{i=1}^{p+1} A_i)
+\end{align*}
+en utilisant $A'_i = A_i  \cap A_{p+1}$ pour $i \in \llbracket 1, p \rrbracket$ puis l'hypothèse de récurrence (deux fois) et enfin la définition de la modularité.
+\end{demo}
+\begin{rem}
+  Cette formule fournit une nouvelle démonstration de la formule du crible. En effet dans un ensemble $X$, la fonction de Dirac $\delta_x$ définie par 
+  \begin{displaymath}
+     \forall A \subset X, \;\delta_x(A) = 
+    \left\lbrace
+    \begin{aligned}
+      1 &\text{ si } x \in A \\
+      0 &\text{ si } x \notin A
+    \end{aligned}
+    \right.
+  \end{displaymath}
+  est modulaire. Elle est liée aux fonctions caractéristiques: $\delta_x(A) = \chi_A(x)$. On en déduit 
+  \begin{displaymath}
+    \left( \forall x \in X, \; \delta_x(\bigcup_{i=1}^p A_i) = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\delta_x(A_I) \right)
+    \Rightarrow  \chi_{\bigcup_{i=1}^p A_i} = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\chi_{A_I}.
+  \end{displaymath}
+\end{rem}
+
+
+\subsubsection{Extension d'une fonction d'ensembles à un treillis}
+Dans cette section l'ouvrage considère une fonction d'ensembles $\varphi$ définie sur un ensemble $\mathfrak{U}$ de parties de $X$ seulement stable pour l'intersection et cherche à la prolonger en une fonction modulaire $\phi$ sur $\mathfrak{S} = L(\mathfrak{U})$ qui est le plus petit treillis contenant $\mathfrak{U}$. 
+
+Cette situation est celle du premier exemple où $\mathfrak{U}$ est l'ensemble formé du vide et des classes de congruences autres que $\{0\}$. Cet ensemble est stable par intersection et l'ensemble $\mathfrak{S}$ des unions de classes de congruences est le plus petit treillis contenant $\mathfrak{U}$. 
+Au départ, la fonction $\varphi$ est définie uniquement sur $\mathfrak{U}$ par  $\varphi(a + \Z m) = \frac{1}{m}$. 
+Peut-on l'étendre à une fonction modulaire sur $\mathfrak{S}$ ? On l'a fait à l'aide du cardinal des images par les projections canoniques donc je n'ai pas besoin des résultats de cette section pour cet exemple.
+
+Je reproduis quand même ici ces résultats et leurs preuves(pages 27 à 31).
+
+L'ouvrage définit pour tous les $n$ des fonctions notées encore $\varphi$ de $\mathfrak{U}^n$ dans $\R$ inspirées des formules d'inclusion-exclusion
+\begin{displaymath}
+  \forall n \in \N^*, \forall (A_1,\cdots, A_n) \in \mathfrak{U}^n, \; 
+  \varphi(A_1, \cdots, A_n) = - \sum_{\emptyset \neq I \subset \llbracket 1 , n\rrbracket}(-1)^{\sharp(I)}\varphi(A_I)
+\end{displaymath}
+où $A_I$ est défini comme dans la section précédente par $A_I = \bigcap_{i\in I} A_I$. 
+\begin{rem}
+  Ces fonctions sont clairement symétriques, permuter les $A_i$ ne change pas la valeur.
+\end{rem}
+
+\begin{prop}
+  \begin{enumerate}
+    \item Formule de récurrence. Soit $A_0, \cdots, A_r$ des éléments de $\mathfrak{U}$ :
+    \begin{displaymath}
+      \varphi(A_0,\cdots, A_r) = \varphi(A_0) + \varphi(A_1,\cdots, A_r) - \varphi(A_0\cap A_1, \cdots, A_0\cap A_r). 
+    \end{displaymath}
+    \item Soit $A_0, \cdots, A_r$ des éléments de $\mathfrak{U}$ tels que $A_i \subset A_0$ pour tous les $i$ :
+    \begin{displaymath}
+      \varphi(A_0,\cdots, A_r) = \varphi(A_0). 
+    \end{displaymath}
+    \item Soit $A_0, \cdots, A_r$ des éléments de $\mathfrak{U}$ tels qu'il existe $l \in \llbracket 1, r \rrbracket$ vérifiant $A_0 \subset A_l$ 
+    \begin{displaymath}
+      \varphi(A_0,A_1, \cdots,A_r) = \varphi(A_1, \cdots,A_r).
+    \end{displaymath}
+    \item Soit $A_1, \cdots, A_r, B_1, \cdots, B_s$ des éléments de $\mathfrak{U}$ :
+    \begin{align*}
+      \varphi(A_1, \cdots, A_r, B_1, \cdots, B_s) + \varphi(A_1\cap B_1, \cdots, A_r\cap B_s) \\
+      = \varphi(A_1,\cdots,A_r) + \varphi(B_1, \cdots, B_s)
+    \end{align*}
+où l'argument du second terme de la somme à gauche de l'égalité est la suite des $rs$ intersections $A_i \cap B_j$ pour $i \in \llbracket 1,r \rrbracket$ et $i \in \llbracket 1,s \rrbracket$.
+  \end{enumerate}
+\end{prop}
+
+\begin{demo}
+  \begin{enumerate}
+    \item On classe les parties $I$ en trois catégories: $\{ 0 \}$, les parties non vides ne contenant pas $0$, celles contenant $0$ et d'autres éléments. Ces dernières sont de la forme $I = \{ 0 \}\cup J$ avec $\emptyset \neq J \subset \llbracket 1, r \rrbracket$ avec $\sharp(J) = \sharp(I) -1$. La décomposition de la somme conduit à la formule.
+    \item On applique la première formule avec $A_0 \cap A_i = A_i$.
+    \item Par symétrie, on peut supposer $A_0 \subset A_1$. Pour $r = 1$, $A_0 \cap A_1 = A_0)$
+    \begin{displaymath}
+      \varphi(A_0, A_1) = \varphi(A_0) + \varphi(A_1) - \varphi(A_0) = \varphi(A_1).
+    \end{displaymath}
+    Pour $r\geq 2$.
+    \begin{displaymath}
+      \varphi(A_0,A_1, \cdots,A_r) = \varphi(A_0) + \varphi(A_1, \cdots,A_r) - \varphi(A_0,A_0 \cap A_2, \cdots , A_0\cap A_r) = \varphi(A_1, \cdots,A_r)
+    \end{displaymath}
+    d'après 2.
+    \item On procède par récurrence sur $r$. Pour $r=1$ la formule est la même que celle du 1.\newline
+    Pour passer de $r$ à $r+1$, on considère $(A_0, \cdots,A_r)$ et la famille des $(r+1)\times s$ intersections transformée par la formule 1 en adjoignant $A_0$.
+    \begin{multline*}
+      \varphi(A_0\cap B_1, \cdots, A_r \cap B_s) \\
+      = \varphi(A_0, A_0\cap B_1, \cdots, A_r \cap B_s) -\varphi(A_0) + \varphi(A_0\cap A_0\cap B_1, \cdots, A_0\cap A_r \cap B_s)\\
+      = \varphi \left(
+      \begin{aligned}
+      &A_0, \\
+      &A_0 \cap B_1, \cdots, A_0\cap B_s, \\
+      &A_1 \cap B_1, \cdots, A_1\cap B_s, \\
+      & \vdots  \\
+      &A_r \cap B_1, \cdots, A_r\cap B_s
+      \end{aligned}
+      \right)
+      -\varphi(A_0) 
+      + \varphi \left(
+      \begin{aligned}
+        & A_0\cap B_1, &\cdots &, A_0 \cap B_s, \\
+        &A_0\cap A_1\cap B_1, &\cdots &, A_0\cap A_1 \cap B_s, \\
+        & \vdots \\
+        &A_0\cap A_r\cap B_1, &\cdots &, A_0\cap A_r \cap B_s
+      \end{aligned}
+      \right)
+    \end{multline*}
+    On utilise la propriété 3 qui permet de supprimer les termes qui ne contribuent pas quand ils sont inclus dans une autre partie de la famille.\newline
+    Dans le tableau de gauche, toutes les parties de la deuxième ligne sont incluses dans $A_0$. On peut donc supprimer cette deuxième ligne.\newline
+    Dans le tableau de droite, les parties figurant dans une colonne sont incluses dans la partie figurant en haut de la colonne. On peut donc supprimer toutes les lignes sauf la première. On obtient
+    \begin{multline*}
+      \varphi(A_0\cap B_1, \cdots, A_r \cap B_s)
+      = \varphi(A_0, A_1 \cap B_1, \cdots A_r \cap B_s) - \varphi(A_0) + \varphi(A_0\cap B_1, \cdots A_0 \cap B_s) \\
+      = \varphi( A_1 \cap B_1, \cdots A_r \cap B_s) - \varphi(A_0 \cap A_1 \cap B_1, \cdots, A_0 \cap A_r \cap B_s) + \varphi(A_0\cap B_1, \cdots A_0 \cap B_s) 
+    \end{multline*}
+    En utilisant encore la formule 1 avec les deux premiers termes. On est alors en mesure d'utiliser deux fois l'hypothèse de récurrence. D'abord avec le premier terme
+    \begin{displaymath}
+      \varphi( A_1 \cap B_1, \cdots, A_r \cap B_s)
+      = \varphi( A_1, \cdots, A_r) + \varphi( B_1, \cdots , B_s) - \varphi( A_1, \cdots, A_r, B_1, \cdots , B_s)
+    \end{displaymath}
+    puis avec les deux derniers que l'on réécrit d'abord avec $A'_i = A_0 \cap A_i$ pour $i \in \llbracket 1, r \rrbracket$ et $B'_j = A_0 \cap B_j$ pour $j \in \llbracket 1, s \rrbracket$.
+    \begin{align*}
+      - \varphi( A'_1 \cap B'_1, \cdots,  A'_r \cap B'_s) + \varphi( B'_1, \cdots, B'_s) 
+      = - \varphi( A'_1, \cdots, A'_r) + \varphi( A'_1, \cdots, A'_r, B'_1, \cdots, B'_s) \\
+      = - \varphi( A_0\cap A_1, \cdots, A_0 \cap A_s) + \varphi( A_0 \cap A_1, \cdots, A_0 \cap A_r, A_0 \cap B_1, \cdots, A_0 \cap B_s)\\
+      = \varphi(A_0, \cdots, A_r) - \varphi(A_0) - \varphi(A_1, \cdots, A_r)
+       - \varphi(A_0, \cdots, A_r,B_1, \cdots, B_s) + \varphi(A_0) \\
+       + \varphi(A_1, \cdots, A_r,B_1, \cdots, B_s)
+    \end{align*}
+    en utilisant encore deux fois la propriété 1 avec $A_0$ en premier. En rassemblant, après simplifications, il reste seulement
+    \begin{displaymath}
+      \varphi(A_0\cap B_1, \cdots, A_r \cap B_s) 
+      = \varphi( B_1, \cdots , B_s) + \varphi(A_0, \cdots, A_r) - \varphi(A_0, \cdots, A_r,B_1, \cdots, B_s)
+    \end{displaymath}
+    qui est bien la formule de récurrence à l'ordre $r+1$.
+  \end{enumerate}
+\end{demo}
+Le principal résultat de cette section est le théorème suivant.
+\begin{thm}
+  La fonction $\varphi$ de $\mathfrak{U}$ dans $\R$ admet une extension modulaire $\phi$ de $\mathfrak{S}$ dans $\R$ si et seulement si pour chaque $A_1, \cdots,A_p,A$ dans $\mathfrak{U}$ tels que $A_1 \cup \cdots \cup A_p = A$, 
+  \begin{displaymath}
+    \varphi(A_1, \cdots,A_p) = \varphi(A).
+  \end{displaymath}
+  Dans ce cas la fonction $\phi$ est définie par
+  \begin{displaymath}
+    \forall A \in \mathfrak{S}, \phi(A) = \varphi(A_1,\cdots, A_p) \text{ où } A = A_1 \cup \cdots \cup A_p \text{ avec }(A_1,\cdots,A_p) \in \mathfrak{U}^p.
+  \end{displaymath}
+  De plus $\phi$ est croissante (isotone) si et seulement si, pour tous $A_1, \cdots, A_p, A$ dans $\mathfrak{U}$,
+  \begin{displaymath}
+    A_1 \cup \cdots \cup A_p \subset A \Rightarrow \varphi(A_1, \cdots, A_p) \leq \varphi(A).
+  \end{displaymath}
+\end{thm}
+\begin{demo}
+  À cause de la proposition \ref{modulaire_ordre_n} qui exprime $\varphi(A_1, \cdots, A_p) = \varphi(A_1,\cdots,A_p)$ les deux conditions sont nécessaires.\newline
+  Montrons que la condition 
+  \begin{displaymath}
+    \text{(mod)} \; \forall A_1, \cdots,A_p,A \in \mathfrak{U}, A_1 \cup \cdots \cup A_p = A \Rightarrow
+    \varphi(A_1, \cdots,A_p) = \varphi(A)
+  \end{displaymath}
+  permet d'étendre $\varphi$ en $\phi$. Il s'agit de montrer que 
+  \begin{displaymath}
+    A = A_1 \cup \cdots \cup A_p = B_1 \cup \cdots \cup B_p \Rightarrow \varphi(A_1, \cdots, A_p) = \varphi(B_1, \cdots, B_p).
+  \end{displaymath}
+  Commençons par une conséquence de (mod), pour tous $A_0, A_1, \cdots, A_p \in \mathfrak{U}$:
+  \begin{displaymath}
+    A_0 \subset A_1 \cup \cdots \cup A_p \Rightarrow \varphi(A_0,A_1, \cdots, A_p) = \varphi(A_1, \cdots, A_p).
+  \end{displaymath}
+  En effet 
+  \begin{align*}
+    A_0 \subset A_1 \cup \cdots \cup A_p \Rightarrow A_0 = (A_0\cap A_1) \cup \cdots \cup (A_0 \cap A_p) \\
+      \Rightarrow \varphi(A_0) = \varphi((A_0\cap A_1) \cup \cdots \cup (A_0 \cap A_p)) \text{ d'après (mod)} \\
+      \Rightarrow \varphi(A_0,A_1, \cdots, A_p) - \varphi(A_1, \cdots, A_p) = \varphi(A_0) - \varphi((A_0\cap A_1) \cup \cdots \cup (A_0 \cap A_p) = 0
+  \end{align*}
+  d'après la propriété 1. Si $A_1 \cup \cdots \cup A_p = B_1 \cup \cdots \cup B_p$ alors chaque $B_i$ est inclus dans l'union des $A_i$ donc, en les ajoutant un par un:
+  \begin{displaymath}
+    \varphi(A_1, \cdots, A_p) = \varphi(A_1, \cdots, A_p, B_0, \cdots, B_p) = \varphi(B_1, \cdots, B_p).
+  \end{displaymath}
+  Pour montrer la croissance de $\phi$, il suffit de montrer que pour $A_0, A_1, \cdots, A_p$ dans $\mathfrak{U}$,
+  \begin{displaymath}
+    \phi(A_1\cup \cdots \cup A_p) \leq \phi(A_0 \cup A_1 \cup \cdots \cup A_p).
+  \end{displaymath}
+  Or 
+  \begin{align*}
+    \phi(A_0 \cup A_1 \cup \cdots \cup A_p) - \phi(A_1\cup \cdots \cup A_p) 
+    = \varphi(A_0, \cdots, A_p) - \varphi(A_1, \cdots, A_p)\\
+    = \varphi(A_0) - \varphi(A_0\cap A_1, \cdots, A_0\cap A_p) \geq 0
+  \end{align*}
+d'après l'hypothèse car $(A_0 \cap A_1) \cup \cdots \cup (A_0\cap A_p) \subset A_0$.
+\end{demo}
+
+\section{Chap II. Extensions fondées sur la régularité}
+
+\end{document}
+
