@@ -4,8 +4,18 @@
 *.out
 *.synctex.gz
 *.idx
-/auxdir
+<<<<<<< HEAD
+*.backup
+*.ilg
+*.ind
+*.xoj
+*.xopp
+*.eps
 /pdfdir
+/auxdir
+*.pdf
+# fichiers graphiques inclus
+!*_*.pdf
+*_expo.pdf
 S*.pdf
 C[0-9][0-9][0-9][0-9].pdf
-

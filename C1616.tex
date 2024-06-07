@@ -84,8 +84,8 @@ d'où une primitive en $\arctan\frac{2x+1}{\sqrt{3}}$ avec un coefficient multip
 
 \end{itemize}
 
-\subsubsection{Primitives de pseudo-polynômes.}
-Un pseudo-polynôme (on dit aussi polynôme exponentiel) est une fonction de la forme $x\rightarrow P(x)e^{\lambda x}$ \index{polynôme-exponentiel}\index{pseudo-polynôme}
+\subsubsection{Primitives de polynôme exponentiels.}
+Un polynôme exponentiel est une fonction de la forme $x\rightarrow P(x)e^{\lambda x}$ \index{polynôme-exponentiel}
 \begin{itemize}
   \item Cas où $\lambda =0$. Il s'agit d'un véritable polynôme.
   \item Cas où $\lambda \neq 0$. On cherche une primitive de $t\mapsto P(t)e^{\lambda t}$ sous la forme $t\mapsto Q(t)e^{\lambda t}$ avec $Q$ polynôme de même degré. On forme un système d'équations linéaires en posant des coefficients indéterminés dans $Q$ et en identifiant.
@@ -418,9 +418,9 @@ est une solution de l'équation complète.
 \end{demo}
 
 \subsection{Pratique des calculs}
-Dans le cas particulier d'une équation à coefficients constants où le second membre est un polynôme-exponentiel (ou pseudo-polynôme), on peut trouver une solution par une méthode algébrique avec des coefficients indéterminés.
-\index{pseudo-polynômes}\index{polynôme-exponentiel}
-\begin{defi}[pseudo-polynome ou polynôme-exponentiel]
+Dans le cas particulier d'une équation à coefficients constants où le second membre est un polynôme-exponentiel, on peut trouver une solution par une méthode algébrique avec des coefficients indéterminés.
+\index{polynôme-exponentiel}
+\begin{defi}[polynôme-exponentiel]
  Il s'agit de fonctions de $\R$ dans $\C$ de la forme :
 \begin{displaymath}
  t \rightarrow P(t)e^{\lambda t}
@@ -775,7 +775,7 @@ Il s'agit d'un système de deux équations linéaires admettent un unique couple
 \subsection{Calculs pratiques}
 Le principe de superposition intervient souvent dans les calculs pratiques. Il convient de décomposer le second membre en une combinaison de termes plus simples (par exemple en linéarisant) et de les traiter séparément.
 
-Cas où le second membre est un pseudo-polynôme $t\rightarrow P(t)e^{\lambda t}$.\newline
+Cas où le second membre est un polynôme exponentiel $t\rightarrow P(t)e^{\lambda t}$.\newline
 On peut alors trouver algébriquement une solution particulière de la forme indiquée par le tableau suivant :
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
