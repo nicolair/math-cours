@@ -1,12 +1,12 @@
 \input{courspdf.tex}
-\debutcours{Calculs de primitives}{1.1 \tiny{le 10/03/18}}
+\debutcours{Calculs de primitives}{1.2 \tiny{le 26/12/23}}
 
 Les calculs présentés dans cette section ne doivent pas faire perdre de vue que :
 \begin{itemize}
  \item Toute fonction continue admet une primitive
  \item En général une primitive ne s'exprime pas à l'aide de fonctions \og usuelles\fg.
 \end{itemize}
-Aucun théorème permettant de décider si une primitive est ou n'est pas exprimable à l'aide des fonctions usuelles ne sera donné. On formera seulement une liste de cas dans lesquels l'expression d'une primitive avec des fonctions usuelles est possible et, pour chacun, des méthodes permettant cette expression. Ces méthodes sont générales, il existe souvent des méthodes plus rapides valables pour des cas particuliers.\newline
+Aucun théorème permettant de décider si une primitive est ou n'est pas exprimable à l'aide des fonctions usuelles ne sera donné. On formera seulement une liste de cas dans lesquels l'expression d'une primitive avec des fonctions usuelles est possible et, pour chacun, des méthodes permettant d'obtenir cette expression. Ces méthodes sont générales, il existe souvent des méthodes plus rapides valables pour des cas particuliers.\newline
 Le recours à une intégrale n'est pas obligatoire. Dans certains cas, on peut mettre la fonction à intégrer sous une forme qui permet de donner directement une primitive.\newline
 \'Eviter la notation
 \begin{displaymath}
@@ -20,7 +20,7 @@ en se permettant de ne pas écrire la borne du bas qui ne fait que préciser une
 On terminera par une liste (sans justification) de primitives usuelles et de fonctions dont les primitives ne s'expriment pas avec les fonctions usuelles de la classe (à faire !).
 
 \section{Autour des polynômes}
-Dans les deux premiers cas, l'idée générale est de passer en exponentielle et de développer, on obtient alors une combinaison linéaire d'exponentielles $t\rightarrow e^{\lambda t}$ dont une primitive est $\frac{1}{\lambda}e^t$ que $\lambda$ soit réel ou complexe.\\
+On connait évidemment les primitives des polynômes, on considère ici des combinaisons de puissances de fonctions trigonométriques. Pour les deux premiers cas, une méthode générale est de passer en exponentielle et de développer, on obtient alors une combinaison linéaire d'exponentielles $t\rightarrow e^{\lambda t}$ dont une primitive est $\frac{1}{\lambda}e^t$ que $\lambda$ soit réel ou complexe.\\
 Le troisième cas relève plutôt de l'algèbre linéaire.
 \subsection{Polynômes trigonométriques (circulaires)}
 \begin{itemize}
@@ -81,7 +81,7 @@ Pour $z\in\C -\R$ avec $\Re z =a$ et $\Im z=b$:
 \end{align*}
 
 \subsection{Primitives des éléments simples réels}
-Les éléments simples réels ne figurent plus réellement au programme. Les pôles complexes conjugués se combinent et toute fraction rationnelle à coefficients réels se décompose en un polynome à coefficients réels, des éléments simples de la forme 
+Les éléments simples réels ne figurent plus réellement au programme. Les pôles complexes conjugués se combinent et toute fraction rationnelle à coefficients réels se décompose en un polynome à coefficients réels, avec des éléments simples de la forme
 \begin{displaymath}
  \frac{\lambda}{(X-a)^m} \text{ avec } a\in \R \text{ et } m\in \N^*
 \end{displaymath}
@@ -137,7 +137,7 @@ Essayer (dans cet ordre) un des changements de variable suivants :
 
 \section{Intégrales \og abéliennes\fg}\index{intégrale abélienne}
 Il s'agit de calculer une primitive d'une fraction rationnelle faisant intervenir la racine d'une expression polynomiale $\sqrt{P}$. Cette primitive s'exprime avec des fonctions usuelles lorsque le degré du polynôme $P$ est $1$ ou $2$. Par un changement de variable approprié, on se ramène au calcul soit d'une primitive d'une fraction rationnelle trigonométrique soit directement d'une primitive d'une fraction rationnelle.\newline
-On se limite ici à un degré inférieur à 2.  Le degrés plus élevés conduisent aux véritables intégrales abéliennes qui ne se s'expriment pas en général avec des fonctions usuelles.
+On se limite ici à un degré inférieur à 2.  Le degrés plus élevés conduisent aux véritables intégrales abéliennes qui ne s'expriment pas en général avec des fonctions usuelles.
 \subsection{Cas du degré 1}
 Utiliser le changement de variable $u=\sqrt{P(t)}$.
 \subsection{Cas du degré 2}
@@ -157,7 +157,7 @@ K\left( truc^2(t) -1 \right)& \text{ poser }& truc(t)=&
 \end{displaymath}
 
 \subsection{Cas homographique}
-La fraction rationnelle contient un terme en $\sqrt{h(t)}$ avec  $h(t)=\sqrt{\frac{t-a}{t-b}}$ ou $h(t)=\sqrt{\frac{a-t}{t-b}}$. On peut alors poser $u=\sqrt{h(t)}$ et les calculs sont désagréables. On peut aussi remarquer que 
+La fraction rationnelle contient un terme en $\sqrt{h(t)}$ avec  $h(t) = \frac{t-a}{t-b}$ ou $h(t) = \frac{a-t}{t-b}$. On peut alors poser $u=\sqrt{h(t)}$ et les calculs sont désagréables. On peut aussi remarquer que
 \begin{displaymath}
  \sqrt{\frac{t-a}{t-b}} = \frac{\sqrt{(t-a)(t-b)}}{|t-b|}
 \end{displaymath}
