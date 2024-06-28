@@ -1,17 +1,29 @@
 \input{courspdf.tex}
-\debutcours{Notes sur \emph{Measure an Integration} de König}{beta 1.4 \tiny{ le \today} }
-\noindent Ce texte est constitué de notes de lecture sur le livre Measure and Integration de Heinz König.
+\debutcours{Notes sur \emph{Measure an Integration} de König}{beta 1. 6\tiny{ le \today} }
 
-\noindent L'ouvrage est très abstrait, il fournit des méthodes de théorie des ensembles utiles pour les constructions et les démonstrations dans la théorie des mesures.
+\section{Présentation}
+\noindent Ce texte est constitué de notes de lecture sur le livre \emph{Measure and Integration} de Heinz König.
 
-Une mesure sur un ensemble $X$ est définie à partir d'une partie $\mathfrak{S}$ de $\mathcal{P}(X)$ et d'une fonction $\varphi$ de $\mathfrak{S}$ à valeurs dans $\overline{\R}$.
+\noindent L'ouvrage fournit des méthodes et des résultats de théorie des ensembles utilisés dans la théorie des mesures. Le cadre est tellement général qu'il est difficile de faire sens avec le texte sans une grande érudition sur le sujet. L'idée de ces notes est de reformuler les propriétés et constructions du livre avec en tête des exemples précis en détaillant ceux du texte et en en introduisant de nouveaux plus personnels.\newline
+L'exemple principal du livre est la mesure de Lebesgue dans $\R^n$ présentée en \ref{Exples}\ref{Expleppal}. Mon premier exemple (\ref{Exples} \ref{ExpleZ}) est arithmétique et se place dans $\Z$. Mon deuxième exemple (\ref{Exples} \ref{ExplePolyg}) est géométrique et se place dans $\R^2$.
 
-Les propriétés et les constructions sont présentées dans un cadre tellement abstrait et général que j'ai beaucoup de mal à faire sens avec le texte. L'idée de ces notes est de lire ces propriétés et constructions avec en tête des exemples précis.
+\paragraph*{Systèmes et fonctions d'ensembles.}
+Les objets fondamentaux utilisés dans la théorie des mesures sur un ensemble $X$ sont des ensembles $\mathfrak{S} \subset \mathcal{P}(X)$ (appelés \emph{pavings} dans le livre) et des fonctions $\varphi$ définies dans $\mathfrak{S}$ à valeurs dans $\overline{\R}$ (appelés \emph{set fonctions} dans le livre).\newline
+Avec le sens précis que prend le mot \emph{pavage} dans les mathématiques en France, on ne peut traduire \emph{paving} par \emph{pavage}. Comme l'auteur utilise aussi \emph{set system}, j'utiliserai \emph{système d'ensembles} pour désigner un \emph{paving} c'est à dire simplement une partie de $\mathcal{P}(X)$.\newline
+Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fonction d'ensembles} (\emph{set fonction} dans le texte).\newline
+
+\begin{enumerate}
+ \item  Les différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns}, les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}.
+ \item Les concepts proches des mesures (\ref{SystFoncEns} \ref{FoncEns} \ref{ContenusMesures} ) sont des cas particuliers des situations précédentes.
+ \item À partir d'une fonction d'ensembles $\varphi$, on peut construire (\ref{ExtenRegul} \ref{Enveloppes}) une fonction d'ensemble $\Phi$ définie dans $\mathcal{P}(X)$ tout entier qui possède de bonnes propriétés.
+ \item La classe de Carathéodory (\ref{ExtenRegul}\ref{ClasseCaratheodory}) d'une fonction d'ensemble sur $\mathcal{P}(X)$ est un système d'ensembles qui possède de bonnes propriétés. C'est la cadre de la preuve de résultats importants.
+\end{enumerate}
 
 On notera $A'$ le complémentaire d'une partie $A \in \mathcal{P}(X)$ pour un ensemble $X$ quelconque.
+\newpage
 
-\section{Exemples}
-\subsection{Union de classes de congruences dans $\Z$}
+\section{Exemples}\label{Exples}
+\subsection{Union de classes de congruences dans $\Z$} \label{ExpleZ}
 \subsubsection{Résultats sur les congruences}
 \begin{lem}
   Pour tous $\alpha_1, \cdots, \alpha_p, \beta$ entiers naturels:
@@ -303,13 +315,11 @@ On en déduit $I_{X'} = I_X$.
   \end{enumerate}
 \end{demo}
  
-
 \begin{rem}
   Attention, cette proposition ne se généralise pas lorsque $m$ et $m'$ ne sont pas premiers entre eux. Par exemple
   \begin{displaymath}
     \Z = (0 + \Z 4) \cup (2 + \Z 4) \cup (3 + \Z 4) \cup (1 + 6 \Z) \cup (3 + 6 \Z) \cup (5 + 6 \Z). 
   \end{displaymath}
-
 \end{rem}
 
 \subsubsection{Fonction d'ensembles}
@@ -368,7 +378,7 @@ Pour chaque $a'$ fixé, $b'$ doit être dans la classe de $a'$ modulo $p\wedge q
 \end{displaymath}
 Combien de couples doit-on enlever à ce nombre?\newline
 Pour $a' = a$, il faut enlever les $\frac{q}{p \wedge q}$ éléments de la classe de $a$ modulo $p \wedge q$ dans $\llbracket 0, q\llbracket$. Parmi ceux là se trouve $(a,b)$ car $a \equiv b \mod p\wedge q$. De même pour $b' = b$, il faut enlever $\frac{p}{p \wedge q}-1$ couples (avec -1 pour ne pas compter deux fois $(a,b)$).\newline
-Finalement, le nombre de couples $(a',b')$ contribuant réellement à la grande union est 
+Finalement, le nombre de couLes différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns}, les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}.ples $(a',b')$ contribuant réellement à la grande union est
 \begin{displaymath}
   \frac{pq}{p \wedge q} - \frac{q}{p \wedge q} - \frac{p}{p \wedge q} + 1 = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right).
 \end{displaymath}
@@ -389,7 +399,6 @@ Soit $X \subset \Z$, $I_X$ est l'ensemble des $\mu \in \Z$ tels que $X + \mu =\l
 \begin{displaymath}
   X \in \mathfrak{S} \Leftrightarrow \mu_X \leq 1 .
 \end{displaymath}
-
 
 \begin{lem}
   Soit $X\in \mathfrak{S}$ et $m=\mu_X$. Pour tout $n\in I_X$,
@@ -419,14 +428,59 @@ pour n'importe quel $n\in I_X$.
 \end{demo}
 
 
-\subsection{Exemple principal: volume dans $\R^n$.}
+\subsection{Exemple principal: volume dans $\R^n$.}\label{Expleppal}
 Voir page 19.
-Soit $n\geq 1$. Pour tout entier naturel $s$, on note $\mathfrak{M}_s$ l'ensemble des cubes (poly-cubes?) fermés dont les sommets sont des points consécutifs de $\frac{1}{2^n}\Z^n$.
+Soit $n\geq 1$ fixé. On se place dans $X = \R^n$.
 
-On définit une fonction $\lambda$ constante sur chaque $\mathfrak{M}_s$.
+\noindent On note $\mathfrak{B}$ l'ensemble des parties bornées et $\mathfrak{K} \subset \mathfrak{B}$ l'ensemble des parties compactes de $\R^n$. On va définir une application $\lambda$ de $\mathfrak{B}$ dans $\left[0, + \infty\right[$ et étudier les propriétés de sa restriction à $\mathfrak{K}$.\newline
+Pour tout naturel non nul $s$, on note $\mathfrak{M}_s$ l'ensemble des cubes fermés dans $\R^n$ dont les sommets sont des points consécutifs de $\frac{1}{2^s}\Z^n$. On appellera $s$-cube un tel cube, la longueur de ses arêtes est $\frac{1}{2^s}$, son volume est $\frac{1}{2^{ns}}$.
+
+\noindent Pour toute partie $K$ bornée, l'ensemble des $s$-cubes qui la coupent est fini. On définit $Z_s$ et $\lambda_s$ par
 \begin{displaymath}
-  \forall Q \in \mathfrak{M}_s, \; \lambda(Q) = \frac{1}{2^{ns}}.
+ \forall K \in \mathfrak{B}, \; Z_s(K) = \sharp \left\lbrace Q \in \mathfrak{M}_s \text{ tq } K \cap Q \neq \emptyset \right\rbrace, \; \lambda_s(K) = Z_s(K)\frac{1}{2^{ns}}.
 \end{displaymath}
+
+\begin{rems}
+ \begin{enumerate}
+  \item On peut interpréter $\lambda_s(K)$ comme la somme des volumes des $s$-cubes qui coupent $K$.
+  \item Soit $s \geq k$ entiers naturels et $Q$ un $k$-cube. Les $s$-cubes qui coupent $Q$ sont inclus dans $Q$ ou sur le bord. Ils forment un cube dont les arêtes sont de longueur $\frac{1}{2^k} + \frac{2}{2^s}$. On en déduit
+  \begin{displaymath}
+   Z_s(Q) = (2^{s-k} + 2)^n, \; \lambda_s(Q) = (2^{s-k} + 2)^n \frac{1}{2^{ns}} = (\frac{1}{2^k}+\frac{2}{2^s})^n
+     = \frac{1}{2^{nk}}(1 + \frac{1}{2^{s-k-1}})^n.
+  \end{displaymath}
+  \item Chaque $s$-cube est la réunion de $2^n$ $s+1$-cubes qui ne coupent pas forcément $K$. Un $s+1$-cube qui coupe $K$ est une partie d'un $s$-cube qui coupe $K$. On en déduit
+\begin{displaymath}
+ Z_{s+1}(K) \leq 2^n Z_s(K) \Rightarrow \frac{1}{2^n} \frac{1}{2^{sn}} Z_{s+1}(K) \leq \frac{1}{2^{sn}} Z_{s}(K) \Rightarrow \lambda_{s+1}(K) \leq \lambda_s(K).
+\end{displaymath}
+ \end{enumerate}
+\end{rems}
+\begin{defi}
+On définit $\lambda_s$ sur $\mathfrak{B}$ par:
+\begin{displaymath}
+  \forall Q \in \mathfrak{M}_s, \; \lambda(Q) = \lim_{s\rightarrow +\infty} \lambda_s(K) = \inf\left( \lambda_s(K), s \in \N^*\right).
+\end{displaymath}
+\end{defi}
+\begin{rems}
+ \begin{enumerate}
+  \item Aucun $s$-cube ne coupe $\emptyset$ donc $Z_s(\emptyset)=0$, $\lambda_s(\emptyset)=0$, $\lambda(\emptyset)=0$.
+  \item D'après la remarque 2 du dessus, pour $k$ fixé, $Q$ un $k$-cube et $s$ à l'infini, $\lambda(Q)= \frac{1}{2^{nk}}$ c'est à dire son volume.
+ \end{enumerate}
+
+ \begin{propn}
+  Pour $n=1$, et $a < b$ réels, $\lambda([a,b]) = b - a$.
+ \end{propn}
+ \begin{demo}
+  On donne seulement le plan de la démonstration
+  \begin{enumerate}
+   \item Soit $\alpha = \max \left\lbrace k \in \Z \text{ tq } \frac{k}{2^s} < a\right\rbrace$, $\beta = \max \left\lbrace k \in \Z \text{ tq } \frac{k}{2^s} \leq b\right\rbrace$. Alors
+   \begin{displaymath}
+    Z_s([a,b]) = \beta - \alpha + 1.
+   \end{displaymath}
+   \item $2^s(b-a) < Z_s([a,b]) \leq 2^s(b-a) + 2$.
+   \item Conclusion.
+  \end{enumerate}
+ \end{demo}
+\end{rems}
 
 \subsection{Différence symétrique et Crible de Poincaré}\label{criblePoinc}
 Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent une rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
@@ -499,10 +553,13 @@ En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle 
   \chi_A = \chi_{A_1} + \cdots + \chi_{A_p} &\Leftrightarrow A = \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p)
 \end{align*}
 
+\subsection{Polygones plans}\label{ExplePolyg}
+Ici la figure principale est le demi-plan et les parties convexes qui sont des intersections de familles finies de demi-plans (polygones convexes). L'ensemble $\mathfrak U$ des polygones convexes est stable par intersection. L'esemble $\mathfrak{S}$ des unions finies des polygones convexes est aussi celui des polygones plans pas forcément convexes.
 
-\section{Chap I du livre. Systèmes d'ensembles - Fonctions d'ensembles}
-\subsection{Systèmes d'ensembles}
-Dans le livre, le terme \emph{paving} (pavage ?) d'un ensemble $X$ désigne simplement une partie de $\mathcal{P}(X)$ qui ne contient pas forcément $\emptyset$. Le terme \emph{système d'ensembles} (set system) désigne aussi une partie de $\mathcal{P}(X)$ mais qui possède certaines propriétés. Quatre types sont dégagés.
+\section{Chap I du livre. Systèmes d'ensembles - Fonctions d'ensembles}\label{SystFoncEns}
+\subsection{Systèmes d'ensembles}\label{SystEns}
+\subsubsection{Treillis, ovale, anneau, algèbre}
+Dans ces notes, le livre, pour un ensemble $X$ donné, toute partie de $\mathcal{P}(X)$ (elle ne contient pas forcément $\emptyset$) est désignée par le terme \emph{système d'ensembles}. Les termes \emph{set system} ou \emph{paving} sont utilisés dans le livre. Quatre types de systèmes d'ensembles, caractérisés par des proprités de stabilité sont définis.
 
 L'ouvrage introduit une opération ternaire inhabituelle.\newline
 Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
@@ -538,16 +595,36 @@ Pour montrer qu'un ovale est un treillis:
 \end{align*}
 On vérifie facilement les autres implications.
 \end{demo}
-\begin{rem}
-  Un ovale qui contient $\emptyset$ est un anneau. En effet
-  \begin{displaymath}
-    U \mid A \mid \emptyset = (A \cap A')\cup (A \cap \emptyset) = A \cap A'
-  \end{displaymath}
-\end{rem}
+\begin{rems}
+ \begin{enumerate}
+  \item Un anneau contient toujours $\emptyset$ car $A \setminus A = \emptyset$.
+  \item Un ovale qui contient $\emptyset$ est un anneau. En effet
+    \begin{displaymath}
+      U \mid A \mid \emptyset = (A \cap A')\cup (A \cap \emptyset) = A \cap A'.
+    \end{displaymath}
+    Le fait qu'un anneau soit un ovale particulier (comme pour les figures géométriques) est la seule justification que j'ai trouvée pour le terme \emph{ovale}.
+  \item Une algèbre contient toujours $\emptyset$ et $X$.
+  \item Un anneau qui contient $X$ est une algèbre. En effet $A' = X \setminus A$.
+ \end{enumerate}
+\end{rems}
 
-\subsection{Fonctions d'ensembles}
-\subsubsection{Définitions}
-Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.
+\subsubsection{Familles de parties}
+L'auteur définit des notations très synthétiques avec un symbole $\bullet$ qui peut désigner un des trois symboles $\star$, $\sigma$, $\tau$ que je ne reprendrai pas. J'utiliserai directement les 3 symboles en préfixe d'une propriété pour préciser un caractère fini, dénombrable ou quelconque. Par exemple, pour un système d'ensemble $\mathfrak{S}$ dans $X$;
+\begin{align*}
+\mathfrak{S} \text{ est $\cup_*$-stable } &\Leftrightarrow \left( \forall \mathfrak{M} \subset \mathfrak{S}, \mathfrak{M} \text{ fini } \Rightarrow \bigcup_{M \in \mathfrak{M}}M \in \mathfrak{S}.\right) \\
+\mathfrak{S} \text{ est $\cup_\sigma$-stable } &\Leftrightarrow \left( \forall \mathfrak{M} \subset \mathfrak{S}, \mathfrak{M} \text{ dénombrable } \Rightarrow \bigcup_{M \in \mathfrak{M}}M \in \mathfrak{S}.\right) \\
+\mathfrak{S} \text{ est $\cup_\tau$-stable } &\Leftrightarrow \left( \forall \mathfrak{M} \subset \mathfrak{S}, \bigcup_{M \in \mathfrak{M}}M \in \mathfrak{S}.\right)
+\end{align*}
+On peut remarquer que $\mathfrak{S}$ est $\cup_*$-stable si et seulement si $\mathfrak{S}$ est stable par $\cup$. Il est $\cup_\sigma$-stable si et seulement si, pour toute suite $(M_i)_{i\in \N}$ d'éléments de $\mathfrak{S}$, $\bigcup_{i\in \N}M_i \in \mathfrak{S}$.\newline
+On définit de manière analogue les notions de $\cap_\star$-stable(équivalent à $\cap$-stable), $\cap_\sigma$-stable, $\cap_\tau$-stable. \newline
+Pour la stabilité pour la complémentation on utilise le symbole orthogonal : $\bot$-stable.
+\begin{exple}
+ La topologie d'un ensemble $X$ est définie par l'ensemble de ses ouverts (noté $Op(X)$) c'est à dire un système d'ensembles contenant $\emptyset$ et $X$, $\cup_\tau$-stable, $\cap_\star$-stable.
+\end{exple}
+
+\subsection{Fonctions d'ensembles}\label{FoncEns}
+\subsubsection{Croissance et modularité}
+Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.M
 \begin{defi}
   Une fonction $\varphi$ définie dans un treillis $\mathfrak{S}$ à valeurs dans $\overline{\R}$ est dite croissante (isotone) si et seulement si
   \begin{displaymath}
@@ -812,7 +889,12 @@ Le principal résultat de cette section est le théorème suivant.
 d'après l'hypothèse car $(A_0 \cap A_1) \cup \cdots \cup (A_0\cap A_p) \subset A_0$.
 \end{demo}
 
-\section{Chap II. Extensions fondées sur la régularité}
+\subsubsection{Régularité} \label{Regularite}
+\subsubsection{Continuité} \label{Continuite}
+\subsubsection{Contenus et mesures} \label{ContenusMesures}
 
+\section{Chap II du livre. Extensions fondées sur la régularité}\label{ExtenRegul}
+\subsection{Enveloppes}\label{Enveloppes}
+\subsection{Classe de Carathéodory} \label{ClasseCaratheodory}
 \end{document}
 
