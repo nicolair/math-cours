@@ -73,7 +73,7 @@ On notera $A'$ le complémentaire d'une partie $A \in \mathcal{P}(X)$ pour un en
       u &= l_1 m_1 - l_2 m_2 \\
       u &= \lambda_1 m_1 - \lambda_2 m_2
     \end{aligned}
-    \right\rbrace \Rightarrow (\lambda_1 - l_1)m_2 = (\lambda_2 - l_2)m_1 \Rightarrow (\lambda_1 - l_1)\frac{m_2}{m_1 \wedge m_2} = (\lambda_2 - l_2)\frac{m_1}{m_1 \wedge m_2}
+    \right\rbrace \Rightarrow (\lambda_1 - l_1)m_1 = (\lambda_2 - l_2)m_2 \Rightarrow (\lambda_1 - l_1)\frac{m_1}{m_1 \wedge m_2} = (\lambda_2 - l_2)\frac{m_2}{m_1 \wedge m_2}
   \end{displaymath}
 en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \wedge m_2}$ sont premiers entre eux, le théorème de Gauss entraine qu'il existe $\lambda \in \Z$ tel que $\lambda_1 - l_1 = \lambda \frac{m_2}{m_1 \wedge m_2}$. En remplaçant dans la relation et simplifiant, il vient $\lambda_2 - l_2 = \lambda \frac{m_1}{m_1 \wedge m_2}$.
 \end{demo}
@@ -317,19 +317,12 @@ On en déduit $I_{X'} = I_X$.
   \end{enumerate}
 \end{demo}
  
-<<<<<<< HEAD
 
-=======
->>>>>>> 40be229fae5bf6ea1a504b5e041ca181df6582ba
 \begin{rem}
   Attention, cette proposition ne se généralise pas lorsque $m$ et $m'$ ne sont pas premiers entre eux. Par exemple
   \begin{displaymath}
     \Z = (0 + \Z 4) \cup (2 + \Z 4) \cup (3 + \Z 4) \cup (1 + 6 \Z) \cup (3 + 6 \Z) \cup (5 + 6 \Z). 
   \end{displaymath}
-<<<<<<< HEAD
-
-=======
->>>>>>> 40be229fae5bf6ea1a504b5e041ca181df6582ba
 \end{rem}
 
 \subsubsection{Fonction d'ensembles}
@@ -388,11 +381,8 @@ Pour chaque $a'$ fixé, $b'$ doit être dans la classe de $a'$ modulo $p\wedge q
 \end{displaymath}
 Combien de couples doit-on enlever à ce nombre?\newline
 Pour $a' = a$, il faut enlever les $\frac{q}{p \wedge q}$ éléments de la classe de $a$ modulo $p \wedge q$ dans $\llbracket 0, q\llbracket$. Parmi ceux là se trouve $(a,b)$ car $a \equiv b \mod p\wedge q$. De même pour $b' = b$, il faut enlever $\frac{p}{p \wedge q}-1$ couples (avec -1 pour ne pas compter deux fois $(a,b)$).\newline
-<<<<<<< HEAD
-Finalement, le nombre de couples $(a',b')$ contribuant réellement à la grande union est 
-=======
 Finalement, le nombre de couLes différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns}, les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}.ples $(a',b')$ contribuant réellement à la grande union est
->>>>>>> 40be229fae5bf6ea1a504b5e041ca181df6582ba
+
 \begin{displaymath}
   \frac{pq}{p \wedge q} - \frac{q}{p \wedge q} - \frac{p}{p \wedge q} + 1 = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right).
 \end{displaymath}
@@ -414,10 +404,6 @@ Soit $X \subset \Z$, $I_X$ est l'ensemble des $\mu \in \Z$ tels que $X + \mu =\l
   X \in \mathfrak{S} \Leftrightarrow \mu_X \leq 1 .
 \end{displaymath}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 40be229fae5bf6ea1a504b5e041ca181df6582ba
 \begin{lem}
   Soit $X\in \mathfrak{S}$ et $m=\mu_X$. Pour tout $n\in I_X$,
   \begin{displaymath}
@@ -446,17 +432,6 @@ pour n'importe quel $n\in I_X$.
 \end{demo}
 
 
-<<<<<<< HEAD
-\subsection{Exemple principal: volume dans $\R^n$.}
-Voir page 19.
-Soit $n\geq 1$. Pour tout entier naturel $s$, on note $\mathfrak{M}_s$ l'ensemble des cubes (poly-cubes?) fermés dont les sommets sont des points consécutifs de $\frac{1}{2^n}\Z^n$.
-
-On définit une fonction $\lambda$ constante sur chaque $\mathfrak{M}_s$.
-\begin{displaymath}
-  \forall Q \in \mathfrak{M}_s, \; \lambda(Q) = \frac{1}{2^{ns}}.
-\end{displaymath}
-
-=======
 \subsection{Exemple principal: volume dans $\R^n$.}\label{Expleppal}
 Voir page 19.
 Soit $n\geq 1$ fixé. On se place dans $X = \R^n$.
@@ -511,7 +486,7 @@ On définit $\lambda_s$ sur $\mathfrak{B}$ par:
  \end{demo}
 \end{rems}
 
->>>>>>> 40be229fae5bf6ea1a504b5e041ca181df6582ba
+
 \subsection{Différence symétrique et Crible de Poincaré}\label{criblePoinc}
 Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent une rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
 
@@ -583,22 +558,64 @@ En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle 
   \chi_A = \chi_{A_1} + \cdots + \chi_{A_p} &\Leftrightarrow A = \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p)
 \end{align*}
 
-<<<<<<< HEAD
-
-\section{Chap I du livre. Systèmes d'ensembles - Fonctions d'ensembles}
-\subsection{Systèmes d'ensembles}
-Dans le livre, le terme \emph{paving} (pavage ?) d'un ensemble $X$ désigne simplement une partie de $\mathcal{P}(X)$ qui ne contient pas forcément $\emptyset$. Le terme \emph{système d'ensembles} (set system) désigne aussi une partie de $\mathcal{P}(X)$ mais qui possède certaines propriétés. Quatre types sont dégagés.
-=======
 \subsection{Polygones plans}\label{ExplePolyg}
-Ici la figure principale est le demi-plan et les parties convexes qui sont des intersections de familles finies de demi-plans (polygones convexes). L'ensemble $\mathfrak U$ des polygones convexes est stable par intersection. L'esemble $\mathfrak{S}$ des unions finies des polygones convexes est aussi celui des polygones plans pas forcément convexes.
+Ici $X$ est le plan $\R^2$, les figures de base sont les demi-plans fermés Les intersections de familles finies de demi-plans fermés sont des parties fermées et convexes, on convient de les appeler \emph{polygones convexes fermés}. Dans ce cas, au dela de ce qu'on appelle habituellement polygone fermé; un demi espace fermé, une droite, un segment, un point ou une partie comme sur la figure sont aussi des polygones convexes fermés.
+
+On  note $\mathfrak U$ l'ensemble des polygones convexes fermés. Par définition, $\mathfrak{U}$ est stable par intersection. On note $\mathfrak{S}$ l'ensemble des unions finies de polygones convexes fermés. Le système d'ensemble $\mathfrak{S}$ est stable pour l'intersection et l'union. Avec les définitions du livre précisées dans le chapitre suivant, c'est le treillis $L(\mathfrak U)$ c'est à dire le plus petit treillis contenant $\mathfrak{U}$.\newline
+On convient d'appeler \emph{polygone fermé} un élément de $\mathfrak{S}$. On peut remarquer que $\emptyset$ et $X$ sont des polygones fermés.
+
+\paragraph{Notations}
+\label{sec:notpolygones}
+Soit $\alpha \in X^*$ une forme linéaire et $a\in \R$, notons $\{ \alpha \leq a\}$ le demi-plan formé par les $x \in X$ tels que $\alpha(x) \leq a$.
+
+
+\begin{rem} On peut remplacer $\leq$ par $\geq$.
+ \begin{displaymath}
+   \{ \alpha \geq a \} = \{ -\alpha \leq -a \}.
+ \end{displaymath}
+\end{rem}
+
+Soit $A\subset X$, $A \in \mathfrak{S}$ (c'est à dire un polygone fermé) si et seulement si il existe des familles $\alpha_{i,j}$ de formes linéaires et $a_{i,j}$ de nombres réels (avec $I$ et $J$ finis) tels que
+\begin{displaymath}
+ A = \bigcup_{i \in I} \bigcap_{j \in J}\{ \alpha_{i,j} \leq a_{i,j}\}.
+\end{displaymath}
+Un polygone fermé est défini par des inégalités larges, son complémentaire fait intervenir des inégalités strictes. Je ne pense pas que l'on puisse obtenir pour $\mathfrak{S}$ des propriétés intéressantes relatives au complémentaire. Je pense que $\mathfrak{S}$ n'est même pas un ovale au sens du livre.\newline
+En revanche on peut obtenir des propriétés intéressantes en renversant les inégalités.
+
+\begin{defi}
+ Soit $A = \bigcup_{i \in I} \bigcap_{j \in J}\{ \alpha_{i,j} \leq a_{i,j}\} \in \mathfrak{S}$. On appelle \emph{presque complémentaire} de $A$ la partie
+ \begin{displaymath}
+  A' = \bigcap_{i \in I} \bigcup_{j \in J}\{ \alpha_{i,j} \geq a_{i,j}\}.
+ \end{displaymath}
+\end{defi}
+Attention, il n'est pas clair que cette définition soit consistante car la décomposition en union de polygones fermés convexes n'est pas unique.
+\begin{defi}
+ Soit $A \in \mathfrak{S}$ un polygone fermé, on appelle \emph{bord} de $A$ le polygone fermé $A \cap A'$.
+\end{defi}
+\begin{exple}
+Le bord d'un demi plan $\{\alpha \leq a\}$ est la droite $\{\alpha = a\}$.
+\end{exple}
+\begin{lem}
+ Soit $(\alpha_1, \alpha_2, \beta)$ une famille de 3 formes linéaires dont toutes les sous-familles de 2 sont libres et $A = \{\alpha_1 \alpha_2\geq 0\}$.\newline
+ La droite $\{ \beta = 0 \}$ est incluse dans le presque complémentaire de $A$ si et seulement si le produit des coordonnées de $\beta$ dans la base $(\alpha_1, \alpha_2)$ est strictement positif.
+\end{lem}
+\begin{demo}
+L'hypothèse sur les sous-familles libres entraine que les 3 droites $\{\alpha_1 = 0\}$, $\{\alpha_2 = 0\}$, $\{\beta = 0\}$ sont distinctes. De plus $(\alpha_1, \alpha_2)$ est une base donc il existe $\lambda_1$ et $\lambda_2$ réels tels que $\beta = \lambda_1 \alpha_1 + \lambda_2 \alpha_2$. Les réels $\lambda_1$ et $\lambda_2$ sont non nuls car $(\alpha_1, \beta)$ et $(\alpha_2, \beta)$ sont libres.\newline
+Supposons $\lambda_1$ et $\lambda_2$ strictement positifs. Soit $a \in A$. Si $\alpha_1(a) \geq 0$ et $\alpha_2(a) \geq 0$ alors $\beta(a)\geq 0$. Si $a\neq(0,0)$ au moins un des $\alpha_i(a)>0$ donc $\beta(a) > 0$. De même $\alpha_1(a) \leq 0$ et $\alpha_2(a) \leq 0$ entraine $\beta(a)<0$ pour $a\neq (0,0)$. On en déduit que $\{\beta = 0\} \cap A = \{(0,0)\}$ donc $\{\beta = 0\} \subset  A'$. Si $\lambda_1$ et $\lambda_2$ sont strictement négatifs, on se ramène au cas précédent en les changeant en leur opposé ce qui ne change pas la droite. \newline
+Réciproquement, supposons $\{\beta = 0\} \subset A' = \left(\{\alpha_1 \leq 0\} \cap \{\alpha_2 \geq 0\}\right) \cup \left(\{\alpha_1 \geq 0\} \cap \{\alpha_2 \leq 0\}\right)$. Soit $b \neq (0,0)$ dans $\{\beta = 0\}$. Alors $b \in A'$ donc $\alpha_1(b) \alpha_2(b) <0$.
+\begin{displaymath}
+ \beta(b) = 0 \Rightarrow \lambda_2 = - \frac{\alpha_1(b)}{\alpha_2(b)} \lambda_1 \Rightarrow \lambda_1 \lambda_2 = - \frac{\alpha_1(b)}{\alpha_2(b)} \lambda_{1}^2 > 0.
+\end{displaymath}
+\end{demo}
+
+\begin{defi}
+Pour tout $M \in \mathfrak{S}$ définissons $c(M)$ comme le nombre de composantes connexes bornées de $M$.
+\end{defi}
 
 \section{Chap I du livre. Systèmes d'ensembles - Fonctions d'ensembles}\label{SystFoncEns}
 \subsection{Systèmes d'ensembles}\label{SystEns}
 \subsubsection{Treillis, ovale, anneau, algèbre}
-Dans ces notes, le livre, pour un ensemble $X$ donné, toute partie de $\mathcal{P}(X)$ (elle ne contient pas forcément $\emptyset$) est désignée par le terme \emph{système d'ensembles}. Les termes \emph{set system} ou \emph{paving} sont utilisés dans le livre. Quatre types de systèmes d'ensembles, caractérisés par des proprités de stabilité sont définis.
->>>>>>> 40be229fae5bf6ea1a504b5e041ca181df6582ba
-
-L'ouvrage introduit une opération ternaire inhabituelle.\newline
+Dans le livre, pour un ensemble $X$ donné, toute partie de $\mathcal{P}(X)$ (elle ne contient pas forcément $\emptyset$) est désignée par le terme \emph{système d'ensembles}. Les termes \emph{set system} ou \emph{paving} sont aussi utilisés. Quatre types de systèmes d'ensembles (treillis, ovale, anneau, algèbre), caractérisés par des proprités de stabilité sont définis. Pour la notion d'ovale, l'ouvrage introduit une opération ternaire inhabituelle.\newline
 Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
 \begin{displaymath}
   U \mid A \mid V = (U \cap A') \cup ( A \cap V).
@@ -632,24 +649,13 @@ Pour montrer qu'un ovale est un treillis:
 \end{align*}
 On vérifie facilement les autres implications.
 \end{demo}
-<<<<<<< HEAD
-\begin{rem}
-  Un ovale qui contient $\emptyset$ est un anneau. En effet
-  \begin{displaymath}
-    U \mid A \mid \emptyset = (A \cap A')\cup (A \cap \emptyset) = A \cap A'
-  \end{displaymath}
-\end{rem}
 
-\subsection{Fonctions d'ensembles}
-\subsubsection{Définitions}
-Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.
-=======
 \begin{rems}
  \begin{enumerate}
   \item Un anneau contient toujours $\emptyset$ car $A \setminus A = \emptyset$.
   \item Un ovale qui contient $\emptyset$ est un anneau. En effet
     \begin{displaymath}
-      U \mid A \mid \emptyset = (A \cap A')\cup (A \cap \emptyset) = A \cap A'.
+      U \mid A \mid \emptyset = (U \cap A')\cup (U \cap \emptyset) = U \cap A' = U \setminus A.
     \end{displaymath}
     Le fait qu'un anneau soit un ovale particulier (comme pour les figures géométriques) est la seule justification que j'ai trouvée pour le terme \emph{ovale}.
   \item Une algèbre contient toujours $\emptyset$ et $X$.
@@ -673,8 +679,8 @@ Pour la stabilité pour la complémentation on utilise le symbole orthogonal : $
 
 \subsection{Fonctions d'ensembles}\label{FoncEns}
 \subsubsection{Croissance et modularité}
-Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.M
->>>>>>> 40be229fae5bf6ea1a504b5e041ca181df6582ba
+Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.
+
 \begin{defi}
   Une fonction $\varphi$ définie dans un treillis $\mathfrak{S}$ à valeurs dans $\overline{\R}$ est dite croissante (isotone) si et seulement si
   \begin{displaymath}
@@ -903,7 +909,6 @@ Le principal résultat de cette section est le théorème suivant.
 \end{thm}
 \begin{demo}
   À cause de la proposition \ref{modulaire_ordre_n} qui exprime $\varphi(A_1, \cdots, A_p) = \varphi(A_1,\cdots,A_p)$ les deux conditions $(mod)$ et $(isot)$ sont nécessaires.\newline
-
   Montrons que la condition 
   \begin{displaymath}
     \text{(mod)} \; \forall A_1, \cdots,A_p,A \in \mathfrak{U}, A_1 \cup \cdots \cup A_p = A \Rightarrow
@@ -941,7 +946,43 @@ d'après l'hypothèse car $(A_0 \cap A_1) \cup \cdots \cup (A_0\cap A_p) \subset
 \end{demo}
 
 \subsubsection{Régularité} \label{Regularite}
+Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.\newline
+On se donne 3 systèmes d'ensembles $\mathfrak{M}$, $\mathfrak{S}$, $\mathfrak{T}$ avec $\mathfrak{M} \subset \mathfrak{S}$ et $\mathfrak{T} \subset \mathfrak{S}$. La fonction d'ensembles $\varphi$ est dite extérieurement $\mathfrak{M}$-régulière en $\mathfrak{T}$ si et seulement si
+\begin{displaymath}
+ \forall S \in \mathfrak{T}, \varphi(S) = \inf\left\lbrace \varphi(M), M \in \mathfrak{M} \text{ avec } S \subset M\right\rbrace.
+\end{displaymath}
+On dira que $\varphi$ est intérieurement $\mathfrak{M}$-régulière en $\mathfrak{T}$ si et seulement si
+\begin{displaymath}
+ \forall S \in \mathfrak{T}, \varphi(S) = \sup\left\lbrace \varphi(M), M \in \mathfrak{M} \text{ avec } M \subset S\right\rbrace.
+\end{displaymath}
+Conventions usuelles: $\inf \emptyset = + \infty$, $\sup \emptyset = - \infty$.\newline
+Le cas le plus fréquent est $\mathfrak{T} = \mathfrak{S}$. On dit alors que $\varphi$ est (intérieurement, extérieurement) $\mathfrak{M}$ régulière.
+
+La fonction d'ensembles $\varphi$ est dite
+\begin{itemize}
+ \item majorée (bounded above) si et seulement si il existe $c\in \R$ tel que $\varphi \leq c$,
+ \item finie supérieurement (finite above) si et seulement si $\varphi < +\infty$,
+ \item semi finie supérieurement (semifinite above) si et seulement si elle est intérieurement $\left\lbrace \varphi < + \infty\right\rbrace$-régulière.
+\end{itemize}
+\begin{rems}
+ \begin{enumerate}
+  \item $\varphi$ semi finie supérieurement si et seulement si pour tout $S \in \mathfrak{S}$,
+  \begin{displaymath}
+   \varphi(S) = \sup\left\lbrace \varphi(M)\text{ tq } M \subset S, \varphi \text{ finie sur } M \right\rbrace.
+  \end{displaymath}
+  \item majorée $\Rightarrow$ finie supérieurement $\Rightarrow$ semi finie supérieurement.
+ \end{enumerate}
+
+\end{rems}
+
+
 \subsubsection{Continuité} \label{Continuite}
+Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.\newline
+La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le haut (upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.\newline
+La fonction d'ensembles $\varphi$ est dite presque $\sigma$-continue vers le haut (almost upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ telle que $\varphi(S_l)> - \infty$ pour tout $l\in \N$, qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.\newline
+La fonction d'ensembles $\varphi$ est dite $\tau$-continue vers le haut (upward $\tau$-continuous) si et seulement si :
+pour tout $A \in \mathfrak{S}$ et tout système d'ensemble $\mathfrak{M} \subset \mathfrak{S}$ tel que $\mathfrak{M} \uparrow A$, on a $\sup_{S \in \mathfrak{M}}\varphi(S) = \varphi(A)$.
+
 \subsubsection{Contenus et mesures} \label{ContenusMesures}
 
 \section{Chap II du livre. Extensions fondées sur la régularité}\label{ExtenRegul}
