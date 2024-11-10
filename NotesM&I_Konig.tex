@@ -663,19 +663,44 @@ On vérifie facilement les autres implications.
  \end{enumerate}
 \end{rems}
 
-\subsubsection{Familles de parties}
-L'auteur définit des notations très synthétiques avec un symbole $\bullet$ qui peut désigner un des trois symboles $\star$, $\sigma$, $\tau$ que je ne reprendrai pas. J'utiliserai directement les 3 symboles en préfixe d'une propriété pour préciser un caractère fini, dénombrable ou quelconque. Par exemple, pour un système d'ensemble $\mathfrak{S}$ dans $X$;
+\subsubsection{Systèmes de parties: concepts vocabulaire notations}\label{types cardinalité}
+\paragraph{Cardinalité}
+
+Le premier concept est relatif à la cardinalité. L'auteur définit des notations très synthétiques avec un symbole $\bullet$ qui peut  désigner un des trois symboles $\star$, $\sigma$, $\tau$ que je ne reprendrai pas. J'utiliserai directement les 3 symboles pour préciser un caractère fini, dénombrable ou quelconque.\newline
+Un système d'ensembles $\mathfrak{M}$ de $X$ est dit
+\begin{itemize}
+ \item de type $*$ si et seulement si il est fini;
+ \item de type $\sigma$ si et seulement si il est fini ou dénombrable c'est à dire qu'existe une suite $(S_l)_{l\in \N}$ de parties de $X$ telles que $\mathfrak{M}= \left\lbrace S_l , l\in \N \right\rbrace$;
+ \item de type $\tau$ dans tous les autres cas.
+\end{itemize}
+On peut remarquer que pour une famille de parties: \og type $*$\fg\, entraine \og type $\sigma$ \fg \, entraine \og type $\tau$ \fg.
+
+On peut aussi préfixer des propriétés. Par exemple, pour un système d'ensemble $\mathfrak{S}$ dans $X$;
 \begin{align*}
 \mathfrak{S} \text{ est $\cup_*$-stable } &\Leftrightarrow \left( \forall \mathfrak{M} \subset \mathfrak{S}, \mathfrak{M} \text{ fini } \Rightarrow \bigcup_{M \in \mathfrak{M}}M \in \mathfrak{S}.\right) \\
 \mathfrak{S} \text{ est $\cup_\sigma$-stable } &\Leftrightarrow \left( \forall \mathfrak{M} \subset \mathfrak{S}, \mathfrak{M} \text{ dénombrable } \Rightarrow \bigcup_{M \in \mathfrak{M}}M \in \mathfrak{S}.\right) \\
 \mathfrak{S} \text{ est $\cup_\tau$-stable } &\Leftrightarrow \left( \forall \mathfrak{M} \subset \mathfrak{S}, \bigcup_{M \in \mathfrak{M}}M \in \mathfrak{S}.\right)
 \end{align*}
 On peut remarquer que $\mathfrak{S}$ est $\cup_*$-stable si et seulement si $\mathfrak{S}$ est stable par $\cup$. Il est $\cup_\sigma$-stable si et seulement si, pour toute suite $(M_i)_{i\in \N}$ d'éléments de $\mathfrak{S}$, $\bigcup_{i\in \N}M_i \in \mathfrak{S}$.\newline
-On définit de manière analogue les notions de $\cap_\star$-stable(équivalent à $\cap$-stable), $\cap_\sigma$-stable, $\cap_\tau$-stable. \newline
-Pour la stabilité pour la complémentation on utilise le symbole orthogonal : $\bot$-stable.
-\begin{exple}
+On définit de manière analogue les notions de $\cap_\star$-stable(équivalent à $\cap$-stable), $\cap_\sigma$-stable, $\cap_\tau$-stable.
+\begin{rem}
  La topologie d'un ensemble $X$ est définie par l'ensemble de ses ouverts (noté $Op(X)$) c'est à dire un système d'ensembles contenant $\emptyset$ et $X$, $\cup_\tau$-stable, $\cap_\star$-stable.
-\end{exple}
+\end{rem}
+
+\paragraph{Monotonie}
+On dira qu'un système $\mathfrak{M}$ de parties de $X$ de type $\sigma$ est croissant si et seulement si toute partie finie de $\mathfrak{M}$ admet un plus petit et un plus grand élément.\newline
+On dira qu'un système $\mathfrak{M}$ de parties de $X$ de type $\tau$ est croissant si et seulement si toute partie finie de $\mathfrak{M}$ est majorée.
+
+On note $(S_l)\uparrow$ pour indiquer qu'une suite de parties $S_l$ de $X$ est croissante.
+
+On dira qu'un système $\mathfrak{M}$ de parties de $X$ est croissant (upward directed) si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $U \cup V \subset W$.
+\begin{rems}
+ \begin{enumerate}
+  \item Un système de type $\tau$ stable pour $\cup$ (union) est croissant.
+  \item Un système $\mathfrak{M}$ de type $\tau$ est croissant si et seulement si toute partie finie de $\mathfrak{M}$ est majorée.
+ \end{enumerate}
+\end{rems}
+
 
 \subsection{Fonctions d'ensembles}\label{FoncEns}
 \subsubsection{Croissance et modularité}
@@ -972,7 +997,6 @@ La fonction d'ensembles $\varphi$ est dite
   \end{displaymath}
   \item majorée $\Rightarrow$ finie supérieurement $\Rightarrow$ semi finie supérieurement.
  \end{enumerate}
-
 \end{rems}
 
 
@@ -986,7 +1010,113 @@ pour tout $A \in \mathfrak{S}$ et tout système d'ensemble $\mathfrak{M} \subset
 \subsubsection{Contenus et mesures} \label{ContenusMesures}
 
 \section{Chap II du livre. Extensions fondées sur la régularité}\label{ExtenRegul}
+Ce chapitre est le coeur du livre. À partir d'une fonction $\varphi$ isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$, on définit
+\begin{enumerate}
+ \item des enveloppes extérieures $\varphi^*$, $\varphi^\sigma$, $\varphi^\tau$ définies dans $\mathcal{P}(X)$ tout entier;
+ \item la classe de Carathéodory $\mathfrak{C}(\phi)$ pour une fonction d'ensemble $\Phi$ définie dans $\mathcal{P}(X)$ tout entier.
+\end{enumerate}
+Sous certaines conditions, la restriction d'une extension de $\varphi$ à sa classe de Carathéodory possède de bonnes propriétés, en particulier la classe de Carathéodory peut être une algèbre.
+
 \subsection{Enveloppes}\label{Enveloppes}
+\subsubsection{Enveloppes extérieures}
+Dans ce paragraphe, $\mathfrak{S}$ est un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction d'ensembles isotone de $\mathfrak{S}$ dans $\overline{\R}$. On définit dans $\mathcal{P}(X)$ les trois enveloppes extérieures $\varphi^*$ (enveloppe extérieure brute), $\varphi^\sigma$, $\varphi^\tau$ par:
+\begin{displaymath}
+ \forall A \in  \mathcal{P}(X):
+ \left\lbrace
+ \begin{aligned}
+    \varphi^*(A) &= \inf \left\lbrace \varphi(S), S \in \mathfrak{S} \text{ avec } A \subset S \right\rbrace \\
+    \varphi^\sigma(A) &= \inf \left\lbrace \lim_{l}  \varphi(S_l), \forall l \, S_l\in \mathfrak{S} \text{ avec } (S_l) \uparrow \supset A \right\rbrace \\
+    \varphi^\tau(A) &= \inf \left\lbrace \sup_{S \in \mathfrak{M}} \varphi(S), \mathfrak{M} \subset \mathfrak{S} \text{ avec } \mathfrak{M}\uparrow \supset A\right\rbrace
+ \end{aligned}
+ \right.
+\end{displaymath}
+Voir \ref{types cardinalité}
+\begin{prop}
+Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction d'ensembles isotone de $\mathfrak{S}$ dans $\overline{\R}$.
+ \begin{enumerate}
+  \item  La restriction de $\varphi^*$ à $\mathfrak{S}$ est $\varphi$.
+  \item Sur $\mathcal{P}(X)$, $\varphi^\tau \leq \varphi^\sigma \leq \varphi^*$.
+ \end{enumerate}
+\end{prop}
+\begin{demo}
+ \begin{enumerate}
+  \item Soit $A \in \mathfrak{S}$, alors $\varphi(A)= \min \left\lbrace \varphi(S), S \in \mathfrak{S} \text{ avec } A \subset S \right\rbrace = \varphi^*(A)$.
+  \item Soit $A \subset X$ et $S$ quelconque dans $\mathfrak{S}$ avec $A \subset S$. La suite constante $(S_l)$ avec $S_l = S$ pour tous les $l$ vérifie $(S_l) \uparrow \supset A$. Donc $\varphi^\sigma(A) \leq \varphi(S)$. On en déduit que $\varphi^\sigma(A)$ est un minorant de $\left\lbrace \varphi(S), S \in \mathfrak{S} \text{ avec } A \subset S \right\rbrace$ donc $\varphi^\sigma(A) \leq \varphi^*(A)$.
+  \item Soit $A \subset X$ et $(S_l)_{l\in \N}$ n'importe quelle suite d'éléments de $\mathfrak{S}$ vérifiant $(S_l) \uparrow \supset A$. Pour cette suite, formons l'ensemble de ses valeurs $\mathfrak{M}= \left\lbrace S_l, l\in \N \right\rbrace$. C'est bien un système d'ensembles croissant (upward directed) car pour des naturels $l$ et $m$, on peut considérer $n = \max(l,m)$ et, par croissance $S_l \cup S_m \subset S_n$. On en déduit $\mathfrak{M}\uparrow \supset A$. De plus $\sup_{S \in \mathfrak{M}} \varphi(S)=\lim_{l}  \varphi(S_l)$ car la limite d'une suite croissante est la borne supérieure de l'ensemble de ses valeurs. On en déduit $\varphi^\tau (A) \leq \lim_{l}  \varphi(S_l)$. Ainsi, $\varphi^\tau(A)$ est un minorant de $\left\lbrace \lim_{l}  \varphi(S_l), \forall l \, S_l\in \mathfrak{S} \text{ avec } (S_l) \uparrow \supset A \right\rbrace$ donc $\varphi^\tau(A) \leq \varphi^\sigma(A)$.
+ \end{enumerate}
+
+\end{demo}
+
+\subsubsection{Exemple pour les ensembles de classes de congruence}
+Ici $X= \Z$ et $\mathfrak{S}$ est l'ensemble des unions finies de classes de congruences dans $\Z$ qui est une algèbre. On rappelle que pour tous naturels non nuls $m$ et $d$, chaque classe modulo $m$ est l'union de $d$ classes disjointes modulo $dm$. Lorsqu'interviennent des classes avec des modulos $m_i$ distincts, on peut considérer le ppcm des $m_i$ et se ramener à un ensemble de classes avec le \emph{même} modulo. Ainsi tout $S\in \mathcal{S}$ est l'union disjointe de classes modulo un même $m$ avec $\varphi(S) = \mathrm{nb\, Classes}\times \frac{1}{m}$.
+
+Soit $b \geq 2$ naturel et $\sum_{l=1}^{+\infty}a_l b^{-l}$ (avec $a_l \in \llbracket 0, b-1 \rrbracket$) la décomposition en base $b$ d'un réel $a\in [0,1]$. Associons à ces données une suite croissante $(S_l)$ d'éléments de $\mathcal{S}$. Par suite croissante, on entend $S_l \subset S_{l+1}$ pour tous les entiers $l\geq1$.
+
+\begin{align*}
+ S_1 &= \left\lbrace
+   \begin{aligned}
+   & \emptyset &\text{ si } a_1 = 0 \\
+   &\text{l'union des classes modulo } b \text{ des } i \in \llbracket 0, a_1-1\rrbracket &\text{sinon}
+   \end{aligned}
+   \right. \\
+ S_2 \setminus S_1 &= \left\lbrace
+   \begin{aligned}
+   & \emptyset &\text{ si } a_2 = 0 \\
+   &\text{l'union des classes modulo } b^2 \text{ des } a_1 + ib \text{ avec }i \in \llbracket 0, a_2-1\rrbracket &\text{sinon}
+   \end{aligned}
+   \right. \\
+ S_3 \setminus S_2 &= \left\lbrace
+   \begin{aligned}
+   & \emptyset &\text{ si } a_3 = 0 \\
+   &\text{l'union des classes modulo } b^3 \text{ des } a_1 + a_2b + ib^2 \text{ avec }i \in \llbracket 0, a_3-1\rrbracket &\text{sinon}
+   \end{aligned}
+   \right. \\
+   & \vdots \\
+ S_{l+1} \setminus S_l &= \left\lbrace
+   \begin{aligned}
+   & \emptyset &\text{ si } a_{l+1} = 0 \\
+   &\text{l'union des classes modulo } b^{l+1} \text{ des } a_1 + a_2b + \cdots + a_lb^{l-1} + ib^{l} \text{ avec }i \in \llbracket 0, a_{l+1}-1\rrbracket &\text{sinon}
+   \end{aligned}
+   \right. \\
+   & \vdots
+\end{align*}
+\begin{defi}
+ Notons $A = \bigcup_{l\geq 1}A_l$.\newline
+ Pour tout $l\geq 1$ notons $A'_l$ le complémentaire de $A_l$ et $A'$ le complémentaire de $A$.
+\end{defi}
+\begin{prop}
+ Pour tout entier $k\geq 1$:
+ \begin{math}
+  \varphi(S_k)= \sum_{l=1}^k a_l b^{-l}.
+ \end{math}
+\end{prop}
+\begin{demo}
+Montrons la formule par récurrence.\newline
+ Pour $k=1$ et $a_1 \neq 0$, $S_1$ est l'union disjointe de $a_1$ classes modulo $b$ donc $\varphi(S_1)= a_1\, \frac{1}{b} = a_1 b^{-1}$.\newline
+Passons de $k$ à $k+1$:
+\begin{displaymath}
+ \varphi(S_{k+1}) = \varphi(S_k) + \varphi(S_{k+1} \setminus S_k)
+ = \sum_{l=1}^k a_l b^{-l} + a_{k+1}b^{-k-1}.
+\end{displaymath}
+car $S_{k+1} \setminus S_k$ est l'union disjointe de $a_{k+1}$ classes modulo $b^{k+1}$.
+\end{demo}
+\begin{rems}
+  \begin{enumerate}
+   \item La suite $(\varphi(S_k))$ est la suite des approximations du réel $a$ dans son développement en base $b$ donc $(\varphi(S_k)) \rightarrow a$.
+   \item D'après les propriétés de $\varphi$ et de la complémentation, la suite $(S'_l)$ est décroissante, $A' = \bigcap_{l\geq 1} S'_l$, $\varphi(S'_k) = 1 - \varphi(S_k)$ et
+   $(\varphi(S'_k))$ est une suite décroissante qui tend vers $1-a$.
+  \end{enumerate}
+ \end{rems}
+\begin{prop}{enveloppe extérieure brute}
+ \begin{displaymath}
+  \varphi^*(A') = 1 - a .
+ \end{displaymath}
+\end{prop}
+\begin{demo}
+ Pour tout naturel $k\geq 1$, $S'_k \in \mathfrak{S}$ et $A' \subset S'_k$ donc $\varphi^*(A') \leq \varphi(S'_k)$. On en déduit $\varphi^*(A') \leq 1-a$ par passage à la limite dans une inégalité.\newline
+ Soit $S \in \mathfrak{S}$ avec  $A'= \bigcap_{l\geq 1} S'_l \subset S$.
+\end{demo}
 \subsection{Classe de Carathéodory} \label{ClasseCaratheodory}
+
 \end{document}
 
