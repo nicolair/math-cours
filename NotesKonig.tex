@@ -1,30 +1,52 @@
 \input{courspdf.tex}
 
-\debutcours{Notes sur \emph{Measure an Integration} de König}{beta 1. 6\tiny{ le \today} }
+\debutcours{Notes sur \emph{Measure an Integration} de König}{beta 1. 9\tiny{ le \today} }
 
 \section{Présentation}
 \noindent Ce texte est constitué de notes de lecture sur le livre \emph{Measure and Integration} de Heinz König.
 
 \noindent L'ouvrage fournit des méthodes et des résultats de théorie des ensembles utilisés dans la théorie des mesures. Le cadre est tellement général qu'il est difficile de faire sens avec le texte sans une grande érudition sur le sujet. L'idée de ces notes est de reformuler les propriétés et constructions du livre avec en tête des exemples précis en détaillant ceux du texte et en en introduisant de nouveaux plus personnels.\newline
-L'exemple principal du livre est la mesure de Lebesgue dans $\R^n$ présentée en \ref{Exples}\ref{Expleppal}. Mon premier exemple (\ref{Exples} \ref{ExpleZ}) est arithmétique et se place dans $\Z$. Mon deuxième exemple (\ref{Exples} \ref{ExplePolyg}) est géométrique et se place dans $\R^2$.
+L'exemple principal du livre est la mesure de Lebesgue dans $\R^n$ présentée en \ref{Exples}\ref{Expleppal}. Mon premier exemple (\ref{Exples} \ref{ExpleZ}) est arithmétique et se place dans $\Z$.
 
 \paragraph*{Systèmes et fonctions d'ensembles.}
-Les objets fondamentaux utilisés dans la théorie des mesures sur un ensemble $X$ sont des ensembles $\mathfrak{S} \subset \mathcal{P}(X)$ (appelés \emph{pavings} dans le livre) et des fonctions $\varphi$ définies dans $\mathfrak{S}$ à valeurs dans $\overline{\R}$ (appelés \emph{set fonctions} dans le livre).\newline
+Les objets fondamentaux utilisés dans la théorie des mesures sur un ensemble $X$ sont parties $\mathfrak{S}$ de $\mathcal{P}(X)$ (appelés \emph{pavings} dans le livre) et des fonctions $\varphi$ définies dans $\mathfrak{S}$ à valeurs dans $\overline{\R}$ (appelés \emph{set fonctions} dans le livre).\newline
 Avec le sens précis que prend le mot \emph{pavage} dans les mathématiques en France, on ne peut traduire \emph{paving} par \emph{pavage}. Comme l'auteur utilise aussi \emph{set system}, j'utiliserai \emph{système d'ensembles} pour désigner un \emph{paving} c'est à dire simplement une partie de $\mathcal{P}(X)$.\newline
-Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fonction d'ensembles} (\emph{set fonction} dans le texte).\newline
+Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fonction d'ensembles} (\emph{set fonction} dans le texte).
 
 \begin{enumerate}
  \item  Les différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns}, les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}.
  \item Les concepts proches des mesures (\ref{SystFoncEns} \ref{FoncEns} \ref{ContenusMesures} ) sont des cas particuliers des situations précédentes.
  \item À partir d'une fonction d'ensembles $\varphi$, on peut construire (\ref{ExtenRegul} \ref{Enveloppes}) une fonction d'ensemble $\Phi$ définie dans $\mathcal{P}(X)$ tout entier qui possède de bonnes propriétés.
- \item La classe de Carathéodory (\ref{ExtenRegul}\ref{ClasseCaratheodory}) d'une fonction d'ensemble sur $\mathcal{P}(X)$ est un système d'ensembles qui possède de bonnes propriétés. C'est la cadre de la preuve de résultats importants.
+ \item La classe de Carathéodory (\ref{ExtenRegul}\ref{ClasseCaratheodory}) d'une fonction d'ensemble sur $\mathcal{P}(X)$ est un système d'ensembles qui possède de bonnes propriétés. C'est le cadre de la preuve de résultats importants.
 \end{enumerate}
 
 On notera $A'$ le complémentaire d'une partie $A \in \mathcal{P}(X)$ pour un ensemble $X$ quelconque.
 \newpage
 
+\section{Outils} \label{Outils}
+\subsection{Arithmétique}
+
+\subsection{Topologie métrique} \label{Topologie}
+L'adhérence d'une partie est l'ensemble des limites de suites convergentes d'éléments de cette partie.
+\begin{propn} \label{compactEtendu}
+Soit $K$ une partie compacte et $\delta >0$. Définissons
+\begin{displaymath}
+ K(\delta) = \left\lbrace x \text{ tq } \exists a \in K \text{ tq } d(x,a)\leq \delta  \right\rbrace.
+\end{displaymath}
+Alors $K(\delta)$ est une partie compacte.
+\end{propn}
+\begin{demo}
+ On doit montrer que $K(\delta)$ est bornée et fermée.\newline
+ Soit $a_0$ fixé et $R$ tels que $K$ soit inclus dans la boule fermée de centre $a_0$ et de rayon $R$. Alors $K(\delta)$ est bornée car inclus dans la boule fermée de centre $a_0$ et de rayon $R + \delta$.\newline
+ Soit $(x_n)$ une suite d'éléments de $K(\delta)$ qui converge vers $x$. On doit montrer que $x \in K(\delta)$.\newline
+ Il existe une suite $(a_n)$ d'éléments de $K$ telle que $d(x_n,a_n)\leq \delta$. Comme $K$ est une partie compacte, on peut extraire une suite $(a_\varphi(n))$ qui converge vers $a \in K$. En passant à la limite:
+ \begin{displaymath}
+  d(x_{\varphi(n)},a_{\varphi(n)})\leq \delta \Rightarrow d(x,a) \leq \delta \Rightarrow x \in K(\delta).
+ \end{displaymath}
+\end{demo}
+
 \section{Exemples}\label{Exples}
-\subsection{Union de classes de congruences dans $\Z$}
+\subsection{Exemple arithmétique}
 
 \subsubsection{Résultats sur les congruences}
 \begin{propn}
@@ -64,8 +86,8 @@ Soit $p$ et $q$ deux naturels non nul. Si une classe de congruence modulo $p$ es
 \begin{demo}
   On utilise la décomposition en facteurs premiers dans $\Z$ en comparant les exposants d'un nombre premier $p$ quelconque. Notons $\alpha_1, \cdots, \alpha_p, \beta$ les exposants respectifs de $p$ dans $a_1, \cdots, a_p, b$. D'après la proposition précédente:
   \begin{align*}
-    \text{exposant de $p$ dans } \left(a_1 \vee \cdots \vee a_p\right)\wedge b 
-    = \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right) 
+    \text{exposant de $p$ dans } \left(a_1 \vee \cdots \vee a_p\right)\wedge b
+    = \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right)
     = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right) \\
     = \text{exposant de $p$ dans } (a_1 \wedge b) \vee \cdots \vee (a_p \wedge b).
   \end{align*}
@@ -84,7 +106,7 @@ Soit $p$ et $q$ deux naturels non nul. Si une classe de congruence modulo $p$ es
 \begin{demo}
   L'équation admet des solutions si et seulement si $u \in \Z m_1 + \Z m_2 = \Z (m_1\wedge m_2)$. Dans ce cas, si $(l_1,l_2)$ et $(\lambda_1, \lambda_2)$ sont deux couples solutions:
   \begin{displaymath}
-    \left. 
+    \left.
     \begin{aligned}
       u &= l_1 m_1 - l_2 m_2 \\
       u &= \lambda_1 m_1 - \lambda_2 m_2
@@ -97,7 +119,7 @@ en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \
 \begin{propn}[Système de 2 congruences]
   Soit $m_1, m_2$ des entiers non nuls et $a_1 a_2$ des entiers relatifs. Le système de congruences
   \begin{displaymath}
-    \left\lbrace 
+    \left\lbrace
       \begin{align*}
         x &\equiv a_1 \mod m_1 \\
         x &\equiv a_2 \mod m_2
@@ -107,9 +129,9 @@ en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \
   admet des solutions si et seulement si $a_1$ et $a_2$ sont congrus modulo $m_1 \wedge m_2$ (pgcd). Dans ce cas, l'ensemble des solutions est une classe de congruence modulo $m_1 \vee m_2$.
 \end{propn}
 \begin{demo}
-  Si le système admet une solution $x$, il existe $\lambda_1$ et $\lambda_2$ entiers tels que 
+  Si le système admet une solution $x$, il existe $\lambda_1$ et $\lambda_2$ entiers tels que
   \begin{displaymath}
-    \left. 
+    \left.
     \begin{aligned}
       x &= a_1 + \lambda_1 m_1 \\
       x &= a_2 + \lambda_2 m_2
@@ -119,21 +141,21 @@ en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \
   \end{displaymath}
   Supposons $a_1$ et $a_2$ congrus modulo $m_1 \wedge m_2$.
   \begin{align*}
-        \left\lbrace 
+        \left\lbrace
       \begin{aligned}
         x &\equiv a_1 \mod m_1 \\
         x &\equiv a_2 \mod m_2
       \end{aligned}
     \right.
     \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
-            \left\lbrace 
+            \left\lbrace
       \begin{aligned}
         x &= a_1 + \lambda_1 m_1 \\
         x &= a_2 + \lambda_2 m_2
       \end{aligned}
     \right. \\
     \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
-            \left\lbrace 
+            \left\lbrace
       \begin{aligned}
         x &= a_1 + \lambda_1 m_1 \\
         a_2 - a_1 &= \lambda_1 m_1 - \lambda_2 m_2
@@ -142,7 +164,7 @@ en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \
   \end{align*}
   La deuxième relation est une équation de Bezout admettant des solutions car $m_1$ et $m_2$ sont congrus modulo le pgcd. L'ensemble des couples solutions et de la forme
   \begin{displaymath}
-    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace 
+    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace
   \end{displaymath}
   d'après la proposition précédente sur l'équation de Bezout. En réinjectant l'expression des solutions $\lambda_1$ dans la première équation, on trouve qu'un $x$ solution est de la forme
   \begin{displaymath}
@@ -154,7 +176,7 @@ On peut étendre à un système de $p$ congruences en utilisant la distributivit
 \begin{propn}[Système de congruences]\label{SystCong}
   Soit $m_1, \cdots, m_p$ des entiers non nuls et $a_1, \cdots, a_p$ des entiers relatifs. Le système de congruences
   \begin{displaymath}
-    \left\lbrace 
+    \left\lbrace
       \begin{align*}
         x &\equiv a_1 \mod m_1 \\
           &\vdots \\
@@ -173,7 +195,7 @@ On peut étendre à un système de $p$ congruences en utilisant la distributivit
     Pour le passage de $p$ à $p+1$, considérons un système de $p+1$ congruences vérifiant $a_i \equiv a_j$ modulo $m_i \wedge m_j$ pour tous les couples $(i,j)\in \llbracket 1,  p+1\rrbracket ^2$ avec $i \neq j$.\newline
     Le sous-système formé par les $p$ premières congruences vérifie la condition d'existence de solutions. Par hypothèse de récurrence, il existe $b$ tel que
   \begin{displaymath}
-        \left\lbrace 
+        \left\lbrace
       \begin{align*}
         x &\equiv a_1 \mod m_1 \\
           &\vdots \\
@@ -181,7 +203,7 @@ On peut étendre à un système de $p$ congruences en utilisant la distributivit
       \end{align*}
     \right.
     \Leftrightarrow
-    \left\lbrace 
+    \left\lbrace
       \begin{align*}
         x &\equiv b \mod m_1 \vee \cdots \vee m_p \\
         x &\equiv a_{p+1} \mod m_{p+1}
@@ -200,11 +222,13 @@ On peut étendre à un système de $p$ congruences en utilisant la distributivit
   \end{enumerate}
 \end{demo}
 
-\subsubsection{Ensembles de parties} \label{ExpleZ}
-Ici $X = \Z$.
+\subsubsection{Unions de classes de congruences} \label{ExpleZ}
+Ici $X = \Z$. \index{Exemple arithmétique}
+L'ensembles des unions finies de classes de congruence défini au dessous sera désigné dans tout le document par \og Exemple arithmétique\fg.
+
 \begin{defi}
 On désigne par $\mathfrak{U}$ l'ensemble des classes de congruences modulo un naturel non nul et par $\mathfrak{S}$ l'ensemble des unions finies d'éléments de $\mathfrak{U}$. On impose aussi $\emptyset \in \mathfrak{S}$.\newline
-  Soit $A \subset \Z$, 
+  Soit $A \subset \Z$,
   \begin{align*}
  A \in \mathfrak{U}  &\Leftrightarrow \exists m\in \N^*,\, \exists a \in \llbracket 0, m \llbracket \text{ tq } A = a + \Z m \\
  A\in \mathfrak{S} &\Leftrightarrow \exists (m_1,\cdots,m_p) \in (\N^*)^p, \exists (a_1,\cdots,a_p)\in \llbracket 0,m_1\llbracket \times \dots \times \llbracket 0,m_p\llbracket \text{ tq }\;
@@ -215,15 +239,15 @@ On désigne par $\mathfrak{U}$ l'ensemble des classes de congruences modulo un n
 \begin{rems}
 \begin{enumerate}
   \item Par définition, $\mathfrak{S}$ est stable pour $\cup$.
-  
+
   \item  Aucun singleton n'est dans $\mathfrak{U}$ car les modulos sont non nuls. $\Z \in \mathfrak{S}$ car c'est la classe de $0$ modulo $1$.
-  
+
   \item Le complémentaire d'une classe de congruence est une union finie de classes de congruences.\newline
 En effet, soit $m \in \N^*$ et $a\in \llbracket 0, m \llbracket$
 \begin{displaymath}
   x \not \equiv a \mod m \Leftrightarrow \exists b \in \llbracket 0, m \llbracket \setminus\{a\} \text{ tq } x \equiv b \mod m
 \end{displaymath}
-Autrement dit 
+Autrement dit
 \begin{displaymath}
   \left(a + \Z m\right)' = \bigcup_{b \in \llbracket 0, m \llbracket \setminus\{a\}}\left(b + \Z m\right) \in \mathfrak{S}
 \end{displaymath}
@@ -231,7 +255,7 @@ Autrement dit
   \item Une intersection de classes de congruences correspond à un système:
 \begin{displaymath}
   x \in \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right) \Leftrightarrow
-  \left\lbrace 
+  \left\lbrace
     \begin{align*}
       x &\equiv a_1 \mod m_1 \\
       &\vdots \\
@@ -244,8 +268,8 @@ D'après la proposition \ref{SystCong}, le système admet des solutions si et se
   \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right) = \left( b + \Z (a_1 \vee \cdots \vee a_p) \right) \in \mathfrak{S}.
 \end{displaymath}
 
-  \item Pour que l'intersection de deux classes soit toujours dans $\mathfrak{S}$, on impose par définition $\emptyset \in \mathfrak{S}$. 
-  
+  \item Pour que l'intersection de deux classes soit toujours dans $\mathfrak{S}$, on impose par définition $\emptyset \in \mathfrak{S}$.
+
   \item $\mathfrak{S}$ est stable par complémentation. En effet:
 \begin{multline*}
   A = \bigcup_{i=1}^{p}\left(a_i + \Z m_i\right) \Rightarrow A' = \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right)'
@@ -254,7 +278,7 @@ D'après la proposition \ref{SystCong}, le système admet des solutions si et se
 \end{multline*}
 
   \item $\mathfrak{S}$ est stable par intersection car il est stable par union et par complémentation.
-  
+
 \end{enumerate}
 \end{rems}
 
@@ -262,8 +286,7 @@ Avec le vocabulaire du livre on formule la propriété suivante.
 \begin{prop}
   $\mathfrak{S}$ est une algèbre qui contient $\emptyset$ et $X=\Z$.
 \end{prop}
-\index{Exemple arithmétique}
-Cet ensemble de parties de $\Z$ sera désigné dans tout le document par \og Exemple arithmétique\fg.
+
 \subsubsection{Nouvelle caractérisation}
 Soit $X \subset \Z$, considérons l'ensemble $I_X$ des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$.
 \begin{rems}
@@ -273,7 +296,7 @@ Soit $X \subset \Z$, considérons l'ensemble $I_X$ des $\mu \in \Z$ tels que $X 
     \item $\mu_X = 1$ si et seulement si $X=\Z$.
     \item Si $X = a + \Z m$ avec $m \geq 1$, $\mu_X = m$.
     \item On suppose $\mu_X > 1$. Pour tout $x \in X$, $x + \Z \mu_X \subset X$.
-    \item On suppose $\mu_X > 1$. En notant $A  = \llbracket 0 , \mu_X \llbracket \, \cap \, X$, 
+    \item On suppose $\mu_X > 1$. En notant $A  = \llbracket 0 , \mu_X \llbracket \, \cap \, X$,
 \begin{displaymath}
   X = \bigcup_{a \in A}\left(a + \Z \mu_X\right).
 \end{displaymath}
@@ -329,14 +352,14 @@ Les stabilités définissant la notion d'algèbre s'éclairent.
 \begin{align*}
   X \cup Y \in \mathfrak{S} &\text{ avec } \mu_{X\cup Y} \,\mathrm{ divise } \, \mu_X \vee \mu_Y  \\
   X \cap Y \in \mathfrak{S} &\text{ avec } \mu_{X\cap Y} \,\mathrm{ divise } \,  \mu_X \vee \mu_Y \\
-  X' \in \mathfrak{S} &\text{ avec } \mu_{X'} = \mu_X 
+  X' \in \mathfrak{S} &\text{ avec } \mu_{X'} = \mu_X
 \end{align*}
 \end{propn}
 \begin{demo}
   \begin{enumerate}
     \item On vérifie facilement que $(X+\mu) \cup (Y+\mu) = (X\cup Y) + \mu$ et $(X+\mu) \cap (Y+\mu) = (X\cap Y) + \mu$. On en déduit $I_X \cap I_Y \subset I_{X\cup Y}$ et $I_X \cap I_Y \subset I_{X\cap Y}$ puis $\mu_{X\cup Y}$ et $\mu_{X\cap Y}$ divisent $\mu_X \vee \mu_Y$.\newline
     D'autre part une classe de congruence modulo $m$ se décompose en union de classes modulo n'importe quel multiple de $m$. Donc $X$ et $Y$ se décomposent en classes modulo $\mu_X \vee \mu_Y$. On en déduit que $X\cup Y$ et $X\cap Y$ se décomposent aussi en classes modulo $\mu_X \vee \mu_Y$. Donc $\mu_X \vee \mu_Y$ est dans $I_{Y\cup Y}$ donc $\mu_{X\cup Y}$ divise $\mu_X \vee \mu_Y$.
-    \item Vérifier $(X + \mu)' = X' + \mu$. On en déduit 
+    \item Vérifier $(X + \mu)' = X' + \mu$. On en déduit
 \begin{displaymath}
   X + \mu = X \Leftrightarrow (X+ \mu)' = X' \Leftrightarrow X' + \mu = X'.
 \end{displaymath}
@@ -348,15 +371,15 @@ On en déduit $I_{X'} = I_X$.
 \end{rem}
 
 \subsubsection{Fonction d'ensembles}
-Quand on cherche à probabiliser $\Z$, on peut considèrer, pour $m$ non nul donné les classes modulo $m$. Considérons une expérience aléatoire consistant à tirer au hasard un entier et à former son reste modulo $m$. Les évènements élémentaires sont les classes modulo $m$. La probabilité d'un tel évènement est $\frac{1}{m}$. 
+Quand on cherche à probabiliser $\Z$, on peut considèrer, pour $m$ non nul donné les classes modulo $m$. Considérons une expérience aléatoire consistant à tirer au hasard un entier et à former son reste modulo $m$. Les évènements élémentaires sont les classes modulo $m$. La probabilité d'un tel évènement est $\frac{1}{m}$.
 
 On définit donc naturellement une fonction \og probabilité\fg \, $\varphi$ sur $\mathfrak{U}$ par
 \begin{displaymath}
   \varphi(\emptyset) = 0, \;\varphi(a + \Z m) = \frac{1}{m}.
 \end{displaymath}
 
-Dans un univers probablisé, la fonction probabilité définie sur l'ensemble des évènements est modulaire au sens introduit par l'ouvrage. 
-\begin{defi}
+Dans un univers probablisé, la fonction probabilité définie sur l'ensemble des évènements est modulaire au sens introduit par l'ouvrage.
+\begin{defi}[fonction modulaire]\index{fonction modulaire}
   On dit qu'une fonction $\varphi$ définie dans $\mathfrak{S}$ est modulaire si et seulement si
   \begin{displaymath}
     \forall (A,B)\in \mathfrak{S}^2,\; \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
@@ -370,9 +393,9 @@ Dans un univers probablisé, la fonction probabilité définie sur l'ensemble de
 Je donne plus loin une telle définition qui rend évidentes les remarques qui suivent. Je les ai conservés car elles m'ont encouragé à creuser cet exemple.
 \begin{enumerate}
   \item Par définition $\varphi(\Z) = 1$.
-  \item Dans le cas d'une famille finie de classes disjointes, l'image de l'union doit être la somme des images. 
-  \item Si $\varphi(A)$ est défini et $A'$ son complémentaire on doit avoir $\varphi(A') + \varphi(A) = 1$. 
-  \item Avec les conventions précédentes, pour $A = \left(a + \Z p\right)$, $B = \left(b + \Z q\right)$, montrons que 
+  \item Dans le cas d'une famille finie de classes disjointes, l'image de l'union doit être la somme des images.
+  \item Si $\varphi(A)$ est défini et $A'$ son complémentaire on doit avoir $\varphi(A') + \varphi(A) = 1$.
+  \item Avec les conventions précédentes, pour $A = \left(a + \Z p\right)$, $B = \left(b + \Z q\right)$, montrons que
   \begin{displaymath}
     \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
   \end{displaymath}
@@ -390,10 +413,10 @@ Je donne plus loin une telle définition qui rend évidentes les remarques qui s
   \end{displaymath}
   La formule est vérifiée si $A\cap B = \emptyset$. Dans l'autre cas, considérons $(A\cup B)'$ et la propriété 3 pour prouver la formule.
 \begin{multline*}
-  (A \cup B)' = A' \cap B' 
-  =     \left( \bigcup_{a'\in \llbracket 0, p\llbracket \setminus\{a\} } \left(a' + p\Z\right)\right) 
+  (A \cup B)' = A' \cap B'
+  =     \left( \bigcup_{a'\in \llbracket 0, p\llbracket \setminus\{a\} } \left(a' + p\Z\right)\right)
    \cap \left( \bigcup_{b'\in \llbracket 0, q\llbracket \setminus\{b\} } \left(b' + p\Z\right)\right) \\
-  = \bigcup_{(a',b')\in (\llbracket 0, p\llbracket \setminus\{a\}) \times (\llbracket 0, q\llbracket \setminus\{b\})} \left(a' + p\Z\right)\cap \left(b' + q\Z\right) 
+  = \bigcup_{(a',b')\in (\llbracket 0, p\llbracket \setminus\{a\}) \times (\llbracket 0, q\llbracket \setminus\{b\})} \left(a' + p\Z\right)\cap \left(b' + q\Z\right)
 \end{multline*}
 Chaque intersection est l'ensemble des solutions d'un système de 2 congruences c'est à dire le vide ou une classe modulo $p\vee q$.\newline
 Si on oublie les conditions $a'\not \equiv a \mod p$ et $b'\not \equiv b \mod q$, parmi les $pq$ couples $(a',b')\in \llbracket 0,p\llbracket \times \llbracket 0,q\llbracket$, combien vérifient $a' \equiv b' \mod p \wedge q$ ? \newline
@@ -403,7 +426,7 @@ Pour chaque $a'$ fixé, $b'$ doit être dans la classe de $a'$ modulo $p\wedge q
 \end{displaymath}
 Combien de couples doit-on enlever à ce nombre?\newline
 Pour $a' = a$, il faut enlever les $\frac{q}{p \wedge q}$ éléments de la classe de $a$ modulo $p \wedge q$ dans $\llbracket 0, q\llbracket$. Parmi ceux là se trouve $(a,b)$ car $a \equiv b \mod p\wedge q$. De même pour $b' = b$, il faut enlever $\frac{p}{p \wedge q}-1$ couples (avec -1 pour ne pas compter deux fois $(a,b)$).\newline
-Finalement, le nombre de couLes différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns}, les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}.ples $(a',b')$ contribuant réellement à la grande union est
+Finalement, le nombre de couples $(a',b')$ contribuant réellement à la grande union est
 
 \begin{displaymath}
   \frac{pq}{p \wedge q} - \frac{q}{p \wedge q} - \frac{p}{p \wedge q} + 1 = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right).
@@ -429,13 +452,13 @@ Soit $X \subset \Z$, $I_X$ est l'ensemble des $\mu \in \Z$ tels que $X + \mu =\l
 \begin{lem}
   Soit $X\in \mathfrak{S}$ et $m=\mu_X$. Pour tout $n\in I_X$,
   \begin{displaymath}
-      \frac{\sharp \pi_n(X)}{n} = \frac{\sharp \pi_m(X)}{m}.    
+      \frac{\sharp \pi_n(X)}{n} = \frac{\sharp \pi_m(X)}{m}.
   \end{displaymath}
 \end{lem}
 \begin{demo}
   En fait $n = pm$ avec $p$ entier car $n \in I_X = \Z m$. Chaque classe modulo $n$ est la réunion de $p$ classes disjointes modulo $m$.
   \begin{displaymath}
-    \frac{\sharp \pi_n(X)}{n} = \frac{p \, \sharp \pi_m(X)}{ p m} = \frac{\sharp \pi_m(X)}{m}.  
+    \frac{\sharp \pi_n(X)}{n} = \frac{p \, \sharp \pi_m(X)}{ p m} = \frac{\sharp \pi_m(X)}{m}.
   \end{displaymath}
 \end{demo}
 \begin{defi}\label{defPhi}
@@ -450,10 +473,10 @@ pour n'importe quel $n\in I_X$.
 \end{prop}
 \begin{demo}
   Soit $A$ et $B$ dans $\mathfrak{S}$. Le ppcm $m = \mu_A \vee \mu_B$ est dans $I_A, I_B, I_{A\cup B}, I_{A\cap B}$. En l'utilisant pour exprimer les valeurs de $\varphi$, on est ramené à la modularité de la fonction nombre d'éléments.\newline
-  Si $A= a + \Z m$, $m \in I_A$ et $\pi_m(A)$ est un singleton. 
+  Si $A= a + \Z m$, $m \in I_A$ et $\pi_m(A)$ est un singleton.
 \end{demo}
 
-\subsubsection{Suites d'unions de classes de congruences}\label{ExplesSuitesCongru}
+\subsubsection{Suites de parties}\label{ExplesSuitesCongru}
 Proposons divers exemples de suites de parties dans $\mathfrak{S}$.
 
 \textbf{Exemple 1.}\newline
@@ -476,7 +499,7 @@ Notons $S_n = \bigcup_{a \in A} \left(a + m_n \Z\right)$.
   \item $A = \bigcap_{n\geq 1} S_n$. En effet, pour tout entier $k \notin A$, il existe un $n$ tel que $|k -a| < m_n$ pour tous les $a\in A$ donc $k \notin S_n$.
  \end{itemize}
 
-\textbf{Exemple 3.}\newline
+\textbf{Exemple 3.}\newline \label{SuiteCroissAAquelc}
 Soit $A = \left\lbrace a_n, n \in\N\right\rbrace$ une partie quelconque de $\Z$ (elle est forcément dénombrable) et $p$ naturel fixé. Pour tout $n \in \N$, posons $S_n = \bigcup_{k =0}^n \left(a_k + 2^{k+p} \Z\right)$.
  \begin{itemize}
   \item Pour tout $n$, $S_n\in \mathfrak{S}$ avec
@@ -506,66 +529,272 @@ On repart encore de l'exemple 3 avec $A \in \mathfrak{S}$. Il existe un entier n
 Voir page 19.
 Soit $n\geq 1$ fixé. On se place dans $X = \R^n$.
 
-\noindent On note $\mathfrak{B}$ l'ensemble des parties bornées et $\mathfrak{K} \subset \mathfrak{B}$ l'ensemble des parties compactes de $\R^n$. On va définir une application $\lambda$ de $\mathfrak{B}$ dans $\left[0, + \infty\right[$ et étudier les propriétés de sa restriction à $\mathfrak{K}$.\newline
-Pour tout naturel non nul $s$, on note $\mathfrak{M}_s$ l'ensemble des cubes fermés dans $\R^n$ dont les sommets sont des points consécutifs de $\frac{1}{2^s}\Z^n$. On appellera $s$-cube un tel cube, la longueur de ses arêtes est $\frac{1}{2^s}$, son volume est $\frac{1}{2^{ns}}$.
-
-\noindent Pour toute partie $K$ bornée, l'ensemble des $s$-cubes qui la coupent est fini. On définit $Z_s$ et $\lambda_s$ par
+\subsubsection{Union de cubes dyadiques}
+\begin{defi}[s-cube]\index{s-cube}\label{s-cube}
+Pour tout naturel non nul $s$, on appelle $s$-cube un cube fermé de côté $\frac{1}{2^s}$ et de sommets à coordonnées dans $\frac{1}{2^s}\Z$.\newline
+Par exemple, pour $a = (a_1, \cdots, a_n) \in \frac{1}{2^s}\Z^n$, on définit le $s$-cube $Q_a$ par
 \begin{displaymath}
- \forall K \in \mathfrak{B}, \; Z_s(K) = \sharp \left\lbrace Q \in \mathfrak{M}_s \text{ tq } K \cap Q \neq \emptyset \right\rbrace, \; \lambda_s(K) = Z_s(K)\frac{1}{2^{ns}}.
+ \forall x = (x_1, \cdots, x_n) \in X, \; x \in Q_a  \Leftrightarrow \forall i \in \llbracket 1,n \rrbracket,\; a_i \leq x_i \leq a_i + \frac{1}{2^s}.
 \end{displaymath}
+On note $\mathfrak{M}_s$ l'ensemble des $s$-cubes, $\mathfrak{S}_s$ l'ensemble des unions finies de $s$-cubes et $\mathfrak{S} = \bigcup_{s\in \N} \mathfrak{S}_s$.
+\end{defi}
 
 \begin{rems}
  \begin{enumerate}
-  \item On peut interpréter $\lambda_s(K)$ comme la somme des volumes des $s$-cubes qui coupent $K$.
-  \item Soit $s \geq k$ entiers naturels et $Q$ un $k$-cube. Les $s$-cubes qui coupent $Q$ sont inclus dans $Q$ ou sur le bord. Ils forment un cube dont les arêtes sont de longueur $\frac{1}{2^k} + \frac{2}{2^s}$. On en déduit
-  \begin{displaymath}
-   Z_s(Q) = (2^{s-k} + 2)^n, \; \lambda_s(Q) = (2^{s-k} + 2)^n \frac{1}{2^{ns}} = (\frac{1}{2^k}+\frac{2}{2^s})^n
-     = \frac{1}{2^{nk}}(1 + \frac{1}{2^{s-k-1}})^n.
-  \end{displaymath}
-  \item Chaque $s$-cube est la réunion de $2^n$ $s+1$-cubes qui ne coupent pas forcément $K$. Un $s+1$-cube qui coupe $K$ est une partie d'un $s$-cube qui coupe $K$. On en déduit
-\begin{displaymath}
- Z_{s+1}(K) \leq 2^n Z_s(K) \Rightarrow \frac{1}{2^n} \frac{1}{2^{sn}} Z_{s+1}(K) \leq \frac{1}{2^{sn}} Z_{s}(K) \Rightarrow \lambda_{s+1}(K) \leq \lambda_s(K).
-\end{displaymath}
+  \item Un $0$-cube est un cube de côté $1$ et de sommets à coordonnées entières.  Pour tout $s$-cube $Q$, il existe un unique $a\in \frac{1}{2^s}\Z$. De plus $X = \R^n = \bigcup_{a\in \frac{1}{2^s}\Z}Q_a$.
+  \item La décomposition d'un élément de $\mathfrak{M_s}$ comme union de $s$-cubes est unique. En particulier chaque $s$-cube est la réunion de $2^n$ cubes dans $\mathfrak{S}_{s+1}$. On en déduit que $\mathfrak{S}_s \subset \mathfrak{S}_{s+1}$.
+  \item Le système d'ensembles $\mathfrak{S}$ est stable pour l'union mais pas pour l'intersection ni la soustraction. Par exemple en dimension $n=3$, l'intersection de 2 cubes qui se touchent est une face, une arête ou un sommet.\newline
+  Pour $A$ et $B$ dans $\mathfrak{S}$, il existe $s\in \N$ tels que $A$ et $B$ soient des unions d'ensembles $\mathfrak{A}$, $\mathfrak{B}$ de $s$-cubes alors:
+    \begin{displaymath}
+      \left.
+      \begin{aligned}
+        A = \bigcup_{Q\in \mathfrak{A}} Q \\
+        B = \bigcup_{Q\in \mathfrak{B}} Q,
+      \end{aligned}
+      \right \rbrace
+      \Rightarrow
+      \left\lbrace
+      \begin{aligned}
+        A\cup B = \bigcup_{Q\in \mathfrak{A}\cup\mathfrak{B}} Q \\
+        \mathrm{adherence}(A\cap B) = \bigcup_{Q\in \mathfrak{A}\cap\mathfrak{B}} Q \\
+        \mathrm{adherence}(A\setminus B) = \bigcup_{Q\in \mathfrak{A}\setminus\mathfrak{B}} Q
+      \end{aligned}
+      \right. .
+    \end{displaymath}
+   \item On pourrait récupérer la stablité pour l'intersection et la soustraction en considérant des cubes ouverts au lieu de fermés mais alors aucun point à coordonnées dans $\frac{1}{2^s}\Z$ ne serait dans un $s$-cube et on perdrait $\mathfrak{S}_{s+1} \subset \mathfrak{S}_s$.
  \end{enumerate}
 \end{rems}
-\begin{defi}
-On définit $\lambda_s$ sur $\mathfrak{B}$ par:
+
+On définit le volume dans $\mathfrak{S}$ à partir du cube unité, de l'invariance par translation, du caractère modulaire du volume comme fonction d'ensemble et de l'unique décomposition .
+\begin{itemize}
+ \item Le volume du cube unité dans $\mathfrak{S}_0$ est 1.
+ \item Par translation, tous les $s$-cubes ont le même volume.
+ \item Le cube unité se décompose de manière unique en $2^{sn}$ cubes dans $\mathfrak{S}_s$. Le volume d'un $s$-cube est $\frac{1}{2^{ns}}$.
+\end{itemize}
+
+\begin{defi}[volume dans l'ensemble des unions de cubes dyadiques]
+Soit $A \in \mathfrak{S}$, il existe $s\in \N$ et un ensemble fini $\mathfrak{A}$ de $s$-cubes tels que $A = \bigcup_{Q\in \mathfrak{A}} Q$. On définit le volume $\lambda(A)$ par
 \begin{displaymath}
-  \forall Q \in \mathfrak{M}_s, \; \lambda(Q) = \lim_{s\rightarrow +\infty} \lambda_s(K) = \inf\left( \lambda_s(K), s \in \N^*\right).
+ \lambda(A) = \frac{\sharp \mathfrak{A}}{2^{ns}}.
 \end{displaymath}
 \end{defi}
+\begin{demo}[Consistence de la définition]
+ Pour un $s$ donné, si $A$ se décompose en une union de $s$-cubes dans un ensemble fini $\mathfrak{A}$, il se décompose aussi en une union de $(s+1)$-cubes dans un ensemble fini $\mathfrak{B}$ avec $\sharp \mathfrak{B} = 2^n \times \sharp \mathfrak{A}$. On en déduit
+ \begin{displaymath}
+  \frac{\sharp \mathfrak{B}}{2^{n(s+1)}} = \frac{2^n \times \sharp \mathfrak{A}}{2^n \times 2^{ns}} = \frac{\sharp \mathfrak{A}}{2^{ns}} = \lambda(A).
+ \end{displaymath}
+\end{demo}
+\begin{propn}
+ La fonction d'ensembles $\lambda$ (volume) définie de $\mathfrak{S}$ dans $[0,+\infty[$ est isotone (croissante) et additive.
+\end{propn}
+\begin{demo}
+ C'est une conséquence de la définition à partir du nombre de $s$-cubes dans une décomosition.
+\end{demo}
+Elle n'est pas modulaire à cause de la non stabilité pour l'intersection.
+
+\subsubsection{Volume d'une partie bornée ou compacte}
+\noindent On note $\mathfrak{B}$ l'ensemble des parties bornées  de $\R^n$ et $\mathfrak{K} \subset \mathfrak{B}$ l'ensemble des parties compactes. On étend le volume $\lambda$ à $\mathfrak{B}$ et $\mathfrak{K}$.
+\begin{defi}[Approximations dyadiques d'une partie bornée]
+  Pour toute partie bornée $K$ et tout $s\in \N$, l'ensemble des $M\in \mathfrak{S}_s$ et contenant $K$ est non vide. Il admet un plus petit élément pour l'inclusion noté $A_s(K)$ appelé approximation dyadique à l'ordre $s$ par excès de $K$.
+\end{defi}
+\begin{demo}
+Soit $K$  une partie bornée, notons $\mathfrak{A}_s(K)$ l'ensemble des $s$-cubes $Q_a$ tels que $K \cap Q_a \neq \emptyset$
+\begin{displaymath}
+ X = \R^n = \bigcup_{a\in \frac{1}{2^s}\Z}Q_a \Rightarrow K = \bigcup_{a\in \frac{1}{2^s}\Z}(K\cap Q_a)
+   = \bigcup_{Q \in \mathfrak{A}_s(K)}(K \cap Q)
+   \subset \bigcup_{Q \in \mathfrak{A}_s(K)} Q.
+\end{displaymath}
+Notons $A_s(K)$ cette dernière union. L'ensemble $\mathfrak{A}_s(K)$ est fini car $K$ est bornée donc $A_s(K)\in \mathfrak{S}_s$ et contient $K$.\newline
+Soit $M  \in \mathfrak{S}_s$ contenant $K$. Il se décompose en $\bigcup_{Q \in \mathfrak{B}} Q$ où $\mathfrak{B}$ est un ensemble fini de $s$-cubes avec $Q \cap M \neq \emptyset$ entraine $Q \in \mathcal{B}$. Pour tout $s$-cube $Q$:
+\begin{displaymath}
+  Q \cap K \neq \emptyset \Rightarrow Q \cap M \neq \emptyset \Rightarrow Q \subset M.
+\end{displaymath}
+On en déduit $A_s(K) \subset M$.
+\end{demo}
+
 \begin{rems}
  \begin{enumerate}
-  \item Aucun $s$-cube ne coupe $\emptyset$ donc $Z_s(\emptyset)=0$, $\lambda_s(\emptyset)=0$, $\lambda(\emptyset)=0$.
-  \item D'après la remarque 2 du dessus, pour $k$ fixé, $Q$ un $k$-cube et $s$ à l'infini, $\lambda(Q)= \frac{1}{2^{nk}}$ c'est à dire son volume.
+  \item Comme $\mathfrak{S}_s \subset \mathfrak{S}_{s+1}$ l'approximation $A_s(K)\in \mathfrak{S}_{s+1}$ On en déduit
+\begin{displaymath}
+ A_{s+1}(K) \subset A_s(K) \Rightarrow \lambda(A_{s+1}(K)) \leq \lambda(A_s(K)) .
+\end{displaymath}
+  \item Soit $s \geq k$ entiers naturels et $Q$ un $k$-cube. Examinons $A_s(Q)$.\newline
+  Les $s$-cubes qui coupent $Q$ sont inclus dans $Q$ ou sur le bord. Ils forment un cube dont les arêtes sont de longueur
+  \begin{displaymath}
+    \frac{1}{2^k} + \frac{2}{2^s} = \frac{1}{2^k}\left( 1 + \frac{1}{2^{s-k-1}} \right)
+  \end{displaymath}
+  On en déduit
+  \begin{displaymath}
+   Q \subset A_s(Q), \; Q \neq A_s(Q), \; \lambda_s(Q) = \lambda(A_s(Q)) =  \frac{1}{2^{nk}}(1 + \frac{1}{2^{s-k-1}})^n.
+  \end{displaymath}
  \end{enumerate}
-
- \begin{propn}
-  Pour $n=1$, et $a < b$ réels, $\lambda([a,b]) = b - a$.
- \end{propn}
- \begin{demo}
-  On donne seulement le plan de la démonstration
-  \begin{enumerate}
-   \item Soit $\alpha = \max \left\lbrace k \in \Z \text{ tq } \frac{k}{2^s} < a\right\rbrace$, $\beta = \max \left\lbrace k \in \Z \text{ tq } \frac{k}{2^s} \leq b\right\rbrace$. Alors
-   \begin{displaymath}
-    Z_s([a,b]) = \beta - \alpha + 1.
-   \end{displaymath}
-   \item $2^s(b-a) < Z_s([a,b]) \leq 2^s(b-a) + 2$.
-   \item Conclusion.
-  \end{enumerate}
- \end{demo}
 \end{rems}
 
+\begin{defi}[volume d'une partie bornée]
+Pour toute partie $K$ bornée, la suite $(\lambda_s(K)) = (\lambda(A_s(K))$ est décroissante et convergente. On note $\lambda(K)$ sa limite appelée volume de $K$.
+\begin{displaymath}
+  \forall K \in \mathfrak{B}, \; \lambda(K) = \lim_{s\rightarrow +\infty} \lambda_s(K) = \inf\left( \lambda_s(K), s \in \N^*\right).
+\end{displaymath}
+\end{defi}
+\begin{demo}
+ Immédiat d'après la remarque 1.
+\end{demo}
+\begin{rem}
+  Aucun $s$-cube ne coupe $\emptyset$ donc  $\lambda(\emptyset)=0$.
+ \end{rem}
 
-\subsection{Différence symétrique et Crible de Poincaré}\label{criblePoinc}
-Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent une rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
+ \begin{propn}
+  La fonction $\lambda$ est isotone de $\mathfrak{B}$ dans $[0, + \infty[$ et étend le volume de $\mathfrak{S}$.
+ \end{propn}
+ \begin{demo}
+ La croissance (isotone) est évidente. Pour tous les $s$ et $K_1 \subset K_2$ bornés, $K_1 \subset A_s(K_2)$ donc $A_s(K_1) \subset A_s(K_2)$. On termine par passage à la limite dans l'inégalité.\newline
+ D'après la remarque 3 du dessus, pour $k$ fixé, $Q\in \mathfrak{M}_s$ et $s$ à l'infini, $\lim_{s\rightarrow +\infty} \lambda(A_s(K) = \frac{1}{2^{nk}}=\lambda(Q)$ c'est à dire que sur $\mathfrak{S} \subset \mathfrak{M}$ les deux définitions du volume coincident.
+ \end{demo}
+ \noindent On démontrera ( \ref{SystFoncEns} \ref{FoncEns} \ref{Continuites} proposition \ref{ExplePpalModul}) que la fonction $\lambda$ est modulaire sur l'ensemble des compacts. On remarque que les bonnes propriétés ne sont valables que pour les parties compactes, pas pour les parties bornées. Dans toute la suite on ne considèrera le volume que pour les parties compactes.
+
+
+ \paragraph{Exercice sur des intervalles}
+ Soit $x\leq y$ et $a\leq b$ réels. Montrer que
+ \begin{displaymath}
+  [x,y] \cap [a,b] \neq \emptyset \Leftrightarrow
+  \left\lbrace
+  \begin{aligned}
+    x \leq b \\
+    a \leq y
+  \end{aligned}
+  \right. .
+ \end{displaymath}
+\begin{demo}
+\begin{displaymath}
+ u \in [x,y] \cap [a,b] \Rightarrow
+ \left\lbrace
+ \begin{aligned}
+   x \leq u \leq y \\
+   a \leq u \leq b
+ \end{aligned}
+ \right.
+ \Rightarrow
+\left\lbrace
+ \begin{aligned}
+   x \leq b  \\
+   a \leq y
+ \end{aligned}
+ \right. .
+ \end{displaymath}
+ Réciproquement, supposons $x\leq b$ et $a \leq y$.\newline
+ Si $a\leq x$ alors $x \in [x,y]\cap[a,b]$.\newline
+ Si $x<a$ alors $a \in ]x,y]\cap [a,b] \subset [x,y]\cap[a,b]$.
+\end{demo}
+
+ \begin{propn}
+  Pour $n=1$, et $x < y$ réels, $\lambda([x,y]) = y - x$.
+ \end{propn}
+ \begin{demo}
+  Pour tout $s$ naturel, quels sont les $s$-cubes $Q_a$ qui coupent $[x,y]$?\newline
+  Soit $k\in \Z$ et $a=\frac{k}{2^s}$. D'après l'exercice au dessus,
+  \begin{displaymath}
+    [x,y] \cap [a, a+\frac{1}{2^s}] \neq \emptyset
+    \Leftrightarrow
+    \left\lbrace
+    \begin{aligned}
+       x &\leq \frac{k + 1}{2^s} \\
+       \frac{k}{2^s} &\leq y
+    \end{aligned}
+    \right.
+    \Leftrightarrow
+    \left\lbrace
+    \begin{aligned}
+       2^s x -1 &\leq k \\
+       k &\leq 2^s y
+    \end{aligned}
+    \right.
+    \Leftrightarrow
+    \lceil 2^s x -1 \rceil \leq k \leq \lfloor 2^s y \rfloor .
+  \end{displaymath}
+Avec les notations de Knuth pour les parties entières supérieures et inférieures. Notons $Z_s$ le nombre de $s$-cubes qui coupent $[x,y]$.
+\begin{multline*}
+ Z_s = \lfloor 2^s y \rfloor - \lceil 2^s x -1 \rceil + 1 \Rightarrow
+ (2^s y-1) - (2^s x -1+1) + 1\leq Z_s \leq (2^s y) - (2^s x -1) + 1 \\
+ \Rightarrow
+ 2^s(y-x) - 2 \leq Z_s \leq 2^s(y-x).
+\end{multline*}
+Avec $\lambda(A_s([x,y])) = \frac{Z_s}{2^s}$, on obtient $\lambda([x,y])= y-x$ en passant à la limite.
+\end{demo}
+
+\begin{propn}
+ Soit $n_1$ et $n_2$ naturels non nul, $K_1$, $K_2$ des parties bornées respectivement de $\R^{n_1}$ et $\R^{n_2}$. Le produit cartésien $K_1\times K_2$ est une partie bornée de  $\R^{n_1} \times \R^{n_2}$ et $\lambda(K_1\times K_2)=\lambda(K_1)\lambda( K_2)$.
+\end{propn}
+\begin{demo}
+Notons $X_1=\R^{n_1}$, $X_2=\R^{n_2}$, $X=\R^{n_1 + n_2}$, $\lambda$ la fonction volume dans les trois espaces et $K=K_1 \times K_2$. Pour tout $s$-cube $Q$ de $X$, il existe $Q_1$ et $Q_2$ respectivement $s$-cubes de $X_1$ et $X_2$ tels que $Q=Q_1 \times Q_2$ (produit cartésien). De plus
+\begin{displaymath}
+ Q \cap K \neq \emptyset \Leftrightarrow Q_1 \cap K_1 \neq \emptyset \; \mathrm{ et } \; Q_2 \cap K_2 \neq \emptyset .
+\end{displaymath}
+On en déduit
+$\sharp \left\lbrace Q \,\mathrm{tq}\, Q \cap K \neq \emptyset \right\rbrace =
+\sharp \left\lbrace Q_1 \,\mathrm{tq}\, Q_1 \cap K_1 \neq \emptyset \right\rbrace
+\times
+\sharp \left\lbrace Q_2 \,\mathrm{tq}\, Q_2 \cap K_1 \neq \emptyset \right\rbrace$
+et
+\begin{displaymath}
+ A_s(K) = \bigcup_{Q \,\mathrm{tq}\, Q \cap K \neq \emptyset} Q = \bigcup_{Q_1, Q_2 \,\mathrm{tq}\, Q_i \cap K \neq \emptyset} Q_1\times Q_2
+ = \left( \bigcup_{Q_1 \,\mathrm{tq}\, Q_1 \cap K \neq \emptyset} Q_1\right) \times \left( \bigcup_{Q_2 \,\mathrm{tq}\, Q_2 \cap K \neq \emptyset} Q_2\right)
+ = A_s(K_1) \times A_s(K_2).
+\end{displaymath}
+puis $\lambda(A_s(K)) = \lambda(A_s(K_1))\times \lambda(A_s(K_2))$ car $\frac{1}{2^{n_1+n_2}}=\frac{1}{2^{n_1}}\times \frac{1}{2^{n_2}}$. On termine en passant à la limite.
+\end{demo}
+On ne peut rien dire des parties bornées de $X$ qui ne sont pas des produits cartésiens.
+\begin{propn}
+Pour des réels $a_1 \leq b_1, \cdots , a_n \leq b_n$ :
+\begin{displaymath}
+ \lambda([a_1,b_1]\times \cdots \times [a_n,b_n]) = (b_1-a_1) \cdots (b_n-a_n).
+\end{displaymath}
+\end{propn}
+\begin{demo}
+On combine par récurrence les deux propositions précédentes,
+\end{demo}
+
+\begin{propn}
+ Pour tout réel $z$ fixé et toute partie bornée $K$ de $\R^{n-1} \times \left\lbrace z \right\rbrace$, $\lambda(K\times \left\lbrace z \right\rbrace) = 0$.
+\end{propn}
+\begin{demo}
+Notons $Y = \R^{n-1} \times \left\lbrace z \right\rbrace$. Pour tout $s$ naturel, il existe $a \in \Z \frac{1}{2^s}$ tel que $a \leq z < a+ \frac{1}{2^s}$. Pour tout $s$-cube $Q$ de $Y$, $Q\times [a, a+ \frac{1}{2^s}]$ est un $s$-cube de $X$ contenant $Q\times \left\lbrace z \right\rbrace)$ donc
+\begin{displaymath}
+A_s(K\times \left\lbrace z \right\rbrace) \subset A_s(K) \times [a, a+ \frac{1}{2^s}]
+\Rightarrow
+\lambda(A_s(K\times \left\lbrace z \right\rbrace)) \leq \lambda(A_s(K)) \lambda([a, a+ \frac{1}{2^s}])
+ = \lambda(A_s(K)) \frac{1}{2^s}.
+\end{displaymath}
+Pour $s$ à l'infini, le terme de droite tend vers $0$ car $\lambda(A_s(K))\rightarrow \lambda(K)$ et $\frac{1}{2^s}\rightarrow 0$.
+\end{demo}
+
+\subsubsection{Adhérence, intérieur, frontière }
+Pour toute partie $K$ de $X=\R^n$.
+\begin{itemize}
+ \item L'adhérence de $K$ notée $\overline{K}$ est l'intersection des parties fermées contenant $K$.
+ \item L'intérieur de $K$ notée $\overset{\circ}{K}$ ou $\mathrm{Int}K $ est l'union des parties ouvertes contenues dans $K$.
+ \item La frontière de $K$ est la différence ensembliste. Elle est notée $\mathrm{fr}(K) = \overline{K} \setminus \overset{\circ}{K}$.
+\end{itemize}
+\begin{propn}
+ Pour toute partie bornée $K$, l'intérieur, l'adhérence et la frontière sont bornées avec
+ \begin{displaymath}
+  \lambda(\overset{\circ}{K}) \leq \lambda(K) = \lambda(\overline{K}).
+ \end{displaymath}
+\end{propn}
+\begin{demo}
+ Par définition, $\overset{\circ}{K} \subset K\subset \overline{K}$.\newline
+ Pour tout $s$ l'approximation $A_s(K)$ est une union finie de $s$-cubes fermés donc est une partie fermée contenant $K$. L'intérieur et l'adhérence sont donc bornées avec $\lambda(\overset{\circ}{K})\leq \lambda(K) \leq \lambda(\overline{K})$ et $\overline{K} \subset A_s(K)$ donc $\lambda(\overline{K}) \leq \lambda(A_s(K))$ puis $\lambda(\overline{K}) \leq \lambda(K)$ par passage à la limite donc $\lambda(\overline{K}) = \lambda(K)$. \newline
+ On ne peut espérer que $\lambda(\overset{\circ}{K}) = \lambda(\overline{K})$ en général comme le montre l'exemple $K= \Q \cap [0,1]$ pour lequel $\overset{\circ}{K}$ est vide donc son adhérence aussi alors que $\overline{K}=[0,1]$.
+ \end{demo}
+
+\subsection{Différence symétrique et crible de Poincaré}\label{criblePoinc}
+Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent un rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
 
 \noindent Soit $X$ un ensemble quelconque et $A_1, \cdots, A_p$ des parties de $X$. Notons $\chi_A$ la fonction caractéristique d'une partie $A$ de $X$. Rappelons les relations fonctionnelles
 \begin{displaymath}
   \chi_{A'} = 1 - \chi_A, \; \chi_{A \cap B} = \chi_A \, \chi_B.
 \end{displaymath}
 
-\noindent Considérons pour chaque $x\in X$ le nombre de parties $A_i$ contenant $x$ et notons $\nu$ la fonction de $X$ dans $\llbracket 0, p \rrbracket$ ainsi définie. En fait 
+\noindent Considérons pour chaque $x\in X$ le nombre de parties $A_i$ contenant $x$ et notons $\nu$ la fonction de $X$ dans $\llbracket 0, p \rrbracket$ ainsi définie. En fait
 \begin{displaymath}
   \nu = \chi_{A_1} + \cdots + \chi_{A_p}.
 \end{displaymath}
@@ -577,7 +806,7 @@ Soit $m \in \llbracket 1,p\rrbracket$ et $x \in X$ alors:
 \begin{displaymath}
   \nu(x) \geq m \Leftrightarrow \exists I \in \mathcal{P}_m \text{ tq } x \in A_I
 \end{displaymath}
-en notant $\mathcal{P}_m$ l'ensemble des parties $\llbracket 1,p \rrbracket$ à $m$ éléments. On en déduit 
+en notant $\mathcal{P}_m$ l'ensemble des parties $\llbracket 1,p \rrbracket$ à $m$ éléments. On en déduit
 \begin{displaymath}
   \{ \nu \geq m \} = \bigcup_{I \in \mathcal{P}_m}A_I.
 \end{displaymath}
@@ -592,20 +821,20 @@ D'autre part $\nu(x) = m$ si et seulement si il existe $m$ indices $i$ tels que 
 \begin{displaymath}
   \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'} \text{ avec } A'_{I'} = \bigcap_{j\notin I}A'_j.
 \end{displaymath}
-On peut convenir de noter 
+On peut convenir de noter
 \begin{displaymath}
-\Delta_m(A_1,\cdots,A_p) = \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'}.  
+\Delta_m(A_1,\cdots,A_p) = \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'}.
 \end{displaymath}
-Remarquons que les $A_I \cap A'_{I'}$ de cette union sont deux à deux disjoints. En effet si $I$ et $J$ sont distincts, un des deux n'est pas inclus dans l'autre. Par exemple $I \not \subset J$. Il existe alors $i\in I$ avec $i \in J'$. Donc $A_I \subset A_i$, $A'_J \subset A'_i$ d'où 
+Remarquons que les $A_I \cap A'_{I'}$ de cette union sont deux à deux disjoints. En effet si $I$ et $J$ sont distincts, un des deux n'est pas inclus dans l'autre. Par exemple $I \not \subset J$. Il existe alors $i\in I$ avec $i \in J'$. Donc $A_I \subset A_i$, $A'_J \subset A'_i$ d'où
 \begin{displaymath}
   \left( A_I \cap A'_{I'} \right) \cap \left( A_J \cap A'_{J'} \right) \subset A_i \cap A'_i = \emptyset.
 \end{displaymath}
 On retrouve le cas particulier de la différence symétrique
 \begin{displaymath}
-  A \Delta B = (A\cap B') \cup (A' \cap B) = \Delta_1(A,B). 
+  A \Delta B = (A\cap B') \cup (A' \cap B) = \Delta_1(A,B).
 \end{displaymath}
 
-\noindent Venons-en aux formules du type crible de Poincaré. Le point central est 
+\noindent Venons-en aux formules du type crible de Poincaré. Le point central est
 \begin{displaymath}
   (A_1 \cup \cdots \cup A_p)' = A'_1 \cap \cdots \cap A'_p
 \end{displaymath}
@@ -613,7 +842,7 @@ et sa traduction avec les fonctions caractéristiques
 \begin{displaymath}
   1 - \chi_{A_1 \cup \cdots \cup A_p} = \prod_{i=1}^p(1 - \chi_{A_i})
   \Rightarrow
-  \chi_{A_1 \cup \cdots \cup A_p} = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\chi_{A_I} 
+  \chi_{A_1 \cup \cdots \cup A_p} = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\chi_{A_I}
 \end{displaymath}
 en développant et simplifiant par 1.\newline
 En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle précédente en chaque $x\in X$ pour former des égalités numériques. En sommant ces égalités, on obtient
@@ -628,59 +857,6 @@ En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle 
   \chi_A = \chi_{A_1} + \cdots + \chi_{A_p} &\Leftrightarrow A = \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p)
 \end{align*}
 
-\subsection{Polygones plans}\label{ExplePolyg}
-Ici $X$ est le plan $\R^2$, les figures de base sont les demi-plans fermés Les intersections de familles finies de demi-plans fermés sont des parties fermées et convexes, on convient de les appeler \emph{polygones convexes fermés}. Dans ce cas, au dela de ce qu'on appelle habituellement polygone fermé; un demi espace fermé, une droite, un segment, un point ou une partie comme sur la figure sont aussi des polygones convexes fermés.
-
-On  note $\mathfrak U$ l'ensemble des polygones convexes fermés. Par définition, $\mathfrak{U}$ est stable par intersection. On note $\mathfrak{S}$ l'ensemble des unions finies de polygones convexes fermés. Le système d'ensemble $\mathfrak{S}$ est stable pour l'intersection et l'union. Avec les définitions du livre précisées dans le chapitre suivant, c'est le treillis $L(\mathfrak U)$ c'est à dire le plus petit treillis contenant $\mathfrak{U}$.\newline
-On convient d'appeler \emph{polygone fermé} un élément de $\mathfrak{S}$. On peut remarquer que $\emptyset$ et $X$ sont des polygones fermés.
-
-\paragraph{Notations}
-\label{sec:notpolygones}
-Soit $\alpha \in X^*$ une forme linéaire et $a\in \R$, notons $\{ \alpha \leq a\}$ le demi-plan formé par les $x \in X$ tels que $\alpha(x) \leq a$.
-
-
-\begin{rem} On peut remplacer $\leq$ par $\geq$.
- \begin{displaymath}
-   \{ \alpha \geq a \} = \{ -\alpha \leq -a \}.
- \end{displaymath}
-\end{rem}
-
-Soit $A\subset X$, $A \in \mathfrak{S}$ (c'est à dire un polygone fermé) si et seulement si il existe des familles $\alpha_{i,j}$ de formes linéaires et $a_{i,j}$ de nombres réels (avec $I$ et $J$ finis) tels que
-\begin{displaymath}
- A = \bigcup_{i \in I} \bigcap_{j \in J}\{ \alpha_{i,j} \leq a_{i,j}\}.
-\end{displaymath}
-Un polygone fermé est défini par des inégalités larges, son complémentaire fait intervenir des inégalités strictes. Je ne pense pas que l'on puisse obtenir pour $\mathfrak{S}$ des propriétés intéressantes relatives au complémentaire. Je pense que $\mathfrak{S}$ n'est même pas un ovale au sens du livre.\newline
-En revanche on peut obtenir des propriétés intéressantes en renversant les inégalités.
-
-\begin{defi}
- Soit $A = \bigcup_{i \in I} \bigcap_{j \in J}\{ \alpha_{i,j} \leq a_{i,j}\} \in \mathfrak{S}$. On appelle \emph{presque complémentaire} de $A$ la partie
- \begin{displaymath}
-  A' = \bigcap_{i \in I} \bigcup_{j \in J}\{ \alpha_{i,j} \geq a_{i,j}\}.
- \end{displaymath}
-\end{defi}
-Attention, il n'est pas clair que cette définition soit consistante car la décomposition en union de polygones fermés convexes n'est pas unique.
-\begin{defi}
- Soit $A \in \mathfrak{S}$ un polygone fermé, on appelle \emph{bord} de $A$ le polygone fermé $A \cap A'$.
-\end{defi}
-\begin{exple}
-Le bord d'un demi plan $\{\alpha \leq a\}$ est la droite $\{\alpha = a\}$.
-\end{exple}
-\begin{lem}
- Soit $(\alpha_1, \alpha_2, \beta)$ une famille de 3 formes linéaires dont toutes les sous-familles de 2 sont libres et $A = \{\alpha_1 \alpha_2\geq 0\}$.\newline
- La droite $\{ \beta = 0 \}$ est incluse dans le presque complémentaire de $A$ si et seulement si le produit des coordonnées de $\beta$ dans la base $(\alpha_1, \alpha_2)$ est strictement positif.
-\end{lem}
-\begin{demo}
-L'hypothèse sur les sous-familles libres entraine que les 3 droites $\{\alpha_1 = 0\}$, $\{\alpha_2 = 0\}$, $\{\beta = 0\}$ sont distinctes. De plus $(\alpha_1, \alpha_2)$ est une base donc il existe $\lambda_1$ et $\lambda_2$ réels tels que $\beta = \lambda_1 \alpha_1 + \lambda_2 \alpha_2$. Les réels $\lambda_1$ et $\lambda_2$ sont non nuls car $(\alpha_1, \beta)$ et $(\alpha_2, \beta)$ sont libres.\newline
-Supposons $\lambda_1$ et $\lambda_2$ strictement positifs. Soit $a \in A$. Si $\alpha_1(a) \geq 0$ et $\alpha_2(a) \geq 0$ alors $\beta(a)\geq 0$. Si $a\neq(0,0)$ au moins un des $\alpha_i(a)>0$ donc $\beta(a) > 0$. De même $\alpha_1(a) \leq 0$ et $\alpha_2(a) \leq 0$ entraine $\beta(a)<0$ pour $a\neq (0,0)$. On en déduit que $\{\beta = 0\} \cap A = \{(0,0)\}$ donc $\{\beta = 0\} \subset  A'$. Si $\lambda_1$ et $\lambda_2$ sont strictement négatifs, on se ramène au cas précédent en les changeant en leur opposé ce qui ne change pas la droite. \newline
-Réciproquement, supposons $\{\beta = 0\} \subset A' = \left(\{\alpha_1 \leq 0\} \cap \{\alpha_2 \geq 0\}\right) \cup \left(\{\alpha_1 \geq 0\} \cap \{\alpha_2 \leq 0\}\right)$. Soit $b \neq (0,0)$ dans $\{\beta = 0\}$. Alors $b \in A'$ donc $\alpha_1(b) \alpha_2(b) <0$.
-\begin{displaymath}
- \beta(b) = 0 \Rightarrow \lambda_2 = - \frac{\alpha_1(b)}{\alpha_2(b)} \lambda_1 \Rightarrow \lambda_1 \lambda_2 = - \frac{\alpha_1(b)}{\alpha_2(b)} \lambda_{1}^2 > 0.
-\end{displaymath}
-\end{demo}
-
-\begin{defi}
-Pour tout $M \in \mathfrak{S}$ définissons $c(M)$ comme le nombre de composantes connexes bornées de $M$.
-\end{defi}
 
 \section{Chap I du livre. Systèmes d'ensembles - Fonctions d'ensembles}\label{SystFoncEns}
 \subsection{Systèmes d'ensembles}\label{SystEns}
@@ -690,7 +866,7 @@ Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
 \begin{displaymath}
   U \mid A \mid V = (U \cap A') \cup ( A \cap V).
 \end{displaymath}
-
+\index{système de parties!treillis} \index{système de parties!ovale} \index{système de parties!anneau} \index{système de parties!algèbre}
 \begin{defi}
   Soit $\mathfrak{S}$ une partie de $\mathcal{P}(X)$
   \begin{itemize}
@@ -708,7 +884,7 @@ Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
   algèbre $\Rightarrow$ anneau $\Rightarrow$ ovale $\Rightarrow$ treillis
 \end{prop}
 \begin{demo}
-Par exemple pour montrer qu'un anneau est un ovale, il suffit de remarquer qur 
+Par exemple pour montrer qu'un anneau est un ovale, il suffit de remarquer qur
 \begin{displaymath}
   U \mid A \mid V = (U \setminus (A \cap U)) \cup (A \cap V).
 \end{displaymath}
@@ -734,8 +910,8 @@ On vérifie facilement les autres implications.
 \end{rems}
 
 \subsubsection{Systèmes de parties: concepts vocabulaire notations}\label{types cardinalité}
-\paragraph{Cardinalité}
 
+\paragraph{Cardinalité}
 Le premier concept est relatif à la cardinalité. L'auteur définit des notations très synthétiques avec un symbole $\bullet$ qui peut  désigner un des trois symboles $\star$, $\sigma$, $\tau$ que je ne reprendrai pas. J'utiliserai directement les 3 symboles pour préciser un caractère fini, dénombrable ou quelconque.\newline
 Un système d'ensembles $\mathfrak{M}$ de $X$ est dit
 \begin{itemize}
@@ -758,19 +934,62 @@ On définit de manière analogue les notions de $\cap_\star$-stable(équivalent 
 \end{rem}
 
 \paragraph{Monotonie}
-On dira qu'un système $\mathfrak{M}$ de parties de $X$ de type $\sigma$ est croissant si et seulement si toute partie finie de $\mathfrak{M}$ admet un plus petit et un plus grand élément.\newline
-On dira qu'un système $\mathfrak{M}$ de parties de $X$ de type $\tau$ est croissant si et seulement si toute partie finie de $\mathfrak{M}$ est majorée.
+\begin{defi}
+ \begin{itemize}
+   \item On note $(S_l)\uparrow$ pour indiquer qu'une suite de parties $S_l$ de $X$ est croissante c'est à dire $S_l \subset S_{l+1}$. De même $(S_l)\downarrow$ pour décroissante.
+\index{système de parties! dirigé vers le haut}\index{système de parties! upward directed}
+   \item On note $\mathfrak{M}\uparrow$ pour indiquer qu'un système $\mathfrak{M}$ de parties de $X$ est dirigé vers le haut (upward directed) c'est à dire si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $U \cup V \subset W$.
+   \item On note $\mathfrak{M}\downarrow$ pour indiquer qu'un système $\mathfrak{M}$ de parties de $X$ est dirigé vers le bas (downward directed) c'est à dire si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $W \subset  U \cap V$ .
+ \end{itemize}
+\end{defi}
 
-On note $(S_l)\uparrow$ pour indiquer qu'une suite de parties $S_l$ de $X$ est croissante.
-
-On dira qu'un système $\mathfrak{M}$ de parties de $X$ est croissant (upward directed) si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $U \cup V \subset W$.
 \begin{rems}
  \begin{enumerate}
-  \item Un système de type $\tau$ stable pour $\cup$ (union) est croissant.
-  \item Un système $\mathfrak{M}$ de type $\tau$ est croissant si et seulement si toute partie finie de $\mathfrak{M}$ est majorée.
+  \item Un système de type $\tau$ stable pour $\cup$ (union) est dirigé vers le haut. Un système de type $\tau$ stable pour $\cap$ (union) est dirigé vers le bas.
+  \item Un système $\mathfrak{M}$ de type $\tau$ est dirigé vers le haut si et seulement si toute partie finie de $\mathfrak{M}$ est majorée dans $\mathfrak{M}$. Un système $\mathfrak{M}$ de type $\tau$ est dirigé vers le bas si et seulement si toute partie finie de $\mathfrak{M}$ est minjorée dans $\mathfrak{M}$.
  \end{enumerate}
 \end{rems}
-
+\index{système de parties! dirigé vers le bas}\index{système de parties! downward directed}
+\begin{defi}
+ \begin{enumerate}
+  \item On note $\mathfrak{M}\uparrow S$ pour indiquer que $\mathfrak{M}$ est dirigé vers le haut avec $S = \bigcup_{M \in \mathfrak{M}}M$.
+  \item On note $\mathfrak{M}\downarrow S$ pour indiquer que $\mathfrak{M}$ est dirigé vers le bas avec $S = \bigcap_{M \in \mathfrak{M}}M$.
+ \end{enumerate}
+\end{defi}
+\noindent Ces notations sont valables pour les $\tau$-systèmes comme pour les suites. Énonçons des propriétés des compacts avec ce vocabulaire.
+\begin{exple} \label{systAproxCompact}
+ Soit $K$ une partie compacte et $\mathfrak{M} = \left\lbrace K(\delta), \delta >0  \right\rbrace$. Alors $\mathfrak{M} \downarrow K$ Voir \ref{Outils}  \ref{Topologie} proposition  \ref{compactEtendu}
+\end{exple}
+\begin{demo}
+ Le seul point non évident est $\bigcap_{\delta > 0} K(\delta) \subset K$. Soit $x$ dans cette intersection. Pour tout naturel $n>0$,
+ \begin{displaymath}
+  x \in K(\frac{1}{n}) \Rightarrow \exists x_n \in K \text{ tq } d(x,x_n) < \frac{1}{n}.
+ \end{displaymath}
+Comme $K$ est compact, on peut extraire de la suite $(x_n)$ d'éléments de $K$ une suite $(x_{\varphi(n)})$ qui converge vers un $a\in K$. On en déduit $d(x,a)=0$ donc $x=a \in K$.
+\end{demo}
+\begin{propn}\label{FamDecCompacts}
+ Soit $\mathfrak{M}\downarrow \emptyset$ un système de parties compactes dirigé vers le bas. Il existe $N \in \mathfrak{M}$ tel que $N = \emptyset$.
+\end{propn}
+\begin{demo}
+Fixons un compact $M\in \mathfrak{M}$ et notons $\mathfrak{N}$ l'ensemble des $N\in \mathfrak{M}$ tels que $N \subset M$. C'est encore un système de parties dirigé vers le bas. Alors
+\begin{displaymath}
+ M \setminus \left( \bigcup_{N \in \mathfrak{N}} M\setminus N\right)
+ =  M \cap \left( \bigcap_{N \in \mathfrak{N}} (M' \cup N)\right)
+ =  M \cap \left( M' \cup \bigcap_{N \in \mathfrak{N}}  N\right)
+ =  M \cap  \bigcap_{N \in \mathfrak{N}}N
+ = \bigcap_{N \in \mathfrak{N}}N
+\end{displaymath}
+car $M \in \mathfrak{N}$. On en déduit
+\begin{displaymath}
+ \bigcap_{N \in \mathfrak{N}}N = \emptyset \Rightarrow M = \bigcup_{N \in \mathfrak{N}} M\setminus N.
+\end{displaymath}
+Les $M\setminus N$ forment un recouvrement du compact $M$ par des parties ouvertes de $M$ car les $N$ sont des fermés. On peut en extraire un recouvrement fini. Il existe $N_1, \cdots, N_p$ tels que
+\begin{displaymath}
+ M = (M\setminus N_1) \cup \cdots \cup (M\setminus N_p).
+\end{displaymath}
+Comme $\mathfrak{M}$ est dirigé vers le bas, il existe $N \in \mathfrak{M}$ tel que $N \subset N_1 \cap \cdots N_p$ donc $M \setminus N_i \subset M \setminus N$ pour tous les $i$. On en déduit $M \subset M \setminus N$ donc $N = \emptyset$.
+\end{demo}
+Cette proposition est une généralisation abstraite du théorème des segments emboîtés: l'intersection d'une suite de segments emboités est un segment non vide.
 
 \subsection{Fonctions d'ensembles}\label{FoncEns}
 \subsubsection{Croissance et modularité}
@@ -799,21 +1018,21 @@ pour cette extension. De même
   \noindent Exercice 2.8 (p 13). La modularité dépend vraiment de l'extension choisie.\newline
   On convient de noter $\overset{.}{+}$ l'extension de l'addition vérifiant $(-\infty) \overset{.}{+} (+\infty) = +\infty$ et $\underset{.}{+}$ l'extension de l'addition vérifiant $(-\infty) \underset{.}{+} (+\infty) = -\infty$.
   \begin{enumerate}
-    \item Sur $\mathfrak{S} = \mathcal{P}(X)$ où $X$ est un ensemble à deux éléments, définir une fonction $\varphi$ croissante et modulaire pour $\underset{.}{+}$ mais pas sous-modulaire pour $\overset{.}{+}$. 
-    \item Soit $\varphi$ croissante de $\mathfrak{S}$ dans $\overline{\R}$, montrer que 
+    \item Sur $\mathfrak{S} = \mathcal{P}(X)$ où $X$ est un ensemble à deux éléments, définir une fonction $\varphi$ croissante et modulaire pour $\underset{.}{+}$ mais pas sous-modulaire pour $\overset{.}{+}$.
+    \item Soit $\varphi$ croissante de $\mathfrak{S}$ dans $\overline{\R}$, montrer que
 \begin{displaymath}
   \varphi \text{ sous-modulaire pour } \overset{.}{+} \Rightarrow \varphi \text{ sous-modulaire pour } \underset{.}{+}.
 \end{displaymath}
   \end{enumerate}
   \begin{demo}
   \begin{enumerate}
-    \item Soit $X=\{a,b\}$ un ensemble à 2 éléments. On définit $\varphi$ dans $\mathcal{P}(X)$ par $\varphi(X) = +\infty$ et $\varphi(A) = - \infty$ pour toutes les autres parties $A$ de $X$. La fonction est bien $\underset{.}{+}$ modulaire car la somme des images par $\varphi$ de 2 parties distinctes sera toujours $-\infty$ sauf si $A=B=X$. En revanche, elle n'est pas $\overset{.}{+}$ sous-modulaire car 
+    \item Soit $X=\{a,b\}$ un ensemble à 2 éléments. On définit $\varphi$ dans $\mathcal{P}(X)$ par $\varphi(X) = +\infty$ et $\varphi(A) = - \infty$ pour toutes les autres parties $A$ de $X$. La fonction est bien $\underset{.}{+}$ modulaire car la somme des images par $\varphi$ de 2 parties distinctes sera toujours $-\infty$ sauf si $A=B=X$. En revanche, elle n'est pas $\overset{.}{+}$ sous-modulaire car
     \begin{displaymath}
-      \varphi(\{a\}\cup \{b\}) \overset{.}{+} \varphi(\{a\}\cap \{b\}) = (+\infty) \overset{.}{+} (-\infty) = + \infty 
+      \varphi(\{a\}\cup \{b\}) \overset{.}{+} \varphi(\{a\}\cap \{b\}) = (+\infty) \overset{.}{+} (-\infty) = + \infty
     \end{displaymath}
     n'est pas inférieur ou égal à
     \begin{displaymath}
-      \varphi(\{a\}) \overset{.}{+} \varphi(\{b\}) = (-\infty) \overset{.}{+} (-\infty) = - \infty. 
+      \varphi(\{a\}) \overset{.}{+} \varphi(\{b\}) = (-\infty) \overset{.}{+} (-\infty) = - \infty.
     \end{displaymath}
 
     \item On forme un tableau en plaçant dans les deux premières colonnes toutes les situations possibles pour les valeurs de $\varphi(A)$ et $\varphi(B)$ en tenant compte des symétries. On peut remplir beaucoup de cases dans  les autres colonnes en utilisant les conséquences de la croissance et de la sous-modularité pour $\overset{.}{+}$ de $\varphi$. On laisse vide les cases pour lesquelles on ne peut rien déduire.
@@ -841,7 +1060,7 @@ Venons en aux formules qui ressemblent au crible de Poincaré (exercie 2.5 du li
   \end{displaymath}
 \end{propn}
 \begin{demo}
-  Pour $p=2$, les parties $I$ intervenant sont $\{1\}$, $\{2\}$ et $\{1,2\}$. la formule à montrer s'écrit 
+  Pour $p=2$, les parties $I$ intervenant sont $\{1\}$, $\{2\}$ et $\{1,2\}$. la formule à montrer s'écrit
   \begin{displaymath}
     \varphi(A_1 \cup A_2) = - \left( -\varphi(A_1) - \varphi(A_2) + \varphi(A_1\cap A_2)\right)
   \end{displaymath}
@@ -849,19 +1068,19 @@ qui est la définition de la modularité.\newline
 Montrons que la formule à l'ordre $p$ entraine celle à l'ordre $p+1$. Partons de la somme à l'ordre $p+1$ et trions les $I$ : ceux qui ne contiennent pas $p+1$, ceux qui le contiennent entre autres et le singleton $\{p+1\}$:
 \begin{align*}
   - \sum_{I \subset \llbracket 1,p+1 \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\varphi(A_I)
-  = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\varphi(A_I) 
+  = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\varphi(A_I)
   + \sum_{J \subset \llbracket 1,p \rrbracket, J\neq \emptyset} (-1)^{\sharp J}\varphi(A_I \cap A_{p+1})
   + \varphi(A_{p+1}) \\
-  = \varphi(\bigcup_{i=1}^p A_i) - \varphi(\bigcup_{i=1}^p A'_i) + \varphi(A_{p+1}) 
-  = \varphi(\bigcup_{i=1}^p A_i) + \varphi(A_{p+1}) -\varphi(\left(\bigcup_{i=1}^p A_i\right) \cap A_{p+1}) 
+  = \varphi(\bigcup_{i=1}^p A_i) - \varphi(\bigcup_{i=1}^p A'_i) + \varphi(A_{p+1})
+  = \varphi(\bigcup_{i=1}^p A_i) + \varphi(A_{p+1}) -\varphi(\left(\bigcup_{i=1}^p A_i\right) \cap A_{p+1})
   = \varphi(\bigcup_{i=1}^{p+1} A_i)
 \end{align*}
 en utilisant $A'_i = A_i  \cap A_{p+1}$ pour $i \in \llbracket 1, p \rrbracket$ puis l'hypothèse de récurrence (deux fois) et enfin la définition de la modularité.
 \end{demo}
 \begin{rem}
-  Cette formule fournit une nouvelle démonstration de la formule du crible. En effet dans un ensemble $X$, la fonction de Dirac $\delta_x$ définie par 
+  Cette formule fournit une nouvelle démonstration de la formule du crible. En effet dans un ensemble $X$, la fonction de Dirac $\delta_x$ définie par
   \begin{displaymath}
-     \forall A \subset X, \;\delta_x(A) = 
+     \forall A \subset X, \;\delta_x(A) =
     \left\lbrace
     \begin{aligned}
       1 &\text{ si } x \in A \\
@@ -869,7 +1088,7 @@ en utilisant $A'_i = A_i  \cap A_{p+1}$ pour $i \in \llbracket 1, p \rrbracket$ 
     \end{aligned}
     \right.
   \end{displaymath}
-  est modulaire. Elle est liée aux fonctions caractéristiques: $\delta_x(A) = \chi_A(x)$. On en déduit 
+  est modulaire. Elle est liée aux fonctions caractéristiques: $\delta_x(A) = \chi_A(x)$. On en déduit
   \begin{displaymath}
     \left( \forall x \in X, \; \delta_x(\bigcup_{i=1}^p A_i) = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\delta_x(A_I) \right)
     \Rightarrow  \chi_{\bigcup_{i=1}^p A_i} = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\chi_{A_I}.
@@ -878,20 +1097,20 @@ en utilisant $A'_i = A_i  \cap A_{p+1}$ pour $i \in \llbracket 1, p \rrbracket$ 
 
 
 \subsubsection{Extension d'une fonction d'ensembles à un treillis}
-Dans cette section l'ouvrage considère une fonction d'ensembles $\varphi$ définie sur un ensemble $\mathfrak{U}$ de parties de $X$ seulement stable pour l'intersection et cherche à la prolonger en une fonction modulaire $\phi$ sur $\mathfrak{S} = L(\mathfrak{U})$ qui est le plus petit treillis contenant $\mathfrak{U}$. 
+Dans cette section l'ouvrage considère une fonction d'ensembles $\varphi$ définie sur un ensemble $\mathfrak{U}$ de parties de $X$ seulement stable pour l'intersection et cherche à la prolonger en une fonction modulaire $\phi$ sur $\mathfrak{S} = L(\mathfrak{U})$ qui est le plus petit treillis contenant $\mathfrak{U}$.
 
-Cette situation est celle du premier exemple où $\mathfrak{U}$ est l'ensemble formé du vide et des classes de congruences autres que $\{0\}$. Cet ensemble est stable par intersection et l'ensemble $\mathfrak{S}$ des unions de classes de congruences est le plus petit treillis contenant $\mathfrak{U}$. 
-Au départ, la fonction $\varphi$ est définie uniquement sur $\mathfrak{U}$ par  $\varphi(a + \Z m) = \frac{1}{m}$. 
+Cette situation est celle du premier exemple où $\mathfrak{U}$ est l'ensemble formé du vide et des classes de congruences autres que $\{0\}$. Cet ensemble est stable par intersection et l'ensemble $\mathfrak{S}$ des unions de classes de congruences est le plus petit treillis contenant $\mathfrak{U}$.
+Au départ, la fonction $\varphi$ est définie uniquement sur $\mathfrak{U}$ par  $\varphi(a + \Z m) = \frac{1}{m}$.
 Peut-on l'étendre à une fonction modulaire sur $\mathfrak{S}$ ? On l'a fait à l'aide du cardinal des images par les projections canoniques donc je n'ai pas besoin des résultats de cette section pour cet exemple.
 
 Je reproduis quand même ici ces résultats et leurs preuves(pages 27 à 31).
 
 L'ouvrage définit pour tous les $n$ des fonctions notées encore $\varphi$ de $\mathfrak{U}^n$ dans $\R$ inspirées des formules d'inclusion-exclusion
 \begin{displaymath}
-  \forall n \in \N^*, \forall (A_1,\cdots, A_n) \in \mathfrak{U}^n, \; 
+  \forall n \in \N^*, \forall (A_1,\cdots, A_n) \in \mathfrak{U}^n, \;
   \varphi(A_1, \cdots, A_n) = - \sum_{\emptyset \neq I \subset \llbracket 1 , n\rrbracket}(-1)^{\sharp(I)}\varphi(A_I)
 \end{displaymath}
-où $A_I$ est défini comme dans la section précédente par $A_I = \bigcap_{i\in I} A_I$. 
+où $A_I$ est défini comme dans la section précédente par $A_I = \bigcap_{i\in I} A_I$.
 \begin{rem}
   Ces fonctions sont clairement symétriques, permuter les $A_i$ ne change pas la valeur.
 \end{rem}
@@ -900,13 +1119,13 @@ où $A_I$ est défini comme dans la section précédente par $A_I = \bigcap_{i\i
   \begin{enumerate}
     \item Formule de récurrence. Soit $A_0, \cdots, A_r$ des éléments de $\mathfrak{U}$ :
     \begin{displaymath}
-      \varphi(A_0,\cdots, A_r) = \varphi(A_0) + \varphi(A_1,\cdots, A_r) - \varphi(A_0\cap A_1, \cdots, A_0\cap A_r). 
+      \varphi(A_0,\cdots, A_r) = \varphi(A_0) + \varphi(A_1,\cdots, A_r) - \varphi(A_0\cap A_1, \cdots, A_0\cap A_r).
     \end{displaymath}
     \item Soit $A_0, \cdots, A_r$ des éléments de $\mathfrak{U}$ tels que $A_i \subset A_0$ pour tous les $i$ :
     \begin{displaymath}
-      \varphi(A_0,\cdots, A_r) = \varphi(A_0). 
+      \varphi(A_0,\cdots, A_r) = \varphi(A_0).
     \end{displaymath}
-    \item Soit $A_0, \cdots, A_r$ des éléments de $\mathfrak{U}$ tels qu'il existe $l \in \llbracket 1, r \rrbracket$ vérifiant $A_0 \subset A_l$ 
+    \item Soit $A_0, \cdots, A_r$ des éléments de $\mathfrak{U}$ tels qu'il existe $l \in \llbracket 1, r \rrbracket$ vérifiant $A_0 \subset A_l$
     \begin{displaymath}
       \varphi(A_0,A_1, \cdots,A_r) = \varphi(A_1, \cdots,A_r).
     \end{displaymath}
@@ -946,7 +1165,7 @@ où l'argument du second terme de la somme à gauche de l'égalité est la suite
       &A_r \cap B_1, \cdots, A_r\cap B_s
       \end{aligned}
       \right)
-      -\varphi(A_0) 
+      -\varphi(A_0)
       + \varphi \left(
       \begin{aligned}
         & A_0\cap B_1, &\cdots &, A_0 \cap B_s, \\
@@ -962,7 +1181,7 @@ où l'argument du second terme de la somme à gauche de l'égalité est la suite
     \begin{multline*}
       \varphi(A_0\cap B_1, \cdots, A_r \cap B_s)
       = \varphi(A_0, A_1 \cap B_1, \cdots A_r \cap B_s) - \varphi(A_0) + \varphi(A_0\cap B_1, \cdots A_0 \cap B_s) \\
-      = \varphi( A_1 \cap B_1, \cdots A_r \cap B_s) - \varphi(A_0 \cap A_1 \cap B_1, \cdots, A_0 \cap A_r \cap B_s) + \varphi(A_0\cap B_1, \cdots A_0 \cap B_s) 
+      = \varphi( A_1 \cap B_1, \cdots A_r \cap B_s) - \varphi(A_0 \cap A_1 \cap B_1, \cdots, A_0 \cap A_r \cap B_s) + \varphi(A_0\cap B_1, \cdots A_0 \cap B_s)
     \end{multline*}
     En utilisant encore la formule 1 avec les deux premiers termes. On est alors en mesure d'utiliser deux fois l'hypothèse de récurrence. D'abord avec le premier terme
     \begin{displaymath}
@@ -971,7 +1190,7 @@ où l'argument du second terme de la somme à gauche de l'égalité est la suite
     \end{displaymath}
     puis avec les deux derniers que l'on réécrit d'abord avec $A'_i = A_0 \cap A_i$ pour $i \in \llbracket 1, r \rrbracket$ et $B'_j = A_0 \cap B_j$ pour $j \in \llbracket 1, s \rrbracket$.
     \begin{align*}
-      - \varphi( A'_1 \cap B'_1, \cdots,  A'_r \cap B'_s) + \varphi( B'_1, \cdots, B'_s) 
+      - \varphi( A'_1 \cap B'_1, \cdots,  A'_r \cap B'_s) + \varphi( B'_1, \cdots, B'_s)
       = - \varphi( A'_1, \cdots, A'_r) + \varphi( A'_1, \cdots, A'_r, B'_1, \cdots, B'_s) \\
       = - \varphi( A_0\cap A_1, \cdots, A_0 \cap A_s) + \varphi( A_0 \cap A_1, \cdots, A_0 \cap A_r, A_0 \cap B_1, \cdots, A_0 \cap B_s)\\
       = \varphi(A_0, \cdots, A_r) - \varphi(A_0) - \varphi(A_1, \cdots, A_r)
@@ -980,7 +1199,7 @@ où l'argument du second terme de la somme à gauche de l'égalité est la suite
     \end{align*}
     en utilisant encore deux fois la propriété 1 avec $A_0$ en premier. En rassemblant, après simplifications, il reste seulement
     \begin{displaymath}
-      \varphi(A_0\cap B_1, \cdots, A_r \cap B_s) 
+      \varphi(A_0\cap B_1, \cdots, A_r \cap B_s)
       = \varphi( B_1, \cdots , B_s) + \varphi(A_0, \cdots, A_r) - \varphi(A_0, \cdots, A_r,B_1, \cdots, B_s)
     \end{displaymath}
     qui est bien la formule de récurrence à l'ordre $r+1$.
@@ -988,7 +1207,7 @@ où l'argument du second terme de la somme à gauche de l'égalité est la suite
 \end{demo}
 Le principal résultat de cette section est le théorème suivant.
 \begin{thm}
-  La fonction $\varphi$ de $\mathfrak{U}$ dans $\R$ admet une extension modulaire $\phi$ de $\mathfrak{S}$ dans $\R$ si et seulement si pour chaque $A_1, \cdots,A_p,A$ dans $\mathfrak{U}$ tels que $A_1 \cup \cdots \cup A_p = A$, 
+  La fonction $\varphi$ de $\mathfrak{U}$ dans $\R$ admet une extension modulaire $\phi$ de $\mathfrak{S}$ dans $\R$ si et seulement si pour chaque $A_1, \cdots,A_p,A$ dans $\mathfrak{U}$ tels que $A_1 \cup \cdots \cup A_p = A$,
   \begin{displaymath}
     \varphi(A_1, \cdots,A_p) = \varphi(A).
   \end{displaymath}
@@ -1004,12 +1223,12 @@ Le principal résultat de cette section est le théorème suivant.
 \end{thm}
 \begin{demo}
   À cause de la proposition \ref{modulaire_ordre_n} qui exprime $\varphi(A_1, \cdots, A_p) = \varphi(A_1,\cdots,A_p)$ les deux conditions $(mod)$ et $(isot)$ sont nécessaires.\newline
-  Montrons que la condition 
+  Montrons que la condition
   \begin{displaymath}
     \text{(mod)} \; \forall A_1, \cdots,A_p,A \in \mathfrak{U}, A_1 \cup \cdots \cup A_p = A \Rightarrow
     \varphi(A_1, \cdots,A_p) = \varphi(A)
   \end{displaymath}
-  permet d'étendre $\varphi$ en $\phi$. Il s'agit de montrer que 
+  permet d'étendre $\varphi$ en $\phi$. Il s'agit de montrer que
   \begin{displaymath}
     A = A_1 \cup \cdots \cup A_p = B_1 \cup \cdots \cup B_p \Rightarrow \varphi(A_1, \cdots, A_p) = \varphi(B_1, \cdots, B_p).
   \end{displaymath}
@@ -1017,7 +1236,7 @@ Le principal résultat de cette section est le théorème suivant.
   \begin{displaymath}
     A_0 \subset A_1 \cup \cdots \cup A_p \Rightarrow \varphi(A_0,A_1, \cdots, A_p) = \varphi(A_1, \cdots, A_p).
   \end{displaymath}
-  En effet 
+  En effet
   \begin{align*}
     A_0 \subset A_1 \cup \cdots \cup A_p \Rightarrow A_0 = (A_0\cap A_1) \cup \cdots \cup (A_0 \cap A_p) \\
       \Rightarrow \varphi(A_0) = \varphi((A_0\cap A_1) \cup \cdots \cup (A_0 \cap A_p)) \text{ d'après (mod)} \\
@@ -1031,14 +1250,15 @@ Le principal résultat de cette section est le théorème suivant.
   \begin{displaymath}
     \phi(A_1\cup \cdots \cup A_p) \leq \phi(A_0 \cup A_1 \cup \cdots \cup A_p).
   \end{displaymath}
-  Or 
+  Or
   \begin{align*}
-    \phi(A_0 \cup A_1 \cup \cdots \cup A_p) - \phi(A_1\cup \cdots \cup A_p) 
+    \phi(A_0 \cup A_1 \cup \cdots \cup A_p) - \phi(A_1\cup \cdots \cup A_p)
     = \varphi(A_0, \cdots, A_p) - \varphi(A_1, \cdots, A_p)\\
     = \varphi(A_0) - \varphi(A_0\cap A_1, \cdots, A_0\cap A_p) \geq 0
   \end{align*}
 d'après l'hypothèse car $(A_0 \cap A_1) \cup \cdots \cup (A_0\cap A_p) \subset A_0$.
 \end{demo}
+
 
 \subsubsection{Régularité} \label{Regularite}
 Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.\newline
@@ -1069,13 +1289,151 @@ La fonction d'ensembles $\varphi$ est dite
  \end{enumerate}
 \end{rems}
 
+\subsubsection{Continuités} \label{Continuites}
+\index{continuités}\index{continuités!$\sigma$-continue vers le haut}\index{continuités!presque $\sigma$-continue vers le haut}\index{continuités!$\tau$-continue vers le haut}\index{continuités!$\sigma$-continue vers le bas}
+Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.
+\begin{defi}[$\sigma$-continue vers le haut]
+La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le haut (upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.
+\end{defi}
+\begin{defi}[presque $\sigma$-continue vers le haut]
+La fonction d'ensembles $\varphi$ est dite presque $\sigma$-continue vers le haut (almost upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ telle que $\varphi(S_l)> - \infty$ pour tout $l\in \N$, qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.
+\end{defi}
+\begin{defi}[$\tau$-continue vers le haut]
+ La fonction d'ensembles $\varphi$ est dite $\tau$-continue vers le haut (upward $\tau$-continuous) si et seulement si :
+pour tout $A \in \mathfrak{S}$ et tout système d'ensembles $\mathfrak{M} \subset \mathfrak{S}$ tel que $\mathfrak{M} \uparrow A$, on a $\sup_{S \in \mathfrak{M}}\varphi(S) = \varphi(A)$.
+\end{defi}
+On définit de même les notions de continuité vers le bas. Par exemple
+\begin{defi}[$\sigma$-continue vers le bas]
+La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le bas (downward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite décroissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.
+\end{defi}
+\index{continuités!$\tau$-continue vers le bas}
+\begin{defi}[$\tau$-continue vers le bas]
+ La fonction d'ensembles $\varphi$ est dite $\tau$-continue vers le bas (downward $\tau$-continuous) si et seulement si :
+pour tout $A \in \mathfrak{S}$ et tout système d'ensembles $\mathfrak{M} \subset \mathfrak{S}$ tel que $\mathfrak{M} \downarrow A$, on a $\inf_{S \in \mathfrak{M}}\varphi(S) = \varphi(A)$.
+\end{defi}
 
-\subsubsection{Continuité} \label{Continuite}
-Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.\newline
-La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le haut (upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.\newline
-La fonction d'ensembles $\varphi$ est dite presque $\sigma$-continue vers le haut (almost upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ telle que $\varphi(S_l)> - \infty$ pour tout $l\in \N$, qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.\newline
-La fonction d'ensembles $\varphi$ est dite $\tau$-continue vers le haut (upward $\tau$-continuous) si et seulement si :
-pour tout $A \in \mathfrak{S}$ et tout système d'ensemble $\mathfrak{M} \subset \mathfrak{S}$ tel que $\mathfrak{M} \uparrow A$, on a $\sup_{S \in \mathfrak{M}}\varphi(S) = \varphi(A)$.
+\begin{propn}[Exemple arithmétique]
+ La fonction d'ensemble $\varphi$ définie dans $\mathfrak{S}$ n'est pas $\sigma$-continue vers le haut.
+\end{propn}
+\begin{demo}
+ Soit $A = \left\lbrace a_k, k\in \N\right\rbrace \in \mathfrak{S}$, il existe un entier naturel $\mu$ tel que $A$ soit une union disjointe de classes modulo $\mu$. Pour $p\in \N$ arbitraire, considérons la suite de l'exemple 5 de la partie \ref{Exples}\ref{ExplesSuitesCongru}.
+\begin{displaymath}
+ \forall n \in \N, \; S_n = \bigcup_{k =0}^n \left(a_k + \mu^{k+p} \Z\right).
+\end{displaymath}
+C'est une suite croissante d'éléments de $\mathfrak{S}$ telle que $A = \bigcup_{n\in \N}S_n$ avec $\lim (S_n)\leq \mu^{1-p}$. En choisissant $p$ assez grand pour avoir $\mu^{1-p} < \varphi(A)$, on forme un contre exemple à la définition.
+\end{demo}
+
+\begin{propn}[Exemple principal]
+ La fonction d'ensembles $\lambda$ définie dans l'ensemble $\mathfrak{K}$ des parties compactes de $X=\R^n$ est $\tau$-continue vers le bas.
+\end{propn}
+\begin{demo}
+Soit $K$ une partie compacte et $\mathfrak{M}$ un système de parties compactes dirigé vers le bas (downward directed) vérifiant $\mathfrak{M} \downarrow K$.\newline
+Rappelons que dirigé vers le bas  signifie que, pour $A$ et $B$ appartenant à $\mathfrak{M}$, il existe $C\in \mathfrak{M}$ tel que $C \subset A \cap B$. On a aussi par hypothèse $\bigcap_{M \in \mathfrak{M}}M = K$.\newline
+On doit montrer $\inf_{M \in \mathfrak{M}} \lambda(M) = \lambda(K)$.\newline
+De $K \subset M$ pour tous les $M \in \mathfrak{M}$, on déduit $\lambda(K) \leq \lambda(M)$ donc $\lambda(K) \leq \inf_{M \in \mathfrak{M}}\lambda(M)$.\newline
+Il reste à montrer $\inf_{M \in \mathfrak{M}}\lambda(M) \leq \lambda(K)$.\newline
+Formons une approximation \emph{ouverte} de $K$.\newline
+Considérons des naturels $0 \leq s < t$ et l'approximation fermée à l'ordre $s$:
+\begin{displaymath}
+ K \subset A_s(K) = \bigcup_{Q\in \mathfrak{M}_s \, Q\cap K \neq \emptyset}Q.
+\end{displaymath}
+Pour chaque $s$-cube $Q$, formons un $t$-cube $Q^*$ juste un peu plus grand. Plus précisément, $Q$ est le produit cartésien de $n$ intervalles de longueur $\frac{1}{2^s}$.  Pour chacun de ces intervalles, ajoutons un intervalle de longueur $\frac{1}{2^t}$ de chaque côté et notons $Q^*$ le $t$-cube produit cartésien de $n$ intervalles de longueur $\frac{1}{2^s}+ \frac{2}{2^t}$. Alors:
+\begin{displaymath}
+ Q \subset \mathrm{Int}Q^* \subset Q^*, \; \lambda(Q^*) = \left( \frac{1}{2^s}+ \frac{2}{2^t}\right)^n = \lambda(Q)\left( 1 + \frac{1}{2^{t-s-1}}\right)^n
+\end{displaymath}
+\begin{displaymath}
+ K \subset A_s(K) = \bigcup_{Q\in \mathfrak{M}_s \, Q\cap K \neq \emptyset}Q
+            \subset O_{s,t}(K) = \bigcup_{Q\in \mathfrak{M}_s \, Q\cap K \neq \emptyset} \mathrm{Int} Q^*.
+\end{displaymath}
+où $O_{s,t}(K)$ est une partie bornée et ouverte.\newline
+Remarquons que $\frac{\lambda(Q^*)}{\lambda(Q)}$ est constant. On en déduit
+\begin{displaymath}
+ \lambda(O_{s,t}(K)) \leq \lambda\left( \bigcup_{Q\in \mathfrak{M}_s \, Q\cap K \neq \emptyset} \mathrm{Int} Q^*\right)
+ = \lambda(A_s(K)) \left( 1 + \frac{1}{2^{t-s-1}}\right)^n.
+\end{displaymath}
+
+On utilise maintenant une propriété des espaces compacts. On ne peut raisonner de cette manière pour les parties seulement bornées.\newline
+Pour chaque $M\in \mathfrak{M}$, enlevons le complémentaire de l'ouvert. Les parties $M \cap O_{s,t}(K)'$ sont compactes et vérifient
+\begin{displaymath}
+ \bigcap_{M \in \mathfrak{M}} \left(M \cap O_{s,t}(K)'\right)
+ = \left(\bigcap_{M \in \mathfrak{M}} M\right) \cap O_{s,t}(K)'
+ = K \cap O_{s,t}(K)'
+ = \emptyset
+\end{displaymath}
+car $K \subset O_{s,t}(K)$.\newline
+D'après la proposition \ref{FamDecCompacts}, si l'intersection d'un système de compacts dirigé vers le bas est vide alors un des compacts de la famille est vide.\newline
+Pour tous les $s$ et $t>s$, il existe donc $M \in \mathfrak{M}$ tel que
+\begin{multline*}
+ M \cap O_{s,t}(K)'=\emptyset
+ \Rightarrow M \subset O_{s,t}(K) \\
+  \Rightarrow
+  \inf_{M \in \mathfrak{M}}\lambda(M) \leq \lambda(M) \leq  \lambda(O_{s,t}(K)) \leq \lambda(A_s(K)) \left( 1 + \frac{1}{2^{t-s-1}}\right)^n \\
+  \Rightarrow
+  \inf_{M \in \mathfrak{M}}\lambda(M) \leq \lambda(A_s(K)) \; \text{ (limite en $t$)}
+  \Rightarrow
+  \inf_{M \in \mathfrak{M}}\lambda(M) \leq \lambda(K) \; \text{ (limite en $s$)}.
+\end{multline*}
+\end{demo}
+
+ \begin{propn}{Exemple principal}\label{ExplePpalModul}
+  La fonction $\lambda$ est modulaire de $\mathfrak{K}$ dans $[0, + \infty[$.
+ \end{propn}
+ \begin{demo}
+ On se ramène à la modularité du cardinal pour les ensembles finis de $s$-cubes. Soit $K_1$ et $K_2$ des parties bornées. Définissons des ensembles finis $\mathfrak{U}_1$ et $\mathfrak{U}_2$ de $s$-cubes.
+ \begin{displaymath}
+  \left.
+  \begin{aligned}
+    Q \in \mathfrak{U}_1 &\Leftrightarrow Q \cap K_1 \neq \emptyset \\
+    Q \in \mathfrak{U}_2 &\Leftrightarrow Q \cap K_2 \neq \emptyset
+  \end{aligned}
+  \right\rbrace \Rightarrow
+  \left\lbrace
+  \begin{aligned}
+   Q \in \mathfrak{U}_1\cap \mathfrak{U}_2 &\Leftrightarrow Q \cap K_1 \neq \emptyset \text{ et } Q \cap K_2 \neq \emptyset \\
+   Q \in \mathfrak{U}_1\cup \mathfrak{U}_2 &\Leftrightarrow Q \cap K_1 \neq \emptyset \text{ ou } Q \cap K_2 \neq \emptyset \Leftrightarrow Q\cap(K_1 \cup K_2) \neq \emptyset
+  \end{aligned}
+  \right.
+ \end{displaymath}
+Attention, $Q\cap(K_1\cap K_2) \neq \emptyset$ entraine $Q \cap K_1 \neq \emptyset$ et $Q \cap K_2 \neq \emptyset$ mais la réciproque est fausse. On en déduit
+\begin{displaymath}
+ \sharp \left\lbrace Q \text{ tq } Q\cap(K_1\cap K_2) \neq \emptyset\right\rbrace
+ \leq \sharp (\mathfrak{U}_1\cap \mathfrak{U}_2)
+ = \sharp \mathfrak{U}_1 + \sharp \mathfrak{U}_2 - \sharp (\mathfrak{U}_1\cup \mathfrak{U}_2).
+\end{displaymath}
+En multipliant par $\frac{1}{2^{ns}}$ qui est le volume des $s$-cubes $Q$, on obtient
+\begin{displaymath}
+ \lambda(A_s(K_1\cap K_2))  \leq V_s = \lambda(A_s(K_1)) + \lambda(A_s(K_2)) - \lambda(A_s(K_1\cup K_2))
+\end{displaymath}
+en notant $V_s = \frac{\sharp (\mathfrak{U}_1\cap \mathfrak{U}_2)}{2^{ns}}$ puis, en passant à la limite en $s$,
+\begin{displaymath}
+ \lambda(K_1 \cap K_2) \leq V = \lambda(K_1) + \lambda(K_2) - \lambda(K_1 \cup K_2)
+\end{displaymath}
+en notant $V$ la limite de la suite $(V_s)$.\newline
+Revenons sur la condition $Q$ est un $s$-cube qui coupe $K_1$ et $K_2$: il existe $x_1\in Q \cap K_1$ et $x_2 \in Q \cap K_2$. Comme $x_1$ et $x_2$ sont dans le même $Q$, en désignant par $N$ la norme infinie (max des valeurs absolues des coordonnées), il vient $N(x_1-x_2)\leq \frac{1}{2^s}$. \newline
+Pour $\delta \geq \frac{1}{2^s}$ notons $K_1(\delta)$ l'ensemble des $y$ pour lesquels il existe $y_1\in K_1$ tel que $N(y-y_1)\leq \delta$. On peut alors reformuler
+\begin{displaymath}
+ N(x_1-x_2)\leq \frac{1}{2^s} \Rightarrow x_2 \in K_1(\delta)\cap K_2.
+\end{displaymath}
+puis
+\begin{displaymath}
+ \mathfrak{U}_1 \cap \mathfrak{U}_1 \subset
+ \left\lbrace Q \text{ tq } Q\cap (K_1(\frac{1}{2^s})\cap K_2 )\neq \emptyset \right\rbrace
+ \Rightarrow
+ V_s \leq \lambda(A_s(K_1(\delta)\cap K_2)).
+\end{displaymath}
+Pour chaque $\delta >0$ fixé, $\frac{1}{2^s}\leq \delta$ pour $s$  assez grand. On peut donc passer à la limite en $s$:
+\begin{displaymath}
+ \forall \delta > 0, \; \lambda(K_1 \cap K_2) \leq  \lambda(K_1) + \lambda(K_2) - \lambda(K_1 \cup K_2) = V \leq \lambda(K_1(\delta)\cap K_2).
+\end{displaymath}
+Le système de parties compactes $\left\lbrace K_1(\delta)\cap K_2, \delta > 0 \right\rbrace$ est orienté vers le bas et d'intersection $K_1 \cap K_2$. (voir \ref{SystFoncEns} \ref{FoncEns} \ref{compactEtendu} \ref{systAproxCompact}). Comme $\lambda$ est $\tau$-continue vers le bas sur $\mathfrak{K}$,
+\begin{displaymath}
+ \inf\left\lbrace \lambda(K_1(\delta)\cap K_2), \delta > 0 \right\rbrace =  \lambda(K_1 \cap K_2)
+ \Rightarrow
+ \lambda(K_1 \cap K_2) \leq  \lambda(K_1) + \lambda(K_2) - \lambda(K_1 \cup K_2) = V \leq \lambda(K_1 \cap K_2).
+\end{displaymath}
+
+\end{demo}
+
 
 \subsubsection{Contenus et mesures} \label{ContenusMesures}
 
@@ -1101,6 +1459,18 @@ Dans ce paragraphe, $\mathfrak{S}$ est un treillis dans $\mathcal{P}(X)$ et $\va
  \right.
 \end{displaymath}
 Voir \ref{types cardinalité}
+\begin{prop}[Exemple arithmétique]
+ Pour le couple $\mathfrak{S}, \varphi$ de l'exemple arithmétique, $\varphi^\sigma$ est la fonction constante nulle.
+\end{prop}
+\begin{demo}
+ Pour tout partie $A = \left\lbrace a_k , k \in \N\right\rbrace$ de $\Z$ et tout $p\in \N$, considérons la suite de l'exemple 3 de \ref{Exples}\ref{ExplesSuitesCongru} .
+ \begin{displaymath}
+  \forall n \in \N, \; S_n = \bigcup_{k =0}^n \left(a_k + 2^{k+p} \Z\right) .
+ \end{displaymath}
+ C'est une suite croissante d'éléments de $\mathfrak{S}$ telle que $A \subset \bigcup_{n\in \N}S_n$ et $\lim (S_n) \leq 2^{1-p}$. Comme $p$ est arbitraire, la borne inférieure des limites est nulle.
+
+\end{demo}
+
 \begin{prop}
 Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction d'ensembles isotone de $\mathfrak{S}$ dans $\overline{\R}$.
  \begin{enumerate}
@@ -1224,6 +1594,102 @@ car $S_{k+1} \setminus S_k$ est l'union disjointe de $a_{k+1}$ classes modulo $b
 \end{demo}
 \subsection{Classe de Carathéodory} \label{ClasseCaratheodory}
 
-\printindex
+\section{En travaux: déchetterie et gisements}
+Cette section rassemble des sections qui n'ont plus leur place dans le plan actuel mais qui méritent d'être conservés quelque part ainsi que des sections en devenir qui pourraient entrer plus tard dans le plan.
+
+\subsection{Graphes, simplexes, CW-complexes?}
+L'exemple principal est construit sur les unions $\mathfrak{S}_s$ de $s$-cubes dyadiques des $\frac{1}{2^s}\Z^n$. La stabilité pour l'intersection n'est pas vérifiée. Pour la récupérer, on peut ajouter toutes les enveloppes convexes de familles de 1,2,...,n+1 points contigus. Cela fait penser aux concepts de simplexe et de réseau combinatoire.
+
+Quel graphe associer à une décomposition en cubes?
+On doit pouvoir caractériser en termes de graphe le "bord" d'une union de cubes.
+
+Les intersections non vides de familles de cubes fermés sont des sommets, arêtes, ..., faces. Formons un graphe orienté dont les sommets sont ces intersections. Une arête existe du sommet $s_1$ vers le sommet $s_2$ si et seulemnt si le convexe compact associé à $s_1$ est inclus dans le convexe compact associé à $s_2$.
+
+En dimension 3, un cube fermé solitaire est relié à
+\begin{itemize}
+ \item 8 sommets
+ \item 12 arêtes
+ \item 6 faces
+\end{itemize}
+?????
+
+Soit $N$ la norme infinie de $\R^n$ définie par
+\begin{displaymath}
+ \forall a =(a_1, \cdots, a_n) \in \R^n, N(a) = \max(|a_1|, \cdots ,|a_n|).
+\end{displaymath}
+Pour cette norme, chaque $s$-cube $Q_a$ (voir la définition en \ref{Exples}\ref{Expleppal}\ref{s-cube}) est une boule fermée.
+\begin{propn}
+Soit $a =(a_1, \cdots, a_n) \in \left(\Z\frac{1}{2^s}\right)^n$ et $b=(b_1,\cdots,b_n)$ avec $b_i = a_i + \frac{1}{2^{s+1}}$ pour tous les $i\in \llbracket 1,n\rrbracket$.\newline
+La boule fermée (pour la norme $N$) de centre $b$ et de rayon $\frac{1}{2^{s+1}}$ est le $s$-cube $Q_a$.
+\end{propn}
+\begin{demo}
+ Pour tout $x =(x_1, \cdots, x_n) \in \R^n$,
+\begin{multline*}
+ N(x-b)\leq \frac{1}{2^{s+1}}
+ \Leftrightarrow
+ \forall i \in \llbracket 1, n\rrbracket, \; \left|x_i - a_i - \frac{1}{2^{s+1}} \right| \leq \frac{1}{2^{s+1}} \\
+ \Leftrightarrow
+ \forall i \in \llbracket 1, n\rrbracket, \; -\frac{1}{2^{s+1}} \leq x_i - a_i - \frac{1}{2^{s+1}} \leq \frac{1}{2^{s+1}}
+ \Leftrightarrow
+ \forall i \in \llbracket 1, n\rrbracket, \; 0 \leq x_i - a_i \leq \frac{1}{2^{s}}.
+\end{multline*}
+\end{demo}
+
+
+\subsection{Polygones plans}\label{ExplePolyg}
+Ici $X$ est le plan $\R^2$, les figures de base sont les demi-plans fermés Les intersections de familles finies de demi-plans fermés sont des parties fermées et convexes, on convient de les appeler \emph{polygones convexes fermés}. Dans ce cas, au dela de ce qu'on appelle habituellement polygone fermé; un demi espace fermé, une droite, un segment, un point ou une partie comme sur la figure sont aussi des polygones convexes fermés.
+
+On  note $\mathfrak U$ l'ensemble des polygones convexes fermés. Par définition, $\mathfrak{U}$ est stable par intersection. On note $\mathfrak{S}$ l'ensemble des unions finies de polygones convexes fermés. Le système d'ensemble $\mathfrak{S}$ est stable pour l'intersection et l'union. Avec les définitions du livre précisées dans le chapitre suivant, c'est le treillis $L(\mathfrak U)$ c'est à dire le plus petit treillis contenant $\mathfrak{U}$.\newline
+On convient d'appeler \emph{polygone fermé} un élément de $\mathfrak{S}$. On peut remarquer que $\emptyset$ et $X$ sont des polygones fermés.
+
+\paragraph{Notations}
+\label{sec:notpolygones}
+Soit $\alpha \in X^*$ une forme linéaire et $a\in \R$, notons $\{ \alpha \leq a\}$ le demi-plan formé par les $x \in X$ tels que $\alpha(x) \leq a$.
+
+
+\begin{rem} On peut remplacer $\leq$ par $\geq$.
+ \begin{displaymath}
+   \{ \alpha \geq a \} = \{ -\alpha \leq -a \}.
+ \end{displaymath}
+\end{rem}
+
+Soit $A\subset X$, $A \in \mathfrak{S}$ (c'est à dire un polygone fermé) si et seulement si il existe des familles $\alpha_{i,j}$ de formes linéaires et $a_{i,j}$ de nombres réels (avec $I$ et $J$ finis) tels que
+\begin{displaymath}
+ A = \bigcup_{i \in I} \bigcap_{j \in J}\{ \alpha_{i,j} \leq a_{i,j}\}.
+\end{displaymath}
+Un polygone fermé est défini par des inégalités larges, son complémentaire fait intervenir des inégalités strictes. Je ne pense pas que l'on puisse obtenir pour $\mathfrak{S}$ des propriétés intéressantes relatives au complémentaire. Je pense que $\mathfrak{S}$ n'est même pas un ovale au sens du livre.\newline
+En revanche on peut obtenir des propriétés intéressantes en renversant les inégalités.
+
+\begin{defi}
+ Soit $A = \bigcup_{i \in I} \bigcap_{j \in J}\{ \alpha_{i,j} \leq a_{i,j}\} \in \mathfrak{S}$. On appelle \emph{presque complémentaire} de $A$ la partie
+ \begin{displaymath}
+  A' = \bigcap_{i \in I} \bigcup_{j \in J}\{ \alpha_{i,j} \geq a_{i,j}\}.
+ \end{displaymath}
+\end{defi}
+Attention, il n'est pas clair que cette définition soit consistante car la décomposition en union de polygones fermés convexes n'est pas unique.
+\begin{defi}
+ Soit $A \in \mathfrak{S}$ un polygone fermé, on appelle \emph{bord} de $A$ le polygone fermé $A \cap A'$.
+\end{defi}
+\begin{exple}
+Le bord d'un demi plan $\{\alpha \leq a\}$ est la droite $\{\alpha = a\}$.
+\end{exple}
+\begin{lem}
+ Soit $(\alpha_1, \alpha_2, \beta)$ une famille de 3 formes linéaires dont toutes les sous-familles de 2 sont libres et $A = \{\alpha_1 \alpha_2\geq 0\}$.\newline
+ La droite $\{ \beta = 0 \}$ est incluse dans le presque complémentaire de $A$ si et seulement si le produit des coordonnées de $\beta$ dans la base $(\alpha_1, \alpha_2)$ est strictement positif.
+\end{lem}
+\begin{demo}
+L'hypothèse sur les sous-familles libres entraine que les 3 droites $\{\alpha_1 = 0\}$, $\{\alpha_2 = 0\}$, $\{\beta = 0\}$ sont distinctes. De plus $(\alpha_1, \alpha_2)$ est une base donc il existe $\lambda_1$ et $\lambda_2$ réels tels que $\beta = \lambda_1 \alpha_1 + \lambda_2 \alpha_2$. Les réels $\lambda_1$ et $\lambda_2$ sont non nuls car $(\alpha_1, \beta)$ et $(\alpha_2, \beta)$ sont libres.\newline
+Supposons $\lambda_1$ et $\lambda_2$ strictement positifs. Soit $a \in A$. Si $\alpha_1(a) \geq 0$ et $\alpha_2(a) \geq 0$ alors $\beta(a)\geq 0$. Si $a\neq(0,0)$ au moins un des $\alpha_i(a)>0$ donc $\beta(a) > 0$. De même $\alpha_1(a) \leq 0$ et $\alpha_2(a) \leq 0$ entraine $\beta(a)<0$ pour $a\neq (0,0)$. On en déduit que $\{\beta = 0\} \cap A = \{(0,0)\}$ donc $\{\beta = 0\} \subset  A'$. Si $\lambda_1$ et $\lambda_2$ sont strictement négatifs, on se ramène au cas précédent en les changeant en leur opposé ce qui ne change pas la droite. \newline
+Réciproquement, supposons $\{\beta = 0\} \subset A' = \left(\{\alpha_1 \leq 0\} \cap \{\alpha_2 \geq 0\}\right) \cup \left(\{\alpha_1 \geq 0\} \cap \{\alpha_2 \leq 0\}\right)$. Soit $b \neq (0,0)$ dans $\{\beta = 0\}$. Alors $b \in A'$ donc $\alpha_1(b) \alpha_2(b) <0$.
+\begin{displaymath}
+ \beta(b) = 0 \Rightarrow \lambda_2 = - \frac{\alpha_1(b)}{\alpha_2(b)} \lambda_1 \Rightarrow \lambda_1 \lambda_2 = - \frac{\alpha_1(b)}{\alpha_2(b)} \lambda_{1}^2 > 0.
+\end{displaymath}
+\end{demo}
+
+\begin{defi}
+Pour tout $M \in \mathfrak{S}$ définissons $c(M)$ comme le nombre de composantes connexes bornées de $M$.
+\end{defi}
+
 \end{document}
+
 
