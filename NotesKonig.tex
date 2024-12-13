@@ -1,6 +1,6 @@
 \input{courspdf.tex}
 
-\debutcours{Notes sur \emph{Measure an Integration} de König}{beta 1. 9\tiny{ le \today} }
+\debutcours{Notes sur \emph{Measure and Integration} de H. König}{beta 2.0 \tiny{ le \today} }
 
 \section{Présentation}
 \noindent Ce texte est constitué de notes de lecture sur le livre \emph{Measure and Integration} de Heinz König.
@@ -23,549 +23,32 @@ Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fo
 On notera $A'$ le complémentaire d'une partie $A \in \mathcal{P}(X)$ pour un ensemble $X$ quelconque.
 \newpage
 
-\section{Outils} \label{Outils}
-\subsection{Arithmétique}
-
-\subsection{Topologie métrique} \label{Topologie}
-L'adhérence d'une partie est l'ensemble des limites de suites convergentes d'éléments de cette partie.
-\begin{propn} \label{compactEtendu}
-Soit $K$ une partie compacte et $\delta >0$. Définissons
-\begin{displaymath}
- K(\delta) = \left\lbrace x \text{ tq } \exists a \in K \text{ tq } d(x,a)\leq \delta  \right\rbrace.
-\end{displaymath}
-Alors $K(\delta)$ est une partie compacte.
-\end{propn}
-\begin{demo}
- On doit montrer que $K(\delta)$ est bornée et fermée.\newline
- Soit $a_0$ fixé et $R$ tels que $K$ soit inclus dans la boule fermée de centre $a_0$ et de rayon $R$. Alors $K(\delta)$ est bornée car inclus dans la boule fermée de centre $a_0$ et de rayon $R + \delta$.\newline
- Soit $(x_n)$ une suite d'éléments de $K(\delta)$ qui converge vers $x$. On doit montrer que $x \in K(\delta)$.\newline
- Il existe une suite $(a_n)$ d'éléments de $K$ telle que $d(x_n,a_n)\leq \delta$. Comme $K$ est une partie compacte, on peut extraire une suite $(a_\varphi(n))$ qui converge vers $a \in K$. En passant à la limite:
- \begin{displaymath}
-  d(x_{\varphi(n)},a_{\varphi(n)})\leq \delta \Rightarrow d(x,a) \leq \delta \Rightarrow x \in K(\delta).
- \end{displaymath}
-\end{demo}
-
 \section{Exemples}\label{Exples}
-\subsection{Exemple arithmétique}
+Deux exemples sont présentés. À côté du volume dans $\R^n$ qui est l'exemple principal du livre, je présente une fonction d'ensembles sur les parties de $\Z$ définie par des procédés analogues. Pour le moment, je nomme \emph{densité arithmétique} cette fonction d'ensembles. Les deux constructions sont parallèles.
 
-\subsubsection{Résultats sur les congruences}
-\begin{propn}
-Soit $p$ et $q$ deux naturels non nul. Si une classe de congruence modulo $p$ est incluse dans une classe de congruence modulo $q$ alors $p$ est un multiple de $q$.
-\end{propn}
-\begin{demo}
- Supposons $a+\Z p \subset b + \Z q$. Pour tout $k \in \Z$, il existe $\lambda$ et $\lambda'$ dans $\Z$ tels que
-\begin{displaymath}
- \left.
-   \begin{aligned}
-    a + kp &= b + \lambda q \\
-    a + (k+1)p &= b + \lambda' q
-   \end{aligned}
-  \right\rbrace
-  \Rightarrow (\lambda' - \lambda) q = p.
-\end{displaymath}
-\end{demo}
+\subsection{Cellules de base}
 
-\begin{lem}
-  Pour tous $\alpha_1, \cdots, \alpha_p, \beta$ entiers naturels:
-  \begin{displaymath}
-    \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right) = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right).
-  \end{displaymath}
-\end{lem}
-\begin{demo}
-  Notons $T$ le terme de gauche dans l'égalité et $M$ celui de droite. Notons $\alpha_m$ le plus grand des $\alpha_i$ de sorte que $T = \min(\alpha_m, \beta)$.\newline
-  Pour tout $i$, $\min(\alpha_i, \beta) \leq \min (\alpha_m, \beta) = T$ donc $M = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right) \leq T$.\newline
-  D'autre part, $T=\min (\alpha_m, \beta)$ est l'un des $\min(\alpha_i, \beta)$ figurant dans $M$ donc $T \leq M$.
-\end{demo}
-
-\begin{propn}[distributivité du pgcd sur le ppcm]
-  Pour tous $a_1, \cdots ,a_p, b$ entiers relatifs non nuls:
-  \begin{displaymath}
-    \left(a_1 \vee \cdots \vee a_p\right)\wedge b = (a_1 \wedge b) \vee \cdots \vee (a_p \wedge b).
-  \end{displaymath}
-\end{propn}
-\begin{demo}
-  On utilise la décomposition en facteurs premiers dans $\Z$ en comparant les exposants d'un nombre premier $p$ quelconque. Notons $\alpha_1, \cdots, \alpha_p, \beta$ les exposants respectifs de $p$ dans $a_1, \cdots, a_p, b$. D'après la proposition précédente:
-  \begin{align*}
-    \text{exposant de $p$ dans } \left(a_1 \vee \cdots \vee a_p\right)\wedge b
-    = \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right)
-    = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right) \\
-    = \text{exposant de $p$ dans } (a_1 \wedge b) \vee \cdots \vee (a_p \wedge b).
-  \end{align*}
-\end{demo}
-
-\begin{propn}[Équation de Bezout]
-  Soit $m_1, m_2$ des entiers non nuls et $u\in \Z$. L'équation aux inconnues $\lambda_1, \lambda_2$
-  \begin{displaymath}
-    u = \lambda_1 m_1 - \lambda_2 m_2
-  \end{displaymath}
-  admet des solutions si et seulement si $u$ est un multiple de $m_1 \wedge m_2$ (pgcd). Dans ce cas si $(l_1, l_2)$ est un couple solution, l'ensemble des couples solutions est
-  \begin{displaymath}
-    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace .
-  \end{displaymath}
-\end{propn}
-\begin{demo}
-  L'équation admet des solutions si et seulement si $u \in \Z m_1 + \Z m_2 = \Z (m_1\wedge m_2)$. Dans ce cas, si $(l_1,l_2)$ et $(\lambda_1, \lambda_2)$ sont deux couples solutions:
-  \begin{displaymath}
-    \left.
-    \begin{aligned}
-      u &= l_1 m_1 - l_2 m_2 \\
-      u &= \lambda_1 m_1 - \lambda_2 m_2
-    \end{aligned}
-    \right\rbrace \Rightarrow (\lambda_1 - l_1)m_1 = (\lambda_2 - l_2)m_2 \Rightarrow (\lambda_1 - l_1)\frac{m_1}{m_1 \wedge m_2} = (\lambda_2 - l_2)\frac{m_2}{m_1 \wedge m_2}
-  \end{displaymath}
-en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \wedge m_2}$ sont premiers entre eux, le théorème de Gauss entraine qu'il existe $\lambda \in \Z$ tel que $\lambda_1 - l_1 = \lambda \frac{m_2}{m_1 \wedge m_2}$. En remplaçant dans la relation et simplifiant, il vient $\lambda_2 - l_2 = \lambda \frac{m_1}{m_1 \wedge m_2}$.
-\end{demo}
-
-\begin{propn}[Système de 2 congruences]
-  Soit $m_1, m_2$ des entiers non nuls et $a_1 a_2$ des entiers relatifs. Le système de congruences
-  \begin{displaymath}
-    \left\lbrace
-      \begin{align*}
-        x &\equiv a_1 \mod m_1 \\
-        x &\equiv a_2 \mod m_2
-      \end{align*}
-    \right.
-  \end{displaymath}
-  admet des solutions si et seulement si $a_1$ et $a_2$ sont congrus modulo $m_1 \wedge m_2$ (pgcd). Dans ce cas, l'ensemble des solutions est une classe de congruence modulo $m_1 \vee m_2$.
-\end{propn}
-\begin{demo}
-  Si le système admet une solution $x$, il existe $\lambda_1$ et $\lambda_2$ entiers tels que
-  \begin{displaymath}
-    \left.
-    \begin{aligned}
-      x &= a_1 + \lambda_1 m_1 \\
-      x &= a_2 + \lambda_2 m_2
-    \end{aligned}
-    \right \rbrace \Rightarrow
-    a_1 - a_2 = -\lambda_1 m_1 + \lambda_2 m_2 \in \Z (m_1 \wedge m_2).
-  \end{displaymath}
-  Supposons $a_1$ et $a_2$ congrus modulo $m_1 \wedge m_2$.
-  \begin{align*}
-        \left\lbrace
-      \begin{aligned}
-        x &\equiv a_1 \mod m_1 \\
-        x &\equiv a_2 \mod m_2
-      \end{aligned}
-    \right.
-    \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
-            \left\lbrace
-      \begin{aligned}
-        x &= a_1 + \lambda_1 m_1 \\
-        x &= a_2 + \lambda_2 m_2
-      \end{aligned}
-    \right. \\
-    \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
-            \left\lbrace
-      \begin{aligned}
-        x &= a_1 + \lambda_1 m_1 \\
-        a_2 - a_1 &= \lambda_1 m_1 - \lambda_2 m_2
-      \end{aligned}
-    \right.
-  \end{align*}
-  La deuxième relation est une équation de Bezout admettant des solutions car $m_1$ et $m_2$ sont congrus modulo le pgcd. L'ensemble des couples solutions et de la forme
-  \begin{displaymath}
-    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace
-  \end{displaymath}
-  d'après la proposition précédente sur l'équation de Bezout. En réinjectant l'expression des solutions $\lambda_1$ dans la première équation, on trouve qu'un $x$ solution est de la forme
-  \begin{displaymath}
-    x = a_1 + l_1 m_1 + \lambda \frac{m_1 m_2}{m_1 \wedge m_2} = b + \lambda (m_1 \vee m_2).
-  \end{displaymath}
-\end{demo}
-
-On peut étendre à un système de $p$ congruences en utilisant la distributivité du pgcd sur le ppcm.
-\begin{propn}[Système de congruences]\label{SystCong}
-  Soit $m_1, \cdots, m_p$ des entiers non nuls et $a_1, \cdots, a_p$ des entiers relatifs. Le système de congruences
-  \begin{displaymath}
-    \left\lbrace
-      \begin{align*}
-        x &\equiv a_1 \mod m_1 \\
-          &\vdots \\
-        x &\equiv a_p \mod m_p
-      \end{align*}
-    \right.
-  \end{displaymath}
-  admet des solutions si et seulement si $a_i \equiv a_j$ modulo $m_i \wedge m_j$ pour tous les couples $(i,j)$ avec $i \neq j$. Dans ce cas, l'ensemble des solutions est une classe de congruence modulo $m_1 \vee \cdots \vee m_p$ (ppcm des $m_i$).
-\end{propn}
-\begin{demo}
-  \begin{enumerate}
-    \item Il est évident que la condition d'existence de solutions est nécessaire car elle correspond à l'existence de solutions pour tous les sous-systèmes de 2 congruences. On peut remarquer que si un système vérifie la condition tous ses sous-systèmes la vérifient aussi.
-    \item Si l'ensemble $S$ des solutions est non vide avec $x \in S$ et $y$ congrus à $x$ modulo $m_1 \vee \cdots \vee m_p$ alors pour chaque $i$, $y \equiv x \equiv a_i$ modulo $m_i$ donc $x + \Z (m_1 \vee \cdots \vee m_p) \subset S$.\newline
-    Réciproquement, $y \in S$ entraine que $y-x = y-a_i + a_i - x$ est divisible par $m_i$ pour tous les $i$ donc $y \in x + \Z (m_1 \vee \cdots \vee m_p)$. Ceci prouve que s'il est non vide, l'ensemble des solutions est une classe de congruence modulo le ppcm des $m_i$.
-    \item Montrons par récurrence que la condition  énoncée assure l'existence de solutions. Le cas $p=2$ est traité par la proposition sur les systèmes de 2 congruences.\newline
-    Pour le passage de $p$ à $p+1$, considérons un système de $p+1$ congruences vérifiant $a_i \equiv a_j$ modulo $m_i \wedge m_j$ pour tous les couples $(i,j)\in \llbracket 1,  p+1\rrbracket ^2$ avec $i \neq j$.\newline
-    Le sous-système formé par les $p$ premières congruences vérifie la condition d'existence de solutions. Par hypothèse de récurrence, il existe $b$ tel que
-  \begin{displaymath}
-        \left\lbrace
-      \begin{align*}
-        x &\equiv a_1 \mod m_1 \\
-          &\vdots \\
-        x &\equiv a_{p+1} \mod m_{p+1}
-      \end{align*}
-    \right.
-    \Leftrightarrow
-    \left\lbrace
-      \begin{align*}
-        x &\equiv b \mod m_1 \vee \cdots \vee m_p \\
-        x &\equiv a_{p+1} \mod m_{p+1}
-      \end{align*}
-    \right. .
-  \end{displaymath}
-  Ce système de 2 congruences admet-il des solutions?
-  \begin{displaymath}
-    a_{p+1} - b = (a_{p+1} - a_i) + (a_i - b) \in \Z (m_{p+1} \wedge m_i ) + \Z m_i \subset \Z (m_{p+1} \wedge m_i )
-  \end{displaymath}
-  pour tous les $i \in \llbracket 1, p \rrbracket$. On en déduit que $a_{p+1} - b$ est divisible par
-  \begin{displaymath}
-    (m_1 \wedge m_{p+1}) \vee \cdots \vee (m_1 \wedge m_{p+1}) =  (m_1 \vee \cdots \vee m_p) \wedge m_{p+1}
-  \end{displaymath}
-  qui est la condition assurant que le système de 2 congruences admet des solutions.
-  \end{enumerate}
-\end{demo}
-
-\subsubsection{Unions de classes de congruences} \label{ExpleZ}
-Ici $X = \Z$. \index{Exemple arithmétique}
-L'ensembles des unions finies de classes de congruence défini au dessous sera désigné dans tout le document par \og Exemple arithmétique\fg.
-
-\begin{defi}
-On désigne par $\mathfrak{U}$ l'ensemble des classes de congruences modulo un naturel non nul et par $\mathfrak{S}$ l'ensemble des unions finies d'éléments de $\mathfrak{U}$. On impose aussi $\emptyset \in \mathfrak{S}$.\newline
-  Soit $A \subset \Z$,
-  \begin{align*}
- A \in \mathfrak{U}  &\Leftrightarrow \exists m\in \N^*,\, \exists a \in \llbracket 0, m \llbracket \text{ tq } A = a + \Z m \\
- A\in \mathfrak{S} &\Leftrightarrow \exists (m_1,\cdots,m_p) \in (\N^*)^p, \exists (a_1,\cdots,a_p)\in \llbracket 0,m_1\llbracket \times \dots \times \llbracket 0,m_p\llbracket \text{ tq }\;
- A = \bigcup_{i=1}^{p}(a_i + \Z m_i)
-  \end{align*}
-\end{defi}
-
-\begin{rems}
-\begin{enumerate}
-  \item Par définition, $\mathfrak{S}$ est stable pour $\cup$.
-
-  \item  Aucun singleton n'est dans $\mathfrak{U}$ car les modulos sont non nuls. $\Z \in \mathfrak{S}$ car c'est la classe de $0$ modulo $1$.
-
-  \item Le complémentaire d'une classe de congruence est une union finie de classes de congruences.\newline
-En effet, soit $m \in \N^*$ et $a\in \llbracket 0, m \llbracket$
-\begin{displaymath}
-  x \not \equiv a \mod m \Leftrightarrow \exists b \in \llbracket 0, m \llbracket \setminus\{a\} \text{ tq } x \equiv b \mod m
-\end{displaymath}
-Autrement dit
-\begin{displaymath}
-  \left(a + \Z m\right)' = \bigcup_{b \in \llbracket 0, m \llbracket \setminus\{a\}}\left(b + \Z m\right) \in \mathfrak{S}
-\end{displaymath}
-
-  \item Une intersection de classes de congruences correspond à un système:
-\begin{displaymath}
-  x \in \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right) \Leftrightarrow
-  \left\lbrace
-    \begin{align*}
-      x &\equiv a_1 \mod m_1 \\
-      &\vdots \\
-      x &\equiv a_p \mod m_p
-    \end{align*}
-  \right.
-\end{displaymath}
-D'après la proposition \ref{SystCong}, le système admet des solutions si et seulement si $a_i$ congru à $a_j$ modulo $m_i\wedge m_j$ pour tous les couples $(i,j)$ avec $i \neq j$. Dans ce cas l'intersection est la classe d'un certain $b$ modulo le ppcm des $m_i$.
-\begin{displaymath}
-  \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right) = \left( b + \Z (a_1 \vee \cdots \vee a_p) \right) \in \mathfrak{S}.
-\end{displaymath}
-
-  \item Pour que l'intersection de deux classes soit toujours dans $\mathfrak{S}$, on impose par définition $\emptyset \in \mathfrak{S}$.
-
-  \item $\mathfrak{S}$ est stable par complémentation. En effet:
-\begin{multline*}
-  A = \bigcup_{i=1}^{p}\left(a_i + \Z m_i\right) \Rightarrow A' = \bigcap_{i=1}^{p}\left(a_i + \Z m_i\right)'
-  = \bigcap_{i=1}^{p} \bigcup_{b \in \llbracket 0, m_i\llbracket \setminus\{a_i\}}\left(b + \Z m_i\right)\\
-  = \bigcup_{(b_1,\cdots,b_p) \in \left(\llbracket 0, m_1\llbracket \setminus\{a_1\}\right) \times \cdots \times \left(\llbracket 0, m_p\llbracket \setminus\{a_p\}\right)} \underbrace{\bigcap_{i=1}^p \left( b_i + \Z m_i\right)}_{\in \mathfrak{S} \text{ d'après 4}} \in \mathfrak{S} .
-\end{multline*}
-
-  \item $\mathfrak{S}$ est stable par intersection car il est stable par union et par complémentation.
-
-\end{enumerate}
-\end{rems}
-
-Avec le vocabulaire du livre on formule la propriété suivante.
-\begin{prop}
-  $\mathfrak{S}$ est une algèbre qui contient $\emptyset$ et $X=\Z$.
-\end{prop}
-
-\subsubsection{Nouvelle caractérisation}
-Soit $X \subset \Z$, considérons l'ensemble $I_X$ des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$.
-\begin{rems}
-  \begin{enumerate}
-    \item $I_X$ est un sous-groupe additif de $\Z$.
-    \item Il existe un unique $\mu_X \in \N$ tel que $I_X = \Z \mu_X$. Pour tout $x\in X$, $x + \Z \mu_X \in X$.
-    \item $\mu_X = 1$ si et seulement si $X=\Z$.
-    \item Si $X = a + \Z m$ avec $m \geq 1$, $\mu_X = m$.
-    \item On suppose $\mu_X > 1$. Pour tout $x \in X$, $x + \Z \mu_X \subset X$.
-    \item On suppose $\mu_X > 1$. En notant $A  = \llbracket 0 , \mu_X \llbracket \, \cap \, X$,
-\begin{displaymath}
-  X = \bigcup_{a \in A}\left(a + \Z \mu_X\right).
-\end{displaymath}
-  \end{enumerate}
-\end{rems}
-
-\begin{demo}
-  \begin{enumerate}
-    \item $0\in I_X$.\newline
-    Soit $\mu \in I_X$.\newline
-      Pour tout $y \in X-\mu$, il existe $x \in X$ tel que $y=x-\mu$. Comme $X \subset X + \mu$, il existe $x'\in X$ tel que
-$x = x' + \mu$. Donc $y = x - \mu =x'\in X$. Ceci montre $X - \mu \subset X$.\newline
-      Pour tout $x \in X$, $x = (x + \mu) - \mu$ avec $x + \mu \in X + \mu \subset X$donc $x \in X - \mu$. Ceci montre $X \subset X - \mu$.
-    \item La division euclidienne montre que les sous-groupes additifs de $\Z$ sont de cette forme.
-    \item C'est le principe même du raisonnement par récurrence.
-    \item Par définition de $X$, $m \in I_X$ donc $\mu_X$ divise $m$. Comme $\mu_X \in I_X$, $x + \mu_x \in X = x +\Z m$ donc $m$ divise $\mu_X$.
-    \item Conséquence immédiate de la définition de $\mu_X$.
-    \item On déduit de 5 que $\bigcup_{a \in A}\left(a + \Z \mu_X\right) \subset X$. Réciproquement, soit $x\in X$, il existe un $a$ dans $\llbracket 0, \mu_X \llbracket$ congru à $x$ modulo $\mu_x$. Il est encore dans $X$ d'après 5 ce qui prouve l'inclusion réciproque.
-  \end{enumerate}
-\end{demo}
-On en déduit une nouvelle caractérisation de l'ensemble $\mathfrak{S}$ introduit dans les paragraphes précédents.
-\begin{propn}
-  Soit $X$ une partie $\Z$, les deux propriétés suivantes sont équivalentes.
-\begin{enumerate}
-  \item $X \in \mathfrak{S}$ c'est à dire est une réunion finie de classes de congruences.
-  \item $\mu_X \geq 1$.
-\end{enumerate}
-Si $X$ vérifie cette condition, $X = \bigcup_{a \in A}\left(a + \Z \mu_X\right)$  avec $A  = \llbracket 0 , \mu_X \llbracket \,\cap \, X$.
-\end{propn}
-\begin{demo}
-  Les remarques précédentes montrent que (2) entraine (1). Réciproquement, si $X$ est une union finie de classes de congruences, le ppcm des modulos de ces classes est un élément non nul de $I_X$. L'expression de $X$ est une reformulation de la remarque 6.
-\end{demo}
-\begin{propn}
-  Soit $X \in \mathfrak{S}$, $n \in I_X$, $\pi_n$ la projection canonique $\Z \rightarrow \Z / n\Z$ et $A = \pi_n(X)$: alors $X = \pi_n^{-1}(A)$.
-\end{propn}
-\begin{demo}
-  Il s'agit seulement de reformuler la proposition précédente en termes de projection canonique.
-\end{demo}
-
-\begin{propn} \label{muInfK}
- Soit $K$ naturel non nul et $S \in \mathfrak{S}$ non vide.
- \begin{displaymath}
-  \mu_S \leq K \Rightarrow S \cap \llbracket 0, K \rrbracket \neq \emptyset.
- \end{displaymath}
-\end{propn}
-\begin{demo}
-Par définition de $\mu_S$, $S$ contient au moins une classe modulo $\mu_S$. Cette classe coupe $\llbracket 0, \mu_S -1 \rrbracket \subset \llbracket 0, K \rrbracket$.
-\end{demo}
-
-Les stabilités définissant la notion d'algèbre s'éclairent.
-\begin{propn}
-  Pour tous $X$ et $Y$ dans $\mathfrak{S}$:
-\begin{align*}
-  X \cup Y \in \mathfrak{S} &\text{ avec } \mu_{X\cup Y} \,\mathrm{ divise } \, \mu_X \vee \mu_Y  \\
-  X \cap Y \in \mathfrak{S} &\text{ avec } \mu_{X\cap Y} \,\mathrm{ divise } \,  \mu_X \vee \mu_Y \\
-  X' \in \mathfrak{S} &\text{ avec } \mu_{X'} = \mu_X
-\end{align*}
-\end{propn}
-\begin{demo}
-  \begin{enumerate}
-    \item On vérifie facilement que $(X+\mu) \cup (Y+\mu) = (X\cup Y) + \mu$ et $(X+\mu) \cap (Y+\mu) = (X\cap Y) + \mu$. On en déduit $I_X \cap I_Y \subset I_{X\cup Y}$ et $I_X \cap I_Y \subset I_{X\cap Y}$ puis $\mu_{X\cup Y}$ et $\mu_{X\cap Y}$ divisent $\mu_X \vee \mu_Y$.\newline
-    D'autre part une classe de congruence modulo $m$ se décompose en union de classes modulo n'importe quel multiple de $m$. Donc $X$ et $Y$ se décomposent en classes modulo $\mu_X \vee \mu_Y$. On en déduit que $X\cup Y$ et $X\cap Y$ se décomposent aussi en classes modulo $\mu_X \vee \mu_Y$. Donc $\mu_X \vee \mu_Y$ est dans $I_{Y\cup Y}$ donc $\mu_{X\cup Y}$ divise $\mu_X \vee \mu_Y$.
-    \item Vérifier $(X + \mu)' = X' + \mu$. On en déduit
-\begin{displaymath}
-  X + \mu = X \Leftrightarrow (X+ \mu)' = X' \Leftrightarrow X' + \mu = X'.
-\end{displaymath}
-On en déduit $I_{X'} = I_X$.
-  \end{enumerate}
-\end{demo}
-\begin{rem}
- Lorsque $X$ et $Y$ sont complémentaires, $\mu_X = \mu_Y$ mais $\mu_{X\cup Y} = 1$. On voit bien qu'en général, la première divisibilité n'est pas une égalité.
-\end{rem}
-
-\subsubsection{Fonction d'ensembles}
-Quand on cherche à probabiliser $\Z$, on peut considèrer, pour $m$ non nul donné les classes modulo $m$. Considérons une expérience aléatoire consistant à tirer au hasard un entier et à former son reste modulo $m$. Les évènements élémentaires sont les classes modulo $m$. La probabilité d'un tel évènement est $\frac{1}{m}$.
-
-On définit donc naturellement une fonction \og probabilité\fg \, $\varphi$ sur $\mathfrak{U}$ par
-\begin{displaymath}
-  \varphi(\emptyset) = 0, \;\varphi(a + \Z m) = \frac{1}{m}.
-\end{displaymath}
-
-Dans un univers probablisé, la fonction probabilité définie sur l'ensemble des évènements est modulaire au sens introduit par l'ouvrage.
-\begin{defi}[fonction modulaire]\index{fonction modulaire}
-  On dit qu'une fonction $\varphi$ définie dans $\mathfrak{S}$ est modulaire si et seulement si
-  \begin{displaymath}
-    \forall (A,B)\in \mathfrak{S}^2,\; \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
-  \end{displaymath}
-\end{defi}
-\begin{rem}
-  Lorsque les éléments de $\mathfrak{S}$ sont des ensembles finis, la fonction \og nombre d'éléments \fg \, est modulaire.
-\end{rem}
-
-\noindent Peut-on étendre de manière consistante $\varphi$ à une fonction \emph{modulaire} sur l'ensemble $\mathfrak{S}$ des unions finies de classes de congruences?\newline
-Je donne plus loin une telle définition qui rend évidentes les remarques qui suivent. Je les ai conservés car elles m'ont encouragé à creuser cet exemple.
-\begin{enumerate}
-  \item Par définition $\varphi(\Z) = 1$.
-  \item Dans le cas d'une famille finie de classes disjointes, l'image de l'union doit être la somme des images.
-  \item Si $\varphi(A)$ est défini et $A'$ son complémentaire on doit avoir $\varphi(A') + \varphi(A) = 1$.
-  \item Avec les conventions précédentes, pour $A = \left(a + \Z p\right)$, $B = \left(b + \Z q\right)$, montrons que
-  \begin{displaymath}
-    \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
-  \end{displaymath}
-  En effet :
-  \begin{displaymath}
-    \varphi(A) = \frac{1}{p} \hspace{0.5cm}
-    \varphi(B) = \frac{1}{q} \hspace{0.5cm}
-    \varphi(A \cap B) =
-    \left\lbrace
-      \begin{aligned}
-        0 &\text{ si } a \not \equiv b \mod p\wedge q\\
-        \frac{1}{p\vee q} &\text{ si } a \equiv b \mod p\wedge q
-      \end{aligned}
-    \right.
-  \end{displaymath}
-  La formule est vérifiée si $A\cap B = \emptyset$. Dans l'autre cas, considérons $(A\cup B)'$ et la propriété 3 pour prouver la formule.
-\begin{multline*}
-  (A \cup B)' = A' \cap B'
-  =     \left( \bigcup_{a'\in \llbracket 0, p\llbracket \setminus\{a\} } \left(a' + p\Z\right)\right)
-   \cap \left( \bigcup_{b'\in \llbracket 0, q\llbracket \setminus\{b\} } \left(b' + p\Z\right)\right) \\
-  = \bigcup_{(a',b')\in (\llbracket 0, p\llbracket \setminus\{a\}) \times (\llbracket 0, q\llbracket \setminus\{b\})} \left(a' + p\Z\right)\cap \left(b' + q\Z\right)
-\end{multline*}
-Chaque intersection est l'ensemble des solutions d'un système de 2 congruences c'est à dire le vide ou une classe modulo $p\vee q$.\newline
-Si on oublie les conditions $a'\not \equiv a \mod p$ et $b'\not \equiv b \mod q$, parmi les $pq$ couples $(a',b')\in \llbracket 0,p\llbracket \times \llbracket 0,q\llbracket$, combien vérifient $a' \equiv b' \mod p \wedge q$ ? \newline
-Pour chaque $a'$ fixé, $b'$ doit être dans la classe de $a'$ modulo $p\wedge q$. Dans $\llbracket 0, q \llbracket$, cette classe contient $\frac{q}{p \wedge q}$ entiers. Le nombre total de couples possibles est donc
-\begin{displaymath}
-  \frac{pq}{p \wedge q}.
-\end{displaymath}
-Combien de couples doit-on enlever à ce nombre?\newline
-Pour $a' = a$, il faut enlever les $\frac{q}{p \wedge q}$ éléments de la classe de $a$ modulo $p \wedge q$ dans $\llbracket 0, q\llbracket$. Parmi ceux là se trouve $(a,b)$ car $a \equiv b \mod p\wedge q$. De même pour $b' = b$, il faut enlever $\frac{p}{p \wedge q}-1$ couples (avec -1 pour ne pas compter deux fois $(a,b)$).\newline
-Finalement, le nombre de couples $(a',b')$ contribuant réellement à la grande union est
-
-\begin{displaymath}
-  \frac{pq}{p \wedge q} - \frac{q}{p \wedge q} - \frac{p}{p \wedge q} + 1 = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right).
-\end{displaymath}
-Avec la convention 3, on obtient
-\begin{multline*}
-  \varphi((A \cup B)') = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right) \frac{1}{p \vee q}\\
-  \Rightarrow
-  \varphi(A \cup B) = 1 - \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right) \frac{1}{p \vee q}.
-\end{multline*}
-En distribuant avec $(p \wedge q)(p \vee q) = pq$, il vient
-\begin{displaymath}
-  \varphi(A \cup B) = 1 - 1 + \frac{1}{p} + \frac{1}{q} - \frac{1}{p \vee q} = \varphi(A) + \varphi(B) - \varphi(A\cap B).
-\end{displaymath}
-\end{enumerate}
-
-La définition commode de $\varphi$ utilise la nouvelle caractérisation des éléments de $\mathfrak{S}$.\newline
-Soit $X \subset \Z$, $I_X$ est l'ensemble des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$. Il existe $\mu_X \in \N$ tel que $I_X = \Z \mu_X$.
-\begin{displaymath}
-  X \in \mathfrak{S} \Leftrightarrow \mu_X \leq 1 .
-\end{displaymath}
-
-\begin{lem}
-  Soit $X\in \mathfrak{S}$ et $m=\mu_X$. Pour tout $n\in I_X$,
-  \begin{displaymath}
-      \frac{\sharp \pi_n(X)}{n} = \frac{\sharp \pi_m(X)}{m}.
-  \end{displaymath}
-\end{lem}
-\begin{demo}
-  En fait $n = pm$ avec $p$ entier car $n \in I_X = \Z m$. Chaque classe modulo $n$ est la réunion de $p$ classes disjointes modulo $m$.
-  \begin{displaymath}
-    \frac{\sharp \pi_n(X)}{n} = \frac{p \, \sharp \pi_m(X)}{ p m} = \frac{\sharp \pi_m(X)}{m}.
-  \end{displaymath}
-\end{demo}
-\begin{defi}\label{defPhi}
-  On définit une fonction $\varphi$ dans $\mathfrak{S}$ par:
-  \begin{displaymath}
-    \forall X \in \mathfrak{S}, \; \varphi(X) = \frac{\sharp \pi_n(X)}{n}
-  \end{displaymath}
-pour n'importe quel $n\in I_X$.
-\end{defi}
-\begin{prop}
-  La fonction $\varphi$ est modulaire, $\varphi(a + \Z m) = \frac{1}{m}$.
-\end{prop}
-\begin{demo}
-  Soit $A$ et $B$ dans $\mathfrak{S}$. Le ppcm $m = \mu_A \vee \mu_B$ est dans $I_A, I_B, I_{A\cup B}, I_{A\cap B}$. En l'utilisant pour exprimer les valeurs de $\varphi$, on est ramené à la modularité de la fonction nombre d'éléments.\newline
-  Si $A= a + \Z m$, $m \in I_A$ et $\pi_m(A)$ est un singleton.
-\end{demo}
-
-\subsubsection{Suites de parties}\label{ExplesSuitesCongru}
-Proposons divers exemples de suites de parties dans $\mathfrak{S}$.
-
-\textbf{Exemple 1.}\newline
-Soit  $(m_n)_{n\geq 1}$ une suite d'entiers naturels tels que $m_n < m_{n+1}$ avec $m_n$ divise $m_{n+1}$.\newline
-Notons $S_n = m_n \Z$ l'ensemble des multiples de $m_n$ et $T_n$ son complémentaire c'est à dire l'ensemble des entiers non divisibles par $m_n$.
- \begin{itemize}
-  \item Pour tout $n$, $S_n$ et $T_n$ appartiennent à $\in \mathfrak{S}$ avec $\varphi(S_n)=\frac{1}{m_n}$ et $\varphi(T_n)=\frac{m_n-1}{m_n}$.
-  \item La suite $(S_n)$ est décroissante et la suite $(T_n)$ est croissante. En effet, comme $m_n$ divise $m_{n+1}$, tout multiple de $m_{n+1}$ est un multiple de $m_{n}$ donc $S_{n+1} \subset S_{n}$ et $T_n \subset T_{n+1}$.
-  \item $(m_n) \rightarrow + \infty$, $(\varphi(S_n)) \rightarrow 0$ , $(\varphi(T_n)) \rightarrow 1$. Évident.
-  \item $\Z^* = \bigcup_{n\geq 1} T_n$, $\left\lbrace 0 \right\rbrace = \bigcap_{n\geq 1} S_n$. En effet, pour tout entier $k$ non nul, il existe un $n$ tel que $|k| < m_n$ donc $m_n$ ne divise pas $k$ c'est à dire $k \in S_n$.
- \end{itemize}
-
-\textbf{Exemple 2.}\newline
-Soit  $A$ une partie finie de $\Z$ et $(m_n)_{n\geq 1}$ une suite d'entiers naturels tels que $m_n < m_{n+1}$ avec $m_n$ divise $m_{n+1}$.\newline
-Notons $S_n = \bigcup_{a \in A} \left(a + m_n \Z\right)$.
- \begin{itemize}
-  \item Pour tout $n$, $S_n\in \mathfrak{S}$ avec $A \in S_n$ et $\varphi(S_n)=\frac{\sharp A }{m_n}$.
-  \item La suite $(S_n)$ est décroissante. En effet, comme $m_n$ divise $m_{n+1}$, $a + m_{n+1}\Z \subset a + m_{n}\Z$.
-  \item $(m_n) \rightarrow + \infty$, $(\varphi(S_n)) \rightarrow 0$ . Évident.
-  \item $A = \bigcap_{n\geq 1} S_n$. En effet, pour tout entier $k \notin A$, il existe un $n$ tel que $|k -a| < m_n$ pour tous les $a\in A$ donc $k \notin S_n$.
- \end{itemize}
-
-\textbf{Exemple 3.}\newline \label{SuiteCroissAAquelc}
-Soit $A = \left\lbrace a_n, n \in\N\right\rbrace$ une partie quelconque de $\Z$ (elle est forcément dénombrable) et $p$ naturel fixé. Pour tout $n \in \N$, posons $S_n = \bigcup_{k =0}^n \left(a_k + 2^{k+p} \Z\right)$.
- \begin{itemize}
-  \item Pour tout $n$, $S_n\in \mathfrak{S}$ avec
-  \begin{displaymath}
-    \varphi(S_n)\leq \frac{1}{2^p} + \frac{1}{2^{p+1}} + \cdots + \frac{1}{2^{p+2}} \leq 2^{1-p}.
-  \end{displaymath}
-  \item La suite $(S_n)$ est croissante avec $A \subset \bigcup_{n\in \N}S_n$.
- \end{itemize}
-
-\textbf{Exemple 4.} \newline \label{SuiteIntevide}
-On repart de l'exemple précédent avec $A=\Z$, notons $S_n'$ le complémentaire de $S_n$.
- \begin{itemize}
-  \item Pour tout $n$, $S_n'\in \mathfrak{S}$ avec $\varphi(S_n')\geq 1- 2^{1-p}$.
-  \item La suite $(S_n')$ est décroissante avec $\emptyset = \bigcup_{n\in \N}S_n$ et $\lim (S_n')\geq 1- 2^{1-p}$.
- \end{itemize}
-
- \textbf{Exemple 5.} \newline \label{SuiteCroissA}
-On repart encore de l'exemple 3 avec $A \in \mathfrak{S}$. Il existe un entier naturel $\mu$ tel que $A$ soit une union disjointe de classes modulo $\mu$. Pour tout $n \in \N$, posons $S_n = \bigcup_{k =0}^n \left(a_k + \mu^{k+p} \Z\right)$.
- \begin{itemize}
-  \item Pour tout $n$, $S_n\in \mathfrak{S}$ avec $S_n \subset A$. En effet $a_k \in A$ et $\mu^{n+k}$ est un multiple de $\mu$ donc $\left(a_k + \mu^{k+p} \Z\right)$ est inclus dans la classe de $a_k$ modulo $\mu$ donc dans $A$.
-  \item Pour tout $n$, $\varphi(S_n)\leq \mu^{1-p}$.
-  \item La suite $(S_n)$ est croissante avec $A = \bigcup_{n\in \N}S_n$ et $\lim (S_n)\leq \mu^{1-p}$.
- \end{itemize}
-
-
-\subsection{Exemple principal: volume dans $\R^n$.}\label{Expleppal}
-Voir page 19.
-Soit $n\geq 1$ fixé. On se place dans $X = \R^n$.
-
-\subsubsection{Union de cubes dyadiques}
+\subsubsection{Cubes dyadiques}
+Dans cet exemple qui est l'exemple fondamental du livre, $X=\R^n$.
 \begin{defi}[s-cube]\index{s-cube}\label{s-cube}
-Pour tout naturel non nul $s$, on appelle $s$-cube un cube fermé de côté $\frac{1}{2^s}$ et de sommets à coordonnées dans $\frac{1}{2^s}\Z$.\newline
+Pour tout naturel non nul $s$, on appelle $s$-cube un cube fermé de côté $\frac{1}{2^s}$ et de sommets à coordonnées dans $\frac{1}{2^s}\Z^n$.\newline
 Par exemple, pour $a = (a_1, \cdots, a_n) \in \frac{1}{2^s}\Z^n$, on définit le $s$-cube $Q_a$ par
 \begin{displaymath}
  \forall x = (x_1, \cdots, x_n) \in X, \; x \in Q_a  \Leftrightarrow \forall i \in \llbracket 1,n \rrbracket,\; a_i \leq x_i \leq a_i + \frac{1}{2^s}.
 \end{displaymath}
-On note $\mathfrak{M}_s$ l'ensemble des $s$-cubes, $\mathfrak{S}_s$ l'ensemble des unions finies de $s$-cubes et $\mathfrak{S} = \bigcup_{s\in \N} \mathfrak{S}_s$.
+On note $\mathfrak{C}_s$ l'ensemble des $s$-cubes, $\mathfrak{S}_s$ l'ensemble des unions finies de $s$-cubes et $\mathfrak{S} = \bigcup_{s\in \N} \mathfrak{S}_s$.
 \end{defi}
 
 \begin{rems}
  \begin{enumerate}
-  \item Un $0$-cube est un cube de côté $1$ et de sommets à coordonnées entières.  Pour tout $s$-cube $Q$, il existe un unique $a\in \frac{1}{2^s}\Z$. De plus $X = \R^n = \bigcup_{a\in \frac{1}{2^s}\Z}Q_a$.
-  \item La décomposition d'un élément de $\mathfrak{M_s}$ comme union de $s$-cubes est unique. En particulier chaque $s$-cube est la réunion de $2^n$ cubes dans $\mathfrak{S}_{s+1}$. On en déduit que $\mathfrak{S}_s \subset \mathfrak{S}_{s+1}$.
-  \item Le système d'ensembles $\mathfrak{S}$ est stable pour l'union mais pas pour l'intersection ni la soustraction. Par exemple en dimension $n=3$, l'intersection de 2 cubes qui se touchent est une face, une arête ou un sommet.\newline
-  Pour $A$ et $B$ dans $\mathfrak{S}$, il existe $s\in \N$ tels que $A$ et $B$ soient des unions d'ensembles $\mathfrak{A}$, $\mathfrak{B}$ de $s$-cubes alors:
-    \begin{displaymath}
-      \left.
-      \begin{aligned}
-        A = \bigcup_{Q\in \mathfrak{A}} Q \\
-        B = \bigcup_{Q\in \mathfrak{B}} Q,
-      \end{aligned}
-      \right \rbrace
-      \Rightarrow
-      \left\lbrace
-      \begin{aligned}
-        A\cup B = \bigcup_{Q\in \mathfrak{A}\cup\mathfrak{B}} Q \\
-        \mathrm{adherence}(A\cap B) = \bigcup_{Q\in \mathfrak{A}\cap\mathfrak{B}} Q \\
-        \mathrm{adherence}(A\setminus B) = \bigcup_{Q\in \mathfrak{A}\setminus\mathfrak{B}} Q
-      \end{aligned}
-      \right. .
-    \end{displaymath}
-   \item On pourrait récupérer la stablité pour l'intersection et la soustraction en considérant des cubes ouverts au lieu de fermés mais alors aucun point à coordonnées dans $\frac{1}{2^s}\Z$ ne serait dans un $s$-cube et on perdrait $\mathfrak{S}_{s+1} \subset \mathfrak{S}_s$.
+  \item Un $0$-cube est un cube de côté $1$ et de sommets à coordonnées entières.  Pour tout $s$-cube $Q$, il existe un unique $a\in \frac{1}{2^s}\Z^n$ tel que $Q=Q_a$. De plus $X = \R^n = \bigcup_{a\in \frac{1}{2^s}\Z}Q_a = \bigcup_{Q\in \mathfrak{C}_s}Q$.
+  \item La décomposition d'un élément de $\mathfrak{M}_s$ comme union de $s$-cubes est unique. En particulier chaque $s$-cube est une réunion de $(s+1)$-cubes (au nombre de $2^n$ ). On en déduit que $\mathfrak{C}_s \subset \mathfrak{S}_{s+1}$ donc $\mathfrak{S}_s \subset \mathfrak{S}_{s+1}$.
+  \item Le système d'ensembles $\mathfrak{S}$ est stable pour l'union mais pas pour l'intersection ni la soustraction. Par exemple en dimension $n=3$, l'intersection de 2 cubes qui se touchent est une face, une arête ou un sommet.
+  \item On pourrait récupérer la stablité pour l'intersection et la soustraction en considérant des cubes ouverts au lieu de fermés mais alors aucun point à coordonnées dans $\frac{1}{2^s}\Z^n$ ne serait dans un $s$-cube et on perdrait $\mathfrak{S}_s \subset \mathfrak{S}_{s+1}$.
  \end{enumerate}
 \end{rems}
 
-On définit le volume dans $\mathfrak{S}$ à partir du cube unité, de l'invariance par translation, du caractère modulaire du volume comme fonction d'ensemble et de l'unique décomposition .
+On définit le volume dans $\mathfrak{S}$ à partir du cube unité, de l'invariance par translation, de l'additivité et de l'unique décomposition.
 \begin{itemize}
  \item Le volume du cube unité dans $\mathfrak{S}_0$ est 1.
  \item Par translation, tous les $s$-cubes ont le même volume.
@@ -585,15 +68,115 @@ Soit $A \in \mathfrak{S}$, il existe $s\in \N$ et un ensemble fini $\mathfrak{A}
  \end{displaymath}
 \end{demo}
 \begin{propn}
- La fonction d'ensembles $\lambda$ (volume) définie de $\mathfrak{S}$ dans $[0,+\infty[$ est isotone (croissante) et additive.
+ La fonction d'ensembles $\lambda$ (volume) définie de $\mathfrak{S}$ dans $[0,+\infty[$ est isotone (croissante).
 \end{propn}
 \begin{demo}
- C'est une conséquence de la définition à partir du nombre de $s$-cubes dans une décomosition.
+ C'est une conséquence de la définition à partir du nombre de $s$-cubes dans une décomposition.
 \end{demo}
-Elle n'est pas modulaire à cause de la non stabilité pour l'intersection.
+Elle n'est pas modulaire ou additive à cause de la non stabilité pour l'intersection.
+
+\subsubsection{Classes de congruences}
+Ici $X = \Z$. \index{Exemple arithmétique}
+L'ensemble des unions finies de classes de congruence défini au dessous sera désigné dans tout le document par \og Exemple arithmétique\fg.
+
+\begin{defi}
+On désigne par $\mathfrak{C}_m \subset \mathcal{P}(\Z)$ l'ensemble des classes de congruences modulo un naturel non nul $m$, par $\mathfrak{S}_m$ l'ensemble des unions de classes modulo $m$, par $\mathfrak{C} = \bigcup_{m \in \N^*}\mathfrak{C}_m$ l'ensemble des classes de congruences et par $\mathfrak{S}$ l'ensemble des unions finies d'éléments de $\mathfrak{C}$.
+\end{defi}
+\begin{rems}
+ \begin{itemize}
+  \item Soit $A \subset \Z$,
+  \begin{align*}
+ A \in \mathfrak{C}  &\Leftrightarrow \exists m\in \N^*,\, \exists a \in \llbracket 0, m \llbracket \text{ tq } A = a + \Z m \\
+ A\in \mathfrak{S} &\Leftrightarrow \exists (m_1,\cdots,m_p) \in (\N^*)^p, \exists (a_1,\cdots,a_p)\in \llbracket 0,m_1\llbracket \times \dots \times \llbracket 0,m_p\llbracket \text{ tq }\;
+ A = \bigcup_{i=1}^{p}(a_i + \Z m_i)
+  \end{align*}
+    \item Les ensembles $\mathfrak{C}_m$ et $\mathfrak{S}_m$ sont finis avec $\sharp \mathfrak{C}_m = m, \; \sharp \mathfrak{S}_m = 2^m$.
+  \end{itemize}
+\end{rems}
+
+\begin{propn} \label{décompoClasse}
+ Soit $m\in \N^*$ diviseur de $p\in \N^*$ avec $p=qm$.\newline
+ Pour tout $a\in \Z$, $a + p\Z \subset a + m\Z$. Chaque classe modulo $m$ se décompose en $q$ classes modulo $p$.
+ \begin{displaymath}
+  \left( \forall A\in \mathfrak{C}_m, \;  A = \bigcup_{C \in \mathfrak{C}_p,\, C\subset A} C \right) \Rightarrow \mathfrak{C}_m \subset \mathfrak{S}_p.
+ \end{displaymath}
+\end{propn}
+\begin{demo}
+ $a + p \Z = a + qm\Z \subset a + m\Z$. Pour tout $x \in  a + m\Z = A \in \mathfrak{C}_m$, il existe $k \in \Z$ tel que $x = a + km$. Divisons $k$ par $q$, il existe $\lambda \in \Z$ et $r \in \llbracket 0, q\llbracket$ tels que
+ \begin{displaymath}
+  x = a + (r+\lambda q)m = a+rm + \lambda qm \in a+rm + p \Z = C \in \mathfrak{C}_p \text{ avec } C \subset A.
+ \end{displaymath}
+ On en déduit $A \subset \bigcup_{C \in \mathfrak{C}_p,\, C\subset A} C$, l'autre inclusion est évidente.
+\end{demo}
+ \label{ExpleZ}
+ \noindent On en déduit que $\mathfrak{C}_p \subset \mathfrak{S}_q$ pour tout multiple $q$ de $p$. En utilisant un multiple commun des modulos des classes, on montre que $\mathfrak{S}= \bigcup_{q \in \N^*}\mathfrak{S}_q$. Autrement dit, toute union finie de classes de congruence se décompose en une union finie de classes modulo \emph{le même} naturel non nul.
+ \label{DecompUnionClasses}
+ \begin{propn}
+  Soit $A=\bigcup_{i=1}^n(a_i + \Z m_i) \in \mathfrak{S}$ et $p$ un multiple commun aux $m_i$.\newline
+  Pour tout $C \in \mathfrak{C}p$, $C \cap A \neq \emptyset \Leftrightarrow C \subset A$. De plus,
+  \begin{displaymath}
+   A = \bigcup_{C \in \mathfrak{C}_p,\, C\subset A} C = \bigcup_{C \in \mathfrak{C}_p,\, C\cap A \neq \emptyset} C.
+  \end{displaymath}
+ \end{propn}
+ \begin{demo}
+  Supposons $C\cap A \neq \emptyset$. Il existe $i$ tel que $a_i + \Z m_i$ contienne un $a \in C$ c'est à dire tel que $a \equiv a_i \mod m_i$. Pour tout $x \in C$:
+  \begin{displaymath}
+   x \equiv a \mod p \Rightarrow x \equiv a \mod m_i \Rightarrow x \equiv a_i \mod m_i \Rightarrow x \in a_i + \Z m_i \subset A.
+  \end{displaymath}
+  On en déduit $C \cap A \neq \emptyset$ entraine $C \subset A$. La réciproque est évidente.\newline
+  La décomposition d'un élément de $\mathfrak{S}$ est une conséquence de la décomposition d'une classe de congruence. Chaque $a_i + \Z m_i$ se décompose en une union de $C\in \mathfrak{C}_p$ tels que $C \subset a_i + \Z m_i \subset A$. On en déduit $A = \bigcup_{i=1}^n(a_i + \Z m_i) \subset \bigcup_{C \in \mathfrak{C}_p,\, C\subset A} C$, l'autre inclusion est évidente.
+ \end{demo}
+
+\begin{defi}[densité arithmétique dans l'ensemble des unions de classes de congruence]
+ Soit $A \in \mathfrak{S}$. Il existe $p \in \N^*$ et un ensemble fini $\mathfrak{A}$ de classes de congruence tels que $A = \bigcup_{C \in \mathfrak{A}}C$. On définit la densité arithmétique $\varphi(A)$ par:
+ \begin{displaymath}
+  \varphi(A) = \frac{\sharp \mathfrak{A}}{p}.
+ \end{displaymath}
+\end{defi}
+\begin{demo}[Consistence de la définition]
+Supposons que $A$ se décompose en classes modulo $p$ et en classes modulo $p'$. Considérons un multiple commun $q$. Notons respectivement $\mathfrak{A}_p$, $\mathfrak{A}_{p'}$, $\mathfrak{A}_q$ les ensembles de classes modulo respectivement $p$, $p'$, $q$ qui décomposent $A$. D'après la proposition \ref{décompoClasse}:
+\begin{displaymath}
+\left\lbrace
+  \begin{aligned}
+     \sharp \mathfrak{A}_q &= \frac{q}{p}  \, \sharp \mathfrak{A}_p \\
+     \sharp \mathfrak{A}_q &= \frac{q}{p'} \, \sharp \mathfrak{A}_{p'}
+  \end{aligned}
+\right. \Rightarrow
+\left\lbrace
+ \begin{aligned}
+    \frac{\sharp \mathfrak{A}_q}{q} &= \frac{\sharp \mathfrak{A}_p}{p} \\
+    \frac{\sharp \mathfrak{A}_q}{q} &= \frac{\sharp \mathfrak{A}_p'}{p'}
+ \end{aligned}
+\right . \Rightarrow \frac{\sharp \mathfrak{A}_p}{p} = \frac{\sharp \mathfrak{A}_p'}{p'}.
+\end{displaymath}
+\end{demo}
+
+\begin{rems}
+ \begin{enumerate}
+  \item  Aucun singleton n'est dans $\mathfrak{C}$ car les modulos sont non nuls. En revanche $\Z \in \mathfrak{C} \subset \mathfrak{S}$ car c'est la classe de $0$ modulo $1$.
+
+  \item Par définition, $\mathfrak{S}$ est stable pour $\cup$. Il est aussi stable par complémentation à cause de la proposition \ref{DecompUnionClasses} et de la partition en classes. Soit $A\in \mathfrak{S}$. Il existe $p$ naturel non nul et $\mathfrak{A}\subset \mathfrak{C}_p$ tels que $A = \bigcup_{C \in \mathfrak{A}} C$. Alors $A' = \bigcup_{C \in \mathfrak{A}'} C$.
+
+  \item De même, lorsque l'inteserction de deux éléments de $\mathfrak{S}$ est non vide, c'est un élément de $\mathfrak{S}$. En effet, pour tout $A$ et $B$ dans $\mathfrak{S}$, il existe $p$ naturel non nul, $\mathfrak{A}\subset \mathfrak{C}_p$ et $\mathfrak{B}\subset \mathfrak{C}_p$ tels que
+  \begin{displaymath}
+   A = \bigcup_{C \in \mathfrak{A}} C, \; B = \bigcup_{C \in \mathfrak{B}} C, \; A\cap B = \bigcup_{C \in \mathfrak{A}\cap \mathfrak{B}} C.
+  \end{displaymath}
+
+  \item Pour que l'intersection de deux classes soit toujours dans $\mathfrak{S}$, on impose par définition $\emptyset \in \mathfrak{S}$.
+\end{enumerate}
+\end{rems}
+
+\begin{prop}
+  $\mathfrak{S}$ est une algèbre qui contient $\emptyset$ et $X=\Z$.
+\end{prop}
+\begin{demo}
+ Avec le vocabulaire du livre rassemblées en \ref{SystFoncEns} \ref{SystEns}.
+\end{demo}
+
+\subsection{Approximations}\label{Approximations}\label{Expleppal}
 
 \subsubsection{Volume d'une partie bornée ou compacte}
-\noindent On note $\mathfrak{B}$ l'ensemble des parties bornées  de $\R^n$ et $\mathfrak{K} \subset \mathfrak{B}$ l'ensemble des parties compactes. On étend le volume $\lambda$ à $\mathfrak{B}$ et $\mathfrak{K}$.
+\noindent Voir page 19. On note $\mathfrak{B}$ l'ensemble des parties bornées  de $\R^n$ et $\mathfrak{K} \subset \mathfrak{B}$ l'ensemble des parties compactes. On étend le volume $\lambda$ à $\mathfrak{B}$ et $\mathfrak{K}$.
 \begin{defi}[Approximations dyadiques d'une partie bornée]
   Pour toute partie bornée $K$ et tout $s\in \N$, l'ensemble des $M\in \mathfrak{S}_s$ et contenant $K$ est non vide. Il admet un plus petit élément pour l'inclusion noté $A_s(K)$ appelé approximation dyadique à l'ordre $s$ par excès de $K$.
 \end{defi}
@@ -767,96 +350,21 @@ A_s(K\times \left\lbrace z \right\rbrace) \subset A_s(K) \times [a, a+ \frac{1}{
 Pour $s$ à l'infini, le terme de droite tend vers $0$ car $\lambda(A_s(K))\rightarrow \lambda(K)$ et $\frac{1}{2^s}\rightarrow 0$.
 \end{demo}
 
-\subsubsection{Adhérence, intérieur, frontière }
-Pour toute partie $K$ de $X=\R^n$.
-\begin{itemize}
- \item L'adhérence de $K$ notée $\overline{K}$ est l'intersection des parties fermées contenant $K$.
- \item L'intérieur de $K$ notée $\overset{\circ}{K}$ ou $\mathrm{Int}K $ est l'union des parties ouvertes contenues dans $K$.
- \item La frontière de $K$ est la différence ensembliste. Elle est notée $\mathrm{fr}(K) = \overline{K} \setminus \overset{\circ}{K}$.
-\end{itemize}
-\begin{propn}
- Pour toute partie bornée $K$, l'intérieur, l'adhérence et la frontière sont bornées avec
- \begin{displaymath}
-  \lambda(\overset{\circ}{K}) \leq \lambda(K) = \lambda(\overline{K}).
- \end{displaymath}
-\end{propn}
+\subsubsection{Densité arithmétique d'un ensemble d'entiers naturels }
+\begin{defi}[Approximation d'un ensemble d'entiers naturels] Pour toute partie $K$ non vide de $\Z$ et tout $p$ naturel non nul, l'ensemble des éléments de $\mathfrak{S}_p$ contenant $K$ est non vide. Il admet un plus petit élément pour l'inclusion noté $A_p(K)$ appelé approximation arithmétique de $K$ par excès à l'ordre $p$.
+\end{defi}
 \begin{demo}
- Par définition, $\overset{\circ}{K} \subset K\subset \overline{K}$.\newline
- Pour tout $s$ l'approximation $A_s(K)$ est une union finie de $s$-cubes fermés donc est une partie fermée contenant $K$. L'intérieur et l'adhérence sont donc bornées avec $\lambda(\overset{\circ}{K})\leq \lambda(K) \leq \lambda(\overline{K})$ et $\overline{K} \subset A_s(K)$ donc $\lambda(\overline{K}) \leq \lambda(A_s(K))$ puis $\lambda(\overline{K}) \leq \lambda(K)$ par passage à la limite donc $\lambda(\overline{K}) = \lambda(K)$. \newline
- On ne peut espérer que $\lambda(\overset{\circ}{K}) = \lambda(\overline{K})$ en général comme le montre l'exemple $K= \Q \cap [0,1]$ pour lequel $\overset{\circ}{K}$ est vide donc son adhérence aussi alors que $\overline{K}=[0,1]$.
- \end{demo}
-
-\subsection{Différence symétrique et crible de Poincaré}\label{criblePoinc}
-Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent un rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
-
-\noindent Soit $X$ un ensemble quelconque et $A_1, \cdots, A_p$ des parties de $X$. Notons $\chi_A$ la fonction caractéristique d'une partie $A$ de $X$. Rappelons les relations fonctionnelles
+ Notons $\mathfrak{A}_p(K)$ l'ensemble des classes $C$ modulo $p$ telles que $C\cap K \neq \emptyset$.
+ \begin{displaymath}
+  \Z = \bigcup_{C \in \mathfrak{C}_p} C \Rightarrow K = \bigcup_{C \in \mathfrak{C}_p} K\cap C
+  = \bigcup_{C \in \mathfrak{A}_p(K)} K\cap C \subset \bigcup_{C \in \mathfrak{A}_p(K)} C \in \mathfrak{S}_p.
+ \end{displaymath}
+Notons $A_p(K)$ cette dernière union. Soit $M \in \mathfrak{S}_p$ contenant $K$. Pour tout classe $C$ modulo $p$,
 \begin{displaymath}
-  \chi_{A'} = 1 - \chi_A, \; \chi_{A \cap B} = \chi_A \, \chi_B.
+ C \in \mathfrak{A}_p(K) \Rightarrow C\cap K \neq \emptyset \Rightarrow C\cap M \neq \emptyset
 \end{displaymath}
-
-\noindent Considérons pour chaque $x\in X$ le nombre de parties $A_i$ contenant $x$ et notons $\nu$ la fonction de $X$ dans $\llbracket 0, p \rrbracket$ ainsi définie. En fait
-\begin{displaymath}
-  \nu = \chi_{A_1} + \cdots + \chi_{A_p}.
-\end{displaymath}
-Pour $I \subset \llbracket 0,p \rrbracket$ non vide, notons
-\begin{displaymath}
-  A_I = \bigcap_{i \in I} A_i, \; A'_I = \bigcap_{i \in I} A'_i.
-\end{displaymath}
-Soit $m \in \llbracket 1,p\rrbracket$ et $x \in X$ alors:
-\begin{displaymath}
-  \nu(x) \geq m \Leftrightarrow \exists I \in \mathcal{P}_m \text{ tq } x \in A_I
-\end{displaymath}
-en notant $\mathcal{P}_m$ l'ensemble des parties $\llbracket 1,p \rrbracket$ à $m$ éléments. On en déduit
-\begin{displaymath}
-  \{ \nu \geq m \} = \bigcup_{I \in \mathcal{P}_m}A_I.
-\end{displaymath}
-Pour $m=0$, logiquement $A_\emptyset = X$ car il n'y a pas de condition à vérifier, $\mathcal{P}_0 = \{\emptyset\}$, $\{ \nu \geq 0 \} = X$ donc la formule reste valable.
-Pour $m < p $:
-\begin{displaymath}
-  \{ \nu \geq m + 1 \} = \bigcup_{I \in \mathcal{P}_{m+1}}A_I \subset \{ \nu \geq m \} = \bigcup_{I \in \mathcal{P}_{m}}A_I
-  \Rightarrow
-  \{ \nu = m \} = \left( \bigcup_{I \in \mathcal{P}_{m}}A_I\right) \setminus \left( \bigcup_{I \in \mathcal{P}_{m+1}}A_I\right).
-\end{displaymath}
-D'autre part $\nu(x) = m$ si et seulement si il existe $m$ indices $i$ tels que $x$ appartienne à tous ces $A_i$ et à aucun autre $A_j$. Donc
-\begin{displaymath}
-  \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'} \text{ avec } A'_{I'} = \bigcap_{j\notin I}A'_j.
-\end{displaymath}
-On peut convenir de noter
-\begin{displaymath}
-\Delta_m(A_1,\cdots,A_p) = \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'}.
-\end{displaymath}
-Remarquons que les $A_I \cap A'_{I'}$ de cette union sont deux à deux disjoints. En effet si $I$ et $J$ sont distincts, un des deux n'est pas inclus dans l'autre. Par exemple $I \not \subset J$. Il existe alors $i\in I$ avec $i \in J'$. Donc $A_I \subset A_i$, $A'_J \subset A'_i$ d'où
-\begin{displaymath}
-  \left( A_I \cap A'_{I'} \right) \cap \left( A_J \cap A'_{J'} \right) \subset A_i \cap A'_i = \emptyset.
-\end{displaymath}
-On retrouve le cas particulier de la différence symétrique
-\begin{displaymath}
-  A \Delta B = (A\cap B') \cup (A' \cap B) = \Delta_1(A,B).
-\end{displaymath}
-
-\noindent Venons-en aux formules du type crible de Poincaré. Le point central est
-\begin{displaymath}
-  (A_1 \cup \cdots \cup A_p)' = A'_1 \cap \cdots \cap A'_p
-\end{displaymath}
-et sa traduction avec les fonctions caractéristiques
-\begin{displaymath}
-  1 - \chi_{A_1 \cup \cdots \cup A_p} = \prod_{i=1}^p(1 - \chi_{A_i})
-  \Rightarrow
-  \chi_{A_1 \cup \cdots \cup A_p} = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\chi_{A_I}
-\end{displaymath}
-en développant et simplifiant par 1.\newline
-En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle précédente en chaque $x\in X$ pour former des égalités numériques. En sommant ces égalités, on obtient
-\begin{displaymath}
-  \card(A_1 \cup \cdots \cup A_p) = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\card(A_I).
-\end{displaymath}
-
-
-\noindent Remarquons que la notion de différence symétrique généralisée permet de caractériser la liberté d'une famille de fonctions caractéristiques dans le $\F_2$ espace vectoriel des fonctions de $X$ dans $\F_2$.
-\begin{align*}
-  (\chi_{A_1}, \cdots, \chi_{A_p}) \text{ libre } &\Leftrightarrow \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p) \not = \emptyset \\
-  \chi_A = \chi_{A_1} + \cdots + \chi_{A_p} &\Leftrightarrow A = \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p)
-\end{align*}
-
+d'où $A_p(K) \subset M$ car $M = \bigcup_{C\in \mathfrak{C}_p \, C\cap M \neq \emptyset}C$  d'après la proposition \ref{DecompUnionClasses}.
+\end{demo}
 
 \section{Chap I du livre. Systèmes d'ensembles - Fonctions d'ensembles}\label{SystFoncEns}
 \subsection{Systèmes d'ensembles}\label{SystEns}
@@ -866,17 +374,17 @@ Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
 \begin{displaymath}
   U \mid A \mid V = (U \cap A') \cup ( A \cap V).
 \end{displaymath}
-\index{système de parties!treillis} \index{système de parties!ovale} \index{système de parties!anneau} \index{système de parties!algèbre}
+\index{système de parties!treillis}
 \begin{defi}
   Soit $\mathfrak{S}$ une partie de $\mathcal{P}(X)$
   \begin{itemize}
     \item $\mathfrak{S}$ est un treillis (lattice) si et seulement si $\mathfrak{S}$ est stable pour l'union et l'intersection.
-    \item $\mathfrak{S}$ est un ovale (oval) si et seulement si $U$, $V$, $A$ dans $\mathfrak{S}$ entraine $U \mid A \mid V \in \mathfrak{S}$.
+    \item $\mathfrak{S}$ est un ovale (oval) si et seulement si $U$, $V$, $A$ dans $\mathfrak{S}$ entraine $U \mid A \mid V \in \mathfrak{S}$.\index{système de parties!ovale}
     \item $\mathfrak{S}$ est un anneau (ring) si et seulement si $\mathfrak{S}$ est stable pour l'union, l'intersection et la soustraction. La stabilité pour la soustraction signifie
     \begin{displaymath}
       \forall A, B \in \mathfrak{S}, B \subset A \Rightarrow A \setminus B = A \cap B' \in \mathfrak{S}.
-    \end{displaymath}
-    \item $\mathfrak{S}$ est une algèbre (algebra) si et seulement si $\mathfrak{S}$ est stable pour l'union, l'intersection et la complémentation.
+    \end{displaymath}  \index{système de parties!anneau}
+    \item $\mathfrak{S}$ est une algèbre (algebra) si et seulement si $\mathfrak{S}$ est stable pour l'union, l'intersection et la complémentation. \index{système de parties!algèbre}
   \end{itemize}
 \end{defi}
 
@@ -1293,7 +801,7 @@ La fonction d'ensembles $\varphi$ est dite
 \index{continuités}\index{continuités!$\sigma$-continue vers le haut}\index{continuités!presque $\sigma$-continue vers le haut}\index{continuités!$\tau$-continue vers le haut}\index{continuités!$\sigma$-continue vers le bas}
 Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.
 \begin{defi}[$\sigma$-continue vers le haut]
-La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le haut (upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.
+La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le haut (upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$. C'est à dire $\varphi(A) = \inf_{l}\varphi(S_l)$.
 \end{defi}
 \begin{defi}[presque $\sigma$-continue vers le haut]
 La fonction d'ensembles $\varphi$ est dite presque $\sigma$-continue vers le haut (almost upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ telle que $\varphi(S_l)> - \infty$ pour tout $l\in \N$, qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.
@@ -1312,13 +820,14 @@ La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le bas (downwa
 pour tout $A \in \mathfrak{S}$ et tout système d'ensembles $\mathfrak{M} \subset \mathfrak{S}$ tel que $\mathfrak{M} \downarrow A$, on a $\inf_{S \in \mathfrak{M}}\varphi(S) = \varphi(A)$.
 \end{defi}
 
+Attention, la preuve de la proposition suivante est FAUSSE. $(S_l)\uparrow A$ entrainerait $S_l \subset A$ qui n'est pas réalisé dans l'exemple donné.
 \begin{propn}[Exemple arithmétique]
  La fonction d'ensemble $\varphi$ définie dans $\mathfrak{S}$ n'est pas $\sigma$-continue vers le haut.
 \end{propn}
 \begin{demo}
  Soit $A = \left\lbrace a_k, k\in \N\right\rbrace \in \mathfrak{S}$, il existe un entier naturel $\mu$ tel que $A$ soit une union disjointe de classes modulo $\mu$. Pour $p\in \N$ arbitraire, considérons la suite de l'exemple 5 de la partie \ref{Exples}\ref{ExplesSuitesCongru}.
 \begin{displaymath}
- \forall n \in \N, \; S_n = \bigcup_{k =0}^n \left(a_k + \mu^{k+p} \Z\right).
+ \forall n \in \N, \; S_n(p) = \bigcup_{k =0}^n \left(a_k + \mu^{k+p} \Z\right) \in \mathfrak{S}.
 \end{displaymath}
 C'est une suite croissante d'éléments de $\mathfrak{S}$ telle que $A = \bigcup_{n\in \N}S_n$ avec $\lim (S_n)\leq \mu^{1-p}$. En choisissant $p$ assez grand pour avoir $\mu^{1-p} < \varphi(A)$, on forme un contre exemple à la définition.
 \end{demo}
@@ -1594,6 +1103,293 @@ car $S_{k+1} \setminus S_k$ est l'union disjointe de $a_{k+1}$ classes modulo $b
 \end{demo}
 \subsection{Classe de Carathéodory} \label{ClasseCaratheodory}
 
+\section{Outils} \label{Outils}
+
+\subsection{Arithmétique}
+\begin{propn}
+Soit $p$ et $q$ deux naturels non nul. Si une classe de congruence modulo $p$ est incluse dans une classe de congruence modulo $q$ alors $p$ est un multiple de $q$.
+\end{propn}
+\begin{demo}
+ Supposons $a+\Z p \subset b + \Z q$. Pour tout $k \in \Z$, il existe $\lambda$ et $\lambda'$ dans $\Z$ tels que
+\begin{displaymath}
+ \left.
+   \begin{aligned}
+    a + kp &= b + \lambda q \\
+    a + (k+1)p &= b + \lambda' q
+   \end{aligned}
+  \right\rbrace
+  \Rightarrow (\lambda' - \lambda) q = p.
+\end{displaymath}
+\end{demo}
+
+\begin{lem}
+  Pour tous $\alpha_1, \cdots, \alpha_p, \beta$ entiers naturels:
+  \begin{displaymath}
+    \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right) = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right).
+  \end{displaymath}
+\end{lem}
+\begin{demo}
+  Notons $T$ le terme de gauche dans l'égalité et $M$ celui de droite. Notons $\alpha_m$ le plus grand des $\alpha_i$ de sorte que $T = \min(\alpha_m, \beta)$.\newline
+  Pour tout $i$, $\min(\alpha_i, \beta) \leq \min (\alpha_m, \beta) = T$ donc $M = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right) \leq T$.\newline
+  D'autre part, $T=\min (\alpha_m, \beta)$ est l'un des $\min(\alpha_i, \beta)$ figurant dans $M$ donc $T \leq M$.
+\end{demo}
+
+\begin{propn}[distributivité du pgcd sur le ppcm]
+  Pour tous $a_1, \cdots ,a_p, b$ entiers relatifs non nuls:
+  \begin{displaymath}
+    \left(a_1 \vee \cdots \vee a_p\right)\wedge b = (a_1 \wedge b) \vee \cdots \vee (a_p \wedge b).
+  \end{displaymath}
+\end{propn}
+\begin{demo}
+  On utilise la décomposition en facteurs premiers dans $\Z$ en comparant les exposants d'un nombre premier $p$ quelconque. Notons $\alpha_1, \cdots, \alpha_p, \beta$ les exposants respectifs de $p$ dans $a_1, \cdots, a_p, b$. D'après la proposition précédente:
+  \begin{align*}
+    \text{exposant de $p$ dans } \left(a_1 \vee \cdots \vee a_p\right)\wedge b
+    = \min \left( \max(\alpha_1, \cdots, \alpha_p) , \beta \right)
+    = \max\left( \min(\alpha_1, \beta), \cdots , \min(\alpha_p,\beta)\right) \\
+    = \text{exposant de $p$ dans } (a_1 \wedge b) \vee \cdots \vee (a_p \wedge b).
+  \end{align*}
+\end{demo}
+
+\begin{propn}[Équation de Bezout]
+  Soit $m_1, m_2$ des entiers non nuls et $u\in \Z$. L'équation aux inconnues $\lambda_1, \lambda_2$
+  \begin{displaymath}
+    u = \lambda_1 m_1 - \lambda_2 m_2
+  \end{displaymath}
+  admet des solutions si et seulement si $u$ est un multiple de $m_1 \wedge m_2$ (pgcd). Dans ce cas si $(l_1, l_2)$ est un couple solution, l'ensemble des couples solutions est
+  \begin{displaymath}
+    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace .
+  \end{displaymath}
+\end{propn}
+\begin{demo}
+  L'équation admet des solutions si et seulement si $u \in \Z m_1 + \Z m_2 = \Z (m_1\wedge m_2)$. Dans ce cas, si $(l_1,l_2)$ et $(\lambda_1, \lambda_2)$ sont deux couples solutions:
+  \begin{displaymath}
+    \left.
+    \begin{aligned}
+      u &= l_1 m_1 - l_2 m_2 \\
+      u &= \lambda_1 m_1 - \lambda_2 m_2
+    \end{aligned}
+    \right\rbrace \Rightarrow (\lambda_1 - l_1)m_1 = (\lambda_2 - l_2)m_2 \Rightarrow (\lambda_1 - l_1)\frac{m_1}{m_1 \wedge m_2} = (\lambda_2 - l_2)\frac{m_2}{m_1 \wedge m_2}
+  \end{displaymath}
+en divisant par le pgcd. Comme $\frac{m_1}{m_1 \wedge m_2}$ et $\frac{m_2}{m_1 \wedge m_2}$ sont premiers entre eux, le théorème de Gauss entraine qu'il existe $\lambda \in \Z$ tel que $\lambda_1 - l_1 = \lambda \frac{m_2}{m_1 \wedge m_2}$. En remplaçant dans la relation et simplifiant, il vient $\lambda_2 - l_2 = \lambda \frac{m_1}{m_1 \wedge m_2}$.
+\end{demo}
+
+\begin{propn}[Système de 2 congruences]
+  Soit $m_1, m_2$ des entiers non nuls et $a_1 a_2$ des entiers relatifs. Le système de congruences
+  \begin{displaymath}
+    \left\lbrace
+      \begin{align*}
+        x &\equiv a_1 \mod m_1 \\
+        x &\equiv a_2 \mod m_2
+      \end{align*}
+    \right.
+  \end{displaymath}
+  admet des solutions si et seulement si $a_1$ et $a_2$ sont congrus modulo $m_1 \wedge m_2$ (pgcd). Dans ce cas, l'ensemble des solutions est une classe de congruence modulo $m_1 \vee m_2$.
+\end{propn}
+\begin{demo}
+  Si le système admet une solution $x$, il existe $\lambda_1$ et $\lambda_2$ entiers tels que
+  \begin{displaymath}
+    \left.
+    \begin{aligned}
+      x &= a_1 + \lambda_1 m_1 \\
+      x &= a_2 + \lambda_2 m_2
+    \end{aligned}
+    \right \rbrace \Rightarrow
+    a_1 - a_2 = -\lambda_1 m_1 + \lambda_2 m_2 \in \Z (m_1 \wedge m_2).
+  \end{displaymath}
+  Supposons $a_1$ et $a_2$ congrus modulo $m_1 \wedge m_2$.
+  \begin{align*}
+        \left\lbrace
+      \begin{aligned}
+        x &\equiv a_1 \mod m_1 \\
+        x &\equiv a_2 \mod m_2
+      \end{aligned}
+    \right.
+    \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
+            \left\lbrace
+      \begin{aligned}
+        x &= a_1 + \lambda_1 m_1 \\
+        x &= a_2 + \lambda_2 m_2
+      \end{aligned}
+    \right. \\
+    \Leftrightarrow \exists (\lambda_1, \lambda_2) \in \Z^2 \text{ tq }
+            \left\lbrace
+      \begin{aligned}
+        x &= a_1 + \lambda_1 m_1 \\
+        a_2 - a_1 &= \lambda_1 m_1 - \lambda_2 m_2
+      \end{aligned}
+    \right.
+  \end{align*}
+  La deuxième relation est une équation de Bezout admettant des solutions car $m_1$ et $m_2$ sont congrus modulo le pgcd. L'ensemble des couples solutions et de la forme
+  \begin{displaymath}
+    \left \lbrace (l_1 + \lambda \frac{m_2}{m_1 \wedge m_2},l_2 + \lambda \frac{m_1}{m_1 \wedge m_2}), \lambda \in \Z \right\rbrace
+  \end{displaymath}
+  d'après la proposition précédente sur l'équation de Bezout. En réinjectant l'expression des solutions $\lambda_1$ dans la première équation, on trouve qu'un $x$ solution est de la forme
+  \begin{displaymath}
+    x = a_1 + l_1 m_1 + \lambda \frac{m_1 m_2}{m_1 \wedge m_2} = b + \lambda (m_1 \vee m_2).
+  \end{displaymath}
+\end{demo}
+
+On peut étendre à un système de $p$ congruences en utilisant la distributivité du pgcd sur le ppcm.
+\begin{propn}[Système de congruences]\label{SystCong}
+  Soit $m_1, \cdots, m_p$ des entiers non nuls et $a_1, \cdots, a_p$ des entiers relatifs. Le système de congruences
+  \begin{displaymath}
+    \left\lbrace
+      \begin{align*}
+        x &\equiv a_1 \mod m_1 \\
+          &\vdots \\
+        x &\equiv a_p \mod m_p
+      \end{align*}
+    \right.
+  \end{displaymath}
+  admet des solutions si et seulement si $a_i \equiv a_j$ modulo $m_i \wedge m_j$ pour tous les couples $(i,j)$ avec $i \neq j$. Dans ce cas, l'ensemble des solutions est une classe de congruence modulo $m_1 \vee \cdots \vee m_p$ (ppcm des $m_i$).
+\end{propn}
+\begin{demo}
+  \begin{enumerate}
+    \item Il est évident que la condition d'existence de solutions est nécessaire car elle correspond à l'existence de solutions pour tous les sous-systèmes de 2 congruences. On peut remarquer que si un système vérifie la condition tous ses sous-systèmes la vérifient aussi.
+    \item Si l'ensemble $S$ des solutions est non vide avec $x \in S$ et $y$ congrus à $x$ modulo $m_1 \vee \cdots \vee m_p$ alors pour chaque $i$, $y \equiv x \equiv a_i$ modulo $m_i$ donc $x + \Z (m_1 \vee \cdots \vee m_p) \subset S$.\newline
+    Réciproquement, $y \in S$ entraine que $y-x = y-a_i + a_i - x$ est divisible par $m_i$ pour tous les $i$ donc $y \in x + \Z (m_1 \vee \cdots \vee m_p)$. Ceci prouve que s'il est non vide, l'ensemble des solutions est une classe de congruence modulo le ppcm des $m_i$.
+    \item Montrons par récurrence que la condition  énoncée assure l'existence de solutions. Le cas $p=2$ est traité par la proposition sur les systèmes de 2 congruences.\newline
+    Pour le passage de $p$ à $p+1$, considérons un système de $p+1$ congruences vérifiant $a_i \equiv a_j$ modulo $m_i \wedge m_j$ pour tous les couples $(i,j)\in \llbracket 1,  p+1\rrbracket ^2$ avec $i \neq j$.\newline
+    Le sous-système formé par les $p$ premières congruences vérifie la condition d'existence de solutions. Par hypothèse de récurrence, il existe $b$ tel que
+  \begin{displaymath}
+        \left\lbrace
+      \begin{align*}
+        x &\equiv a_1 \mod m_1 \\
+          &\vdots \\
+        x &\equiv a_{p+1} \mod m_{p+1}
+      \end{align*}
+    \right.
+    \Leftrightarrow
+    \left\lbrace
+      \begin{align*}
+        x &\equiv b \mod m_1 \vee \cdots \vee m_p \\
+        x &\equiv a_{p+1} \mod m_{p+1}
+      \end{align*}
+    \right. .
+  \end{displaymath}
+  Ce système de 2 congruences admet-il des solutions?
+  \begin{displaymath}
+    a_{p+1} - b = (a_{p+1} - a_i) + (a_i - b) \in \Z (m_{p+1} \wedge m_i ) + \Z m_i \subset \Z (m_{p+1} \wedge m_i )
+  \end{displaymath}
+  pour tous les $i \in \llbracket 1, p \rrbracket$. On en déduit que $a_{p+1} - b$ est divisible par
+  \begin{displaymath}
+    (m_1 \wedge m_{p+1}) \vee \cdots \vee (m_1 \wedge m_{p+1}) =  (m_1 \vee \cdots \vee m_p) \wedge m_{p+1}
+  \end{displaymath}
+  qui est la condition assurant que le système de 2 congruences admet des solutions.
+  \end{enumerate}
+\end{demo}
+
+
+\subsection{Différence symétrique et crible de Poincaré}\label{criblePoinc}
+Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent un rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
+
+\noindent Soit $X$ un ensemble quelconque et $A_1, \cdots, A_p$ des parties de $X$. Notons $\chi_A$ la fonction caractéristique d'une partie $A$ de $X$. Rappelons les relations fonctionnelles
+\begin{displaymath}
+  \chi_{A'} = 1 - \chi_A, \; \chi_{A \cap B} = \chi_A \, \chi_B.
+\end{displaymath}
+
+\noindent Considérons pour chaque $x\in X$ le nombre de parties $A_i$ contenant $x$ et notons $\nu$ la fonction de $X$ dans $\llbracket 0, p \rrbracket$ ainsi définie. En fait
+\begin{displaymath}
+  \nu = \chi_{A_1} + \cdots + \chi_{A_p}.
+\end{displaymath}
+Pour $I \subset \llbracket 0,p \rrbracket$ non vide, notons
+\begin{displaymath}
+  A_I = \bigcap_{i \in I} A_i, \; A'_I = \bigcap_{i \in I} A'_i.
+\end{displaymath}
+Soit $m \in \llbracket 1,p\rrbracket$ et $x \in X$ alors:
+\begin{displaymath}
+  \nu(x) \geq m \Leftrightarrow \exists I \in \mathcal{P}_m \text{ tq } x \in A_I
+\end{displaymath}
+en notant $\mathcal{P}_m$ l'ensemble des parties $\llbracket 1,p \rrbracket$ à $m$ éléments. On en déduit
+\begin{displaymath}
+  \{ \nu \geq m \} = \bigcup_{I \in \mathcal{P}_m}A_I.
+\end{displaymath}
+Pour $m=0$, logiquement $A_\emptyset = X$ car il n'y a pas de condition à vérifier, $\mathcal{P}_0 = \{\emptyset\}$, $\{ \nu \geq 0 \} = X$ donc la formule reste valable.
+Pour $m < p $:
+\begin{displaymath}
+  \{ \nu \geq m + 1 \} = \bigcup_{I \in \mathcal{P}_{m+1}}A_I \subset \{ \nu \geq m \} = \bigcup_{I \in \mathcal{P}_{m}}A_I
+  \Rightarrow
+  \{ \nu = m \} = \left( \bigcup_{I \in \mathcal{P}_{m}}A_I\right) \setminus \left( \bigcup_{I \in \mathcal{P}_{m+1}}A_I\right).
+\end{displaymath}
+D'autre part $\nu(x) = m$ si et seulement si il existe $m$ indices $i$ tels que $x$ appartienne à tous ces $A_i$ et à aucun autre $A_j$. Donc
+\begin{displaymath}
+  \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'} \text{ avec } A'_{I'} = \bigcap_{j\notin I}A'_j.
+\end{displaymath}
+On peut convenir de noter
+\begin{displaymath}
+\Delta_m(A_1,\cdots,A_p) = \{\nu = m\} = \bigcup_{I \in \mathcal{P}_{m}}A_I \cap A'_{I'}.
+\end{displaymath}
+Remarquons que les $A_I \cap A'_{I'}$ de cette union sont deux à deux disjoints. En effet si $I$ et $J$ sont distincts, un des deux n'est pas inclus dans l'autre. Par exemple $I \not \subset J$. Il existe alors $i\in I$ avec $i \in J'$. Donc $A_I \subset A_i$, $A'_J \subset A'_i$ d'où
+\begin{displaymath}
+  \left( A_I \cap A'_{I'} \right) \cap \left( A_J \cap A'_{J'} \right) \subset A_i \cap A'_i = \emptyset.
+\end{displaymath}
+On retrouve le cas particulier de la différence symétrique
+\begin{displaymath}
+  A \Delta B = (A\cap B') \cup (A' \cap B) = \Delta_1(A,B).
+\end{displaymath}
+
+\noindent Venons-en aux formules du type crible de Poincaré. Le point central est
+\begin{displaymath}
+  (A_1 \cup \cdots \cup A_p)' = A'_1 \cap \cdots \cap A'_p
+\end{displaymath}
+et sa traduction avec les fonctions caractéristiques
+\begin{displaymath}
+  1 - \chi_{A_1 \cup \cdots \cup A_p} = \prod_{i=1}^p(1 - \chi_{A_i})
+  \Rightarrow
+  \chi_{A_1 \cup \cdots \cup A_p} = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\chi_{A_I}
+\end{displaymath}
+en développant et simplifiant par 1.\newline
+En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle précédente en chaque $x\in X$ pour former des égalités numériques. En sommant ces égalités, on obtient
+\begin{displaymath}
+  \card(A_1 \cup \cdots \cup A_p) = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\card(A_I).
+\end{displaymath}
+
+
+\noindent Remarquons que la notion de différence symétrique généralisée permet de caractériser la liberté d'une famille de fonctions caractéristiques dans le $\F_2$ espace vectoriel des fonctions de $X$ dans $\F_2$.
+\begin{align*}
+  (\chi_{A_1}, \cdots, \chi_{A_p}) \text{ libre } &\Leftrightarrow \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p) \not = \emptyset \\
+  \chi_A = \chi_{A_1} + \cdots + \chi_{A_p} &\Leftrightarrow A = \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p)
+\end{align*}
+
+
+\subsection{Topologie métrique} \label{Topologie}
+L'adhérence d'une partie est l'ensemble des limites de suites convergentes d'éléments de cette partie.
+\begin{propn} \label{compactEtendu}
+Soit $K$ une partie compacte et $\delta >0$. Définissons
+\begin{displaymath}
+ K(\delta) = \left\lbrace x \text{ tq } \exists a \in K \text{ tq } d(x,a)\leq \delta  \right\rbrace.
+\end{displaymath}
+Alors $K(\delta)$ est une partie compacte.
+\end{propn}
+\begin{demo}
+ On doit montrer que $K(\delta)$ est bornée et fermée.\newline
+ Soit $a_0$ fixé et $R$ tels que $K$ soit inclus dans la boule fermée de centre $a_0$ et de rayon $R$. Alors $K(\delta)$ est bornée car inclus dans la boule fermée de centre $a_0$ et de rayon $R + \delta$.\newline
+ Soit $(x_n)$ une suite d'éléments de $K(\delta)$ qui converge vers $x$. On doit montrer que $x \in K(\delta)$.\newline
+ Il existe une suite $(a_n)$ d'éléments de $K$ telle que $d(x_n,a_n)\leq \delta$. Comme $K$ est une partie compacte, on peut extraire une suite $(a_\varphi(n))$ qui converge vers $a \in K$. En passant à la limite:
+ \begin{displaymath}
+  d(x_{\varphi(n)},a_{\varphi(n)})\leq \delta \Rightarrow d(x,a) \leq \delta \Rightarrow x \in K(\delta).
+ \end{displaymath}
+\end{demo}
+\subsubsection{Adhérence, intérieur, frontière }
+Pour toute partie $K$ de $X=\R^n$.
+\begin{itemize}
+ \item L'adhérence de $K$ notée $\overline{K}$ est l'intersection des parties fermées contenant $K$.
+ \item L'intérieur de $K$ notée $\overset{\circ}{K}$ ou $\mathrm{Int}K $ est l'union des parties ouvertes contenues dans $K$.
+ \item La frontière de $K$ est la différence ensembliste. Elle est notée $\mathrm{fr}(K) = \overline{K} \setminus \overset{\circ}{K}$.
+\end{itemize}
+\begin{propn}
+ Pour toute partie bornée $K$, l'intérieur, l'adhérence et la frontière sont bornées avec
+ \begin{displaymath}
+  \lambda(\overset{\circ}{K}) \leq \lambda(K) = \lambda(\overline{K}).
+ \end{displaymath}
+\end{propn}
+\begin{demo}
+ Par définition, $\overset{\circ}{K} \subset K\subset \overline{K}$.\newline
+ Pour tout $s$ l'approximation $A_s(K)$ est une union finie de $s$-cubes fermés donc est une partie fermée contenant $K$. L'intérieur et l'adhérence sont donc bornées avec $\lambda(\overset{\circ}{K})\leq \lambda(K) \leq \lambda(\overline{K})$ et $\overline{K} \subset A_s(K)$ donc $\lambda(\overline{K}) \leq \lambda(A_s(K))$ puis $\lambda(\overline{K}) \leq \lambda(K)$ par passage à la limite donc $\lambda(\overline{K}) = \lambda(K)$. \newline
+ On ne peut espérer que $\lambda(\overset{\circ}{K}) = \lambda(\overline{K})$ en général comme le montre l'exemple $K= \Q \cap [0,1]$ pour lequel $\overset{\circ}{K}$ est vide donc son adhérence aussi alors que $\overline{K}=[0,1]$.
+ \end{demo}
+
+
 \section{En travaux: déchetterie et gisements}
 Cette section rassemble des sections qui n'ont plus leur place dans le plan actuel mais qui méritent d'être conservés quelque part ainsi que des sections en devenir qui pourraient entrer plus tard dans le plan.
 
@@ -1689,6 +1485,244 @@ Réciproquement, supposons $\{\beta = 0\} \subset A' = \left(\{\alpha_1 \leq 0\}
 \begin{defi}
 Pour tout $M \in \mathfrak{S}$ définissons $c(M)$ comme le nombre de composantes connexes bornées de $M$.
 \end{defi}
+
+\subsection{Exemple arithmétique}
+\subsubsection{Fonction d'ensembles}
+Quand on cherche à probabiliser $\Z$, on peut considèrer, pour $m$ non nul donné les classes modulo $m$. Considérons une expérience aléatoire consistant à tirer au hasard un entier et à former son reste modulo $m$. Les évènements élémentaires sont les classes modulo $m$. La probabilité d'un tel évènement est $\frac{1}{m}$.
+
+On définit donc naturellement une fonction \og probabilité\fg \, $\varphi$ sur $\mathfrak{U}$ par
+\begin{displaymath}
+  \varphi(\emptyset) = 0, \;\varphi(a + \Z m) = \frac{1}{m}.
+\end{displaymath}
+
+Dans un univers probablisé, la fonction probabilité définie sur l'ensemble des évènements est modulaire au sens introduit par l'ouvrage.
+\begin{defi}[fonction modulaire]\index{fonction modulaire}
+  On dit qu'une fonction $\varphi$ définie dans $\mathfrak{S}$ est modulaire si et seulement si
+  \begin{displaymath}
+    \forall (A,B)\in \mathfrak{S}^2,\; \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
+  \end{displaymath}
+\end{defi}
+\begin{rem}
+  Lorsque les éléments de $\mathfrak{S}$ sont des ensembles finis, la fonction \og nombre d'éléments \fg \, est modulaire.
+\end{rem}
+
+\noindent Peut-on étendre de manière consistante $\varphi$ à une fonction \emph{modulaire} sur l'ensemble $\mathfrak{S}$ des unions finies de classes de congruences?\newline
+Je donne plus loin une telle définition qui rend évidentes les remarques qui suivent. Je les ai conservés car elles m'ont encouragé à creuser cet exemple.
+\begin{enumerate}
+  \item Par définition $\varphi(\Z) = 1$.
+  \item Dans le cas d'une famille finie de classes disjointes, l'image de l'union doit être la somme des images.
+  \item Si $\varphi(A)$ est défini et $A'$ son complémentaire on doit avoir $\varphi(A') + \varphi(A) = 1$.
+  \item Avec les conventions précédentes, pour $A = \left(a + \Z p\right)$, $B = \left(b + \Z q\right)$, montrons que
+  \begin{displaymath}
+    \varphi(A) + \varphi(B) = \varphi(A\cap B) + \varphi(A \cup B).
+  \end{displaymath}
+  En effet :
+  \begin{displaymath}
+    \varphi(A) = \frac{1}{p} \hspace{0.5cm}
+    \varphi(B) = \frac{1}{q} \hspace{0.5cm}
+    \varphi(A \cap B) =
+    \left\lbrace
+      \begin{aligned}
+        0 &\text{ si } a \not \equiv b \mod p\wedge q\\
+        \frac{1}{p\vee q} &\text{ si } a \equiv b \mod p\wedge q
+      \end{aligned}
+    \right.
+  \end{displaymath}
+  La formule est vérifiée si $A\cap B = \emptyset$. Dans l'autre cas, considérons $(A\cup B)'$ et la propriété 3 pour prouver la formule.
+\begin{multline*}
+  (A \cup B)' = A' \cap B'
+  =     \left( \bigcup_{a'\in \llbracket 0, p\llbracket \setminus\{a\} } \left(a' + p\Z\right)\right)
+   \cap \left( \bigcup_{b'\in \llbracket 0, q\llbracket \setminus\{b\} } \left(b' + p\Z\right)\right) \\
+  = \bigcup_{(a',b')\in (\llbracket 0, p\llbracket \setminus\{a\}) \times (\llbracket 0, q\llbracket \setminus\{b\})} \left(a' + p\Z\right)\cap \left(b' + q\Z\right)
+\end{multline*}
+Chaque intersection est l'ensemble des solutions d'un système de 2 congruences c'est à dire le vide ou une classe modulo $p\vee q$.\newline
+Si on oublie les conditions $a'\not \equiv a \mod p$ et $b'\not \equiv b \mod q$, parmi les $pq$ couples $(a',b')\in \llbracket 0,p\llbracket \times \llbracket 0,q\llbracket$, combien vérifient $a' \equiv b' \mod p \wedge q$ ? \newline
+Pour chaque $a'$ fixé, $b'$ doit être dans la classe de $a'$ modulo $p\wedge q$. Dans $\llbracket 0, q \llbracket$, cette classe contient $\frac{q}{p \wedge q}$ entiers. Le nombre total de couples possibles est donc
+\begin{displaymath}
+  \frac{pq}{p \wedge q}.
+\end{displaymath}
+Combien de couples doit-on enlever à ce nombre?\newline
+Pour $a' = a$, il faut enlever les $\frac{q}{p \wedge q}$ éléments de la classe de $a$ modulo $p \wedge q$ dans $\llbracket 0, q\llbracket$. Parmi ceux là se trouve $(a,b)$ car $a \equiv b \mod p\wedge q$. De même pour $b' = b$, il faut enlever $\frac{p}{p \wedge q}-1$ couples (avec -1 pour ne pas compter deux fois $(a,b)$).\newline
+Finalement, le nombre de couples $(a',b')$ contribuant réellement à la grande union est
+
+\begin{displaymath}
+  \frac{pq}{p \wedge q} - \frac{q}{p \wedge q} - \frac{p}{p \wedge q} + 1 = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right).
+\end{displaymath}
+Avec la convention 3, on obtient
+\begin{multline*}
+  \varphi((A \cup B)') = \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right) \frac{1}{p \vee q}\\
+  \Rightarrow
+  \varphi(A \cup B) = 1 - \left(\frac{p}{p \wedge q}-1\right) \left(\frac{q}{p \wedge q}-1\right) \frac{1}{p \vee q}.
+\end{multline*}
+En distribuant avec $(p \wedge q)(p \vee q) = pq$, il vient
+\begin{displaymath}
+  \varphi(A \cup B) = 1 - 1 + \frac{1}{p} + \frac{1}{q} - \frac{1}{p \vee q} = \varphi(A) + \varphi(B) - \varphi(A\cap B).
+\end{displaymath}
+\end{enumerate}
+
+La définition commode de $\varphi$ utilise la nouvelle caractérisation des éléments de $\mathfrak{S}$.\newline
+Soit $X \subset \Z$, $I_X$ est l'ensemble des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$. Il existe $\mu_X \in \N$ tel que $I_X = \Z \mu_X$.
+\begin{displaymath}
+  X \in \mathfrak{S} \Leftrightarrow \mu_X \leq 1 .
+\end{displaymath}
+
+\begin{lem}
+  Soit $X\in \mathfrak{S}$ et $m=\mu_X$. Pour tout $n\in I_X$,
+  \begin{displaymath}
+      \frac{\sharp \pi_n(X)}{n} = \frac{\sharp \pi_m(X)}{m}.
+  \end{displaymath}
+\end{lem}
+\begin{demo}
+  En fait $n = pm$ avec $p$ entier car $n \in I_X = \Z m$. Chaque classe modulo $n$ est la réunion de $p$ classes disjointes modulo $m$.
+  \begin{displaymath}
+    \frac{\sharp \pi_n(X)}{n} = \frac{p \, \sharp \pi_m(X)}{ p m} = \frac{\sharp \pi_m(X)}{m}.
+  \end{displaymath}
+\end{demo}
+\begin{defi}\label{defPhi}
+  On définit une fonction $\varphi$ dans $\mathfrak{S}$ par:
+  \begin{displaymath}
+    \forall X \in \mathfrak{S}, \; \varphi(X) = \frac{\sharp \pi_n(X)}{n}
+  \end{displaymath}
+pour n'importe quel $n\in I_X$.
+\end{defi}
+\begin{prop}
+  La fonction $\varphi$ est modulaire, $\varphi(a + \Z m) = \frac{1}{m}$.
+\end{prop}
+\begin{demo}
+  Soit $A$ et $B$ dans $\mathfrak{S}$. Le ppcm $m = \mu_A \vee \mu_B$ est dans $I_A, I_B, I_{A\cup B}, I_{A\cap B}$. En l'utilisant pour exprimer les valeurs de $\varphi$, on est ramené à la modularité de la fonction nombre d'éléments.\newline
+  Si $A= a + \Z m$, $m \in I_A$ et $\pi_m(A)$ est un singleton.
+\end{demo}
+
+\subsubsection{Nouvelle caractérisation}
+Soit $X \subset \Z$, considérons l'ensemble $I_X$ des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$.
+\begin{rems}
+  \begin{enumerate}
+    \item $I_X$ est un sous-groupe additif de $\Z$.
+    \item Il existe un unique $\mu_X \in \N$ tel que $I_X = \Z \mu_X$. Pour tout $x\in X$, $x + \Z \mu_X \in X$.
+    \item $\mu_X = 1$ si et seulement si $X=\Z$.
+    \item Si $X = a + \Z m$ avec $m \geq 1$, $\mu_X = m$.
+    \item On suppose $\mu_X > 1$. Pour tout $x \in X$, $x + \Z \mu_X \subset X$.
+    \item On suppose $\mu_X > 1$. En notant $A  = \llbracket 0 , \mu_X \llbracket \, \cap \, X$,
+\begin{displaymath}
+  X = \bigcup_{a \in A}\left(a + \Z \mu_X\right).
+\end{displaymath}
+  \end{enumerate}
+\end{rems}
+
+\begin{demo}
+  \begin{enumerate}
+    \item $0\in I_X$.\newline
+    Soit $\mu \in I_X$.\newline
+      Pour tout $y \in X-\mu$, il existe $x \in X$ tel que $y=x-\mu$. Comme $X \subset X + \mu$, il existe $x'\in X$ tel que
+$x = x' + \mu$. Donc $y = x - \mu =x'\in X$. Ceci montre $X - \mu \subset X$.\newline
+      Pour tout $x \in X$, $x = (x + \mu) - \mu$ avec $x + \mu \in X + \mu \subset X$donc $x \in X - \mu$. Ceci montre $X \subset X - \mu$.
+    \item La division euclidienne montre que les sous-groupes additifs de $\Z$ sont de cette forme.
+    \item C'est le principe même du raisonnement par récurrence.
+    \item Par définition de $X$, $m \in I_X$ donc $\mu_X$ divise $m$. Comme $\mu_X \in I_X$, $x + \mu_x \in X = x +\Z m$ donc $m$ divise $\mu_X$.
+    \item Conséquence immédiate de la définition de $\mu_X$.
+    \item On déduit de 5 que $\bigcup_{a \in A}\left(a + \Z \mu_X\right) \subset X$. Réciproquement, soit $x\in X$, il existe un $a$ dans $\llbracket 0, \mu_X \llbracket$ congru à $x$ modulo $\mu_x$. Il est encore dans $X$ d'après 5 ce qui prouve l'inclusion réciproque.
+  \end{enumerate}
+\end{demo}
+On en déduit une nouvelle caractérisation de l'ensemble $\mathfrak{S}$ introduit dans les paragraphes précédents.
+\begin{propn}
+  Soit $X$ une partie $\Z$, les deux propriétés suivantes sont équivalentes.
+\begin{enumerate}
+  \item $X \in \mathfrak{S}$ c'est à dire est une réunion finie de classes de congruences.
+  \item $\mu_X \geq 1$.
+\end{enumerate}
+Si $X$ vérifie cette condition, $X = \bigcup_{a \in A}\left(a + \Z \mu_X\right)$  avec $A  = \llbracket 0 , \mu_X \llbracket \,\cap \, X$.
+\end{propn}
+\begin{demo}
+  Les remarques précédentes montrent que (2) entraine (1). Réciproquement, si $X$ est une union finie de classes de congruences, le ppcm des modulos de ces classes est un élément non nul de $I_X$. L'expression de $X$ est une reformulation de la remarque 6.
+\end{demo}
+\begin{propn}
+  Soit $X \in \mathfrak{S}$, $n \in I_X$, $\pi_n$ la projection canonique $\Z \rightarrow \Z / n\Z$ et $A = \pi_n(X)$: alors $X = \pi_n^{-1}(A)$.
+\end{propn}
+\begin{demo}
+  Il s'agit seulement de reformuler la proposition précédente en termes de projection canonique.
+\end{demo}
+
+\begin{propn} \label{muInfK}
+ Soit $K$ naturel non nul et $S \in \mathfrak{S}$ non vide.
+ \begin{displaymath}
+  \mu_S \leq K \Rightarrow S \cap \llbracket 0, K \rrbracket \neq \emptyset.
+ \end{displaymath}
+\end{propn}
+\begin{demo}
+Par définition de $\mu_S$, $S$ contient au moins une classe modulo $\mu_S$. Cette classe coupe $\llbracket 0, \mu_S -1 \rrbracket \subset \llbracket 0, K \rrbracket$.
+\end{demo}
+
+Les stabilités définissant la notion d'algèbre s'éclairent.
+\begin{propn}
+  Pour tous $X$ et $Y$ dans $\mathfrak{S}$:
+\begin{align*}
+  X \cup Y \in \mathfrak{S} &\text{ avec } \mu_{X\cup Y} \,\mathrm{ divise } \, \mu_X \vee \mu_Y  \\
+  X \cap Y \in \mathfrak{S} &\text{ avec } \mu_{X\cap Y} \,\mathrm{ divise } \,  \mu_X \vee \mu_Y \\
+  X' \in \mathfrak{S} &\text{ avec } \mu_{X'} = \mu_X
+\end{align*}
+\end{propn}
+\begin{demo}
+  \begin{enumerate}
+    \item On vérifie facilement que $(X+\mu) \cup (Y+\mu) = (X\cup Y) + \mu$ et $(X+\mu) \cap (Y+\mu) = (X\cap Y) + \mu$. On en déduit $I_X \cap I_Y \subset I_{X\cup Y}$ et $I_X \cap I_Y \subset I_{X\cap Y}$ puis $\mu_{X\cup Y}$ et $\mu_{X\cap Y}$ divisent $\mu_X \vee \mu_Y$.\newline
+    D'autre part une classe de congruence modulo $m$ se décompose en union de classes modulo n'importe quel multiple de $m$. Donc $X$ et $Y$ se décomposent en classes modulo $\mu_X \vee \mu_Y$. On en déduit que $X\cup Y$ et $X\cap Y$ se décomposent aussi en classes modulo $\mu_X \vee \mu_Y$. Donc $\mu_X \vee \mu_Y$ est dans $I_{Y\cup Y}$ donc $\mu_{X\cup Y}$ divise $\mu_X \vee \mu_Y$.
+    \item Vérifier $(X + \mu)' = X' + \mu$. On en déduit
+\begin{displaymath}
+  X + \mu = X \Leftrightarrow (X+ \mu)' = X' \Leftrightarrow X' + \mu = X'.
+\end{displaymath}
+On en déduit $I_{X'} = I_X$.
+  \end{enumerate}
+\end{demo}
+\begin{rem}
+ Lorsque $X$ et $Y$ sont complémentaires, $\mu_X = \mu_Y$ mais $\mu_{X\cup Y} = 1$. On voit bien qu'en général, la première divisibilité n'est pas une égalité.
+\end{rem}
+
+\subsubsection{Suites de parties}\label{ExplesSuitesCongru}
+Proposons divers exemples de suites de parties dans $\mathfrak{S}$.
+
+\textbf{Exemple 1.}\newline
+Soit  $(m_n)_{n\geq 1}$ une suite d'entiers naturels tels que $m_n < m_{n+1}$ avec $m_n$ divise $m_{n+1}$.\newline
+Notons $S_n = m_n \Z$ l'ensemble des multiples de $m_n$ et $T_n$ son complémentaire c'est à dire l'ensemble des entiers non divisibles par $m_n$.
+ \begin{itemize}
+  \item Pour tout $n$, $S_n$ et $T_n$ appartiennent à $\in \mathfrak{S}$ avec $\varphi(S_n)=\frac{1}{m_n}$ et $\varphi(T_n)=\frac{m_n-1}{m_n}$.
+  \item La suite $(S_n)$ est décroissante et la suite $(T_n)$ est croissante. En effet, comme $m_n$ divise $m_{n+1}$, tout multiple de $m_{n+1}$ est un multiple de $m_{n}$ donc $S_{n+1} \subset S_{n}$ et $T_n \subset T_{n+1}$.
+  \item $(m_n) \rightarrow + \infty$, $(\varphi(S_n)) \rightarrow 0$ , $(\varphi(T_n)) \rightarrow 1$. Évident.
+  \item $\Z^* = \bigcup_{n\geq 1} T_n$, $\left\lbrace 0 \right\rbrace = \bigcap_{n\geq 1} S_n$. En effet, pour tout entier $k$ non nul, il existe un $n$ tel que $|k| < m_n$ donc $m_n$ ne divise pas $k$ c'est à dire $k \in S_n$.
+ \end{itemize}
+
+\textbf{Exemple 2.}\newline
+Soit  $A$ une partie finie de $\Z$ et $(m_n)_{n\geq 1}$ une suite d'entiers naturels tels que $m_n < m_{n+1}$ avec $m_n$ divise $m_{n+1}$.\newline
+Notons $S_n = \bigcup_{a \in A} \left(a + m_n \Z\right)$.
+ \begin{itemize}
+  \item Pour tout $n$, $S_n\in \mathfrak{S}$ avec $A \in S_n$ et $\varphi(S_n)=\frac{\sharp A }{m_n}$.
+  \item La suite $(S_n)$ est décroissante. En effet, comme $m_n$ divise $m_{n+1}$, $a + m_{n+1}\Z \subset a + m_{n}\Z$.
+  \item $(m_n) \rightarrow + \infty$, $(\varphi(S_n)) \rightarrow 0$ . Évident.
+  \item $A = \bigcap_{n\geq 1} S_n$. En effet, pour tout entier $k \notin A$, il existe un $n$ tel que $|k -a| < m_n$ pour tous les $a\in A$ donc $k \notin S_n$.
+ \end{itemize}
+
+\textbf{Exemple 3.}\newline \label{SuiteCroissAAquelc}
+Soit $A = \left\lbrace a_n, n \in\N\right\rbrace$ une partie quelconque de $\Z$ (elle est forcément dénombrable) et $p$ naturel fixé. Pour tout $n \in \N$, posons $S_n = \bigcup_{k =0}^n \left(a_k + 2^{k+p} \Z\right)$.
+ \begin{itemize}
+  \item Pour tout $n$, $S_n\in \mathfrak{S}$ avec
+  \begin{displaymath}
+    \varphi(S_n)\leq \frac{1}{2^p} + \frac{1}{2^{p+1}} + \cdots + \frac{1}{2^{p+2}} \leq 2^{1-p}.
+  \end{displaymath}
+  \item La suite $(S_n)$ est croissante avec $A \subset \bigcup_{n\in \N}S_n$.
+ \end{itemize}
+
+\textbf{Exemple 4.} \newline \label{SuiteIntevide}
+On repart de l'exemple précédent avec $A=\Z$, notons $S_n'$ le complémentaire de $S_n$.
+ \begin{itemize}
+  \item Pour tout $n$, $S_n'\in \mathfrak{S}$ avec $\varphi(S_n')\geq 1- 2^{1-p}$.
+  \item La suite $(S_n')$ est décroissante avec $\emptyset = \bigcup_{n\in \N}S_n$ et $\lim (S_n')\geq 1- 2^{1-p}$.
+ \end{itemize}
+
+ \textbf{Exemple 5.} \newline \label{SuiteCroissA}
+On repart encore de l'exemple 3 avec $A \in \mathfrak{S}$. Il existe un entier naturel $\mu$ tel que $A$ soit une union disjointe de classes modulo $\mu$. Pour tout $n \in \N$, posons $S_n = \bigcup_{k =0}^n \left(a_k + \mu^{k+p} \Z\right)$.
+ \begin{itemize}
+  \item Pour tout $n$, $S_n\in \mathfrak{S}$ avec $S_n \subset A$. En effet $a_k \in A$ et $\mu^{n+k}$ est un multiple de $\mu$ donc $\left(a_k + \mu^{k+p} \Z\right)$ est inclus dans la classe de $a_k$ modulo $\mu$ donc dans $A$.
+  \item Pour tout $n$, $\varphi(S_n)\leq \mu^{1-p}$.
+  \item La suite $(S_n)$ est croissante avec $A = \bigcup_{n\in \N}S_n$ et $\lim (S_n)\leq \mu^{1-p}$.
+ \end{itemize}
 
 \end{document}
 
