@@ -1,6 +1,6 @@
 \input{courspdf.tex}
 
-\debutcours{Notes sur \emph{Measure and Integration} de H. König}{beta 2.0 \tiny{ le \today} }
+\debutcours{Notes sur \emph{Measure and Integration} de H. König}{beta 2.1 \tiny{ le \today} }
 
 \section{Présentation}
 \noindent Ce texte est constitué de notes de lecture sur le livre \emph{Measure and Integration} de Heinz König.
@@ -9,12 +9,21 @@
 L'exemple principal du livre est la mesure de Lebesgue dans $\R^n$ présentée en \ref{Exples}\ref{Expleppal}. Mon premier exemple (\ref{Exples} \ref{ExpleZ}) est arithmétique et se place dans $\Z$.
 
 \paragraph*{Systèmes et fonctions d'ensembles.}
-Les objets fondamentaux utilisés dans la théorie des mesures sur un ensemble $X$ sont parties $\mathfrak{S}$ de $\mathcal{P}(X)$ (appelés \emph{pavings} dans le livre) et des fonctions $\varphi$ définies dans $\mathfrak{S}$ à valeurs dans $\overline{\R}$ (appelés \emph{set fonctions} dans le livre).\newline
+Les objets fondamentaux utilisés dans la théorie des mesures sur un ensemble $X$ sont des parties $\mathfrak{S}$ de $\mathcal{P}(X)$ (appelés \emph{pavings} dans le livre) et des fonctions $\varphi$ définies dans $\mathfrak{S}$ à valeurs dans $\overline{\R}$ (appelés \emph{set fonctions} dans le livre).\newline
 Avec le sens précis que prend le mot \emph{pavage} dans les mathématiques en France, on ne peut traduire \emph{paving} par \emph{pavage}. Comme l'auteur utilise aussi \emph{set system}, j'utiliserai \emph{système d'ensembles} pour désigner un \emph{paving} c'est à dire simplement une partie de $\mathcal{P}(X)$.\newline
 Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fonction d'ensembles} (\emph{set fonction} dans le texte).
 
 \begin{enumerate}
- \item  Les différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns}, les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}.
+ \item  Les différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns} et définis à partir des stabilités relativement aux opérations ensemblistes union, intersection, soustraction ensembliste, complémentation.\newline
+ En particulier un système d'ensembles est un \emph{treillis} (lattice) si et seulement si il est stable pour l'union et l'intersection.
+ \item Les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}. Les plus fondamentales pour une fonction définie dans un treillis sont l'isotonie (croissance) et la modularité (sorte d'additivité).
+ \begin{displaymath}
+   \begin{aligned}
+     \forall (A,B) \in \mathfrak{S}^2, \;& A \subset B \Rightarrow \varphi(A) \leq \varphi(B) &\text{isotonie}& \\
+     \forall (A,B) \in \mathfrak{S}^2, \;&  \varphi(A\cap B) + \varphi(A \cup B) = \varphi(A) + \varphi(B) &\text{modularité}&
+   \end{aligned}
+ \end{displaymath}
+
  \item Les concepts proches des mesures (\ref{SystFoncEns} \ref{FoncEns} \ref{ContenusMesures} ) sont des cas particuliers des situations précédentes.
  \item À partir d'une fonction d'ensembles $\varphi$, on peut construire (\ref{ExtenRegul} \ref{Enveloppes}) une fonction d'ensemble $\Phi$ définie dans $\mathcal{P}(X)$ tout entier qui possède de bonnes propriétés.
  \item La classe de Carathéodory (\ref{ExtenRegul}\ref{ClasseCaratheodory}) d'une fonction d'ensemble sur $\mathcal{P}(X)$ est un système d'ensembles qui possède de bonnes propriétés. C'est le cadre de la preuve de résultats importants.
@@ -28,52 +37,205 @@ Deux exemples sont présentés. À côté du volume dans $\R^n$ qui est l'exempl
 
 \subsection{Cellules de base}
 
-\subsubsection{Cubes dyadiques}
-Dans cet exemple qui est l'exemple fondamental du livre, $X=\R^n$.
-\begin{defi}[s-cube]\index{s-cube}\label{s-cube}
-Pour tout naturel non nul $s$, on appelle $s$-cube un cube fermé de côté $\frac{1}{2^s}$ et de sommets à coordonnées dans $\frac{1}{2^s}\Z^n$.\newline
-Par exemple, pour $a = (a_1, \cdots, a_n) \in \frac{1}{2^s}\Z^n$, on définit le $s$-cube $Q_a$ par
-\begin{displaymath}
- \forall x = (x_1, \cdots, x_n) \in X, \; x \in Q_a  \Leftrightarrow \forall i \in \llbracket 1,n \rrbracket,\; a_i \leq x_i \leq a_i + \frac{1}{2^s}.
-\end{displaymath}
-On note $\mathfrak{C}_s$ l'ensemble des $s$-cubes, $\mathfrak{S}_s$ l'ensemble des unions finies de $s$-cubes et $\mathfrak{S} = \bigcup_{s\in \N} \mathfrak{S}_s$.
+\subsubsection{Cubes rationnels}
+Dans cet exemple qui est l'exemple fondamental du livre, $X=\R^n$. Dans tout le livre, on pourra utiliser occasionnellement la \emph{norme infinie} de $\R^n$ ainsi qu'un résultat sur les intervalles. \index{norme infinie de $\R^n$}
+\begin{defi}[Norme infinie de $\R^n$]
+ On note $N$ la norme infinie de $\R^n$ définie par
+ \begin{displaymath}
+  \forall x=(x_1,\cdots,x_n)\in X= \R^n, \; N(x)=\max(|x_1|,\cdots,|x_n|).
+ \end{displaymath}
 \end{defi}
 
+ \paragraph{Exercice sur des intervalles} \label{ExoIntervalles}
+ Soit $x\leq y$ et $a\leq b$ réels. Montrer que
+ \begin{displaymath}
+  [x,y] \cap [a,b] \neq \emptyset \Leftrightarrow
+  \left\lbrace
+  \begin{aligned}
+    x \leq b \\
+    a \leq y
+  \end{aligned}
+  \right. .
+ \end{displaymath}
+\begin{demo}
+\begin{displaymath}
+ u \in [x,y] \cap [a,b] \Rightarrow
+ \left\lbrace
+ \begin{aligned}
+   x \leq u \leq y \\
+   a \leq u \leq b
+ \end{aligned}
+ \right.
+ \Rightarrow
+\left\lbrace
+ \begin{aligned}
+   x \leq b  \\
+   a \leq y
+ \end{aligned}
+ \right. .
+ \end{displaymath}
+ Réciproquement, supposons $x\leq b$ et $a \leq y$.\newline
+ Si $a\leq x$ alors $x \in [x,y]\cap[a,b]$.\newline
+ Si $x<a$ alors $a \in ]x,y]\cap [a,b] \subset [x,y]\cap[a,b]$.
+\end{demo}
+
+\begin{defi}[q-cube]\index{q-cube}\label{q-cube}
+Pour tout naturel non nul $q$, on appelle $q$-cube un hypercube fermé de côté $\frac{1}{q}$ et de sommets à coordonnées dans $\frac{1}{q}\Z^n$.\newline
+Par exemple, pour $a = (a_1, \cdots, a_n) \in \frac{1}{q}\Z^n$, on définit le $q$-cube $Q_a$ par
+\begin{displaymath}
+ \forall x = (x_1, \cdots, x_n) \in X, \; x \in Q_a  \Leftrightarrow \forall i \in \llbracket 1,n \rrbracket,\; a_i \leq x_i \leq a_i + \frac{1}{q}.
+\end{displaymath}
+On peut voir aussi $Q_a$ comme un produit cartésien de segments
+\begin{displaymath}
+ Q_a = [a_1, a_1+\frac{1}{p}] \times \cdots \times [a_n, a_n+\frac{1}{p}].
+\end{displaymath}
+On note $\mathfrak{C}_q$ l'ensemble des $q$-cubes. On dit aussi cube de taille $\frac{1}{q}$ plutôt que $q$-cube.
+\end{defi}
 \begin{rems}
- \begin{enumerate}
-  \item Un $0$-cube est un cube de côté $1$ et de sommets à coordonnées entières.  Pour tout $s$-cube $Q$, il existe un unique $a\in \frac{1}{2^s}\Z^n$ tel que $Q=Q_a$. De plus $X = \R^n = \bigcup_{a\in \frac{1}{2^s}\Z}Q_a = \bigcup_{Q\in \mathfrak{C}_s}Q$.
-  \item La décomposition d'un élément de $\mathfrak{M}_s$ comme union de $s$-cubes est unique. En particulier chaque $s$-cube est une réunion de $(s+1)$-cubes (au nombre de $2^n$ ). On en déduit que $\mathfrak{C}_s \subset \mathfrak{S}_{s+1}$ donc $\mathfrak{S}_s \subset \mathfrak{S}_{s+1}$.
-  \item Le système d'ensembles $\mathfrak{S}$ est stable pour l'union mais pas pour l'intersection ni la soustraction. Par exemple en dimension $n=3$, l'intersection de 2 cubes qui se touchent est une face, une arête ou un sommet.
-  \item On pourrait récupérer la stablité pour l'intersection et la soustraction en considérant des cubes ouverts au lieu de fermés mais alors aucun point à coordonnées dans $\frac{1}{2^s}\Z^n$ ne serait dans un $s$-cube et on perdrait $\mathfrak{S}_s \subset \mathfrak{S}_{s+1}$.
- \end{enumerate}
+ \begin{itemize}
+  \item Un $1$-cube est un cube de côté $1$ et de sommets à coordonnées entières.
+  \item Pour tout $q$-cube $Q$, il existe un unique $a\in \frac{1}{q}\Z^n$ tel que $Q=Q_a$.
+  \item Les $q$-cubes recouvrent $X$. Plus précisément
+  \begin{displaymath}
+     X = \R^n = \bigcup_{a\in \frac{1}{q}\Z}Q_a = \bigcup_{Q\in \mathfrak{C}_q}Q.
+  \end{displaymath}
+  \item L'intersection de 2 cubes distincts qui se coupent n'est pas un $q$-cube. Par exemple en dimension $n=3$ c'est une face, une arête ou un sommet. Pour rendre compte de ces intersections, on introduit la notion de cellule.
+ \end{itemize}
 \end{rems}
 
-On définit le volume dans $\mathfrak{S}$ à partir du cube unité, de l'invariance par translation, de l'additivité et de l'unique décomposition.
+\begin{defi}[q-d-cellule]
+ Pour $a = (a_1, \cdots, a_n) \in \frac{1}{q}\Z^n$ et $I$ une partie à $d$ éléments de $\llbracket 1,n \rrbracket$, on définit la $q$-$d$-cellule $C_a(I)$ par
+\begin{displaymath}
+ \forall x = (x_1, \cdots, x_n) \in X, \; x \in C_a(I)  \Leftrightarrow
+ \left\lbrace
+   \begin{aligned}
+      &\forall i \in I,&\; a_i \leq x_i \leq a_i + \frac{1}{q} \\
+      &\forall i \in \llbracket 1,n \rrbracket \setminus I, &\; x_i = a_i
+   \end{aligned}
+  \right. .
+\end{displaymath}
+\end{defi}
+\begin{rem}
+On dira aussi cellule de taille $\frac{1}{q}$ et de dimension $d$ plutôt que $q$-$d$-cellule.\newline
+Dans $X=\R^n$, un $q$-cube est une cellule de taille $\frac{1}{q}$ et de dimension $n$. Une de ses arêtes est une cellule de dimension 1 (taille $\frac{1}{q}$). Une face est une cellule de dimension $n-1$. Un singleton dans $\frac{1}{p} \Z^n$ est une cellule de taille $\frac{1}{q}$ et de dimension nulle.
+\end{rem}
+\begin{propn}
+ Lorsque deux cellules de taille $\frac{1}{q}$ distinctes ne sont pas disjointes, leur intersection est une cellule de taille $\frac{1}{q}$.
+\end{propn}
+\begin{demo}
+ Commençons par l'intersection de deux $q$-cubes distincts $Q_a$ et $Q_b$.
+ \begin{multline*}
+  Q_a \cap Q_b \neq \emptyset
+   \Leftrightarrow
+  [a_1, a_1+\frac{1}{p}] \times \cdots \times [a_n, a_n+\frac{1}{p}] \cap [b_1, b_1+\frac{1}{p}] \times \cdots \times [b_n, b_n+\frac{1}{p}] \neq \emptyset \\
+   \Leftrightarrow
+  \forall i \in \llbracket 1,n \rrbracket, \; [a_i, a_i+\frac{1}{p}] \cap [b_i, b_i+\frac{1}{p}] \neq \emptyset
+   \Leftrightarrow
+  \forall i \in \llbracket 1,n \rrbracket, \; a_i \leq b_i + \frac{1}{q} \text{ et } b_i \leq a_i + \frac{1}{q} \text{ (exercice sur intervalles)} \\
+   \Leftrightarrow
+  N(b-a) \leq \frac{1}{q}
+   \Leftrightarrow
+  N(b-a) = \frac{1}{q}
+   \Leftrightarrow
+  \forall i \in \llbracket 1,n \rrbracket, \; |a_i - b_i| = 0 \text{ ou } \frac{1}{q}.
+ \end{multline*}
+car $a$ et $b$ appartiennent à $\frac{1}{q}\, \Z^n$. Définissons un $c=(c_1,\cdots,c_n) \in \frac{1}{q}\,\Z^n$ en classant les indices $i$ en trois catégories. Pour tout $i \in \llbracket \rrbracket$:
+\begin{align*}
+ i \in I & \Leftrightarrow a_i = b_i               &\text{ on pose } c_i = a_i = b_i\\
+ i \in J & \Leftrightarrow a_i = b_i + \frac{1}{q} &\text{ on pose } c_i = a_i\\
+ i \in K & \Leftrightarrow b_i = a_i + \frac{1}{q} &\text{ on pose } c_i = b_i
+\end{align*}
+Pour tout $x = (x_1, \cdots, x_n) \in \R^n$:
+\begin{displaymath}
+ x \in Q_a \cap Q_b \Leftrightarrow
+ \left\lbrace
+   \begin{aligned}
+     &\forall i \in I,&\; a_i \leq x_i \leq a_i + \frac{1}{q} \\
+     &\forall i \in J\cup K,&\; x_i = c_i
+   \end{aligned}
+  \right. .
+\end{displaymath}
+On en déduit que $Q_a \cap Q_b$ est une cellule de taille $\frac{1}{q}$ et de dimension $\sharp I$.\newline
+Considérons maintenant deux cellules $C_a(I)$ et $C_b(J)$.
+\begin{displaymath}
+ x=(x_1,\cdots,x_n) \in C_a(I) \cap C_b(J)
+  \Leftrightarrow
+    \left\lbrace
+      \begin{aligned}
+         &\forall i \in I \cap J,& x_i \in [a_i, a_i+\frac{1}{p}] \cap [b_i, b_i+\frac{1}{p}] \neq \emptyset \\
+         &\forall i \in I \setminus J,&  x_i = b_i \in [a_i, a_i+\frac{1}{p}] \\
+         &\forall i \in J \setminus I,&  x_i = a_i \in [b_i, b_i+\frac{1}{p}] \\
+         &\forall i \in I'\cap J',& x_i = a_i = b_i
+      \end{aligned}
+    \right.
+\end{displaymath}
+Pour tous les indices $i$ qui ne sont pas dans $I \cap J$, seule une valeur de $x_i$ est possible. Pour les autres, on est ramené à une intersection de deux cubes dans $\R^d$ avec $d=\sharp I\cap J$.
+\end{demo}
+
+\begin{propn}\label{DecompCellule}
+ Soit $m=pq$ un multiple de $p$. Toute cellule de taille $\frac{1}{q}$ et de dimension $d$ est une union de cellules de taille $\frac{1}{m}$ et de même dimension (au nombre de $p^d$). En particulier, tout cube de taille $\frac{1}{q}$ est l'union de $p^n$ cubes de taille $\frac{1}{m}$.
+\end{propn}
+\begin{demo}
+En considérant les coordonnées fixées pour une cellule, il suffit de le démontrer pour les cubes.
+ Soit $Q = Q_a$ avec $a = (a_1, \cdots, a_n) \in \frac{1}{q}\Z^n$ un $q$-cube quelconque.\newline
+ Notons $k=(k_1,\cdots,k_n)\in \llbracket 0, p-1\llbracket^n$ puis $a(k)=(a_1 + \frac{k_1}{m}, \cdots a_n + \frac{k_n}{m})$ et $Q_{a(k)}$ le $m$-cube associé. Alors
+ \begin{displaymath}
+  Q_a = \bigcup_{k=(k_1,\cdots,k_n)\in \llbracket 0, p-1\llbracket^n}\, Q_{a(k)}.
+ \end{displaymath}
+\end{demo}
+
+\begin{defi}
+  On note $\mathfrak{S}_q$ l'ensemble des unions finies de cellules de taille $\frac{1}{q}$ et $\mathfrak{S} = \bigcup_{q\in \N} \mathfrak{S}_q$.
+\end{defi}
+
+\begin{propn}
+ Pour tout naturel $q$ non nul, $\mathfrak{S}_q$ est stable pour l'union et l'intersection. C'est un treillis.\newline
+ Soit $m$ un multiple de $q$. Alors $\mathfrak{S}_q \subset \mathfrak{S}_m$.
+\end{propn}
+\begin{demo}
+ Conséquence des deux propositions précédentes.
+\end{demo}
+
+\noindent On définit le volume dans $\mathfrak{S}$ à partir du cube unité et de son unique décomposition, de l'invariance par translation, de la modularité.
 \begin{itemize}
  \item Le volume du cube unité dans $\mathfrak{S}_0$ est 1.
- \item Par translation, tous les $s$-cubes ont le même volume.
- \item Le cube unité se décompose de manière unique en $2^{sn}$ cubes dans $\mathfrak{S}_s$. Le volume d'un $s$-cube est $\frac{1}{2^{ns}}$.
+ \item Toute cellule de dimension strictement plus petite que $n$ est de volume nul
+ \item Par translation, tous les cubes de taille $\frac{1}{q}$ ont le même volume.
+ \item Le cube unité se décompose de manière unique en $q^{n}$ cubes dans $\mathfrak{S}_q$. Par modularité, le volume d'un cube de taille $\frac{1}{q}$ est $\frac{1}{q^{n}}$.
 \end{itemize}
 
-\begin{defi}[volume dans l'ensemble des unions de cubes dyadiques]
-Soit $A \in \mathfrak{S}$, il existe $s\in \N$ et un ensemble fini $\mathfrak{A}$ de $s$-cubes tels que $A = \bigcup_{Q\in \mathfrak{A}} Q$. On définit le volume $\lambda(A)$ par
+\begin{defi}[volume dans l'ensemble des unions finies de cellules]
+Soit $A \in \mathfrak{S}$, il existe $s\in \N$ et un ensemble fini $\mathfrak{A}$ de cellules de taille $\frac{1}{q}$ tels que $A = \bigcup_{Q\in \mathfrak{A}} Q$. On désigne par $\mathfrak{A}_n \subset \mathfrak{A}$ l'ensemble des cubes. On définit le volume $\lambda(A)$ par
 \begin{displaymath}
- \lambda(A) = \frac{\sharp \mathfrak{A}}{2^{ns}}.
+ \lambda(A) = \frac{\sharp \mathfrak{A}_n}{q^{n}}.
 \end{displaymath}
 \end{defi}
 \begin{demo}[Consistence de la définition]
- Pour un $s$ donné, si $A$ se décompose en une union de $s$-cubes dans un ensemble fini $\mathfrak{A}$, il se décompose aussi en une union de $(s+1)$-cubes dans un ensemble fini $\mathfrak{B}$ avec $\sharp \mathfrak{B} = 2^n \times \sharp \mathfrak{A}$. On en déduit
+ Si $A$ se décompose en une union de cellules de taille $\frac{1}{q}$ et en une union de cellules de taille $\frac{1}{r}$, les deux valeurs du volume de $A$ sont-elles égales?\newline
+ Considérons un multiple commun $m=pq$. D'après la proposition \ref{DecompCellule}, $A$ est une union de cellules de taille $\frac{1}{m}$. Il suffit de montrer que le volume est le même pour $q$ et $m$.\newline
+ Notons $\mathfrak{B}_n$ l'ensemble fini des cubes de taille $\frac{1}{m}$ dans la décomposition de $A$ (les cellules de dimension plus petites ne comptent pas pour le volume). D'après la proposition \ref{DecompCellule}, $\sharp \mathfrak{B}_n = p^n \times \sharp \mathfrak{A}_n$. On en déduit
  \begin{displaymath}
-  \frac{\sharp \mathfrak{B}}{2^{n(s+1)}} = \frac{2^n \times \sharp \mathfrak{A}}{2^n \times 2^{ns}} = \frac{\sharp \mathfrak{A}}{2^{ns}} = \lambda(A).
+  \frac{\sharp \mathfrak{B}_n}{m^{n}} = \frac{p^n \times \sharp \mathfrak{A}_n}{p^n \times q^{n}} = \frac{\sharp \mathfrak{A}_n}{q^{n}} = \lambda(A).
  \end{displaymath}
 \end{demo}
+\begin{rem}
+ Lorsque $A$ est une union finie de cellules de taille $\frac{1}{q}$, son volume est le nombre de cubes de taille $\frac{1}{q}$ \emph{inclus dans } $A$ multiplié par $\frac{1}{q}$.
+\end{rem}
 \begin{propn}
- La fonction d'ensembles $\lambda$ (volume) définie de $\mathfrak{S}$ dans $[0,+\infty[$ est isotone (croissante).
+ La fonction d'ensembles $\lambda$ (volume) définie dans le treillis $\mathfrak{S}$ des unions finies de cellules à valeurs dans $[0,+\infty[$ est isotone (croissante) et modulaire.
 \end{propn}
 \begin{demo}
- C'est une conséquence de la définition à partir du nombre de $s$-cubes dans une décomposition.
+ Soit $A$ et $B$ deux unions de cellules de taille $\frac{1}{q}$. Notons $\mathfrak{A}$, $\mathfrak{B}$, $\mathfrak{U}$, $\mathfrak{I}$ les ensembles de cubes que contiennent respectivement $A$, $B$, $A\cup B$, $A\cap B$.
+ \begin{align*}
+  A \subset B \Rightarrow \mathfrak{A} \subset \mathfrak{B} \Rightarrow \sharp\mathfrak{A} \leq \sharp \mathfrak{B} \Rightarrow& \varphi(A) \leq \varphi(B) \\
+  \mathfrak{A}\cup \mathfrak{B} = \mathfrak{U} \Rightarrow& \varphi(A\cup B) = \frac{\sharp(\mathfrak{A}\cup \mathfrak{B})}{q^n} \\
+  \mathfrak{A}\cap \mathfrak{B} = \mathfrak{I} \Rightarrow& \varphi(A\cap B) = \frac{\sharp(\mathfrak{A}\cap \mathfrak{B})}{q^n}
+ \end{align*}
+ en multipliant par $\frac{1}{q^n}$. On conclut avec la modularité de la fonction nombre d'éléments
+ \begin{displaymath}
+  \sharp(\mathfrak{A}\cup \mathfrak{B})) + \sharp(\mathfrak{A}\cap \mathfrak{B})) = \sharp\mathfrak{A} + \sharp \mathfrak{B}.
+ \end{displaymath}
 \end{demo}
-Elle n'est pas modulaire ou additive à cause de la non stabilité pour l'intersection.
 
 \subsubsection{Classes de congruences}
 Ici $X = \Z$. \index{Exemple arithmétique}
@@ -109,7 +271,7 @@ On désigne par $\mathfrak{C}_m \subset \mathcal{P}(\Z)$ l'ensemble des classes 
  On en déduit $A \subset \bigcup_{C \in \mathfrak{C}_p,\, C\subset A} C$, l'autre inclusion est évidente.
 \end{demo}
  \label{ExpleZ}
- \noindent On en déduit que $\mathfrak{C}_p \subset \mathfrak{S}_q$ pour tout multiple $q$ de $p$. En utilisant un multiple commun des modulos des classes, on montre que $\mathfrak{S}= \bigcup_{q \in \N^*}\mathfrak{S}_q$. Autrement dit, toute union finie de classes de congruence se décompose en une union finie de classes modulo \emph{le même} naturel non nul.
+ \noindent On en déduit que pour tout multiple $q$ de $p$, $\mathfrak{C}_p \subset \mathfrak{S}_q$ donc $\mathfrak{S}_p \subset \mathfrak{S}_q$. En utilisant un multiple commun des modulos des classes, on montre que $\mathfrak{S}= \bigcup_{q \in \N^*}\mathfrak{S}_q$. Autrement dit, toute union finie de classes de congruence se décompose en une union finie de classes modulo \emph{le même} naturel non nul.
  \label{DecompUnionClasses}
  \begin{propn}
   Soit $A=\bigcup_{i=1}^n(a_i + \Z m_i) \in \mathfrak{S}$ et $p$ un multiple commun aux $m_i$.\newline
@@ -132,6 +294,7 @@ On désigne par $\mathfrak{C}_m \subset \mathcal{P}(\Z)$ l'ensemble des classes 
  \begin{displaymath}
   \varphi(A) = \frac{\sharp \mathfrak{A}}{p}.
  \end{displaymath}
+ En convenant que $\varphi(\emptyset) = 0$.
 \end{defi}
 \begin{demo}[Consistence de la définition]
 Supposons que $A$ se décompose en classes modulo $p$ et en classes modulo $p'$. Considérons un multiple commun $q$. Notons respectivement $\mathfrak{A}_p$, $\mathfrak{A}_{p'}$, $\mathfrak{A}_q$ les ensembles de classes modulo respectivement $p$, $p'$, $q$ qui décomposent $A$. D'après la proposition \ref{décompoClasse}:
@@ -157,7 +320,7 @@ Supposons que $A$ se décompose en classes modulo $p$ et en classes modulo $p'$.
 
   \item Par définition, $\mathfrak{S}$ est stable pour $\cup$. Il est aussi stable par complémentation à cause de la proposition \ref{DecompUnionClasses} et de la partition en classes. Soit $A\in \mathfrak{S}$. Il existe $p$ naturel non nul et $\mathfrak{A}\subset \mathfrak{C}_p$ tels que $A = \bigcup_{C \in \mathfrak{A}} C$. Alors $A' = \bigcup_{C \in \mathfrak{A}'} C$.
 
-  \item De même, lorsque l'inteserction de deux éléments de $\mathfrak{S}$ est non vide, c'est un élément de $\mathfrak{S}$. En effet, pour tout $A$ et $B$ dans $\mathfrak{S}$, il existe $p$ naturel non nul, $\mathfrak{A}\subset \mathfrak{C}_p$ et $\mathfrak{B}\subset \mathfrak{C}_p$ tels que
+  \item De même, lorsque l'intersection de deux éléments de $\mathfrak{S}$ est non vide, c'est un élément de $\mathfrak{S}$. En effet, pour tout $A$ et $B$ dans $\mathfrak{S}$, il existe $p$ naturel non nul, $\mathfrak{A}\subset \mathfrak{C}_p$ et $\mathfrak{B}\subset \mathfrak{C}_p$ tels que
   \begin{displaymath}
    A = \bigcup_{C \in \mathfrak{A}} C, \; B = \bigcup_{C \in \mathfrak{B}} C, \; A\cap B = \bigcup_{C \in \mathfrak{A}\cap \mathfrak{B}} C.
   \end{displaymath}
@@ -170,8 +333,26 @@ Supposons que $A$ se décompose en classes modulo $p$ et en classes modulo $p'$.
   $\mathfrak{S}$ est une algèbre qui contient $\emptyset$ et $X=\Z$.
 \end{prop}
 \begin{demo}
- Avec le vocabulaire du livre rassemblées en \ref{SystFoncEns} \ref{SystEns}.
+ C'est une reformulation des remarques avec le vocabulaire du livre rassemblé en \ref{SystFoncEns} \ref{SystEns}.
 \end{demo}
+
+\begin{propn}
+ La fonction densité arithmétique de $\mathfrak{S}$ (ensemble des unions de classes de congruence) dans $[0, +\infty]$ est isotone et modulaire.
+\end{propn}
+\begin{demo}
+  Soit $A$ et $B$ des éléments de $\mathfrak{S}$. Il existe $p$ tel que $A$ et $B$ appartiennent à $\mathfrak{S}_p$ avec des parties finies $\mathfrak{A}$ et $\mathfrak{B}$ de $\mathfrak{C}_p$ telles que:
+  \begin{displaymath}
+   \begin{aligned}
+      A = \bigcup_{C\in \mathfrak{A}} C &\text{ avec } \forall C \in \mathfrak{C}_p,\; C \in \mathfrak{A} &\Leftrightarrow C \cap A \neq \emptyset  \\
+      B = \bigcup_{C\in \mathfrak{B}} C &\text{ avec } \forall C \in \mathfrak{C}_p,\; C \in \mathfrak{B} &\Leftrightarrow C \cap B \neq \emptyset
+   \end{aligned}
+  \end{displaymath}
+Par définition $\varphi(A) = \frac{1}{p}\, \sharp \mathfrak{A}$ et $\varphi(B) = \frac{1}{p}\, \sharp \mathfrak{B}$. La fonction \emph{nombre d'éléments} ($\sharp$) est isotone et modulaire dans l'ensemble des parties finies de $\Z$. En multipliant les relations caractérisant ces propriétés par $\frac{1}{p}$, on déduit les relations pour $\varphi$.
+\end{demo}
+\begin{rem}
+  Dans le cas $n=1$, l'espace vectoriel engendré par les fonctions caractéristiques des cubes dyadiques (des segments en l'occurence) est formé de fonctionss en escaler.\newline
+  Dans le cas de $\Z$, l'espace engendré par les fonctions caractéristiques des parties appartenant à $\mathfrak{S}$ est exactement l'espace des suites périodiques (définies dans $\Z$).
+\end{rem}
 
 \subsection{Approximations}\label{Approximations}\label{Expleppal}
 
@@ -183,7 +364,7 @@ Supposons que $A$ se décompose en classes modulo $p$ et en classes modulo $p'$.
 \begin{demo}
 Soit $K$  une partie bornée, notons $\mathfrak{A}_s(K)$ l'ensemble des $s$-cubes $Q_a$ tels que $K \cap Q_a \neq \emptyset$
 \begin{displaymath}
- X = \R^n = \bigcup_{a\in \frac{1}{2^s}\Z}Q_a \Rightarrow K = \bigcup_{a\in \frac{1}{2^s}\Z}(K\cap Q_a)
+ X = \R^n = \bigcup_{a\in \frac{1}{2^s}\Z^n}Q_a \Rightarrow K = K\cap X = \bigcup_{a\in \frac{1}{2^s}\Z^n}(K\cap Q_a)
    = \bigcup_{Q \in \mathfrak{A}_s(K)}(K \cap Q)
    \subset \bigcup_{Q \in \mathfrak{A}_s(K)} Q.
 \end{displaymath}
@@ -224,57 +405,27 @@ Pour toute partie $K$ bornée, la suite $(\lambda_s(K)) = (\lambda(A_s(K))$ est 
 \end{demo}
 \begin{rem}
   Aucun $s$-cube ne coupe $\emptyset$ donc  $\lambda(\emptyset)=0$.
- \end{rem}
+\end{rem}
 
- \begin{propn}
+\begin{propn}
   La fonction $\lambda$ est isotone de $\mathfrak{B}$ dans $[0, + \infty[$ et étend le volume de $\mathfrak{S}$.
- \end{propn}
- \begin{demo}
- La croissance (isotone) est évidente. Pour tous les $s$ et $K_1 \subset K_2$ bornés, $K_1 \subset A_s(K_2)$ donc $A_s(K_1) \subset A_s(K_2)$. On termine par passage à la limite dans l'inégalité.\newline
- D'après la remarque 3 du dessus, pour $k$ fixé, $Q\in \mathfrak{M}_s$ et $s$ à l'infini, $\lim_{s\rightarrow +\infty} \lambda(A_s(K) = \frac{1}{2^{nk}}=\lambda(Q)$ c'est à dire que sur $\mathfrak{S} \subset \mathfrak{M}$ les deux définitions du volume coincident.
- \end{demo}
- \noindent On démontrera ( \ref{SystFoncEns} \ref{FoncEns} \ref{Continuites} proposition \ref{ExplePpalModul}) que la fonction $\lambda$ est modulaire sur l'ensemble des compacts. On remarque que les bonnes propriétés ne sont valables que pour les parties compactes, pas pour les parties bornées. Dans toute la suite on ne considèrera le volume que pour les parties compactes.
-
-
- \paragraph{Exercice sur des intervalles}
- Soit $x\leq y$ et $a\leq b$ réels. Montrer que
- \begin{displaymath}
-  [x,y] \cap [a,b] \neq \emptyset \Leftrightarrow
-  \left\lbrace
-  \begin{aligned}
-    x \leq b \\
-    a \leq y
-  \end{aligned}
-  \right. .
- \end{displaymath}
+\end{propn}
 \begin{demo}
+ La croissance (isotone) est évidente. Pour tous les $s$ et $K_1 \subset K_2$ bornés, $K_1 \subset A_s(K_2)$ donc $A_s(K_1) \subset A_s(K_2)$. On termine par passage à la limite dans l'inégalité.\newline
+ Pour $k$ fixé et $Q\in \mathfrak{C}_k$, d'après la remarque 2 du dessus, $\lim_{s\rightarrow +\infty} \lambda(A_s(Q) = \frac{1}{2^{nk}}=\lambda(Q)$ c'est à dire que les deux définitions du volume coincident sur $\mathfrak{C}_k$.\newline
+ Notons provisoirement $\lambda_c$ le volume défini dans $\mathfrak{S}$ par : pour tout $A \in \mathfrak{S}$, il existe $k\in \N$ et un ensemble fini $\mathfrak{A}$ de $k$-cubes tels que $A = \bigcup_{Q\in \mathfrak{A}} Q$.
 \begin{displaymath}
- u \in [x,y] \cap [a,b] \Rightarrow
- \left\lbrace
- \begin{aligned}
-   x \leq u \leq y \\
-   a \leq u \leq b
- \end{aligned}
- \right.
- \Rightarrow
-\left\lbrace
- \begin{aligned}
-   x \leq b  \\
-   a \leq y
- \end{aligned}
- \right. .
- \end{displaymath}
- Réciproquement, supposons $x\leq b$ et $a \leq y$.\newline
- Si $a\leq x$ alors $x \in [x,y]\cap[a,b]$.\newline
- Si $x<a$ alors $a \in ]x,y]\cap [a,b] \subset [x,y]\cap[a,b]$.
+ \lambda_c(A) = \frac{\sharp \mathfrak{A}}{2^{ns}} = \sum_{Q\in \mathfrak{A}} \lambda_c(Q).
+\end{displaymath}
 \end{demo}
+ \noindent On démontrera ( \ref{SystFoncEns} \ref{FoncEns} \ref{Continuites} proposition \ref{ExplePpalModul}) que la fonction $\lambda$ est modulaire sur l'ensemble des compacts. On remarque que les bonnes propriétés ne sont valables que pour les parties compactes, pas pour les parties bornées. Dans toute la suite on ne considèrera le volume que pour les parties compactes.
 
  \begin{propn}
   Pour $n=1$, et $x < y$ réels, $\lambda([x,y]) = y - x$.
  \end{propn}
  \begin{demo}
   Pour tout $s$ naturel, quels sont les $s$-cubes $Q_a$ qui coupent $[x,y]$?\newline
-  Soit $k\in \Z$ et $a=\frac{k}{2^s}$. D'après l'exercice au dessus,
+  Soit $k\in \Z$ et $a=\frac{k}{2^s}$. D'après l'exercice sur les intervalles du début du texte,
   \begin{displaymath}
     [x,y] \cap [a, a+\frac{1}{2^s}] \neq \emptyset
     \Leftrightarrow
@@ -1413,7 +1564,7 @@ Soit $N$ la norme infinie de $\R^n$ définie par
 \begin{displaymath}
  \forall a =(a_1, \cdots, a_n) \in \R^n, N(a) = \max(|a_1|, \cdots ,|a_n|).
 \end{displaymath}
-Pour cette norme, chaque $s$-cube $Q_a$ (voir la définition en \ref{Exples}\ref{Expleppal}\ref{s-cube}) est une boule fermée.
+Pour cette norme, chaque $s$-cube $Q_a$ (voir la définition en \ref{Exples}\ref{Expleppal}\ref{q-cube}) est une boule fermée.
 \begin{propn}
 Soit $a =(a_1, \cdots, a_n) \in \left(\Z\frac{1}{2^s}\right)^n$ et $b=(b_1,\cdots,b_n)$ avec $b_i = a_i + \frac{1}{2^{s+1}}$ pour tous les $i\in \llbracket 1,n\rrbracket$.\newline
 La boule fermée (pour la norme $N$) de centre $b$ et de rayon $\frac{1}{2^{s+1}}$ est le $s$-cube $Q_a$.
