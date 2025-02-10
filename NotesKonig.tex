@@ -3,7 +3,7 @@
 
 \title{
          Notes sur \emph{Measure and Integration} de H. König \\
-         \large Rédaction incomplète. Version  beta 2.5
+         \large Rédaction incomplète. Version  beta 3.2
       }
 \author{Rémy Nicolaï}
 
@@ -12,7 +12,7 @@
 \tableofcontents
 \clearpage
 
-\section{Présentation}
+\chapter{Présentation}
 \noindent Ce texte est constitué de notes de lecture sur le livre \emph{Measure and Integration} de Heinz König \cite{könig1997measure}.
 
 \noindent L'ouvrage fournit des méthodes et des résultats de théorie des ensembles utilisés dans la théorie des mesures. Le cadre est tellement général qu'il est difficile de faire sens avec le texte sans une grande érudition sur le sujet. L'idée de ces notes est de reformuler les propriétés et constructions dans un cadre moins abstrait en mettant en avant les exemples du texte et en en introduisant de nouveaux.\newline
@@ -43,12 +43,12 @@ Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fo
 On notera $A'$ le complémentaire d'une partie $A \in \mathcal{P}(X)$ pour un ensemble $X$ quelconque.
 \newpage
 
-\section{Exemples}\label{Sec:Exples}
+\chapter{Exemples}\label{Chap:Exples}
 Deux exemples sont présentés. À côté du volume dans $\R^n$ qui est l'exemple principal du livre, je présente une fonction d'ensembles sur les parties de $\Z$ définie par des procédés analogues. Pour le moment, je nomme \emph{densité arithmétique} cette fonction d'ensembles. Les deux constructions sont parallèles.
 
-\subsection{Cellules de base}\label{SubSec:CellulesBases}
+\section{Cellules de base}\label{Sec:CellulesBases}
 
-\subsubsection{Cubes rationnels}\label{SubSubSec:CubesRat}
+\subsection{Cubes rationnels}\label{SubSec:CubesRat}
 Dans cet exemple qui est l'exemple fondamental du livre, $X=\R^n$. Dans tout le livre, on pourra utiliser occasionnellement la \emph{norme infinie} de $\R^n$ ainsi qu'un résultat sur les intervalles. \index{norme infinie de $\R^n$}
 \begin{defi}[Norme infinie de $\R^n$]
  On note $N$ la norme infinie de $\R^n$ définie par
@@ -246,7 +246,7 @@ Soit $A \in \mathfrak{S}$, il existe $s\in \N$ et un ensemble fini $\mathfrak{A}
  \end{displaymath}
 \end{demo}
 
-\subsubsection{Classes de congruences}\label{SubSubSec:ClassesCongru}
+\subsection{Classes de congruences entières}\label{SubSec:ClassesCongru}
 Ici $X = \Z$. \index{Exemple arithmétique}
 L'ensemble des unions finies de classes de congruence défini au dessous sera désigné dans tout le document par \og Exemple arithmétique\fg.
 
@@ -380,9 +380,14 @@ en multipliant par $\frac{1}{p}$. On déduit que $\varphi$ est modulaire.
   Dans le cas de $\Z$, l'espace engendré par les fonctions caractéristiques des parties appartenant à $\mathfrak{S}$ est exactement l'espace des suites périodiques (définies dans $\Z$).
 \end{rem}
 
-\subsection{Approximations}\label{SubSec:Approximations}
+\subsection{Classes de congruences \emph{p}-adiques}
+Ici $X=\Q_p$ ensemble des nombres $p$-adiques. Les objets en question ici sont moins usuels. Ils sont définis dans le chapitre \ref{Chap:Outils} sections \ref{Sec:EspMetric} et \ref{Sec:NbsPadic}.\newline
+Dans cette sous-section $\mathfrak{S}$ est constitué par les partie de $\Q_p$ qui sont à la fois ouvertes et compactes. D'après la proposition \ref{prop:OuvertCompactP-adiq}, il s'agit des unions finies de classes de congruences $p$-adiques modulo un $p^N$ pour $N\in \Z$.
 
-\subsubsection{Volume d'une partie bornée ou compacte}\label{SubSubSecc:Volume}
+
+\section{Approximations}\label{Sec:Approximations}
+
+\subsection{Volume d'une partie bornée ou compacte}\label{SubSecc:Volume}
 \noindent Voir page 19. On note $\mathfrak{B}$ l'ensemble des parties bornées  de $\R^n$ et $\mathfrak{K} \subset \mathfrak{B}$ l'ensemble des parties compactes. On étend le volume $\lambda$ à $\mathfrak{B}$ et $\mathfrak{K}$ à partir du volume défini dans les unions de cellules. On utilisera exclusivement des cellules de taille $\frac{1}{2^s}$ (essentiellement des cubes).
 \begin{defi}[Approximations dyadiques d'une partie bornée]
   Pour toute partie bornée $K$ et tout $s\in \N$, on appelle approximation dyadique à l'ordre $s$ par excès de $K$ la partie $A_s(K)$ définie par
@@ -553,7 +558,7 @@ On en déduit $\lambda(P)=1$ alors que chaque $\lambda(P_s)$ est nul.
 \noindent La propriété précédente du volume n'est pas satisfaisante. Elle est due à la non compacité de la partie $P$. Dans toute la suite la fonction volume ne sera définie que sur les compacts.\newline
 On démontrera ( \ref{SystFoncEns} \ref{FoncEns} \ref{Continuites} proposition \ref{ExplePpalModul}) que la fonction $\lambda$ est modulaire sur l'ensemble des compacts.
 
-\subsubsection{Densité arithmétique d'un ensemble d'entiers} \label{SubSubSec:DensitArith}
+\subsection{Densité arithmétique d'un ensemble d'entiers} \label{SubSec:DensitArith}
 \begin{defi}[Approximation d'un ensemble d'entiers naturels] Pour toute partie $K$ non vide de $\Z$ et tout $p$ naturel non nul, notons $\mathfrak{A}_p(K)$ l'ensemble des classes de congruence modulo $p$ qui coupent $K$. On appelle approximation $p$-périodique par excès de $K$ la partie $A_p(K)$ définie par
 \begin{displaymath}
  A_p(K) = \bigcup_{C \in \mathfrak{A}_p(K)} C \in \mathfrak{S}_p
@@ -639,9 +644,9 @@ Dans le cas particulier $A=\Z$, notons $S_n'$ le complémentaire de $S_n$.
 \end{explen}
 
 
-\section{Définitions \small{(chap I du livre)}}\label{SystFoncEns}
-\subsection{Systèmes d'ensembles}\label{SystEns}
-\subsubsection{Treillis, ovale, anneau, algèbre}
+\chapter{Définitions \small{(chap I du livre)}}\label{SystFoncEns}
+\section{Systèmes d'ensembles}\label{SystEns}
+\subsection{Treillis, ovale, anneau, algèbre}
 Dans le livre, pour un ensemble $X$ donné, toute partie de $\mathcal{P}(X)$ (elle ne contient pas forcément $\emptyset$) est désignée par le terme \emph{système d'ensembles}. Les termes \emph{set system} ou \emph{paving} sont aussi utilisés. Quatre types de systèmes d'ensembles (treillis, ovale, anneau, algèbre), caractérisés par des propriétés de stabilité sont définis. Pour la notion d'ovale, l'ouvrage introduit une opération ternaire inhabituelle.\newline
 Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
 \begin{displaymath}
@@ -649,7 +654,7 @@ Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
 \end{displaymath}
 On rappelle que $A'$ désigne le complémentaire de $A$.
 \index{système de parties!treillis}
-\begin{defi}
+\begin{defin}
   Soit $\mathfrak{S}$ une partie de $\mathcal{P}(X)$
   \begin{itemize}
     \item $\mathfrak{S}$ est un treillis (lattice) si et seulement si $\mathfrak{S}$ est stable pour l'union et l'intersection.
@@ -660,7 +665,7 @@ On rappelle que $A'$ désigne le complémentaire de $A$.
     \end{displaymath}  \index{système de parties!anneau}
     \item $\mathfrak{S}$ est une algèbre (algebra) si et seulement si $\mathfrak{S}$ est stable pour l'union, l'intersection et la complémentation. \index{système de parties!algèbre}
   \end{itemize}
-\end{defi}
+\end{defin}
 
 \begin{propn}\label{prop:ImpTypesSyst}
   algèbre $\Rightarrow$ anneau $\Rightarrow$ ovale $\Rightarrow$ treillis
@@ -713,7 +718,7 @@ D'après la proposition \ref{prop:ImpTypesSyst},
  A(\mathfrak{S}) \subset R(\mathfrak{S}) \subset O(\mathfrak{S}) \subset L(\mathfrak{S}).
 \end{displaymath}
 
-\subsubsection{Concepts vocabulaire notations}\label{types cardinalité}
+\subsection{Concepts vocabulaire notations}\label{types cardinalité}
 
 \paragraph{Cardinalité}
 Le premier concept est relatif à la cardinalité. L'auteur définit des notations très synthétiques avec un symbole $\bullet$ qui peut  désigner un des trois symboles $\star$, $\sigma$, $\tau$ que je ne reprendrai pas. J'utiliserai directement les 3 symboles pour préciser un caractère fini, dénombrable ou quelconque.\newline
@@ -733,7 +738,7 @@ On peut aussi préfixer des propriétés. Par exemple, pour un système d'ensemb
 \end{align*}
 On peut remarquer que $\mathfrak{S}$ est $\cup_*$-stable si et seulement si $\mathfrak{S}$ est stable par $\cup$. Il est $\cup_\sigma$-stable si et seulement si, pour toute suite $(M_i)_{i\in \N}$ d'éléments de $\mathfrak{S}$, $\bigcup_{i\in \N}M_i \in \mathfrak{S}$.\newline
 On définit de manière analogue les notions de $\cap_\star$-stable(équivalent à $\cap$-stable), $\cap_\sigma$-stable, $\cap_\tau$-stable.
-\begin{rem}
+\begin{rem}\label{rem:topologie}
  La topologie d'un ensemble $X$ est définie par l'ensemble de ses ouverts (noté $Op(X)$) c'est à dire un système d'ensembles contenant $\emptyset$ et $X$, $\cup_\tau$-stable, $\cap_\star$-stable.
 \end{rem}
 \begin{nota}
@@ -743,14 +748,14 @@ On définit de manière analogue les notions de $\cap_\star$-stable(équivalent 
 \end{nota}
 
 \paragraph{Monotonie}
-\begin{defi}
- \begin{itemize}
-   \item On note $(S_l)\uparrow$ pour indiquer qu'une suite de parties $S_l$ de $X$ est croissante c'est à dire $S_l \subset S_{l+1}$. De même $(S_l)\downarrow$ pour décroissante.
-\index{système de parties! dirigé vers le haut}\index{système de parties! upward directed}
-   \item On note $\mathfrak{M}\uparrow$ pour indiquer qu'un système $\mathfrak{M}$ de parties de $X$ est dirigé vers le haut (upward directed) c'est à dire si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $U \cup V \subset W$.
-   \item On note $\mathfrak{M}\downarrow$ pour indiquer qu'un système $\mathfrak{M}$ de parties de $X$ est dirigé vers le bas (downward directed) c'est à dire si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $W \subset  U \cap V$ .
- \end{itemize}
-\end{defi}
+
+
+\begin{defin}\label{Def:monotonie}
+   On note $(S_l)\uparrow$ pour indiquer qu'une suite de parties $S_l$ de $X$ est croissante c'est à dire $S_l \subset S_{l+1}$. De même $(S_l)\downarrow$ pour décroissante.
+\index{système de parties! dirigé vers le haut}\index{système de parties! upward directed}\newline
+   On note $\mathfrak{M}\uparrow$ pour indiquer qu'un système $\mathfrak{M}$ de parties de $X$ est dirigé vers le haut (upward directed) c'est à dire si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $U \cup V \subset W$.\newline
+   On note $\mathfrak{M}\downarrow$ pour indiquer qu'un système $\mathfrak{M}$ de parties de $X$ est dirigé vers le bas (downward directed) c'est à dire si et seulement si pour tous $U$ et $V$ dans $\mathfrak{M}$, il existe $W\in \mathfrak{M}$ tel que $W \subset  U \cap V$.
+\end{defin}
 
 \begin{rems}
  \begin{enumerate}
@@ -759,15 +764,13 @@ On définit de manière analogue les notions de $\cap_\star$-stable(équivalent 
  \end{enumerate}
 \end{rems}
 \index{système de parties! dirigé vers le bas}\index{système de parties! downward directed}
-\begin{defi}
- \begin{enumerate}
-  \item On note $\mathfrak{M}\uparrow S$ pour indiquer que $\mathfrak{M}$ est dirigé vers le haut avec $S = \bigcup_{M \in \mathfrak{M}}M$.
-  \item On note $\mathfrak{M}\downarrow S$ pour indiquer que $\mathfrak{M}$ est dirigé vers le bas avec $S = \bigcap_{M \in \mathfrak{M}}M$.
- \end{enumerate}
-\end{defi}
+\begin{defin}\label{Def:limMonotone}
+  On note $\mathfrak{M}\uparrow S$ pour indiquer que $\mathfrak{M}$ est dirigé vers le haut avec $S = \bigcup_{M \in \mathfrak{M}}M$.\newline
+  On note $\mathfrak{M}\downarrow S$ pour indiquer que $\mathfrak{M}$ est dirigé vers le bas avec $S = \bigcap_{M \in \mathfrak{M}}M$.
+\end{defin}
 \noindent Ces notations sont valables pour les $\tau$-systèmes comme pour les suites. Énonçons des propriétés des compacts avec ce vocabulaire.
 \begin{exple} \label{systAproxCompact}
- Soit $K$ une partie compacte et $\mathfrak{M} = \left\lbrace K(\delta), \delta >0  \right\rbrace$. Alors $\mathfrak{M} \downarrow K$ Voir \ref{Outils}  \ref{Topologie} proposition  \ref{compactEtendu}
+ Soit $K$ une partie compacte et $\mathfrak{M} = \left\lbrace K(\delta), \delta >0  \right\rbrace$. Alors $\mathfrak{M} \downarrow K$. Voir chapitre \ref{Chap:Outils} section \ref{Sec:EspMetric} prop  \ref{compactEtendu}.
 \end{exple}
 \begin{demo}
  Le seul point non évident est $\bigcap_{\delta > 0} K(\delta) \subset K$. Soit $x$ dans cette intersection. Pour tout naturel $n>0$,
@@ -815,14 +818,14 @@ Pour un système d'ensembles $\mathfrak{S}$ dans $X$, on définit quatre propri�
 \end{align*}
 \end{defi}
 \index{système de parties! $\sigma$ treillis}\index{système de parties! $\sigma$ ovale} \index{système de parties! $\sigma$ anneau} \index{système de parties! $\sigma$ algèbre}
-\begin{defi}
+\begin{defin}
 \begin{itemize}
  \item Un $\sigma$-treillis est un treillis qui vérifie $\uparrow \sigma$ et $\downarrow \sigma$.
  \item Un $\sigma$-ovale est un ovale qui vérifie $\uparrow \sigma$ et $\downarrow \sigma$.
  \item Un $\sigma$-anneau est un anneau qui vérifie $\uparrow \sigma$ et $\downarrow \sigma$.
  \item Une $\sigma$-algèbre est une algèbre qui vérifie $\uparrow \sigma$ et $\downarrow \sigma$.
 \end{itemize}
-\end{defi}
+\end{defin}
 \index{tribu}
 \begin{rems}
 \begin{enumerate}
@@ -841,8 +844,8 @@ Pour un système d'ensembles $\mathfrak{S}$ dans $X$, on définit quatre propri�
 Lorsque $\mathfrak{S}$ est l'ensemble des ouverts d'un espace topologique $X$, la $\sigma$-algèbre $L(\mathfrak{S})$ engendrée par $\mathfrak{S}$ est appelée $\sigma$-algèbre de Borel ou tribu borelienne.
 \end{exple}
 
-\subsection{Fonctions d'ensembles}\label{FoncEns}
-\subsubsection{Croissance et modularité}
+\section{Fonctions d'ensembles}\label{FoncEns}
+\subsection{Croissance et modularité}
 Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.
 
 \begin{defi}
@@ -945,7 +948,7 @@ en utilisant $A'_i = A_i  \cap A_{p+1}$ pour $i \in \llbracket 1, p \rrbracket$ 
   \end{displaymath}
 \end{rem}
 
-\subsubsection{Extension d'une fonction d'ensembles à un treillis}
+\subsection{Extension d'une fonction d'ensembles à un treillis}
 Dans cette section l'ouvrage considère une fonction d'ensembles $\varphi$ définie sur un ensemble $\mathfrak{U}$ de parties de $X$ seulement stable pour l'intersection et cherche à la prolonger en une fonction modulaire $\phi$ sur $\mathfrak{S} = L(\mathfrak{U})$ qui est le plus petit treillis contenant $\mathfrak{U}$.
 
 Cette situation est celle du premier exemple où $\mathfrak{U}$ est l'ensemble formé du vide et des classes de congruences autres que $\{0\}$. Cet ensemble est stable par intersection et l'ensemble $\mathfrak{S}$ des unions de classes de congruences est le plus petit treillis contenant $\mathfrak{U}$.
@@ -1109,7 +1112,7 @@ d'après l'hypothèse car $(A_0 \cap A_1) \cup \cdots \cup (A_0\cap A_p) \subset
 \end{demo}
 
 
-\subsubsection{Régularité} \label{Regularite}
+\subsection{Régularité} \label{Regularite}
 Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.\newline
 On se donne 3 systèmes d'ensembles $\mathfrak{M}$, $\mathfrak{S}$, $\mathfrak{T}$ avec $\mathfrak{M} \subset \mathfrak{S}$ et $\mathfrak{T} \subset \mathfrak{S}$. La fonction d'ensembles $\varphi$ est dite extérieurement $\mathfrak{M}$-régulière en $\mathfrak{T}$ si et seulement si
 \begin{displaymath}
@@ -1139,11 +1142,11 @@ La fonction d'ensembles $\varphi$ est dite
 \end{rems}
 
 
-\subsubsection{Continuités} \label{Continuites}
+\subsection{Continuités} \label{Continuites}
 \index{continuités}\index{continuités!$\sigma$-continue vers le haut}\index{continuités!presque $\sigma$-continue vers le haut}\index{continuités!$\tau$-continue vers le haut}\index{continuités!$\sigma$-continue vers le bas}
-Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.
+Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$. On rappelle (définitions \ref{Def:monotonie}, \ref{Def:limMonotone}) que la convergence d'une suite croissante de parties $(S_n)$ vers $S$ se note $(S_n)\uparrow S$ et signifie que $S=\bigcup_n S_n$.
 \begin{defi}[$\sigma$-continue vers le haut]
-La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le haut (upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$. C'est à dire $\varphi(A) = \inf_{l}\varphi(S_l)$.
+La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le haut (upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$. C'est à dire $\varphi(A) = \sup_{l}\varphi(S_l)$.
 \end{defi}
 \begin{defi}[presque $\sigma$-continue vers le haut]
 La fonction d'ensembles $\varphi$ est dite presque $\sigma$-continue vers le haut (almost upward $\sigma$-continuous) si et seulement si : pour tout $A \in \mathfrak{S}$ et toute suite croissante $(S_l)_{l\in \N}$ d'éléments de $\mathfrak{S}$ telle que $\varphi(S_l)> - \infty$ pour tout $l\in \N$, qui tend vers $A$, la suite $(\varphi(S_l))$ tend vers $\varphi(A)$.
@@ -1186,18 +1189,18 @@ Supposons que $\varphi$ soit $\sigma$-continue vers le bas est considérons une 
 Comme $\varphi$ est $\sigma$-continue vers le bas, $(\varphi(D_l))\downarrow \varphi(S_1)$ entraine $(\varphi(S_l))\uparrow \varphi(S)$. Ceci montre que $\varphi$ est continue vers le haut.
 \end{demo}
 
-\begin{propn}
+\begin{propn}\label{prop:VolBornNonCont}
  La fonction volume $\lambda$ définie dans l'ensemble des parties bornées de $\R^n$ n'est pas $\sigma$-continue vers le haut
 \end{propn}
 \begin{demo}
- On reprend l'exemple \ref{exple:VolSommetsBorn} de \ref{Sec:Exples}\ref{SubSec:Approximations}\ref{SubSubSecc:Volume} où $P_s$ est l'ensemble des points à coordonnées dans $]0,1[ \cap \Z\, \frac{1}{2^s}$ et $S_l = \bigcup_{s=0}^l P_s$. Ce sont des parties bornées telles que $(S_l)\uparrow P = \bigcup_{s\geq0} P_s$. Pour chaque $s$, $\lambda(P_s)=0$ donc $\lambda(S_l)=0$ alors que $\lambda(P) = 1$ donc $(\lambda(S_l))$ ne tend pas vers $\lambda(P)$.
+ On reprend l'exemple \ref{exple:VolSommetsBorn} de \ref{Chap:Exples}\ref{Sec:Approximations}\ref{SubSecc:Volume} où $P_s$ est l'ensemble des points à coordonnées dans $]0,1[ \cap \Z\, \frac{1}{2^s}$ et $S_l = \bigcup_{s=0}^l P_s$. Ce sont des parties bornées telles que $(S_l)\uparrow P = \bigcup_{s\geq0} P_s$. Pour chaque $s$, $\lambda(P_s)=0$ donc $\lambda(S_l)=0$ alors que $\lambda(P) = 1$ donc $(\lambda(S_l))$ ne tend pas vers $\lambda(P)$.
 \end{demo}
 
-\begin{propn}[Exemple arithmétique]
+\begin{propn}[Exemple arithmétique] \label{prop:DensitArithNonCont}
  La fonction densité arithmétique $\varphi$ définie dans l'ensemble $\mathfrak{S}$ des unions finies de classes de congruence n'est pas $\sigma$-continue vers le haut.
 \end{propn}
 \begin{demo}
- Soit $A = \left\lbrace a_k, k\in \N\right\rbrace \in \mathfrak{S}$ non vide et $\mu\geq 2$ tel que $A$ soit une union disjointe de classes modulo $\mu$. Pour $p\in \N$ arbitraire, considérons la suite dans l'exemple \ref{exple:SuiteUnionClassesCong} de \ref{Sec:Exples}\ref{SubSec:Approximations}\ref{SubSubSec:DensitArith}.
+ Soit $A = \left\lbrace a_k, k\in \N\right\rbrace \in \mathfrak{S}$ non vide et $\mu\geq 2$ tel que $A$ soit une union disjointe de classes modulo $\mu$. Pour $p\in \N$ arbitraire, considérons la suite dans l'exemple \ref{exple:SuiteUnionClassesCong} de \ref{Chap:Exples}\ref{Sec:Approximations}\ref{SubSec:DensitArith}.
 \begin{displaymath}
  \forall n \in \N, \; S_n = \bigcup_{k =0}^n \left(a_k + \mu^{k+p} \Z\right) \in \mathfrak{S}.
 \end{displaymath}
@@ -1211,7 +1214,7 @@ donc $\lim (S_n)\leq \mu^{1-p}$. En choisissant $p$ assez grand pour avoir $\mu^
  D'après la proposition \ref{prop:contBssicontH}, la fonction densité arithmétique n'est pas non plus $\sigma$-continue vers le bas.
 \end{rem}
 
-\begin{propn}[Exemple principal]
+\begin{propn}[Exemple principal]\label{prop:VolCompCont}
  La fonction d'ensembles $\lambda$ définie dans l'ensemble $\mathfrak{K}$ des parties compactes de $X=\R^n$ est $\tau$-continue vers le bas.
 \end{propn}
 \begin{demo}
@@ -1322,7 +1325,7 @@ Le système de parties compactes $\left\lbrace K_1(\delta)\cap K_2, \delta > 0 \
 \end{demo}
 
 
-\subsubsection{Contenus et mesures} \label{ContenusMesures}
+\subsection{Contenus et mesures} \label{ContenusMesures}
 \begin{defi}
 Un \emph{contenu conventionnel} (conventional content) est une fonction d'ensembles définie dans un anneau $\mathfrak{S}$ à valeurs dans $[0,+\infty]$ modulaire et vérifiant $\varphi(\emptyset)=0$.
 \end{defi}
@@ -1349,7 +1352,7 @@ En effet $(S_l)\uparrow A$ avec $S_l = \bigcup_{k=0}^l A_k$. Donc $(\varphi(S_l)
  \end{enumerate}
 \end{rems}
 
-\section{Extensions fondées sur la régularité \small{(chap II du livre)}}\label{ExtenRegul}
+\chapter{Extensions fondées sur la régularité \small{(chap II du livre)}}\label{ExtenRegul}
 Ce chapitre est le coeur du livre. À partir d'une fonction $\varphi$ isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$, on définit
 \begin{enumerate}
  \item des enveloppes extérieures $\varphi^*$, $\varphi^\sigma$, $\varphi^\tau$ définies dans $\mathcal{P}(X)$ tout entier;
@@ -1357,8 +1360,8 @@ Ce chapitre est le coeur du livre. À partir d'une fonction $\varphi$ isotone d'
 \end{enumerate}
 Sous certaines conditions, la restriction d'une extension de $\varphi$ à sa classe de Carathéodory possède de bonnes propriétés, en particulier la classe de Carathéodory peut être une algèbre.
 
-\subsection{Enveloppes}\label{Enveloppes}
-\subsubsection{Enveloppes extérieures}
+\section{Enveloppes}\label{Enveloppes}
+\subsection{Enveloppes extérieures}
 Dans ce paragraphe, $\mathfrak{S}$ est un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction d'ensembles isotone de $\mathfrak{S}$ dans $\overline{\R}$. On définit dans $\mathcal{P}(X)$ les trois enveloppes extérieures $\varphi^*$ (enveloppe extérieure brute), $\varphi^\sigma$, $\varphi^\tau$ par:
 \begin{displaymath}
  \forall A \in  \mathcal{P}(X):
@@ -1375,12 +1378,11 @@ Voir \ref{types cardinalité}
  Pour le couple $\mathfrak{S}, \varphi$ de l'exemple arithmétique, $\varphi^\sigma$ est la fonction constante nulle.
 \end{prop}
 \begin{demo}
- Pour tout partie $A = \left\lbrace a_k , k \in \N\right\rbrace$ de $\Z$ et tout $p\in \N$, considérons la suite de l'exemple 3 de \ref{Sec:Exples}\ref{ExplesSuitesCongru} .
+ Pour tout partie $A = \left\lbrace a_k , k \in \N\right\rbrace$ de $\Z$ et tout $p\in \N$, considérons la suite de l'exemple 3 de \ref{Chap:Exples}\ref{ExplesSuitesCongru} .
  \begin{displaymath}
   \forall n \in \N, \; S_n = \bigcup_{k =0}^n \left(a_k + 2^{k+p} \Z\right) .
  \end{displaymath}
  C'est une suite croissante d'éléments de $\mathfrak{S}$ telle que $A \subset \bigcup_{n\in \N}S_n$ et $\lim (S_n) \leq 2^{1-p}$. Comme $p$ est arbitraire, la borne inférieure des limites est nulle.
-
 \end{demo}
 
 \begin{prop}
@@ -1432,7 +1434,7 @@ Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction 
  \end{enumerate}
 \end{demo}
 
-\subsubsection{Exemple pour les ensembles de classes de congruence}
+\subsection{Exemple pour les ensembles de classes de congruence}
 On veut explorer les définitions du paragraphe précédent dans le cadre de \ref{ExpleZ} où $X= \Z$ et $\mathfrak{S}$ est l'ensemble des unions finies de classes de congruences dans $\Z$ qui est une algèbre.\newline
 On rappelle que pour tous naturels non nuls $m$ et $d$, chaque classe modulo $m$ est l'union de $d$ classes disjointes modulo $dm$. Lorsqu'interviennent des classes avec des modulos $m_i$ distincts, on peut considérer le ppcm des $m_i$ et se ramener à un ensemble de classes avec le \emph{même} modulo. Ainsi tout $S\in \mathcal{S}$ est l'union disjointe de classes modulo un même $m$ avec $\varphi(S) = \mathrm{nb\, Classes}\times \frac{1}{m}$.
 
@@ -1502,11 +1504,11 @@ car $S_{k+1} \setminus S_k$ est l'union disjointe de $a_{k+1}$ classes modulo $b
  Pour tout naturel $k\geq 1$, $S'_k \in \mathfrak{S}$ et $A' \subset S'_k$ donc $\varphi^*(A') \leq \varphi(S'_k)$. On en déduit $\varphi^*(A') \leq 1-a$ par passage à la limite dans une inégalité.\newline
  Soit $S \in \mathfrak{S}$ avec  $A'= \bigcap_{l\geq 1} S'_l \subset S$.
 \end{demo}
-\subsection{Classe de Carathéodory} \label{ClasseCaratheodory}
+\section{Classe de Carathéodory} \label{ClasseCaratheodory}
 
-\section{Outils} \label{Outils}
+\chapter{Outils} \label{Chap:Outils}
 
-\subsection{Arithmétique}
+\section{Arithmétique}
 \begin{propn}
 Soit $p$ et $q$ deux naturels non nul. Si une classe de congruence modulo $p$ est incluse dans une classe de congruence modulo $q$ alors $p$ est un multiple de $q$.
 \end{propn}
@@ -1680,7 +1682,7 @@ On peut étendre à un système de $p$ congruences en utilisant la distributivit
   \end{enumerate}
 \end{demo}
 
-\subsection{Différence symétrique et crible de Poincaré}\label{criblePoinc}
+\section{Différence symétrique et crible de Poincaré}\label{criblePoinc}
 Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent un rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
 
 \noindent Soit $X$ un ensemble quelconque et $A_1, \cdots, A_p$ des parties de $X$. Notons $\chi_A$ la fonction caractéristique d'une partie $A$ de $X$. Rappelons les relations fonctionnelles
@@ -1744,7 +1746,6 @@ En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle 
   \card(A_1 \cup \cdots \cup A_p) = \sum_{m=1}^p (-1)^{m+1}\sum_{I \in \mathcal{P}_m}\card(A_I).
 \end{displaymath}
 
-
 \noindent Remarquons que la notion de différence symétrique généralisée permet de caractériser la liberté d'une famille de fonctions caractéristiques dans le $\F_2$ espace vectoriel des fonctions de $X$ dans $\F_2$.
 \begin{align*}
   (\chi_{A_1}, \cdots, \chi_{A_p}) \text{ libre } &\Leftrightarrow \bigcup_{m \text{ impair}} \Delta_m(A_1, \cdots, A_p) \not = \emptyset \\
@@ -1752,9 +1753,43 @@ En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle 
 \end{align*}
 
 
-\subsection{Topologie métrique} \label{Topologie}
-Dans cette sous section, $X$ est un espace métrique c'est à dire que sa topologie est définie par une distance $d$. En particulier $\R^n$ est métrique avec $d(x,y)=\| x-y\|$ pour la norme euclidienne usuelle.
-\subsubsection{Distance à une partie} \noindent
+\section{Espace métrique} \label{Sec:EspMetric}
+Les propositions \ref{prop:VolBornNonCont}, \ref{prop:DensitArithNonCont}, \ref{prop:VolCompCont} montrent l'importance de la compacité et de la complétude. Cette sous section présente des résultats de topologie métrique tirés de \cite{dieudonne1969elements} et \cite{koblitz2012p}.\newline
+Ici $X$ est un espace métrique c'est à dire que sa topologie est définie par une distance $d$. En particulier $\R^n$ est métrique avec $d(x,y)=\| x-y\|$ pour la norme euclidienne usuelle.
+
+\subsection{Topologie métrique}
+\begin{defin}\label{Def:topologie}
+Une topologie sur un ensemble $X$ est donnée par un système de parties $\mathcal{O} \subset \mathcal{P}(X)$ contenant $\emptyset$ et $X$ et $\cup_\tau$-stable et $\cap_\star$-stable  .\newline
+Une partie $S$ de $X$ est dite \emph{ouverte} si et seulement si $X\in \mathcal{O}$. Une partie est dite \emph{fermée}  si et seulement si son complémentaire $S'$ est une partie ouverte.
+\index{partie ouverte} \index{partie fermé}
+\end{defin}
+\noindent Dans un espace métrique $(X,d)$, une boule ouverte de centre $a$ est de rayon $r\geq 0$ est définie par
+\begin{displaymath}
+ \forall x \in X, \; x\in B(a,r) \Leftrightarrow d(a,x) < r.
+\end{displaymath}
+Notons que $\emptyset$ est une boule ouverte de rayon nul.
+\begin{prop}
+ Soit $(X,d)$ un espace métrique et $A \subset X$ non vide, les deux propriétés suivantes sont équivalentes:
+ \begin{enumerate}
+  \item $A$ est une union de boules ouvertes.
+  \item Pour tout $a\in A$, il existe $r_a >0$ tel que $B(a,r_a)\subset A$.
+ \end{enumerate}
+\end{prop}
+\begin{demo}
+Supposons 2. Alors $A = \bigcup_{a \in A} B(a,r)$ est une union de boules ouvertes.\newline
+D'après l'inégalité triangulaire,
+  \begin{displaymath}
+   \forall x \in X, \; x\in B(a,r) \Rightarrow B(x,r- d(x,a)) \subset B(a,r).
+  \end{displaymath}
+Toute boule ouverte vérifie 2 donc tout union de boules ouvertes aussi.
+\end{demo}
+\begin{defi}
+ Les parties ouvertes d'un espace métrique $(X,d)$ sont les parties vérifiant une des propriétés précédentes.
+\end{defi}
+\begin{demo}
+Il suffit de vérifier la stabilité pour l'intersection. Elle résulte de la propriété 2.
+\end{demo}
+
 \begin{defi}
  Soit $A$ une partie de $X$. On définit une fonction $d(.,A)$ par:
  \begin{displaymath}
@@ -1783,10 +1818,77 @@ d(x,A) - d(x',A) \leq d(x,x') + \varepsilon.
 Ceci étant valable pour tout $\varepsilon >0$ et en intervertissant $x$ et $x'$, on obtient la majoration annocée.
 \end{demo}
 
+\index{adhérence} \index{intérieur} \index{frontière} \index{partie dense dans une autre}
 \begin{defi}
-L'adhérence d'une partie est l'ensemble des limites de suites convergentes d'éléments de cette partie.
+Pour toute partie $K$ de $X$.
+\begin{itemize}
+ \item L'adhérence de $K$ notée $\overline{K}$ est l'intersection des parties fermées contenant $K$.
+ \item L'intérieur de $K$ notée $\overset{\circ}{K}$ ou $\mathrm{Int}K $ est l'union des parties ouvertes contenues dans $K$.
+ \item La frontière de $K$ est la différence ensembliste. Elle est notée $\mathrm{fr}(K) = \overline{K} \setminus \overset{\circ}{K}$.
+ \item Soit $A$ et $B$ deux parties de $X$. On dit que $A$ est dense dans $B$ si et seulement si $A\subset B$ et $\overline{A} = B$.
+\end{itemize}
 \end{defi}
 
+\begin{propn} \label{prop:CaracAdher}
+ Soit $A$ une partie de $X$ et $x\in X$. Les trois propositions suivantes sont équivalentes
+ \begin{enumerate}
+  \item $x \in \overline{A}$
+  \item $d(x,A) = 0$
+  \item $x$ est la limite d'une suite convergente d'éléments de $A$
+ \end{enumerate}
+\end{propn}
+\begin{demo}
+ Preuve de $(1)\Rightarrow (2)$\newline
+Supposons $x\in \overline{A}$. Pour tout $\varepsilon >0$, comme $d( ., A)$ est continue, la partie $A_\varepsilon$ formée par les $y$ tels que $d(y,A) \leq \varepsilon$ est fermée et contient $A$ donc contient aussi $\overline{A}$. On en déduit que $d(x,A)=0$.
+
+ Preuve de $(2)\Rightarrow (3)$\newline
+Supposons $d(x,A) = \inf\{d(x,a), a\in A\}=0$. Pour tout $n$ naturel non nul, il existe $a_n \in A$ tel que $d(x,a_n)\leq \frac{1}{n}$. Alors $(a_n)$ est une suite d'éléments de $A$ qui converge vers $x$.
+
+ Preuve de $(3)\Rightarrow (1)$\newline
+Supposons que $x$ soit la limite d'une suite $(a_n)$ d'éléments de $A$. Considérons un fermé $K$ quelconque contenant $A$. On veut montrer que $x\in K$ c'est à dire $x\notin K'$ en notant  $K'$ le complémentaire de $K$. Or $K'$ est ouvert donc si $x$ appartenait à $K'$, il existerait un $\varepsilon >0$ tel que $K'$ contienne la boule ouverte de centre $x$ et de rayon $\varepsilon$. Comme $x$ est la limite des $(a_n)$, il existerait un $n$ tel que $a_n$ soit dans cette boule en contradiction avec $A \cap K' = \emptyset$ qui découle de $A\subset K$.
+\end{demo}
+
+\index{valeur d'adhérence}
+\begin{defi}
+ Une valeur d'adhérence d'une suite d'éléments de $X$ est la limite d'une suite extraite convergente.
+\end{defi}
+\noindent Attention, si $(a_n)$ est une suite d'éléments de $X$ et $A$ l'ensemble des valeurs de la suite, les éléments de $\overline{A}$ ne sont pas forcément des valeurs d'adhérence. En revanche une valeur d'adhérence est toujours dans $\overline{A}$.
+\index{espace séparable}
+\begin{defi}
+ Un espace métrique $X$ est dit séparable si et seulement si il contient une partie $A$ dénombrable et dense dans $X$ c'est à dire vérifiant $\overline{A} = X$.
+\end{defi}
+\begin{exples}
+ Comme $\Q$ est dénombrable et dense dans $\R$, les espaces $\R$ ou $\R^n$ sont séparables.\newline
+ Pour n'importe quelle distance, $\Z$ ou $\Q$ sont séparables car ils sont eux mêmes dénombrables.
+\end{exples}
+
+
+\subsection{Compacité et caractérisations}
+\index{espace compact}
+\begin{defi}
+ Un espace métrique $X$ est dit compact si et seulement si on peut extraire un sous-recouvrement fini de tout recouvrement de $X$ par des ouverts.
+\end{defi}
+\index{espace précompact}
+\begin{defi}
+ Un espace métrique $X$ est dit précompact si et seulement si pour tout $\varepsilon >0$, il existe une partie finie $F$ telle que $d(x,F) < \varepsilon$ pour tout $x \in X$.
+\end{defi}
+\noindent La citation suivante est tirée de \cite{dieudonne1969elements}
+\begin{quotation}
+ Dans la théorie des espaces métriques, ces notions remplacent la notion de \og finitude \fg; elles expriment que l'espace métrique est \og approximativement fini\fg.
+\end{quotation}
+La proposition suivante est directement tirée de \cite{dieudonne1969elements}
+\begin{propn}\label{prop:CaracCompact}
+ Pour un espace métrique $X$, les trois conditions suivantes sont équivalentes:\newline
+ a. $X$ est compact.\newline
+ b. Toute suite infinie d'éléments de $X$ a au moins une valeur d'adhérence.\newline
+ c. $X$ est précompact et complet.
+\end{propn}
+\begin{demo}
+ Voir \cite{dieudonne1969elements} p58 à 60. à reprendre
+\end{demo}
+\begin{rem}
+ Tout ensemble précompact est borné car une réunion finie d'ensembles bornés est bornée. La réciproque n'est pas vraie en général car toute distance est équivalente à une distance bornée????
+\end{rem}
 \begin{propn} \label{compactEtendu}
 Soit $K$ une partie compacte de $\R^n$ et $\delta >0$. Définissons
 \begin{displaymath}
@@ -1799,30 +1901,627 @@ Alors $K(\delta)$ est une partie compacte.
  Soit $a_0$ fixé. Comme $K$ est borné, il existe $R$ tels que $K$ soit inclus dans la boule fermée de centre $a_0$ et de rayon $R$. Alors $K(\delta)$ est bornée car inclus dans la boule fermée de centre $a_0$ et de rayon $R + \delta$.\newline
  Remarquons que $(\exists a \in K \text{ tq } d(x,a)\leq \delta) \Leftrightarrow d(x,K) \in [0,\delta]$. On en déduit que $K(\delta)$ est fermé car c'est l'image réciproque par une fonction continue d'une partie fermée de $\R$.
 \end{demo}
-\subsubsection{Adhérence, intérieur, frontière }
-Pour toute partie $K$ de $X=\R^n$.
-\begin{itemize}
- \item L'adhérence de $K$ notée $\overline{K}$ est l'intersection des parties fermées contenant $K$.
- \item L'intérieur de $K$ notée $\overset{\circ}{K}$ ou $\mathrm{Int}K $ est l'union des parties ouvertes contenues dans $K$.
- \item La frontière de $K$ est la différence ensembliste. Elle est notée $\mathrm{fr}(K) = \overline{K} \setminus \overset{\circ}{K}$.
-\end{itemize}
-\begin{propn}
- Pour toute partie bornée $K$, l'intérieur, l'adhérence et la frontière sont bornées avec
+
+\subsection{Connexité}
+\begin{defi}\index{espace connexe} \index{espace localement connexe}
+ Un espace métrique $X$ est dit connexe si et seulement si les seules parties de $X$ à la fois ouvertes et fermées sont $\emptyset$ et $X$. Une partie $A$ de $X$ est dite connexe si et seulement si le \emph{sous-espace} topologique $A$ est connexe.\newline
+ L'espace $X$ est dit localement connexe si et seulement si, pour tout $x\in X$,  il existe un système fondamental de voisinages connexes de $x$.
+\end{defi}
+\begin{prop}
+ Soit $(A_i)_{i\in I}$ une famille de parties connexes d'un espace métrique d'intersection non vide. Alors $A = \bigcup_{i\in I}A_i$ est connexe.
+\end{prop}
+\begin{demo}
+ Soit $U$ et $V$ deux ouverts non vides de $A$ tel que $A = U \cup V$. Il s'agit de montrer que $U \cap V \neq \emptyset$.\newline
+Pour tout $i \in I$, $A_i \cap U$ et $A_i \cap V$ sont des ouverts qui recouvrent $A_i$ car
+\begin{displaymath}
+ (A_i \cap U) \cup (A_i \cap V) = A_i \cap (U \cup V) = A_i \cap A = A_i.
+\end{displaymath}
+Soit $x$ un élément dans l'intersection, il est aussi dans l'union donc dans $U$ ou $V$. Supposons $x\in V$ alors:
+\begin{displaymath}
+ \forall i \in I, x \in A_i \cap V \Rightarrow A_i \cap V \neq \emptyset .
+\end{displaymath}
+Comme $U$ est non vide, il existe $i \in I$ tel que $A_i \cap U \neq \emptyset$ en effet:
  \begin{displaymath}
-  \lambda(\overset{\circ}{K}) \leq \lambda(K) = \lambda(\overline{K}).
+  \bigcup_{i \in I}(A_i \cap U) = A \cap U = U \neq \emptyset \Rightarrow \exists i \in I \text{ tq } A_i \cap U \neq \emptyset
+ \end{displaymath}
+Ce $A_i$ particulier est connexe comme les autres donc
+\begin{displaymath}
+ A_i \cap U \cap V \neq \emptyset \Rightarrow A \cap U \cap V \neq \emptyset \Rightarrow U \cap V \neq \emptyset.
+\end{displaymath}
+\end{demo}
+
+
+\section{Nombres \emph{p}-adiques}\label{Sec:NbsPadic}
+\noindent Dans cette partie $p$ désigne un nombre premier.
+
+\subsection{Module et distance \emph{p}-adiques}\label{SubSec:ModulPadic}
+\index{valuation $p$-adique}
+\begin{defi}[valuation $p$-adique]
+ Soit $a$ entier non nul. La valuation $p$-adique de $a$ est le plus grand entier naturel $n$ tel que $p^n$ divise $a$. Il est noté $\ord_p(a)$.\newline
+ Soit $q=\frac{a}{b}$ rationnel non nul. La valuation $p$-adique de $q$ est $\ord_p(q) = \ord_p(a) - \ord_p(b) \in \Z$. Elle est indépendante du représentant $(a,b)$ de $q$.
+\end{defi}
+\begin{rem}
+Pour $a$ entier, $\ord_p(a)= \alpha$ si et seulement si il existe un entier $a'$ premier avec $p$ tel que $a= p^\alpha a'$.
+\end{rem}
+
+\index{norme $p$-adique} \index{distance $p$-adique}
+\begin{defi}[norme et distance \emph{p}-adique]
+ La norme $p$-adique d'un rationnel non nul $q$ est $| q |_p = p^{-\ord_p(q)}$.\newline
+ On convient que $| 0 |_p = 0$.
+ On définit la distance $p$-adique entre deux rationnels par $d_p(q,q') = |q - q'|_p$.
+\end{defi}
+\begin{rems}
+\begin{enumerate}
+  \item La norme $||_p$ prend ses valeurs dans $\{0\} \cup \{p^n, n \in \Z\} \subset [0,+\infty]$ avec $|x|_p = 0 \Leftrightarrow x=0$.
+  \item Soit $a$ et $b$ entiers, notons $a = p^{\ord_p(a)}a'$, $b = p^{\ord_p(b)}b'$ avec $p$ premier avec $a'$ et $b'$.\newline
+ Alors $a+b= p^{\ord_p(a)}(a' + p^{\ord_p(b)-\ord_p(a)}b')$. Donc $a' + p^{\ord_p(b)-\ord_p(a)}b'$ est un entier premier avec $p$ si $\ord_p(a) < \ord_p(b)$. On en déduit $\ord_p(a + b) = \ord_p(a)$ dans ce cas.\newline
+ Si $\ord_p(a)=\ord_p(b)$, il est possible que $p$ divise $a' + p^{\ord_p(b)-\ord_p(a)}b'$ donc $\ord_p(a+b)\geq \ord_p(a)$.
+  \item  Pour $x$ et $y$ entiers ou rationnels, $\ord_p(x y) = \ord_p(x) + \ord_p(y)$ donc $|x y|_p = |x|_p |y|_p$.
+  \item  Soit $x_1 = \frac{a_1}{b_1}$ et $x_2 = \frac{a_2}{b_2}$ deux rationnels.
+\begin{multline*}
+ |x_1|_p < |x_2|_p \Leftrightarrow \ord_p(x_2) < \ord_p(x_1)\Leftrightarrow \ord_p(a_2) - \ord_p(b_2) < \ord_p(a_1) - \ord_p(b_1) \\
+ \Leftrightarrow \ord_p(a_2b_1) = \ord_p(a_2) + \ord_p(b_1) < \ord_p(a_1) + \ord_p(b_2) = \ord_p(a_1b_2)\\
+ \Rightarrow \ord_p(a_1b_2 + a_2b_1) = \ord_p(a_2) + \ord_p(b_1) \\
+ \Rightarrow \ord_p(x_1 + x_2) = \ord_p(\frac{a_1b_2 + a_2b_1}{b_1 b_2}) = \ord_p(a_2) - \ord_p(b_2) = \ord_p(x_2) \\
+ \Rightarrow |x_1 + x_2|_p = |x_2|_p = \max(|x_1|_p, |x_2|_p).
+\end{multline*}
+Si $|x_1|_p = |x_2|_p$ alors $\ord_p(a_1b_2) = \ord_p(a_2b_1)$ donc $\ord_p(a_1b_2 + a_2b_1) \leq \ord_p(a_2) + \ord_p(b_1)$ puis $|x_1 + x_2|_p \leq |x_2|_p = \max(|x_1|_p, |x_2|_p)$.\newline
+On rassemble les deux cas dans l'inégalité
+\begin{displaymath}
+  |x_1 + x_2|_p  \leq \max(|x_1|_p, |x_2|_p)
+\end{displaymath}
+qui est \emph{plus forte} que l'inégalité triangulaire habituelle.
+\end{enumerate}
+\end{rems}
+\noindent
+Les remarques précédentes montrent que $||_p$ et $d_p$ sont respectivement une norme et une distance aux sens habituels. Pour indiquer le renforcement de l'inégalité triangulaire habituelle, elles sont qualifiées de \emph{ultramétriques} dans \cite{dieudonne1969elements} et de \emph{non archimédiennes} dans \cite{koblitz2012p}. \index{distance non archimédienne} \index{distance ultramétrique}
+
+\noindent On rappelle qu'un espace métrique $X$ est dit complet si et seulement si toute suite de Cauchy d'éléments de $X$ admet une limite dans $X$. \index{espace complet}\index{nombres $p$-adiques}
+\begin{defi}
+ On appelle ensemble des nombres $p$-adiques (noté $\Q_p$) le complété de l'espace métrique $\Q$ muni de la distance $d_p$.
+\end{defi}
+\begin{demo}
+L'espace $\Q_p$ est construit à partir de $\Q$ muni de $d_p$ comme l'est $\R$ lorsque $\Q$ est muni de la distance usuelle c'est à dire comme l'ensemble des classes de Cauchy quotienté par une relation d'équivalence. On renvoie à \cite{koblitz2012p} pour les détails.
+\end{demo}
+\begin{prop}
+ Les opérations usuelles de $\Q$ s'étendent à $\Q_p$ qui est un corps dont $\Q$ est un sous-corps. La norme $| |_p$ se prolonge à une norme de $\Q_p$ notée de la même manière et à valeurs dans $\{0\}\cup\left\lbrace p^m , m\in \Z \right\rbrace$. La valuation en $p$ s'étend aussi à $\Q_p$ (valeurs dans $\Z$). En gardant la même notation $\ord_p$:
+ \begin{displaymath}
+  \forall x \in \Q_p, \; |x|_p = p^{-\ord_p(x)}.
+ \end{displaymath}
+Pour la distance associée à cette norme, $\Q_p$ est complet.
+\end{prop}
+\begin{demo}
+ Voir \cite{koblitz2012p}.
+\end{demo}
+\begin{rem}
+ Attention aux relations inhabituelles dans $\Q_p$. Par exemple $||x|_p|_p = \frac{1}{|x|_p}$.
+\end{rem}
+\begin{prop}
+ La série $(\sum_k x_k)$ de nombres $p$-adiques converge si et seulement si $(x_n) \rightarrow 0$.
+\end{prop}
+\begin{demo}
+ On doit seulement montrer que $(x_n)\rightarrow 0$ entraine la convergence. Par définition de la limite:
+ \begin{displaymath}
+  (x_n)\rightarrow 0 \Rightarrow (|x_n|_p)\rightarrow 0 \Rightarrow (\max(|x_k|_p, k > n) \rightarrow 0 .
+ \end{displaymath}
+ Soit $n < s$ quelconques. Le renforcement de l'inégalité triangulaire entraine
+ \begin{displaymath}
+  \left| x_{n+1} + \cdots + x_s\right|_p \leq \max(|x_k|_p, k > n).
+ \end{displaymath}
+La suite $(\sum_{k\leq n}x_k)$ est donc de Cauchy donc convergente.
+\end{demo}
+
+\begin{explen}\label{exple:NumpAdiq}
+Soit $m\in \Z$ et $(a_k)_{k\geq m}$ une suite d'éléments de $\llbracket 0, p-1 \rrbracket$. La suite $(x_n)_{n\geq m}$ définie par
+\begin{displaymath}
+ \forall n \geq m, \; x_n = a_m p^m + a_{m+1} p^{m+1} + \cdots + a_n p^n
+\end{displaymath}
+est de Cauchy pour $| |_p$. Elle admet une limite $x \in \Q_p$. De plus $|x|_p = p^{-m}$.
+\end{explen}
+\begin{demo}
+Considérons $m \leq n_1 \leq n_2$
+\begin{multline*}
+ x_{n_2} -x_{n_1} = a_{n_1+1} p^{n_1+1} + \cdots + a_{n_2} p^{n_2}
+                  = p^{n_1+1} \left( a_{n_1+1} + \cdots + a_{n_2} p^{n_2 - n_1}\right) \\
+      \Rightarrow \ord_p(x_{n_2} -x_{n_1}) \geq n_1 + 1 \Rightarrow |x_{n_2} -x_{n_1}|_p \leq p^{-n_1 - 1}.
+\end{multline*}
+On en déduit que la suite est de Cauchy.
+\end{demo}
+\index{entier $p$-adique} \index{entier rationnel}
+\begin{defi}[entiers $p$-adiques, entiers rationnels]
+ On note $\Z_p = \overline{\Z}$ l'adhérence de $\Z$ dans $\Q_p$ c'est à dire aussi (proposition \ref{prop:CaracAdher}) l'ensemble des limites des suites convergentes d'entiers .  On appelle \emph{entier $p$-adique} un élément de $\Z_p$. Comme $\Z \subset \Z_p$ sans qu'il y ait égalité, dans un contexte $p$-adique, on convient d'appeler \emph{entiers rationnels} les éléments de $\Z$.
+\end{defi}
+\noindent Les limites des suites de l'exemple \ref{exple:NumpAdiq} pour lesquelles $m=0$ sont des entiers $p$-adiques.
+\begin{propn}
+ Toute suite d'éléments de $\Z$ admet une valeur d'adhérence dans $\Q_p$. Autrement dit, de toute suite d'entiers rationnels, on peut extraire une suite qui converge dans $\Q_p$.
+\end{propn}
+\begin{demo}
+Soit $(x_n)_{n \in \N}$ une suite d'entiers. On se propose de définir des parties infinies $\mathcal{I}_1, \mathcal{I}_2, \cdots $ de $\N$.\newline
+Modulo $p$, les $x_n$ pour $n\in \N$ ne peuvent prendre qu'un nombre fini (à savoir $p$) de valeurs. Il existe donc une partie infinie $\mathcal{I}_1$ telle que les $x_i$ soient congrus entre eux modulo $p$. On note $y_1$ l'élément de $\llbracket 0, p-1 \rrbracket$ tel que
+\begin{displaymath}
+ \forall i \in \mathcal{I}_1, \; x_i \equiv y_1 \;\mod p.
+\end{displaymath}
+Modulo $p^2$, les $x_n$ pour $n\in \mathcal{I}_1$ ne peuvent prendre qu'un nombre fini (à savoir $p^2$) de valeurs. Il existe donc une partie infinie $\mathcal{I}_2$ de $\mathcal{I}_1$ de telle que les $x_i$ soient congrus entre eux modulo $p$. On note $y_2$ l'élément de $\llbracket 0, p^2-1 \rrbracket$ tel que
+\begin{displaymath}
+ \forall i \in \mathcal{I}_2, \; x_i \equiv y_2 \;\mod p^2.
+\end{displaymath}
+Remarquons que $y_2 \equiv y_1 \mod p$ car $\mathcal{I}_2 \subset \mathcal{I}_1$.\newline
+La construction peut se poursuivre et on forme une suite $\mathcal{I}_1 \supset \mathcal{I}_1 \supset \cdots \mathcal{I}_k \supset  \cdots$ de parties infinies de $\N$ et une suite d'entiers $(y_k)_{k\geq 1}$ telles que
+\begin{displaymath}
+\forall k \geq 1 \;
+\left\lbrace
+ \begin{aligned}
+    0 &\leq y_k < p^k \\
+   y_{k+1} &\equiv y_k \mod  p^k \\
+   \forall i \in \mathcal{I}_k, x_i &\equiv y_k \mod  p^k
+ \end{aligned}
+ \right.
+\end{displaymath}
+La suite $(y_k)$ est de Cauchy. En effet, si $i<j$, deux nombres congrus modulo $p^j$ sont aussi congrus modulo $p^i$. On en déduit que si $k < k'$
+\begin{displaymath}
+ y_{k'} \equiv y_{k'-1} \equiv \cdots \equiv y_k \mod p^k
+ \Rightarrow \ord_p (y_{k'} - y_k) \geq k \Rightarrow | y_{k'} - y_k|_p \geq p^{-k}.
+\end{displaymath}
+
+On forme enfin une suite d'entiers naturels $j_1, j_2, \cdots$ en prenant $j_1$ quelconque dans $\mathcal{I}_1$, $j_2 >j_1$ dans $\mathcal{I}_2$ et ainsi de suite $j_{k+1} > j_k$ dans $\mathfrak{I}_{k+1}$. La suite $(x_{j_k})$ est extraite de $(x_n)$, elle est de Cauchy car, pour $k < k'$,
+\begin{displaymath}
+ \left.
+ \begin{aligned}
+   x_{j_k} &\equiv y_k \mod p^k \\
+   x_{j_{k'}} &\equiv y_{k'} \mod p^{k'}
+ \end{aligned}
+ \right\rbrace
+ \Rightarrow
+ x_{j_{k'}} - x_{j_{k}} \equiv y_{k'} -y_k \equiv 0 \mod p^k
+ \Rightarrow
+ |x_{j_{k'}} - x_{j_{k}} |_p \leq p^{-k}.
+\end{displaymath}
+\end{demo}
+
+
+\subsection{Topologie \emph{p}-adique}\label{SubSec:TopoPadic}
+\index{nombre $p$-adique positif}
+\noindent L'inégalité dans $\Q$ ne s'étend pas naturellement à $\Q_p$ et l'ensemble des valeurs de la norme $p$-adique est très différent de $\R_+$. Notons $\V_p$ l'ensemble des valeurs de la norme $p$-adique :
+\begin{displaymath}
+ \V_p = \{0\} \cup \left\lbrace p^m, m \in \Z \right\rbrace \text{ et } \V_p^{*} = \left\lbrace p^m, m \in \Z \right\rbrace
+\end{displaymath}
+\noindent On peut remarquer que $\V_p$ est une partie fermée de $[0, +\infty[$ car son complémentaire est l'union des intervalles ouverts $]p^{m-1}, p^m[$ pour $m\in \Z$.
+ D'autre part l'ensemble $\V_p$ est en bijection avec $\{\infty\}\cup \Z$ par l'application
+ \begin{displaymath}
+  m \mapsto
+  \left\lbrace
+  \begin{aligned}
+   0 &\text{ si } m = \infty \\
+   p^{-m} &\text{ si } m \in \Z
+  \end{aligned}
+  \right. .
+ \end{displaymath}
+Cela permet de traduire dans $\V_p$ le fait qu'une partie majorée de $\Z$ admette un plus grand élément et induit des propriétés particulières de la topologie définie par cette métrique.
+
+\noindent On démontre classiquement avec l'inégalité triangulaire que, dans un espace métrique, une boule ouverte est ouverte et une boule fermée est fermée. Complétons ce résultat pour la norme $p$-adique dans $\Q_p$ en précisant le rôle du renforcement de l'inégalité triangulaire. \label{prop:BoulesP-ad}
+\begin{prop}
+ Dans $(\Q_p, ||_p)$ les boules ouvertes et les boules fermées sont à la fois ouvertes et fermées.
+\end{prop}
+\begin{demo}
+Soit $a\in \Q_p$ et $r\in\V_p^*$. Il existe $m \in \Z$ tel que $r= p^{m}$ notons
+\begin{displaymath}
+ r^- = p ^{m-1} \text{ et } r^+ = p ^{m+1} \text{ de sorte que } r^- < r < r^+ \text{ et }\V_p^* \cap [r^-, r^+] = \left\lbrace r^-, r, r^+\right\rbrace.
+\end{displaymath}
+Notons aussi
+\begin{align*}
+ O(a,r) &= \left\lbrace x \in\Q_p \text{ tq } |x-a|_p < r \right\rbrace &\text{boule ouverte de centre $a$ et de rayon $r$} \\
+ F(a,r) &= \left\lbrace x \in\Q_p \text{ tq } |x-a|_p \leq r \right\rbrace &\text{boule fermée de centre $a$ et de rayon $r$}
+\end{align*}
+Remarquons d'abord que $F(a,r) = O(a,r^+)$ donc une boule fermée est une boule ouverte.\newline
+Soit $b\in O(a,r)$ et $x\in O(b,r)$. Alors:
+\begin{displaymath}
+ |x-a|_p = |x-b + b-a|_p \leq \max(|x-b|_p,|b-a|_p) < r \text{ car } |x-b|_p < r \text{ et } |b-a|_p < r.
+\end{displaymath}
+On en déduit que $O(b,r)\subset O(a,r)$. Pour tout point de $O(a,r)$, la boule ouverte de centre $a$ et \emph{de même rayon } $r$ est incluse dans $O(a,r)$ donc $O(a,r)$ est une partie ouverte. De même pour $F(a,r) = O(a,r^+)$.\newline
+En fait, tous les points d'une boule ouverte sont des centres. En effet, pour $b\in O(a,r)$ et $x\in O(a,r)$:
+\begin{displaymath}
+ |x-b|_p = |x-a + a-b|_p \leq \max(|x-a|_p,|a-b|_p) < r \text{ car } |x-a|_p < r \text{ et } |a-b|_p < r.
+\end{displaymath}
+On en déduit que $O(a,r)\subset O(b,r)$ donc $O(a,r) = O(b,r)$.\newline
+Il reste à montrer qu'une boule (ouverte ou fermée) est fermée c'est à dire que son complémentaire est ouvert. Montrons que
+\begin{displaymath}
+ O'(a,r) = \left\lbrace x\in \Q_p \text{ tq } |x-a|_p \geq r \right\rbrace
+\end{displaymath}
+est ouverte. Soit $b\in O'(a,r)$ c'est à dire $|b-a|_p \geq r$ et $x\in O(b,r)$ c'est à dire $|b-x|_p < r$.
+\begin{displaymath}
+\left.
+  \begin{aligned}
+    r \leq |b-a|_p = |b-x + x-a|_p &\leq \max(|b-x|_p, |x-a|_p) \\
+    |x-b|_p &< r
+  \end{aligned}
+\right\rbrace
+    \Rightarrow
+    r \leq |x-a|_p
+\end{displaymath}
+donc $O(b,r) \subset O'(a,r)$.
+\end{demo}
+
+\begin{propn}\label{prop:r-procheEquiv}
+Soit $r \neq 0$ dans $\V_p$. La relation \og être $r$-proche de \fg  est une relation d'équivalence. Les classes d'équivalences sont des boules fermées de rayon $r$. Deux boules fermées de même rayon et distinctes sont disjointes.
+\end{propn}
+\begin{demo}
+ Soit $r = p^m  \in \V_p$, on dit que $x$ et $y$ de $\Q_p$ sont $r$-proches si et seulement si $|x-y|_p \leq r$.\newline
+ La symétrie et la réflexivité sont immédiate. La transitivité vient du caractère ultramétrique de l'inégalité triangulaire. Cette relation n'est pas transitive dans $\R$ muni de la valeur absolue usuelle. Ici:
+ \begin{displaymath}
+  \left.
+  \begin{aligned}
+   |x-y|_p &\leq r \\
+   |y-z|_p &\leq r
+  \end{aligned}
+  \right\rbrace \Rightarrow
+  |(x-y) + (y-z)|_p \leq \max\left(|x-y|_p, |y-z|_p  \right) \leq r.
+ \end{displaymath}
+ La classe de $a$ est l'ensemble des $x$ $r$-proches de $a$ c'est à dire la boule fermée de centre $a$ et de rayon $r$. pour n'importe quelle relation d'équivalence, deux classes distinctes sont disjointes.
+\end{demo}
+
+\subsection{Numération \emph{p}-adique}
+L'exemple \ref{exple:NumpAdiq} fait penser à la numération en base $p$. Poursuivons cette analogie avec des résultats qui rendent plus concrets les nombres $p$-adiques. On démontrera plus loin que tout nombre $p$-adique admet un unique développement comme limite d'une suite de ce type.
+\begin{prop}
+Soit $m \in \Z$ fixé.
+ \begin{enumerate}
+  \item
+  \begin{displaymath}
+   \left( (p-1)\times p^m + (p-1)\times p^{m+1} + \cdots + (p-1)\times p^{n}\right)_{n\geq m} \rightarrow - p^m
+  \end{displaymath}
+  \item Soit $(a_k)_{k\geq m}$ une suite d'entiers dans $\llbracket 0, p \llbracket$ avec $a_m \neq 0$. Il existe une suite $(b_k)_{k\geq m}$ d'entiers dans $\llbracket 0, p \llbracket$ tels que $a_m + b_m =p$ et $a_k + b_k + 1 =p$ pour $k>m$. Alors
+  \begin{displaymath}
+   \lim_n \left( a_m\times p^m + \cdots + a_n\times p^n \right) = -\lim_n \left( b_m\times p^m + \cdots + b_n\times p^n \right)
+  \end{displaymath}
+ \end{enumerate}
+\end{prop}
+\begin{demo}
+ \begin{enumerate}
+  \item Notons $u$ la limite de la suite. En isolant le premier terme et après passage à la limite:
+  \begin{displaymath}
+   u = (p-1) \times p^m + p u\Rightarrow (1-p)u = (p-1)\times p^m \Rightarrow u = -p^m.
+  \end{displaymath}
+  \item L'existence de la suite $(b_n)$ résulte des deux implications
+  \begin{displaymath}
+   \forall x \in \N, 1 \leq x \leq p- 1  \Rightarrow 1\leq p - x \leq p -1, \; 0 \leq x \leq p- 1  \Rightarrow 0\leq p - 1 -x \leq p -1,
+  \end{displaymath}
+Les relations entrainent alors
+\begin{multline*}
+ (a_m \times p^m + \cdots + a_n\times p^n) + (b_m \times p^m + \cdots + b_n\times p^n) \\
+   = (1 + a_{m+1} + b_{m+1})\times p^{m+1} + (a_{m+2} + b_{m+2})\times p^{m+2} + \cdots + (a_{n} + b_{n})\times p^{n}
+   = \cdots
+   = p^{n+1}.
+\end{multline*}
+Comme $(p^{n+1}) \rightarrow 0$, on obtient l'égalité annoncée pour les limites.
+ \end{enumerate}
+\end{demo}
+
+\begin{prop}
+ Soit $x \in \Q_p$ et $A \subset \Q_p$. Alors $d(x,A) \in \V_p$. Plus précisément:
+ \begin{enumerate}
+  \item $d(x,A)=0 \Leftrightarrow x \in \overline{A}$.
+  \item Si $d(x,A) > 0$, il existe $a\in A$ tel que $d(x,A) = |x-a|_p$.
+ \end{enumerate}
+\end{prop}
+\begin{demo}
+\begin{enumerate}
+ \item Ceci est valable dans n'importe quel espace métrique (proposition \ref{prop:CaracAdher}).
+ \item On utilise la bijection introduite plus haut.
+ \begin{displaymath}
+  d(x,A) > 0 \Rightarrow \inf \left\lbrace |x-a|_p, a\in A\right\rbrace > 0
+    \Rightarrow \left\lbrace \ord_p(x-a), a\in A\right\rbrace \text{ majorée}
+ \end{displaymath}
+ Cette partie de $\Z$ admet un plus grand élément. Il existe $a\in A$ tel que
+ \begin{displaymath}
+  m = |x-a|_p = \max \left\lbrace \ord_p(x-a), a\in A\right\rbrace \Rightarrow d(x,A) = |x-a|_p = p^{-m} \in \V_p.
+ \end{displaymath}
+\end{enumerate}
+\end{demo}
+
+\begin{propn}\label{prop:ReprésentEntierNbPadiq}
+Soit $x\in \Q$ tel que $|x|_p \leq 1$. Pour tout $r=p^i\in \V_p^*$, il existe $a \in \Z$ tel que $|a-x|_p \leq r$. Tous les entiers rationnels vérifiant cela sont congrus entre eux modulo $p^i$, en particulier il en existe un unique dans $\llbracket 0, p^i \llbracket$.
+\end{propn}
+\begin{demo}
+ Notons $x=\frac{\alpha}{\beta}$ avec $\alpha$ et $\beta$ premiers entre eux et $r=p^{-i}$. Il suffit de prouver le résultat pour $r<1$ c'est à dire pour $i$ naturel non nul.\newline
+ Par hypothèse, $\ord_p(x)\geq 0$ donc $p^i$ est premier avec $\beta$. D'après le théorème de Bezout, il existe $u$ et $v$ dans $\Z$ tels que
+\begin{displaymath}
+ u\beta + vp^i = 1 \Rightarrow \ord_p(u\beta - 1) \geq i \Rightarrow |u\beta - 1|_p \leq r
+ \Rightarrow |u\beta - 1|_p |x|_p \leq r |x|_p \leq r
+ \Rightarrow |u\alpha - x|_p < r.
+\end{displaymath}
+Comme $a = u\alpha \in \Z$, il satisfait les conditions.\newline
+Considérons deux entiers rationnels $a$ et $a'$ approchant $x$ à l'ordre $r$
+\begin{displaymath}
+ |a-a'|_p = |a-x + x-a'|_p \leq \max(|a-x|_p, |x-a'|_p) \leq r
+ \Rightarrow p^i \text{ divise } a-a'.
+\end{displaymath}
+Toutes les approximations dans $\Z$ sont donc congrues modulo $p^i$, il existe un unique représentant dans $\llbracket 0, p^i \llbracket$.
+\end{demo}
+
+\begin{propn} \label{prop:CaracEntierP-adiq}
+ \begin{displaymath}
+  \Z_p = \left\lbrace x\in \Q_p \text{ tq } |x|_p \leq 1\right\rbrace.
  \end{displaymath}
 \end{propn}
 \begin{demo}
- Par définition, $\overset{\circ}{K} \subset K\subset \overline{K}$.\newline
- Pour tout $s$ l'approximation $A_s(K)$ est une union finie de cubes de taille $\frac{1}{2^s}$ fermés donc est une partie fermée contenant $K$. L'intérieur et l'adhérence sont donc bornées avec $\lambda(\overset{\circ}{K})\leq \lambda(K) \leq \lambda(\overline{K})$ et $\overline{K} \subset A_s(K)$ donc $\lambda(\overline{K}) \leq \lambda(A_s(K))$ puis $\lambda(\overline{K}) \leq \lambda(K)$ par passage à la limite donc $\lambda(\overline{K}) = \lambda(K)$. \newline
- On ne peut espérer que $\lambda(\overset{\circ}{K}) = \lambda(\overline{K})$ en général comme le montre l'exemple $K= \Q \cap [0,1]$ pour lequel $\overset{\circ}{K}$ est vide donc son adhérence aussi alors que $\overline{K}=[0,1]$.
- \end{demo}
+Notons  $F$ la boule fermée $\left\lbrace x\in \Q_p \text{ tq } |x|_p \leq 1\right\rbrace$. Elle est fermée d'après la proposition \ref{prop:BoulesP-ad}.\newline
+Pour tout $a\in \Z$, $\ord_p(a)\geq 0$ donc $|a|_p \leq 1$ donc $\Z \subset F$ donc $\Z_p = \overline{\Z}\subset F$.\newline
+Réciproquement, soit $x \in F$. Il existe une suite $(q_n)$ d'éléments de $\Q$ qui converge vers $x$ donc $(|q_n|_p)$ converge vers $|x|_p\leq 1$.\newline
+Pour tout $r>1$, à partir d'un certain rang, $|q_n|_p < r$. En particulier pour $r = p$. Comme $p$ est le plus petit élément de $\V_p^*$ strictement plus grand que $1$ on en déduit que,   à partir d'un certain rang, $|q_n|_p\leq 1$. D'après la proposition précédente, on peut approcher $q_n$ par un $a_n \in \Z$ tel que $|a_n - q_n|\leq |x-q_n|_p$. Alors:
+\begin{displaymath}
+ |x-a_n|_p \leq \max(|x-q_n|_p, |q_n - a_n|_p) = |x-q_n|_p
+\end{displaymath}
+ce qui montre que $x$ est la limite d'une suite d'éléments de $\Z$.
+\end{demo}
+
+\begin{propn}\label{prop:UnicitéDevP-adiq}
+ Soit $(a_k)$ et $(b_k)$ deux suites  à valeurs dans $\llbracket 0, p \llbracket$ pour lesquelles il existe $m\in \Z$ tel que $a_k$ et $b_k$ soient nuls pour $k<m$. Soit $\alpha$ et $\beta$ dans $\Q_p$ tels que
+ \begin{displaymath}
+  \alpha = \sum_{k\geq m}a_k p^{k} , \; \beta = \sum_{k\geq m}b_k p^{k}.
+ \end{displaymath}
+Alors $(a_k) \neq (b_k)$ entraine $\alpha \neq \beta$.
+\end{propn}
+\begin{demo}
+ Supposons les suites distinctes et considérons le plus petit entier $n$ pour lequel les valeurs diffèrent. Pour $k<n$ on a $a_k = b_k$, donc
+ \begin{displaymath}
+  \alpha = c + a_n p^{-n} + \sum_{k>n}a_kp^{-k} , \;
+  \beta = c + b_n p^{-n} + \sum_{k>n}b_kp^{-k}
+ \end{displaymath}
+ avec $c \in \Q$. Formons
+ \begin{multline*}
+  |(c+a_np^n) - (c+b_np^n)|_p = |(c+a_np^n - \alpha) + (\alpha - \beta) + ( \beta - c - b_np^n)|_p \\
+    \leq \max\left( |\alpha - c -a_np^n|_p, |\alpha - \beta|_p, |\beta - c -b_np^n|_p\right)
+ \end{multline*}
+Or $|\alpha - c -a_np^n|_p < p^{-n}$ et $|\beta - c -b_np^n|_p < p^{-n}$ alors que
+\begin{displaymath}
+ |(c+a_np^n) - (c+b_np^n)|_p = |(a_n - b_n)p^n)|_p = p^{_n}.
+\end{displaymath}
+Comme $a_n \neq b_n$, on en déduit $|\alpha - \beta|_p = p^{_n} \neq 0$ donc $\alpha \neq \beta$.
+\end{demo}
+
+\noindent On est maintenant en mesure de prouver l'existence et l'unicité du développement $p$-adique de l'exemple \ref{exple:NumpAdiq}.
+\label{prop:NumpAdiq}
+\begin{propn}
+ Pour tout $\alpha \in \Q_p$ non nul, il existe une unique suite $(a_k)_{k\geq m}$ nulle en deça de $m = \ord_p(\alpha) \in \Z$ et vérifiant
+ \begin{displaymath}
+  \alpha = \sum_{k\geq m} a_k p^k
+ \end{displaymath}
+ Si $\alpha$ est nul, tous les $a_k$ sont nuls.
+\end{propn}
+\begin{demo}
+L'unicité est une traduction de la proposition \ref{prop:UnicitéDevP-adiq}.\newline
+Soit $\alpha \in \Q_p$ tel que $|\alpha|_p \leq 1$. D'après la proposition \ref{prop:CaracEntierP-adiq}, $\alpha$ est la limite d'une suite $(u_k)_{k\geq 0}$ d'entiers telle que $|\alpha - u_k|_p \leq p^{-k}$ pour tous les $k$. Notons $r_k \in \llbracket 0, p^k \llbracket$ le reste de la division de $u_k$ par $p^k$. La limite de $(r_k)_{k\geq 0}$ est encore $\alpha$ car $|u_k - r_k|_p \leq p{-k}$. De plus $r_k$ et $r_{k+1}$ sont congrus modulo $p^k$ car
+\begin{displaymath}
+ |r_{k+1} - r_k|_p \leq \max\left(|r_{k+1} - \alpha|_p, |\alpha - r_k|_p\right) \leq p^{-k}.
+\end{displaymath}
+Ils ont donc le même développement en base $p$ ce qui assure l'existence des $a_k$.\newline
+Si $|\alpha|_p = p^{-m} > 1$ (c'est à dire $m<0$), on se ramène au cas précédent en considérant $\alpha p^m$ de module $1$.
+\end{demo}
+\noindent Introduisons un vocabulaire analogue à celui des développements limités.
+\index{développement $p$-adique à l'ordre $N$}
+\begin{defin}\label{Def:devlp-adiqOrdreN}
+ Soit $\alpha \in \Q_p$ non nul d'ordre $m$ et $\sum_{k\geq m} a_k p^k$ son développement $p$-adique. Pour tout $N \geq m$, on appelle développement $p$-adique de $\alpha$ à l'ordre $N$ l'écriture
+ \begin{displaymath}
+  \alpha = \sum_{k\geq m}^{N-1} a_k p^k + p^Nu\text{ avec } u =\sum_{k\geq N} a_k p^{k-N} \in \Z_p.
+ \end{displaymath}
+ On dit que $\sum_{k\geq m}^{N-1} a_k p^k$ est la partie principale du développement et que $p^Nu$ est son reste.
+\end{defin}
+
+\subsection{Classes de congruence, boules, compacts}
+\index{congruence dans $\Q_p$}
+\begin{defi}
+ Soit $x$ et $y$ dans $\Q_p$ et $p^N \in \V_p$. Les deux propriétés suivantes sont équivalentes
+ \begin{enumerate}
+  \item $|x-y|_p \leq p^{-N}$.
+  \item Il existe $a\in \Z_p$ tel que $x-y = p^N\, a$.
+ \end{enumerate}
+\end{defi}
+Lorsque ces propriétés sont vérifiées, on dit que $x$ et $y$ sont congrus modulo $p^N$.
+\begin{demo}
+\begin{multline*}
+ |x-y|_p \leq p^{-N} \Leftrightarrow p^{N}|x-y|_p \leq 1
+ \Leftrightarrow |p^{-N}|_p|x-y|_p \leq 1 \\
+ \Leftrightarrow |p^{-N} (x-y)|_p \leq 1
+ \Leftrightarrow p^{-N} (x-y) \in \Z_p \text{ (d'après la proposition \ref{prop:CaracEntierP-adiq}) }\\
+ \Leftrightarrow \exists a \in \Z_p \text{ tq }x-y = a p^N
+\end{multline*}
+\end{demo}
+\noindent On retrouve formulé par \og être congru modulo $(p^N)$ à\fg la relation d'équivalence  \og être $p^{-N}$-proche de \fg de la proposition \ref{prop:r-procheEquiv}. Les classes d'équivalence sont à la fois des classes de congruence et des boules fermées. On note
+\begin{displaymath}
+ a + (p^N) = a + p^N \Z_p = F(a,p^{-N})
+\end{displaymath}
+la classe de congruence de $a \in \Q_p$ modulo $p^N$.\newline
+On peut caractériser une classe de congruence modulo $p^N$ par un développement à l'ordre $N$.
+\begin{prop}
+Deux éléments de $\Q_p$ sont congrus modulo $p^N$ si et seulement si ils ont la même partie principale dans leurs développements $p$-adiques à l'ordre $N$.
+\end{prop}
+\begin{demo}
+Évident en écrivant puis en soustrayant les deux décompositions $p$-adiques à l'ordre $N$.
+\end{demo}
+
+\begin{prop}
+ Toute boule ouverte est compacte.
+\end{prop}
+\begin{demo}
+ Montrons d'abord que $\Z_p$ qui est la boule ouverte de centre l'origine et de rayon $p$ est compacte.\newline
+ Soit $r = p^N$ strictement positif dans $\V_p$ et $F = \llbracket 0, p^N\llbracket$. Tout $x \in \Z_p$ admet un développement à l'ordre $N$ qui coincide avec le développement d'un élément de $F$ donc $d(x,F)\leq p^N$.\newline
+ On en déduit que $\Z_p$ est précompact. Comme c'est un fermé ($\Z_p = \overline{\Z}$) dans l'espace complet $\Q_p$, il est aussi complet donc compact d'après la proposition \ref{prop:CaracCompact}.\newline
+ Une boule ouverte est compacte car étant une classe de congruence, elle est homéomorphe à $\Z_p$ par une application de la forme $x \mapsto a + p^N x$.
+\end{demo}
+
+\begin{prop}
+ Toute boule ouverte est l'union disjointe de $p$ boules ouvertes de rayon divisé par $p$. L'espace $\Q_p$ n'est pas localement connexe.
+\end{prop}
+\begin{demo}
+ Soit $p^{-N}$ le rayon de la boule ou $p^N$ le modulo de la congruence. Le développement à l'ordre $N$ caractérisant la classe admet exactement $p$ prolongements à l'ordre $p^{N+1}$, la classe se décompose en $p$ classes disjointes.
+\end{demo}
+
+\begin{propn}\label{prop:OuvertCompactP-adiq}
+ Une partie ouverte de $\Q_p$ est compacte si et seulement si c'est une union finie de classes de congruence.
+\end{propn}
+\begin{demo}
+ Une classe de congruence est une boule fermée. Elle est fermée est bornée donc compacte dans un espace métrique. De plus une union finie de parties compactes est une partie compacte.\newline
+ Réciproquement, soit $K$ une partie compacte et ouverte de $\Q_p$. Comme elle est ouverte elle est la réunion des boules ouvertes qu'elle contient. Ces boules forment un recouvrement ouvert d'où l'on peut extraire un recouvrement fini qui est égal à $K$.
+\end{demo}
 
 
-\section{En travaux: déchetterie et gisements}
+
+\chapter{En travaux: déchetterie et gisements}
 Cette section rassemble des sections qui n'ont plus leur place dans le plan actuel mais qui méritent d'être conservés quelque part ainsi que des sections en devenir qui pourraient entrer plus tard dans le plan.
+\section{Développements formels}
+Soit $b$ naturel non nul et $0 < \rho < 1$ réel.\newline
+On considère l'ensemble des fonctions de $\Z$ dans $\llbracket 0, b\llbracket$. Si $x$ est une telle fonction, on notera indifféremment $x(i)$ ou $x_i$ sa valeur en $i\in \Z$ en regardant $x$ comme une fonction ou comme une suite \emph{doublement} infinie. On définit une partie $I_x$ de $\Z$ attachée à $x$ de la manière suivante
+\begin{displaymath}
+ \forall k \in \Z, k \in I_x \Leftrightarrow \left( \forall i \in\Z, \;i < k \Rightarrow x(i) = 0 \right).
+\end{displaymath}
+On note $X$ l'ensemble des fonctions $x$ pour lesquelles $I_x$ est non vide c'est à dire les suites nulles en deça d'un certain rang.\newline
+Si $x\in X$ n'est pas la suite nulle, $I_x$ est majoré donc admet un plus grand élément $m$ appelé ordre de $x$ et tel que $x_m \neq 0$ avec $x_i=0$ pour $i<m$. Il est noté $\ord(x)$.
+\begin{prop}
+ Soit $x$ et $y$ dans $X$. Si $x\neq y$, l'ensemble des $i\in \Z$ tel que $x_i \neq y_i$ est non vide et admet un plus petit élément $m \geq \min(\ord(x),\ord(y))$ vérifiant
+ \begin{displaymath}
+  x_m \neq y_m \text{ et } \forall i< m, x_i = y_i.
+ \end{displaymath}
+\end{prop}
+\begin{demo}
+ Notons $J$ l'ensemble des $i$ tels que $x_i \neq y_i$. Il est non vide car $x \neq y$. Soit $\mu = \min(\ord(x),\ord(y))$. Pour $i< \mu $, $x_i = y_i =0$ donc $\mu$ est un minorant de $J$ qui admet alors un plus petit élément $m \geq \mu$.
+\end{demo}
+\begin{rem}
+ Le $m$ ainsi défini mesure la différence entre $x$ et $y$. Plus le $m$ est grand plus nombreux sont les indices pour lesquels les valeurs sont égales donc plus proches sont les suites.
+\end{rem}
+\begin{defi}
+ Soit $x\neq y$ dans $X$ et $m\in \Z$ défini par la proposition précédente. On note $d(x,y) = \rho ^m$. On convient que $d(x,y)=0$ si $x=y$.
+\end{defi}
+\begin{rem}
+ D'après la définition,
+ \begin{displaymath}
+  d(x,y) < \rho^m \Leftrightarrow x_i = y_i \text{ pour } i \leq m.
+ \end{displaymath}
 
-\subsection{Graphes, simplexes, CW-complexes?}
+\end{rem}
+\begin{prop}
+ La fonction $d$ est une distance ultramétrique sur $X$. L'inégalité triangulaire est renforcée en
+ \begin{displaymath}
+  \forall (a,b,c)\in X^3, \; d(a,c) \leq \max(d(a,b),d(b,c)).
+ \end{displaymath}
+\end{prop}
+\begin{demo}
+Les propriétés $d(x,y)=0 \Leftrightarrow x=y$ et $d(x,y)=d(y,x)$ sont évidentes. Le point important est l'inégalité triangulaire.\newline
+Soit $a, b, c$ deux à deux distincts dans $X$ et $\alpha, \beta, \gamma$ dans $\Z$ vérifiant
+\begin{displaymath}
+ d(a,b) = \rho^\gamma, \; d(b,c) = \rho^\alpha, \; d(a,c) = \rho^\beta.
+\end{displaymath}
+Soit $i < \min(\gamma, \alpha)$:
+\begin{displaymath}
+ \left.
+ \begin{aligned}
+  i < \gamma &\Rightarrow a_i = b_i \\
+  i < \alpha &\Rightarrow b_i = c_i
+ \end{aligned}
+ \right\rbrace
+ \Rightarrow a_i = c_i
+\end{displaymath}
+donc $\min(\gamma,\alpha)\leq \beta$. Comme $0 <  \rho < 1$:
+\begin{displaymath}
+ \rho^{\min(\gamma,\alpha)}= \max(\rho^\gamma, \rho^\alpha) \geq \rho^\beta \Rightarrow d(a,c) \leq \max(d(a,b),d(b,c)).
+\end{displaymath}
+\end{demo}
+\begin{rem}
+ Aucune opération (addition, soustraction, ...) n'est définie sur $X$. La distance ne vient pas d'une norme. Si on ne cherche pas à définir d'opérations arithmétiques, on devrait pouvoir remplacer par $\llbracket 0,b \llbracket$ par un ensemble fini abstrait au dessus de chaque $i \in \Z$.
+\end{rem}
+
+\begin{defi}
+ Soit $x\in X$ et $m\in \Z$. On convient d'appeler développement de $x$ à l'ordre $m$ la suite tronquée $(x_i)_{i<m}$.
+\end{defi}
+
+\begin{prop}
+ Soit $x\in X$ et $m\in \Z$. La boule ouverte de centre $x$ et de rayon $\rho^m$ est constituée par les $y\in X$ qui ont le même développement que $x$ à l'ordre $m$.
+\end{prop}
+\begin{prop}
+ La boule ouverte de centre $x$ et de rayon $\rho^m$ est la boule fermée de centre $x$ et de rayon $\rho^{m+1}$.
+\end{prop}
+\begin{prop}
+ La boule ouverte de centre $x$ et de rayon $\rho^m$ est l'union disjointe de $b$ boules ouvertes de rayon $\rho^{m+1}$.
+\end{prop}
+\begin{demo}
+ Il suffit de remarque que le développement de $x$ à l'ordre $m$ se prolonge en $b$ développements distincts à l'ordre $m+1$ et choisissant le terme d'indice $m+1$.
+\end{demo}
+\begin{prop}
+ L'espace métrique $(X,d)$ est complet.
+\end{prop}
+\begin{demo}
+ Soit $(x_n)_{n\in \N}$ une suite de Cauchy dans $X$. On notera $x_n(i)$ le terme d'indice $i$ de la suite $x_n$.\newline
+ Pour chaque $i\in \Z$ fixé, il existe $N_i \in \N$ tel que :
+ \begin{displaymath}
+ \left.
+ \begin{aligned}
+   p &\geq N_i \\
+   q &\geq N_i
+ \end{aligned}
+ \right\rbrace
+ \Rightarrow
+  d(x_p,x_q) < \rho^i.
+ \end{displaymath}
+On peut supposer que la suite $(N_i)_i$ de naturels est strictement croissante. On en déduit que
+\begin{displaymath}
+ \forall (i,j) \in \N^2, \; j < i \Rightarrow x_{N_j}(j) = x_{N_i}(j).
+\end{displaymath}
+En effet, par définition de $N_j$,
+\begin{displaymath}
+ j< i \Rightarrow N_j < N_i \Rightarrow d(x_{N_i},x_{N_j}) < \rho^j
+ \Rightarrow x_{N_i}(j) = x_{N_j}(j)
+\end{displaymath}
+car d'après la remarque suivant la définition de la distance les valeurs sont égales pour tous les indices $k\leq j$ donc en particulier pour $j$ lui même.\newline
+Définissons $l=(l_i)_{i\in \Z} \in X$ par $l_i = x_{N_i}(i)$ pour tout $i\in \Z$.\newline
+Que peut-on dire de $d(x_n,l)$ pour $n\geq N_i$ ?
+\begin{multline*}
+ \left.
+ \begin{aligned}
+  n &\geq N_i \\
+  N_i &\geq N_i
+ \end{aligned}
+ \right\rbrace
+ \Rightarrow
+ d(x_n,x_{N_i}) < \rho^i
+ \Rightarrow
+ x_n(j) = x_{N_i}(j) \text{ pour tout } j \leq i \\
+ \Rightarrow
+ x_n(j) = x_{N_j}(j)=l_j \text{ pour tout } j \leq i \left(\text{ car } x_{N_j}(j) = x_{N_i}(j)\right)
+ \Rightarrow d(x_n,l) < \rho^i .
+\end{multline*}
+On en déduit que la suite $(x_n)$ tend vers $l$.
+\end{demo}
+
+\noindent Le caractère numérique des valeurs des suites ne joue aucun rôle ici, ni même le fait que les ensembles de valeurs possibles soient les mêmes pour tous les indices.
+Soit $\mathcal{G}$ un graphe orienté tel que, en chaque noeud,
+\begin{itemize}
+ \item la valence sortante (ie le nombre d'arêtes partant de ce noeud) est finie,
+ \item il existe une arête issue du noeud et qui pointe vers lui même.
+\end{itemize}
+On convient d'appeler boucle une arête dont le noeud de départ est le noeud d'arrivée.\newline
+On appelle \emph{demi-chemin} sur le graphe une suite d'arêtes $(a_i)_{i\in\Z}$ indicée dans $\Z$ telle que
+\begin{itemize}
+ \item pour tout $i\in \Z$, l'arrivée de $a_i$ est le départ de $a_{i+1}$,
+ \item il existe $m\in\Z$ tel que $a_m$ n'est pas une boucle et, pour tout $i<m$, $a_i$ est une boucle.
+\end{itemize}
+On dit que $m$ est l'ordre du demi-chemin et que le noeud de départ de $a_m$ est l'origine du demi-chemin.
+\begin{prop}
+ Soit $a=(a_i)_{i\in \Z}$ et $b=(b_i)_{i\in \Z}$ deux demi-chemins. Il existe $m\in \Z$ tel que $i<m$ entraine $a_i=b_i$ si et seulement si $(a_i)_{i\in \Z}$ et $(b_i)_{i\in \Z}$ ont la même origine.
+\end{prop}
+\begin{demo}
+ Notons $\alpha$ l'ordre de $a$ et $v$ son origine. Notons $\beta$ l'ordre de $b$ et $w$ son origine.\newline
+ Si $v=w$, alors
+ \begin{displaymath}
+  i < \min(\alpha, \beta) \Rightarrow a_i = (v,v) = b_i.
+ \end{displaymath}
+S'il existe $m$ tel que $a_i=b_i$ pour $i<m$. alors
+\begin{displaymath}
+ i < \min(\alpha, \beta, m) \Rightarrow (v,v) = a_i = b_i = (w,w)
+\end{displaymath}
+donc $v = w$.
+\end{demo}
+
+On dira qu'un demi-chemin $(a_i)$ est fini si et seulement si il existe $\mu \in \Z$ tel que $a_i$ soit une boucle pour $i>\mu$. L'ensemble $F$ des demi-chemins finis d'origine $v$ est dénombrable et dense dans l'ensemble des demi-chemins d'origine $v$.
+
+\section{Graphes, simplexes, CW-complexes?}
 L'exemple principal est construit sur les unions $\mathfrak{S}_s$ de cubes de taille $\frac{1}{2^s}$ dyadiques des $\frac{1}{2^s}\Z^n$. La stabilité pour l'intersection n'est pas vérifiée. Pour la récupérer, on peut ajouter toutes les enveloppes convexes de familles de 1,2,...,n+1 points contigus. Cela fait penser aux concepts de simplexe et de réseau combinatoire.
 
 Quel graphe associer à une décomposition en cubes?
@@ -1842,7 +2541,7 @@ Soit $N$ la norme infinie de $\R^n$ définie par
 \begin{displaymath}
  \forall a =(a_1, \cdots, a_n) \in \R^n, N(a) = \max(|a_1|, \cdots ,|a_n|).
 \end{displaymath}
-Pour cette norme, chaque $s$-cube $Q_a$ (voir la définition en \ref{Sec:Exples}\ref{SubSec:CellulesBases} \ref{q-cube}) est une boule fermée.
+Pour cette norme, chaque $s$-cube $Q_a$ (voir la définition en \ref{Chap:Exples}\ref{Sec:CellulesBases} \ref{q-cube}) est une boule fermée.
 \begin{propn}
 Soit $a =(a_1, \cdots, a_n) \in \left(\Z\frac{1}{2^s}\right)^n$ et $b=(b_1,\cdots,b_n)$ avec $b_i = a_i + \frac{1}{2^{s+1}}$ pour tous les $i\in \llbracket 1,n\rrbracket$.\newline
 La boule fermée (pour la norme $N$) de centre $b$ et de rayon $\frac{1}{2^{s+1}}$ est le $s$-cube $Q_a$.
@@ -1861,7 +2560,7 @@ La boule fermée (pour la norme $N$) de centre $b$ et de rayon $\frac{1}{2^{s+1}
 \end{demo}
 
 
-\subsection{Polygones plans}\label{ExplePolyg}
+\section{Polygones plans}\label{ExplePolyg}
 Ici $X$ est le plan $\R^2$, les figures de base sont les demi-plans fermés Les intersections de familles finies de demi-plans fermés sont des parties fermées et convexes, on convient de les appeler \emph{polygones convexes fermés}. Dans ce cas, au dela de ce qu'on appelle habituellement polygone fermé; un demi espace fermé, une droite, un segment, un point ou une partie comme sur la figure sont aussi des polygones convexes fermés.
 
 On  note $\mathfrak U$ l'ensemble des polygones convexes fermés. Par définition, $\mathfrak{U}$ est stable par intersection. On note $\mathfrak{S}$ l'ensemble des unions finies de polygones convexes fermés. Le système d'ensemble $\mathfrak{S}$ est stable pour l'intersection et l'union. Avec les définitions du livre précisées dans le chapitre suivant, c'est le treillis $L(\mathfrak U)$ c'est à dire le plus petit treillis contenant $\mathfrak{U}$.\newline
@@ -1915,8 +2614,8 @@ Réciproquement, supposons $\{\beta = 0\} \subset A' = \left(\{\alpha_1 \leq 0\}
 Pour tout $M \in \mathfrak{S}$ définissons $c(M)$ comme le nombre de composantes connexes bornées de $M$.
 \end{defi}
 
-\subsection{Exemple arithmétique}
-\subsubsection{Fonction d'ensembles}
+\section{Exemple arithmétique}
+\subsection{Fonction d'ensembles}
 Quand on cherche à probabiliser $\Z$, on peut considèrer, pour $m$ non nul donné les classes modulo $m$. Considérons une expérience aléatoire consistant à tirer au hasard un entier et à former son reste modulo $m$. Les évènements élémentaires sont les classes modulo $m$. La probabilité d'un tel évènement est $\frac{1}{m}$.
 
 On définit donc naturellement une fonction \og probabilité\fg \, $\varphi$ sur $\mathfrak{U}$ par
@@ -2022,7 +2721,7 @@ pour n'importe quel $n\in I_X$.
   Si $A= a + \Z m$, $m \in I_A$ et $\pi_m(A)$ est un singleton.
 \end{demo}
 
-\subsubsection{Nouvelle caractérisation}
+\subsection{Nouvelle caractérisation}
 Soit $X \subset \Z$, considérons l'ensemble $I_X$ des $\mu \in \Z$ tels que $X + \mu =\left\lbrace x + \mu , x\in X\right\rbrace = X$.
 \begin{rems}
   \begin{enumerate}
@@ -2105,7 +2804,7 @@ On en déduit $I_{X'} = I_X$.
  Lorsque $X$ et $Y$ sont complémentaires, $\mu_X = \mu_Y$ mais $\mu_{X\cup Y} = 1$. On voit bien qu'en général, la première divisibilité n'est pas une égalité.
 \end{rem}
 
-\subsubsection{Suites de parties}\label{ExplesSuitesCongru}
+\subsection{Suites de parties}\label{ExplesSuitesCongru}
 Proposons divers exemples de suites de parties dans $\mathfrak{S}$.
 
 \textbf{Exemple 1.}\newline

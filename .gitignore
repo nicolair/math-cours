@@ -1,13 +1,14 @@
 # bibliographie
-.bbl
-.bcf
-.blg
+*.bbl
+*.bcf
+*.blg
 *.toc
 *.aux
 *.log
 *.out
 *.synctex.gz
 *.idx
+*.run.xml
 <<<<<<< HEAD
 *.backup
 *.ilg
