@@ -3,7 +3,7 @@
 
 \title{
          Notes sur \emph{Measure and Integration} de H. König \\
-         \large Rédaction incomplète. Version  beta 3.2
+         \large Rédaction incomplète. Version  beta 3.5
       }
 \author{Rémy Nicolaï}
 
@@ -25,9 +25,9 @@ Avec le sens précis que prend le mot \emph{pavage} dans les mathématiques en F
 Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fonction d'ensembles} (\emph{set fonction} dans le texte).
 
 \begin{enumerate}
- \item  Les différents types de systèmes d'ensembles sont présentés en \ref{SystFoncEns}\ref{SystEns} et définis à partir des stabilités relativement aux opérations ensemblistes union, intersection, soustraction ensembliste, complémentation.\newline
+ \item  Les différents types de systèmes d'ensembles sont présentés en \ref{Chap:SystFoncEns}\ref{Sec:SystEns} et définis à partir des stabilités relativement aux opérations ensemblistes union, intersection, soustraction ensembliste, complémentation.\newline
  En particulier un système d'ensembles est un \emph{treillis} (lattice) si et seulement si il est stable pour l'union et l'intersection.
- \item Les propriétés significatives des fonctions d'ensembles sont présentées en \ref{SystFoncEns}\ref{FoncEns}. Les plus fondamentales pour une fonction définie dans un treillis sont l'isotonie (croissance) et la modularité (sorte d'additivité).
+ \item Les propriétés significatives des fonctions d'ensembles sont présentées dans le chapitre \ref{Chap:SystFoncEns} section \ref{Sec:FoncEns}. Les plus fondamentales pour une fonction définie dans un treillis sont l'isotonie (croissance) et la modularité (sorte d'additivité).
  \begin{displaymath}
    \begin{aligned}
      \forall (A,B) \in \mathfrak{S}^2, \;& A \subset B \Rightarrow \varphi(A) \leq \varphi(B) &\text{isotonie}& \\
@@ -35,9 +35,9 @@ Une fonction de $\mathfrak{S}$ dans $\overline{\R}$ sera désignée par \emph{fo
    \end{aligned}
  \end{displaymath}
 
- \item Les concepts proches des mesures (\ref{SystFoncEns} \ref{FoncEns} \ref{ContenusMesures} ) sont des cas particuliers des situations précédentes.
- \item À partir d'une fonction d'ensembles $\varphi$, on peut construire (\ref{ExtenRegul} \ref{Enveloppes}) une fonction d'ensemble $\Phi$ définie dans $\mathcal{P}(X)$ tout entier qui possède de bonnes propriétés.
- \item La classe de Carathéodory (\ref{ExtenRegul}\ref{ClasseCaratheodory}) d'une fonction d'ensemble sur $\mathcal{P}(X)$ est un système d'ensembles qui possède de bonnes propriétés. C'est le cadre de la preuve de résultats importants.
+ \item Les concepts proches des mesures (chapitre \ref{Chap:SystFoncEns} section \ref{Sec:FoncEns} \ref{SubSec:ContenusMesures} ) sont des cas particuliers des situations précédentes.
+ \item À partir d'une fonction d'ensembles $\varphi$, on peut construire (\ref{Chap:ExtenRegul} \ref{Sec:Enveloppes}) une fonction d'ensemble $\Phi$ définie dans $\mathcal{P}(X)$ tout entier qui possède de bonnes propriétés.
+ \item La classe de Carathéodory (chap \ref{Chap:ExtenRegul} section \ref{Sec:ClasseCaratheodory}) d'une fonction d'ensemble sur $\mathcal{P}(X)$ est un système d'ensembles qui possède de bonnes propriétés. C'est le cadre de la preuve de résultats importants.
 \end{enumerate}
 
 On notera $A'$ le complémentaire d'une partie $A \in \mathcal{P}(X)$ pour un ensemble $X$ quelconque.
@@ -248,7 +248,7 @@ Soit $A \in \mathfrak{S}$, il existe $s\in \N$ et un ensemble fini $\mathfrak{A}
 
 \subsection{Classes de congruences entières}\label{SubSec:ClassesCongru}
 Ici $X = \Z$. \index{Exemple arithmétique}
-L'ensemble des unions finies de classes de congruence défini au dessous sera désigné dans tout le document par \og Exemple arithmétique\fg.
+L'ensemble des unions finies de classes de congruence défini au dessous sera désigné dans tout le document par \og~ Exemple arithmétique~\fg{}.
 
 \begin{defi}
 On désigne par $\mathfrak{C}_m \subset \mathcal{P}(\Z)$ l'ensemble des classes de congruences modulo un naturel non nul $m$, par $\mathfrak{S}_m$ l'ensemble des unions de classes modulo $m$, par $\mathfrak{C} = \bigcup_{m \in \N^*}\mathfrak{C}_m$ l'ensemble des classes de congruences et par $\mathfrak{S}$ l'ensemble des unions finies d'éléments de $\mathfrak{C}$.
@@ -342,7 +342,7 @@ Supposons que $A$ se décompose en classes modulo $p$ et en classes modulo $p'$.
   $\mathfrak{S}$ est une algèbre qui contient $\emptyset$ et $X=\Z$.
 \end{prop}
 \begin{demo}
- C'est une reformulation des remarques avec le vocabulaire du livre rassemblé en \ref{SystFoncEns} \ref{SystEns}.
+ C'est une reformulation des remarques avec le vocabulaire du livre rassemblé en \ref{Chap:SystFoncEns} \ref{Sec:SystEns}.
 \end{demo}
 
 \begin{propn}
@@ -556,7 +556,7 @@ On en déduit $\lambda(P)=1$ alors que chaque $\lambda(P_s)$ est nul.
 \end{explen}
 
 \noindent La propriété précédente du volume n'est pas satisfaisante. Elle est due à la non compacité de la partie $P$. Dans toute la suite la fonction volume ne sera définie que sur les compacts.\newline
-On démontrera ( \ref{SystFoncEns} \ref{FoncEns} \ref{Continuites} proposition \ref{ExplePpalModul}) que la fonction $\lambda$ est modulaire sur l'ensemble des compacts.
+On démontrera ( \ref{Chap:SystFoncEns} \ref{Sec:FoncEns} \ref{SubSec:Continuites} proposition \ref{Prop:VolCompModul}) que la fonction $\lambda$ est modulaire sur l'ensemble des compacts.
 
 \subsection{Densité arithmétique d'un ensemble d'entiers} \label{SubSec:DensitArith}
 \begin{defi}[Approximation d'un ensemble d'entiers naturels] Pour toute partie $K$ non vide de $\Z$ et tout $p$ naturel non nul, notons $\mathfrak{A}_p(K)$ l'ensemble des classes de congruence modulo $p$ qui coupent $K$. On appelle approximation $p$-périodique par excès de $K$ la partie $A_p(K)$ définie par
@@ -644,8 +644,8 @@ Dans le cas particulier $A=\Z$, notons $S_n'$ le complémentaire de $S_n$.
 \end{explen}
 
 
-\chapter{Définitions \small{(chap I du livre)}}\label{SystFoncEns}
-\section{Systèmes d'ensembles}\label{SystEns}
+\chapter{Définitions \small{(chap I du livre)}}\label{Chap:SystFoncEns}
+\section{Systèmes d'ensembles}\label{Sec:SystEns}
 \subsection{Treillis, ovale, anneau, algèbre}
 Dans le livre, pour un ensemble $X$ donné, toute partie de $\mathcal{P}(X)$ (elle ne contient pas forcément $\emptyset$) est désignée par le terme \emph{système d'ensembles}. Les termes \emph{set system} ou \emph{paving} sont aussi utilisés. Quatre types de systèmes d'ensembles (treillis, ovale, anneau, algèbre), caractérisés par des propriétés de stabilité sont définis. Pour la notion d'ovale, l'ouvrage introduit une opération ternaire inhabituelle.\newline
 Soit $X$ un ensemble quelconque et $U$, $V$, $A$ des parties de $X$. On définit
@@ -718,7 +718,7 @@ D'après la proposition \ref{prop:ImpTypesSyst},
  A(\mathfrak{S}) \subset R(\mathfrak{S}) \subset O(\mathfrak{S}) \subset L(\mathfrak{S}).
 \end{displaymath}
 
-\subsection{Concepts vocabulaire notations}\label{types cardinalité}
+\subsection{Concepts vocabulaire notations}\label{SubSec:ConcVocNot}
 
 \paragraph{Cardinalité}
 Le premier concept est relatif à la cardinalité. L'auteur définit des notations très synthétiques avec un symbole $\bullet$ qui peut  désigner un des trois symboles $\star$, $\sigma$, $\tau$ que je ne reprendrai pas. J'utiliserai directement les 3 symboles pour préciser un caractère fini, dénombrable ou quelconque.\newline
@@ -728,7 +728,7 @@ Un système d'ensembles $\mathfrak{M}$ de $X$ est dit
  \item de type $\sigma$ si et seulement si il est fini ou dénombrable c'est à dire qu'existe une suite $(S_l)_{l\in \N}$ de parties de $X$ telles que $\mathfrak{M}= \left\lbrace S_l , l\in \N \right\rbrace$;
  \item de type $\tau$ dans tous les autres cas.
 \end{itemize}
-On peut remarquer que pour une famille de parties: \og type $*$\fg\, entraine \og type $\sigma$ \fg \, entraine \og type $\tau$ \fg.
+On peut remarquer que pour une famille de parties: \og~ type $*$~\fg{}\, entraine \og~ type $\sigma$ ~\fg{} \, entraine \og~ type $\tau$ ~\fg{}.
 
 On peut aussi préfixer des propriétés. Par exemple, pour un système d'ensemble $\mathfrak{S}$ dans $X$;
 \begin{align*}
@@ -748,7 +748,6 @@ On définit de manière analogue les notions de $\cap_\star$-stable(équivalent 
 \end{nota}
 
 \paragraph{Monotonie}
-
 
 \begin{defin}\label{Def:monotonie}
    On note $(S_l)\uparrow$ pour indiquer qu'une suite de parties $S_l$ de $X$ est croissante c'est à dire $S_l \subset S_{l+1}$. De même $(S_l)\downarrow$ pour décroissante.
@@ -779,7 +778,7 @@ On définit de manière analogue les notions de $\cap_\star$-stable(équivalent 
  \end{displaymath}
 Comme $K$ est compact, on peut extraire de la suite $(x_n)$ d'éléments de $K$ une suite $(x_{\varphi(n)})$ qui converge vers un $a\in K$. On en déduit $d(x,a)=0$ donc $x=a \in K$.
 \end{demo}
-\begin{propn}\label{FamDecCompacts}
+\begin{propn}\label{Prop:SegEmboit}
  Soit $\mathfrak{M}\downarrow \emptyset$ un système de parties compactes dirigé vers le bas. Il existe $N \in \mathfrak{M}$ tel que $N = \emptyset$.
 \end{propn}
 \begin{demo}
@@ -841,10 +840,11 @@ Pour un système d'ensembles $\mathfrak{S}$ dans $X$, on définit quatre propri�
 \end{rems}
 \index{$\sigma$-algèbre de Borel}\index{tribu borelienne}
 \begin{exple}
-Lorsque $\mathfrak{S}$ est l'ensemble des ouverts d'un espace topologique $X$, la $\sigma$-algèbre $L(\mathfrak{S})$ engendrée par $\mathfrak{S}$ est appelée $\sigma$-algèbre de Borel ou tribu borelienne.
+Lorsque $\mathfrak{S}$ est l'ensemble des ouverts d'un espace topologique $X$, la $\sigma$-algèbre $A_\sigma(\mathfrak{S})$ engendrée par $\mathfrak{S}$ est appelée $\sigma$-algèbre de Borel ou tribu borelienne.
 \end{exple}
 
-\section{Fonctions d'ensembles}\label{FoncEns}
+
+\section{Fonctions d'ensembles}\label{Sec:FoncEns}
 \subsection{Croissance et modularité}
 Page 10. L'auteur considère des fonctions définies dans un treillis $\mathfrak{S}$ d'un ensemble $X$ et à valeurs dans $\overline{\R}= \R \cup\{- \infty, + \infty\} $. On peut étendre l'addition à $\overline{\R}$ de deux manières: en convenant que $(+ \infty) + (-\infty) = + \infty$ ou que $(+ \infty) + (-\infty) = - \infty$ en plus des règles usuelles. Dans les deux cas, l'addition étendue est associative et commutative.
 
@@ -905,7 +905,7 @@ $+\infty$    & $+\infty$    & $+\infty$          &                    & $+\infty
 La comparaison des deux dernières colonnes montre que l'inégalité caractérisant la sous-modularité $\underset{.}{+}$ est toujours vérifiée.\newline
 Dans le cas $\varphi(A)$ et $\varphi(B)$ réels, si $\varphi(A\cap B)$ est réel, les 4 termes sont réels, l'addition dans l'inégalité est l'addition habituelle. Si $\varphi(A\cap B) = - \infty$,  $\varphi(A\cup B) \underset{.}{+} \varphi(A\cap B) = -\infty$ donc l'inégalité est vérifiée.\newline
 Dans le cas où $\varphi(A)$ et $\varphi(B)$ valent $+\infty$, peu importe la valeur de $\varphi(A\cup B) \underset{.}{+} \varphi(A\cap B)$, elle sera toujours $\leq +\infty$.
-Venons en aux formules qui ressemblent au crible de Poincaré (exercie 2.5 du livre). On reprend les notations de la partie I. \ref{criblePoinc}.
+Venons en aux formules qui ressemblent au crible de Poincaré (exercie 2.5 du livre). On reprend les notations de la partie \ref{Sec:criblePoinc} du chapitre \ref{Chap:Outils}.
 \begin{propn}\label{modulaire_ordre_n}
   Soit $\varphi$ une fonction modulaire sur un treillis $\mathfrak{S}$ et $A_1, \cdots , A_p$ dans $\mathfrak{S}$:
   \begin{displaymath}
@@ -947,6 +947,7 @@ en utilisant $A'_i = A_i  \cap A_{p+1}$ pour $i \in \llbracket 1, p \rrbracket$ 
     \Rightarrow  \chi_{\bigcup_{i=1}^p A_i} = - \sum_{I \subset \llbracket 1,p \rrbracket, I\neq \emptyset} (-1)^{\sharp I}\chi_{A_I}.
   \end{displaymath}
 \end{rem}
+
 
 \subsection{Extension d'une fonction d'ensembles à un treillis}
 Dans cette section l'ouvrage considère une fonction d'ensembles $\varphi$ définie sur un ensemble $\mathfrak{U}$ de parties de $X$ seulement stable pour l'intersection et cherche à la prolonger en une fonction modulaire $\phi$ sur $\mathfrak{S} = L(\mathfrak{U})$ qui est le plus petit treillis contenant $\mathfrak{U}$.
@@ -1112,8 +1113,14 @@ d'après l'hypothèse car $(A_0 \cap A_1) \cup \cdots \cup (A_0\cap A_p) \subset
 \end{demo}
 
 
-\subsection{Régularité} \label{Regularite}
-Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.\newline
+\subsection{Régularité} \label{SubSec:Regularite}
+\noindent Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$.
+Pour tout $S \in \mathfrak{S}$, on a évidemment
+\begin{displaymath}
+ \varphi(S) = \inf\left\lbrace \lambda(M), M \in \mathfrak{S}, S \subset M\right\rbrace \text{ et }
+ \varphi(S) = \sup\left\lbrace \lambda(M), M \in \mathfrak{S}, M \subset S\right\rbrace.
+\end{displaymath}
+C'est même le plus petit élément de $\left\lbrace \lambda(M), M \in \mathfrak{S}, S \subset M\right\rbrace$ ou le plus grand de $\left\lbrace \lambda(M), M \in \mathfrak{S}, M \subset S \right\rbrace$. Pour certains $S$, on peut réduire l'ensemble dans lequel on considère les $M$ contenant (ou contenus dans) $S$.\newline
 On se donne 3 systèmes d'ensembles $\mathfrak{M}$, $\mathfrak{S}$, $\mathfrak{T}$ avec $\mathfrak{M} \subset \mathfrak{S}$ et $\mathfrak{T} \subset \mathfrak{S}$. La fonction d'ensembles $\varphi$ est dite extérieurement $\mathfrak{M}$-régulière en $\mathfrak{T}$ si et seulement si
 \begin{displaymath}
  \forall S \in \mathfrak{T}, \varphi(S) = \inf\left\lbrace \varphi(M), M \in \mathfrak{M} \text{ avec } S \subset M\right\rbrace.
@@ -1125,7 +1132,7 @@ On dira que $\varphi$ est intérieurement $\mathfrak{M}$-régulière en $\mathfr
 Conventions usuelles: $\inf \emptyset = + \infty$, $\sup \emptyset = - \infty$.\newline
 Le cas le plus fréquent est $\mathfrak{T} = \mathfrak{S}$. On dit alors que $\varphi$ est (intérieurement, extérieurement) $\mathfrak{M}$ régulière.
 
-La fonction d'ensembles $\varphi$ est dite
+\noindent La fonction d'ensembles $\varphi$ est dite
 \begin{itemize}
  \item majorée (bounded above) si et seulement si il existe $c\in \R$ tel que $\varphi \leq c$,
  \item finie supérieurement (finite above) si et seulement si $\varphi < +\infty$,
@@ -1135,14 +1142,14 @@ La fonction d'ensembles $\varphi$ est dite
  \begin{enumerate}
   \item $\varphi$ semi finie supérieurement si et seulement si pour tout $S \in \mathfrak{S}$,
   \begin{displaymath}
-   \varphi(S) = \sup\left\lbrace \varphi(M)\text{ tq } M \subset S, \varphi \text{ finie sur } M \right\rbrace.
+   \varphi(S) = \sup\left\lbrace \varphi(M)\text{ tq } M \subset S, \varphi(M) \in \R  \right\rbrace.
   \end{displaymath}
   \item majorée $\Rightarrow$ finie supérieurement $\Rightarrow$ semi finie supérieurement.
  \end{enumerate}
 \end{rems}
 
 
-\subsection{Continuités} \label{Continuites}
+\subsection{Continuités} \label{SubSec:Continuites}
 \index{continuités}\index{continuités!$\sigma$-continue vers le haut}\index{continuités!presque $\sigma$-continue vers le haut}\index{continuités!$\tau$-continue vers le haut}\index{continuités!$\sigma$-continue vers le bas}
 Soit $\varphi$ une fonction isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$. On rappelle (définitions \ref{Def:monotonie}, \ref{Def:limMonotone}) que la convergence d'une suite croissante de parties $(S_n)$ vers $S$ se note $(S_n)\uparrow S$ et signifie que $S=\bigcup_n S_n$.
 \begin{defi}[$\sigma$-continue vers le haut]
@@ -1165,7 +1172,7 @@ La fonction d'ensembles $\varphi$ est dite $\sigma$-continue vers le bas (downwa
 pour tout $A \in \mathfrak{S}$ et tout système d'ensembles $\mathfrak{M} \subset \mathfrak{S}$ tel que $\mathfrak{M} \downarrow A$, on a $\inf_{S \in \mathfrak{M}}\varphi(S) = \varphi(A)$.
 \end{defi}
 
-\begin{propn}\label{prop:contBssicontH}
+\begin{propn}\label{Prop:contBssicontH}
  Pour une fonction d'ensembles $\varphi$ isotone, modulaire, définie dans un anneau $\mathfrak{S}$ et à valeurs dans $[0,+\infty]$, $\varphi$ est $\sigma$-continue vers le haut si et seulement si $\varphi$ est $\sigma$-continue vers le bas.
 \end{propn}
 \begin{demo}
@@ -1189,14 +1196,14 @@ Supposons que $\varphi$ soit $\sigma$-continue vers le bas est considérons une 
 Comme $\varphi$ est $\sigma$-continue vers le bas, $(\varphi(D_l))\downarrow \varphi(S_1)$ entraine $(\varphi(S_l))\uparrow \varphi(S)$. Ceci montre que $\varphi$ est continue vers le haut.
 \end{demo}
 
-\begin{propn}\label{prop:VolBornNonCont}
+\begin{propn}\label{Prop:VolBornNonCont}
  La fonction volume $\lambda$ définie dans l'ensemble des parties bornées de $\R^n$ n'est pas $\sigma$-continue vers le haut
 \end{propn}
 \begin{demo}
  On reprend l'exemple \ref{exple:VolSommetsBorn} de \ref{Chap:Exples}\ref{Sec:Approximations}\ref{SubSecc:Volume} où $P_s$ est l'ensemble des points à coordonnées dans $]0,1[ \cap \Z\, \frac{1}{2^s}$ et $S_l = \bigcup_{s=0}^l P_s$. Ce sont des parties bornées telles que $(S_l)\uparrow P = \bigcup_{s\geq0} P_s$. Pour chaque $s$, $\lambda(P_s)=0$ donc $\lambda(S_l)=0$ alors que $\lambda(P) = 1$ donc $(\lambda(S_l))$ ne tend pas vers $\lambda(P)$.
 \end{demo}
 
-\begin{propn}[Exemple arithmétique] \label{prop:DensitArithNonCont}
+\begin{propn}[Exemple arithmétique] \label{Prop:DensitArithNonCont}
  La fonction densité arithmétique $\varphi$ définie dans l'ensemble $\mathfrak{S}$ des unions finies de classes de congruence n'est pas $\sigma$-continue vers le haut.
 \end{propn}
 \begin{demo}
@@ -1211,10 +1218,10 @@ C'est une suite croissante d'éléments de $\mathfrak{S}$ telle que $A = \bigcup
 donc $\lim (S_n)\leq \mu^{1-p}$. En choisissant $p$ assez grand pour avoir $\mu^{1-p} < \varphi(A)$, on forme un contre exemple à la définition.
 \end{demo}
 \begin{rem}
- D'après la proposition \ref{prop:contBssicontH}, la fonction densité arithmétique n'est pas non plus $\sigma$-continue vers le bas.
+ D'après la proposition \ref{Prop:contBssicontH}, la fonction densité arithmétique n'est pas non plus $\sigma$-continue vers le bas.
 \end{rem}
 
-\begin{propn}[Exemple principal]\label{prop:VolCompCont}
+\begin{propn}[Exemple principal]\label{Prop:VolCompContVB}
  La fonction d'ensembles $\lambda$ définie dans l'ensemble $\mathfrak{K}$ des parties compactes de $X=\R^n$ est $\tau$-continue vers le bas.
 \end{propn}
 \begin{demo}
@@ -1252,7 +1259,7 @@ Pour chaque $M\in \mathfrak{M}$, enlevons le complémentaire de l'ouvert. Les pa
  = \emptyset
 \end{displaymath}
 car $K \subset O_{s,t}(K)$.\newline
-D'après la proposition \ref{FamDecCompacts}, si l'intersection d'un système de compacts dirigé vers le bas est vide alors un des compacts de la famille est vide.\newline
+D'après la proposition \ref{Prop:SegEmboit}, si l'intersection d'un système de compacts dirigé vers le bas est vide alors un des compacts de la famille est vide.\newline
 Pour tous les $s$ et $t>s$, il existe donc $M \in \mathfrak{M}$ tel que
 \begin{multline*}
  M \cap O_{s,t}(K)'=\emptyset
@@ -1266,7 +1273,7 @@ Pour tous les $s$ et $t>s$, il existe donc $M \in \mathfrak{M}$ tel que
 \end{multline*}
 \end{demo}
 
- \begin{propn}{Exemple principal}\label{ExplePpalModul}
+ \begin{propn}{Exemple principal}\label{Prop:VolCompModul}
   La fonction $\lambda$ est modulaire de $\mathfrak{K}$ dans $[0, + \infty[$.
  \end{propn}
  \begin{demo}
@@ -1316,7 +1323,7 @@ Pour chaque $\delta >0$ fixé, $\frac{1}{2^s}\leq \delta$ pour $s$  assez grand.
 \begin{displaymath}
  \forall \delta > 0, \; \lambda(K_1 \cap K_2) \leq  \lambda(K_1) + \lambda(K_2) - \lambda(K_1 \cup K_2) = V \leq \lambda(K_1(\delta)\cap K_2).
 \end{displaymath}
-Le système de parties compactes $\left\lbrace K_1(\delta)\cap K_2, \delta > 0 \right\rbrace$ est orienté vers le bas et d'intersection $K_1 \cap K_2$. (voir \ref{SystFoncEns} \ref{FoncEns} \ref{compactEtendu} \ref{systAproxCompact}). Comme $\lambda$ est $\tau$-continue vers le bas sur $\mathfrak{K}$,
+Le système de parties compactes $\left\lbrace K_1(\delta)\cap K_2, \delta > 0 \right\rbrace$ est orienté vers le bas et d'intersection $K_1 \cap K_2$. (voir chapitre \ref{Chap:SystFoncEns}  section \ref{Sec:FoncEns} \ref{compactEtendu} \ref{systAproxCompact}). Comme $\lambda$ est $\tau$-continue vers le bas sur $\mathfrak{K}$,
 \begin{displaymath}
  \inf\left\lbrace \lambda(K_1(\delta)\cap K_2), \delta > 0 \right\rbrace =  \lambda(K_1 \cap K_2)
  \Rightarrow
@@ -1325,7 +1332,7 @@ Le système de parties compactes $\left\lbrace K_1(\delta)\cap K_2, \delta > 0 \
 \end{demo}
 
 
-\subsection{Contenus et mesures} \label{ContenusMesures}
+\subsection{Contenus et mesures} \label{SubSec:ContenusMesures}
 \begin{defi}
 Un \emph{contenu conventionnel} (conventional content) est une fonction d'ensembles définie dans un anneau $\mathfrak{S}$ à valeurs dans $[0,+\infty]$ modulaire et vérifiant $\varphi(\emptyset)=0$.
 \end{defi}
@@ -1338,7 +1345,7 @@ Une \emph{mesure conventionnelle} (conventional measure) est un contenu conventi
 \begin{rems}
  \begin{enumerate}
   \item L'ouvrage de référence définit dans un ovale une notion plus générale de mesure.
-  \item D'après la proposition \ref{prop:contBssicontH}, une seule  continuité suffit car les deux sont équivalentes pour un anneau.
+  \item D'après la proposition \ref{Prop:contBssicontH}, une seule  continuité suffit car les deux sont équivalentes pour un anneau.
   \item La fonction densité arithmétique définie dans l'ensemble des unions finies de classes de congruences \emph{n'est pas une mesure} car elle ne possède pas de propriété de $\sigma$-continuité.
   \item Une mesure conventionnelle $\varphi$ possède une propriété de $\sigma$-additivité au sens suivant.\newline
   Soit $(A_l)_{l \in \N}$ une suite de parties disjointes appartenant à $\mathfrak{S}$ telle que $A = \bigcup_l A_l \in \mathfrak{S}$. Alors
@@ -1352,17 +1359,326 @@ En effet $(S_l)\uparrow A$ avec $S_l = \bigcup_{k=0}^l A_k$. Donc $(\varphi(S_l)
  \end{enumerate}
 \end{rems}
 
-\chapter{Extensions fondées sur la régularité \small{(chap II du livre)}}\label{ExtenRegul}
-Ce chapitre est le coeur du livre. À partir d'une fonction $\varphi$ isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$, on définit
+\section{Promenades dans un graphe}
+Dans cette section, l'ensemble $X$ est l'ensemble des promenades sur un graphe $(\mathcal{N}, \mathcal{A})$ tel que défini dans le chapitre \ref{Chap:Outils} section \ref{Sec:PromGraph}.\newline
+On désigne par $\mathfrak{K}$ l'ensemble des parties compactes de $X$; c'est un treillis. \index{ensemble de Cantor}
+\begin{explen}[analogue d'un ensemble de Cantor] \label{Exple:PromCantor}
+Considérons un sous-graphe $\mathcal{G}_1 = (\mathcal{N}_1,\mathcal{A}_1)$ de $\mathcal{G} = (\mathcal{N},\mathcal{A})$. L'espace $X_1$ des promenades dans $\mathcal{G}_1$ est une partie de $X$. Une boule ouverte de $X_1$ est une partie compacte pour les deux espaces.\newline
+L'ensemble de Cantor est formé par les réels de $[0,1]$ dont le développement en base $3$ ne contient pas de $1$. Par analogie, considèrons le sous graphe obtenu en enlevant une arête (autre que la boucle) par noeud. Les boules ouvertes de ce sous-graphes sont analogues à l'ensemble de Cantor. Je conviens de les appeler \emph{boules de Cantor}. Ce sont des parties compactes de $X_1$ et de $X$.\newline
+On peut considérer un développement d'un nombre réel dans une base $b$ comme une promenade dans un graphe avec $b$ arêtes par noeud (chapitre \ref{Chap:Outils} section \ref{Sec:PromGraph} sous-section \ref{SubSec:Prom2Nbs}). Dans ce cadre, la fonction $\Phi_b$ de $X$ dans $\R_+$ (définition \ref{Def:PromFoncNum}) associe un réel à son développement. Elle est continue donc  l'ensemble de Cantor est compact car c'est l'image par $\Phi_b$ d'une partie compacte de $X$.
+\end{explen}
+
+
+On désigne par $\mathfrak{S}$ l'ensemble des parties compactes et ouvertes de $X$ c'est à dire l'ensemble des unions finies de \emph{boules ouvertes compactes} en convenant que $\emptyset \in \mathfrak{S}$. Les boules ouvertes compactes jouent un rôle analogue à celui des cubes dans $\R^n$; par analogie, je les noterai souvent $Q$.\newline
+On note $\mathfrak{C}_n$ l'ensemble des boules ouvertes de rayon $\rho^n$, $\mathfrak{C}$ est l'ensemble de toutes les boules ouvertes (union des $\mathfrak{C}_n$) et $\mathfrak{S}_n$ l'ensemble des unions finies de boules ouvertes de rayon $\rho^n$.\newline
+Pour toute partie $M$ de $X$ et tout $n\in \Z$, on considère les boules ouvertes de rayon $\rho^n$ incluses dans $M$ ou qui le coupe
+\begin{displaymath}
+ \mathfrak{L}_n(M) = \left\lbrace Q \in \mathfrak{C}_n \text{ tq } Q \subset M\right\rbrace, \hspace{0.5cm}
+ \mathfrak{U}_n(M) = \left\lbrace Q \in \mathfrak{C}_n \text{ tq } Q \cap M \neq \emptyset \right\rbrace.
+\end{displaymath}
+Elles définissent des approximations par défaut et par excès de $M$ à l'ordre $n$.
+\begin{displaymath}
+ L_n(M) = \bigcup_{Q\in \mathfrak{L}_n(M)} Q, \hspace{0.5cm} U_n(M) = \bigcup_{Q\in \mathfrak{U}_n(M)} U.
+\end{displaymath}
+Utilisons les notations du chapitre \ref{Chap:SystFoncEns} section \ref{Sec:SystEns} sous-section \ref{SubSec:ConcVocNot} définition \ref{Def:monotonie}
+
+\begin{propn}\label{Prop:PromApprox}
+\begin{displaymath}
+ \mathfrak{S} = \bigcup_{n \in \Z} \mathfrak{S}_n.
+\end{displaymath}
+Pour toutes parties $A, B$ de $X$ et tout $n\in \Z$:
+\begin{displaymath}
+ \mathfrak{L}_n(A) \subset \mathfrak{U}_n(A), \hspace{0.5cm} A\subset B \Rightarrow
+   \left\lbrace
+     \begin{aligned}
+        \mathfrak{L}_n(A) &\subset \mathfrak{L}_n(B), \; L_n(A) \subset L_n(B) \\
+        \mathfrak{U}_n(A) &\subset \mathfrak{U}_n(B), \; U_n(A) \subset U_n(B)
+     \end{aligned}
+  \right.
+\end{displaymath}
+Pour toute partie $M$ de $X$:
+ \begin{align*}
+    L_n(M) \subset M \subset U_n(M) &\text{ et } (L_n(M))_n \uparrow \overset{\circ}{M} \text{ et } (U_n(M))_n \downarrow \overline{M}\\
+    M\in \mathfrak{S}_n &\Leftrightarrow M = L_n(M) = U_n(M) \\
+    M\in \mathfrak{S} &\Leftrightarrow (L_n(M))_n \text{ et } (U_n(M))_n \text{ stationnaires}.
+ \end{align*}
+Si $M$ est compact: $\mathfrak{L}_n(M)$ et $\mathfrak{U}_n(M)$ sont finis, $L_n(M), U_n(M) \in \mathfrak{S}_n$, $(U_n(M))_n \downarrow M$.
+\end{propn}
+\begin{demo}
+ à compléter\newline
+ Rappelons que $\overset{\circ}{M}$ désigne l'\emph{intérieur} (le plus grand ouvert contenu) et $\overline{M}$ l'\emph{adhérence} (le plus petit fermé contenant) d'une partie $M$ d'un espace métrique.\newline
+ Pour tout $n\in \Z$, $L_n(M)$ est l'union des boules ouvertes de rayon $\rho^n$ contenues dans $M$ donc c'est une partie ouverte de $M$ et
+\begin{displaymath}
+ \bigcup_{n \in \Z} L_n(M) \text{ est une partie ouverte de } M \Rightarrow \bigcup_{n \in \Z} L_n(M) \subset \overset{\circ}{M}.
+\end{displaymath}
+Réciproquement, soit $x \in \overset{\circ}{M}$. Comme $\overset{\circ}{M}$ est une partie ouverte, il existe $n\in \Z$ et une boule ouverte $Q$ de rayon $\rho^n$ contenant $x$ et contenue dans $\overset{\circ}{M}$ donc dans $M$. On en déduit
+\begin{displaymath}
+ Q \subset L_n(M) \subset \bigcup_{n \in \Z} L_n(M) \Rightarrow \overset{\circ}{M} \subset \bigcup_{n \in \Z} L_n(M).
+\end{displaymath}
+Pour tout $n\in \Z$,
+\begin{displaymath}
+ x \in U_n(M)
+ \Leftrightarrow
+   \exists Q \in \mathfrak{C}_n \text{ tq }
+     \left\lbrace
+       \begin{aligned}
+         x &\in Q \\
+         Q\cap M &\neq \emptyset
+       \end{aligned}
+     \right.
+  \Leftrightarrow
+    \exists x_n \in M \text{ tq } d(x_n, x) < \rho^n
+  \Leftrightarrow
+    d(x,M) < \rho^n.
+\end{displaymath}
+On en déduit que $x \in \bigcap_{n\in \Z}U_n(M)$ si et seulement si $x$ est la limite d'une suite d'éléments de $M$ c'est à dire appartient à l'adhérence de $M$.
+\end{demo}
+
+\begin{exple}
+Soit $K$ une boule de Cantor associée à une promenade tronquée fixée $\theta_K = (a_i)_{i\leq m}$.
+\begin{displaymath}
+ \forall n > m, \;  \mathfrak{L}_n(K) = \emptyset, \; L_n(K) = \emptyset.
+\end{displaymath}
+Par définition $K$ est une boule ouverte $q_{\theta_K}$ de rayon $\rho^m$ de l'espace $X_1$ des promenades dans le sous-graphe $\mathcal{G}_1$ obtenu en supprimant une arête par noeud.\newline
+Soit $Q$ une boule ouverte de $X$ de rayon $\rho^n$ associée à une promenade tronquée $(b_i)_{i\leq n}$ qui coupe $K$.\newline
+Si $n \leq m$ alors $(b_i)_{i\leq n} = (a_i)_{i\leq n}$ donc il existe une seule boule de ce type (notons la $Q_n$): $\mathfrak{U}_n(K)$ est un singleton.\newline
+Si $n = m + 1$, il existe plusieurs boules $Q$ associées aux promenades tronquées qui prolongent $\theta = (a_i)_{i\leq m}$. Comme une arête a été enlevée, il manque une des boules de la partition de $Q_m$ donc $Q_m \not\subset K$ donc $\mathfrak{L}_m(K) = \emptyset$.\newline
+De même pour tout $n > m$, si $Q$ est une boule de rayon $\rho^n$ qui coupe $K$ et si $f$ est le noeud terminal de la promenade tronquée associée à $Q$. Il manque dans $\mathcal{G}_1$ une arête issue de $f$ donc $Q\not\subset K$.
+\begin{displaymath}
+ \forall n > m, \;  \mathfrak{L}_n(K) = \emptyset, \; L_n(K) = \emptyset.
+\end{displaymath}
+\end{exple}
+
+\begin{prop}
+Les systèmes d'ensemble $\mathfrak{S}$ et $\mathfrak{S}_n$ (pour tout $n\in \Z$) sont des anneaux mais pas des algèbres ni des $\sigma$-anneaux.
+\end{prop}
+\begin{demo}
+On doit vérifier la stabilité pour l'union, l'intersection et la soustraction ensembliste. Soit $U$ et $V$ deux parties de $\mathfrak{S}_n$. À partir des définitions, on vérifie que
+\begin{displaymath}
+ \mathfrak{L}_n(U \cup V ) = \mathfrak{L}_n(U ) \cup \mathfrak{L}_n(V), \hspace{0.5cm}
+ \mathfrak{L}_n(U \cap V ) = \mathfrak{L}_n(U ) \cap \mathfrak{L}_n(V), \hspace{0.5cm}
+ \mathfrak{L}_n(U \setminus V ) = \mathfrak{L}_n(U ) \setminus \mathfrak{L}_n(V).
+\end{displaymath}
+On en déduit
+\begin{align*}
+ U \cup V   = \left(\bigcup_{Q_1 \in \mathfrak{L}_n(U)}Q_1\right) \cup \left(\bigcup_{Q_2 \in \mathfrak{L}_n(V)}Q_2\right)
+            = \bigcup_{Q \in \mathfrak{L}_n(U) \cup \mathfrak{L}_n(V)}Q = \bigcup_{Q \in \mathfrak{L}_n(U \cup V )}Q \in \mathfrak{S}_n \\
+ U \cap V   = \left(\bigcup_{Q_1 \in \mathfrak{L}_n(U)}Q_1\right) \cap \left(\bigcup_{Q_2 \in \mathfrak{L}_n(V)}Q_2\right)
+            = \bigcup_{Q \in \mathfrak{L}_n(U) \cap \mathfrak{L}_n(V)}Q = \bigcup_{Q \in \mathfrak{L}_n(U \cap V )}Q \in \mathfrak{S}_n.
+\end{align*}
+Le passage de $Q_1, Q_2$ à $Q$ est évident pour l'union. Pour l'intersection, cela résulte de
+\begin{displaymath}
+ Q_1 \cap Q_2 =
+ \left\lbrace
+   \begin{aligned}
+    Q &\text{ si } Q_1 = Q_2 = Q \\
+    \emptyset &\text{ si } Q_1 \neq Q_2
+   \end{aligned}
+  \right.
+\end{displaymath}
+car deux boules distinctes sont disjointes. De même, comme $\mathfrak{L}_n(U \cap V ) \subset \mathfrak{L}_n(U)$,
+\begin{displaymath}
+ U \setminus V = U \setminus (U \cap V) = \left(\bigcup_{Q \in \mathfrak{L}_n(U)}Q\right) \setminus \left(\bigcup_{Q \in \mathfrak{L}_n(U \cap V) }Q\right)
+ = \bigcup_{Q \in \mathfrak{L}_n(U) \setminus \mathfrak{L}_n(U \cap V) }Q
+ \in \mathfrak{L}_n.
+\end{displaymath}
+Si $U$ et $V$ sont dans $\mathfrak{S}$, il existe $n\in \Z$ tel que $U$ et $V$ appartiennent à $\mathfrak{S}_n$ et on se ramène aux stabilités précédentes.\newline
+En revanche le complémentaire $U'$ de $U$ n'est pas dans $\mathfrak{S}$ car $\mathfrak{L}_n(U')$ est infini. C'est l'ensemble des $Q \in \mathfrak{C}_n$ qui ne sont pas dans l'ensemble fini $\mathfrak{L}_n(U)$ avec $\mathfrak{C}_n$ infini.\newline
+D'après l'exemple précédent, une boule de Cantor est l'intersection d'une famille dénombrable de parties dans $\mathfrak{S}$ sans appartenir à $\mathfrak{S}$ donc $\mathfrak{S}$ n'est pas un $\sigma$-anneau.
+\end{demo}
+
+Quelles sont les fonctions définies sur $\mathfrak{S}$?\newline
+Une boule ouverte compacte est caractérisée par une suite finie d'arêtes $\theta = (a_i)_{i\leq n}$. Notons $Q_\theta$ la boule ouverte de rayon $\rho^n$ définie par theta. Elle est formée par les promenades dont la troncature d'indice $n$ est égale à $\theta$.\newline
+Notons $\lambda$ une fonction définie sur l'ensemble de ces suites et à valeurs dans $\overline{\R}_+$. On peut aussi la regarder comme une fonction de $\mathfrak{C}$ dans $\overline{\R}_+$ avec :
+\begin{displaymath}
+ \lambda(\theta) = \lambda(Q_\theta).
+\end{displaymath}
+
+\begin{prop}
+\begin{align*}
+  \lambda &\text{ est isotone si et seulement si } \lambda \left((a_i)_{i\leq n+1}\right) \leq \lambda \left((a_i)_{i\leq n}\right) \\
+  \lambda &\text{ est modulaire si et seulement si } \lambda((a_i)_{i\leq n}) = \sum_{u \in \mathcal{A}_f} \lambda((\cdots, a_{n-1}, (e,f),u)
+\end{align*}
+en notant $a_n = (e,f)$ et $\mathcal{A}_f$ l'ensemble des arêtes issues de $f$.
+\end{prop}
+\begin{demo}
+ à compléter ..
+\end{demo}
+\noindent On prolonge $\lambda$ en une fonction isotone et modulaire définie dans $\mathfrak{S}$ en posant
+\begin{displaymath}
+ \forall m \in \mathfrak{S}, \; \lambda(M) = \sum_{Q \in \mathfrak{L}(M)} \lambda(Q).
+\end{displaymath}
+Pour toute promenade tronquée $\theta$, notons $f$ le noeud final de $\theta$ et $\mathfrak{A}_\theta = \left\lbrace (f,f), (f,s_1), \cdots (f,s_{b-1})\right\rbrace$ l'ensemble des arêtes issues de $f$. Cet ensemble est en bijection avec les $1$-prolongements de $\theta$,
+\begin{displaymath}
+ \theta_0 = (\cdots, a_n, (f,f)), \theta_1 = (\cdots, a_n, (f,s_1)), \cdots , \theta_{b-1}= (a_n, (f,s_{b-1})).
+\end{displaymath}
+et avec la partition de $Q_\theta$
+\begin{displaymath}
+ Q_\theta = Q_{\theta_0} \cup Q_{\theta_1} \cup \cdots \cup Q_{\theta_{b-1}}.
+\end{displaymath}
+La fonction $\lambda$ doit vérifier
+\begin{displaymath}
+ 0 \leq \frac{\lambda(Q_{\theta_i})}{\lambda(Q_\theta)} \leq 1, \hspace{0.5cm} \sum_i \frac{\lambda(Q_{\theta_i})}{\lambda(Q_\theta)} = 1 .
+\end{displaymath}
+
+\begin{prop}
+On prolonge $\lambda$ en une fonction isotone définie dans $\mathfrak{K}$ en posant
+\begin{displaymath}
+ \forall K \in \mathfrak{K}, \; \lambda(K) = \lim_n \lambda(U_n(K)) = \inf\left\lbrace \lambda(U_n(K)), n\in \Z \right\rbrace.
+\end{displaymath}
+\end{prop}
+\begin{demo}
+En effet pour $K$ compact, $(U_n(K))_n \downarrow$ dans $\mathfrak{S}$ donc $(\lambda(U_n(K))_n \downarrow$ dans $\overline{\R}_+$.\newline
+Soit $A \subset B$ deux parties compactes. Pour tout $n\in \Z$.
+\begin{displaymath}
+ \lambda(A) \leq \lambda(U_n(A)) \leq \lambda(U_n(B))\text{ car } \lambda \text{ isotone dans } \mathfrak{S}
+\end{displaymath}
+On en déduit $\lambda(A) \leq \inf\left\lbrace \lambda(U_n(B)), n\in \Z \right\rbrace = \lambda(B)$.
+\end{demo}
+
+
+\begin{propn}\label{Prop:PromContVB}
+ La fonction $\lambda$ définie dans l'ensemble $\mathfrak{K}$ des parties compactes de $X$ est $\tau$-continue vers le bas.
+\end{propn}
+\begin{demo}
+La démonstration de la continité est simplifiée par rapport à la proposition \ref{Prop:VolCompContVB} de la section \ref{Sec:FoncEns} de ce chapitre car les boules compactes étant ouvertes; il est inutile de les agrandir.\newline
+ Soit $A \in \mathfrak{K}$ et $\mathfrak{M}$ un système de parties compactes tel que $\mathfrak{M}\downarrow A$. Comme $\lambda$ est isotone:
+\begin{displaymath}
+ \left( \forall M \in \mathfrak{M}, A \subset M \Rightarrow \lambda(A) \leq \lambda(M) \right) \Rightarrow \lambda(A) \leq \inf\left\lbrace \lambda(M), M \in \mathfrak{M}\right\rbrace.
+\end{displaymath}
+Notons $R = \inf\left\lbrace \lambda(M), M \in \mathfrak{M}\right\rbrace$. Il reste à montrer $R \leq \lambda(M)$.\newline
+Soit $n\in Z$ et $V = U_n(A)$. C'est une partie compacte et \emph{ouverte} qui contient $A$. Comme le complémentaire $V'$ est une partie fermée, le système d'ensembles
+\begin{displaymath}
+ \mathfrak{M}_V = \left\lbrace M \cap V' , M \in \mathfrak{M}\right\rbrace
+\end{displaymath}
+est un système de parties compactes tel que $\mathfrak{M}_V \downarrow A \cap V' = \emptyset$. D'après la proposition \ref{Prop:SegEmboit} (reformulation du théorème des segments emboités)
+du chapitre \ref{Chap:SystFoncEns} section \ref{Sec:FoncEns}, il existe $N \in \mathfrak{M}_V$ tel que $N=\emptyset$ donc il existe $M \in \mathfrak{M}$ tel que
+\begin{displaymath}
+ \emptyset = N = M \cap V' \Rightarrow M \subset V \Rightarrow R \leq \lambda(M) \leq \lambda(V) = \lambda(U_n(A)).
+\end{displaymath}
+En passant à la limite par définition de $\lambda$, on obtient $R \leq \lambda(A)$.
+\end{demo}
+
+\begin{propn}\label{Prop:PromModul}
+ La fonction $\lambda$ définie dans l'ensemble $\mathfrak{K}$ des parties compactes de $X$ est modulaire.
+\end{propn}
+\begin{demo}
+Soit $A$ et $B$ deux parties compactes et $n\in \Z$. Les parties $A \cup B$ et $A \cap B$ sont compactes et
+\begin{displaymath}
+ \lambda(U_n(A)\cup U_n(B)) + \lambda(U_n(A) \cap U_n(B)) = \lambda(U_n(A)) + \lambda(U_n(B))
+\end{displaymath}
+car $U_n$ est à valeurs dans $\mathfrak{S}$ et $\lambda$ est modulaire dans $\mathfrak{S}$.\newline
+On vérifie facilement avec les définitions que
+\begin{displaymath}
+ U_n(A \cup B) = U_n(A)\cup U_n(B) \text{ et } U_n(A \cap B) \subset U_n(A)\cap U_n(B).
+\end{displaymath}
+Pour avoir l'égalité, il manque une inclusion pour l'intersection: si $Q$ est une boule de rayon $\rho^n$ qui coupe $A$ et $B$, elle ne les coupe pas forcément au même point.\newline
+Pour $n\in \Z$, soit $Q$ une boule de rayon $\rho^n$ qui coupe $A$ et $B$ et $x\in Q$.
+\begin{displaymath}
+ \left.
+   \begin{aligned}
+     \exists a \in A &\text{ tq } d(x,a) < \rho^n \\
+     \exists b \in B &\text{ tq } d(x,b) < \rho^n
+   \end{aligned}
+  \right\rbrace
+  \Rightarrow d(a,b) < \rho ^n.
+\end{displaymath}
+Il existe une boule centrée en $a$ de rayon $\rho^n$ qui contient $b$ donc $b \in U_n(A) \cap B$ et $Q$ coupe $U_n(A) \cap B$. On en déduit
+\begin{displaymath}
+ U_n(A) \cap U_n(B) = \bigcup_{Q \in \mathfrak{C}_n Q\cap A \neq \emptyset Q\cap B \neq \emptyset} Q
+ \subset \bigcup_{Q \in \mathfrak{C}_n Q\cap \left(U_n(A)\cap B\right) \neq \emptyset} Q
+ = U_n(U_n(A) \cap B).
+\end{displaymath}
+Supposons maintenant que $A \in \mathfrak{S}$. Il existe $m \in \Z$ tel que $A \in \mathfrak{S}_m$ ce qui entraine
+\begin{displaymath}
+ \forall n \geq m,\; U_n(A) = U_m(A) = A \Rightarrow U_n(A)\cap U_n(B) \subset U_n(A \cap B).
+\end{displaymath}
+Donc $U_n(A)\cap U_n(B) = U_n(A \cap B)$, avec la modularité et l'isotonie, il vient
+\begin{multline*}
+ \lambda(U_n(A\cap B)) = \lambda(U_n(A) \cap U_n(B)) = \lambda(U_n(A)) + \lambda(U_n(B)) - \lambda(U_n(A\cup B))\\
+ \Rightarrow
+ \lambda(A \cap B) \leq \lambda(A) + \lambda(B) - \lambda(A \cup B.
+\end{multline*}
+par passage à la limite dans le cas où $A \in \mathfrak{S}$. Comme, dans le cas général, $U_m(A) \in \mathfrak{S}$, on déduit:
+\begin{displaymath}
+ \forall m \in \Z, \; \lambda(U_m(A) \cap B) = \lambda(U_m(A)) + \lambda(B) - \lambda(U_m(A) \cup B).
+\end{displaymath}
+D'après la proposition \ref{Prop:PromApprox}:
+\begin{displaymath}
+ \left( U_m(A) \cap B \right)_m \downarrow \overline{A} \cap B = A \cap B, \text{ et } \left( U_m(A) \cup B \right)_m \downarrow \overline{A} \cup B = A \cup B.
+\end{displaymath}
+On peut passer à la limite en $m$ car $\lambda$ est $\tau$-continue vers le bas et obtenir
+\begin{displaymath}
+  \lambda(A \cap B) = \lambda(A) + \lambda(B) - \lambda(A \cup B).
+\end{displaymath}
+\end{demo}
+
+\begin{propn}\label{Prop:PromContVH}
+ La fonction $\lambda$ définie dans l'ensemble $\mathfrak{K}$ des parties compactes de $X$ est $\sigma$-continue vers le haut.
+\end{propn}
+\begin{demo}
+ Soit $(K_l)_{l\geq 1}$ une suite croissante de parties compactes telle que $\bigcup_{l \geq 1}K_l = K$ soit compacte de sorte que
+ \begin{displaymath}
+  (K_l)_{l\geq 1} \uparrow K \in \mathfrak{K}.
+ \end{displaymath}
+Notons $S = \sup_l \lambda(K_l)$, on veut montrer que $S = \lambda(K)$. Pour tout $l$, $K_l \subset K$ donc $\lambda(K_l) \leq \lambda(K)$ donc $S \leq \lambda(K)$ car  $\lambda$ est isotone.\newline
+Soit $\varepsilon >0$ arbitraire. Pour tout $l\geq 1$, approchons $K_l$:
+\begin{displaymath}
+ \exists n_l \text{ tq } \lambda(K_l) \leq \lambda(U_{n_l}(K_l)) \leq \lambda(K_l) + \frac{\varepsilon}{2^l}
+\end{displaymath}
+Notons $V_l = U_{n_l}(K_l) \in \mathfrak{S}$ et $B_l = V_1 \cup V_2 \cup \cdots \cup V_l \in \mathfrak{S}$. Il est clair que $(V_n)_{n\geq 1}$ est croissante et que
+\begin{displaymath}
+ B_{l+1} = B_l \cup V_{l+1}.
+\end{displaymath}
+La modularité de $\lambda$ entraine
+\begin{displaymath}
+ \lambda(B_{l+1}) = \lambda(B_l) + \lambda(V_{l+1}) - \lambda(B_l \cap V_{l+1}).
+\end{displaymath}
+Avec les hypothèses et définition:
+\begin{displaymath}
+ \left.
+   \begin{aligned}
+    K_l &\subset V_l \subset B_l \\
+    K_l &\subset K_{l+1} \subset V_{l+1}
+   \end{aligned}
+ \right\rbrace
+ \Rightarrow
+ K_l \subset B_l \cap V_{l+1}
+ \Rightarrow
+ \lambda(K_l) \leq \lambda(B_l \cap V_{l+1})
+\end{displaymath}
+car $\lambda$ est isotone. On en déduit
+\begin{displaymath}
+ \lambda(B_{l+1}) - \lambda(K_{l+1})
+ \leq
+ \lambda(B_l) - \lambda(K_l) + \lambda(V_{l+1}) - \lambda(K_{l+1})
+ \leq
+ \lambda(B_l) - \lambda(K_l) + \frac{\varepsilon}{2^{l+1}}
+ \leq \cdots
+ \leq \sum_{k=1}^{l+1} \frac{\varepsilon}{2^k}
+ \leq \varepsilon .
+\end{displaymath}
+Remarquons alors que $K = \bigcup_{k \geq 1}K_k \subset \bigcup_{k \geq 1} B_k$ est un recouvrement de $K$ par des parties ouvertes car $B_k \in \mathfrak{S}$ est à la fois compact et ouvert. On peut en extraire un recouvrement fini car $K$ est supposé compact. À cause de la croissance, il existe $m\geq 1$ tel que $K \subset B_m$ d'où
+\begin{displaymath}
+ \lambda(K) \leq \lambda(B_m) \leq \lambda(K_m) + \varepsilon \leq S + \varepsilon
+\end{displaymath}
+Comme $\varepsilon$ est arbitraire, on obtient bien $\lambda(K) \leq S$.
+\end{demo}
+
+
+
+\chapter{Extensions fondées sur la régularité \small{(chap II du livre)}}\label{Chap:ExtenRegul}
+La notion de régularité est présentée au chapitre \ref{Chap:SystFoncEns}, section \ref{Sec:FoncEns}, sous-section \ref{SubSec:Regularite}. À partir d'une fonction $\varphi$ isotone d'ensembles de $\mathfrak{S}$ dans $\overline{\R}$, on définit
 \begin{enumerate}
  \item des enveloppes extérieures $\varphi^*$, $\varphi^\sigma$, $\varphi^\tau$ définies dans $\mathcal{P}(X)$ tout entier;
  \item la classe de Carathéodory $\mathfrak{C}(\phi)$ pour une fonction d'ensemble $\Phi$ définie dans $\mathcal{P}(X)$ tout entier.
 \end{enumerate}
 Sous certaines conditions, la restriction d'une extension de $\varphi$ à sa classe de Carathéodory possède de bonnes propriétés, en particulier la classe de Carathéodory peut être une algèbre.
 
-\section{Enveloppes}\label{Enveloppes}
+\section{Enveloppes}\label{Sec:Enveloppes}
 \subsection{Enveloppes extérieures}
-Dans ce paragraphe, $\mathfrak{S}$ est un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction d'ensembles isotone de $\mathfrak{S}$ dans $\overline{\R}$. On définit dans $\mathcal{P}(X)$ les trois enveloppes extérieures $\varphi^*$ (enveloppe extérieure brute), $\varphi^\sigma$, $\varphi^\tau$ par:
+Dans ce paragraphe, $\mathfrak{S}$ est un treillis (lattice) dans $\mathcal{P}(X)$ et $\varphi$ une fonction d'ensembles isotone de $\mathfrak{S}$ dans $\R \cup \left\lbrace +\infty \right\rbrace$. Elle n'est pas forcément modulaire. Les propriétés relatives à la modularité sont spécifiées. Les résultats obtenus dans le cas d'une fonction sans hypothèse de modularité éclaireront les propriétés des \emph{capacités de Choquet} quand je comprendrai ce que c'est.\newline
+On définit dans $\mathcal{P}(X)$ les trois enveloppes extérieures $\varphi^*$ (enveloppe extérieure brute), $\varphi^\sigma$, $\varphi^\tau$ par:
 \begin{displaymath}
  \forall A \in  \mathcal{P}(X):
  \left\lbrace
@@ -1373,16 +1689,20 @@ Dans ce paragraphe, $\mathfrak{S}$ est un treillis dans $\mathcal{P}(X)$ et $\va
  \end{aligned}
  \right.
 \end{displaymath}
-Voir \ref{types cardinalité}
+Voir chapitre \ref{Chap:SystFoncEns} section \ref{Sec:SystEns} sous-section \ref{SubSec:ConcVocNot}
 \begin{prop}[Exemple arithmétique]
- Pour le couple $\mathfrak{S}, \varphi$ de l'exemple arithmétique, $\varphi^\sigma$ est la fonction constante nulle.
+ La fonction $\varphi^\sigma$ est constante nulle pour le couple $(\mathfrak{S}, \varphi)$ de l'exemple arithmétique.
 \end{prop}
 \begin{demo}
- Pour tout partie $A = \left\lbrace a_k , k \in \N\right\rbrace$ de $\Z$ et tout $p\in \N$, considérons la suite de l'exemple 3 de \ref{Chap:Exples}\ref{ExplesSuitesCongru} .
+ Pour tout partie $A = \left\lbrace a_k , k \in \N\right\rbrace$ de $\Z$ et tout $p\in \N$, considérons la suite de parties de $\Z$ définie par .
  \begin{displaymath}
   \forall n \in \N, \; S_n = \bigcup_{k =0}^n \left(a_k + 2^{k+p} \Z\right) .
  \end{displaymath}
- C'est une suite croissante d'éléments de $\mathfrak{S}$ telle que $A \subset \bigcup_{n\in \N}S_n$ et $\lim (S_n) \leq 2^{1-p}$. Comme $p$ est arbitraire, la borne inférieure des limites est nulle.
+ C'est une suite croissante d'éléments de $\mathfrak{S}$ telle que $A \subset \bigcup_{n\in \N}S_n$ avec
+ \begin{displaymath}
+  \varphi(S_n) \leq \sum_{k=0}^n 2^{-(k+p)} \leq 2^{-p + 1}
+ \end{displaymath}
+donc  $\lim_n (\varphi(S_n) \leq 2^{1-p}$. Comme $p$ est arbitraire, la borne inférieure des limites est nulle.
 \end{demo}
 
 \begin{prop}
@@ -1390,7 +1710,7 @@ Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction 
  \begin{enumerate}
   \item  La restriction de $\varphi^*$ à $\mathfrak{S}$ est $\varphi$.
   \item Sur $\mathcal{P}(X)$, $\varphi^\tau \leq \varphi^\sigma \leq \varphi^*$.
-  \item Les fonctions d'ensembles $\varphi^*$, $\varphi^\sigma$ et $\varphi^\tau$ sont isotones (croissantes) dans $\mathcal{P}(X)$.
+  \item Les fonctions d'ensembles $\varphi^*$, $\varphi^\sigma$, $\varphi^\tau$ sont isotones (croissantes) dans $\mathcal{P}(X)$.
  \end{enumerate}
 \end{prop}
 \begin{demo}
@@ -1401,8 +1721,7 @@ Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction 
         \item Soit $A \subset X$ et $(S_l)_{l\in \N}$ n'importe quelle suite d'éléments de $\mathfrak{S}$ vérifiant $(S_l) \uparrow \supset A$. Pour cette suite, formons l'ensemble de ses valeurs $\mathfrak{M}= \left\lbrace S_l, l\in \N \right\rbrace$. C'est bien un système d'ensembles croissant (upward directed) car pour des naturels $l$ et $m$, on peut considérer $n = \max(l,m)$ et, par croissance $S_l \cup S_m \subset S_n$. On en déduit $\mathfrak{M}\uparrow \supset A$. De plus $\sup_{S \in \mathfrak{M}} \varphi(S)=\lim_{l}  \varphi(S_l)$ car la limite d'une suite croissante est la borne supérieure de l'ensemble de ses valeurs. On en déduit $\varphi^\tau (A) \leq \lim_{l}  \varphi(S_l)$. Ainsi, $\varphi^\tau(A)$ est un minorant de $\left\lbrace \lim_{l}  \varphi(S_l), \forall l \, S_l\in \mathfrak{S} \text{ avec } (S_l) \uparrow \supset A \right\rbrace$ donc $\varphi^\tau(A) \leq \varphi^\sigma(A)$.
         \end{itemize}
   \item Considérons $A \subset B$ deux parties de $X$.
-  \begin{itemize}
-   \item Pour tout $S \in \mathfrak{S}$,
+    Pour tout $S \in \mathfrak{S}$,
 \begin{displaymath}
  \left( B \subset S \Rightarrow A \subset S \right)
    \Rightarrow
@@ -1410,7 +1729,7 @@ Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction 
    \Rightarrow
    \varphi^*(A) \leq \varphi^*(B).
 \end{displaymath}
-    \item Pour toute suite croissante $(S_l)$ d'éléments de $\mathfrak{S}$,
+    Pour toute suite croissante $(S_l)$ d'éléments de $\mathfrak{S}$,
 \begin{multline*}
  \left( (S_l)\uparrow \supset B \Rightarrow (S_l) \uparrow \supset A \right) \\
    \Rightarrow
@@ -1420,7 +1739,7 @@ Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction 
    \Rightarrow
    \varphi^\sigma(A) \leq \varphi^\sigma(B).
 \end{multline*}
-    \item pour tout système croissant $\mathfrak{M}$ d'ensembles de $\mathfrak{S}$
+    Pour tout système croissant $\mathfrak{M}$ d'ensembles de $\mathfrak{S}$
 \begin{multline*}
  \left( \mathfrak{M}\uparrow \supset B \Rightarrow \mathfrak{M} \uparrow \supset A \right) \\
    \Rightarrow
@@ -1430,8 +1749,28 @@ Soit $\mathfrak{S}$ un treillis dans $\mathcal{P}(X)$ et $\varphi$ une fonction 
    \Rightarrow
    \varphi^\tau(A) \leq \varphi^\tau(B).
 \end{multline*}
-\end{itemize}
  \end{enumerate}
+\end{demo}
+\noindent Rappelons que $\mathfrak{S}^{*}$ (respectivement $\mathfrak{S}^{\sigma}$, $\mathfrak{S}^{\tau}$) désigne l'ensemble des $\bigcup_{S \in \mathfrak{M}}S$ où $\mathfrak{M}$ est une partie finie (respectivement dénombrable, quelconque) de $\mathfrak{S}$. Ici  $\mathfrak{S}^{*} = \mathfrak{S}$ car  $\mathfrak{S}$ est un treillis.\newline
+Notons $[\varphi < +\infty]$ l'ensemble des $M \in \mathfrak{S}$ telles que $\varphi(M) \in \R$: c'est une partie de $\mathfrak{S}^{*} = \mathfrak{S}$.\newline
+Notons $[\varphi^\sigma|\mathfrak{S}^{\sigma} < +\infty]$ l'ensemble des $M \in \mathfrak{S}^{\sigma}$ telles que $\varphi^\sigma(M) \in \R$: c'est une partie de $\mathfrak{S}^{\sigma}$.\newline
+Notons $[\varphi^\tau|\mathfrak{S}^{\tau} < +\infty]$ l'ensemble des $M \in \mathfrak{S}^{\tau}$ telles que $\varphi^\tau(M) \in \R$: c'est une partie de $\mathfrak{S}^{\tau}$.
+\begin{prop}
+ La fonction $\varphi^*$ est extérieurement $[\varphi < +\infty]$-régulière.\newline
+ La fonction $\varphi^\sigma$ est extérieurement $[\varphi^\sigma|\mathfrak{S}^{\sigma} < +\infty]$-régulière.\newline
+ La fonction $\varphi^\tau$ est extérieurement $[\varphi^\tau|\mathfrak{S}^{\tau} < +\infty]$-régulière.
+\end{prop}
+\begin{demo}
+ Cas fini.\newline
+ Soit $A \subset X$ avec $\varphi^*(A) \in \R$. Pour tout réel $c > \varphi^*(A)$, il existe $M \in \mathfrak{S}$ tel que $A \subset M$ et $\varphi^*(A) \leq \varphi(M) < c$. Comme $M \in [\varphi < +\infty]$, on a bien montré
+ \begin{displaymath}
+  \varphi^*(A) = \inf\left\lbrace \varphi^*(M) , M \in [\varphi < +\infty], A \subset M \right\rbrace.
+ \end{displaymath}
+Si $\varphi^*(A)= +\infty$, pour tout $M\in \mathfrak{S}$ contenant $A$, on a $\varphi(M) = + \infty$ et il n'y a rien à montrer.\newline
+Cas dénombrable.\newline
+Soit $A \subset X$ avec $\varphi^\sigma(A) \in \R$. Pour tout réel $c > \varphi^\sigma(A)$, il existe une suite $(M_l)$ d'éléments de $\mathfrak{S}$ telle que  $(M_l)\uparrow M$  vérifiant  $A \subset M$ et $\varphi^\sigma(A) = \lim_l \varphi(M_l)$. Par définition, $M \in \mathfrak{S}^\sigma$ car c'est la limite d'une suite croissante d'éléments de $\mathfrak{S}$ et $\varphi^\sigma(M) = \varphi^\sigma(A)$
+
+à compléter
 \end{demo}
 
 \subsection{Exemple pour les ensembles de classes de congruence}
@@ -1504,7 +1843,11 @@ car $S_{k+1} \setminus S_k$ est l'union disjointe de $a_{k+1}$ classes modulo $b
  Pour tout naturel $k\geq 1$, $S'_k \in \mathfrak{S}$ et $A' \subset S'_k$ donc $\varphi^*(A') \leq \varphi(S'_k)$. On en déduit $\varphi^*(A') \leq 1-a$ par passage à la limite dans une inégalité.\newline
  Soit $S \in \mathfrak{S}$ avec  $A'= \bigcap_{l\geq 1} S'_l \subset S$.
 \end{demo}
-\section{Classe de Carathéodory} \label{ClasseCaratheodory}
+
+
+\section{Classe de Carathéodory} \label{Sec:ClasseCaratheodory}
+
+
 
 \chapter{Outils} \label{Chap:Outils}
 
@@ -1682,7 +2025,7 @@ On peut étendre à un système de $p$ congruences en utilisant la distributivit
   \end{enumerate}
 \end{demo}
 
-\section{Différence symétrique et crible de Poincaré}\label{criblePoinc}
+\section{Différence symétrique et crible de Poincaré}\label{Sec:criblePoinc}
 Des formules du type crible de Poincaré (ou inclusion-exclusion) jouent un rôle important dans la notion de fonction d'ensembles additive ou modulaire (exercice p 12, extension modulaire p 28).
 
 \noindent Soit $X$ un ensemble quelconque et $A_1, \cdots, A_p$ des parties de $X$. Notons $\chi_A$ la fonction caractéristique d'une partie $A$ de $X$. Rappelons les relations fonctionnelles
@@ -1754,14 +2097,14 @@ En particulier lorsque $X$ est fini, on peut exprimer l'égalité fonctionnelle 
 
 
 \section{Espace métrique} \label{Sec:EspMetric}
-Les propositions \ref{prop:VolBornNonCont}, \ref{prop:DensitArithNonCont}, \ref{prop:VolCompCont} montrent l'importance de la compacité et de la complétude. Cette sous section présente des résultats de topologie métrique tirés de \cite{dieudonne1969elements} et \cite{koblitz2012p}.\newline
+Les propositions \ref{Prop:VolBornNonCont}, \ref{Prop:DensitArithNonCont}, \ref{Prop:VolCompContVB} montrent l'importance de la compacité et de la complétude. Cette sous section présente des résultats de topologie métrique tirés de \cite{dieudonne1969elements} et \cite{koblitz2012p}.\newline
 Ici $X$ est un espace métrique c'est à dire que sa topologie est définie par une distance $d$. En particulier $\R^n$ est métrique avec $d(x,y)=\| x-y\|$ pour la norme euclidienne usuelle.
 
 \subsection{Topologie métrique}
 \begin{defin}\label{Def:topologie}
 Une topologie sur un ensemble $X$ est donnée par un système de parties $\mathcal{O} \subset \mathcal{P}(X)$ contenant $\emptyset$ et $X$ et $\cup_\tau$-stable et $\cap_\star$-stable  .\newline
 Une partie $S$ de $X$ est dite \emph{ouverte} si et seulement si $X\in \mathcal{O}$. Une partie est dite \emph{fermée}  si et seulement si son complémentaire $S'$ est une partie ouverte.
-\index{partie ouverte} \index{partie fermé}
+\index{partie ouverte} \index{partie fermée}
 \end{defin}
 \noindent Dans un espace métrique $(X,d)$, une boule ouverte de centre $a$ est de rayon $r\geq 0$ est définie par
 \begin{displaymath}
@@ -1869,12 +2212,12 @@ Supposons que $x$ soit la limite d'une suite $(a_n)$ d'éléments de $A$. Consid
  Un espace métrique $X$ est dit compact si et seulement si on peut extraire un sous-recouvrement fini de tout recouvrement de $X$ par des ouverts.
 \end{defi}
 \index{espace précompact}
-\begin{defi}
+\begin{defin}\label{Def:PreCompct}
  Un espace métrique $X$ est dit précompact si et seulement si pour tout $\varepsilon >0$, il existe une partie finie $F$ telle que $d(x,F) < \varepsilon$ pour tout $x \in X$.
-\end{defi}
+\end{defin}
 \noindent La citation suivante est tirée de \cite{dieudonne1969elements}
 \begin{quotation}
- Dans la théorie des espaces métriques, ces notions remplacent la notion de \og finitude \fg; elles expriment que l'espace métrique est \og approximativement fini\fg.
+ Dans la théorie des espaces métriques, ces notions remplacent la notion de \og~ finitude ~\fg{}; elles expriment que l'espace métrique est \og~ approximativement fini~\fg{}.
 \end{quotation}
 La proposition suivante est directement tirée de \cite{dieudonne1969elements}
 \begin{propn}\label{prop:CaracCompact}
@@ -1907,6 +2250,31 @@ Alors $K(\delta)$ est une partie compacte.
  Un espace métrique $X$ est dit connexe si et seulement si les seules parties de $X$ à la fois ouvertes et fermées sont $\emptyset$ et $X$. Une partie $A$ de $X$ est dite connexe si et seulement si le \emph{sous-espace} topologique $A$ est connexe.\newline
  L'espace $X$ est dit localement connexe si et seulement si, pour tout $x\in X$,  il existe un système fondamental de voisinages connexes de $x$.
 \end{defi}
+
+\begin{propn}
+Soit $A$ une partie d'un espace métrique $X$.\newline
+$A$ est connexe si et seulement si pour toutes parties ouvertes $U$, $V$ de $X$,
+\begin{displaymath}
+  \left.
+    \begin{aligned}
+       \emptyset &\neq A \cap U \\
+       \emptyset &\neq A \cap V  \\
+       A &\subset U \cup V
+    \end{aligned}
+  \right\rbrace
+    \Rightarrow A\cap U \cap V \neq \emptyset.
+\end{displaymath}
+\end{propn}
+\begin{demo}
+Considérons des parties ouvertes $U$, $V$ de $X$ telles que $A \subset A \cup V$. Alors $A\cap U$ et $A\cap V$ sont des parties ouvertes de $A$ telles que
+\begin{displaymath}
+ A\cap U \cap V = (A\cap U) \cup (A\cap V) \text{ et } A = (A\cup U) \cup (A\cup V).
+\end{displaymath}
+Si $A\cap U \cap V = \emptyset$ alors $A\cap U$ et $A \cap V$ sont complémentaires dans $A$ donc à la fois ouvertes et fermées.
+
+à compléter ....
+\end{demo}
+
 \begin{prop}
  Soit $(A_i)_{i\in I}$ une famille de parties connexes d'un espace métrique d'intersection non vide. Alors $A = \bigcup_{i\in I}A_i$ est connexe.
 \end{prop}
@@ -1929,6 +2297,14 @@ Ce $A_i$ particulier est connexe comme les autres donc
  A_i \cap U \cap V \neq \emptyset \Rightarrow A \cap U \cap V \neq \emptyset \Rightarrow U \cap V \neq \emptyset.
 \end{displaymath}
 \end{demo}
+\begin{defi}
+ Soit $x\in X$. La réunion de toutes les parties connexes contenant $x$ est connexe d'après la proposition précédente. On l'appelle la \emph{composante connexe} de $x$.
+\end{defi}
+\begin{defi}\label{Def:TotDiscont}
+ On dit que $X$ est \emph{totalement discontinu} si et seulement si les singletons sont les seules composantes connexes.
+\end{defi}
+C'est équivalent au fait que les \emph{seules} parties connexes soient les singletons.
+
 
 
 \section{Nombres \emph{p}-adiques}\label{Sec:NbsPadic}
@@ -2142,7 +2518,7 @@ donc $O(b,r) \subset O'(a,r)$.
 \end{demo}
 
 \begin{propn}\label{prop:r-procheEquiv}
-Soit $r \neq 0$ dans $\V_p$. La relation \og être $r$-proche de \fg  est une relation d'équivalence. Les classes d'équivalences sont des boules fermées de rayon $r$. Deux boules fermées de même rayon et distinctes sont disjointes.
+Soit $r \neq 0$ dans $\V_p$. La relation \og~ être $r$-proche de ~\fg{}  est une relation d'équivalence. Les classes d'équivalences sont des boules fermées de rayon $r$. Deux boules fermées de même rayon et distinctes sont disjointes.
 \end{propn}
 \begin{demo}
  Soit $r = p^m  \in \V_p$, on dit que $x$ et $y$ de $\Q_p$ sont $r$-proches si et seulement si $|x-y|_p \leq r$.\newline
@@ -2325,7 +2701,7 @@ Lorsque ces propriétés sont vérifiées, on dit que $x$ et $y$ sont congrus mo
  \Leftrightarrow \exists a \in \Z_p \text{ tq }x-y = a p^N
 \end{multline*}
 \end{demo}
-\noindent On retrouve formulé par \og être congru modulo $(p^N)$ à\fg la relation d'équivalence  \og être $p^{-N}$-proche de \fg de la proposition \ref{prop:r-procheEquiv}. Les classes d'équivalence sont à la fois des classes de congruence et des boules fermées. On note
+\noindent On retrouve formulé par \og~ être congru modulo $(p^N)$ à~\fg{} la relation d'équivalence  \og~ être $p^{-N}$-proche de ~\fg{} de la proposition \ref{prop:r-procheEquiv}. Les classes d'équivalence sont à la fois des classes de congruence et des boules fermées. On note
 \begin{displaymath}
  a + (p^N) = a + p^N \Z_p = F(a,p^{-N})
 \end{displaymath}
@@ -2364,39 +2740,81 @@ Deux éléments de $\Q_p$ sont congrus modulo $p^N$ si et seulement si ils ont l
 \end{demo}
 
 
+\section{Promenades dans un graphe}\label{Sec:PromGraph}
 
-\chapter{En travaux: déchetterie et gisements}
-Cette section rassemble des sections qui n'ont plus leur place dans le plan actuel mais qui méritent d'être conservés quelque part ainsi que des sections en devenir qui pourraient entrer plus tard dans le plan.
-\section{Développements formels}
-Soit $b$ naturel non nul et $0 < \rho < 1$ réel.\newline
-On considère l'ensemble des fonctions de $\Z$ dans $\llbracket 0, b\llbracket$. Si $x$ est une telle fonction, on notera indifféremment $x(i)$ ou $x_i$ sa valeur en $i\in \Z$ en regardant $x$ comme une fonction ou comme une suite \emph{doublement} infinie. On définit une partie $I_x$ de $\Z$ attachée à $x$ de la manière suivante
+\subsection{Topologie ultra-métrique}
+On peut regarder le développement en base $b$ d'un réel comme un chemin dans un arbre orienté dont chaque noeud est de degré $b$ c'est à dire qu'il est le départ de $b$ arêtes, chacune correspondant à la \og décimale\fg{} suivante. Je me propose de formaliser cette idée. \index{graphe}
+
+\noindent Précisons les types de graphe et de chemin adaptés.\newline
+Un graphe orienté est la donnée d'un ensemble $\mathcal{N}$ dont les éléments sont appelés des \emph{noeuds ou des sommets} et d'un ensemble $\mathcal{A}$ dont les éléments sont des couples de noeuds appelés \emph{arêtes}. Comme $\mathcal{A}$ est un ensemble, il existe au plus une arête entre deux noeuds.\newline
+Si $a=(s,s')$ est une arête, on dit que $s$ est son noeud \emph{initial} (ou qu'elle est \emph{issue} de $s$) et $s'$ son noeud \emph{terminal}. Une arête dont le noeud initial est égal au noeud terminal est appelée une \emph{boucle}.\newline
+Un graphe $\mathcal{G} = (\mathcal{N}, \mathcal{A})$ est dit \emph{localement fini} si et seulement si, pour tout noeud, l'ensemble des arêtes issues de ce noeud est fini. Dans ce cas, le nombre d'arêtes ayant ce noeud pour noeud initial est appelé \emph{valence sortante} ou \emph{degré sortant} du noeud.\newline
+Dans toute cette section $\mathcal{G} = (\mathcal{N}, \mathcal{A})$ est un graphe orienté localement fini qui admet une boucle en chaque noeud ie:
 \begin{displaymath}
- \forall k \in \Z, k \in I_x \Leftrightarrow \left( \forall i \in\Z, \;i < k \Rightarrow x(i) = 0 \right).
+ \forall s \in \mathcal{N}, \; (s,s) \in \mathcal{A}.
 \end{displaymath}
-On note $X$ l'ensemble des fonctions $x$ pour lesquelles $I_x$ est non vide c'est à dire les suites nulles en deça d'un certain rang.\newline
-Si $x\in X$ n'est pas la suite nulle, $I_x$ est majoré donc admet un plus grand élément $m$ appelé ordre de $x$ et tel que $x_m \neq 0$ avec $x_i=0$ pour $i<m$. Il est noté $\ord(x)$.
-\begin{prop}
- Soit $x$ et $y$ dans $X$. Si $x\neq y$, l'ensemble des $i\in \Z$ tel que $x_i \neq y_i$ est non vide et admet un plus petit élément $m \geq \min(\ord(x),\ord(y))$ vérifiant
- \begin{displaymath}
-  x_m \neq y_m \text{ et } \forall i< m, x_i = y_i.
- \end{displaymath}
-\end{prop}
+\index{graphe! cheminement}
+Dans ce cadre, j'appelle \emph{cheminement} sur le graphe une suite d'arêtes $(a_i)_{i\in\Z}$ indicée dans $\Z$ telle que, pour tout $i\in \Z$, le noeud terminal de $a_i$ soit le noeud initial de $a_{i+1}$. J'appelle cheminement \emph{immobile} un cheminement dont toutes les arêtes sont la même boucle.
+\begin{rem}
+ J'utilise le terme de \emph{cheminement} qui est en rapport avec le temps et l'espace plutôt que \emph{chemin} qui est lié seulement à l'espace. On peut regarder un cheminement comme un mouvement discret dans un graphe. Un chemin est alors analogue à la \emph{trajectoire} d'un mouvement. Par exemple, en décalant tous les indices d'un entier fixé, on obtient un autre cheminement mais le chemin qui est la trace dans le graphe est la même. La trace luisante laissée par un escargot sur une feuille peut être parcourue frénétiquement plus tard par une fourmi. Le chemin au dessus de ma maison a été parcouru depuis la préhistoire, il est indifférent à mes promenades.
+\end{rem}
+\index{graphe!promenade} \index{graphe!promenade finie}
+\noindent Un cheminement est appellé \emph{demi-cheminement} ou \emph{promenade} lorqu'il est immobile ou qu'il existe $m\in\Z$ tel que $a_m$ ne soit pas une boucle et que $a_i$ soit une boucle pour tout $i<m$. Je dis alors que $m$ est \emph{l'indice de départ} de la promenade et que le noeud initial de $a_m$ est \emph{le noeud de départ} de la promenade.\newline
+Une promenade $(a_i)_{i\in \Z}$ est appelée \emph{finie} si et seulement si elle est immobile ou qu'il existe $n \in \Z$ tel que $a_i$ soit une boucle pour $i>n$ sans que $a_n$ en soit une. J'appelle alors $n$ \emph{l'indice d'arrêt} et le noeud terminal de $a_n$ \emph{le noeud d'arrêt}.\newline
+Pour une promenade finie $(a_i)_{i\in \Z}$ qui n'est pas immobile, l'indice de départ $m$ est inférieur strictement à l'indice d'arrêt $n$ et $n-m \in \N^*$ est appelé la \emph{durée} de la promenade. On peut aussi l'appeler la longueur car c'est le nombre d'arètes entre le noeud de départ et le noeud d'arrêt. On convient qu'une promenade immobile est de longueur nulle.\newline
+Pour tout $n\in \Z$, j'appelle \emph{promenade tronquée en $n$} \index{graphe!promenade tronquée} une suite d'arêtes $(a_i)_{i\leq n}$ pour laquelle il existe $m\leq n$ tel que $a_i$ soit une boucle si $i<m$. Attention, malgré son nom, une promenade tronquée \emph{n'est pas} une promenade. En revanche on peut toujours la \emph{prolonger} par exemple en prenant $a_i$ égal à la boucle issue du noeud terminal de $a_n$ pour $i>n$.
+
+Dans la suite de cette section, on fixe un noeud $o$ du graphe et un réel $\rho \in ]0,1[$. Toutes les promenades partent donc de $o$ (le noeud de départ est $o$). On note $X$ l'ensemble de ces promenades. On va définir une distance sur $X$ à valeur dans $\V = \{0 \}\cup \left\lbrace \rho^i,\, i \in \Z \right\rbrace$ telle que $(X,d)$ soit un espace métrique.
+\begin{rem}
+ Dans $X$, il existe une seule promenade immobile: toutes ses arêtes sont $(o,o)$.
+\end{rem}
+
+\begin{propn}\label{Prop:DenomProm}
+L'ensemble des promenades de $X$ de longueur $n\in \N^*$ et d'indice de départ nul est fini.\newline
+L'ensemble des promenades finies de $X$ est dénombrable.
+\end{propn}
 \begin{demo}
- Notons $J$ l'ensemble des $i$ tels que $x_i \neq y_i$. Il est non vide car $x \neq y$. Soit $\mu = \min(\ord(x),\ord(y))$. Pour $i< \mu $, $x_i = y_i =0$ donc $\mu$ est un minorant de $J$ qui admet alors un plus petit élément $m \geq \mu$.
+ Notons $F_n$ l'ensemble de promenades de longueur $n$ et d'indice de départ nul. Pour tout noeud $v$, notons $d(v)$ le degré de $v$ (nombre d'arêtes dont le noeud initial est $v$). Raisonnons par récurrence.\newline
+ Par définition $F_1$ est formée par les arêtes issues de $o$ autres que la boucle; donc $F_1$ est fini avec
+ \begin{displaymath}
+  \sharp F_1 = d(o) - 1.
+ \end{displaymath}
+On peut toujours raccourcir une promenade $p$ de longueur $n+1$ en une promenade $\pi$ de longueur $n$ en remplaçant la dernière arête par une boucle (disons que $p$ prolonge $\pi$). On obtient ainsi toutes les promenades de longueur $n$. Ceci permet de classer les promenades de $F_{n+1}$. Notons $P(\pi)$ l'ensemble des promenades qui prolongent $\pi$.
+\begin{displaymath}
+ F_{n+1} = \bigcup_{\pi \in F_n}P(\pi)
+\end{displaymath}
+est une partition.
+Chaque $P(\pi)$ est un ensemble fini dont le nombre d'éléments est égal au degré du noeud d'arrêt de $\pi$. On en déduit que $F_{n+1}$ est fini.\newline
+Notons $\mathcal{F}_m$ l'ensemble des promenades finies d'indice de départ $m\in \Z$. Alors $\mathcal{F}_0 = \bigcup_{n>0} F_n$ donc $\mathcal{F}_0$ est dénombrable.\newline
+L'application de décalage $(a_i)_{i\in \Z} \mapsto (a_{i+m})_{i\in \Z}$ définit une bijection de $\mathcal{F}_0$ vers $\mathcal{F}_m$. Donc tous les $\mathcal{F}_m$ sont dénombrables. Il en est de même de l'ensemble des toutes les promenades finies qui est l'union des $\mathcal{F}_m$.
+\end{demo}
+
+\begin{defin}
+ Soit $p = (a_i)_{i\in \Z}$ et $q = (b_i)_{i\in \Z}$ deux promenades distinctes de $X$. Il existe $m\in \Z$ tel que $i<m$ entraine $a_i=b_i$ et que $a_m \neq b_m$.
+ On définit $d$ de $X^2$ dans $\V$ par
+ \begin{displaymath}
+  d(p,q) = \rho^m \text{ et } d(p,p) = 0.
+ \end{displaymath}
+\end{defin}
+\begin{demo}
+ Considérons deux promenades distinctes $p$ et $q$, notons $\alpha$ l'indice de départ de $p$ et $\beta$ celui de $q$. Comme les deux promenades ont le même noeud de départ $o$:
+ \begin{displaymath}
+  i < \min(\alpha, \beta) \Rightarrow a_i = (o,o) = b_i.
+ \end{displaymath}
+Il existe donc bien des $k \in \Z$ que $a_i=b_i$ pour $i<k$. Notons $\mathcal{M}$ l'ensemble de ces $k$.\newline
+Comme $p\neq q$, il existe $j\in \Z$ tel que $a_j \neq b_j$. Par définition de $\mathcal{M}$
+\begin{displaymath}
+ \forall k \in \mathcal{M},\; i < k \Rightarrow a_i = b_i.
+\end{displaymath}
+Donc $j < k$ est faux donc $\mathcal{M}$ est majorée par $j$. On en déduit que $\mathcal{M}$ admet un plus grand élément $m$ pour lequel $a_m \neq b_m$ car $m+1 \notin \mathcal{M}$.
 \end{demo}
 \begin{rem}
- Le $m$ ainsi défini mesure la différence entre $x$ et $y$. Plus le $m$ est grand plus nombreux sont les indices pour lesquels les valeurs sont égales donc plus proches sont les suites.
-\end{rem}
-\begin{defi}
- Soit $x\neq y$ dans $X$ et $m\in \Z$ défini par la proposition précédente. On note $d(x,y) = \rho ^m$. On convient que $d(x,y)=0$ si $x=y$.
-\end{defi}
-\begin{rem}
- D'après la définition,
+ Le $m$ ainsi défini mesure ce qui distingue deux promenades distinctes. Plus le $m$ est grand plus nombreux sont les indices pour lesquels les arêtes sont égales donc plus proches sont les suites. Je n'utilise pas le terme \emph{différence} car aucune structure algébrique n'est présente.  D'après la définition,
  \begin{displaymath}
   d(x,y) < \rho^m \Leftrightarrow x_i = y_i \text{ pour } i \leq m.
  \end{displaymath}
-
 \end{rem}
+
 \begin{prop}
  La fonction $d$ est une distance ultramétrique sur $X$. L'inégalité triangulaire est renforcée en
  \begin{displaymath}
@@ -2405,7 +2823,7 @@ Si $x\in X$ n'est pas la suite nulle, $I_x$ est majoré donc admet un plus grand
 \end{prop}
 \begin{demo}
 Les propriétés $d(x,y)=0 \Leftrightarrow x=y$ et $d(x,y)=d(y,x)$ sont évidentes. Le point important est l'inégalité triangulaire.\newline
-Soit $a, b, c$ deux à deux distincts dans $X$ et $\alpha, \beta, \gamma$ dans $\Z$ vérifiant
+Soit $a = (a_i)_{i \in \Z}$, $b = (b_i)_{i\in \Z}$, $c = (c_i)_{i \in \Z}$ des promenades de $X$ deux à deux distinctes. Notons $\alpha, \beta, \gamma$ dans $\Z$ vérifiant
 \begin{displaymath}
  d(a,b) = \rho^\gamma, \; d(b,c) = \rho^\alpha, \; d(a,c) = \rho^\beta.
 \end{displaymath}
@@ -2421,34 +2839,23 @@ Soit $i < \min(\gamma, \alpha)$:
 \end{displaymath}
 donc $\min(\gamma,\alpha)\leq \beta$. Comme $0 <  \rho < 1$:
 \begin{displaymath}
- \rho^{\min(\gamma,\alpha)}= \max(\rho^\gamma, \rho^\alpha) \geq \rho^\beta \Rightarrow d(a,c) \leq \max(d(a,b),d(b,c)).
+ d(a,c) = \rho^\beta \leq \rho^{\min(\gamma,\alpha)}= \max(\rho^\gamma, \rho^\alpha) = \max(d(a,b),d(b,c)).
 \end{displaymath}
 \end{demo}
-\begin{rem}
- Aucune opération (addition, soustraction, ...) n'est définie sur $X$. La distance ne vient pas d'une norme. Si on ne cherche pas à définir d'opérations arithmétiques, on devrait pouvoir remplacer par $\llbracket 0,b \llbracket$ par un ensemble fini abstrait au dessus de chaque $i \in \Z$.
-\end{rem}
 
-\begin{defi}
- Soit $x\in X$ et $m\in \Z$. On convient d'appeler développement de $x$ à l'ordre $m$ la suite tronquée $(x_i)_{i<m}$.
-\end{defi}
-
-\begin{prop}
- Soit $x\in X$ et $m\in \Z$. La boule ouverte de centre $x$ et de rayon $\rho^m$ est constituée par les $y\in X$ qui ont le même développement que $x$ à l'ordre $m$.
-\end{prop}
-\begin{prop}
- La boule ouverte de centre $x$ et de rayon $\rho^m$ est la boule fermée de centre $x$ et de rayon $\rho^{m+1}$.
-\end{prop}
-\begin{prop}
- La boule ouverte de centre $x$ et de rayon $\rho^m$ est l'union disjointe de $b$ boules ouvertes de rayon $\rho^{m+1}$.
-\end{prop}
+\begin{propn}\label{Prop:PromIdemTopo}
+  Soit $0 < \rho_1 < \rho_2 <1$ et $d_1$, $d_2$ les distances associées. Elles ne sont pas équivalentes mais définissent la même topologie sur $X$.
+\end{propn}
 \begin{demo}
- Il suffit de remarque que le développement de $x$ à l'ordre $m$ se prolonge en $b$ développements distincts à l'ordre $m+1$ et choisissant le terme d'indice $m+1$.
+Elles ne sont pas équivalentes car $(\frac{\rho_2}{\rho_1})^n$ tend vers $0$ en $-\infty$ et vers $+\infty$ en $+\infty$.\newline
+Les topologies sont les mêmes, car les boules ouvertes sont les mêmes avec des rayons différents. La boule ouverte pour $d_1$ de centre $a$ et de rayon $\rho_1^n$ est la boule ouverte pour $d_2$ de centre $a$ et de rayon $\rho_2^n$.
 \end{demo}
-\begin{prop}
+
+\begin{propn}\label{Prop:PromComplet}
  L'espace métrique $(X,d)$ est complet.
-\end{prop}
+\end{propn}
 \begin{demo}
- Soit $(x_n)_{n\in \N}$ une suite de Cauchy dans $X$. On notera $x_n(i)$ le terme d'indice $i$ de la suite $x_n$.\newline
+ Soit $(x_n)_{n\in \N}$ une suite de Cauchy dans $X$. On notera $x_n(i)$ l'arête d'indice $i$ de la promenade $x_n$.\newline
  Pour chaque $i\in \Z$ fixé, il existe $N_i \in \N$ tel que :
  \begin{displaymath}
  \left.
@@ -2469,7 +2876,7 @@ En effet, par définition de $N_j$,
  j< i \Rightarrow N_j < N_i \Rightarrow d(x_{N_i},x_{N_j}) < \rho^j
  \Rightarrow x_{N_i}(j) = x_{N_j}(j)
 \end{displaymath}
-car d'après la remarque suivant la définition de la distance les valeurs sont égales pour tous les indices $k\leq j$ donc en particulier pour $j$ lui même.\newline
+car d'après la remarque suivant la définition de la distance les arêtes sont égales pour tous les indices $k\leq j$ donc en particulier pour $j$ lui même.\newline
 Définissons $l=(l_i)_{i\in \Z} \in X$ par $l_i = x_{N_i}(i)$ pour tout $i\in \Z$.\newline
 Que peut-on dire de $d(x_n,l)$ pour $n\geq N_i$ ?
 \begin{multline*}
@@ -2484,42 +2891,313 @@ Que peut-on dire de $d(x_n,l)$ pour $n\geq N_i$ ?
  \Rightarrow
  x_n(j) = x_{N_i}(j) \text{ pour tout } j \leq i \\
  \Rightarrow
- x_n(j) = x_{N_j}(j)=l_j \text{ pour tout } j \leq i \left(\text{ car } x_{N_j}(j) = x_{N_i}(j)\right)
+ x_n(j) = x_{N_j}(j)=l_j \text{ pour tout } j \leq i \;\left(\text{car } x_{N_j}(j) = x_{N_i}(j)\right) \\
  \Rightarrow d(x_n,l) < \rho^i .
 \end{multline*}
 On en déduit que la suite $(x_n)$ tend vers $l$.
 \end{demo}
 
-\noindent Le caractère numérique des valeurs des suites ne joue aucun rôle ici, ni même le fait que les ensembles de valeurs possibles soient les mêmes pour tous les indices.
-Soit $\mathcal{G}$ un graphe orienté tel que, en chaque noeud,
-\begin{itemize}
- \item la valence sortante (ie le nombre d'arêtes partant de ce noeud) est finie,
- \item il existe une arête issue du noeud et qui pointe vers lui même.
-\end{itemize}
-On convient d'appeler boucle une arête dont le noeud de départ est le noeud d'arrivée.\newline
-On appelle \emph{demi-chemin} sur le graphe une suite d'arêtes $(a_i)_{i\in\Z}$ indicée dans $\Z$ telle que
-\begin{itemize}
- \item pour tout $i\in \Z$, l'arrivée de $a_i$ est le départ de $a_{i+1}$,
- \item il existe $m\in\Z$ tel que $a_m$ n'est pas une boucle et, pour tout $i<m$, $a_i$ est une boucle.
-\end{itemize}
-On dit que $m$ est l'ordre du demi-chemin et que le noeud de départ de $a_m$ est l'origine du demi-chemin.
-\begin{prop}
- Soit $a=(a_i)_{i\in \Z}$ et $b=(b_i)_{i\in \Z}$ deux demi-chemins. Il existe $m\in \Z$ tel que $i<m$ entraine $a_i=b_i$ si et seulement si $(a_i)_{i\in \Z}$ et $(b_i)_{i\in \Z}$ ont la même origine.
-\end{prop}
+\begin{defin}
+ Pour tout $n\in \Z$, notons $\mathcal{P}_n$ l'ensemble des promenades $(a_i)_{i\in \Z}$ \emph{terminées en $n$} c'est à dire telles que $a_i$ soit une boucle pour $i > n$; c'est à dire aussi telles que l'indice d'arrêt soit inférieur ou égal à $n$.
+ \end{defin}
+\begin{defin}[troncatures et fonctions d'arrêt]
+ Pour tout $n\in \Z$, définissons dans $X$ une fonction de \emph{troncature en} $n$ notée  $T_n$ par $T_n\left((a_i)_{i\in \Z}\right) = (a_i)_{i\leq n}$.
+ La fonction \emph{d'arrêt en} $n$ (notée $A_n$) est à valeurs dans $\mathcal{P}_n$ et associe la promenade obtenue en remplaçant chaque $a_i$ pour $i>n$ (ou en prolongeant la promenade tronquée) par la boucle du noeud terminal de $a_n$.
+\end{defin}
+\begin{rems}
+Pour tout $n\in \Z$ et $a\in X$, la promenade $A_n(a)$ est finie. La fonction $A_n$ est surjective de $X$ dans $\mathcal{P}_n$.\newline
+Pour $i\leq n$, les arêtes d'indice $i$ de $a$ et $A_n(a)$ sont égales donc $d(a,A_n(a))< \rho^n$.
+\end{rems}
+
+\begin{propn}\label{prop:PromSep}
+ L'espace métrique $(X,d)$ est séparable.
+\end{propn}
 \begin{demo}
- Notons $\alpha$ l'ordre de $a$ et $v$ son origine. Notons $\beta$ l'ordre de $b$ et $w$ son origine.\newline
- Si $v=w$, alors
- \begin{displaymath}
-  i < \min(\alpha, \beta) \Rightarrow a_i = (v,v) = b_i.
- \end{displaymath}
-S'il existe $m$ tel que $a_i=b_i$ pour $i<m$. alors
-\begin{displaymath}
- i < \min(\alpha, \beta, m) \Rightarrow (v,v) = a_i = b_i = (w,w)
-\end{displaymath}
-donc $v = w$.
+ Rappelons qu'un espace métrique est dit séparable lorsqu'il contient une partie dénombrable dense.\newline
+ L'ensemble des promenades finies de $X$ est dénombrable d'après la proposition \ref{Prop:DenomProm}. Montrons qu'il est dense.\newline
+ Soit $a\in X$ et $n\in \N$, la promenade $A_n(a)$ est finie telle que $d(a,A_n(a)) < \rho^n$. La suite $(A_n(a))_{n\in \N}$ est une suite de promenades finie qui converge vers $a$.
 \end{demo}
 
-On dira qu'un demi-chemin $(a_i)$ est fini si et seulement si il existe $\mu \in \Z$ tel que $a_i$ soit une boucle pour $i>\mu$. L'ensemble $F$ des demi-chemins finis d'origine $v$ est dénombrable et dense dans l'ensemble des demi-chemins d'origine $v$.
+\begin{propn}\label{Prop:PromEquiv}
+ Soit $n\in \Z$ et $a = (a_i)_{i \in \Z}$, $b = (b_i)_{i \in \Z}$ deux promenades de $X$. Alors:
+ \begin{displaymath}
+   d(a,b) < \rho^n  \Leftrightarrow T_n(a) = T_n(b) \Leftrightarrow A_n(a) = A_n(b)
+ \end{displaymath}
+ définit une relation d'équivalence dans $X$ dont les classes d'équivalence sont les boules ouvertes de rayon $\rho^n$. Elles forment une partition de $X$.\newline
+ La boule ouverte de centre $a$ et de rayon $\rho^n$ est l'union disjointe finie des boules ouvertes de rayon $\rho^{n+1}$ qu'elle contient.
+\end{propn}
+\begin{demo}
+L'arrêt des promenades en $n$ gomme leurs différences après l'indice $n$. Par définition de $d$:
+ \begin{displaymath}
+  A_n(a) = A_n(b) \Leftrightarrow a_i = b_i \text{ pour } i \leq n \Leftrightarrow d(a,b) < \rho^n,
+ \end{displaymath}
+La relation binaire dans $X$
+\begin{displaymath}
+ a \sim b \Leftrightarrow A_n(a) = A_n(b)
+\end{displaymath}
+est une relation d'équivalence que l'on peut reformuler en $a$ \emph{est $\rho^n$-proche} de $b$. La boule ouverte de centre $a$ et de rayon $\rho^n$ est la classe de $a$ pour cette relation.\newline
+Les boules forment une partition car les classes d'équivalence forment une partition.\newline
+La relation \og\emph{être $\rho^{n+1}$-proche de}\fg{} est plus fine que \og\emph{être $\rho^{n}$-proche de}\fg. Les classes de \og\emph{être $\rho^{n+1}$-proche de}\fg{} sont incluses dans celles de \og\emph{être $\rho^{n}$-proche de}\fg{} et forment des partitions.\newline
+Soit $a = (a_i)_{i \in \Z}$ une promenade et $\mathcal{B}$ la boule ouverte de centre $a$ et de rayon $\rho^n$. Notons $s$ le noeud terminal de l'arête $a_n$. Dans $\mathcal{B}$, les boules ouvertes de rayon $\rho^{n+1}$ forment donc une partition. Chaque \emph{petite} boule est caractérisée par l'arête d'indice $n+1$ qui est issue de $s$. Il en existe donc degré de $s$.
+\end{demo}
+\begin{rem}
+ Dans un contexte ultramétrique, on ne peut pas parler \emph{du} centre d'une boule. En effet, comme chaque boule est une classe d'équivalence, chaque élément de la boule est un centre.
+\end{rem}
+
+D'autres propriétés suivent.
+\begin{prop}
+ Si deux boules ouvertes se coupent, l'une des deux est incluse dans l'autre.
+\end{prop}
+\begin{demo}
+Soit $B_a$ la boule ouverte de centre $a$ de rayon $\rho^p$ et $B_b$ la boule ouverte de centre $b$ de rayon $\rho^q$.\newline
+Si $p=q$ chacune est une classe d'équivalence pour la relation \og être $\rho^p$-proche de\fg{}. Elles sont confondues si elles ne sont pas disjointes.\newline
+Si $p < q$, la relation \og être $\rho^q$-proche de\fg{} et plus fine que \og être $\rho^p$-proche de\fg{}. $B_a$ est une union finie de boules ouvertes de rayon $\rho^q$ donc $B_b \subset B_a$.
+\end{demo}
+
+\index{espace de Hausdorff} \index{espace séparé}
+\begin{propn}\label{Prop:PromHausdorff}
+ L'espace métrique $(X,d)$ est séparé (ou de Hausdorff).
+\end{propn}
+\begin{demo}
+ Soit $a=(a_i)_{i\in \Z}$ et $b=(b_i)_{i\in \Z}$ deux promenades distinctes. Par définition, $d(a,b)=\rho^n$ avec $a_n \neq b_n$ et $a_i = b_i$ pour $i<n$. Notons $B_a$ et $B_b$ les boules ouvertes de rayon $\rho^n$ et de centre respectovement $a$, $b$. Comme $a\notin B_b$ et $b\notin B_a$, aucune n'est incluse dans l'autre; elles sont donc disjointes ce qui prouve que l'espace est de Hausdorff (ou séparé)
+\end{demo}
+
+\begin{propn}\label{Prop:BoulPreCompct}
+ Une boule ouverte est précompacte.
+\end{propn}
+\begin{demo}
+ Soit $B$ une boule ouverte de rayon $\rho^m$. D'après la définition \ref{Def:PreCompct}, il s'agit de montrer que pour tout $n\in \Z$, on peut recouvrir $B$ par une union finie de boules de rayon $\rho^n$.\newline
+ D'après les propositions précédentes. La boule $B$ est incluse dans une boule de rayon $\rho^n$ si $n \leq m$ et $B$ est l'union disjointe finie des boules de rayon $\rho^n$ qu'elle contient lorsque $m < n$.
+\end{demo}
+
+\begin{propn}
+ Une boule ouverte est une partie fermée.  Une boule fermée est une boule ouverte. Une boule fermée est une partie ouverte.
+\end{propn}
+\begin{demo}
+ Ici \emph{boule ouverte} désigne une boule définie par une inégalité stricte et \emph{boule fermée} une boule définie par une inégalité large.
+ Par définition de la topologie associée à une distance, toute boule ouverte est ouverte. Pour tout $n\in \Z$ fixé, les boules ouvertes de rayon $\rho^n$ forment une partition de $X$. Le complémentaire de l'une d'entre elles (appelons la $B$) est une partie ouverte car c'est l'union des autres c'est à dire une union de parties ouvertes. La boule $B$ est donc une partie fermée.\newline
+ La boule fermée de centre $a$ et de rayon $\rho^n$ est aussi la boule ouverte de même centre et de rayon $\rho^{n-1}$.
+\end{demo}
+
+\begin{propn}\label{Prop:OuvertCompct}
+ Une boule ouverte est compacte. Une partie compacte est ouverte si et seulement si c'est une union finie de boules ouvertes.
+\end{propn}
+\begin{demo}
+ Soit $B$ une boule ouverte. Elle est complète (car fermée dans un espace complet) et précompacte donc compacte d'après la proposition \ref{prop:CaracCompact}.\newline
+ Soit $K$ une partie à la fois ouverte et compacte. Comme elle est ouverte, c'est l'union (ici disjointe) des boules ouvertes qu'elle contient. Comme elle est compacte, on peut extraire de ce recouvrement un sous-recouvrement fini.
+\end{demo}
+
+\begin{prop}
+ Les seules parties connexes de $X$ sont les singletons: $X$ est totalement discontinu.
+\end{prop}
+\begin{demo}
+ Soit $A\subset X$ contenant au moins deux points distincts $a$ et $b$. Il existe $n\in \Z$ tel que $d(a,b) \geq \rho^n$.\newline
+ Notons $B$ la boule ouverte de centre $a$ et de rayon $\rho^n$ et $U=A\setminus B = A \cap B'$ de sorte que $b\in U$. Une boule ouverte de rayon $\rho^n$ dont le centre est dans $U$ ne coupe pas $B$. Notons $V$ l'union de ces boules, c'est une partie ouverte de $X$ qui contient $U$ et telle que $B\cap V = \emptyset$. Alors:
+ \begin{displaymath}
+  A \cap V  = (B \cap V) \cup (U \cap V) = U \cap V = U \text{ est une partie ouverte de } A.
+ \end{displaymath}
+Comme $B$ est ouverte, $A\cap B$ aussi est une partie ouverte de $A$. On a formé deux parties ouvertes de $A$ non triviales et complémentaires, elles sont à la fois ouvertes et fermées donc $A$ n'est pas connexe. Un arbre véritable ne contient aucune boucle.
+\end{demo}
+
+\subsection{Des promenades aux nombres} \label{SubSec:Prom2Nbs}
+Introduisons de nouvelles notations et définitions pour un graphe $(\mathcal{N}, \mathcal{A})$.\newline
+Pour tout $s\in \mathcal{N}$, notons $\mathcal{A}_s$ l'ensemble des arêtes de noeud initial $s$.\newline
+J'appelle \emph{pseudo-arbre} un graphe pour lequel le sous-graphe obtenu en enlevant toutes les boucles est un arbre.\newline
+Pour $b \geq 2$ naturel, je dis que $(\mathcal{N}, \mathcal{A})$ est \emph{$b$-étiqueté} lorsqu'il existe une fonction $\lambda$ de $\mathcal{A}$ dans $\llbracket 0, b \llbracket$ telle que, pour n'importe quel noeud $s\in \mathcal{N}$:
+\begin{itemize}
+ \item  $\lambda((s,s))=0$,
+ \item la restriction de $\lambda$ à $\mathcal{A}_s$ est une bijection sur $\llbracket 0, b \llbracket$.
+\end{itemize}
+Dans la suite de cette section, $(\mathcal{N}, \mathcal{A})$ est un pseudo-arbre $b$-étiqueté. On désigne toujours par $X$ l'ensemble des promenades sur ce graphe.\newline
+Dans ces conditions, on définit des fonctions analogues aux fonctions d'arrêt mais avec des promenades infinies comme valeurs.
+\newline
+Remarque, je ne pense pas que la restriction aux pseudo-arbres soit indispensable. Elle intervient dans l'injectivité des fonctions $\Phi$ et $\Psi$.
+
+\begin{defi}[promenades constantes]
+ Soit $v\in \llbracket 0, b \llbracket$, une promenade $a\in X$ est dite \emph{constante de valeur $v$ à partir de $n$} si et seulement si $\lambda(a_i) =v$ pour $i\geq n$.\newline
+ Pour chaque $a\in X$, il existe une unique promenade constante de valeur $v$ à partir de $n$ et $\rho^n$-proche de $a$. On la note $B_{n,v}(a)$.\newline
+ Lorsque $v=0$, on retrouve la fonction d'arrêt en $n$: $A_n = B_{n,v}$.
+\end{defi}
+\begin{demo}
+La promenade cherchée est analogue à un développement en base $b$ dont toutes les \og décimales\fg{} seraient égales à $v$ à partir d'un certain rang. Lorsque $v=0$, on retrouve la fonction d'arrêt en $n$. Supposons $v>0$ et définissons une promenade $(x_i)_{i\in \Z}$ par:
+\begin{displaymath}
+ \forall i \leq n, \; x_i = a_i.
+\end{displaymath}
+Soit $a_n = (s,f)$. La restriction de $\lambda$ à l'ensemble des arêtes issues de $f$ est une bijection sur $\llbracket 0 , b \rrbracket$, il existe donc $g \neq f$ tel que $\lambda((f,g))=v$. On pose $x_{n+1} = (f,g)$.\newline
+De même, il existe $h$ tel que $\lambda((g,h))=v$. On pose $x_{n+2} = (g,h)$ et ainsi de suite.
+\end{demo}
+\noindent On définit aussi des fonctions à valeurs numériques.
+\begin{defin} \label{Def:PromFoncNum}
+Notons $\Phi_b$ l'application de $X$ dans $\R_+$ définie par
+\begin{displaymath}
+  a =  (a_i)_{i\in \Z} \mapsto \Phi_b(a) = \sum_{i \in \Z} \lambda(a_i) b^{-i}.
+\end{displaymath}
+
+Notons $\Psi_p$ (lorsque $b$ est un nombre premier $p$) l'application de $X$ dans $\Q_p$ définie par
+\begin{displaymath}
+ a =  (a_i)_{i\in \Z} \mapsto \Psi_p(a) = \sum_{i \in \Z} \lambda(a_i) p^{i}.
+\end{displaymath}
+\end{defin}
+
+\begin{prop}
+Fixons $\rho = \frac{1}{b}$ dans la définition de la distance de l'espace $X$ des promenades. Pour deux promenades distinctes $x=(x_i)_{i\in \Z}$ et $y=(y_i)_{i\in \Z}$:
+\begin{displaymath}
+ \left| \Phi_b(x) - \Phi_b(y)\right| \leq b\, d(x,y), \; \left| \Psi_b(x) - \Psi_b(y)\right|_p = d(x,y).
+\end{displaymath}
+Les fonctions $\Phi_b$ et $\Psi_p$ sont continues.
+\end{prop}
+\begin{demo}
+Soit $m\in \Z$ tel que $d(a,b) = \rho^m$ de sorte que $x_i = y_i$ pour $i<m$ et $x_m \neq y_m$. Supposons $0 \leq y_m < x_m < b$. Pour $n\geq m$:
+\begin{displaymath}
+ \sum_{i\leq n}x_ib^i - \sum_{i\leq n}y_ib^i = b^m \left( x_m - y_m + (x_{m+1}-y_{m+1})b +\cdots \right)
+ \Rightarrow \left| \sum_{i\leq n}x_ib^i - \sum_{i\leq n}y_ib^i\right|_p = \rho^m = d(x,y)
+\end{displaymath}
+puis $\left| \Psi_p(x) - \Psi_p(y)\right|_p = d(x,y)$ par passage à la limite en $n$.\newline
+Pour $n\geq m$:
+\begin{multline*}
+ \left|\sum_{i\leq n}x_ib^{-i} - \sum_{i\leq n}y_ib^{-i}\right| = b^{-m} \left| x_m - y_m + (x_{m+1}-y_{m+1})b^{-1} +\cdots \right| \\
+   \leq b^{-m} (b-1)\left| 1 + b^{-1} +\cdots \right|
+   = b^{-m} \frac{b-1}{1-\frac{1}{b}} = b^{1-m} = b d(x,y)
+\end{multline*}
+puis $\left| \Phi_b(x) - \Phi_b(y)\right|_p \leq b d(x,y)$ par passage à la limite en $n$.
+\end{demo}
+\begin{rem}
+ La continuité est une propriété topologique et la proposition \ref{Prop:PromIdemTopo} montre que la topologie sur $X$ ne dépend pas du choix de $\rho$.
+\end{rem}
+
+\begin{defi}
+  Définissons des parties de $\Q$ par analogie avec les nombres décimaux.
+  \begin{displaymath}
+   \forall n \in \Z, \D_n(b) = \Z\, b^{-n}, \; \D(b) = \bigcup_{n\in \Z} \D_n(b).
+  \end{displaymath}
+\end{defi}
+
+\begin{exple}
+Soit $a \in X$ d'indice de départ $m$:
+\begin{align*}
+ &\Phi_b(B_{n,v}(a)) = \sum_{i=m}^n \lambda(i)b^{-i} + \frac{vb}{b -1}\in \Q &\text{ en particulier }& \Phi_b(B_{n,b-1}(a)) = \Phi_b(A_{n}(a)) + b^{-n} \in \D(b)\\
+ &\Psi_p(B_{n,v}(a)) = \sum_{i=m}^n \lambda(i)b^{i} + \frac{vb^{n+1}}{p-1}\in\Q &\text{ en particulier }& \Psi_p(B_{n,p-1}(a)) = \Psi_p(A_{n}(a)) - b^{n+1} \in \D(p)
+\end{align*}
+\end{exple}
+\begin{demo}
+ \begin{displaymath}
+  \Phi_b(B_{n,v}(a)) = \sum_{i=m}^n \lambda(i)b^{-i} + \sum_{i=n+1}^{+\infty} vb^{-i}
+  = \sum_{i=m}^n \lambda(i)b^{-i} + vb^{-(n+1)}\, \frac{1}{1 - b^{-1}}
+  = \sum_{i=m}^n \lambda(i)b^{-i} + \frac{vb^{-n}}{b -1}.
+ \end{displaymath}
+ Remarquons que $\Phi_b(B_{n,v}(a)) \in \Q$ et $\Phi_b(B_{n,b-1}(a)) = \Phi_b(A_{n}(a)) + b^{-n} \in \D(b)$.\newline
+ Notons $u = \sum_{i=0}^{+\infty} p^i \in \Q_p$. Alors:
+ \begin{displaymath}
+  u = 1 + p \sum_{i=0}^{+\infty} p^i = 1+ pu \Rightarrow u = - \frac{1}{p-1}.
+ \end{displaymath}
+On en déduit
+\begin{displaymath}
+ \Psi_p(B_{n,v}(a)) = \sum_{i=m}^n \lambda(i)b^{i} + vb^{n+1}u = \sum_{i=m}^n \lambda(i)b^{i} - \frac{vb^{n+1}}{p-1}.
+\end{displaymath}
+
+\end{demo}
+
+\begin{prop}
+ Les applications $\Phi_b$ et $\Psi_p$ sont surjectives. L'application $\Psi_p$ est bijective. Chaque $x\in \R \setminus \D(b)$ admet un unique antécédent.
+\end{prop}
+\begin{demo}
+ Il s'agit d'une simple reformulation des propriétés usuelles: chaque $x \in \R$ admet un développement en base $b$ (unique lorsque $x\notin \D(b)$), chaque $x \in \Q_p$ admet un unique développement $p$-adique.
+\end{demo}
+
+\begin{prop}
+ Les restrictions de $\Phi_b$ et $\Psi_p$ à l'ensemble $\mathcal{F}$ des promenades finies sont des bijections respectivement de $\mathcal{F}$ dans $\D(b)$, $\D(p)$.
+\end{prop}
+\begin{demo}
+Soit $a$ une promenade finie d'indice de départ $m$ et d'indice d'arrivée $n$. Donc $\lambda(a_i)=0$ pour $i<m$ ou $i>n$:
+\begin{align*}
+ \Phi_b(a) = \sum_{i=m}^n \lambda(a_i) b^{-i} = b^{-n}\sum_{i= m}^{n} \lambda(a_{i}) b^{n - i}
+ = b^{-n}\sum_{k= 0}^{n-m} \lambda(a_{n-k}) b^{k} &\in \D_n(b) \subset \D(b) \\
+ \Psi_p(a) = \sum_{i=m}^n \lambda(a_i) p^{i} = p^{m}\sum_{i= m}^{n} \lambda(a_{i}) p^{i-m}
+ = p^{m}\sum_{k= 0}^{n-m} \lambda(a_{k+m}) p^{k} &\in \D_{-m}(p) \subset \D(p)
+\end{align*}
+La partie unicité de la proposition vient de l'unicité de la décomposition d'un entier dans une base.
+\end{demo}
+
+\begin{prop}
+ Soit $x\in \D(b)^+$. Il existe une promenade infinie $u$ telle que $\Phi_b(u)=x$.
+\end{prop}
+\begin{demo}
+Notons $n$ le plus petit $k$ tel que $x\in \D_k$. C'est aussi l'indice d'arrêt de la promenade finie dont l'image par $\Phi_b$ est $x$. Considérons $y = x - b^{-n}$, il existe une promenade finie $a$ telle que $\Phi_b(a) = y$. Notons $u$ la promende infinie $B_{n,b-1}(a)$. D'après les propositions précédentes,
+\begin{displaymath}
+ \Phi_b(B_{n,b-1}(a)) = y + b^{-n} = x.
+\end{displaymath}
+
+\end{demo}
+
+Soit $B$ une boule ouverte de rayon $\rho^n$ dans $X$. On a vu que le terme de centre de $B$ n'était pas approprié car tous les éléments de $B$ sont des centres. En revanche on peut définir deux promenades particulières dans $B$
+\begin{itemize}
+ \item la promenade finie $A_n(a)$ qui est la même pour tous les $a\in B$ (proposition \ref{Prop:PromEquiv}),
+ \item la promenade infinie $B_{n,b-1}(a)$ qui est aussi la même pour tous les $a\in B$.
+\end{itemize}
+Notons $x = \Phi_b(A_n(a))$, l'image de $B$ par $\Phi_b$ est le segment $[x,x+b^{-n}]$. Comme $x+b^{-n}]$ est l'image par $\Phi_b$ d'une autre promenade finie qui n'est pas dans $B$, les images par $\Phi_b$ des boules ouvertes disjointes dans $X$ sont des segments contigus dans $\R$. La caractère totalement discontinu est perdu par $\Phi_b$ mais pas par $\Psi_p$.
+
+\subsection{Distributions de Bernoulli}
+D'après \cite{koblitz2012p} p 34.
+\begin{defi}[polynômes de Bernoulli]\label{Def:PolBernoulli}
+ Pour tout $k\in \N$, le polynôme de Bernoulli $B_k(x)$ est défini comme étant le coefficient de $\frac{t^k}{k!}$ du développement en série entière de $t$ de
+ \begin{displaymath}
+  f(x,t) = \frac{t e^{tx}}{e^t - 1}.
+ \end{displaymath}
+\end{defi}
+
+\begin{rem}
+ \begin{multline*}
+  \int_0^1 e^{tx}\, dx = \frac{1}{t} (e^t - 1) \Rightarrow f(x,t) = \frac{e^{tx}}{\int_0^1 e^{tx}\, dx}
+  \Rightarrow 1 = \int_0^1 f(x,t)\,dx = \sum_{k=0}^{+\infty}\left(\int_0^1 B_k(x)\,dx\right)  \frac{t^k}{k!} \\
+  \Rightarrow
+    \int_0^1 B_k(x)\,dx =
+    \left\lbrace
+      \begin{aligned}
+        1 &\text{ si } k = 0\\
+        0 &\text{ si } k \geq 1
+      \end{aligned}
+    \right.
+ \end{multline*}
+On en déduit
+\end{rem}
+\noindent En effectuant la division suivant les puissances croissantes de
+\begin{displaymath}
+ t + xt^2 + \frac{x^2t^3}{2} + \cdots \text{ par } t + \frac{t^2}{2} + \frac{t^3}{6} + \cdots
+\end{displaymath}
+On obtient les premières valeurs
+\begin{displaymath}
+ B_0(x) = 1 ,\hspace{0.5cm} B_1(x) = x - \frac{1}{2} ,\hspace{0.5cm} B_2(x) = x^2 - x + \frac{1}{6}.
+\end{displaymath}
+
+Les polynômes de Bernoulli ont une propriété d'additivité.
+\begin{prop}
+\begin{displaymath}
+   \sum_{b=0}^{p-1} B_k(u + \frac{b}{p}) = p^{-k + 1} B_k(pu).
+\end{displaymath}
+\end{prop}
+\begin{demo}
+Formons une somme géométrique
+\begin{displaymath}
+ \sum_{b=0}^{p-1} \frac{t e^{(u + \frac{b}{p})t}}{e^t - 1}
+   = \frac{t e^{ut}}{e^t - 1} \sum_{b=0}^{p-1} e^\frac{tb}{p}
+   = \frac{t e^{ut}}{e^t - 1} \frac{e^t -1 }{e^{\frac{t}{p}} - 1}
+   = p \, \frac{(\frac{t}{p}) e^{(pu)\frac{t}{p}}}{e^{\frac{t}{p}} - 1}
+\end{displaymath}
+Remarquons que si $machin$ est un développement en $t$ c'est aussi un développement en $\frac{t}{p}$ avec
+\begin{center}
+ $p^k$ coefficient de $\frac{t^k}{k!}$ dans $machin$ = coefficient de $(\frac{t}{p})^k \frac{1}{k!}$ dans $machin$ .
+\end{center}
+En appliquant cela dans la relation au dessus, il vient
+\begin{displaymath}
+  p^k \sum_{b=0}^{p-1} B_k(u + \frac{b}{p}) = p \, B_k(pu).
+\end{displaymath}
+\end{demo}
+
+
+
+\chapter{En travaux: déchetterie et gisements}
+Cette section rassemble des sections qui n'ont plus leur place dans le plan actuel mais qui méritent d'être conservés quelque part ainsi que des sections en devenir qui pourraient entrer plus tard dans le plan.
+
 
 \section{Graphes, simplexes, CW-complexes?}
 L'exemple principal est construit sur les unions $\mathfrak{S}_s$ de cubes de taille $\frac{1}{2^s}$ dyadiques des $\frac{1}{2^s}\Z^n$. La stabilité pour l'intersection n'est pas vérifiée. Pour la récupérer, on peut ajouter toutes les enveloppes convexes de familles de 1,2,...,n+1 points contigus. Cela fait penser aux concepts de simplexe et de réseau combinatoire.
@@ -2618,7 +3296,7 @@ Pour tout $M \in \mathfrak{S}$ définissons $c(M)$ comme le nombre de composante
 \subsection{Fonction d'ensembles}
 Quand on cherche à probabiliser $\Z$, on peut considèrer, pour $m$ non nul donné les classes modulo $m$. Considérons une expérience aléatoire consistant à tirer au hasard un entier et à former son reste modulo $m$. Les évènements élémentaires sont les classes modulo $m$. La probabilité d'un tel évènement est $\frac{1}{m}$.
 
-On définit donc naturellement une fonction \og probabilité\fg \, $\varphi$ sur $\mathfrak{U}$ par
+On définit donc naturellement une fonction \og~ probabilité~\fg{} \, $\varphi$ sur $\mathfrak{U}$ par
 \begin{displaymath}
   \varphi(\emptyset) = 0, \;\varphi(a + \Z m) = \frac{1}{m}.
 \end{displaymath}
@@ -2631,7 +3309,7 @@ Dans un univers probablisé, la fonction probabilité définie sur l'ensemble de
   \end{displaymath}
 \end{defi}
 \begin{rem}
-  Lorsque les éléments de $\mathfrak{S}$ sont des ensembles finis, la fonction \og nombre d'éléments \fg \, est modulaire.
+  Lorsque les éléments de $\mathfrak{S}$ sont des ensembles finis, la fonction \og~ nombre d'éléments ~\fg{} \, est modulaire.
 \end{rem}
 
 \noindent Peut-on étendre de manière consistante $\varphi$ à une fonction \emph{modulaire} sur l'ensemble $\mathfrak{S}$ des unions finies de classes de congruences?\newline
